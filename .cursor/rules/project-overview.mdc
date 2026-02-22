@@ -1,0 +1,38 @@
+---
+alwaysApply: true
+---
+
+# DTP_SPA_POC — Project Overview
+
+## What This Project Is
+DataTools Pro SPA — a Proof of Concept for the new Single Page Application front-end backed by a Laravel API. The repo is a **monorepo** with two primary surfaces:
+
+1. **Laravel backend** at the repo root (`app/`, `routes/`, `database/`, etc.)
+2. **React SPA** in the [`spa/`](mdc:spa) subdirectory
+
+A third surface, **AI/Agentic workflows**, lives in [`ai/`](mdc:ai).
+
+## Key Files & Directories
+
+| Path | What it is |
+|---|---|
+| [`app/`](mdc:app) | Laravel application logic (controllers, models, services) |
+| [`routes/`](mdc:routes) | Laravel HTTP + API routes |
+| [`database/`](mdc:database) | Migrations, seeders, factories |
+| [`spa/`](mdc:spa) | React SPA (Vite-based) |
+| [`ai/prompts/`](mdc:ai/prompts) | All LLM prompt templates |
+| [`ai/evals/`](mdc:ai/evals) | Golden eval test cases (promptfoo) |
+| [`ai/redteam/`](mdc:ai/redteam) | Adversarial / security tests |
+| [`.github/workflows/`](mdc:.github/workflows) | CI/CD pipelines |
+| [`.github/CODEOWNERS`](mdc:.github/CODEOWNERS) | Who reviews what |
+| [`docs/`](mdc:docs) | Team documentation |
+
+## Stack
+- **Backend:** PHP 8.3 / Laravel (root)
+- **Frontend:** React + TypeScript + Vite (`spa/`)
+- **AI:** promptfoo for evals, OpenAI / Anthropic for LLM calls
+- **CI/CD:** GitHub Actions
+- **Hosting:** TBD (Fly.io / Forge / AWS — see deploy workflows)
+
+## Team Size
+1–2 developers. Optimize for simplicity over process overhead.

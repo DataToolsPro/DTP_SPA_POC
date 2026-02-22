@@ -1,0 +1,106 @@
+# =============================================================================
+# DTP_SPA_POC — .gitignore
+# Stack: Laravel (PHP) at root + React SPA in /spa
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Laravel / PHP
+# -----------------------------------------------------------------------------
+/vendor/
+/.env
+/.env.backup
+/.env.production
+/.env.staging
+/node_modules/           # root-level node (if any)
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public
+/storage/logs/*.log
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/bootstrap/cache/*.php
+.phpunit.result.cache
+.php-cs-fixer.cache
+.php_cs.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/public/build/    # Vite manifest / compiled assets
+
+# -----------------------------------------------------------------------------
+# React SPA (/spa)
+# -----------------------------------------------------------------------------
+/spa/node_modules/
+/spa/dist/
+/spa/build/
+/spa/.env
+/spa/.env.local
+/spa/.env.development.local
+/spa/.env.test.local
+/spa/.env.production.local
+/spa/coverage/
+/spa/.next/
+/spa/out/
+/spa/.vite/
+
+# -----------------------------------------------------------------------------
+# AI / Prompts — NEVER commit real secret keys or sensitive eval data
+# -----------------------------------------------------------------------------
+/ai/.env
+/ai/**/*.secret.*
+/ai/evals/outputs/       # generated eval output, large files
+/ai/redteam/outputs/
+
+# -----------------------------------------------------------------------------
+# IDE / Editor
+# -----------------------------------------------------------------------------
+.idea/
+*.iml
+.vscode/settings.json
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -----------------------------------------------------------------------------
+# OS
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# -----------------------------------------------------------------------------
+# Testing / Coverage
+# -----------------------------------------------------------------------------
+/coverage/
+*.lcov
+.nyc_output/
+junit.xml
+test-results.xml
+
+# -----------------------------------------------------------------------------
+# Build artifacts
+# -----------------------------------------------------------------------------
+*.zip
+*.tar.gz
+*.phar
+
+# -----------------------------------------------------------------------------
+# Secrets / Keys — safety net
+# -----------------------------------------------------------------------------
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.json
+secrets.yaml
+secrets.yml

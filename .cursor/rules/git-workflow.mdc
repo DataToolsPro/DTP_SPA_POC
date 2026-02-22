@@ -1,0 +1,97 @@
+---
+alwaysApply: true
+---
+
+# Git Workflow & Branch Conventions
+
+## Branch Model: Trunk-Based Development
+
+```
+main  ←────────── always releasable, protected
+  ↑
+  └── feature/<ticket>-<slug>   (all new work, short-lived)
+  └── hotfix/<ticket>-<slug>    (emergency production fixes)
+```
+
+## Branch Naming Rules
+
+| Type | Pattern | Example |
+|---|---|---|
+| Feature / task | `feature/<ticket>-<slug>` | `feature/DTP-42-user-auth` |
+| Bug fix | `feature/<ticket>-fix-<slug>` | `feature/DTP-55-fix-login-redirect` |
+| Hotfix | `hotfix/<ticket>-<slug>` | `hotfix/DTP-99-token-expiry` |
+| Chore / deps | `feature/<ticket>-chore-<slug>` | `feature/DTP-60-chore-upgrade-deps` |
+
+**Rules:**
+- All lowercase, hyphens only (no underscores, no spaces)
+- Always include a ticket number
+- Keep slugs ≤ 5 words
+- Delete branches after merge
+
+## PR Title Format
+
+```
+[DTP-XX] Short imperative description
+```
+
+Examples:
+- `[DTP-42] Add user authentication via Sanctum`
+- `[DTP-55] Fix login redirect loop on token expiry`
+- `[DTP-60] Upgrade React to v19`
+
+## Commit Message Format (Conventional Commits)
+
+```
+<type>(<scope>): <short description>
+
+[optional body]
+[optional footer: Closes #XX]
+```
+
+Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `ci`, `perf`
+
+Examples:
+```
+feat(auth): add Sanctum token authentication
+fix(spa): correct redirect loop on 401 response
+chore(deps): upgrade React to v19.0.0
+ci(workflows): add path filter to backend CI
+```
+
+## PR Rules (enforced by branch protection)
+
+- ✅ No direct pushes to `main` — PRs only
+- ✅ 1 approval required (increase to 2 when second dev joins)
+- ✅ All required CI checks must pass before merge
+- ✅ Stale approvals dismissed on new push
+- ✅ Conversations must be resolved
+- ✅ Linear history (squash or rebase merge)
+- ✅ CODEOWNERS review required for protected areas
+
+## Merge Strategy
+
+- Use **Squash merge** for feature branches (clean linear history)
+- Use **Merge commit** only for hotfixes needing audit trail
+- Never use plain merge commits for feature branches
+
+## Release Strategy
+
+```
+main → staging (auto on every merge)
+      ↓ [manual approval gate]
+    production (tag + deploy)
+```
+
+Tags: `v2026.02.22` (date-based) or `v1.2.0` (semver)
+
+**Do NOT use long-lived `staging` or `production` branches.**
+The promotion gate is at deployment (GitHub Environments), not at merge.
+
+## Hotfix Process
+
+1. Branch `hotfix/<ticket>-<slug>` from `main`
+2. Fix + test locally
+3. PR into `main` (still requires review + CI)
+4. Merge → auto-deploys to staging
+5. Manually promote to production (approval gate)
+6. Tag the release

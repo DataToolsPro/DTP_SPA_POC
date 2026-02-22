@@ -1,0 +1,170 @@
+# =============================================================================
+# Deploy — Production (manual approval gate)
+# =============================================================================
+# Trigger: manual workflow_dispatch OR on a semver/date tag push (v*)
+#
+# Strategy:
+#   - Re-use the SAME artifact built during staging deploy (same SHA)
+#   - Require a human reviewer to approve before anything touches production
+#   - Tag production releases as vYYYY.MM.DD or vMAJOR.MINOR.PATCH
+#
+# Environment: "production" (configure in GitHub → Settings → Environments)
+#   Protections:
+#     ✅ Required reviewers: @rmgoodm (+ second dev if applicable)
+#     ✅ Wait timer: 0–5 min (optional buffer)
+#     ✅ Restrict deployments to main branch only
+#     ✅ Deployment secrets isolated to this environment
+#
+# Promotion model: you are promoting the SAME build from staging → production.
+# There are no code changes at this step — only config/secrets differ.
+# =============================================================================
+
+name: Deploy — Production
+
+on:
+  # Manual "promote to prod" button in GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: 'Git SHA to deploy (leave blank for latest main)'
+        required: false
+        default: ''
+      tag:
+        description: 'Release tag to create (e.g. v2026.02.22) — leave blank to skip'
+        required: false
+        default: ''
+
+  # Auto-trigger on semver/date tags pushed to main
+  push:
+    tags:
+      - 'v[0-9]*'
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false   # NEVER cancel an in-flight production deploy
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Determine which SHA / artifact to promote
+  # ---------------------------------------------------------------------------
+  resolve-deploy-target:
+    name: Resolve Deploy Target
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.resolve.outputs.sha }}
+
+    steps:
+      - name: Resolve SHA
+        id: resolve
+        run: |
+          if [ -n "${{ github.event.inputs.sha }}" ]; then
+            echo "sha=${{ github.event.inputs.sha }}" >> $GITHUB_OUTPUT
+          else
+            echo "sha=${{ github.sha }}" >> $GITHUB_OUTPUT
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Deploy to Production (requires approval in GitHub Environments)
+  # ---------------------------------------------------------------------------
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: resolve-deploy-target
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.resolve-deploy-target.outputs.sha }}
+
+      - name: Download staging build artifact
+        uses: actions/download-artifact@v4
+        with:
+          # Re-uses the artifact built during the staging deploy for this SHA
+          name: spa-build-${{ needs.resolve-deploy-target.outputs.sha }}
+          path: spa/dist/
+        continue-on-error: true   # artifact may have expired; rebuild below if needed
+
+      - name: Rebuild SPA if artifact expired
+        run: |
+          if [ -z "$(ls -A spa/dist 2>/dev/null)" ]; then
+            echo "Artifact not found or empty — rebuilding from source..."
+            cd spa && npm ci && npm run build --if-present
+          else
+            echo "✅ Using cached artifact from staging build."
+          fi
+        env:
+          NODE_ENV: production
+          VITE_API_URL: ${{ vars.PRODUCTION_API_URL }}
+
+      # -----------------------------------------------------------------------
+      # TODO: Replace with your actual production deploy command
+      # -----------------------------------------------------------------------
+      - name: Deploy SPA to production
+        run: |
+          echo "🚀 Promoting SPA to PRODUCTION..."
+          echo "SHA: ${{ needs.resolve-deploy-target.outputs.sha }}"
+          # Example (S3):   aws s3 sync spa/dist/ s3://your-prod-bucket/ --delete
+          # Example (Fly):  flyctl deploy --remote-only --app your-prod-app
+          echo "⚠️  Production deploy step not configured yet — add your command here."
+        env:
+          DEPLOY_TOKEN: ${{ secrets.PRODUCTION_DEPLOY_TOKEN }}
+
+      - name: Deploy Laravel backend to production
+        run: |
+          echo "🚀 Deploying Laravel backend to PRODUCTION..."
+          # Example (Forge):  curl -X POST "${{ secrets.FORGE_PROD_DEPLOY_WEBHOOK }}"
+          echo "⚠️  Backend deploy step not configured yet."
+        env:
+          DEPLOY_TOKEN: ${{ secrets.PRODUCTION_DEPLOY_TOKEN }}
+
+      - name: Post-deploy smoke test
+        run: |
+          echo "Running smoke test against ${{ vars.PRODUCTION_URL }}..."
+          # curl --fail "${{ vars.PRODUCTION_URL }}/api/health" || exit 1
+          echo "⚠️  Smoke test not configured yet."
+
+      # -----------------------------------------------------------------------
+      # Tag the release (if a tag name was provided via manual dispatch)
+      # -----------------------------------------------------------------------
+      - name: Create release tag
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.tag != ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${{ github.event.inputs.tag }}" "${{ needs.resolve-deploy-target.outputs.sha }}"
+          git push origin "${{ github.event.inputs.tag }}"
+          echo "✅ Tagged as ${{ github.event.inputs.tag }}"
+
+      - name: Create GitHub Release
+        if: >
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.tag != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              tag_name: '${{ github.event.inputs.tag }}',
+              name:     '${{ github.event.inputs.tag }}',
+              body:     `Production release promoted from staging.\nSHA: ${{ needs.resolve-deploy-target.outputs.sha }}`,
+              draft:    false,
+              prerelease: false,
+            });
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ PRODUCTION deploy succeeded — ${{ needs.resolve-deploy-target.outputs.sha }}"
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ PRODUCTION deploy FAILED — ${{ needs.resolve-deploy-target.outputs.sha }}"
+          # Add Slack/PagerDuty alert here for production failures

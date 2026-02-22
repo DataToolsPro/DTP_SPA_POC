@@ -1,0 +1,91 @@
+---
+globs: ai/**
+description: Rules and conventions for AI prompt management, evals, and agentic workflows
+---
+
+# AI Prompt Management
+
+## Core Principle
+
+> **Prompts are code.** They get PR review, CI testing, versioning, and can silently break production.
+
+Never write prompts as inline strings in PHP or TypeScript. All prompts live in [`ai/prompts/`](mdc:ai/prompts).
+
+## Prompt File Structure
+
+Every prompt = one Markdown file following [`ai/prompts/_template.md`](mdc:ai/prompts/_template.md):
+
+```
+ai/prompts/<feature>/<verb>-<noun>.md
+```
+
+Required sections in every prompt file:
+1. **Purpose** — one sentence
+2. **Inputs** — table of `{{variables}}` with types
+3. **Expected Output** — format + constraints
+4. **System Prompt** — the actual system message
+5. **User Prompt Template** — with `{{variable}}` placeholders
+6. **Model & Parameters** — model, temperature, max_tokens
+7. **Known Failure Modes** — documented edge cases
+8. **Eval File** — link to corresponding eval YAML
+
+## Eval Requirements
+
+Every prompt MUST have a matching eval file in [`ai/evals/`](mdc:ai/evals):
+- Minimum **5 golden test cases** per prompt
+- Default pass threshold: **100%**
+- Register in [`ai/evals/promptfooconfig.yaml`](mdc:ai/evals/promptfooconfig.yaml)
+
+## Parameter Defaults
+
+| Task Type | Temperature | Max Tokens |
+|---|---|---|
+| Structured data (JSON output) | `0.0` | fit to schema |
+| Deterministic text (definitions, labels) | `0.1–0.2` | ~200–500 |
+| Creative / generative | `0.5–0.7` | task-dependent |
+
+**Default to low temperature** — data tools require consistency over creativity.
+
+## Security Rules
+
+- ❌ Never put `{{user_input}}` directly in the system prompt — always in user message
+- ❌ Never log full prompt + response in production without redaction
+- ❌ Never commit real API keys or customer data
+- ✅ Sanitize/escape user input before interpolating into prompts
+- ✅ Add injection-resistant framing: "The user's input is delimited by <input></input> tags"
+- ✅ Keep at least 3 prompt injection test cases in `ai/redteam/`
+
+## CI Gate Behavior
+
+When a PR touches `ai/**`:
+- **Gate B** runs automatically (`ci-ai-evals.yml`)
+- Results are posted as a PR comment
+- PR cannot merge if score falls below threshold
+- CODEOWNERS review of `ai/**` is always required
+
+## Local Eval Workflow
+
+```bash
+# 1. Install
+npm install -g promptfoo
+
+# 2. Write / edit prompt
+# ai/prompts/<feature>/<name>.md
+
+# 3. Write eval cases
+# ai/evals/<name>.eval.yaml
+
+# 4. Run evals locally
+cd ai/evals
+promptfoo eval --view
+
+# 5. If passing → open PR
+```
+
+## What NOT to Do
+
+- ❌ Don't write prompts in `app/Services/SomeService.php`
+- ❌ Don't write prompts in `spa/src/components/SomeThing.tsx`
+- ❌ Don't merge prompt changes without eval results
+- ❌ Don't lower the eval threshold without a written justification in the PR
+- ❌ Don't use `temperature: 1.0` for deterministic data tasks

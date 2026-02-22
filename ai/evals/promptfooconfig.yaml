@@ -1,0 +1,36 @@
+# =============================================================================
+# promptfoo — Master Eval Configuration
+# =============================================================================
+# This file is the entry point for all prompt evals.
+# CI runs: promptfoo eval --config promptfooconfig.yaml
+#
+# Docs: https://www.promptfoo.dev/docs/configuration/guide/
+# =============================================================================
+
+description: "DTP_SPA_POC — Prompt Regression Suite"
+
+# Default provider — override per eval file if needed
+defaultTest:
+  options:
+    provider: openai:gpt-4o
+
+# -----------------------------------------------------------------------------
+# Register eval files here as you add new prompts.
+# Each entry points to a <name>.eval.yaml file in this directory.
+# -----------------------------------------------------------------------------
+# Example (uncomment when you have your first eval):
+# configs:
+#   - ./glossary-generate-definition.eval.yaml
+#   - ./guides-summarize-step.eval.yaml
+
+# -----------------------------------------------------------------------------
+# Sharing / reporting (optional)
+# Set PROMPTFOO_SHARE_API_KEY in GitHub secrets to enable result sharing.
+# -----------------------------------------------------------------------------
+# sharing:
+#   apiBaseUrl: https://api.promptfoo.dev
+
+# -----------------------------------------------------------------------------
+# Output
+# -----------------------------------------------------------------------------
+outputPath: outputs/latest.json

@@ -1,0 +1,47 @@
+# =============================================================================
+# CODEOWNERS — DTP_SPA_POC
+# =============================================================================
+# Format: <pattern>  <@github-username or @org/team>
+#
+# Rules:
+#   - Last matching rule wins
+#   - Use @DataToolsPro/backend-team or individual @handles
+#   - At least 1 listed owner must approve before a PR can merge
+#
+# Update @rmgoodm to your actual GitHub username(s).
+# If you add a second dev, add them here: @rmgoodm @seconddev
+# =============================================================================
+
+# --- Catch-all: everything requires at least one owner review ----------------
+*                           @rmgoodm
+
+# --- Laravel Backend ---------------------------------------------------------
+/app/**                     @rmgoodm
+/routes/**                  @rmgoodm
+/database/**                @rmgoodm
+/config/**                  @rmgoodm
+/bootstrap/**               @rmgoodm
+composer.json               @rmgoodm
+composer.lock               @rmgoodm
+
+# --- React SPA ---------------------------------------------------------------
+/spa/**                     @rmgoodm
+
+# --- AI / Prompt Management --------------------------------------------------
+# These files carry the highest review bar — never merge prompt changes
+# without a deliberate review pass.
+/ai/**                      @rmgoodm
+
+# --- CI/CD & Infra -----------------------------------------------------------
+# Changes to workflows must ALWAYS be reviewed — they can exfiltrate secrets.
+/.github/**                 @rmgoodm
+/Dockerfile                 @rmgoodm
+/docker-compose*.yml        @rmgoodm
+/.env.example               @rmgoodm
+
+# --- Cursor AI Rules ---------------------------------------------------------
+/.cursor/**                 @rmgoodm
+
+# --- Docs --------------------------------------------------------------------
+/docs/**                    @rmgoodm
+README.md                   @rmgoodm

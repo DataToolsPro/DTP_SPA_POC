@@ -1,0 +1,137 @@
+# =============================================================================
+# CI — AI Prompt Evals (promptfoo)
+# =============================================================================
+# Triggers: any PR or push that touches ai/ or the agent glue code.
+#
+# What this does:
+#   1. Runs promptfoo evals against your golden test cases in ai/evals/
+#   2. Posts a summary comment on the PR showing pass/fail per prompt
+#   3. Fails the check if any eval regresses below the defined threshold
+#
+# Setup required:
+#   - Add OPENAI_API_KEY (or your LLM provider key) as a GitHub secret
+#   - Add PROMPTFOO_SHARE_API_KEY if you want to share results (optional)
+#   - Edit ai/evals/promptfooconfig.yaml to define your eval suite
+#
+# Docs: https://www.promptfoo.dev/docs/integrations/github-action/
+# =============================================================================
+
+name: CI — AI Prompt Evals
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ai/**'
+      - '.github/workflows/ci-ai-evals.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ai/**'
+      - '.github/workflows/ci-ai-evals.yml'
+
+jobs:
+  prompt-evals:
+    name: Prompt Regression Tests
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write    # needed to post PR comments
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install promptfoo
+        run: npm install -g promptfoo@latest
+
+      - name: Check for eval config
+        id: check_config
+        run: |
+          if [ -f ai/evals/promptfooconfig.yaml ]; then
+            echo "has_config=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_config=false" >> $GITHUB_OUTPUT
+            echo "⚠️  No ai/evals/promptfooconfig.yaml found — skipping evals."
+            echo "   Add your first eval config to enable this gate."
+          fi
+
+      - name: Run promptfoo evals
+        if: steps.check_config.outputs.has_config == 'true'
+        run: |
+          cd ai/evals
+          promptfoo eval --config promptfooconfig.yaml --output results.json --output-format json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Add other provider keys as secrets as needed
+
+      - name: Comment eval results on PR
+        if: >
+          steps.check_config.outputs.has_config == 'true' &&
+          github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'ai/evals/results.json';
+            if (!fs.existsSync(path)) {
+              console.log('No results file found — skipping comment');
+              return;
+            }
+            const results = JSON.parse(fs.readFileSync(path, 'utf8'));
+            const passed = results.results?.filter(r => r.success).length ?? 0;
+            const total  = results.results?.length ?? 0;
+            const score  = total > 0 ? ((passed / total) * 100).toFixed(1) : 'N/A';
+
+            const body = [
+              '## 🤖 Prompt Eval Results',
+              '',
+              `| Metric | Value |`,
+              `|--------|-------|`,
+              `| Tests passed | ${passed} / ${total} |`,
+              `| Score | ${score}% |`,
+              '',
+              passed === total
+                ? '✅ All evals passed — no regressions detected.'
+                : `⚠️ ${total - passed} eval(s) failed. Review \`ai/evals/results.json\` for details.`,
+            ].join('\n');
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body,
+            });
+
+      - name: Upload eval results artifact
+        if: steps.check_config.outputs.has_config == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: prompt-eval-results
+          path: ai/evals/results.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Fail if evals regressed
+        if: steps.check_config.outputs.has_config == 'true'
+        run: |
+          node -e "
+            const fs = require('fs');
+            const results = JSON.parse(fs.readFileSync('ai/evals/results.json', 'utf8'));
+            const passed = results.results?.filter(r => r.success).length ?? 0;
+            const total  = results.results?.length ?? 0;
+            const threshold = 1.0; // 100% pass required — lower if needed (e.g. 0.9 for 90%)
+            const score = total > 0 ? passed / total : 1;
+            if (score < threshold) {
+              console.error('Eval score ' + (score*100).toFixed(1) + '% is below threshold ' + (threshold*100) + '%');
+              process.exit(1);
+            }
+            console.log('Evals passed: ' + passed + '/' + total);
+          "
