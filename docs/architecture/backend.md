@@ -72,6 +72,7 @@ routes/
 Route structure:
 ```php
 // routes/api.php
+// TODO: Replace auth:sanctum with Stytch session middleware — see docs/architecture/auth.md
 Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('reports', ReportController::class);
     Route::apiResource('users', UserController::class);
@@ -80,14 +81,15 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 
 ---
 
-## Authentication Flow (Sanctum SPA)
+## Authentication (Stytch)
 
-```
-1. SPA hits GET /sanctum/csrf-cookie   → sets CSRF cookie
-2. SPA posts POST /login               → creates session
-3. All subsequent requests include session cookie + CSRF header
-4. Middleware: auth:sanctum validates session
-```
+We use **Stytch** for federated login (Google, Apple, etc.). Flow:
+
+1. Stytch redirects to SPA `/authenticate` with token → Stytch JS SDK exchanges it, sets cookies
+2. SPA makes API calls → browser sends Stytch session cookies (same domain)
+3. **Middleware** validates Stytch session on protected routes
+
+Full flow, placeholders, and checklists: [`docs/architecture/auth.md`](./auth.md)
 
 ---
 

@@ -65,24 +65,28 @@ dtp/src/
 
 ---
 
-## Authentication Flow (SPA ↔ Laravel Sanctum)
+## Authentication (Stytch)
+
+We use **Stytch** for federated login. Flow:
 
 ```
 1. User hits / or any gated route
    → Check session (GET /api/v1/user)
    → 200: authenticated → allow /app/* or redirect / to /app
-   → 401: not authenticated → redirect to /login (except public: /login, /register, etc.)
+   → 401: not authenticated → redirect to /login (except public routes)
 
-2. User hits /login, submits form → POST /login
-   ├── 200: session created → redirect to /app
-   └── 422: validation error → show field errors
+2. User hits /login → clicks "Sign in with Google" (or other IdP)
+   → Stytch JS SDK redirects to IdP
+   → IdP redirects to /authenticate?token=...
+   → Stytch SDK exchanges token, sets cookies, redirects to /app
 
-3. All API requests send cookie automatically (same-domain)
-   + CSRF token in X-XSRF-TOKEN header (Axios handles this automatically)
+3. All API requests send Stytch session cookies automatically (same-domain)
    + 401 interceptor → redirect to /login
 
-4. Logout → POST /logout → clear session → redirect to /login
+4. Logout → clear Stytch session → redirect to /login
 ```
+
+Full flow and implementation checklists: [`docs/architecture/auth.md`](./auth.md)
 
 ---
 

@@ -69,7 +69,7 @@ DTP_APP_V3/                    ← monorepo root
 | Frontend delivery | Cloudflare Pages | Edge-served SPA, zero server cost, built-in CDN + protection |
 | Backend hosting | Cloudways | Managed PHP/Laravel, SSH deploy, easy scaling |
 | Database | AWS RDS | Managed, reliable, easy failover — separate from app server |
-| Auth | Laravel Sanctum | SPA + API token support, built into Laravel |
+| Auth | Stytch | Federated login (Google, Apple, etc.), session cookies, backend middleware |
 | Monorepo | Single repo | Small team, tight coupling between frontend and API |
 
 ---
@@ -80,6 +80,7 @@ DTP_APP_V3/                    ← monorepo root
 |---|---|
 | [`backend.md`](./backend.md) | Laravel architecture, service patterns, testing |
 | [`frontend.md`](./frontend.md) | React SPA structure, state management, routing |
+| [`auth.md`](./auth.md) | Stytch auth flow, redirect URLs, frontend/backend checklists |
 
 ---
 

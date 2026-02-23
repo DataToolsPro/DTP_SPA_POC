@@ -110,6 +110,20 @@ These are scoped per environment and only injected when that environment is bein
 
 ---
 
+## Stytch (User Authentication)
+
+**Location:** 1Password vault + Laravel `.env` + frontend `dtp/.env.local`
+
+| Variable | Where | Purpose |
+|----------|-------|---------|
+| `STYTCH_PUBLIC_TOKEN` | `VITE_STYTCH_PUBLIC_TOKEN` in `dtp/.env.local` | Stytch JS SDK init (frontend) |
+| `STYTCH_SECRET` | Laravel `.env` (server only) | Backend session validation |
+| `STYTCH_PROJECT_ID` | Laravel `.env` (optional) | Stytch API calls |
+
+**Stytch Dashboard:** Add redirect URLs per environment, e.g. `https://us1.datatoolspro.com/authenticate`. Full config: `docs/architecture/auth.md`.
+
+---
+
 ## SSH Key Setup for Cloudways Deploy
 
 GitHub Actions deploys to Cloudways via SSH. You need to generate a dedicated deploy key and register it on the Cloudways server.

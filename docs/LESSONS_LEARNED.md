@@ -72,6 +72,7 @@
 
 | Decision | Why it matters |
 |----------|----------------|
+| **Auth: Stytch** — federated login, redirect to SPA `/authenticate`, backend middleware validates | See `docs/architecture/auth.md` |
 | **Cloudflare Pages project name:** `dtp-app-v3` (dashes, lowercase) | PR preview URLs, deploy config |
 | **Frontend directory is `dtp/`** (not `spa/`) | Product alignment; build/cmd paths; CI path filters; docs |
 | **DataTools Pro 3.0** — this is the third major release | Product/version context; release notes; roadmap clarity |
@@ -84,7 +85,7 @@
 ## Before You... (Checklist)
 
 **Before touching backend/auth:**  
-- [ ] Read `docs/architecture/backend.md` — Sanctum SPA flow, policies
+- [ ] Read `docs/architecture/auth.md` — Stytch flow, redirect URLs, middleware
 
 **Before adding a new integration:**  
 - [ ] Check `docs/product/integrations.md` — existing patterns
