@@ -1,14 +1,14 @@
 ---
 name: User Story
 about: A new feature or change visible to end users
-title: '[DTP-XX] As a <user type>, I want to <action> so that <outcome>'
+title: '[MBT-XX] As a <user type>, I want to <action> so that <outcome>'
 labels: user-story
 assignees: ''
 ---
 
 ## Jira Ticket
 <!-- Link to the source Jira story if it exists -->
-https://YOUR_ORG.atlassian.net/browse/DTP-
+https://goodmangroup.atlassian.net/browse/MBT-
 
 ---
 
@@ -56,6 +56,6 @@ https://YOUR_ORG.atlassian.net/browse/DTP-
 - [ ] Feature implemented and passes AC above
 - [ ] Unit / integration tests added
 - [ ] CI is green
-- [ ] `docs/features/DTP-XX-<slug>.md` created and reviewed
+- [ ] `docs/features/MBT-XX-<slug>.md` created and reviewed
 - [ ] PR approved by code owner
 - [ ] Deployed to staging and smoke tested

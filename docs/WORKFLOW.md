@@ -191,6 +191,25 @@ Never:
 
 ---
 
+## Capturing Learnings (Lessons Learned)
+
+We keep a **persistent memory** of mistakes and gotchas so they are not repeated.
+
+**File:** [`docs/LESSONS_LEARNED.md`](LESSONS_LEARNED.md)
+
+**When to add an entry:**
+- You fix a bug with a non-obvious root cause
+- You discover a gotcha (tool behaves unexpectedly, config quirk, etc.)
+- You learn something that would save future debugging time
+
+**Who updates:** Anyone — human or AI. Add it in the same PR that fixes the bug.
+
+**Format:** Short entry (what happened, why, do instead). See the file for examples.
+
+**Before similar work:** Check LESSONS_LEARNED so you don't repeat past mistakes.
+
+---
+
 ## Questions?
 
 - Check existing docs in `docs/` first

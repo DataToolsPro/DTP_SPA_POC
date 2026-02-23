@@ -4,7 +4,7 @@
 
 ## Jira Ticket
 <!-- Required: link to the Jira ticket for this work -->
-[DTP-](https://YOUR_ORG.atlassian.net/browse/DTP-)
+[MBT-](https://goodmangroup.atlassian.net/browse/MBT-)
 
 ## Work Type
 <!-- Check ONE — this determines the review checklist below -->
@@ -33,7 +33,7 @@
 <!-- ============================================================ -->
 ## Feature Documentation (User Story only)
 <!-- Link to the doc/features entry or paste it inline if new -->
-- [ ] `docs/features/DTP-XX-<slug>.md` created or updated
+- [ ] `docs/features/MBT-XX-<slug>.md` created or updated
 - [ ] AC from Jira ticket are all addressed (list any gaps below)
 
 **AC Coverage:**
@@ -61,6 +61,9 @@
 - [ ] Medium — touches shared logic (explain below)
 - [ ] High — needs QA sign-off before merge
 
+**Lessons learned:**
+- [ ] If this fixes a recurring mistake or non-obvious gotcha, add entry to `docs/LESSONS_LEARNED.md`
+
 ---
 
 <!-- ============================================================ -->
@@ -78,8 +81,8 @@
 ---
 
 ## Checklist (all PRs)
-- [ ] Branch name follows convention: `feature/DTP-XX-<slug>` or `hotfix/DTP-XX-<slug>`
-- [ ] PR title format: `[DTP-XX] Short imperative description`
+- [ ] Branch name follows convention: `feature/MBT-XX-<slug>` or `hotfix/MBT-XX-<slug>`
+- [ ] PR title format: `[MBT-XX] Short imperative description`
 - [ ] Self-reviewed my own diff
 - [ ] No secrets, API keys, or `.env` files committed
 - [ ] Tests added / updated where appropriate

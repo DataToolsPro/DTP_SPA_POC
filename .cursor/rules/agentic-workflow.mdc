@@ -1,0 +1,101 @@
+---
+alwaysApply: true
+---
+
+# Agentic Workflow Rules
+
+## Scratch Code vs Source Code
+
+**CRITICAL:** The AI must distinguish between scratch code (temporary AI work) and source code (deliberate project changes).
+
+### Scratch Code Rules
+
+Scratch code is temporary code written by the AI to:
+- Test solutions
+- Debug issues
+- Prototype approaches
+- Automate one-off tasks
+
+**Scratch code MUST:**
+- ❌ **NEVER** be committed to the repository
+- ❌ **NEVER** be placed in `app/`, `spa/`, `routes/`, `database/`, or any source directories
+- ❌ **NEVER** be mixed with production code
+- ✅ Be placed in temporary locations (e.g., `/tmp/`, `scratch/`, or clearly named temp files)
+- ✅ Be deleted after use
+- ✅ Be clearly marked as temporary/scratch work
+
+### Source Code Rules
+
+Source code is deliberate, reviewed code that:
+- Solves a user story or task
+- Is part of a PR
+- Follows project conventions
+- Is tested and documented
+
+**Source code MUST:**
+- ✅ Follow all project conventions (see `backend-conventions.mdc`, `frontend-conventions.mdc`)
+- ✅ Be reviewed via PR
+- ✅ Have appropriate tests
+- ✅ Be documented if needed
+
+### When to Use Scratch Code
+
+Use scratch code when:
+- Troubleshooting a problem
+- Testing an API or tool
+- Prototyping a solution before implementing properly
+- Running one-off automation tasks
+
+**After scratch code serves its purpose:**
+1. Extract the working solution
+2. Implement it properly in source code
+3. Delete the scratch code
+
+### Examples
+
+❌ **BAD:** Creating a PowerShell script in `scripts/` to test Jira API
+✅ **GOOD:** Using MCP tools directly, or creating scratch in `/tmp/test-jira.ps1` and deleting it
+
+❌ **BAD:** Adding debug logging directly to `app/Http/Controllers/UserController.php`
+✅ **GOOD:** Creating `scratch/debug-user-controller.php` to test, then implementing the fix properly
+
+---
+
+## MCP-First Approach
+
+**For external integrations (Jira, APIs, etc.):**
+1. **Always try MCP tools first** — if MCP is configured, use it
+2. **Never write scripts** to replicate MCP functionality
+3. **If MCP doesn't work:** troubleshoot MCP, don't write workaround scripts
+4. **Scratch code for MCP troubleshooting:** OK, but delete after fixing MCP
+
+---
+
+## File Organization
+
+```
+DTP_APP_V3/
+├── app/              ← Source code only
+├── spa/              ← Source code only
+├── routes/           ← Source code only
+├── database/         ← Source code only
+├── scripts/          ← Committed utility scripts (not scratch)
+├── scratch/          ← Temporary AI work (gitignored, never committed)
+└── /tmp/             ← System temp (for one-off tests)
+```
+
+**If you need to create scratch code:**
+- Use `scratch/` directory (gitignored)
+- Or use system temp: `/tmp/` or `$env:TEMP`
+- Clearly name files: `scratch-test-jira-api.ps1`
+- Delete after use
+
+---
+
+## Violations
+
+If the AI creates scratch code in source directories or commits it:
+1. **Immediately stop**
+2. **Revert the changes**
+3. **Move scratch code to proper location**
+4. **Delete scratch code after extracting the solution**

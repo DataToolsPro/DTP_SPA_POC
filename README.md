@@ -1,7 +1,7 @@
 # DTP_APP_V3
 
-> **DataTools Pro — Production Application**
-> Laravel API backend + React SPA + AI-powered agentic workflows.
+> **DataTools Pro 3.0 — Production Application**
+> Third major release. Laravel API backend + React SPA + AI-powered agentic workflows.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Project Overview
 
-This repo is the POC for the next-generation DataTools Pro single-page application. It replaces fragmented tooling with a unified SPA experience backed by a clean Laravel API and AI-assisted data workflows.
+This repo is DataTools Pro **3.0** — the third major release. It replaces fragmented tooling with a unified SPA experience backed by a clean Laravel API and AI-assisted data workflows.
 
 **Stack:**
 | Layer | Technology |
@@ -89,8 +89,11 @@ DTP_APP_V3/
 │   └── rules/
 │       ├── project-overview.mdc      # AI: always-on project context
 │       ├── git-workflow.mdc          # AI: branch + PR conventions
+│       ├── lessons-learned.mdc       # AI: check/add mistakes & gotchas
 │       └── ai-prompt-management.mdc  # AI: prompt rules (scoped to ai/**)
 │
+├── CLAUDE.md                    # Claude Code project context
+├── docs/LESSONS_LEARNED.md      # Persistent memory: mistakes, gotchas
 ├── .gitignore
 ├── .env.example                # Copy → .env, fill in values
 └── README.md                   # ← you are here
@@ -166,15 +169,15 @@ We use **trunk-based development** — one long-lived branch (`main`), short-liv
 
 | Type | Pattern | Example |
 |---|---|---|
-| Feature | `feature/<ticket>-<slug>` | `feature/DTP-42-user-auth` |
-| Hotfix | `hotfix/<ticket>-<slug>` | `hotfix/DTP-99-token-expiry` |
+| Feature | `feature/<ticket>-<slug>` | `feature/MBT-42-user-auth` |
+| Hotfix | `hotfix/<ticket>-<slug>` | `hotfix/MBT-99-token-expiry` |
 
 ### The PR Lifecycle
 
 ```
-1. git checkout -b feature/DTP-XX-my-feature
+1. git checkout -b feature/MBT-XX-my-feature
 2. Write code + tests
-3. git push origin feature/DTP-XX-my-feature
+3. git push origin feature/MBT-XX-my-feature
 4. Open PR against main
 5. CI checks run automatically (backend / SPA / evals as relevant)
 6. 1 reviewer approves (CODEOWNERS enforced for protected areas)
@@ -267,10 +270,11 @@ Production environment should have:
 ## Contributing
 
 1. Read [`docs/WORKFLOW.md`](docs/WORKFLOW.md) before your first PR
-2. Follow the branch naming convention above
-3. Use the PR template (auto-loaded when you open a PR)
-4. For AI changes: follow [`ai/README.md`](ai/README.md)
-5. For questions: open a GitHub Discussion or ping `@rmgoodm`
+2. **AI assistants:** Read [`CLAUDE.md`](CLAUDE.md) (Claude Code) or `.cursor/rules/` (Cursor). Check [`docs/LESSONS_LEARNED.md`](docs/LESSONS_LEARNED.md) before similar work; add to it when fixing bugs.
+3. Follow the branch naming convention above
+4. Use the PR template (auto-loaded when you open a PR)
+5. For AI changes: follow [`ai/README.md`](ai/README.md)
+6. For questions: open a GitHub Discussion or ping `@rmgoodm`
 
 ---
 

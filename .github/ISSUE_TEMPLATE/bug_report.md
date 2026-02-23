@@ -8,7 +8,7 @@ assignees: ''
 
 ## Jira Ticket
 <!-- Link to the Jira bug if it exists, or create one -->
-https://YOUR_ORG.atlassian.net/browse/DTP-
+https://goodmangroup.atlassian.net/browse/MBT-
 
 ---
 

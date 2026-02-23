@@ -107,3 +107,9 @@ secrets.yml
 
 # Cursor MCP config (contains personal Jira API token)
 .cursor/mcp.json
+
+# -----------------------------------------------------------------------------
+# Scratch / Temporary AI work — never committed
+# -----------------------------------------------------------------------------
+/scratch/
+*.scratch.*

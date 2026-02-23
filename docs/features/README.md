@@ -51,8 +51,8 @@ docs/features/<jira-ticket>-<feature-slug>.md
 
 Examples:
   docs/features/MBT-42-user-authentication.md
-  docs/features/DTP-67-csv-export.md
-  docs/features/DTP-88-dashboard-filters.md
+  docs/features/MBT-67-csv-export.md
+  docs/features/MBT-88-dashboard-filters.md
 ```
 
 ---

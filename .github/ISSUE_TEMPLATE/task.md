@@ -1,14 +1,14 @@
 ---
 name: Task
 about: A system-level, infrastructure, or internal change not visible to end users
-title: '[DTP-XX] <short description of task>'
+title: '[MBT-XX] <short description of task>'
 labels: task
 assignees: ''
 ---
 
 ## Jira Ticket
 <!-- Link to the source Jira task if it exists -->
-https://YOUR_ORG.atlassian.net/browse/DTP-
+https://goodmangroup.atlassian.net/browse/MBT-
 
 ---
 

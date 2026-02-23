@@ -20,6 +20,7 @@
 
 | Term (Code) | User Term (UI) | Definition | Scope |
 |---|---|---|---|
+| `DataTools Pro 3.0` | DataTools Pro | The third major release. This codebase. Use "3.0" when version context matters. | Platform-wide |
 | `Organization` | Account / Workspace | The top-level tenant — a company or team subscribed to DataTools Pro. All data is scoped to an Org. | Platform-wide |
 | `User` | User | A person who can log in to DataTools Pro. Always belongs to an Organization. | Platform-wide |
 | `SalesforceOrg` | Salesforce Org / Connected Org | A Salesforce instance connected to DataTools Pro via OAuth. An Organization can have multiple Salesforce Orgs. | Platform-wide |

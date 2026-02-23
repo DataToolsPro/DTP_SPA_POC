@@ -5,7 +5,7 @@ alwaysApply: true
 # DTP_APP_V3 — Project Overview
 
 ## What This Project Is
-DataTools Pro — a React SPA front-end backed by a Laravel API.
+DataTools Pro **3.0** — the third major release. A React SPA front-end backed by a Laravel API.
 The repo is a **monorepo** with two primary surfaces:
 
 1. **Laravel backend** at the repo root (`app/`, `routes/`, `database/`, etc.)
@@ -52,6 +52,7 @@ The AI assistant has layered context injected per working area:
 | `data-model.mdc` | ✅ | Entities, relationships, invariants |
 | `jira-context.mdc` | ✅ | Jira workflow + work type definitions |
 | `git-workflow.mdc` | ✅ | Branch, commit, PR conventions |
+| `lessons-learned.mdc` | ✅ | Check before similar work; add when fixing bugs |
 | `backend-conventions.mdc` | When in `app/**` | Laravel service patterns, API conventions |
 | `frontend-conventions.mdc` | When in `spa/**` | React/TypeScript patterns, SPA structure |
 | `ai-prompt-management.mdc` | When in `ai/**` | Prompt standards and eval requirements |
@@ -60,6 +61,8 @@ The AI assistant has layered context injected per working area:
 
 | Doc | What's in it |
 |---|---|
+| [`docs/LESSONS_LEARNED.md`](mdc:docs/LESSONS_LEARNED.md) | Mistakes, gotchas, anti-patterns — check before similar work; add when fixing bugs |
+| [`CLAUDE.md`](mdc:CLAUDE.md) | Claude Code project context (also for Cursor) |
 | [`docs/product/README.md`](mdc:docs/product/README.md) | Full product overview, users, roadmap |
 | [`docs/product/glossary.md`](mdc:docs/product/glossary.md) | Domain terminology — use these exact terms in code |
 | [`docs/architecture/README.md`](mdc:docs/architecture/README.md) | System architecture diagram and decisions |

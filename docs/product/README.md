@@ -2,7 +2,7 @@
 
 ## What Is DataTools Pro?
 
-DataTools Pro is a **Salesforce-connected governance and documentation platform** that brings Salesforce administrators, data analysts, analytics professionals, and business teams together in a single shared workspace.
+DataTools Pro **3.0** is the third major release — a **Salesforce-connected governance and documentation platform** that brings Salesforce administrators, data analysts, analytics professionals, and business teams together in a single shared workspace.
 
 Organizations running Salesforce accumulate hundreds of custom objects, thousands of fields, complex report libraries, and ongoing data migrations — all managed in disconnected spreadsheets, wikis, and tribal knowledge. DataTools Pro replaces that chaos with a **living, connected documentation layer** that stays in sync with your actual Salesforce org.
 

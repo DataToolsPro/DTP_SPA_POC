@@ -1,0 +1,44 @@
+---
+description: Persistent memory — check before similar work; add when fixing bugs or discovering gotchas.
+alwaysApply: true
+---
+
+# Lessons Learned — Persistent Memory
+
+## Core Rule
+
+**Before making changes** that could repeat a past mistake, read [`docs/LESSONS_LEARNED.md`](mdc:docs/LESSONS_LEARNED.md).
+
+**When you fix a bug or discover a gotcha**, add a concise entry to `docs/LESSONS_LEARNED.md` so it is not repeated.
+
+---
+
+## When to Add an Entry
+
+Add to LESSONS_LEARNED when:
+
+- You fix a bug that had a non-obvious root cause
+- You discover a gotcha (tool behaves differently than expected, config quirk, etc.)
+- You learn something that would save future debugging time
+- A mistake was made that could easily recur
+
+---
+
+## Entry Format
+
+Keep entries scannable:
+
+```
+### <Short title> (YYYY-MM)
+
+**What happened:** One sentence.
+**Why:** One sentence.
+**Do instead:** One sentence. Link to PR/ticket if relevant.
+```
+
+---
+
+## Cross-Reference
+
+- Claude Code users: [`CLAUDE.md`](mdc:CLAUDE.md) at repo root also instructs checking LESSONS_LEARNED
+- Full decision log: [`docs/DECISIONS_AND_NEXT_STEPS.md`](mdc:docs/DECISIONS_AND_NEXT_STEPS.md)
