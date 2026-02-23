@@ -24,7 +24,14 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 If you see `cd: can't cd to dtp`, you have Option B — change build command to `npm ci && npm run build` and output to `dist`.
 
-**GitHub Actions** deploy workflows use Option A (repo root). Custom domain `us1dev.datatoolspro.com` (if configured) is managed in Cloudflare Pages dashboard.
+**GitHub Actions** deploy workflows use Option A (repo root).
+
+**Custom domains** (configure in Cloudflare Pages → Custom domains):
+| Domain | Purpose |
+|--------|---------|
+| `us1dev.datatoolspro.com` | Dev deployment (configured) |
+| `staging.datatoolspro.com` | Staging |
+| `app.datatoolspro.com` | Production |
 
 **First-time setup:** Create a Cloudflare Pages project named `dtp-app-v3` in the Cloudflare dashboard (Workers & Pages → Create → Pages → Connect to Git). Configure build per table above. Add `CLOUDFLARE_PAGES_PROJECT=dtp-app-v3` to GitHub repo variables (Settings → Secrets and variables → Actions → Variables). See `docs/SECRETS.md`.
 
