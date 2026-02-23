@@ -4,6 +4,32 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 ---
 
+## Build & Deploy Reference
+
+**Frontend directory:** `dtp/` (React SPA)
+
+| Action | Command |
+|--------|---------|
+| **Local dev** | `cd dtp && npm run dev` |
+| **Production build** | `cd dtp && npm ci && npm run build` |
+| **Build output** | `dtp/dist/` |
+
+**Cloudflare Pages** — project name: `dtp-app-v3` (set `CLOUDFLARE_PAGES_PROJECT` in GitHub repo variables). Use **one** of these configs (not both):
+
+| Setting | Option A — Repo root | Option B — Root = dtp |
+|---------|----------------------|------------------------|
+| Root directory | *(leave blank)* | `dtp` |
+| Build command | `cd dtp && npm ci && npm run build` | `npm ci && npm run build` |
+| Build output directory | `dtp/dist` | `dist` |
+
+If you see `cd: can't cd to dtp`, you have Option B — change build command to `npm ci && npm run build` and output to `dist`.
+
+**GitHub Actions** deploy workflows use Option A (repo root). Custom domain `us1dev.datatoolspro.com` (if configured) is managed in Cloudflare Pages dashboard.
+
+**First-time setup:** Create a Cloudflare Pages project named `dtp-app-v3` in the Cloudflare dashboard (Workers & Pages → Create → Pages → Connect to Git). Configure build per table above. Add `CLOUDFLARE_PAGES_PROJECT=dtp-app-v3` to GitHub repo variables (Settings → Secrets and variables → Actions → Variables). See `docs/SECRETS.md`.
+
+---
+
 ## Environment Overview
 
 | Environment | Purpose | Audience | Triggered By |
@@ -36,7 +62,7 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 | Layer | URL | Notes |
 |---|---|---|
-| React SPA | `https://pr-<number>.dtp-spa-poc.pages.dev` | Auto-created per PR |
+| React SPA | `https://pr-<number>.dtp-app-v3.pages.dev` | Auto-created per PR |
 | Laravel API | Staging Cloudways server | PR previews share the staging backend |
 | Database | Staging RDS | Read/write against staging data |
 
@@ -64,8 +90,10 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 **GitHub Environment:** `staging`
 - No approval gate (fully automatic)
-- Secrets: `STAGING_DEPLOY_TOKEN`, `CLOUDFLARE_API_TOKEN`
-- Variables: `STAGING_URL`, `STAGING_API_URL`
+- Secrets: `STAGING_SSH_HOST`, `STAGING_SSH_USER`, `STAGING_SSH_KEY`, etc. (see `docs/SECRETS.md`)
+- Variables: `APP_URL`, `VITE_API_URL` (injected into SPA build)
+
+**GitHub Repository Variables** (required for deploy): `CLOUDFLARE_PAGES_PROJECT` = `dtp-app-v3`. See `docs/SECRETS.md`.
 
 ---
 

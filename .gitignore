@@ -47,6 +47,7 @@ yarn-error.log
 /dtp/.next/
 /dtp/out/
 /dtp/.vite/
+/dtp/tsconfig.tsbuildinfo
 
 # -----------------------------------------------------------------------------
 # AI / Prompts — NEVER commit real secret keys or sensitive eval data
