@@ -24,16 +24,36 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 **Note:** Use `npm install` (not `npm ci`) — Cloudflare Pages can miss `package-lock.json` in some setups; `npm install` works without it. If you see `cd: can't cd to dtp`, use Option B.
 
+**Non-production branch deploy command:** Leave blank. Do not use `npx wrangler versions upload` — that is for Workers, not static Pages.
+
+**Recommended:** Option B (Root = `dtp`) — simplest and avoids path issues.
+
 **GitHub Actions** deploy workflows use Option A (repo root).
 
 **Custom domains** (configure in Cloudflare Pages → Custom domains):
+
 | Domain | Purpose |
 |--------|---------|
 | `us1dev.datatoolspro.com` | Dev deployment (configured) |
 | `staging.datatoolspro.com` | Staging |
 | `app.datatoolspro.com` | Production |
 
-**First-time setup:** Create a Cloudflare Pages project named `dtp-app-v3` in the Cloudflare dashboard (Workers & Pages → Create → Pages → Connect to Git). Configure build per table above. Add `CLOUDFLARE_PAGES_PROJECT=dtp-app-v3` to GitHub repo variables (Settings → Secrets and variables → Actions → Variables). See `docs/SECRETS.md`.
+---
+
+## Cloudflare Pages Setup Checklist
+
+**One-time setup** (Workers & Pages → Create → Pages → Connect to Git):
+
+| Step | Setting | Value |
+|------|---------|-------|
+| 1 | Project name | `dtp-app-v3` |
+| 2 | Root directory | `dtp` |
+| 3 | Build command | `npm install && npm run build` |
+| 4 | Build output directory | `dist` |
+| 5 | Non-production deploy command | *(leave blank)* |
+| 6 | Custom domain (optional) | `us1dev.datatoolspro.com` |
+
+**GitHub:** Add repo variable `CLOUDFLARE_PAGES_PROJECT` = `dtp-app-v3`. See `docs/SECRETS.md`.
 
 ---
 

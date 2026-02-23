@@ -40,6 +40,16 @@
 
 ---
 
+### Cloudflare Pages: Non-production deploy command (2026-02)
+
+**What happened:** Build config had `npx wrangler versions upload` for non-production branch deploys.
+
+**Why:** That command is for Cloudflare Workers versioning — not for static Pages. Pages auto-deploys the build output; no custom deploy command needed.
+
+**Do instead:** Leave "Non-production branch deploy command" blank. See `docs/ENVIRONMENTS.md` for correct build config.
+
+---
+
 ### (Add more entries below — newest first)
 
 ---
@@ -84,6 +94,9 @@
 
 **Before provisioning infra:**  
 - [ ] All Phase 1 decisions in `docs/DECISIONS_AND_NEXT_STEPS.md` are done
+
+**Before deploying to Cloudflare Pages:**  
+- [ ] Check `docs/ENVIRONMENTS.md` → Build & Deploy Reference for correct config
 
 **Before assuming MCP works:**  
 - [ ] Verify server is in the AI's available tools list, not just the UI
