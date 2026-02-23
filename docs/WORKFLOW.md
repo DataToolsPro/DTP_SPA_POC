@@ -110,33 +110,71 @@ If a check is failing on your PR:
 
 ---
 
+## Environments
+
+We have 4 environments. See [`docs/ENVIRONMENTS.md`](ENVIRONMENTS.md) for the full map.
+
+| Environment | URL | Triggered By |
+|---|---|---|
+| Local | `localhost:5173` / `localhost:8000` | Manual |
+| PR Preview | `pr-XX.dtp-spa-poc.pages.dev` | Auto on every PR push |
+| Staging | `staging.datatoolspro.com` | Auto on merge to `main` |
+| Production | `app.datatoolspro.com` | Manual approval |
+
+---
+
+## Release Flow (The Big Picture)
+
+```
+feature/DTP-XX branch
+  → PR opened → CF Pages creates preview URL automatically
+  → CI passes + 2 approvals
+  → Squash merge to main
+  → Staging auto-deploys (~3 min)
+  → Verify on staging
+  → GitHub Actions → Deploy Production → enter tag → approve
+  → Production live + GitHub Release created
+```
+
+Full step-by-step: **[`docs/RELEASE.md`](RELEASE.md)**
+
+---
+
 ## Deploying to Production
 
 Production deploys are **never automatic** — they require a human to pull the trigger.
 
-### Standard Release (after feature merges to staging and is verified)
+### Standard Release
 
-1. Go to **GitHub → Actions → Deploy — Production**
-2. Click **"Run workflow"**
-3. Enter a tag name: `v2026.02.22` (use today's date or semver)
-4. Wait for the approval gate → approve it
-5. Monitor the deploy logs
-6. Verify smoke test passes
-7. Close the deploy ticket / update release notes
+1. Verify staging looks good at `https://staging.datatoolspro.com`
+2. Go to **GitHub → Actions → Deploy — Production**
+3. Click **"Run workflow"**
+4. Enter a tag name: `v2026.02.23` (today's date or semver)
+5. Wait for the approval notification → click Approve
+6. Monitor the deploy logs (3–5 min)
+7. Verify production smoke test passes
+8. Close the deploy ticket
 
 ### Hotfix (production bug)
 
 ```bash
-# 1. Branch from main
+# 1. Branch from main (never from a feature branch)
 git checkout main && git pull
 git checkout -b hotfix/DTP-99-fix-description
 
-# 2. Fix the bug
-# 3. PR into main (still needs review)
+# 2. Make the minimal fix + test it
+# 3. PR into main — CI must pass, expedited review acceptable
 # 4. Merge → staging auto-deploys
-# 5. Verify on staging (can be quick if it's critical)
-# 6. Manually trigger production deploy with a patch tag
+# 5. Verify on staging (can be quick for critical issues)
+# 6. Trigger production deploy → tag as v2026.02.23-hotfix
 ```
+
+### Rollback
+
+- **SPA only:** Cloudflare Pages Dashboard → Deployments → Rollback (instant)
+- **Full rollback:** Re-run Deploy Production workflow with the previous good SHA
+
+Full rollback guide: **[`docs/RELEASE.md#rollback`](RELEASE.md#rollback)**
 
 ---
 

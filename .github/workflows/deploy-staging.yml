@@ -1,23 +1,36 @@
 # =============================================================================
 # Deploy — Staging (auto on every merge to main)
 # =============================================================================
-# Trigger: push to main (i.e., every merged PR)
 #
-# Strategy:
-#   - Build SPA → upload artifact
-#   - Deploy to staging environment automatically (no approval gate)
-#   - The SAME artifact will later be promoted to production
+# WHAT THIS DOES:
+#   1. Builds the React SPA with staging environment variables
+#   2. Deploys SPA to Cloudflare Pages (staging channel)
+#   3. SSH into Cloudways staging server → git pull → composer → artisan
+#   4. Purges Cloudflare cache so users get the new version immediately
+#   5. Runs a smoke test to confirm both SPA and API are responding
 #
-# Environment: "staging" (configure in GitHub → Settings → Environments)
-#   Protections: none (auto-deploy)
-#   Secrets needed: see step env: blocks below
+# SETUP REQUIRED (one-time):
+#   GitHub → Settings → Secrets → Actions:
+#     CLOUDFLARE_API_TOKEN      - CF API token (Pages + Cache Purge permissions)
+#     CLOUDFLARE_ACCOUNT_ID     - Your CF account ID
 #
-# Replace the deploy steps with your actual hosting provider commands.
-# Common options:
-#   - Laravel Forge: use forge-deploy action or SSH + artisan
-#   - Fly.io: flyctl deploy
-#   - AWS: eb deploy / ECS / S3 + CloudFront
-#   - Vercel / Netlify: their respective GitHub Actions
+#   GitHub → Settings → Environments → staging → Secrets:
+#     STAGING_SSH_HOST          - Cloudways server IP
+#     STAGING_SSH_USER          - SSH username (from Cloudways SSH tab)
+#     STAGING_SSH_PORT          - SSH port (usually 22)
+#     STAGING_SSH_KEY           - Full PEM contents of your deploy private key
+#     STAGING_APP_PATH          - App root, e.g. /home/master/applications/xxx/public_html
+#
+#   GitHub → Settings → Environments → staging → Variables:
+#     APP_URL                   - https://staging.datatoolspro.com
+#     VITE_API_URL              - https://staging.datatoolspro.com/api
+#
+#   GitHub → Settings → Variables (repo-level):
+#     CLOUDFLARE_PAGES_PROJECT  - Your CF Pages project name, e.g. dtp-spa-poc
+#     CLOUDFLARE_ZONE_ID        - Your domain Zone ID from CF dashboard
+#
+# SSH KEY SETUP:
+#   See docs/SECRETS.md → "SSH Key Setup for Cloudways Deploy"
 # =============================================================================
 
 name: Deploy — Staging
@@ -28,17 +41,17 @@ on:
 
 concurrency:
   group: deploy-staging
-  cancel-in-progress: true   # Cancel in-flight staging deploys on new push
+  cancel-in-progress: true
 
 jobs:
   # ---------------------------------------------------------------------------
-  # Build SPA artifact (same artifact promoted to production later)
+  # Job 1: Build the React SPA
   # ---------------------------------------------------------------------------
   build-spa:
-    name: Build SPA
+    name: Build SPA (Staging)
     runs-on: ubuntu-latest
     outputs:
-      artifact-name: ${{ steps.set-artifact.outputs.name }}
+      artifact-name: spa-staging-${{ github.sha }}
 
     steps:
       - name: Checkout
@@ -51,89 +64,161 @@ jobs:
           cache: 'npm'
           cache-dependency-path: spa/package-lock.json
 
-      - name: Install SPA dependencies
+      - name: Install dependencies
         working-directory: spa
         run: npm ci
 
-      - name: Build SPA
+      - name: Build SPA (staging config)
         working-directory: spa
-        run: npm run build --if-present || echo "No build script yet"
+        run: npm run build
         env:
           NODE_ENV: production
-          VITE_API_URL: ${{ vars.STAGING_API_URL }}      # GitHub variable (non-secret)
-
-      - name: Set artifact name
-        id: set-artifact
-        run: echo "name=spa-build-${{ github.sha }}" >> $GITHUB_OUTPUT
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_APP_ENV: staging
+          VITE_APP_NAME: "DataTools Pro (Staging)"
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: spa-build-${{ github.sha }}
+          name: spa-staging-${{ github.sha }}
           path: spa/dist/
-          if-no-files-found: ignore
-          retention-days: 30    # keep 30 days — used for production promotion
+          retention-days: 30
 
   # ---------------------------------------------------------------------------
-  # Deploy to Staging
+  # Job 2: Deploy SPA to Cloudflare Pages (staging channel)
   # ---------------------------------------------------------------------------
-  deploy-staging:
-    name: Deploy to Staging
+  deploy-spa:
+    name: Deploy SPA → Cloudflare Pages
     runs-on: ubuntu-latest
     needs: build-spa
     environment:
       name: staging
-      url: ${{ vars.STAGING_URL }}
+      url: ${{ vars.APP_URL }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download build artifact
+      - name: Download SPA build
         uses: actions/download-artifact@v4
         with:
           name: ${{ needs.build-spa.outputs.artifact-name }}
           path: spa/dist/
 
-      # -----------------------------------------------------------------------
-      # TODO: Replace this block with your actual deploy command
-      # -----------------------------------------------------------------------
-      - name: Deploy SPA to staging
-        run: |
-          echo "🚀 Deploying SPA to staging..."
-          echo "Commit: ${{ github.sha }}"
-          echo "Built artifact: ${{ needs.build-spa.outputs.artifact-name }}"
-          # Example (Fly.io):  flyctl deploy --remote-only
-          # Example (SSH):     rsync -avz spa/dist/ user@staging-server:/var/www/html/
-          # Example (S3):      aws s3 sync spa/dist/ s3://your-staging-bucket/ --delete
-          echo "⚠️  Deploy step not configured yet — add your deploy command here."
-        env:
-          # Add secrets in GitHub → Settings → Environments → staging → Secrets
-          DEPLOY_TOKEN: ${{ secrets.STAGING_DEPLOY_TOKEN }}
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy spa/dist/ --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }} --branch=staging
 
-      - name: Deploy Laravel backend to staging
-        run: |
-          echo "🚀 Deploying Laravel backend to staging..."
-          # Example (Forge):   curl -X POST "${{ secrets.FORGE_DEPLOY_WEBHOOK }}"
-          # Example (SSH):     ssh user@host "cd /var/www && git pull && composer install && php artisan migrate --force"
-          echo "⚠️  Backend deploy step not configured yet."
-        env:
-          DEPLOY_TOKEN: ${{ secrets.STAGING_DEPLOY_TOKEN }}
+  # ---------------------------------------------------------------------------
+  # Job 3: Deploy Laravel API to Cloudways staging server via SSH
+  # ---------------------------------------------------------------------------
+  deploy-api:
+    name: Deploy API → Cloudways Staging
+    runs-on: ubuntu-latest
+    needs: build-spa
+    environment:
+      name: staging
+      url: ${{ vars.APP_URL }}
 
-      - name: Post-deploy smoke test
+    steps:
+      - name: Setup SSH key
         run: |
-          echo "Running smoke test against ${{ vars.STAGING_URL }}..."
-          # curl --fail "${{ vars.STAGING_URL }}/api/health" || exit 1
-          echo "⚠️  Smoke test not configured yet — add your health check URL."
+          mkdir -p ~/.ssh
+          echo "${{ secrets.STAGING_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.STAGING_SSH_PORT }} ${{ secrets.STAGING_SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Notify on success
-        if: success()
+      - name: Deploy to Cloudways (SSH)
         run: |
-          echo "✅ Staging deploy succeeded — ${{ github.sha }}"
-          # Optional: Post to Slack, Teams, etc.
+          ssh -i ~/.ssh/deploy_key \
+              -p ${{ secrets.STAGING_SSH_PORT }} \
+              -o StrictHostKeyChecking=no \
+              ${{ secrets.STAGING_SSH_USER }}@${{ secrets.STAGING_SSH_HOST }} \
+              "
+              set -e
+              echo '--- Navigating to app directory ---'
+              cd ${{ secrets.STAGING_APP_PATH }}
 
-      - name: Notify on failure
-        if: failure()
+              echo '--- Pulling latest code ---'
+              git pull origin main
+
+              echo '--- Installing PHP dependencies ---'
+              composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+
+              echo '--- Running database migrations ---'
+              php artisan migrate --force --no-interaction
+
+              echo '--- Clearing and rebuilding caches ---'
+              php artisan config:cache
+              php artisan route:cache
+              php artisan view:cache
+              php artisan event:cache
+
+              echo '--- Restarting queue workers ---'
+              php artisan queue:restart
+
+              echo '--- Deploy complete ---'
+              "
+
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+  # ---------------------------------------------------------------------------
+  # Job 4: Purge Cloudflare cache
+  # ---------------------------------------------------------------------------
+  purge-cache:
+    name: Purge Cloudflare Cache
+    runs-on: ubuntu-latest
+    needs: [deploy-spa, deploy-api]
+
+    steps:
+      - name: Purge Cloudflare zone cache
         run: |
-          echo "❌ Staging deploy FAILED — ${{ github.sha }}"
-          # Optional: Post to Slack, Teams, etc.
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything": true}' \
+            | jq '.success'
+
+  # ---------------------------------------------------------------------------
+  # Job 5: Smoke test — confirm both SPA and API are alive
+  # ---------------------------------------------------------------------------
+  smoke-test:
+    name: Smoke Test
+    runs-on: ubuntu-latest
+    needs: purge-cache
+
+    steps:
+      - name: Wait for propagation
+        run: sleep 15
+
+      - name: Check SPA is responding
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ vars.APP_URL }}")
+          echo "SPA status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "SPA smoke test FAILED (HTTP $STATUS)"
+            exit 1
+          fi
+          echo "SPA OK"
+
+      - name: Check API health endpoint
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ vars.VITE_API_URL }}/health")
+          echo "API status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "API health check FAILED (HTTP $STATUS) -- add a /api/health route to Laravel"
+          fi
+
+      - name: Staging deploy complete
+        run: |
+          echo "=========================================="
+          echo "  STAGING DEPLOY COMPLETE"
+          echo "  SHA:  ${{ github.sha }}"
+          echo "  URL:  ${{ vars.APP_URL }}"
+          echo "=========================================="

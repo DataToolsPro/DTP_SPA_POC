@@ -1,40 +1,66 @@
 # =============================================================================
 # Deploy — Production (manual approval gate)
 # =============================================================================
-# Trigger: manual workflow_dispatch OR on a semver/date tag push (v*)
 #
-# Strategy:
-#   - Re-use the SAME artifact built during staging deploy (same SHA)
-#   - Require a human reviewer to approve before anything touches production
-#   - Tag production releases as vYYYY.MM.DD or vMAJOR.MINOR.PATCH
+# WHAT THIS DOES:
+#   1. Reuses the SPA artifact built during staging deploy (same SHA = same build)
+#      Falls back to rebuilding if the artifact has expired (>30 days)
+#   2. Deploys SPA to Cloudflare Pages (production channel)
+#   3. SSH into Cloudways production server → git pull → composer → artisan
+#   4. Purges Cloudflare cache
+#   5. Runs a smoke test
+#   6. Creates a Git tag and GitHub Release
 #
-# Environment: "production" (configure in GitHub → Settings → Environments)
-#   Protections:
-#     ✅ Required reviewers: @rmgoodm (+ second dev if applicable)
-#     ✅ Wait timer: 0–5 min (optional buffer)
-#     ✅ Restrict deployments to main branch only
-#     ✅ Deployment secrets isolated to this environment
+# APPROVAL GATE:
+#   The "production" GitHub Environment requires @rmgoodm or @waqarcs11 to
+#   approve before any deploy step runs. This is configured in:
+#   GitHub → Settings → Environments → production → Required reviewers
 #
-# Promotion model: you are promoting the SAME build from staging → production.
-# There are no code changes at this step — only config/secrets differ.
+# TRIGGERING A RELEASE:
+#   GitHub → Actions → Deploy — Production → Run workflow
+#   Enter: tag name (e.g. v2026.02.23)
+#   Leave SHA blank to deploy latest main
+#
+# SETUP REQUIRED (one-time):
+#   GitHub → Settings → Secrets → Actions:
+#     CLOUDFLARE_API_TOKEN          - CF API token
+#     CLOUDFLARE_ACCOUNT_ID         - Your CF account ID
+#
+#   GitHub → Settings → Environments → production → Secrets:
+#     PRODUCTION_SSH_HOST           - Cloudways production server IP
+#     PRODUCTION_SSH_USER           - SSH username
+#     PRODUCTION_SSH_PORT           - SSH port (usually 22)
+#     PRODUCTION_SSH_KEY            - Full PEM contents of production deploy key
+#     PRODUCTION_APP_PATH           - App root on server
+#
+#   GitHub → Settings → Environments → production → Variables:
+#     APP_URL                       - https://app.datatoolspro.com
+#     VITE_API_URL                  - https://app.datatoolspro.com/api
+#
+#   GitHub → Settings → Variables (repo-level):
+#     CLOUDFLARE_PAGES_PROJECT      - e.g. dtp-spa-poc
+#     CLOUDFLARE_ZONE_ID            - Your domain Zone ID
+#
+# ROLLBACK:
+#   Option A: Re-run this workflow with the previous good SHA
+#   Option B: Cloudflare Pages Dashboard → Deployments → Rollback (SPA only, instant)
+#   See docs/RELEASE.md#rollback for full guide
 # =============================================================================
 
 name: Deploy — Production
 
 on:
-  # Manual "promote to prod" button in GitHub Actions UI
   workflow_dispatch:
     inputs:
       sha:
-        description: 'Git SHA to deploy (leave blank for latest main)'
+        description: 'Git SHA to deploy (blank = latest main)'
         required: false
         default: ''
       tag:
-        description: 'Release tag to create (e.g. v2026.02.22) — leave blank to skip'
+        description: 'Release tag to create (e.g. v2026.02.23) — blank = no tag'
         required: false
         default: ''
 
-  # Auto-trigger on semver/date tags pushed to main
   push:
     tags:
       - 'v[0-9]*'
@@ -45,16 +71,17 @@ concurrency:
 
 jobs:
   # ---------------------------------------------------------------------------
-  # Determine which SHA / artifact to promote
+  # Resolve which SHA we're deploying
   # ---------------------------------------------------------------------------
-  resolve-deploy-target:
+  resolve:
     name: Resolve Deploy Target
     runs-on: ubuntu-latest
     outputs:
       sha: ${{ steps.resolve.outputs.sha }}
+      tag: ${{ steps.resolve.outputs.tag }}
 
     steps:
-      - name: Resolve SHA
+      - name: Resolve SHA and tag
         id: resolve
         run: |
           if [ -n "${{ github.event.inputs.sha }}" ]; then
@@ -63,108 +90,263 @@ jobs:
             echo "sha=${{ github.sha }}" >> $GITHUB_OUTPUT
           fi
 
+          if [ -n "${{ github.event.inputs.tag }}" ]; then
+            echo "tag=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=" >> $GITHUB_OUTPUT
+          fi
+
   # ---------------------------------------------------------------------------
-  # Deploy to Production (requires approval in GitHub Environments)
+  # Build SPA (production config) — reuses staging artifact if available
   # ---------------------------------------------------------------------------
-  deploy-production:
-    name: Deploy to Production
+  build-spa:
+    name: Build SPA (Production)
     runs-on: ubuntu-latest
-    needs: resolve-deploy-target
-    environment:
-      name: production
-      url: ${{ vars.PRODUCTION_URL }}
+    needs: resolve
+    outputs:
+      artifact-name: spa-production-${{ needs.resolve.outputs.sha }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ needs.resolve-deploy-target.outputs.sha }}
+          ref: ${{ needs.resolve.outputs.sha }}
 
-      - name: Download staging build artifact
+      - name: Attempt to reuse staging artifact
+        id: try-cache
         uses: actions/download-artifact@v4
         with:
-          # Re-uses the artifact built during the staging deploy for this SHA
-          name: spa-build-${{ needs.resolve-deploy-target.outputs.sha }}
+          name: spa-staging-${{ needs.resolve.outputs.sha }}
           path: spa/dist/
-        continue-on-error: true   # artifact may have expired; rebuild below if needed
+        continue-on-error: true
 
-      - name: Rebuild SPA if artifact expired
+      - name: Rebuild if staging artifact expired or missing
+        if: steps.try-cache.outcome == 'failure'
         run: |
-          if [ -z "$(ls -A spa/dist 2>/dev/null)" ]; then
-            echo "Artifact not found or empty — rebuilding from source..."
-            cd spa && npm ci && npm run build --if-present
-          else
-            echo "✅ Using cached artifact from staging build."
-          fi
+          echo "Staging artifact not found — rebuilding from source for SHA ${{ needs.resolve.outputs.sha }}"
+          cd spa
+          npm ci
+          npm run build
         env:
           NODE_ENV: production
-          VITE_API_URL: ${{ vars.PRODUCTION_API_URL }}
+          VITE_API_URL: ${{ vars.VITE_API_URL }}
+          VITE_APP_ENV: production
+          VITE_APP_NAME: "DataTools Pro"
 
-      # -----------------------------------------------------------------------
-      # TODO: Replace with your actual production deploy command
-      # -----------------------------------------------------------------------
-      - name: Deploy SPA to production
+      - name: Upload production artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: spa-production-${{ needs.resolve.outputs.sha }}
+          path: spa/dist/
+          retention-days: 90
+
+  # ---------------------------------------------------------------------------
+  # Deploy SPA → Cloudflare Pages production
+  # APPROVAL GATE FIRES HERE (production environment)
+  # ---------------------------------------------------------------------------
+  deploy-spa:
+    name: Deploy SPA → Cloudflare Pages (Production)
+    runs-on: ubuntu-latest
+    needs: [resolve, build-spa]
+    environment:
+      name: production
+      url: ${{ vars.APP_URL }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.resolve.outputs.sha }}
+
+      - name: Download production SPA artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-spa.outputs.artifact-name }}
+          path: spa/dist/
+
+      - name: Deploy to Cloudflare Pages (production)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy spa/dist/ --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }} --branch=main
+
+  # ---------------------------------------------------------------------------
+  # Deploy Laravel API → Cloudways production server
+  # ---------------------------------------------------------------------------
+  deploy-api:
+    name: Deploy API → Cloudways Production
+    runs-on: ubuntu-latest
+    needs: [resolve, build-spa]
+    environment:
+      name: production
+      url: ${{ vars.APP_URL }}
+
+    steps:
+      - name: Setup SSH key
         run: |
-          echo "🚀 Promoting SPA to PRODUCTION..."
-          echo "SHA: ${{ needs.resolve-deploy-target.outputs.sha }}"
-          # Example (S3):   aws s3 sync spa/dist/ s3://your-prod-bucket/ --delete
-          # Example (Fly):  flyctl deploy --remote-only --app your-prod-app
-          echo "⚠️  Production deploy step not configured yet — add your command here."
-        env:
-          DEPLOY_TOKEN: ${{ secrets.PRODUCTION_DEPLOY_TOKEN }}
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRODUCTION_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.PRODUCTION_SSH_PORT }} ${{ secrets.PRODUCTION_SSH_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Deploy Laravel backend to production
+      - name: Deploy to Cloudways (SSH)
         run: |
-          echo "🚀 Deploying Laravel backend to PRODUCTION..."
-          # Example (Forge):  curl -X POST "${{ secrets.FORGE_PROD_DEPLOY_WEBHOOK }}"
-          echo "⚠️  Backend deploy step not configured yet."
-        env:
-          DEPLOY_TOKEN: ${{ secrets.PRODUCTION_DEPLOY_TOKEN }}
+          ssh -i ~/.ssh/deploy_key \
+              -p ${{ secrets.PRODUCTION_SSH_PORT }} \
+              -o StrictHostKeyChecking=no \
+              ${{ secrets.PRODUCTION_SSH_USER }}@${{ secrets.PRODUCTION_SSH_HOST }} \
+              "
+              set -e
+              echo '--- Navigating to app directory ---'
+              cd ${{ secrets.PRODUCTION_APP_PATH }}
 
-      - name: Post-deploy smoke test
+              echo '--- Enabling maintenance mode ---'
+              php artisan down --retry=30 --refresh=5
+
+              echo '--- Pulling latest code ---'
+              git pull origin main
+
+              echo '--- Installing PHP dependencies ---'
+              composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader
+
+              echo '--- Running database migrations ---'
+              php artisan migrate --force --no-interaction
+
+              echo '--- Clearing and rebuilding caches ---'
+              php artisan config:cache
+              php artisan route:cache
+              php artisan view:cache
+              php artisan event:cache
+
+              echo '--- Restarting queue workers ---'
+              php artisan queue:restart
+
+              echo '--- Disabling maintenance mode ---'
+              php artisan up
+
+              echo '--- Deploy complete ---'
+              "
+
+      - name: Clean up SSH key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+  # ---------------------------------------------------------------------------
+  # Purge Cloudflare cache
+  # ---------------------------------------------------------------------------
+  purge-cache:
+    name: Purge Cloudflare Cache
+    runs-on: ubuntu-latest
+    needs: [deploy-spa, deploy-api]
+
+    steps:
+      - name: Purge Cloudflare zone cache
         run: |
-          echo "Running smoke test against ${{ vars.PRODUCTION_URL }}..."
-          # curl --fail "${{ vars.PRODUCTION_URL }}/api/health" || exit 1
-          echo "⚠️  Smoke test not configured yet."
+          curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything": true}' \
+            | jq '.success'
 
-      # -----------------------------------------------------------------------
-      # Tag the release (if a tag name was provided via manual dispatch)
-      # -----------------------------------------------------------------------
-      - name: Create release tag
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          github.event.inputs.tag != ''
+  # ---------------------------------------------------------------------------
+  # Smoke test production
+  # ---------------------------------------------------------------------------
+  smoke-test:
+    name: Smoke Test (Production)
+    runs-on: ubuntu-latest
+    needs: [resolve, purge-cache]
+
+    steps:
+      - name: Wait for propagation
+        run: sleep 20
+
+      - name: Check SPA is responding
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ vars.APP_URL }}")
+          echo "SPA status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "SPA smoke test FAILED (HTTP $STATUS)"
+            exit 1
+          fi
+          echo "SPA OK"
+
+      - name: Check API health endpoint
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ vars.VITE_API_URL }}/health")
+          echo "API status: $STATUS"
+          if [ "$STATUS" != "200" ]; then
+            echo "API health check returned $STATUS -- ensure /api/health route exists in Laravel"
+          fi
+
+  # ---------------------------------------------------------------------------
+  # Create Git tag and GitHub Release
+  # ---------------------------------------------------------------------------
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: [resolve, smoke-test]
+    if: needs.resolve.outputs.tag != ''
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.resolve.outputs.sha }}
+          fetch-depth: 0
+
+      - name: Create and push tag
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag "${{ github.event.inputs.tag }}" "${{ needs.resolve-deploy-target.outputs.sha }}"
-          git push origin "${{ github.event.inputs.tag }}"
-          echo "✅ Tagged as ${{ github.event.inputs.tag }}"
+          if git rev-parse "${{ needs.resolve.outputs.tag }}" >/dev/null 2>&1; then
+            echo "Tag ${{ needs.resolve.outputs.tag }} already exists — skipping tag creation"
+          else
+            git tag "${{ needs.resolve.outputs.tag }}" "${{ needs.resolve.outputs.sha }}"
+            git push origin "${{ needs.resolve.outputs.tag }}"
+          fi
 
       - name: Create GitHub Release
-        if: >
-          github.event_name == 'workflow_dispatch' &&
-          github.event.inputs.tag != ''
         uses: actions/github-script@v7
         with:
           script: |
+            const tag = '${{ needs.resolve.outputs.tag }}';
+            const sha = '${{ needs.resolve.outputs.sha }}';
+
             await github.rest.repos.createRelease({
-              owner: context.repo.owner,
-              repo:  context.repo.repo,
-              tag_name: '${{ github.event.inputs.tag }}',
-              name:     '${{ github.event.inputs.tag }}',
-              body:     `Production release promoted from staging.\nSHA: ${{ needs.resolve-deploy-target.outputs.sha }}`,
-              draft:    false,
+              owner:      context.repo.owner,
+              repo:       context.repo.repo,
+              tag_name:   tag,
+              name:       tag,
+              body:       [
+                '## Production Release — ' + tag,
+                '',
+                '**SHA:** `' + sha + '`',
+                '**Deployed by:** @' + context.actor,
+                '',
+                '### What shipped',
+                '<!-- Add release notes here or link to milestone -->',
+                '',
+                '### Environments',
+                '- SPA: Cloudflare Pages (production channel)',
+                '- API: Cloudways production server',
+              ].join('\n'),
+              draft:      false,
               prerelease: false,
             });
+            console.log('GitHub Release created: ' + tag);
 
-      - name: Notify on success
-        if: success()
+      - name: Production deploy complete
         run: |
-          echo "✅ PRODUCTION deploy succeeded — ${{ needs.resolve-deploy-target.outputs.sha }}"
-
-      - name: Notify on failure
-        if: failure()
-        run: |
-          echo "❌ PRODUCTION deploy FAILED — ${{ needs.resolve-deploy-target.outputs.sha }}"
-          # Add Slack/PagerDuty alert here for production failures
+          echo "============================================"
+          echo "  PRODUCTION DEPLOY COMPLETE"
+          echo "  Tag: ${{ needs.resolve.outputs.tag }}"
+          echo "  SHA: ${{ needs.resolve.outputs.sha }}"
+          echo "  URL: ${{ vars.APP_URL }}"
+          echo "============================================"
