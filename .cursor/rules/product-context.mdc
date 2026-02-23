@@ -89,12 +89,38 @@ See full glossary → [`docs/product/glossary.md`](mdc:docs/product/glossary.md)
 
 ---
 
+## Integrations
+
+DataTools Pro connects to the broader ecosystem via two categories:
+
+**Data In (import sources):**
+| Integration | What It Feeds | Status |
+|---|---|---|
+| Salesforce (AppExchange) | All tools — objects, fields, reports, dashboards | ✅ Live |
+| Tableau Pulse | Metrics Glossary import | ✅ Live |
+| Google Analytics 4 | Metrics Glossary import (funnel metrics) | ✅ Live |
+| Zapier | Metrics Glossary import (any Zapier-connected tool) | ✅ Live |
+| Excel / CSV | Metrics Glossary + Data Migration schema import | ✅ Live |
+
+**Data Out (distribution):**
+| Integration | What It Distributes | Status |
+|---|---|---|
+| REST API | Published metrics glossary to external apps / AI copilots | ✅ Live |
+| Coda Pack | Live metrics glossary to Coda docs | ✅ Live |
+| Notion | Metrics glossary pushed to Notion pages | 🗓 Coming Soon |
+| GitHub | Data Migration SQL code with version control | 🗓 Coming Soon |
+
+See full detail → [`docs/product/integrations.md`](mdc:docs/product/integrations.md)
+
+---
+
 ## Deep Dives
 
 | Doc | What's in it |
 |---|---|
 | [`docs/product/README.md`](mdc:docs/product/README.md) | Full product overview |
 | [`docs/product/glossary.md`](mdc:docs/product/glossary.md) | Domain terminology |
+| [`docs/product/integrations.md`](mdc:docs/product/integrations.md) | All integrations — data in and data out |
 | [`docs/product/tools/metrics-glossary.md`](mdc:docs/product/tools/metrics-glossary.md) | Metrics Glossary tool |
 | [`docs/product/tools/erd.md`](mdc:docs/product/tools/erd.md) | Entity Relationship Diagram tool |
 | [`docs/product/tools/data-dictionary.md`](mdc:docs/product/tools/data-dictionary.md) | Data Dictionary tool |

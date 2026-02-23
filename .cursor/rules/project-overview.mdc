@@ -65,6 +65,7 @@ The AI assistant has layered context injected per working area:
 | [`docs/architecture/README.md`](mdc:docs/architecture/README.md) | System architecture diagram and decisions |
 | [`docs/architecture/backend.md`](mdc:docs/architecture/backend.md) | Laravel patterns, service layer, testing |
 | [`docs/architecture/frontend.md`](mdc:docs/architecture/frontend.md) | SPA structure, auth flow, state management |
+| [`docs/product/integrations.md`](mdc:docs/product/integrations.md) | All integrations — data in (Salesforce, Tableau, GA4, Zapier) and data out (API, Coda, Notion, GitHub) |
 | [`docs/features/`](mdc:docs/features) | End-user feature documentation |
 | [`docs/SECRETS.md`](mdc:docs/SECRETS.md) | All secrets, where they live, how to set up |
 | [`docs/WORKFLOW.md`](mdc:docs/WORKFLOW.md) | Daily dev workflow and release process |
