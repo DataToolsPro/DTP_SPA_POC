@@ -10,11 +10,11 @@
 Morning:
   git checkout main
   git pull origin main
-  git checkout -b feature/DTP-XX-my-feature
+  git checkout -b feature/MBT-XX-my-feature
 
 During the day:
   Small, focused commits (conventional commit format)
-  Push regularly: git push origin feature/DTP-XX-my-feature
+  Push regularly: git push origin feature/MBT-XX-my-feature
 
 Done with feature:
   Open PR against main
@@ -34,7 +34,7 @@ After merge:
 
 | ✅ Do | ❌ Don't |
 |---|---|
-| `feature/DTP-42-user-auth` | `ryan-working-on-auth` |
+| `feature/MBT-42-user-auth` | `ryan-working-on-auth` |
 | Branch from `main` always | Branch from another feature branch |
 | Delete branch after merge | Leave stale branches around |
 | Short-lived (days, not weeks) | Long-running feature branches |
@@ -76,7 +76,7 @@ docs(ai): update prompt template with eval link
 ### Before Opening a PR
 - [ ] CI passes locally (run tests, lint)
 - [ ] No `.env` files, no secrets, no API keys committed
-- [ ] PR title follows format: `[DTP-XX] Short description`
+- [ ] PR title follows format: `[MBT-XX] Short description`
 - [ ] Branch name follows convention
 
 ### PR Size Guidelines
@@ -126,7 +126,7 @@ We have 4 environments. See [`docs/ENVIRONMENTS.md`](ENVIRONMENTS.md) for the fu
 ## Release Flow (The Big Picture)
 
 ```
-feature/DTP-XX branch
+feature/MBT-XX branch
   → PR opened → CF Pages creates preview URL automatically
   → CI passes + 2 approvals
   → Squash merge to main
@@ -160,7 +160,7 @@ Production deploys are **never automatic** — they require a human to pull the 
 ```bash
 # 1. Branch from main (never from a feature branch)
 git checkout main && git pull
-git checkout -b hotfix/DTP-99-fix-description
+git checkout -b hotfix/MBT-99-fix-description
 
 # 2. Make the minimal fix + test it
 # 3. PR into main — CI must pass, expedited review acceptable

@@ -9,7 +9,7 @@ Everything you need to ship code from development to production.
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                                                                     │
-│  1. Branch     feature/DTP-XX-slug  (from main)                    │
+│  1. Branch     feature/MBT-XX-slug  (from main)                    │
 │       │                                                             │
 │  2. PR         Opens → Cloudflare Pages auto-creates preview URL   │
 │       │         CI runs (lint / tests / build)                     │
@@ -126,13 +126,13 @@ For emergencies — a bug in production that can't wait for the normal flow:
 # 1. Branch from main (NOT from a feature branch)
 git checkout main
 git pull origin main
-git checkout -b hotfix/DTP-XX-describe-the-fix
+git checkout -b hotfix/MBT-XX-describe-the-fix
 
 # 2. Make the minimal fix
 # Write a test if possible
 
 # 3. Push and open PR
-git push origin hotfix/DTP-XX-describe-the-fix
+git push origin hotfix/MBT-XX-describe-the-fix
 # Open PR on GitHub → target: main
 
 # 4. Expedited review

@@ -1,0 +1,69 @@
+{
+  "tickets": [
+    {
+      "summary": "Decision: Jira project key convention",
+      "description": "All branch names, commit messages, PR titles, and docs in the DTP_APP_V3 repo currently reference DTP-XX ticket format (e.g. feature/DTP-42-user-auth). However, the active Jira board is in the MBT project at goodmangroup.atlassian.net.\n\n**Options:**\n- A) Rename MBT project key to DTP in Jira admin settings (requires Jira admin — key rename is permanent and non-reversible on existing tickets)\n- B) Create a new Jira project with key DTP and use that going forward\n- C) Update all repo docs and conventions to use MBT-XX instead\n\n**Acceptance Criteria:**\n- [ ] Decision made and documented in docs/WORKFLOW.md\n- [ ] All new branches use the agreed-upon prefix\n- [ ] .cursor/rules/git-workflow.mdc updated if MBT is chosen",
+      "label": "decision"
+    },
+    {
+      "summary": "Decision: Team secret manager selection",
+      "description": "docs/SECRETS.md currently documents a 1Password vault structure called DTP_APP_V3 — Dev Secrets. This was assumed but not confirmed. Waqar needs access to the same vault.\n\n**Options:**\n- A) 1Password Teams — share vault with Waqar (waqarcs11)\n- B) Bitwarden Organizations — cheaper, open source\n- C) AWS Secrets Manager — if fully cloud-native preferred\n\n**Acceptance Criteria:**\n- [ ] Tool selected\n- [ ] Vault/org created and shared with both @rmgoodm and @waqarcs11\n- [ ] docs/SECRETS.md updated with the correct tool name\n- [ ] All local dev secrets added to the vault",
+      "label": "decision"
+    },
+    {
+      "summary": "Decision: AWS RDS database engine",
+      "description": "The repo's .env.example and data model are engine-agnostic (Laravel + UUIDs work on both). Before provisioning RDS instances we need to commit to one.\n\n**Options:**\n- A) MySQL 8.x — most common with Laravel/Cloudways, widest docs\n- B) PostgreSQL 15 — better JSON support, stronger constraints, preferred for analytics workloads\n\n**Acceptance Criteria:**\n- [ ] Engine chosen\n- [ ] DB_CONNECTION value confirmed in .env.example (mysql or pgsql)\n- [ ] docs/architecture/README.md updated with the decision",
+      "label": "decision"
+    },
+    {
+      "summary": "Decision: Cloudways server sizing and topology",
+      "description": "Two Cloudways deployments are planned: staging and production. Before provisioning we need to lock topology and sizing to avoid re-provisioning.\n\n**Decisions needed:**\n1. Cloud provider: DigitalOcean, AWS, GCP, Vultr, or Linode via Cloudways?\n2. Staging server: 1GB RAM (smallest) or 2GB?\n3. Production server: 2GB, 4GB, or higher?\n4. Same Cloudways account for both, or separate?\n\n**Acceptance Criteria:**\n- [ ] Provider and sizing decided\n- [ ] Noted in docs/ENVIRONMENTS.md under staging and production sections",
+      "label": "decision"
+    },
+    {
+      "summary": "Decision: Versioning strategy for releases",
+      "description": "docs/RELEASE.md documents both options and says \"pick one and stick to it.\" This needs to be decided before the first real release so the GitHub Actions deploy-production.yml tag prompt is clear for both developers.\n\n**Options:**\n- A) Date-based: v2026.02.23 — simple, no versioning decisions per release\n- B) Semver: v1.0.0 — communicates magnitude of change, industry standard\n\n**Acceptance Criteria:**\n- [ ] Strategy chosen\n- [ ] docs/RELEASE.md updated to remove the \"pick one\" language and show only the chosen format\n- [ ] Both developers aligned",
+      "label": "decision"
+    },
+    {
+      "summary": "Onboard Waqar as co-owner",
+      "description": "Waqar (@waqarcs11) is co-owner of all code per CODEOWNERS but doesn't yet have access to the full set of systems.\n\n**Steps:**\n- [ ] GitHub: Invite waqarcs11 to DataToolsPro org → set role to Owner\n- [ ] GitHub: Confirm waqarcs11 appears in CODEOWNERS (already set)\n- [ ] GitHub Environments: Add waqarcs11 as required reviewer on production environment\n- [ ] Secret Manager: Add Waqar to the team vault (after MBT secret manager decision)\n- [ ] Cloudways: Add Waqar as team member (Team tab in Cloudways dashboard)\n- [ ] Jira: Confirm Waqar has access to goodmangroup.atlassian.net board\n- [ ] Share docs/WORKFLOW.md and docs/SECRETS.md with Waqar as onboarding reading\n\n**Acceptance Criteria:**\n- [ ] Waqar can open a PR and it auto-requests his review via CODEOWNERS\n- [ ] Waqar can approve a production deploy in GitHub Environments\n- [ ] Waqar has all secrets from the vault needed to run the app locally",
+      "label": "setup"
+    },
+    {
+      "summary": "Provision Cloudways staging server and wire deploy pipeline",
+      "description": "Create the staging Cloudways app, configure SSH deploy keys, and populate GitHub environment secrets.\n\n**Steps:**\n- [ ] Create new application on Cloudways (chosen provider + sizing from decision task)\n- [ ] Install PHP 8.3, Composer, set document root to /public\n- [ ] Generate deploy SSH key: ssh-keygen -t ed25519 -C github-actions-staging -f ~/.ssh/dtp_deploy_staging\n- [ ] Add public key to Cloudways → SSH Key Management\n- [ ] Add private key to GitHub: Settings → Environments → staging → Secrets → STAGING_SSH_KEY\n- [ ] Populate remaining staging secrets: STAGING_SSH_HOST, STAGING_SSH_USER, STAGING_SSH_PORT, STAGING_APP_PATH\n- [ ] Manually deploy Laravel app once to confirm SSH works\n- [ ] Run php artisan migrate on staging to confirm DB connectivity\n- [ ] Trigger deploy-staging.yml manually and confirm green\n\n**Acceptance Criteria:**\n- [ ] https://staging.datatoolspro.com/api/health returns 200\n- [ ] GitHub Actions staging deploy runs end-to-end green\n- [ ] Cloudways logs show no PHP errors on boot",
+      "label": "setup"
+    },
+    {
+      "summary": "Provision Cloudways production server and wire deploy pipeline",
+      "description": "Mirrors the staging task but for production. Do not reuse staging SSH keys. Separate key pairs per environment.\n\n**Steps:**\n- [ ] Create production application on Cloudways\n- [ ] Configure PHP 8.3, Composer, document root\n- [ ] Generate separate deploy key: ssh-keygen -t ed25519 -C github-actions-production -f ~/.ssh/dtp_deploy_production\n- [ ] Register public key on Cloudways production server\n- [ ] Add private key + host/user/port/path to GitHub production environment secrets\n- [ ] Manually deploy once to confirm pipeline\n- [ ] Run php artisan migrate --force on production DB\n\n**Acceptance Criteria:**\n- [ ] https://app.datatoolspro.com/api/health returns 200\n- [ ] GitHub Actions production deploy runs end-to-end (with approval gate) green\n- [ ] Staging and production use separate SSH keys",
+      "label": "setup"
+    },
+    {
+      "summary": "Provision AWS RDS staging database",
+      "description": "Create the staging RDS instance and wire it to Cloudways staging.\n\n**Steps:**\n- [ ] Create RDS instance (engine from decision task) in appropriate AWS region\n- [ ] Set instance class: db.t3.micro or db.t3.small for staging\n- [ ] Configure security group: allow inbound only from Cloudways staging server IP\n- [ ] Create staging database + user with least-privilege permissions\n- [ ] Add DB credentials to .env on Cloudways staging server\n- [ ] Add staging DB vars to GitHub staging environment variables (DB_HOST, DB_DATABASE, etc.)\n- [ ] Add credentials to team secret vault\n- [ ] Run php artisan migrate — confirm all tables created\n\n**Acceptance Criteria:**\n- [ ] Laravel staging app connects to RDS with no errors\n- [ ] php artisan migrate:status shows all migrations as Ran\n- [ ] RDS security group blocks all public access (not 0.0.0.0/0)",
+      "label": "setup"
+    },
+    {
+      "summary": "Provision AWS RDS production database",
+      "description": "Create the production RDS instance with automated backups.\n\n**Steps:**\n- [ ] Create RDS instance (engine from decision task)\n- [ ] Set instance class: db.t3.small minimum, consider db.t3.medium for production\n- [ ] Enable automated backups: 7-day retention, daily snapshot window\n- [ ] Enable Multi-AZ if budget allows (failover protection)\n- [ ] Configure security group: allow only Cloudways production server IP\n- [ ] Create production DB + user\n- [ ] Add credentials to Cloudways production server .env\n- [ ] Add to GitHub production environment variables\n- [ ] Add credentials to team secret vault\n\n**Acceptance Criteria:**\n- [ ] Laravel production app connects to RDS\n- [ ] Automated backups confirmed enabled in AWS console\n- [ ] php artisan migrate:status shows all green",
+      "label": "setup"
+    },
+    {
+      "summary": "Create Cloudflare Pages project and configure custom domains",
+      "description": "Set up Cloudflare Pages for the SPA with staging and production deployment channels.\n\n**Steps:**\n- [ ] Create Pages project in Cloudflare dashboard — connect to DataToolsPro/DTP_APP_V3 GitHub repo\n- [ ] Set build command: cd spa && npm ci && npm run build\n- [ ] Set build output directory: spa/dist\n- [ ] Configure production branch → main → routes to app.datatoolspro.com\n- [ ] Configure staging preview branch → main (staging channel) → routes to staging.datatoolspro.com\n- [ ] Add custom domains in CF Pages settings (requires DNS CNAME pointing to pages.dev)\n- [ ] Update GitHub repository variable: CLOUDFLARE_PAGES_PROJECT = actual project name (currently placeholder dtp-spa-poc)\n- [ ] Confirm PR previews auto-generate at pr-XX.<project>.pages.dev\n\n**Acceptance Criteria:**\n- [ ] https://app.datatoolspro.com serves the SPA\n- [ ] https://staging.datatoolspro.com serves the SPA (staging build)\n- [ ] A test PR generates a working preview URL automatically\n- [ ] Cloudflare WAF + Bot protection active on both domains",
+      "label": "setup"
+    },
+    {
+      "summary": "Populate all GitHub Actions secrets and variables",
+      "description": "The workflow files are written and reference specific secret names. None of them will work until the secrets are actually populated. This is a pure configuration task — no code changes needed.\n\n**Repo-Level Secrets** (Settings → Secrets and variables → Actions → Secrets):\n- [ ] CLOUDFLARE_API_TOKEN — CF Dashboard → My Profile → API Tokens\n- [ ] CLOUDFLARE_ACCOUNT_ID — CF Dashboard → right sidebar\n- [ ] CLOUDFLARE_ZONE_ID — CF Dashboard → your domain → right sidebar\n- [ ] OPENAI_API_KEY — platform.openai.com → API Keys\n- [ ] ANTHROPIC_API_KEY — console.anthropic.com → API Keys\n\n**Repo-Level Variable** (Settings → Secrets and variables → Actions → Variables):\n- [ ] CLOUDFLARE_PAGES_PROJECT — the CF Pages project name (from previous task)\n\n**Staging + Production SSH secrets** are covered by the Cloudways provisioning tasks above.\n\n**Acceptance Criteria:**\n- [ ] ci-frontend.yml runs green on a test PR to spa/\n- [ ] ci-backend.yml runs green on a test PR to app/\n- [ ] deploy-staging.yml runs green on a push to main\n- [ ] All secrets visible in GitHub Secrets list (values hidden — names visible)",
+      "label": "setup"
+    },
+    {
+      "summary": "Configure Jira MCP for both developers",
+      "description": "Each developer sets up the @sooperset/mcp-atlassian MCP server so Cursor AI can read Jira tickets automatically.\n\n**Steps (per developer):**\n- [ ] Generate personal Atlassian API token at https://id.atlassian.com/manage-api-tokens\n- [ ] Copy .cursor/mcp.json.example → .cursor/mcp.json\n- [ ] Fill in: JIRA_URL = https://goodmangroup.atlassian.net, JIRA_USERNAME, JIRA_API_TOKEN\n- [ ] Restart Cursor\n- [ ] Test: reference a ticket number in Cursor chat and confirm AI pulls it\n- [ ] Alternative: Install Atlassian for VS Code extension for zero-config option\n\n**Reference:** docs/SECRETS.md → Jira — Accessing Ticket Context\n\n**Acceptance Criteria:**\n- [ ] Ryan: MCP or Atlassian extension working and verified\n- [ ] Waqar: MCP or Atlassian extension working and verified (after onboarding task)\n- [ ] JIRA_URL in .cursor/mcp.json.example updated to https://goodmangroup.atlassian.net",
+      "label": "setup"
+    }
+  ]
+}

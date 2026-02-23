@@ -17,10 +17,10 @@ main  ←────────── always releasable, protected
 
 | Type | Pattern | Example |
 |---|---|---|
-| Feature / task | `feature/<ticket>-<slug>` | `feature/DTP-42-user-auth` |
-| Bug fix | `feature/<ticket>-fix-<slug>` | `feature/DTP-55-fix-login-redirect` |
-| Hotfix | `hotfix/<ticket>-<slug>` | `hotfix/DTP-99-token-expiry` |
-| Chore / deps | `feature/<ticket>-chore-<slug>` | `feature/DTP-60-chore-upgrade-deps` |
+| Feature / task | `feature/<ticket>-<slug>` | `feature/MBT-42-user-auth` |
+| Bug fix | `feature/<ticket>-fix-<slug>` | `feature/MBT-55-fix-login-redirect` |
+| Hotfix | `hotfix/<ticket>-<slug>` | `hotfix/MBT-99-token-expiry` |
+| Chore / deps | `feature/<ticket>-chore-<slug>` | `feature/MBT-60-chore-upgrade-deps` |
 
 **Rules:**
 - All lowercase, hyphens only (no underscores, no spaces)
@@ -31,13 +31,13 @@ main  ←────────── always releasable, protected
 ## PR Title Format
 
 ```
-[DTP-XX] Short imperative description
+[MBT-XX] Short imperative description
 ```
 
 Examples:
-- `[DTP-42] Add user authentication via Sanctum`
-- `[DTP-55] Fix login redirect loop on token expiry`
-- `[DTP-60] Upgrade React to v19`
+- `[MBT-42] Add user authentication via Sanctum`
+- `[MBT-55] Fix login redirect loop on token expiry`
+- `[MBT-60] Upgrade React to v19`
 
 ## Commit Message Format (Conventional Commits)
 

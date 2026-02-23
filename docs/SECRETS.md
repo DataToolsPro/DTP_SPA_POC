@@ -150,7 +150,7 @@ The **Atlassian for VS Code/Cursor** extension is the zero-config path — no se
 2. Search **"Atlassian"** → install the official extension
 3. Click **Login with OAuth** or **Login with API Token**
 4. Authenticate with your Atlassian account
-5. Done — hover over `DTP-XX` anywhere in code to see the issue inline
+5. Done — hover over `MBT-XX` anywhere in code to see the issue inline
 
 **To give the AI ticket context:** open the ticket in the sidebar → copy the AC → paste into chat.
 
@@ -161,7 +161,7 @@ The **Atlassian for VS Code/Cursor** extension is the zero-config path — no se
 ### Option B: MCP Server (AI Auto-Fetch — Optional Upgrade)
 
 The MCP server lets the Cursor AI fetch Jira tickets **automatically** without copy/pasting.
-Use this when you want zero-friction AI context — just reference `DTP-42` in chat and I pull the full story.
+Use this when you want zero-friction AI context — just reference `MBT-42` in chat and I pull the full story.
 
 Each developer sets this up **locally only** — the token is personal and never committed.
 

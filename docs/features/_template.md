@@ -1,5 +1,5 @@
 ---
-jira: DTP-XX
+jira: MBT-XX
 title: "Feature Name"
 status: draft | review | approved
 pr: https://github.com/DataToolsPro/DTP_APP_V3/pull/XX
@@ -57,4 +57,4 @@ pr: https://github.com/DataToolsPro/DTP_APP_V3/pull/XX
 
 <!-- Link to other docs/features files that are related -->
 
-- [Feature Name](./DTP-XX-other-feature.md)
+- [Feature Name](./MBT-XX-other-feature.md)

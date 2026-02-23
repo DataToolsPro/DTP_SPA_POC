@@ -50,7 +50,7 @@ The file here is the **polished, human-readable output** of that story.
 docs/features/<jira-ticket>-<feature-slug>.md
 
 Examples:
-  docs/features/DTP-42-user-authentication.md
+  docs/features/MBT-42-user-authentication.md
   docs/features/DTP-67-csv-export.md
   docs/features/DTP-88-dashboard-filters.md
 ```
