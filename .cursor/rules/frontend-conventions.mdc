@@ -1,0 +1,133 @@
+---
+description: React SPA conventions, patterns, and rules for the DataTools Pro frontend.
+globs: ["spa/**"]
+alwaysApply: false
+---
+
+# Frontend Conventions — React SPA
+
+> Applied automatically when working in `spa/`.
+
+---
+
+## Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | React 18+ with TypeScript |
+| Build tool | Vite |
+| Routing | React Router v6 |
+| State | TBD — document when chosen (Zustand / TanStack Query / Context) |
+| Styling | TBD — document when chosen (Tailwind / CSS Modules) |
+| HTTP | TBD — document when chosen (Axios / TanStack Query) |
+| Forms | TBD — document when chosen (React Hook Form / Formik) |
+| Testing | Vitest + React Testing Library |
+
+<!-- Update the TBDs as decisions are made during development -->
+
+---
+
+## Project Structure
+
+```
+spa/
+├── src/
+│   ├── components/       # Shared, reusable UI components (no business logic)
+│   ├── features/         # Feature modules — colocate everything per feature
+│   │   └── <feature>/
+│   │       ├── components/   # Feature-specific components
+│   │       ├── hooks/        # Feature-specific hooks
+│   │       ├── api.ts        # API calls for this feature
+│   │       ├── types.ts      # TypeScript types
+│   │       └── index.ts      # Public exports
+│   ├── hooks/            # Shared hooks
+│   ├── lib/              # Utilities, API client, helpers
+│   ├── pages/            # Page-level components (one per route)
+│   ├── router/           # Route definitions
+│   └── types/            # Global TypeScript types
+├── public/
+└── index.html
+```
+
+---
+
+## Component Rules
+
+- **One component per file** — no multi-export component files
+- **PascalCase filenames** — `UserTable.tsx`, `ReportCard.tsx`
+- **Named exports only** — no default exports for components
+- Keep components **pure** — no direct API calls inside components; use hooks
+- Props interface named `<ComponentName>Props` — defined in the same file above the component
+
+```typescript
+// ✅ Good
+interface UserCardProps {
+  user: User;
+  onEdit: (id: string) => void;
+}
+
+export const UserCard = ({ user, onEdit }: UserCardProps) => { ... };
+```
+
+---
+
+## Data Fetching
+
+- All API calls live in `features/<feature>/api.ts` or `lib/api/`
+- Never call `fetch` or `axios` directly inside components — always via a hook or query
+- Use consistent error handling — surfaces errors to the UI, never silently swallows them
+- API base URL comes from `import.meta.env.VITE_API_URL`
+
+---
+
+## TypeScript
+
+- **Strict mode on** — no `any` unless absolutely unavoidable (add a comment explaining why)
+- Types for API responses mirror the Laravel API Resource shape
+- Shared types in `src/types/` — feature types in `features/<feature>/types.ts`
+- Prefer `interface` for object shapes, `type` for unions/aliases
+
+---
+
+## Routing
+
+- All routes defined in `src/router/`
+- Protected routes wrapped in an auth guard component
+- Lazy-load page components with `React.lazy()`
+- Route paths use kebab-case: `/user-management`, `/report-builder`
+
+---
+
+## Naming Conventions
+
+| Thing | Convention | Example |
+|---|---|---|
+| Component | `PascalCase` | `UserTable`, `ReportCard` |
+| Hook | `use` prefix, `camelCase` | `useCurrentUser`, `useReports` |
+| Utility | `camelCase` | `formatDate`, `parseCSV` |
+| Constant | `SCREAMING_SNAKE_CASE` | `MAX_UPLOAD_SIZE` |
+| Type/Interface | `PascalCase` | `User`, `ReportSummary` |
+| CSS class | kebab-case (or Tailwind utilities) | `user-card__header` |
+
+---
+
+## Testing
+
+- Every component gets a basic render test
+- User interaction tests use `@testing-library/user-event`
+- Test files colocated: `UserCard.tsx` → `UserCard.test.tsx`
+- Test IDs use `data-testid` attribute (not IDs or classes)
+
+---
+
+## Environment Variables
+
+- All Vite env vars must start with `VITE_`
+- Document every new var in both `spa/.env.example` and root `.env.example`
+- Never hardcode URLs — always use `import.meta.env.VITE_*`
+
+---
+
+## Deep Dive
+
+See [`docs/architecture/frontend.md`](mdc:docs/architecture/frontend.md) for architecture decisions and patterns.

@@ -8,20 +8,44 @@ alwaysApply: true
 
 Every piece of work in this repo is tied to a Jira ticket in the **DTP** project.
 
-## How to Pull Context
+---
 
-When the user mentions a ticket (e.g. `DTP-42`), use the **Atlassian MCP server** to fetch
-the full story before touching any code:
+## How to Access Jira Context — Two Options
 
+### Option A: Atlassian Extension (UI — zero config)
+The **Atlassian for VS Code/Cursor** extension gives the developer a UI to browse and view tickets.
+
+- Hover over any `DTP-XX` reference in code to see the issue inline
+- Browse issues in the Atlassian sidebar
+- **To give the AI context:** open the ticket → copy the AC → paste into chat
+
+> No additional setup required. This is the default path.
+
+---
+
+### Option B: MCP Server (AI-native — optional upgrade)
+The **`@sooperset/mcp-atlassian`** MCP server lets the AI fetch ticket data automatically.
+
+Setup: see `docs/SECRETS.md` → **Jira — Accessing Ticket Context**
+
+When configured, just reference a ticket number in chat:
 ```
 mcp: atlassian → get_issue(issueKey: "DTP-42")
 ```
 
-This gives you:
-- Story title and description
-- Acceptance criteria (AC)
-- Story type (User Story / Task / Bug)
-- Status, priority, linked issues
+> Best when you want zero copy/paste friction per ticket.
+
+---
+
+## Before Writing Any Code
+
+1. Identify the Jira ticket (e.g. `DTP-42`)
+2. Pull the full story + AC — via extension UI **or** MCP auto-fetch
+3. Confirm any ambiguous AC with the user before starting
+4. Identify the work type — determines whether `docs/features/` entry is needed
+5. Name your branch: `feature/DTP-42-<slug>` or `hotfix/DTP-99-<slug>`
+
+---
 
 ## Work Type Definitions
 
@@ -31,25 +55,21 @@ This gives you:
 | **Task** | System / infrastructure / internal change | No end-user doc needed |
 | **Bug** | Something broken — needs verification criteria | Bug doc only if behavior change is user-visible |
 
-## Before Writing Any Code
-
-1. Fetch the Jira ticket via MCP.
-2. Confirm the acceptance criteria with the user if any AC is ambiguous.
-3. Identify the work type — this determines whether a `docs/features/` entry is needed.
-4. Name your branch from the ticket: `feature/DTP-42-<slug>` or `hotfix/DTP-99-<slug>`.
+---
 
 ## After Implementation
 
-For **User Stories**: update or create `docs/features/<feature-slug>.md` using the template
-at `docs/features/_template.md`. The doc should be written as if explaining the feature to
-an end user — not a developer.
+For **User Stories**: update or create `docs/features/DTP-XX-<slug>.md` using the template
+at `docs/features/_template.md`. Write as if explaining the feature to an end user — not a developer.
 
 For **Tasks**: no doc needed. PR description is sufficient.
 
 For **Bugs**: add a "Verification" section to the PR if the fix changes visible behavior.
 
+---
+
 ## Ticket Reference in Commits and PRs
 
-- Commit: `feat(scope): description` → footer: `Closes DTP-42`
+- Commit footer: `Closes DTP-42`
 - PR title: `[DTP-42] Short imperative description`
 - The Jira ticket number must appear in every PR.

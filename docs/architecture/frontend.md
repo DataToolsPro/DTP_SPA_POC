@@ -1,0 +1,157 @@
+# Frontend Architecture — React SPA
+
+---
+
+## Overview
+
+The SPA lives in `spa/` and is built with React + TypeScript + Vite.
+It is deployed as a **static site to Cloudflare Pages** — no server-side rendering.
+All dynamic data comes from the Laravel API (`VITE_API_URL`).
+
+---
+
+## Feature-First Structure
+
+The SPA uses a **feature module** pattern — all code for a feature lives together.
+
+```
+spa/src/
+├── components/           ← Shared UI primitives (Button, Modal, Table, etc.)
+├── features/             ← One directory per product feature area
+│   └── <feature-name>/
+│       ├── components/   ← Components used only by this feature
+│       ├── hooks/        ← Data-fetching and logic hooks
+│       ├── api.ts        ← All API calls for this feature
+│       ├── types.ts      ← TypeScript types for this feature
+│       └── index.ts      ← Re-exports (public API of this module)
+├── hooks/                ← Shared hooks (useAuth, useToast, etc.)
+├── lib/
+│   ├── api/              ← API client setup (base URL, auth headers, interceptors)
+│   └── utils/            ← Pure utility functions
+├── pages/                ← One component per route
+├── router/               ← Route definitions and auth guards
+└── types/                ← Global types (User, ApiResponse, etc.)
+```
+
+---
+
+## Routing
+
+```
+/                     → Dashboard (protected)
+/login                → Login page (public)
+/reports              → Reports list (protected)
+/reports/:id          → Report detail (protected)
+/settings             → Settings (protected)
+```
+
+- Public routes: `/login`, `/register`, maybe `/forgot-password`
+- All other routes are behind an auth guard
+- 404 → redirect to dashboard (or a dedicated 404 page)
+
+---
+
+## Authentication Flow (SPA ↔ Laravel Sanctum)
+
+```
+1. App loads → check if session exists (GET /api/v1/user)
+   ├── 200: user is authenticated → load app
+   └── 401: not authenticated → redirect to /login
+
+2. Login form submit → POST /login
+   ├── 200: session created → redirect to dashboard
+   └── 422: validation error → show field errors
+
+3. All API requests send cookie automatically (same-domain)
+   + CSRF token in X-XSRF-TOKEN header (Axios handles this automatically)
+
+4. Logout → POST /logout → clear session → redirect to /login
+```
+
+---
+
+## State Management
+
+<!-- Update this section when a state management decision is made -->
+
+**Current decision:** [TBD — document when chosen]
+
+Candidates:
+- **TanStack Query** — server state (API data, caching, background refresh)
+- **Zustand** — global client state (UI state, user preferences)
+- **React Context** — auth context, theme
+
+> Rule of thumb: most state should be server state (TanStack Query).
+> Client-only state (UI open/close, form steps) can be `useState` locally.
+
+---
+
+## API Client
+
+All API calls go through a centralized client in `spa/src/lib/api/`.
+
+```typescript
+// Base setup — src/lib/api/client.ts
+const apiClient = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,    // sends session cookie
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  }
+});
+
+// Add CSRF token interceptor
+// Add 401 → redirect to login interceptor
+```
+
+Feature-level API calls in `features/<feature>/api.ts`:
+```typescript
+export const reportsApi = {
+  list: () => apiClient.get<{ data: Report[] }>('/v1/reports'),
+  get: (id: string) => apiClient.get<{ data: Report }>(`/v1/reports/${id}`),
+  create: (data: CreateReportData) => apiClient.post('/v1/reports', data),
+};
+```
+
+---
+
+## Build & Deploy
+
+```bash
+# Local dev
+cd spa && npm run dev          # Vite dev server on :5173
+
+# Production build
+npm run build                  # outputs to spa/dist/
+
+# Preview production build locally
+npm run preview
+```
+
+**Cloudflare Pages config:**
+- Build command: `npm run build`
+- Build output directory: `spa/dist`
+- Root directory: `spa`
+- Environment variables: set in Cloudflare Pages dashboard (per environment)
+
+---
+
+## Testing
+
+```bash
+cd spa && npm run test          # Vitest
+npm run test:coverage           # with coverage report
+```
+
+---
+
+## Open Questions / TODOs
+
+- [ ] Confirm state management choice (TanStack Query + Zustand?)
+- [ ] Confirm HTTP client (Axios vs native fetch)
+- [ ] Confirm styling approach (Tailwind CSS?)
+- [ ] Confirm form library (React Hook Form?)
+- [ ] Set up Storybook for component development? (optional)
+- [ ] Define error boundary strategy
+- [ ] Define loading/skeleton state conventions

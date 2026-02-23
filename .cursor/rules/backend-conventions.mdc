@@ -1,0 +1,121 @@
+---
+description: Laravel backend conventions, patterns, and rules for the DataTools Pro API.
+globs: ["app/**", "routes/**", "database/**", "tests/**", "config/**"]
+alwaysApply: false
+---
+
+# Backend Conventions — Laravel API
+
+> Applied automatically when working in `app/`, `routes/`, `database/`, `tests/`, or `config/`.
+
+---
+
+## Architecture Pattern
+
+```
+routes/api.php
+    └── Controller (thin — delegates immediately)
+          └── Service (all business logic lives here)
+                └── Model (Eloquent — data access only)
+```
+
+**Rules:**
+- Controllers do NOT contain business logic — they validate input, call a service, return a response
+- Services contain ALL business logic — reusable, testable
+- Models are for data access and relationships only — no business logic in models
+- Never use `DB::` facades directly in controllers — always go through a model or service
+
+---
+
+## Naming Conventions
+
+| Thing | Convention | Example |
+|---|---|---|
+| Controller | `<Resource>Controller` | `UserController`, `ReportController` |
+| Service | `<Resource>Service` | `UserService`, `ReportService` |
+| Request | `<Action><Resource>Request` | `CreateReportRequest`, `UpdateUserRequest` |
+| Resource | `<Resource>Resource` | `UserResource`, `ReportResource` |
+| Migration | `snake_case` timestamp auto | `2025_01_01_create_users_table` |
+| Model | `PascalCase` singular | `User`, `Report`, `DataSource` |
+| Table | `snake_case` plural | `users`, `reports`, `data_sources` |
+
+---
+
+## API Response Format
+
+All API responses use Laravel API Resources. Standard structure:
+
+```json
+{
+  "data": { ... },          // single resource
+  "data": [ ... ],          // collection
+  "message": "...",         // optional, for mutations
+  "meta": { "total": 0 }    // optional, for pagination
+}
+```
+
+**HTTP status codes:**
+- `200` — successful GET / update
+- `201` — successful creation
+- `204` — successful delete (no body)
+- `422` — validation failure (Laravel default)
+- `401` — unauthenticated
+- `403` — unauthorized (authenticated but not permitted)
+- `404` — resource not found
+
+---
+
+## Authentication
+
+- Uses **Laravel Sanctum** for SPA authentication
+- SPA uses cookie-based sessions (not token headers) for same-domain calls
+- API tokens used for external/third-party integrations only
+
+---
+
+## Authorization
+
+- Use **Laravel Policies** for all resource-level authorization
+- Register policies in `AuthServiceProvider`
+- Call via `$this->authorize()` in controllers or `Gate::allows()` in services
+- Never inline permission checks as raw conditionals
+
+---
+
+## Validation
+
+- Always use **Form Request** classes for validation — never validate in controllers directly
+- Custom messages live in the Form Request class
+- Validation rules are documented in the Form Request docblock
+
+---
+
+## Database
+
+- All schema changes via **migrations** — never edit tables manually
+- Use **factories** for test data — never seed production-like data in tests
+- Eager load relationships to avoid N+1 — use `with()` in controllers/services
+- Use `$fillable` (not `$guarded`) on all models
+
+---
+
+## Error Handling
+
+- Let Laravel's exception handler deal with `ModelNotFoundException` (auto 404)
+- Throw domain-specific exceptions from services (e.g. `InsufficientPermissionsException`)
+- Log unexpected errors with `Log::error()` — include context array
+
+---
+
+## Testing
+
+- Feature tests in `tests/Feature/` — test via HTTP (use `$this->actingAs()`)
+- Unit tests in `tests/Unit/` — test services/helpers in isolation
+- Every new endpoint gets a feature test
+- Test file mirrors the class: `app/Services/ReportService.php` → `tests/Unit/Services/ReportServiceTest.php`
+
+---
+
+## Deep Dive
+
+See [`docs/architecture/backend.md`](mdc:docs/architecture/backend.md) for architecture decisions and patterns.

@@ -1,0 +1,116 @@
+---
+description: Core data model — entities, relationships, and business rules for DataTools Pro.
+globs:
+alwaysApply: true
+---
+
+# Data Model — DataTools Pro
+
+> **This is a living document.** Update it every time a new model/migration is added.
+> The AI uses this to write correct queries, relationships, and validation logic.
+
+---
+
+## Core Entities
+
+<!-- Add entities as they are built. Format: model name, table, key fields, relationships. -->
+
+```
+[STUB — fill in as models are created during development]
+```
+
+### Template for each entity:
+
+```
+## <ModelName>
+Table: <table_name>
+Purpose: <one sentence — what this entity represents>
+
+Key fields:
+- id (uuid / bigint)
+- <field>: <type> — <what it means>
+
+Relationships:
+- belongs to: <Model> (via <foreign_key>)
+- has many: <Model>
+- belongs to many: <Model> (via <pivot_table>)
+
+Business rules:
+- <rule 1>
+- <rule 2>
+
+Soft deletes: yes / no
+```
+
+---
+
+## Relationship Map
+
+```
+[STUB — add an ASCII or text diagram of entity relationships as the schema grows]
+
+Example:
+Organization
+  └── has many → Users
+  └── has many → Reports
+        └── has many → DataSources (via pivot)
+```
+
+---
+
+## Multi-Tenancy Model
+
+<!-- How is data isolation enforced? Org-scoped? User-scoped? -->
+
+```
+[STUB — define tenant isolation strategy]
+
+Example options:
+- Row-level: every table has an `organization_id` column, always scoped in queries
+- Schema-level: separate DB schema per tenant
+- Database-level: separate DB per tenant
+```
+
+---
+
+## Permissions Model
+
+<!-- What roles exist? What can each role do? -->
+
+| Role | Scope | Permissions |
+|---|---|---|
+| [Role] | [org/global] | [what they can do] |
+
+---
+
+## Key Constraints & Invariants
+
+<!-- Rules that must ALWAYS be true in the database -->
+<!-- The AI will apply these when writing migrations, seeders, and validation -->
+
+- [ ] **TODO:** Document database-level constraints as schema is built
+
+Examples:
+- "Email addresses are unique globally (not per-org)"
+- "A Report must have a valid `status` from: `['draft', 'published', 'archived']`"
+- "Cascade delete: deleting an Organization deletes all its Users and Reports"
+
+---
+
+## Enums & Status Fields
+
+<!-- Document all status/type enums so the AI uses the right values -->
+
+| Model | Field | Allowed Values |
+|---|---|---|
+| [Model] | [field] | `value1`, `value2`, `value3` |
+
+---
+
+## Notes for the AI
+
+When writing code that touches the database:
+1. Always scope queries to the authenticated user's context (org, team, etc.)
+2. Check this file before assuming field names or relationships
+3. Use the exact enum values defined in this file — don't invent new statuses
+4. If you add a new model, update this file in the same PR

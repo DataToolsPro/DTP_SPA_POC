@@ -136,11 +136,36 @@ cat ~/.ssh/dtp_deploy_staging.pub
 
 ---
 
-## Jira MCP — Local Dev Setup
+## Jira — Accessing Ticket Context (Two Options)
 
-The Cursor AI assistant reads Jira tickets live via MCP while you code. Each developer sets this up **locally only** — the token is personal and never committed.
+Both options work. Choose the one that fits your setup.
 
-### One-Time Setup Per Developer
+---
+
+### Option A: Atlassian Extension (Recommended Starting Point)
+
+The **Atlassian for VS Code/Cursor** extension is the zero-config path — no secrets needed.
+
+1. Open the Extensions panel in Cursor
+2. Search **"Atlassian"** → install the official extension
+3. Click **Login with OAuth** or **Login with API Token**
+4. Authenticate with your Atlassian account
+5. Done — hover over `DTP-XX` anywhere in code to see the issue inline
+
+**To give the AI ticket context:** open the ticket in the sidebar → copy the AC → paste into chat.
+
+> No secrets to manage. Each developer authenticates through the extension UI directly.
+
+---
+
+### Option B: MCP Server (AI Auto-Fetch — Optional Upgrade)
+
+The MCP server lets the Cursor AI fetch Jira tickets **automatically** without copy/pasting.
+Use this when you want zero-friction AI context — just reference `DTP-42` in chat and I pull the full story.
+
+Each developer sets this up **locally only** — the token is personal and never committed.
+
+#### One-Time Setup Per Developer
 
 1. **Generate your Atlassian API token**
    → https://id.atlassian.com/manage-api-tokens → Create API token → name it `cursor-mcp`

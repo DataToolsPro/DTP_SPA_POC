@@ -5,7 +5,8 @@ alwaysApply: true
 # DTP_SPA_POC — Project Overview
 
 ## What This Project Is
-DataTools Pro SPA — a Proof of Concept for the new Single Page Application front-end backed by a Laravel API. The repo is a **monorepo** with two primary surfaces:
+DataTools Pro SPA — a React SPA front-end backed by a Laravel API.
+The repo is a **monorepo** with two primary surfaces:
 
 1. **Laravel backend** at the repo root (`app/`, `routes/`, `database/`, etc.)
 2. **React SPA** in the [`spa/`](mdc:spa) subdirectory
@@ -30,9 +31,40 @@ A third surface, **AI/Agentic workflows**, lives in [`ai/`](mdc:ai).
 ## Stack
 - **Backend:** PHP 8.3 / Laravel (root)
 - **Frontend:** React + TypeScript + Vite (`spa/`)
+- **CDN / Bot Protection:** Cloudflare (Pages for SPA, proxy for API)
+- **App Server:** Cloudways (Laravel backend)
+- **Database:** AWS RDS (MySQL/Postgres)
 - **AI:** promptfoo for evals, OpenAI / Anthropic for LLM calls
 - **CI/CD:** GitHub Actions
-- **Hosting:** TBD (Fly.io / Forge / AWS — see deploy workflows)
 
 ## Team Size
 1–2 developers. Optimize for simplicity over process overhead.
+
+---
+
+## AI Knowledge System
+
+The AI assistant has layered context injected per working area:
+
+| Rule | Always? | Purpose |
+|---|---|---|
+| `product-context.mdc` | ✅ | What the product IS, who uses it, key business rules |
+| `data-model.mdc` | ✅ | Entities, relationships, invariants |
+| `jira-context.mdc` | ✅ | Jira workflow + work type definitions |
+| `git-workflow.mdc` | ✅ | Branch, commit, PR conventions |
+| `backend-conventions.mdc` | When in `app/**` | Laravel service patterns, API conventions |
+| `frontend-conventions.mdc` | When in `spa/**` | React/TypeScript patterns, SPA structure |
+| `ai-prompt-management.mdc` | When in `ai/**` | Prompt standards and eval requirements |
+
+## Deep Reference Docs
+
+| Doc | What's in it |
+|---|---|
+| [`docs/product/README.md`](mdc:docs/product/README.md) | Full product overview, users, roadmap |
+| [`docs/product/glossary.md`](mdc:docs/product/glossary.md) | Domain terminology — use these exact terms in code |
+| [`docs/architecture/README.md`](mdc:docs/architecture/README.md) | System architecture diagram and decisions |
+| [`docs/architecture/backend.md`](mdc:docs/architecture/backend.md) | Laravel patterns, service layer, testing |
+| [`docs/architecture/frontend.md`](mdc:docs/architecture/frontend.md) | SPA structure, auth flow, state management |
+| [`docs/features/`](mdc:docs/features) | End-user feature documentation |
+| [`docs/SECRETS.md`](mdc:docs/SECRETS.md) | All secrets, where they live, how to set up |
+| [`docs/WORKFLOW.md`](mdc:docs/WORKFLOW.md) | Daily dev workflow and release process |

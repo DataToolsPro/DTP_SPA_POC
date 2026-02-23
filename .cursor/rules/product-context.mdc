@@ -1,0 +1,99 @@
+---
+description: Core product knowledge about DataTools Pro — what it is, who uses it, and what problems it solves.
+globs:
+alwaysApply: true
+---
+
+# DataTools Pro — Product Context
+
+> **This is the AI's always-on product knowledge base.**
+> Keep this file updated as the product evolves. It is injected into every AI session.
+
+---
+
+## What Is DataTools Pro?
+
+DataTools Pro is a **[describe the core product here — e.g. "data management and reporting platform for small-to-mid-sized businesses"]**.
+
+<!-- OWNER: @rmgoodm — fill in the one-paragraph product description -->
+<!-- Example: "DataTools Pro helps operations teams import, clean, analyze, and export data
+     without needing engineering support. Users connect data sources, apply transformation
+     rules, and produce reports or API outputs on a schedule or on demand." -->
+
+**Core value proposition:**
+> [One sentence: who uses it, what they do with it, and what problem it solves]
+
+---
+
+## Who Uses It
+
+| User Type | What They Do |
+|---|---|
+| [Role 1 — e.g. Admin] | [What they manage / configure] |
+| [Role 2 — e.g. Analyst] | [What they create / view] |
+| [Role 3 — e.g. Viewer] | [Read-only access to...] |
+
+<!-- Fill in the real user roles and permissions as they're built out -->
+
+---
+
+## Core Features (Current & Planned)
+
+| Feature | Status | Jira Epic |
+|---|---|---|
+| [Feature 1] | 🚧 In Progress | DTP-XX |
+| [Feature 2] | 📋 Planned | DTP-XX |
+| [Feature 3] | ✅ Done | DTP-XX |
+
+<!-- Update this table as features ship. Reference docs/features/ for completed feature docs. -->
+
+---
+
+## Key Business Rules
+
+<!-- These are the non-obvious rules the AI must know to write correct code -->
+<!-- Add rules here as you discover them during development -->
+
+- [ ] **TODO:** Document key business rules (validation, permissions, data constraints)
+
+Examples of what goes here:
+- "Users can only see data within their own Organization"
+- "A Report cannot be published unless it has at least one DataSource"
+- "Admins can impersonate any user within their Organization"
+
+---
+
+## Terminology / Glossary
+
+<!-- Domain-specific terms that appear in code, Jira, and user-facing copy -->
+<!-- Full glossary lives at docs/product/glossary.md -->
+
+| Term | Meaning |
+|---|---|
+| [Term 1] | [Definition] |
+| [Term 2] | [Definition] |
+
+See full glossary → [`docs/product/glossary.md`](mdc:docs/product/glossary.md)
+
+---
+
+## What This Is NOT
+
+<!-- Explicit non-goals help the AI avoid building the wrong thing -->
+
+- Not a BI tool (no drag-and-drop chart builder)
+- Not a database admin panel (no raw SQL editor)
+- [Add more non-goals as scope is clarified]
+
+---
+
+## Deep Dives
+
+For more detailed product knowledge, see:
+
+| Doc | What's in it |
+|---|---|
+| [`docs/product/README.md`](mdc:docs/product/README.md) | Full product overview |
+| [`docs/product/glossary.md`](mdc:docs/product/glossary.md) | Domain terminology |
+| [`docs/architecture/README.md`](mdc:docs/architecture/README.md) | Technical architecture |
+| [`docs/features/`](mdc:docs/features) | End-user feature docs |
