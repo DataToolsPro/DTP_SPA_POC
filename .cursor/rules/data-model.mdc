@@ -11,106 +11,346 @@ alwaysApply: true
 
 ---
 
+## Architecture Note
+
+DataTools Pro is a **graph of Salesforce metadata enriched with business context**, stored in a relational database. All five tools (Metrics Glossary, ERD, Data Dictionary, Data Migration, Report Management) share the same underlying entities. Changes to a SalesforceField record are immediately reflected across all tools that reference it.
+
+---
+
 ## Core Entities
 
-<!-- Add entities as they are built. Format: model name, table, key fields, relationships. -->
-
-```
-[STUB — fill in as models are created during development]
-```
-
-### Template for each entity:
-
-```
-## <ModelName>
-Table: <table_name>
-Purpose: <one sentence — what this entity represents>
+### Organization
+Table: `organizations`
+Purpose: Top-level tenant. All data is scoped to an Organization.
 
 Key fields:
-- id (uuid / bigint)
-- <field>: <type> — <what it means>
+- `id` (uuid)
+- `name`: string
+- `plan`: enum — subscription tier
 
 Relationships:
-- belongs to: <Model> (via <foreign_key>)
-- has many: <Model>
-- belongs to many: <Model> (via <pivot_table>)
+- has many: `User`
+- has many: `SalesforceOrg`
+- has many: `BusinessTopic`
+
+Soft deletes: yes
+
+---
+
+### User
+Table: `users`
+Purpose: A person who can log in to DataTools Pro.
+
+Key fields:
+- `id` (uuid)
+- `email`: string (unique globally)
+- `name`: string
+- `role`: enum — `admin`, `member`, `viewer`
+- `organization_id`: uuid
+
+Relationships:
+- belongs to: `Organization`
 
 Business rules:
-- <rule 1>
-- <rule 2>
+- Email is unique globally (not per-org)
+- Role determines what actions the user can take within their org
 
-Soft deletes: yes / no
-```
+Soft deletes: yes
+
+---
+
+### SalesforceOrg
+Table: `salesforce_orgs`
+Purpose: A connected Salesforce instance. An Organization can have multiple.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `instance_url`: string — the Salesforce org URL
+- `org_id`: string — the Salesforce 15/18-char org ID
+- `access_token` / `refresh_token`: encrypted — OAuth tokens
+- `last_synced_at`: timestamp
+
+Relationships:
+- belongs to: `Organization`
+- has many: `SalesforceObject`
+- has many: `Report`
+- has many: `Dashboard`
+
+---
+
+### SalesforceObject
+Table: `salesforce_objects`
+Purpose: A Salesforce standard or custom object (e.g. Account, Opportunity, Custom__c).
+
+Key fields:
+- `id` (uuid)
+- `salesforce_org_id`: uuid
+- `api_name`: string — e.g. `Account`, `My_Custom__c`
+- `label`: string — e.g. `Account`, `My Custom`
+- `is_custom`: boolean
+- `description`: text — user-added in DataTools (not from Salesforce)
+
+Relationships:
+- belongs to: `SalesforceOrg`
+- has many: `SalesforceField`
+- belongs to many: `BusinessTopic` (via `business_topic_objects`)
+- has many: `ObjectRelationship` (as source or target)
+
+---
+
+### SalesforceField
+Table: `salesforce_fields`
+Purpose: A field on a Salesforce object. The most referenced entity across all tools.
+
+Key fields:
+- `id` (uuid)
+- `salesforce_object_id`: uuid
+- `api_name`: string — e.g. `Amount`, `My_Field__c`
+- `label`: string
+- `field_type`: string — e.g. `Currency`, `Text`, `Lookup`, `Picklist`
+- `description`: text — user-added business context
+- `owner_user_id`: uuid — nullable
+- `is_custom`: boolean
+
+Relationships:
+- belongs to: `SalesforceObject`
+- belongs to many: `BusinessTopic` (via `business_topic_fields`)
+- has many: `FieldChangeLog`
+- belongs to many: `Metric` (via `metric_fields`)
+- has many: `FieldMapping` (as source or target)
+- belongs to many: `Report` (via `report_fields`)
+
+---
+
+### BusinessTopic
+Table: `business_topics`
+Purpose: A user-defined grouping label. Applied across all tools to organize content by business domain.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `name`: string
+- `color`: string — hex color for ERD color-coding
+- `description`: text
+
+Relationships:
+- belongs to: `Organization`
+- belongs to many: `SalesforceObject`
+- belongs to many: `SalesforceField`
+- has many: `ERDView`
+- belongs to many: `Metric`
+- belongs to many: `Report`
+
+---
+
+### Metric
+Table: `metrics`
+Purpose: A defined, documented business measurement.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `name`: string (unique per org)
+- `description`: text
+- `calculation_logic`: text
+- `owner_user_id`: uuid — nullable
+- `status`: enum — `draft`, `published`
+
+Relationships:
+- belongs to: `Organization`
+- belongs to many: `SalesforceField` (via `metric_fields`)
+- belongs to many: `BusinessTopic` (via `metric_business_topics`)
+- belongs to many: `Report` (via `metric_reports`)
+- has many: `MetricRelationship` (as parent or child)
+
+Business rules:
+- Name must be unique within an Organization
+- Status `published` requires name and description
+
+---
+
+### ERDView
+Table: `erd_views`
+Purpose: A saved ERD diagram scoped to a Business Topic or initiative.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `name`: string
+- `business_topic_id`: uuid — nullable
+- `layout_data`: json — saved node positions
+
+Relationships:
+- belongs to: `Organization`
+- belongs to: `BusinessTopic` (nullable)
+- belongs to many: `SalesforceObject` (via `erd_view_objects`)
+
+---
+
+### FieldChangeLog
+Table: `field_change_logs`
+Purpose: Immutable record of what changed on a Salesforce field.
+
+Key fields:
+- `id` (uuid)
+- `salesforce_field_id`: uuid
+- `changed_at`: timestamp
+- `change_type`: enum — `type_changed`, `label_changed`, `picklist_changed`, `deleted`
+- `before_value`: json
+- `after_value`: json
+
+Relationships:
+- belongs to: `SalesforceField`
+
+Business rules:
+- Immutable — no updates or deletes
+- Created automatically during Salesforce sync
+
+---
+
+### MigrationProject
+Table: `migration_projects`
+Purpose: A data migration initiative.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `name`: string
+- `source_system`: string — description of the source (legacy CRM name, etc.)
+- `salesforce_org_id`: uuid — target org
+- `status`: enum — `active`, `completed`, `archived`
+
+Relationships:
+- belongs to: `Organization`
+- belongs to: `SalesforceOrg` (target)
+- has many: `ObjectMapping`
+
+---
+
+### ObjectMapping
+Table: `object_mappings`
+Purpose: Maps a source object/table to a target Salesforce object.
+
+Key fields:
+- `id` (uuid)
+- `migration_project_id`: uuid
+- `source_object_name`: string
+- `target_salesforce_object_id`: uuid
+
+Relationships:
+- belongs to: `MigrationProject`
+- belongs to: `SalesforceObject` (target)
+- has many: `FieldMapping`
+
+---
+
+### FieldMapping
+Table: `field_mappings`
+Purpose: Maps a source field to a target Salesforce field.
+
+Key fields:
+- `id` (uuid)
+- `object_mapping_id`: uuid
+- `source_field_name`: string
+- `target_salesforce_field_id`: uuid
+- `transformation_logic`: text — nullable
+- `status`: enum — `unmapped`, `in_progress`, `confirmed`, `blocked`
+- `blocked_reason`: text — nullable
+
+Relationships:
+- belongs to: `ObjectMapping`
+- belongs to: `SalesforceField` (target)
+
+Business rules:
+- Status `confirmed` requires both source and target to be defined
+- `blocked_reason` required when status is `blocked`
+
+---
+
+### Report / Dashboard
+Table: `reports`, `dashboards`
+Purpose: Salesforce reports and dashboards synced from the connected org.
+
+Key fields:
+- `id` (uuid)
+- `salesforce_org_id`: uuid
+- `salesforce_id`: string — Salesforce record ID
+- `name`: string
+- `owner_name`: string
+- `status`: enum — `active`, `under_review`, `deprecated`, `archived`
+- `last_run_at`: timestamp — nullable
+
+Relationships:
+- belongs to: `SalesforceOrg`
+- belongs to many: `BusinessTopic`
+- belongs to many: `Metric`
+- belongs to many: `SalesforceField`
 
 ---
 
 ## Relationship Map
 
 ```
-[STUB — add an ASCII or text diagram of entity relationships as the schema grows]
-
-Example:
 Organization
-  └── has many → Users
-  └── has many → Reports
-        └── has many → DataSources (via pivot)
+  ├── has many → User
+  ├── has many → BusinessTopic
+  │         └── organizes → SalesforceObject, SalesforceField, Metric, ERDView, Report
+  └── has many → SalesforceOrg
+                    ├── has many → SalesforceObject
+                    │               └── has many → SalesforceField
+                    │                               ├── has many → FieldChangeLog
+                    │                               ├── linked to → Metric (m2m)
+                    │                               ├── linked to → FieldMapping (target)
+                    │                               └── linked to → Report (m2m)
+                    ├── has many → Report
+                    ├── has many → Dashboard
+                    └── has many → MigrationProject (target org)
+                                    └── has many → ObjectMapping
+                                                    └── has many → FieldMapping
 ```
 
 ---
 
 ## Multi-Tenancy Model
 
-<!-- How is data isolation enforced? Org-scoped? User-scoped? -->
+Row-level multi-tenancy. Every table that contains business data has `organization_id`.
 
-```
-[STUB — define tenant isolation strategy]
-
-Example options:
-- Row-level: every table has an `organization_id` column, always scoped in queries
-- Schema-level: separate DB schema per tenant
-- Database-level: separate DB per tenant
-```
-
----
-
-## Permissions Model
-
-<!-- What roles exist? What can each role do? -->
-
-| Role | Scope | Permissions |
-|---|---|---|
-| [Role] | [org/global] | [what they can do] |
+- All queries **must** be scoped by `organization_id` from the authenticated user's context
+- Never query across organizations
+- SalesforceOrg, SalesforceObject, SalesforceField are all implicitly tenant-scoped via their org
 
 ---
 
 ## Key Constraints & Invariants
 
-<!-- Rules that must ALWAYS be true in the database -->
-<!-- The AI will apply these when writing migrations, seeders, and validation -->
-
-- [ ] **TODO:** Document database-level constraints as schema is built
-
-Examples:
-- "Email addresses are unique globally (not per-org)"
-- "A Report must have a valid `status` from: `['draft', 'published', 'archived']`"
-- "Cascade delete: deleting an Organization deletes all its Users and Reports"
+- Email addresses are unique globally (not per-org)
+- Metric names are unique per Organization
+- `FieldChangeLog` entries are immutable
+- A `FieldMapping` with status `confirmed` must have both `source_field_name` and `target_salesforce_field_id`
+- Deleting a `SalesforceOrg` cascades to all its objects, fields, reports, and dashboards
+- Deleting an `Organization` cascades to all its data
 
 ---
 
 ## Enums & Status Fields
 
-<!-- Document all status/type enums so the AI uses the right values -->
-
 | Model | Field | Allowed Values |
 |---|---|---|
-| [Model] | [field] | `value1`, `value2`, `value3` |
+| `User` | `role` | `admin`, `member`, `viewer` |
+| `Metric` | `status` | `draft`, `published` |
+| `FieldMapping` | `status` | `unmapped`, `in_progress`, `confirmed`, `blocked` |
+| `Report` / `Dashboard` | `status` | `active`, `under_review`, `deprecated`, `archived` |
+| `MigrationProject` | `status` | `active`, `completed`, `archived` |
+| `FieldChangeLog` | `change_type` | `type_changed`, `label_changed`, `picklist_changed`, `deleted` |
 
 ---
 
 ## Notes for the AI
 
 When writing code that touches the database:
-1. Always scope queries to the authenticated user's context (org, team, etc.)
-2. Check this file before assuming field names or relationships
-3. Use the exact enum values defined in this file — don't invent new statuses
-4. If you add a new model, update this file in the same PR
+1. Always scope queries by `organization_id` from the authenticated user
+2. SalesforceField is the most cross-referenced entity — changes to it can affect Metrics, Migrations, Reports, and the Dictionary simultaneously
+3. Use the exact enum values defined above — do not invent new statuses
+4. BusinessTopic is a shared cross-tool concept — it appears as a pivot relationship on most major entities
+5. When adding a new model, update this file in the same PR

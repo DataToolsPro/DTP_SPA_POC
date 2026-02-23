@@ -13,15 +13,10 @@ alwaysApply: true
 
 ## What Is DataTools Pro?
 
-DataTools Pro is a **[describe the core product here — e.g. "data management and reporting platform for small-to-mid-sized businesses"]**.
-
-<!-- OWNER: @rmgoodm — fill in the one-paragraph product description -->
-<!-- Example: "DataTools Pro helps operations teams import, clean, analyze, and export data
-     without needing engineering support. Users connect data sources, apply transformation
-     rules, and produce reports or API outputs on a schedule or on demand." -->
+DataTools Pro is a **Salesforce-connected platform that brings Salesforce and data cloud professionals together**. It manages an organization's metrics, data dictionary, entity relationships, migrations, and report governance — all within a single shared data model.
 
 **Core value proposition:**
-> [One sentence: who uses it, what they do with it, and what problem it solves]
+> DataTools Pro helps Salesforce administrators, data analysts, analytics professionals, and business teams collaborate more effectively by maintaining a living, connected documentation and governance layer on top of their Salesforce org.
 
 ---
 
@@ -29,71 +24,80 @@ DataTools Pro is a **[describe the core product here — e.g. "data management a
 
 | User Type | What They Do |
 |---|---|
-| [Role 1 — e.g. Admin] | [What they manage / configure] |
-| [Role 2 — e.g. Analyst] | [What they create / view] |
-| [Role 3 — e.g. Viewer] | [Read-only access to...] |
-
-<!-- Fill in the real user roles and permissions as they're built out -->
+| Salesforce Administrator | Manages objects, fields, and org configuration; uses the Data Dictionary and ERD |
+| Data Analyst | Tracks metrics, builds glossaries, documents field-level impact |
+| Analytics Professional | Governs reports and dashboards, manages the report lifecycle |
+| Business Stakeholder | Consumes published metrics glossary and ERD visuals |
+| Migration Engineer | Maps source-to-target fields, manages migration projects, generates SQL |
 
 ---
 
-## Core Features (Current & Planned)
+## The Five Tools (All Share One Data Model)
 
-| Feature | Status | Jira Epic |
-|---|---|---|
-| [Feature 1] | 🚧 In Progress | DTP-XX |
-| [Feature 2] | 📋 Planned | DTP-XX |
-| [Feature 3] | ✅ Done | DTP-XX |
+DataTools Pro is a suite of five interconnected tools. They operate on the **same underlying data graph**, stored as a relational database. Changes in one tool are reflected across others.
 
-<!-- Update this table as features ship. Reference docs/features/ for completed feature docs. -->
+| Tool | What It Does |
+|---|---|
+| **Metrics Glossary** | Tracks Salesforce metrics and documentation; shows how metrics, reports, and business topics relate |
+| **Entity Relationship Diagram (ERD)** | Visualizes connections between Salesforce objects; auto-generates ERDs organized by business topic, initiative, or application |
+| **Data Dictionary** | Live connected documentation of Salesforce objects and fields aligned to business initiatives; tracks what changed and the reporting/analytics impact |
+| **Data Migration Tools** | Object and field mapping process management; replaces spreadsheets; generates SQL for ETL during migrations |
+| **Report Management & Repository** | Governs the lifecycle of Salesforce reports and dashboards; enables categorization, searching, and adoption tracking |
+
+See deep-dive docs in `docs/product/tools/` for each tool.
+
+---
+
+## Shared Data Model Concepts
+
+All five tools operate on the same underlying entities. Key shared concepts:
+
+- **Salesforce Org** — the connected Salesforce instance (multi-org support may exist)
+- **Salesforce Object** — standard or custom Salesforce object (e.g. `Account`, `Opportunity`)
+- **Salesforce Field** — a field on an object
+- **Business Topic** — a grouping/categorization concept used to organize objects, metrics, and ERDs
+- **Metric** — a defined, documented business metric tied to Salesforce fields/reports
+- **Migration Project** — a data migration initiative with source-to-target mappings
+- **Report / Dashboard** — a Salesforce report or dashboard under governance
+
+See `docs/architecture/data-model.md` and `.cursor/rules/data-model.mdc` for the full entity map.
 
 ---
 
 ## Key Business Rules
 
-<!-- These are the non-obvious rules the AI must know to write correct code -->
-<!-- Add rules here as you discover them during development -->
-
-- [ ] **TODO:** Document key business rules (validation, permissions, data constraints)
-
-Examples of what goes here:
-- "Users can only see data within their own Organization"
-- "A Report cannot be published unless it has at least one DataSource"
-- "Admins can impersonate any user within their Organization"
-
----
-
-## Terminology / Glossary
-
-<!-- Domain-specific terms that appear in code, Jira, and user-facing copy -->
-<!-- Full glossary lives at docs/product/glossary.md -->
-
-| Term | Meaning |
-|---|---|
-| [Term 1] | [Definition] |
-| [Term 2] | [Definition] |
-
-See full glossary → [`docs/product/glossary.md`](mdc:docs/product/glossary.md)
+- All data is scoped to an **Organization** (multi-tenant, row-level isolation)
+- A Salesforce Org is connected via OAuth as a **Salesforce Connected App**
+- Objects and fields are sourced from the live Salesforce org (not manually entered)
+- Business Topics are user-defined grouping labels applied across all tools
+- The same Salesforce Object/Field can appear in the Dictionary, ERD, Metrics Glossary, AND Migration Tools simultaneously — they share the same record
 
 ---
 
 ## What This Is NOT
 
-<!-- Explicit non-goals help the AI avoid building the wrong thing -->
+- Not a general-purpose BI tool (no drag-and-drop chart builder)
+- Not a Salesforce admin panel (no object/field creation — reads from Salesforce, doesn't write schema)
+- Not a standalone ETL tool (Migration Tools generates SQL mapping guidance, doesn't execute migrations)
+- Not limited to one Salesforce org per account (multi-org is a consideration)
 
-- Not a BI tool (no drag-and-drop chart builder)
-- Not a database admin panel (no raw SQL editor)
-- [Add more non-goals as scope is clarified]
+---
+
+## Terminology
+
+See full glossary → [`docs/product/glossary.md`](mdc:docs/product/glossary.md)
 
 ---
 
 ## Deep Dives
 
-For more detailed product knowledge, see:
-
 | Doc | What's in it |
 |---|---|
 | [`docs/product/README.md`](mdc:docs/product/README.md) | Full product overview |
 | [`docs/product/glossary.md`](mdc:docs/product/glossary.md) | Domain terminology |
+| [`docs/product/tools/metrics-glossary.md`](mdc:docs/product/tools/metrics-glossary.md) | Metrics Glossary tool |
+| [`docs/product/tools/erd.md`](mdc:docs/product/tools/erd.md) | Entity Relationship Diagram tool |
+| [`docs/product/tools/data-dictionary.md`](mdc:docs/product/tools/data-dictionary.md) | Data Dictionary tool |
+| [`docs/product/tools/data-migration.md`](mdc:docs/product/tools/data-migration.md) | Data Migration Tools |
+| [`docs/product/tools/report-management.md`](mdc:docs/product/tools/report-management.md) | Report Management & Repository |
 | [`docs/architecture/README.md`](mdc:docs/architecture/README.md) | Technical architecture |
-| [`docs/features/`](mdc:docs/features) | End-user feature docs |

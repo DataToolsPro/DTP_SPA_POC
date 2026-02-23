@@ -1,91 +1,104 @@
-# DataTools Pro — Product Knowledge Base
-
-This directory is the **authoritative product reference** for the team and the AI.
-It answers *what* the product does and *why* — not how it's built (that's in `docs/architecture/`).
-
----
+# DataTools Pro — Product Overview
 
 ## What Is DataTools Pro?
 
-<!-- OWNER: @rmgoodm — write a 2-3 paragraph product description here -->
-<!-- This is the single place to explain what the product is to anyone new -->
+DataTools Pro is a **Salesforce-connected governance and documentation platform** that brings Salesforce administrators, data analysts, analytics professionals, and business teams together in a single shared workspace.
 
-```
-[STUB — fill in the product description]
+Organizations running Salesforce accumulate hundreds of custom objects, thousands of fields, complex report libraries, and ongoing data migrations — all managed in disconnected spreadsheets, wikis, and tribal knowledge. DataTools Pro replaces that chaos with a **living, connected documentation layer** that stays in sync with your actual Salesforce org.
 
-Suggested format:
-- Paragraph 1: What problem does DataTools Pro solve? Who has this problem?
-- Paragraph 2: How does DataTools Pro solve it? What's the core workflow?
-- Paragraph 3: What makes it different from alternatives?
-```
+**Core value proposition:**
+> DataTools Pro helps Salesforce and data cloud professionals understand what their data means, where it comes from, and how it connects — so they can build faster, collaborate better, and make decisions with confidence.
 
 ---
 
-## Target Users
+## The Five Tools
 
-<!-- Who are the real humans using this product day-to-day? -->
+DataTools Pro is a suite of five interconnected tools that all operate on the **same underlying data model**. They are not separate products — they are different views and workflows on the same connected graph of Salesforce metadata and business context.
 
-| User Persona | Role | Primary Goal | Pain Point Solved |
-|---|---|---|---|
-| [Persona 1] | [Their job title] | [What they're trying to accomplish] | [What was frustrating before] |
-| [Persona 2] | | | |
+| Tool | Core Job |
+|---|---|
+| [Metrics Glossary](./tools/metrics-glossary.md) | Define and publish your business metrics and how they connect to Salesforce data |
+| [Entity Relationship Diagram](./tools/erd.md) | Visualize object relationships; auto-generate ERDs by business topic or initiative |
+| [Data Dictionary](./tools/data-dictionary.md) | Live, connected documentation of every Salesforce object and field |
+| [Data Migration Tools](./tools/data-migration.md) | Map source-to-target fields and generate SQL for migrations |
+| [Report Management & Repository](./tools/report-management.md) | Govern the lifecycle of reports and dashboards at scale |
+
+---
+
+## Who Uses It
+
+| Persona | Primary Tools | Goal |
+|---|---|---|
+| **Salesforce Administrator** | Data Dictionary, ERD | Understand their org's full object/field landscape; document changes |
+| **Data Analyst** | Metrics Glossary, Data Dictionary | Know exactly what each metric means and where it comes from |
+| **Analytics Professional** | Report Management, Metrics Glossary | Govern the report lifecycle; reduce report sprawl |
+| **Migration Engineer** | Data Migration Tools, Data Dictionary | Map fields confidently; generate SQL without error-prone spreadsheets |
+| **Business Stakeholder** | Metrics Glossary (read-only), ERD | Understand what the data means in business terms |
+
+---
+
+## The Shared Data Model
+
+All five tools are views into the same underlying data graph. Key shared entities:
+
+```
+Organization (tenant)
+  └── Salesforce Org (connected via OAuth)
+        ├── Objects (Account, Contact, custom__c, ...)
+        │     └── Fields (Name, Email, custom_field__c, ...)
+        │           ├── linked to → Metrics
+        │           ├── linked to → Migration Mappings
+        │           └── linked to → Reports
+        ├── Business Topics (user-defined groupings)
+        │     ├── organizes → ERD Views
+        │     ├── groups → Dictionary entries
+        │     └── categorizes → Reports
+        └── Reports / Dashboards
+```
+
+This is why changes in the Data Dictionary are instantly visible in the ERD and Metrics Glossary — they share the same records.
+
+---
+
+## How DataTools Pro Connects to Salesforce
+
+DataTools Pro connects to your Salesforce org as a **Connected App** using OAuth 2.0.
+
+- Reads metadata: objects, fields, reports, dashboards
+- Does **not** write schema back to Salesforce
+- Supports multiple Salesforce orgs per Organization account
+- Field/object data refreshes on demand or on a schedule (TBD)
 
 ---
 
 ## Product Principles
 
-<!-- What guides decisions when there's a trade-off? -->
-<!-- These help the AI (and developers) make the right call without asking every time -->
-
-1. **[Principle 1]** — [short explanation]
-2. **[Principle 2]** — [short explanation]
-3. **[Principle 3]** — [short explanation]
-
-Examples of strong principles:
-- "Data integrity over speed — we never guess or auto-correct user data silently"
-- "One workflow, done well — don't add features until the core is excellent"
-- "Admin complexity is OK — end-user complexity is not"
+1. **Living documentation over static exports** — the dictionary, glossary, and ERD stay connected to the live Salesforce org, not a snapshot
+2. **Cross-team alignment** — every tool is designed to bridge the gap between technical (admin/analyst) and business (stakeholder) users
+3. **Replace spreadsheets** — every tool has a specific spreadsheet workflow it eliminates
+4. **One data model, five views** — features are additive, not siloed; the same underlying data powers all tools
 
 ---
 
-## Current Feature Surface
+## Roadmap
 
-| Area | What It Does | Status | Feature Doc |
-|---|---|---|---|
-| [Area 1] | [Brief description] | 🚧 / ✅ / 📋 | [link] |
-| [Area 2] | | | |
-
----
-
-## Roadmap (High Level)
-
-<!-- Not a commitment — a shared understanding of where we're going -->
-
-**Now (active sprint):**
-- [ ] [Feature/Epic]
-
-**Next:**
-- [ ] [Feature/Epic]
-
-**Later:**
-- [ ] [Feature/Epic]
-
----
-
-## Out of Scope (Intentional Non-Goals)
-
-<!-- Explicit decisions NOT to build something. Prevents scope creep. -->
-
-- [Thing we're not building and why]
-- [Thing we're not building and why]
-
----
-
-## Key Decisions Log
-
-<!-- A running log of significant product decisions, with context -->
-<!-- Helps new team members and the AI understand WHY things are the way they are -->
-
-| Date | Decision | Reasoning |
+| Area | Status | Notes |
 |---|---|---|
-| [date] | [What was decided] | [Why — context, alternatives considered] |
+| Metrics Glossary | 🚧 In Progress | |
+| Entity Relationship Diagram | 🚧 In Progress | |
+| Data Dictionary | 🚧 In Progress | |
+| Data Migration Tools | 📋 Planned | |
+| Report Management | 📋 Planned | |
+| Multi-org support | 📋 Planned | |
+| Published / public glossary export | 📋 Planned | |
+
+<!-- Update as features ship -->
+
+---
+
+## Out of Scope
+
+- Not a BI or charting tool (no chart builder)
+- Not a Salesforce admin panel (doesn't create/edit objects or fields in Salesforce)
+- Not a standalone ETL engine (generates SQL mapping guidance — doesn't execute migrations)
+- Not a general-purpose data catalog (Salesforce-specific, not multi-platform)
