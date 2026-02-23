@@ -156,6 +156,7 @@ Key fields:
 - `calculation_logic`: text
 - `owner_user_id`: uuid — nullable
 - `status`: enum — `draft`, `published`
+- `source`: enum — `manual`, `salesforce_import`, `tableau_import`, `ga_import`, `excel_import`
 
 Relationships:
 - belongs to: `Organization`
@@ -163,10 +164,73 @@ Relationships:
 - belongs to many: `BusinessTopic` (via `metric_business_topics`)
 - belongs to many: `Report` (via `metric_reports`)
 - has many: `MetricRelationship` (as parent or child)
+- has many: `MetricAlias`
 
 Business rules:
 - Name must be unique within an Organization
 - Status `published` requires name and description
+- Aliases are tracked as `MetricAlias` records — not as duplicate Metric records
+
+---
+
+### MetricAlias
+Table: `metric_aliases`
+Purpose: Tracks alternative names for the same metric discovered across different dashboards or teams. Surfaced by the Metrics Analyst.
+
+Key fields:
+- `id` (uuid)
+- `metric_id`: uuid — the canonical metric this alias maps to
+- `alias_name`: string — the alternative name found in the source
+- `source`: string — which dashboard/tool it was found in
+- `confirmed_by_user_id`: uuid — nullable
+
+Relationships:
+- belongs to: `Metric`
+
+Business rules:
+- An alias always resolves to one canonical Metric
+- Aliases require user confirmation — not auto-merged
+
+---
+
+### MetricsAnalystRun
+Table: `metrics_analyst_runs`
+Purpose: A record of a Metrics Analyst analysis run against a set of dashboards/reports.
+
+Key fields:
+- `id` (uuid)
+- `organization_id`: uuid
+- `salesforce_org_id`: uuid
+- `status`: enum — `pending`, `running`, `complete`, `failed`
+- `source_report_ids`: json — list of report/dashboard IDs analyzed
+- `recommendation_count`: integer
+- `completed_at`: timestamp — nullable
+
+Relationships:
+- belongs to: `Organization`
+- belongs to: `SalesforceOrg`
+- has many: `MetricRecommendation`
+
+---
+
+### MetricRecommendation
+Table: `metric_recommendations`
+Purpose: A single metric recommendation produced by the Metrics Analyst, pending user action.
+
+Key fields:
+- `id` (uuid)
+- `metrics_analyst_run_id`: uuid
+- `suggested_name`: string
+- `suggested_description`: text — nullable
+- `source_report_id`: uuid — which report this was derived from
+- `conflict_type`: enum — `new`, `alias`, `conflict`, `gap` — nullable
+- `status`: enum — `pending`, `merged`, `aliased`, `dismissed`
+- `resolved_metric_id`: uuid — nullable — the metric this was merged/aliased into
+
+Relationships:
+- belongs to: `MetricsAnalystRun`
+- belongs to: `Report` (source)
+- belongs to: `Metric` (resolved — nullable)
 
 ---
 
@@ -343,6 +407,10 @@ Row-level multi-tenancy. Every table that contains business data has `organizati
 | `Report` / `Dashboard` | `status` | `active`, `under_review`, `deprecated`, `archived` |
 | `MigrationProject` | `status` | `active`, `completed`, `archived` |
 | `FieldChangeLog` | `change_type` | `type_changed`, `label_changed`, `picklist_changed`, `deleted` |
+| `Metric` | `source` | `manual`, `salesforce_import`, `tableau_import`, `ga_import`, `excel_import` |
+| `MetricRecommendation` | `conflict_type` | `new`, `alias`, `conflict`, `gap` |
+| `MetricRecommendation` | `status` | `pending`, `merged`, `aliased`, `dismissed` |
+| `MetricsAnalystRun` | `status` | `pending`, `running`, `complete`, `failed` |
 
 ---
 

@@ -31,9 +31,13 @@
 
 | Term (Code) | User Term (UI) | Definition |
 |---|---|---|
-| `Metric` | Metric | A named, documented business measurement (e.g. "Monthly Recurring Revenue"). Has a name, description, calculation logic, and owner. |
-| `MetricRelationship` | Related Metric | An explicit link between two metrics showing dependency or hierarchy. |
+| `Metric` | Metric | A named, documented business measurement (e.g. "Monthly Recurring Revenue"). Has a name, description, calculation logic, owner, and status. |
+| `MetricRelationship` | Related Metric | An explicit link between two metrics showing dependency or hierarchy (e.g. "Win Rate depends on Opportunities Won"). |
 | `CalculationLogic` | Calculation / How It's Calculated | Human-readable description of how the metric is derived from Salesforce data. |
+| `MetricAlias` | Alias | An alternative name for the same metric found in a different dashboard, team, or tool. Always resolves to one canonical Metric. |
+| `MetricsAnalystRun` | Metrics Analyst | A run of the patent-pending automated analysis that reads dashboard/report metadata and produces metric recommendations. |
+| `MetricRecommendation` | Recommendation | A single metric suggestion from the Metrics Analyst, pending user action (merge, alias, dismiss). |
+| `VersionOfTruth` | Version of Truth / Conflict | A conflict where the same metric is defined or calculated differently in two or more places. Detected by the Metrics Analyst. |
 
 ---
 
