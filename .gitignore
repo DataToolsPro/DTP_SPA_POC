@@ -104,3 +104,6 @@ test-results.xml
 secrets.json
 secrets.yaml
 secrets.yml
+
+# Cursor MCP config (contains personal Jira API token)
+.cursor/mcp.json

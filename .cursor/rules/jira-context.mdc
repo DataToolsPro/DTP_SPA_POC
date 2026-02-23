@@ -1,0 +1,55 @@
+---
+description: How to use Jira context when working on features, tasks, and bugs in this project.
+globs:
+alwaysApply: true
+---
+
+# Jira as Source of Truth
+
+Every piece of work in this repo is tied to a Jira ticket in the **DTP** project.
+
+## How to Pull Context
+
+When the user mentions a ticket (e.g. `DTP-42`), use the **Atlassian MCP server** to fetch
+the full story before touching any code:
+
+```
+mcp: atlassian → get_issue(issueKey: "DTP-42")
+```
+
+This gives you:
+- Story title and description
+- Acceptance criteria (AC)
+- Story type (User Story / Task / Bug)
+- Status, priority, linked issues
+
+## Work Type Definitions
+
+| Jira Type | What it is | Docs impact |
+|---|---|---|
+| **User Story** | End-user visible feature or change | Requires `docs/features/<slug>.md` update |
+| **Task** | System / infrastructure / internal change | No end-user doc needed |
+| **Bug** | Something broken — needs verification criteria | Bug doc only if behavior change is user-visible |
+
+## Before Writing Any Code
+
+1. Fetch the Jira ticket via MCP.
+2. Confirm the acceptance criteria with the user if any AC is ambiguous.
+3. Identify the work type — this determines whether a `docs/features/` entry is needed.
+4. Name your branch from the ticket: `feature/DTP-42-<slug>` or `hotfix/DTP-99-<slug>`.
+
+## After Implementation
+
+For **User Stories**: update or create `docs/features/<feature-slug>.md` using the template
+at `docs/features/_template.md`. The doc should be written as if explaining the feature to
+an end user — not a developer.
+
+For **Tasks**: no doc needed. PR description is sufficient.
+
+For **Bugs**: add a "Verification" section to the PR if the fix changes visible behavior.
+
+## Ticket Reference in Commits and PRs
+
+- Commit: `feat(scope): description` → footer: `Closes DTP-42`
+- PR title: `[DTP-42] Short imperative description`
+- The Jira ticket number must appear in every PR.

@@ -136,6 +136,46 @@ cat ~/.ssh/dtp_deploy_staging.pub
 
 ---
 
+## Jira MCP — Local Dev Setup
+
+The Cursor AI assistant reads Jira tickets live via MCP while you code. Each developer sets this up **locally only** — the token is personal and never committed.
+
+### One-Time Setup Per Developer
+
+1. **Generate your Atlassian API token**
+   → https://id.atlassian.com/manage-api-tokens → Create API token → name it `cursor-mcp`
+
+2. **Copy the MCP config template**
+   ```bash
+   cp .cursor/mcp.json.example .cursor/mcp.json
+   ```
+
+3. **Fill in your values in `.cursor/mcp.json`**
+   ```json
+   {
+     "mcpServers": {
+       "atlassian": {
+         "env": {
+           "JIRA_URL": "https://YOUR_ORG.atlassian.net",
+           "JIRA_USERNAME": "your@email.com",
+           "JIRA_API_TOKEN": "your-token-here"
+         }
+       }
+     }
+   }
+   ```
+
+4. **Restart Cursor** → the Atlassian MCP server will appear in the AI tools panel.
+
+> `.cursor/mcp.json` is gitignored. The example file (`.cursor/mcp.json.example`) is the committed reference.
+
+| Secret | Where It Lives | Who Manages It |
+|---|---|---|
+| `JIRA_API_TOKEN` | Your personal `.cursor/mcp.json` only | Each developer |
+| `JIRA_URL` | Shared in `.cursor/mcp.json.example` | @rmgoodm |
+
+---
+
 ## 1Password Vault Structure
 
 **Vault name:** `DTP_SPA_POC — Dev Secrets`
@@ -172,8 +212,11 @@ DTP_SPA_POC — Dev Secrets/
 ├── 🔑 AWS RDS — Staging
 │     DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD
 │
-└── 🔑 AWS RDS — Production
-      DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD
+├── 🔑 AWS RDS — Production
+│     DB_HOST, DB_NAME, DB_USERNAME, DB_PASSWORD
+│
+└── 🔑 Jira MCP (per developer — each dev's personal entry)
+      JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN
 ```
 
 ---

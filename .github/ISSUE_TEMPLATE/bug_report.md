@@ -6,6 +6,12 @@ labels: bug
 assignees: ''
 ---
 
+## Jira Ticket
+<!-- Link to the Jira bug if it exists, or create one -->
+https://YOUR_ORG.atlassian.net/browse/DTP-
+
+---
+
 ## Bug Description
 <!-- Clear 1-2 sentence description of what's wrong -->
 
@@ -25,11 +31,25 @@ assignees: ''
 ## Actual Behavior
 <!-- What actually happens -->
 
+---
+
 ## Severity
 - [ ] 🔴 P0 — Production down / data loss
 - [ ] 🟠 P1 — Major feature broken for all users
 - [ ] 🟡 P2 — Feature degraded / workaround exists
 - [ ] 🟢 P3 — Minor / cosmetic
+
+---
+
+## Verification Criteria
+<!-- How will we KNOW the bug is fixed? These become the AC for the fix PR. -->
+<!-- Be specific — a passing condition that can be re-tested after the fix -->
+
+- [ ] Verify 1: Given [state], when [action], then [expected result]
+- [ ] Verify 2:
+- [ ] Regression check: confirm no adjacent behavior was broken
+
+---
 
 ## Additional Context
 <!-- Screenshots, console errors, Cloudways logs, Cloudflare analytics -->

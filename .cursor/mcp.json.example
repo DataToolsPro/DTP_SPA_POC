@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "atlassian": {
+      "command": "npx",
+      "args": ["-y", "@sooperset/mcp-atlassian"],
+      "env": {
+        "JIRA_URL": "https://YOUR_ORG.atlassian.net",
+        "JIRA_USERNAME": "YOUR_EMAIL@datatoolspro.com",
+        "JIRA_API_TOKEN": "YOUR_JIRA_API_TOKEN",
+        "JIRA_PROJECTS_FILTER": "DTP"
+      }
+    }
+  }
+}
