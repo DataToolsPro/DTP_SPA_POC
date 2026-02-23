@@ -8,40 +8,39 @@
 #   - Use @DataToolsPro/backend-team or individual @handles
 #   - At least 1 listed owner must approve before a PR can merge
 #
-# Update @rmgoodm to your actual GitHub username(s).
-# If you add a second dev, add them here: @rmgoodm @seconddev
+# Owners: @rmgoodm @waqarcs11
 # =============================================================================
 
 # --- Catch-all: everything requires at least one owner review ----------------
-*                           @rmgoodm
+*                           @rmgoodm @waqarcs11
 
 # --- Laravel Backend ---------------------------------------------------------
-/app/**                     @rmgoodm
-/routes/**                  @rmgoodm
-/database/**                @rmgoodm
-/config/**                  @rmgoodm
-/bootstrap/**               @rmgoodm
-composer.json               @rmgoodm
-composer.lock               @rmgoodm
+/app/**                     @rmgoodm @waqarcs11
+/routes/**                  @rmgoodm @waqarcs11
+/database/**                @rmgoodm @waqarcs11
+/config/**                  @rmgoodm @waqarcs11
+/bootstrap/**               @rmgoodm @waqarcs11
+composer.json               @rmgoodm @waqarcs11
+composer.lock               @rmgoodm @waqarcs11
 
 # --- React SPA ---------------------------------------------------------------
-/spa/**                     @rmgoodm
+/spa/**                     @rmgoodm @waqarcs11
 
 # --- AI / Prompt Management --------------------------------------------------
 # These files carry the highest review bar — never merge prompt changes
 # without a deliberate review pass.
-/ai/**                      @rmgoodm
+/ai/**                      @rmgoodm @waqarcs11
 
 # --- CI/CD & Infra -----------------------------------------------------------
 # Changes to workflows must ALWAYS be reviewed — they can exfiltrate secrets.
-/.github/**                 @rmgoodm
-/Dockerfile                 @rmgoodm
-/docker-compose*.yml        @rmgoodm
-/.env.example               @rmgoodm
+/.github/**                 @rmgoodm @waqarcs11
+/Dockerfile                 @rmgoodm @waqarcs11
+/docker-compose*.yml        @rmgoodm @waqarcs11
+/.env.example               @rmgoodm @waqarcs11
 
 # --- Cursor AI Rules ---------------------------------------------------------
-/.cursor/**                 @rmgoodm
+/.cursor/**                 @rmgoodm @waqarcs11
 
 # --- Docs --------------------------------------------------------------------
-/docs/**                    @rmgoodm
-README.md                   @rmgoodm
+/docs/**                    @rmgoodm @waqarcs11
+README.md                   @rmgoodm @waqarcs11
