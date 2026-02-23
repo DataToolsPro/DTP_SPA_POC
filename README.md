@@ -1,6 +1,6 @@
-# DTP_SPA_POC
+# DTP_APP_V3
 
-> **DataTools Pro — SPA Proof of Concept**
+> **DataTools Pro — Production Application**
 > Laravel API backend + React SPA + AI-powered agentic workflows.
 
 ---
@@ -39,7 +39,7 @@ This repo is the POC for the next-generation DataTools Pro single-page applicati
 ## Repository Structure
 
 ```
-DTP_SPA_POC/
+DTP_APP_V3/
 │
 ├── app/                        # Laravel: Controllers, Models, Services
 ├── bootstrap/                  # Laravel: app bootstrap + providers

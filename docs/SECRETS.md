@@ -10,7 +10,7 @@ This document is the single source of truth for every secret and configuration v
 ┌─────────────────────────────────────────────────────────────────┐
 │  TIER 1 — Local Dev                                             │
 │  Your machine only. Never leaves your laptop.                   │
-│  Source: 1Password vault "DTP_SPA_POC — Dev Secrets"           │
+│  Source: 1Password vault "DTP_APP_V3 — Dev Secrets"           │
 │  File: .env  (gitignored)                                       │
 ├─────────────────────────────────────────────────────────────────┤
 │  TIER 2 — CI/CD (GitHub Actions)                                │
@@ -38,7 +38,7 @@ This document is the single source of truth for every secret and configuration v
 
 ## GitHub Repository Secrets
 
-**Location:** GitHub → DTP_SPA_POC → Settings → Secrets and variables → Actions
+**Location:** GitHub → DTP_APP_V3 → Settings → Secrets and variables → Actions
 
 These are available to ALL GitHub Actions workflows across all environments.
 
@@ -56,7 +56,7 @@ These are available to ALL GitHub Actions workflows across all environments.
 
 ## GitHub Environment Secrets
 
-**Location:** GitHub → DTP_SPA_POC → Settings → Environments → [staging or production] → Secrets
+**Location:** GitHub → DTP_APP_V3 → Settings → Environments → [staging or production] → Secrets
 
 These are scoped per environment and only injected when that environment is being deployed.
 
@@ -84,7 +84,7 @@ These are scoped per environment and only injected when that environment is bein
 
 ## GitHub Environment Variables (Non-Secret Config)
 
-**Location:** GitHub → DTP_SPA_POC → Settings → Environments → [env] → Variables
+**Location:** GitHub → DTP_APP_V3 → Settings → Environments → [env] → Variables
 
 | Variable Name | Staging Value | Production Value |
 |---|---|---|
@@ -203,12 +203,12 @@ Each developer sets this up **locally only** — the token is personal and never
 
 ## 1Password Vault Structure
 
-**Vault name:** `DTP_SPA_POC — Dev Secrets`
+**Vault name:** `DTP_APP_V3 — Dev Secrets`
 
 Suggested organization:
 
 ```
-DTP_SPA_POC — Dev Secrets/
+DTP_APP_V3 — Dev Secrets/
 ├── 🔑 .env — Local Development
 │     (complete .env file contents for local dev)
 │

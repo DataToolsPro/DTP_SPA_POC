@@ -1,6 +1,6 @@
 # Environments
 
-DTP_SPA_POC runs across four environments. Each has a specific purpose, trigger, and audience.
+DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, and audience.
 
 ---
 

@@ -7,7 +7,7 @@
 # Docs: https://www.promptfoo.dev/docs/configuration/guide/
 # =============================================================================
 
-description: "DTP_SPA_POC — Prompt Regression Suite"
+description: "DTP_APP_V3 — Prompt Regression Suite"
 
 # Default provider — override per eval file if needed
 defaultTest:

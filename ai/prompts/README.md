@@ -1,6 +1,6 @@
 # AI Prompts
 
-This directory contains all prompt templates used by DTP_SPA_POC.
+This directory contains all prompt templates used by DTP_APP_V3.
 
 ## Philosophy
 

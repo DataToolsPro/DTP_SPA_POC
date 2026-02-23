@@ -43,7 +43,7 @@ This directory contains technical architecture documentation for the engineering
 ## Repository Structure
 
 ```
-DTP_SPA_POC/                    ← monorepo root
+DTP_APP_V3/                    ← monorepo root
 ├── app/                        ← Laravel: Models, Controllers, Services
 ├── routes/                     ← Laravel: API + web routes
 ├── database/                   ← Migrations, seeders, factories

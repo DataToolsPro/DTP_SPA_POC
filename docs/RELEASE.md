@@ -51,7 +51,7 @@ Before promoting, confirm the latest merge is behaving on staging:
 
 ### Step 2 — Trigger the Production Deploy
 
-1. Go to **GitHub → DTP_SPA_POC → Actions → Deploy — Production**
+1. Go to **GitHub → DTP_APP_V3 → Actions → Deploy — Production**
 2. Click **"Run workflow"** (top right)
 3. Fill in:
    - **SHA**: leave blank (uses latest `main`)
@@ -163,7 +163,7 @@ If production is broken after a deploy:
 
 ### Option B — Cloudflare Pages Instant Rollback (SPA only)
 
-1. Go to **Cloudflare Dashboard → Pages → DTP_SPA_POC**
+1. Go to **Cloudflare Dashboard → Pages → DTP_APP_V3**
 2. Click **"Deployments"**
 3. Find the last good deployment
 4. Click **"Rollback to this deployment"**
@@ -233,9 +233,9 @@ Copy this into a GitHub Issue when doing a major release:
 |---|---|
 | Staging app | `https://staging.datatoolspro.com` |
 | Production app | `https://app.datatoolspro.com` |
-| GitHub Actions | `https://github.com/DataToolsPro/DTP_SPA_POC/actions` |
-| GitHub Environments | `https://github.com/DataToolsPro/DTP_SPA_POC/settings/environments` |
-| Cloudflare Pages | `https://dash.cloudflare.com → Pages → DTP_SPA_POC` |
+| GitHub Actions | `https://github.com/DataToolsPro/DTP_APP_V3/actions` |
+| GitHub Environments | `https://github.com/DataToolsPro/DTP_APP_V3/settings/environments` |
+| Cloudflare Pages | `https://dash.cloudflare.com → Pages → DTP_APP_V3` |
 | Cloudways Staging | `https://platform.cloudways.com → your staging app` |
 | Cloudways Production | `https://platform.cloudways.com → your production app` |
 | AWS RDS Console | `https://console.aws.amazon.com/rds` |

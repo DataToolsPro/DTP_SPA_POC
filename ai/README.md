@@ -1,6 +1,6 @@
 # AI / Agentic Workflows
 
-This directory is the single source of truth for all AI-powered features in DTP_SPA_POC.
+This directory is the single source of truth for all AI-powered features in DTP_APP_V3.
 
 ## Why a Dedicated `ai/` Directory?
 

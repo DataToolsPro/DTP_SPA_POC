@@ -2,7 +2,7 @@
 jira: DTP-XX
 title: "Feature Name"
 status: draft | review | approved
-pr: https://github.com/DataToolsPro/DTP_SPA_POC/pull/XX
+pr: https://github.com/DataToolsPro/DTP_APP_V3/pull/XX
 ---
 
 # Feature Name

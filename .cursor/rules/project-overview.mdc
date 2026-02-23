@@ -2,10 +2,10 @@
 alwaysApply: true
 ---
 
-# DTP_SPA_POC — Project Overview
+# DTP_APP_V3 — Project Overview
 
 ## What This Project Is
-DataTools Pro SPA — a React SPA front-end backed by a Laravel API.
+DataTools Pro — a React SPA front-end backed by a Laravel API.
 The repo is a **monorepo** with two primary surfaces:
 
 1. **Laravel backend** at the repo root (`app/`, `routes/`, `database/`, etc.)
