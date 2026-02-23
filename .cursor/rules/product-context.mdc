@@ -41,7 +41,7 @@ DataTools Pro is a suite of five interconnected tools. They operate on the **sam
 | **Metrics Glossary** | Defines, documents, and distributes Salesforce business metrics. Features the patent-pending **Metrics Analyst** that auto-generates a metrics glossary by reverse-engineering existing dashboards. Solves the "multiple versions of truth" problem by detecting metric aliases and conflicts across teams. |
 | **Entity Relationship Diagram (ERD)** | Generates a live, interactive, business-oriented ERD from your Salesforce org in one click. Color-coded by relationship type. Drill from objects into fields. Export to PNG/SVG. Designed for visual storytelling — accessible to both technical and business users. |
 | **Data Dictionary** | Live connected documentation of Salesforce objects and fields aligned to business initiatives; tracks what changed and the reporting/analytics impact |
-| **Data Migration Tools** | Object and field mapping process management; replaces spreadsheets; generates SQL for ETL during migrations |
+| **Data Migration Tools** | Object and field mapping process management with a live connection to the Data Dictionary. Features a Project Scorecard for object-level progress tracking, AI-assisted field mapping, type mismatch detection, SQL code generation for engineers, and Excel export for stakeholder sign-off. Replaces migration spreadsheets entirely. |
 | **Report Management & Repository** | Fights the Salesforce report and dashboard deluge — categorize by business topic (independent of Salesforce folders), track lifecycle status (in_progress → production → deprecated), surface zombie reports via adoption/utilization data, and bulk clean up what's no longer needed. |
 
 See deep-dive docs in `docs/product/tools/` for each tool.

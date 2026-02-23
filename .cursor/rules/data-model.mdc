@@ -294,13 +294,20 @@ Relationships:
 
 ### ObjectMapping
 Table: `object_mappings`
-Purpose: Maps a source object/table to a target Salesforce object.
+Purpose: Maps a source object/table to a target Salesforce object. The scorecard is computed from its FieldMappings.
 
 Key fields:
 - `id` (uuid)
 - `migration_project_id`: uuid
 - `source_object_name`: string
 - `target_salesforce_object_id`: uuid
+- `notes`: text — nullable
+
+Computed (not stored — derived from FieldMappings):
+- `total_fields`: count of FieldMappings
+- `confirmed_count`: count where status = confirmed
+- `blocked_count`: count where status = blocked
+- `completion_percentage`: confirmed / total * 100
 
 Relationships:
 - belongs to: `MigrationProject`

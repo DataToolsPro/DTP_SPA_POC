@@ -69,8 +69,11 @@
 | `MigrationProject` | Migration Project | A named migration initiative with a defined source system and target Salesforce org. |
 | `ObjectMapping` | Object Mapping | A pairing of a source system object/table to a target Salesforce object. |
 | `FieldMapping` | Field Mapping | A pairing of a source field to a target Salesforce field, with optional transformation logic. |
-| `TransformationLogic` | Transformation / Transform Logic | Notes or code describing how the source value must be changed to fit the target field. |
+| `TransformationLogic` | Transformation / Transform Logic | Notes or pseudocode describing how the source value must be changed to fit the target field. |
 | `MappingStatus` | Status | The state of a field mapping: `unmapped`, `in_progress`, `confirmed`, `blocked`. |
+| `ProjectScorecard` | Project Scorecard | Object-level progress summary showing total fields, confirmed, blocked, and completion % per object in a migration project. |
+| `TypeMismatch` | Type Mismatch | When a source field's data type is incompatible with the target Salesforce field type — flagged during mapping. |
+| `SQLMockup` | SQL / Generated Code | Auto-generated SQL representing confirmed field mappings — a starting point for ETL engineers, not a finished production script. |
 
 ---
 
