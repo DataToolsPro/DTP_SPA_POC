@@ -404,7 +404,7 @@ Row-level multi-tenancy. Every table that contains business data has `organizati
 | `User` | `role` | `admin`, `member`, `viewer` |
 | `Metric` | `status` | `draft`, `published` |
 | `FieldMapping` | `status` | `unmapped`, `in_progress`, `confirmed`, `blocked` |
-| `Report` / `Dashboard` | `status` | `active`, `under_review`, `deprecated`, `archived` |
+| `Report` / `Dashboard` | `status` | `in_progress`, `production`, `deprecated` |
 | `MigrationProject` | `status` | `active`, `completed`, `archived` |
 | `FieldChangeLog` | `change_type` | `type_changed`, `label_changed`, `picklist_changed`, `deleted` |
 | `Metric` | `source` | `manual`, `salesforce_import`, `tableau_import`, `ga_import`, `excel_import` |

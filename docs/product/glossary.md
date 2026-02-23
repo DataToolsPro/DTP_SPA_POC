@@ -80,9 +80,11 @@
 |---|---|---|
 | `Report` | Report | A Salesforce report synced from the connected org. |
 | `Dashboard` | Dashboard | A Salesforce dashboard (collection of report charts) synced from the connected org. |
-| `ReportStatus` | Status | Lifecycle state of a report: `active`, `under_review`, `deprecated`, `archived`. |
-| `Adoption` | Adoption / Usage | Usage data for a report: view count, last accessed date, active users. |
+| `ReportStatus` | Status | Lifecycle state of a report: `in_progress`, `production`, `deprecated`. Governance metadata only — does not affect the Salesforce report. |
+| `Adoption` | Adoption / Usage | Usage data for a report: last viewed date, view frequency. Used to identify zombie reports. |
 | `ReportOwner` | Owner | The Salesforce user or DataTools user responsible for maintaining the report. |
+| `ZombieReport` | Zombie Report | An abandoned report or dashboard that is no longer viewed, owned, or maintained — flagged for deprecation and deletion. |
+| `ReportDeluge` | Report Deluge | The accumulation of hundreds or thousands of unmanaged Salesforce reports/dashboards. The core problem Report Management solves. |
 
 ---
 
