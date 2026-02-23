@@ -85,7 +85,7 @@ promptfoo eval --view
 ## What NOT to Do
 
 - ❌ Don't write prompts in `app/Services/SomeService.php`
-- ❌ Don't write prompts in `spa/src/components/SomeThing.tsx`
+- ❌ Don't write prompts in `dtp/src/components/SomeThing.tsx`
 - ❌ Don't merge prompt changes without eval results
 - ❌ Don't lower the eval threshold without a written justification in the PR
 - ❌ Don't use `temperature: 1.0` for deterministic data tasks

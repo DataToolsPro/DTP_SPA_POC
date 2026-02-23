@@ -130,7 +130,7 @@ These block provisioning of servers, databases, and pipelines.
 | 6 | Error boundary strategy | Define behavior for component tree failures | |
 | 7 | Loading / skeleton conventions | Design system for loading states | |
 
-**Action:** Decide each → update `docs/architecture/frontend.md` and `frontend-conventions.mdc` → scaffold in `spa/`.
+**Action:** Decide each → update `docs/architecture/frontend.md` and `frontend-conventions.mdc` → scaffold in `dtp/`.
 
 ---
 
@@ -300,7 +300,7 @@ These are **action items**, not decisions. Order matters.
 | Cloudways sizing | `docs/ENVIRONMENTS.md` |
 | Versioning strategy | `docs/RELEASE.md`, `.github/workflows/deploy-production.yml` |
 | Backend tech (queue, storage) | `docs/architecture/backend.md`, `config/queue.php`, `config/filesystems.php` |
-| Frontend tech | `docs/architecture/frontend.md`, `.cursor/rules/frontend-conventions.mdc`, `spa/package.json` |
+| Frontend tech | `docs/architecture/frontend.md`, `.cursor/rules/frontend-conventions.mdc`, `dtp/package.json` |
 | Sync strategy | `docs/product/README.md`, each tool doc, implementation |
 
 ---

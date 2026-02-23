@@ -1,12 +1,12 @@
 ---
 description: React SPA conventions, patterns, and rules for the DataTools Pro frontend.
-globs: ["spa/**"]
+globs: ["dtp/**"]
 alwaysApply: false
 ---
 
 # Frontend Conventions — React SPA
 
-> Applied automatically when working in `spa/`.
+> Applied automatically when working in `dtp/`.
 
 ---
 
@@ -30,7 +30,7 @@ alwaysApply: false
 ## Project Structure
 
 ```
-spa/
+dtp/
 ├── src/
 │   ├── components/       # Shared, reusable UI components (no business logic)
 │   ├── features/         # Feature modules — colocate everything per feature
@@ -92,9 +92,10 @@ export const UserCard = ({ user, onEdit }: UserCardProps) => { ... };
 ## Routing
 
 - All routes defined in `src/router/`
-- Protected routes wrapped in an auth guard component
+- **Structure:** `/` redirects; `/login` public; `/app/*` all gated
+- Protected routes under `/app/` wrapped in auth guard
 - Lazy-load page components with `React.lazy()`
-- Route paths use kebab-case: `/user-management`, `/report-builder`
+- Route paths use kebab-case: `/app/user-management`, `/app/report-builder`
 
 ---
 
@@ -123,7 +124,7 @@ export const UserCard = ({ user, onEdit }: UserCardProps) => { ... };
 ## Environment Variables
 
 - All Vite env vars must start with `VITE_`
-- Document every new var in both `spa/.env.example` and root `.env.example`
+- Document every new var in both `dtp/.env.example` and root `.env.example`
 - Never hardcode URLs — always use `import.meta.env.VITE_*`
 
 ---

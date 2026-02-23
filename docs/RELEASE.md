@@ -220,7 +220,7 @@ Copy this into a GitHub Issue when doing a major release:
 | Workflow | File | Trigger | What it does |
 |---|---|---|---|
 | CI — Backend | `ci-backend.yml` | PR touching `app/`, `routes/`, etc. | PHP lint + PHPUnit |
-| CI — Frontend | `ci-frontend.yml` | PR touching `spa/` | ESLint + TS + tests + build |
+| CI — Frontend | `ci-frontend.yml` | PR touching `dtp/` | ESLint + TS + tests + build |
 | CI — AI Evals | `ci-ai-evals.yml` | PR touching `ai/` | promptfoo eval regression |
 | Deploy Staging | `deploy-staging.yml` | Push to `main` | SPA → CF Pages, API → Cloudways staging |
 | Deploy Production | `deploy-production.yml` | Manual / tag push | SPA → CF Pages prod, API → Cloudways prod |

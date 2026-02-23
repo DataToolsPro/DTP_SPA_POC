@@ -63,7 +63,7 @@ Follow **Conventional Commits**:
 Examples:
 ```
 feat(api): add endpoint for column metadata
-fix(spa): resolve blank screen on 401 redirect
+fix(dtp): resolve blank screen on 401 redirect
 chore(deps): bump laravel/framework to 11.x
 ci(evals): add path filter to ai eval workflow
 docs(ai): update prompt template with eval link
@@ -100,7 +100,7 @@ Large PRs take longer to review and are more likely to introduce bugs.
 | Check | What it does | Must pass? |
 |---|---|---|
 | **CI — Backend** | PHP lint + PHPUnit tests | ✅ Yes (if backend files changed) |
-| **CI — Frontend SPA** | ESLint + TypeScript + tests + build | ✅ Yes (if `spa/` changed) |
+| **CI — Frontend SPA** | ESLint + TypeScript + tests + build | ✅ Yes (if `dtp/` changed) |
 | **CI — AI Prompt Evals** | promptfoo golden tests | ✅ Yes (if `ai/` changed) |
 
 If a check is failing on your PR:

@@ -6,7 +6,7 @@
 
 ## Project Overview
 
-DataTools Pro **3.0** — the third major release. A Salesforce-connected governance platform: Laravel API backend + React SPA frontend. Monorepo with `app/` (Laravel), `spa/` (React/Vite), and `ai/` (prompts, evals). Five tools share one data model: Metrics Glossary, ERD, Data Dictionary, Data Migration, Report Management. Stack: PHP 8.3, Laravel, React, TypeScript, Vite, Cloudflare Pages, Cloudways, AWS RDS.
+DataTools Pro **3.0** — the third major release. A Salesforce-connected governance platform: Laravel API backend + React SPA frontend. Monorepo with `app/` (Laravel), `dtp/` (React/Vite), and `ai/` (prompts, evals). Five tools share one data model: Metrics Glossary, ERD, Data Dictionary, Data Migration, Report Management. Stack: PHP 8.3, Laravel, React, TypeScript, Vite, Cloudflare Pages, Cloudways, AWS RDS.
 
 ---
 
@@ -26,11 +26,11 @@ composer install && cp .env.example .env && php artisan key:generate
 php artisan migrate && php artisan serve
 
 # Frontend
-cd spa && npm install && cp .env.example .env.local && npm run dev
+cd dtp && npm install && cp .env.example .env.local && npm run dev
 
 # Tests
 php artisan test
-cd spa && npm run test
+cd dtp && npm run test
 
 # AI evals
 cd ai/evals && promptfoo eval --view
@@ -42,11 +42,11 @@ cd ai/evals && promptfoo eval --view
 
 **Backend:** Thin controllers → Service → Model. Business logic in `app/Services/`. No logic in controllers.
 
-**Frontend:** Feature-first. `spa/src/features/<name>/` contains components, hooks, api.ts, types.ts.
+**Frontend:** Feature-first. `dtp/src/features/<name>/` contains components, hooks, api.ts, types.ts.
 
 **AI:** All prompts in `ai/prompts/`. Each prompt has an eval in `ai/evals/`. Never inline prompts in code.
 
-**Scratch code:** Never in `app/`, `spa/`, `routes/`, `database/`. Use `scratch/` or `/tmp/`. Delete after use.
+**Scratch code:** Never in `app/`, `dtp/`, `routes/`, `database/`. Use `scratch/` or `/tmp/`. Delete after use.
 
 **Jira:** Every change tied to MBT-XX ticket. Branch: `feature/MBT-XX-slug`. PR title: `[MBT-XX] ...`
 

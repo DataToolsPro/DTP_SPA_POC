@@ -9,7 +9,7 @@ DataTools Pro **3.0** — the third major release. A React SPA front-end backed 
 The repo is a **monorepo** with two primary surfaces:
 
 1. **Laravel backend** at the repo root (`app/`, `routes/`, `database/`, etc.)
-2. **React SPA** in the [`spa/`](mdc:spa) subdirectory
+2. **React SPA** in the [`dtp/`](mdc:dtp) subdirectory
 
 A third surface, **AI/Agentic workflows**, lives in [`ai/`](mdc:ai).
 
@@ -20,7 +20,7 @@ A third surface, **AI/Agentic workflows**, lives in [`ai/`](mdc:ai).
 | [`app/`](mdc:app) | Laravel application logic (controllers, models, services) |
 | [`routes/`](mdc:routes) | Laravel HTTP + API routes |
 | [`database/`](mdc:database) | Migrations, seeders, factories |
-| [`spa/`](mdc:spa) | React SPA (Vite-based) |
+| [`dtp/`](mdc:dtp) | React SPA (Vite-based) |
 | [`ai/prompts/`](mdc:ai/prompts) | All LLM prompt templates |
 | [`ai/evals/`](mdc:ai/evals) | Golden eval test cases (promptfoo) |
 | [`ai/redteam/`](mdc:ai/redteam) | Adversarial / security tests |
@@ -30,7 +30,7 @@ A third surface, **AI/Agentic workflows**, lives in [`ai/`](mdc:ai).
 
 ## Stack
 - **Backend:** PHP 8.3 / Laravel (root)
-- **Frontend:** React + TypeScript + Vite (`spa/`)
+- **Frontend:** React + TypeScript + Vite (`dtp/`)
 - **CDN / Bot Protection:** Cloudflare (Pages for SPA, proxy for API)
 - **App Server:** Cloudways (Laravel backend)
 - **Database:** AWS RDS (MySQL/Postgres)
@@ -54,7 +54,7 @@ The AI assistant has layered context injected per working area:
 | `git-workflow.mdc` | ✅ | Branch, commit, PR conventions |
 | `lessons-learned.mdc` | ✅ | Check before similar work; add when fixing bugs |
 | `backend-conventions.mdc` | When in `app/**` | Laravel service patterns, API conventions |
-| `frontend-conventions.mdc` | When in `spa/**` | React/TypeScript patterns, SPA structure |
+| `frontend-conventions.mdc` | When in `dtp/**` | React/TypeScript patterns, SPA structure |
 | `ai-prompt-management.mdc` | When in `ai/**` | Prompt standards and eval requirements |
 
 ## Deep Reference Docs

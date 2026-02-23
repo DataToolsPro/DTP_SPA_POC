@@ -53,7 +53,7 @@ Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `ci`, `perf`
 Examples:
 ```
 feat(auth): add Sanctum token authentication
-fix(spa): correct redirect loop on 401 response
+fix(dtp): correct redirect loop on 401 response
 chore(deps): upgrade React to v19.0.0
 ci(workflows): add path filter to backend CI
 ```

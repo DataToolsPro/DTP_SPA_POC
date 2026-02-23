@@ -48,7 +48,7 @@ DTP_APP_V3/                    ← monorepo root
 ├── routes/                     ← Laravel: API + web routes
 ├── database/                   ← Migrations, seeders, factories
 ├── config/                     ← Laravel config files
-├── spa/                        ← React SPA (Vite)
+├── dtp/                        ← React SPA (Vite)
 │   └── src/
 │       ├── components/         ← Shared UI components
 │       ├── features/           ← Feature modules (colocated)
@@ -95,5 +95,5 @@ The AI assistant has domain-specific knowledge rules that are injected per conte
 | `jira-context.mdc` | Always | How to use Jira context |
 | `git-workflow.mdc` | Always | Branch, commit, PR rules |
 | `backend-conventions.mdc` | `app/**`, `routes/**`, etc. | Laravel patterns |
-| `frontend-conventions.mdc` | `spa/**` | React/TypeScript patterns |
+| `frontend-conventions.mdc` | `dtp/**` | React/TypeScript patterns |
 | `ai-prompt-management.mdc` | `ai/**` | Prompt and eval standards |

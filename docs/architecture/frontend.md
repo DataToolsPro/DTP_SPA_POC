@@ -4,7 +4,7 @@
 
 ## Overview
 
-The SPA lives in `spa/` and is built with React + TypeScript + Vite.
+The SPA lives in `dtp/` and is built with React + TypeScript + Vite.
 It is deployed as a **static site to Cloudflare Pages** — no server-side rendering.
 All dynamic data comes from the Laravel API (`VITE_API_URL`).
 
@@ -15,7 +15,7 @@ All dynamic data comes from the Laravel API (`VITE_API_URL`).
 The SPA uses a **feature module** pattern — all code for a feature lives together.
 
 ```
-spa/src/
+dtp/src/
 ├── components/           ← Shared UI primitives (Button, Modal, Table, etc.)
 ├── features/             ← One directory per product feature area
 │   └── <feature-name>/
@@ -35,35 +35,51 @@ spa/src/
 
 ---
 
-## Routing
+## Routing & Auth Gates
+
+**Structure:** Root redirects. `/login` is public. Everything under `/app/` is gated.
 
 ```
-/                     → Dashboard (protected)
+/                     → Redirect: not authenticated → /login; authenticated → /app
 /login                → Login page (public)
-/reports              → Reports list (protected)
-/reports/:id          → Report detail (protected)
-/settings             → Settings (protected)
+/register             → Registration (public, if used)
+/forgot-password      → Password reset (public, if used)
+
+/app                  → Redirect to /app (or /app/dashboard)
+/app/*                → All gated — requires auth
+  /app                → Dashboard (or tool selector)
+  /app/reports        → Reports list
+  /app/reports/:id    → Report detail
+  /app/metrics        → Metrics Glossary
+  /app/dictionary     → Data Dictionary
+  /app/erd            → Entity Diagram
+  /app/migration      → Data Migration
+  /app/settings       → Settings
 ```
 
-- Public routes: `/login`, `/register`, maybe `/forgot-password`
-- All other routes are behind an auth guard
-- 404 → redirect to dashboard (or a dedicated 404 page)
+**Rules:**
+- **Public:** `/login`, `/register`, `/forgot-password` only
+- **Root `/`:** Always redirect — never render content. Unauthenticated → `/login`; authenticated → `/app`
+- **Gated:** All routes under `/app/` require auth. Unauthenticated access → redirect to `/login`
+- **404:** Redirect to `/app` (if authenticated) or `/login` (if not)
 
 ---
 
 ## Authentication Flow (SPA ↔ Laravel Sanctum)
 
 ```
-1. App loads → check if session exists (GET /api/v1/user)
-   ├── 200: user is authenticated → load app
-   └── 401: not authenticated → redirect to /login
+1. User hits / or any gated route
+   → Check session (GET /api/v1/user)
+   → 200: authenticated → allow /app/* or redirect / to /app
+   → 401: not authenticated → redirect to /login (except public: /login, /register, etc.)
 
-2. Login form submit → POST /login
-   ├── 200: session created → redirect to dashboard
+2. User hits /login, submits form → POST /login
+   ├── 200: session created → redirect to /app
    └── 422: validation error → show field errors
 
 3. All API requests send cookie automatically (same-domain)
    + CSRF token in X-XSRF-TOKEN header (Axios handles this automatically)
+   + 401 interceptor → redirect to /login
 
 4. Logout → POST /logout → clear session → redirect to /login
 ```
@@ -88,7 +104,7 @@ Candidates:
 
 ## API Client
 
-All API calls go through a centralized client in `spa/src/lib/api/`.
+All API calls go through a centralized client in `dtp/src/lib/api/`.
 
 ```typescript
 // Base setup — src/lib/api/client.ts
@@ -120,10 +136,10 @@ export const reportsApi = {
 
 ```bash
 # Local dev
-cd spa && npm run dev          # Vite dev server on :5173
+cd dtp && npm run dev          # Vite dev server on :5173
 
 # Production build
-npm run build                  # outputs to spa/dist/
+npm run build                  # outputs to dtp/dist/
 
 # Preview production build locally
 npm run preview
@@ -131,8 +147,8 @@ npm run preview
 
 **Cloudflare Pages config:**
 - Build command: `npm run build`
-- Build output directory: `spa/dist`
-- Root directory: `spa`
+- Build output directory: `dtp/dist`
+- Root directory: `dtp`
 - Environment variables: set in Cloudflare Pages dashboard (per environment)
 
 ---
@@ -140,7 +156,7 @@ npm run preview
 ## Testing
 
 ```bash
-cd spa && npm run test          # Vitest
+cd dtp && npm run test          # Vitest
 npm run test:coverage           # with coverage report
 ```
 

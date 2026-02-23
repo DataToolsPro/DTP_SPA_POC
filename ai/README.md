@@ -38,7 +38,7 @@ ai/
 
 | Gate | What it checks | When it runs |
 |---|---|---|
-| **A** — App CI | Backend lint/tests, SPA lint/build | All PRs touching `app/**` or `spa/**` |
+| **A** — App CI | Backend lint/tests, SPA lint/build | All PRs touching `app/**` or `dtp/**` |
 | **B** — Prompt Evals | Golden test regression for all prompts | PRs touching `ai/**` |
 | **C** — Red Team | Injection / PII / jailbreak probes | Manual for now; future CI gate |
 

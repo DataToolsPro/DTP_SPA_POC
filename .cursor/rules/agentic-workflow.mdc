@@ -18,7 +18,7 @@ Scratch code is temporary code written by the AI to:
 
 **Scratch code MUST:**
 - ❌ **NEVER** be committed to the repository
-- ❌ **NEVER** be placed in `app/`, `spa/`, `routes/`, `database/`, or any source directories
+- ❌ **NEVER** be placed in `app/`, `dtp/`, `routes/`, `database/`, or any source directories
 - ❌ **NEVER** be mixed with production code
 - ✅ Be placed in temporary locations (e.g., `/tmp/`, `scratch/`, or clearly named temp files)
 - ✅ Be deleted after use
@@ -76,7 +76,7 @@ Use scratch code when:
 ```
 DTP_APP_V3/
 ├── app/              ← Source code only
-├── spa/              ← Source code only
+├── dtp/              ← Source code only (React frontend)
 ├── routes/           ← Source code only
 ├── database/         ← Source code only
 ├── scripts/          ← Committed utility scripts (not scratch)

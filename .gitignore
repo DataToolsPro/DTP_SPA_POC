@@ -1,6 +1,6 @@
 # =============================================================================
 # DTP_SPA_POC — .gitignore
-# Stack: Laravel (PHP) at root + React SPA in /spa
+# Stack: Laravel (PHP) at root + React frontend in /dtp
 # =============================================================================
 
 # -----------------------------------------------------------------------------
@@ -33,20 +33,20 @@ yarn-error.log
 /public/build/    # Vite manifest / compiled assets
 
 # -----------------------------------------------------------------------------
-# React SPA (/spa)
+# React frontend (/dtp)
 # -----------------------------------------------------------------------------
-/spa/node_modules/
-/spa/dist/
-/spa/build/
-/spa/.env
-/spa/.env.local
-/spa/.env.development.local
-/spa/.env.test.local
-/spa/.env.production.local
-/spa/coverage/
-/spa/.next/
-/spa/out/
-/spa/.vite/
+/dtp/node_modules/
+/dtp/dist/
+/dtp/build/
+/dtp/.env
+/dtp/.env.local
+/dtp/.env.development.local
+/dtp/.env.test.local
+/dtp/.env.production.local
+/dtp/coverage/
+/dtp/.next/
+/dtp/out/
+/dtp/.vite/
 
 # -----------------------------------------------------------------------------
 # AI / Prompts — NEVER commit real secret keys or sensitive eval data

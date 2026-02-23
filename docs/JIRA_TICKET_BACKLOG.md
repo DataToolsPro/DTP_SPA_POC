@@ -81,8 +81,8 @@ Read these docs in order. Check off as you complete each. Estimated: 2–3 hours
 - [ ] **Clone repo:** `git clone <repo-url> && cd DTP_SPA_POC`
 - [ ] **Prerequisites installed:** PHP 8.3+, Composer, Node 20+, MySQL 8 (or SQLite for minimal dev)
 - [ ] **Backend:** `composer install`, `cp .env.example .env`, `php artisan key:generate`, `php artisan migrate` (may fail if no DB — use SQLite or skip until DB provisioned)
-- [ ] **Frontend:** `cd spa && npm install`, `cp .env.example .env.local`, `npm run dev`
-- [ ] **Secrets:** Pull `.env` and `spa/.env.local` from team secret vault. Fill any missing values for local dev.
+- [ ] **Frontend:** `cd dtp && npm install`, `cp .env.example .env.local`, `npm run dev`
+- [ ] **Secrets:** Pull `.env` and `dtp/.env.local` from team secret vault. Fill any missing values for local dev.
 - [ ] **Verify:** Backend runs on localhost:8000, SPA on localhost:5173 (or as configured)
 - [ ] **AI Evals (optional):** `npm install -g promptfoo`, copy `ai/.env` from vault, run `cd ai/evals && promptfoo eval`
 
@@ -190,7 +190,7 @@ Repo docs and templates inconsistently used `DTP-XX` and `MBT-XX`. Decision: sta
 - [ ] Tool selected
 - [ ] Vault/org created and shared with @rmgoodm and @waqarcs11
 - [ ] `docs/SECRETS.md` updated with correct tool name and structure
-- [ ] All local dev secrets (`.env`, `spa/.env.local`, `ai/.env`) added to vault
+- [ ] All local dev secrets (`.env`, `dtp/.env.local`, `ai/.env`) added to vault
 - [ ] Waqar can access vault and run app locally
 
 ---
@@ -298,8 +298,8 @@ Set up Cloudflare Pages for the SPA with staging and production deployment chann
 **Steps:**
 
 1. Create Pages project in CF Dashboard — connect to DataToolsPro/DTP_SPA_POC
-2. Build command: `cd spa && npm ci && npm run build`
-3. Build output: `spa/dist`
+2. Build command: `cd dtp && npm ci && npm run build`
+3. Build output: `dtp/dist`
 4. Production branch → main → app.datatoolspro.com
 5. Staging channel → staging.datatoolspro.com
 6. Add custom domains (DNS CNAME to pages.dev)
@@ -424,7 +424,7 @@ Workflows reference specific secrets. Populate per `docs/SECRETS.md`.
 **Acceptance Criteria**
 
 - [ ] All secret names populated (values hidden)
-- [ ] ci-frontend.yml runs green on spa/ PR
+- [ ] ci-frontend.yml runs green on dtp/ PR
 - [ ] ci-backend.yml runs green on app/ PR
 - [ ] deploy-staging.yml runs green on push to main
 
@@ -533,7 +533,7 @@ Resolve open items in `docs/architecture/frontend.md`:
 
 - [ ] All items decided
 - [ ] `docs/architecture/frontend.md` and `frontend-conventions.mdc` updated
-- [ ] spa/package.json has chosen deps, base scaffold if needed
+- [ ] dtp/package.json has chosen deps, base scaffold if needed
 
 ---
 

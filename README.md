@@ -52,7 +52,7 @@ DTP_APP_V3/
 │   ├── api.php                 # API routes (consumed by SPA)
 │   └── web.php                 # Web routes (SPA entry point)
 │
-├── spa/                        # React SPA (Vite)
+├── dtp/                        # React SPA (Vite)
 │   ├── src/
 │   │   ├── components/         # Reusable UI components
 │   │   ├── pages/              # Route-level page components
@@ -80,7 +80,7 @@ DTP_APP_V3/
 │   ├── pull_request_template.md
 │   └── workflows/
 │       ├── ci-backend.yml      # PHP lint + PHPUnit (path: app/, routes/, etc.)
-│       ├── ci-frontend.yml     # ESLint + tests + build (path: spa/)
+│       ├── ci-frontend.yml     # ESLint + tests + build (path: dtp/)
 │       ├── ci-ai-evals.yml     # Prompt regression tests (path: ai/)
 │       ├── deploy-staging.yml  # Auto-deploy to staging on merge to main
 │       └── deploy-production.yml # Manual approval gate → production
@@ -133,7 +133,7 @@ php artisan serve
 
 ```bash
 # 1. Navigate to SPA directory
-cd spa
+cd dtp
 
 # 2. Install dependencies
 npm install
@@ -205,7 +205,7 @@ git push origin v2026.02.22
 | Workflow | Trigger (path filter) | What it checks |
 |---|---|---|
 | `ci-backend.yml` | `app/**`, `routes/**`, `database/**`, `composer.*` | PHP lint + PHPUnit |
-| `ci-frontend.yml` | `spa/**` | ESLint + TypeScript + tests + build |
+| `ci-frontend.yml` | `dtp/**` | ESLint + TypeScript + tests + build |
 | `ci-ai-evals.yml` | `ai/**` | Prompt regression tests (promptfoo) |
 
 Path filters mean: **only the relevant check runs for your change**. Touching only the SPA won't run the full PHP test suite.

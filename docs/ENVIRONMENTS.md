@@ -21,7 +21,7 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 
 | Layer | URL | Command |
 |---|---|---|
-| React SPA | `http://localhost:5173` | `cd spa && npm run dev` |
+| React SPA | `http://localhost:5173` | `cd dtp && npm run dev` |
 | Laravel API | `http://localhost:8000` | `php artisan serve` |
 | Database | `127.0.0.1:3306` | Local MySQL or SQLite |
 

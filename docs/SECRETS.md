@@ -212,8 +212,8 @@ DTP_APP_V3 — Dev Secrets/
 ├── 🔑 .env — Local Development
 │     (complete .env file contents for local dev)
 │
-├── 🔑 spa/.env.local — SPA Local Development
-│     (complete spa/.env.local contents)
+├── 🔑 dtp/.env.local — SPA Local Development
+│     (complete dtp/.env.local contents)
 │
 ├── 🔑 GitHub Actions Secrets — Repo Level
 │     OPENAI_API_KEY

@@ -23,8 +23,8 @@
 composer.json               @rmgoodm @waqarcs11
 composer.lock               @rmgoodm @waqarcs11
 
-# --- React SPA ---------------------------------------------------------------
-/spa/**                     @rmgoodm @waqarcs11
+# --- React Frontend (dtp) -----------------------------------------------------
+/dtp/**                     @rmgoodm @waqarcs11
 
 # --- AI / Prompt Management --------------------------------------------------
 # These files carry the highest review bar — never merge prompt changes

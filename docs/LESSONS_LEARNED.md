@@ -38,7 +38,7 @@
 
 | Don't | Do instead |
 |-------|------------|
-| Put scratch/temporary code in `app/`, `spa/`, `routes/`, `database/` | Use `scratch/` or `/tmp/`; delete after use |
+| Put scratch/temporary code in `app/`, `dtp/`, `routes/`, `database/` | Use `scratch/` or `/tmp/`; delete after use |
 | Write scripts to replicate MCP (Jira, etc.) | Use MCP directly; troubleshoot MCP if it fails |
 | Commit `.env` or secrets | Use `.env.example` as contract; secrets in vault |
 | Use DTP-XX and MBT-XX inconsistently | Standardized on MBT-XX (MBT-1324 closed) |
@@ -52,6 +52,7 @@
 
 | Decision | Why it matters |
 |----------|----------------|
+| **Frontend directory is `dtp/`** (not `spa/`) | Product alignment; build/cmd paths; CI path filters; docs |
 | **DataTools Pro 3.0** — this is the third major release | Product/version context; release notes; roadmap clarity |
 | Scratch code never in source dirs | Prevents accidental commit of temp/debug code |
 | MCP-first for Jira | Avoids script sprawl; single source of truth |
