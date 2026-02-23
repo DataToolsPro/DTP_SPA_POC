@@ -11,7 +11,7 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 | Action | Command |
 |--------|---------|
 | **Local dev** | `cd dtp && npm run dev` |
-| **Production build** | `cd dtp && npm ci && npm run build` |
+| **Production build** | `cd dtp && npm install && npm run build` |
 | **Build output** | `dtp/dist/` |
 
 **Cloudflare Pages** — project name: `dtp-app-v3` (set `CLOUDFLARE_PAGES_PROJECT` in GitHub repo variables). Use **one** of these configs (not both):
@@ -19,10 +19,10 @@ DTP_APP_V3 runs across four environments. Each has a specific purpose, trigger, 
 | Setting | Option A — Repo root | Option B — Root = dtp |
 |---------|----------------------|------------------------|
 | Root directory | *(leave blank)* | `dtp` |
-| Build command | `cd dtp && npm ci && npm run build` | `npm ci && npm run build` |
+| Build command | `cd dtp && npm install && npm run build` | `npm install && npm run build` |
 | Build output directory | `dtp/dist` | `dist` |
 
-If you see `cd: can't cd to dtp`, you have Option B — change build command to `npm ci && npm run build` and output to `dist`.
+**Note:** Use `npm install` (not `npm ci`) — Cloudflare Pages can miss `package-lock.json` in some setups; `npm install` works without it. If you see `cd: can't cd to dtp`, use Option B.
 
 **GitHub Actions** deploy workflows use Option A (repo root).
 

@@ -134,22 +134,31 @@ export const reportsApi = {
 
 ## Build & Deploy
 
+**Canonical commands** (from repo root):
+
 ```bash
 # Local dev
 cd dtp && npm run dev          # Vite dev server on :5173
 
 # Production build
-npm run build                  # outputs to dtp/dist/
+cd dtp && npm install && npm run build   # outputs to dtp/dist/
 
 # Preview production build locally
-npm run preview
+cd dtp && npm run preview
 ```
 
-**Cloudflare Pages config:**
-- Build command: `npm run build`
-- Build output directory: `dtp/dist`
-- Root directory: `dtp`
-- Environment variables: set in Cloudflare Pages dashboard (per environment)
+**Cloudflare Pages** (dashboard → Build configuration) — pick one:
+
+| Root directory | Build command | Output directory |
+|----------------|---------------|------------------|
+| *(blank)* | `cd dtp && npm install && npm run build` | `dtp/dist` |
+| `dtp` | `npm install && npm run build` | `dist` |
+
+If build fails with `cd: can't cd to dtp`, Root directory is set to `dtp` — use the second row. Use `npm install` (not `npm ci`) to avoid package-lock.json issues on Cloudflare.
+
+Environment variables (`VITE_API_URL`, etc.) in Cloudflare Pages → Settings → Environment variables.
+
+**GitHub Actions** (`deploy-staging.yml`, `deploy-production.yml`) use the same build steps. See `docs/ENVIRONMENTS.md` for full deploy flow.
 
 ---
 

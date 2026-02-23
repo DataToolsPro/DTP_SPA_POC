@@ -101,7 +101,9 @@ These are scoped per environment and only injected when that environment is bein
 
 | Variable Name | Value |
 |---|---|
-| `CLOUDFLARE_PAGES_PROJECT` | `dtp-spa-poc` (your CF Pages project name) |
+| `CLOUDFLARE_PAGES_PROJECT` | `dtp-app-v3` (CF Pages project name — dashes, lowercase) |
+
+**Cloudflare Pages build config** (project `dtp-app-v3`): If Root directory is blank → build `cd dtp && npm install && npm run build`, output `dtp/dist`. If Root directory is `dtp` → build `npm install && npm run build`, output `dist`. Use `npm install` (not `npm ci`) — see `docs/ENVIRONMENTS.md`.
 
 ---
 

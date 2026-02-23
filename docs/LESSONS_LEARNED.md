@@ -30,6 +30,16 @@
 
 ---
 
+### Cloudflare Pages: npm ci fails with "generate package-lock.json" (2026-02)
+
+**What happened:** Cloudflare Pages build failed with `npm ci` asking to generate a package-lock.json, even though it exists in the repo.
+
+**Why:** Cloudflare's build environment may not have package-lock.json in the expected location when using Root directory, or the branch being built lacks it (e.g. building from main before merge).
+
+**Do instead:** Use `npm install` instead of `npm ci` in the Cloudflare Pages build command. It works without a lock file and is more resilient.
+
+---
+
 ### (Add more entries below — newest first)
 
 ---
@@ -52,6 +62,7 @@
 
 | Decision | Why it matters |
 |----------|----------------|
+| **Cloudflare Pages project name:** `dtp-app-v3` (dashes, lowercase) | PR preview URLs, deploy config |
 | **Frontend directory is `dtp/`** (not `spa/`) | Product alignment; build/cmd paths; CI path filters; docs |
 | **DataTools Pro 3.0** — this is the third major release | Product/version context; release notes; roadmap clarity |
 | Scratch code never in source dirs | Prevents accidental commit of temp/debug code |
