@@ -163,7 +163,7 @@ If production is broken after a deploy:
 
 ### Option B — Cloudflare Pages Instant Rollback (SPA only)
 
-1. Go to **Cloudflare Dashboard → Pages → DTP_APP_V3**
+1. Go to **Cloudflare Dashboard → Pages → dtp-app-v3**
 2. Click **"Deployments"**
 3. Find the last good deployment
 4. Click **"Rollback to this deployment"**
@@ -235,7 +235,7 @@ Copy this into a GitHub Issue when doing a major release:
 | Production app | `https://app.datatoolspro.com` |
 | GitHub Actions | `https://github.com/DataToolsPro/DTP_APP_V3/actions` |
 | GitHub Environments | `https://github.com/DataToolsPro/DTP_APP_V3/settings/environments` |
-| Cloudflare Pages | `https://dash.cloudflare.com → Pages → DTP_APP_V3` |
+| Cloudflare Pages | `https://dash.cloudflare.com → Pages → dtp-app-v3` |
 | Cloudways Staging | `https://platform.cloudways.com → your staging app` |
 | Cloudways Production | `https://platform.cloudways.com → your production app` |
 | AWS RDS Console | `https://console.aws.amazon.com/rds` |

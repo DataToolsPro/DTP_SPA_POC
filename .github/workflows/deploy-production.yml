@@ -38,7 +38,7 @@
 #     VITE_API_URL                  - https://app.datatoolspro.com/api
 #
 #   GitHub → Settings → Variables (repo-level):
-#     CLOUDFLARE_PAGES_PROJECT      - e.g. dtp-spa-poc
+#     CLOUDFLARE_PAGES_PROJECT      - e.g. dtp-app-v3
 #     CLOUDFLARE_ZONE_ID            - Your domain Zone ID
 #
 # ROLLBACK:

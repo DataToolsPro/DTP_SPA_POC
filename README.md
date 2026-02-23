@@ -145,6 +145,8 @@ cp .env.example .env.local
 npm run dev
 ```
 
+**Build & deploy:** See `docs/ENVIRONMENTS.md` → "Build & Deploy Reference" for production build commands and Cloudflare Pages config.
+
 ### AI / Evals
 
 ```bash

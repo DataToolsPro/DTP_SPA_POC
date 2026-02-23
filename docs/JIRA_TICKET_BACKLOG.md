@@ -311,7 +311,7 @@ Set up Cloudflare Pages for the SPA with staging and production deployment chann
 
 - [ ] https://app.datatoolspro.com serves the SPA
 - [ ] https://staging.datatoolspro.com serves the SPA (staging channel)
-- [ ] Test PR generates preview URL at pr-XX.dtp-spa-poc.pages.dev
+- [ ] Test PR generates preview URL at pr-XX.dtp-app-v3.pages.dev
 - [ ] Cloudflare WAF + Bot protection active on both domains
 
 ---

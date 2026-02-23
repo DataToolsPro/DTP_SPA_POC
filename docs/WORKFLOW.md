@@ -112,12 +112,12 @@ If a check is failing on your PR:
 
 ## Environments
 
-We have 4 environments. See [`docs/ENVIRONMENTS.md`](ENVIRONMENTS.md) for the full map.
+We have 4 environments. See [`docs/ENVIRONMENTS.md`](ENVIRONMENTS.md) for the full map and **Build & Deploy Reference** (commands, Cloudflare Pages config).
 
 | Environment | URL | Triggered By |
 |---|---|---|
 | Local | `localhost:5173` / `localhost:8000` | Manual |
-| PR Preview | `pr-XX.dtp-spa-poc.pages.dev` | Auto on every PR push |
+| PR Preview | `pr-XX.dtp-app-v3.pages.dev` | Auto on every PR push |
 | Staging | `staging.datatoolspro.com` | Auto on merge to `main` |
 | Production | `app.datatoolspro.com` | Manual approval |
 
