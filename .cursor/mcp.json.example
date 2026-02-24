@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "user-atlassian": {
+      "command": "uvx",
+      "args": ["mcp-atlassian"],
+      "env": {
+        "JIRA_URL": "https://goodmangroup.atlassian.net",
+        "JIRA_USERNAME": "YOUR_EMAIL@goodmangroupllc.com",
+        "JIRA_API_TOKEN": "YOUR_API_TOKEN",
+        "JIRA_PROJECTS_FILTER": "MBT"
+      }
+    }
+  }
+}
