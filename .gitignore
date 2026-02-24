@@ -57,8 +57,9 @@ yarn-error.log
 /ai/redteam/outputs/
 
 # -----------------------------------------------------------------------------
-# IDE / Editor
+# IDE / Editor — MCP config contains API tokens
 # -----------------------------------------------------------------------------
+.cursor/mcp.json
 .idea/
 *.iml
 .vscode/settings.json
