@@ -1,0 +1,19 @@
+{
+  "post_id": 8753,
+  "title": "Mapping and Migrating Salesforce Picklists",
+  "slug": "mapping-and-migrating-salesforce-picklists",
+  "url": "https://datatoolspro.com/tutorials/mapping-and-migrating-salesforce-picklists/",
+  "date": "2023-06-01T16:02:16",
+  "modified": "2023-10-06T15:15:06",
+  "categories": [
+    "DataTools Pro",
+    "Salesforce Data Migration"
+  ],
+  "tags": [
+    "Data Migration",
+    "datatoolspro",
+    "Salesforce"
+  ],
+  "excerpt": "DataTools data migration picklist mapping allows you to map any number of inputs to a finite number of supported Salesforce picklist values",
+  "content_markdown": "![](https://datatoolspro.com/wp-content/uploads/2023/08/image-2.png)\n\nDataTools data migration picklist mapping allows you to map any number of inputs to a finite number of supported Salesforce picklist values. Typically your source object will not map perfectly 1-1 into Salesforce so mapping and migrating salesforce picklists requires its own special mapping area.\n\n## Mapping Salesforce Picklists Values:\n\n1. From the Migration tab, Click on an object name to navigate to the [field migration detail fields](https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details/ \"Salesforce Migration Field Mapping Details\")\n\n2. To view all picklist values in your Salesforce object instance, click the filter icon and then select “picklist” as an option. This will narrow down the list of fields only to picklists.\n\n3. Select “Click to Map”\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-4-1024x380.png)\n\n4. In the data mapping sidebar, select the source object where you will obtain your source picklist values. [Learn to setup a source object and fields](https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details#addsourceobjects \"Map a Salesforce source object and fields for migration\").\n\n5. Select the primary that you will obtain the picklist values.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-13.png)\n\n**PRO TIP:** Sometimes mapping picklist values from a source system to Salesforce requires data from multiple fields. For more complex use cases we recommend choosing the source object and adding notes / logic for your ETL development.\n\n6. Select “Picklist”\n\n![Salesforce Picklists mapped to old data](https://datatoolspro.com/wp-content/uploads/2023/08/image-14-1024x551.png)\n\n7. Copy and paste picklist values into the DataTools Pro property sheet.\n\n**PRO TIP:** To ensure nothing is missed, we recommend mining your source database to fetch all distinct values that could be migrated and entering them into the data mapping tool.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-16.png)\n\n8. Click “Mapping” – DataTools Pro will generate 1 mapping row for every source picklist value. You will then map each individual Salesforce picklist value that is related to the source. This is extremely important to ensure you can explicitly define every available value that can come from your source system."
+}

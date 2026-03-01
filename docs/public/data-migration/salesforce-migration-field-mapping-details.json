@@ -1,0 +1,19 @@
+{
+  "post_id": 8758,
+  "title": "Salesforce Migration Field Mapping Details",
+  "slug": "salesforce-migration-field-mapping-details",
+  "url": "https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details/",
+  "date": "2023-04-01T19:10:47",
+  "modified": "2024-01-20T18:49:49",
+  "categories": [
+    "DataTools Pro",
+    "Salesforce Data Migration"
+  ],
+  "tags": [
+    "Data Migration",
+    "datatoolspro",
+    "Salesforce"
+  ],
+  "excerpt": "The field migration mapping screen allows you to configure source object sand fields to map into Salesforce.",
+  "content_markdown": "The field migration mapping screen allows you to configure source object sand fields to map into Salesforce.\n\n**NOTE**: DataTools Pro is designed for mapping meta-data and not executing migration and movement of data between systems. Due to the wide range of source applications we opted to release DataTools Pro with a manual meta data import process as we look to build out an integrate new direct meta data connectors.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-9-1024x403.png)\n\n## Features\n\n1. **Click to Map** – For every field you can click to map any field to a source object. View Adding a Source Object and Fields to view the step by step process.\n2. **Edit** – Edit function will allow you to edit each individual field Status, Logic and Notes.\n3. **Object Refresh** – The Object refresh button will fetch updates from Salesforce on demand. To reduce credit / API usage we do not auto-refresh the Salesforce schema.\n4. **Launch Salesforce Object Manager** – Will open the Salesforce object manager in a new window. The Salesforce object manager uses native Salesforce.com. Please check your permissions or work with you Salesforce admin to access this native Salesforce feature.\n5. **Migration Navigation** – Migrate to another Salesforce object using the dropdown or view a complete list of objects on the Migration Scorecard\n\n## Adding a Source Object and Fields to Map to Salesforce:\n\n1. From the Migration Field Dictionary, select “Click to Map”\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-10.png)\n\n2. In the side properties window, to Add a new source object click the “+” button.\n\n3. Enter the Source Data dropdown\n\n4. Enter the Object Label\n\n5. Enter the Object Identifier. We recommend using the exact object name that exists in your source application. This will help reduce the re-work for building your migration process (this value cannot be changed after creating the object)\n\n6. Enter Object Description – Many times we use the object description for developer notes.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-11.png)\n\n7. Click Create\n\n## Adding Source Object Fields for Migration:\n\nOnce you have defined the source object, you will need to import the column names and optional data types to help you map and track where your source data is coming from.\n\n**Note:** You can always edit and add fields as you continue working on your migration project.\n\n**DataTools** Pro uses a spreadsheet control to make it easy to copy, paste and edit your column meta data.\n\n**Field Name** – You will want to use the exact field names your data team will use to query and migrate data\n\nData Type – DataTools Pro does not have any restrictions or controls on Data Type. The “data type” meta data will differ for source applications and may or may not map to Salesforce.\n\n**Note**: DataTools Pro does not enforce data types for mapping currently.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-12.png)"
+}

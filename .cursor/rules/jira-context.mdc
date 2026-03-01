@@ -59,12 +59,16 @@ mcp: atlassian → get_issue(issueKey: "MBT-42")
 
 ## After Implementation
 
-For **User Stories**: update or create `docs/features/MBT-XX-<slug>.md` using the template
-at `docs/features/_template.md`. Write as if explaining the feature to an end user — not a developer.
+**Run the public-docs decision gate** (see `.cursor/rules/public-docs.mdc`):
+
+For **User Stories**:
+- Create or update **internal** doc: `docs/features/MBT-XX-<slug>.md` (use `docs/features/_template.md`)
+- Evaluate **public** doc: does the feature need a new or updated `docs/public/` tutorial? Use the `datatools-pro-docs` skill if yes.
 
 For **Tasks**: no doc needed. PR description is sufficient.
 
 For **Bugs**: add a "Verification" section to the PR if the fix changes visible behavior.
+Update the relevant feature doc and public tutorial if user-visible behavior changed.
 
 ---
 

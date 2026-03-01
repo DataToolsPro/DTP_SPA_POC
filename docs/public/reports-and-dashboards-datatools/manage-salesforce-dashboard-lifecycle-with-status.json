@@ -1,0 +1,17 @@
+{
+  "post_id": 10385,
+  "title": "Manage Salesforce Dashboard Lifecycle with Status",
+  "slug": "manage-salesforce-dashboard-lifecycle-with-status",
+  "url": "https://datatoolspro.com/tutorials/manage-salesforce-dashboard-lifecycle-with-status/",
+  "date": "2024-11-17T18:42:27",
+  "modified": "2024-11-17T18:43:49",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Reports and Dashboards DataTools"
+  ],
+  "excerpt": "Update Status for Salesforce Dashboards and Reports 1. Click on a dashboard or report name to open the Info-Window 2. Select the Analytics Status Bulk Edit Status for Salesforce Dashboards and Reports DataTools Pro allows you to bulk select Dashboards and Reports so you can bulk update status. To complete this task: 1. Select the […]",
+  "content_markdown": "DataTools Pro simplifies the process of tracking a Salesforce dashboard lifecycle using a simple status field.\n\n- **Production**: Reports and dashboards actively used by business units or individuals.\n- **In Progress/Development**: Reports still being built, tested, or validated.\n- **Deprecated**: Reports that are no longer used and should be flagged for removal.\n\n**Want to add a custom status for your process?** [Feel free to contact us](/contact)\n\n![](https://datatoolspro.com/wp-content/uploads/2024/11/image-42-png.webp)\n\n[Video: Manage Salesforce Dashboard Lifecycle with Status](https://www.youtube.com/embed/-MKLEpGaSGc?feature=oembed)\n\n## Update Status for Salesforce Dashboards and Reports\n\n1. Click on a dashboard or report name to open the Info-Window\n\n![](https://datatoolspro.com/wp-content/uploads/2024/11/image-43-png.webp)\n\n2. Select the Analytics Status\n\n## Bulk Edit Status for Salesforce Dashboards and Reports\n\nDataTools Pro allows you to bulk select Dashboards and Reports so you can bulk update status. To complete this task:\n\n1. Select the first report or dashboard for your desired bulk selection\n\n![select Salesforce Dashboard](https://datatoolspro.com/wp-content/uploads/2024/11/image-44-png.webp)\n\n2a. **Bulk select additional records 1 by 1:**\n\nHold the **Ctrl** button on your keyboard and click on the individual records that you would like to bulk edit\n\n![](https://datatoolspro.com/wp-content/uploads/2024/11/image-45-1024x389.webp)\n\n2b. **Bulk select records in sequence from first selected**\n\nHold the **Shift** button on your keyboard and click the last record in sequence that you would like to select. DataTools will auto-select all records in between.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/11/image-46-1024x444.webp)\n\n3. Click on the “Edit X Reports” button\n\n4. Select the Status dropdown\n\n![](https://datatoolspro.com/wp-content/uploads/2024/11/image-47-png.webp)\n\n5. Select 1 Status.\n\n6. Press “Assign Status” to bulk assign the status.\n\n7. Close the window by clicking the close icon or click outside of the popup window."
+}

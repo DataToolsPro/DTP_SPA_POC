@@ -1,0 +1,16 @@
+{
+  "post_id": 9470,
+  "title": "Merging Metrics with DataTools Pro",
+  "slug": "merging-metrics",
+  "url": "https://datatoolspro.com/tutorials/merging-metrics/",
+  "date": "2024-04-28T13:19:03",
+  "modified": "2024-04-28T13:19:07",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "metrics"
+  ],
+  "excerpt": "Merge your DataTools Pro metrics together for consolidated metrics management.",
+  "content_markdown": "Merging metrics through our [Data Analyst feature](https://datatoolspro.com/tutorials/getting-started-with-metrics-analyst-ai-for-salesforce \"Metrics Analyst\") is available so newly discovered metrics in your Salesforce dashboards that may already exist in your metrics glossary can be merged as a [metrics alias](/tutorials/metrics-alias/ \"metrics alias\").\n\n## Data Analyst Metrics Merging Feature\n\nSelect one or multiple recommended metrics that you would like to merge. You can merge two recommendations together by selecting the checkbox to both metrics, then clicking merge, you can choose to merge the metrics with each other or with a single metric that already exists in your glossary\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-11.png)\n\nSelect the metric that you would like to either create and merge or merge into.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-14.png)\n\nMerging a metric will add the recommended name as an “Alias”.\n\n## Coming Soon! – Metrics Glossary Record Merging\n\nWe are actively working on a new metrics merging feature that will allow existing metrics within your glossary to be thoughtfully merged so you can retain linkage to reports, dashboards, aliases, and existing linked metrics."
+}

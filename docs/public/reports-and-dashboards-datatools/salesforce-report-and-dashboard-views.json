@@ -1,0 +1,17 @@
+{
+  "post_id": 10369,
+  "title": "Segment Salesforce Report and Dashboard Views",
+  "slug": "salesforce-report-and-dashboard-views",
+  "url": "https://datatoolspro.com/tutorials/salesforce-report-and-dashboard-views/",
+  "date": "2024-11-17T16:28:44",
+  "modified": "2024-11-17T16:28:51",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Reports and Dashboards DataTools"
+  ],
+  "excerpt": "Salesforce Report and Dashboard Views View Name Description Use Case My Dashboards Displays all dashboards owned by or associated with the current user. Used to quickly access personal dashboards for review, updates, or sharing. My Reports Displays all reports owned by or associated with the current user. d to locate and manage personal reports relevant […]",
+  "content_markdown": "Managing Reports and Dashboard in Salesforce can be a challenge as your organization and content grows. That is why we created pre-designed Salesforce report and dashboard views to help you quickly find the right dashboards and reports based on common management tasks.\n\n![Salesforce Report and Dashboard Views](https://datatoolspro.com/wp-content/uploads/2024/11/image-29-png.webp)\n\n## Salesforce Report and Dashboard Views\n\n| View Name | Description | Use Case |\n| --- | --- | --- |\n| **My Dashboards** | Displays all dashboards owned by or associated with the current user. | Used to quickly access personal dashboards for review, updates, or sharing. |\n| **My Reports** | Displays all reports owned by or associated with the current user. | d to locate and manage personal reports relevant to ongoing analysis or projects. |\n| **My Work in Progress** | Displays reports and dashboards tagged as “In Progress” within the development lifecycle. | Used to track items currently under development, testing, or awaiting completion. |\n| **My Recently Modified** | Displays reports or dashboards recently edited by the current user, with a customizable date range (e.g., last 7 days by default). | Used to quickly locate and revisit recently updated analytics assets for further edits or follow-ups. While the default is 7 days, you can expand the the last modified date. |\n| **Production Monthly Active Analytics** | Displays production reports and dashboards actively used in the last rolling 30 days (or other customizable periods). | Used to monitor and manage high-value, production analytics assets currently utilized by the organization. |\n| **Recommended for Deprecation** | Highlights reports and dashboards unused in the last 90 days, regardless of their status. | Used to identify and clean up abandoned or outdated analytics assets to streamline the system. |\n\n[Video: Working with DataTools Report Views](https://www.youtube.com/embed/VwgEeLwF_20?feature=oembed)"
+}

@@ -1,0 +1,17 @@
+{
+  "post_id": 9989,
+  "title": "Import your metrics into Coda with DataTools Pro Bundle",
+  "slug": "import-metrics-into-coda-with-datatools-pro-c",
+  "url": "https://datatoolspro.com/tutorials/import-metrics-into-coda-with-datatools-pro-c/",
+  "date": "2024-08-18T23:40:02",
+  "modified": "2024-08-18T23:40:11",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "coda",
+    "datatoolspro"
+  ],
+  "excerpt": "Export DataTools Pro metrics glossary to Notion with our direct API integration.",
+  "content_markdown": "![Coda](https://datatoolspro.com/wp-content/uploads/2024/08/icons8-coda-240.png)\n\nImport your DataTools Pro metrics glossary into Coda with our Coda Bundle. This secured integration allows you to seamlessly pull metrics definitions into Coda and distribute directly business users.\n\nLearn more about [DataTools Pro Metrics Glossary](https://datatoolspro.com/lesson/metrics-glossary-for-salesforce/ \"Building Metrics Glossary for Salesforce with DataTools Pro\")\n\nLearn about other [DataTools Pro integrations](https://datatoolspro.com/integrations/ \"DataTools Pro Integrations for Metrics Governance\")\n\n[Video: Metrics Governance with Salesforce, Coda and DataTools Pro](https://www.youtube.com/embed/axKBfGYNdio?feature=oembed)\n\n## Generate a DataTools Pro API Key for Coda\n\nStep 1: [Access Coda settings page](https://app.datatoolspro.com/user/coda \"DataTools Pro Notion Settings\") or click on the Coda icon on the Metrics Glossary page\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-10.png)\n\nStep 2: Click “Create API Key” button\n\nStep 3: Save your API key to a secured location. DataTools Pro will display your API key only one time, and by design will not query and display the key.\n\n## Install the Bundle\n\nVisit the DataTools Pro Coda page to access your Coda Bundle.\n\n## Using the DataTools Pro Coda Bundle\n\nOn any Coda page start typing the following short code to display your installed pack.\n\n```\n/datatools\n```\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-19.png)\n\nStep 2. Click on DataTools Pro Metric Glossary\n\nStep 3. On the right side bar, you will see Building Blocks including “DataTools Pro Sync”.\n\nStep 4. Drag DataTools Pro sync onto your Coda canvas\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-21.png)\n\nStep 5. Click the “Sync Now” button within the table or within the Table Options\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-20-1024x503.png)\n\nStep 6. Paste your DataTools Pro API Key for Coda to authorize Coda to connect.\n\nStep 7. Select a line of business or topic to restrict the metrics loaded\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-22.png)\n\nStep 8. Set a refresh interval to automatically sync and update your metrics glossary to ensure it is always up to date.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-24.png)\n\nStep 9. Use native Coda table functions to further filter, sort, group and organize your metrics glossary to your business needs\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-23-1024x523.png)"
+}

@@ -1,0 +1,19 @@
+{
+  "post_id": 9428,
+  "title": "Link Tableau Personal Access Token to DataTools Pro",
+  "slug": "link-tableau-personal-access-token-to-datatools-pro",
+  "url": "https://datatoolspro.com/tutorials/link-tableau-personal-access-token-to-datatools-pro/",
+  "date": "2024-03-12T23:06:53",
+  "modified": "2024-03-12T23:06:57",
+  "categories": [
+    "DataTools Pro",
+    "Tableau"
+  ],
+  "tags": [
+    "datatoolspro",
+    "metrics",
+    "Tableau Pulse"
+  ],
+  "excerpt": "Create a personal access token This procedure requires you to copy a secret to a file. The secret is the string that you will include in your automation scripts and will be used to authenticate to Tableau Cloud or Tableau Server. Handle the secret as you would a password: protect the secret and do not […]",
+  "content_markdown": "## Create a personal access token\n\nThis procedure requires you to copy a secret to a file. The secret is the string that you will include in your automation scripts and will be used to authenticate to Tableau Cloud or Tableau Server. Handle the secret as you would a password: protect the secret and do not share it with others. The following instructions to [Create a Personal Access token (PAT)](https://help.tableau.com/current/pro/desktop/en-us/useracct.htm#create-a-personal-access-token \"Create a Tableau personal Access token\") are available on Tableau help\n\n1. Under **Personal Access Tokens**, enter a descriptive name for your token in the **Token Name** field, and then click **Create Token**.\n2. In the Personal Access Token dialog box, click the **Copy Secret** button.\n\n![](https://help.tableau.com/current/pro/desktop/en-us/Img/pats_secret.png)\n3. Paste the secret to a file and store the file in a safe location.\n4. When finished, click the **Close** button.\n\n**Note:** If using Tableau Sever, you can have up to 10 PATs\n\nHere are the detailed fields and how to locate them within your Tableau cloud site:\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-17-1024x336.png)\n\n## Server Name\n\nThe server name is the first part of the Tableau.com domain. We fill in the details for you so it’s clear what part of the URL you need to fill in as shown below:\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-19.png)\n\n## Site Name\n\nSite name is contained with the URL after you login to Tableau cloud. Typically this name is located after “/site/” within your Tableau URL\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-18.png)\n\n## Access Token Name\n\nCopy the access token name from your Tableau server when you create a new token.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/03/image-20-1024x122.png)\n\n## Personal Access Token\n\nCopy the personal access token from your server and paste it into DataTools"
+}

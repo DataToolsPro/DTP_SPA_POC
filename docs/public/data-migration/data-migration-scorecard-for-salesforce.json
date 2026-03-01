@@ -1,0 +1,19 @@
+{
+  "post_id": 8759,
+  "title": "Data Migration Scorecard for Salesforce",
+  "slug": "data-migration-scorecard-for-salesforce",
+  "url": "https://datatoolspro.com/tutorials/data-migration-scorecard-for-salesforce/",
+  "date": "2023-08-17T19:54:50",
+  "modified": "2023-10-06T15:19:30",
+  "categories": [
+    "DataTools Pro",
+    "Salesforce Data Migration"
+  ],
+  "tags": [
+    "Data Migration",
+    "datatoolspro",
+    "Salesforce"
+  ],
+  "excerpt": "The Data Migration Scorecard for Salesforce is designed to keep track of your Salesforce data migration project at the Salesforce object level.",
+  "content_markdown": "The Data Migration Scorecard for Salesforce is designed to keep track of your Salesforce data migration project at the Salesforce object level. The migration scorecard serves 3 purposes in your Salesforce Migration\n\n1. Communicate Progress\n2. Launchpad to Migration Assets\n3. Inventory of Objects to Drill and Map\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-5-1024x576.png)\n\n## How to Access the Migration Scorecard:\n\n1. When logged into DataTools Pro, select Data Migration.\n2. If you do not see Data Migration on your tool tip, please contact your admin or support@datatoolspro.com to ensure you have the feature enabled for your account.\n\n## Adding Salesforce Objects to the Migration Scorecard\n\n1. For DataTools Pro admin users, click on \"Select Objects\" button or click anywhere in the Saleseforce objects space to view a dropdown for all salesforce objects. If you do not see \"Your Salesforce Objects\" make sure \"Show Objects\" is checked.\n\n***Note:*** The option to add more objects is not available for viewer accounts.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-6-1024x153.png)\n\n2. Select the object/Objects by checking the box next to the object name. You can search for specific objects by Label or API name.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-7.png)\n\n3. Upon choosing the objects, you will need to save your changes by clicking \"Save Objects\"\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-8-1024x74.png)\n\n## Adding and Configuring Source Objects for Migration Mapping\n\nWith your Salesforce objects defined, instinctively you would want to map and configure tables from the system you are migrating from. Currently DataTools Pro supports direct connectivity to Salesforce metadata only. Due to the wide range of source applications we opted to release DataTools Pro with a manual meta data import process as we look to build out an integrate new direct meta data connectors.\n\nTo learn how to add and configure Source Object and fields, view [Updating Migration Scorecard Status](https://datatoolspro.com/tutorials/linking-data-migration-scorecard-to-external-resources-and-apps/ \"Linking Salesforce Data Migration Scorecard to External Resources and Apps\")"
+}

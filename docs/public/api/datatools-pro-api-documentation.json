@@ -1,0 +1,17 @@
+{
+  "post_id": 9015,
+  "title": "DataTools Pro API Documentation",
+  "slug": "datatools-pro-api-documentation",
+  "url": "https://datatoolspro.com/tutorials/datatools-pro-api-documentation/",
+  "date": "2023-12-28T22:30:18",
+  "modified": "2024-06-05T23:43:04",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "API",
+    "datatoolspro"
+  ],
+  "excerpt": "DataTools Pro API was built to extend and inject metrics data into your internal applications, AI agents, and data and analytics solutions",
+  "content_markdown": "## DataTools API Beta\n\nDataTools Pro API was built to extend and inject metrics data into your internal applications, AI agents, and data and analytics solutions\n\n**Beta Notice**\n\nDataTools Pro API is currently in beta and subjective to changes.\n\n## Authentication\n\nDataTools Pro API uses a [Bearer Token](https://oauth.net/2/bearer-tokens/ \"Bearer Token\") which is a string which acts as the authentication of the API request, sent in an HTTP “Authorization” header. The DataTools Pro API is designed for server to server integrations.\n\n### Generating a Token in DataTools Pro\n\nTo generate a token in DataTools Pro, click on the API settings page.\n\n1. Click Add button\n2. Enter the name of your integration\n3. Copy the Token. You will not be able to access the token after it is generated so make sure to keep it in a same place. You can always re-generate your token.\n\n## GET Metrics\n\n**Description**\n\n*This request is designed to GET all metrics from DataTools Pro app including but not limited to*\n\n**Request details**\n\n**URL:** [https://api.datatoolspro.com/v1_0/metrics](https://api.datatoolspro.com/v1_0/metrics)\n\n**HTTP Method:** GET\n\n**Query Parameters:** None\n\n**Header**\n\nAuthorization: Bearer [your token]\n\n**Response** The results from DataTools Pro is delivered as a nested JSON object containing metrics and, categories, and aliases.\n\n```json\n[\n  {\n        \"id\": \"STRING\",\n        \"name\": \"STRING\",\n        \"definition\": \"STRING\",\n        \"business_owner\": \"STRING\",\n        \"related_date_time\": \"YYYY-MM-DDTHH:MM:SS.000000Z\",\n        \"target_interval\": \"YYYY-MM-DDTHH:MM:SS.000000Z\",\n        \"created_at\": \"YYYY-MM-DDTHH:MM:SS.000000Z\",\n        \"updated_at\": \"YYYY-MM-DDTHH:MM:SS.000000Z\",\n        \"creation_method\": STRING,\n        \"primary_lead\": STRING,\n        \"dimensionality\": STRING,\n        \"aliases\": [],\n        \"categories\": {\n            \"Line of Business\": [],\n            \"Topic\": []\n  }\n]\n```\n\n## View API on Postman\n\nView and test our API live on Postman\n\n[Test API Collection](https://www.postman.com/datatoolspro/workspace/datatools-pro/collection/4149416-41b9e8f0-e5c6-47e5-914e-5bed68f8473b)"
+}

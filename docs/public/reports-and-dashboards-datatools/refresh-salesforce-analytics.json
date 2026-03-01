@@ -1,0 +1,17 @@
+{
+  "post_id": 10399,
+  "title": "DataTools Pro refresh Salesforce analytics list",
+  "slug": "refresh-salesforce-analytics",
+  "url": "https://datatoolspro.com/tutorials/refresh-salesforce-analytics/",
+  "date": "2024-11-17T19:12:29",
+  "modified": "2024-11-17T19:12:33",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Reports and Dashboards DataTools"
+  ],
+  "excerpt": "DataTools Pro will load and refresh Salesforce analytics list (reports and dashboards) so you can apply analyze the latest analytics in your organization. As you make updates to reports and dashboards inside of Salesforce, changes are not automatically reflected in DataTools Pro until you click “Refresh.” This design places the control into the hands of […]",
+  "content_markdown": "DataTools Pro will load and refresh Salesforce analytics list (reports and dashboards) so you can apply analyze the latest analytics in your organization. As you make updates to reports and dashboards inside of Salesforce, changes are not automatically reflected in DataTools Pro until you click “Refresh.” This design places the control into the hands of users who may be actively working in Salesforce, while minimizing API credits against your Salesforce organization.\n\n**Last Refreshed –** Reflects the last day that DataTools Pro connected to your Salesforce organization and represents your org “as of” the last refreshed date.\n\n![DataTools Pro refresh Salesforce analytics](https://datatoolspro.com/wp-content/uploads/2024/11/image-48-png.webp)\n\n## Enable Scheduler to refresh Salesforce analytics\n\nBy enabling scheduler, DataTools Pro will automatically refresh the report and dashboard metadata once per day to ensure you always have at minimum a daily log of changes that occur. To use the feature, simply click “Enabled Scheduler.” This feature will be utilized for editions of DataTools Pro that will proactively monitor changes to your reports and dashboards for change management. For more information about our analytics change management features feel free to [contact us](/contact)."
+}

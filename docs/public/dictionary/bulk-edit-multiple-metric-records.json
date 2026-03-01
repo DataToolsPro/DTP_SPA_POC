@@ -1,0 +1,17 @@
+{
+  "post_id": 8959,
+  "title": "Bulk Edit Multiple Metric Records",
+  "slug": "bulk-edit-multiple-metric-records",
+  "url": "https://datatoolspro.com/tutorials/bulk-edit-multiple-metric-records/",
+  "date": "2023-12-01T22:11:02",
+  "modified": "2023-12-28T23:12:18",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Dictionary"
+  ],
+  "excerpt": "Bulk edit multiple metric records with DataTools Pro. This allows for streamlined experience and data management.",
+  "content_markdown": "DataTools was designed to streamline management of metrics and improve the process and user experience from common manual document and spreadsheet management. To do that, we are always looking for ways to bulk update and/or automate.\n\nCurrently, Data Tools Pro supports bulk editing of categories:\n\n- Line of Business\n- Topic\n\n## Selecting and Bulk Editing\n\nThe metrics data table allows selection of rows from any area except clickable links. By default, only one record is selected at a time.\n\nTo multi select you can hold “Ctl” button on your keyboard and click to select one by 1. Another approach is to hold the “Shift” key on your keyboard to select a larger range at once.\n\nWhen multiple rows are selected, you will see an edit button that will open a window with bulk editing options for the selected metrics.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-6.png)\n\n## When is Multi-Select is Disabled?\n\nWhen you use the “Group By” feature, the bulk edit option is un-available. If you would like to organize and edit your metrics by categories, you can achieve the same result by using the metrics filter option.\n\n## Applying Updates to Multiple Records\n\nAfter clicking on the “Edit x Metrics” button, you will see a list of available bulk updates.\n\n**Currently DataTools Pro supports bulk updates to Line of Business and Topics.**\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-7.png)"
+}

@@ -1,0 +1,17 @@
+{
+  "post_id": 8852,
+  "title": "Getting Started with Metrics Glossary DataTools for Salesforce",
+  "slug": "getting-started-with-metrics-glossary-datatools-for-salesforce",
+  "url": "https://datatoolspro.com/tutorials/getting-started-with-metrics-glossary-datatools-for-salesforce/",
+  "date": "2023-10-10T21:40:57",
+  "modified": "2024-11-18T17:19:50",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "metrics"
+  ],
+  "excerpt": "Getting Started with Metrics Glossary DataTools for Salesforce demonstrates how to build a dictionary for the most important metrics within your organization.",
+  "content_markdown": "Metrics glossary DataTools serves as a dictionary for the most important metrics and KPIs within your organization. While DataTools Pro was designed originally for use with Salesforce, the utilization of the metrics dictionary can extend beyond Salesforce to Google Analytics. Additionally you can share and distribute your metrics through [Zapier](https://datatoolspro.com/zapier-to-datatools-pro/ \"Connect Zapier to DataTools Pro\"), [Coda](https://datatoolspro.com/tutorials/import-metrics-into-coda-with-datatools-pro-c/ \"Import your metrics into Coda with DataTools Pro Bundle\"), and other integrations.\n\nThe following getting started guide will step you through all of the key metrics glossary features including:\n\n- Manually Adding Metrics\n- Creating Line of Business and Topic categories\n- Assigning Categories to Metrics\n- Organizing and Grouping\n- Exporting your metrics dictionary\n- [Import metrics from Salesforce dashboards with metrics analyst](https://datatoolspro.com/tutorials/getting-started-with-metrics-analyst-ai-for-salesforce/ \"Import metrics from Salesforce with Metrics Analyst\")\n\n[Embedded Content](https://scribehow.com/embed/Creating_and_configuring_metrics_in_Scribe_workspace__47w8gmxkSFulu0apMfiDEQ)"
+}

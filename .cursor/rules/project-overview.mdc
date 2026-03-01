@@ -53,6 +53,7 @@ The AI assistant has layered context injected per working area:
 | `jira-context.mdc` | ✅ | Jira workflow + work type definitions |
 | `git-workflow.mdc` | ✅ | Branch, commit, PR conventions |
 | `lessons-learned.mdc` | ✅ | Check before similar work; add when fixing bugs |
+| `public-docs.mdc` | ✅ | Evaluate public-facing doc needs after each user story |
 | `backend-conventions.mdc` | When in `app/**` | Laravel service patterns, API conventions |
 | `frontend-conventions.mdc` | When in `dtp/**` | React/TypeScript patterns, SPA structure |
 | `ai-prompt-management.mdc` | When in `ai/**` | Prompt standards and eval requirements |

@@ -1,0 +1,17 @@
+{
+  "post_id": 9043,
+  "title": "Linking Metrics and KPI Relationships",
+  "slug": "linking-metrics-and-kpi-relationships",
+  "url": "https://datatoolspro.com/tutorials/linking-metrics-and-kpi-relationships/",
+  "date": "2024-01-04T13:22:32",
+  "modified": "2024-01-20T20:24:57",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "metrics"
+  ],
+  "excerpt": "Linking metrics allows you to capture and understand how metrics relate to each other and provides categorization that aligns to typical business cases.",
+  "content_markdown": "Managing your business requires a carefully crafted collection of metrics to keep your finger on the pulse of performance. Salesforce is often the source of truth for both operational and financial impacting metrics. Not all metrics are reported and tracked inside of Salesforce, but understanding the relationship and impact that a Salesforce metric has is extremely useful.\n\nThat is why we created our metrics linking feature. Metric linking allows you to capture and understand how metrics relate to each other and provides categorization that aligns to typical business cases.\n\n## **Understanding Influence**\n\nThere are two ways 2 metrics can relate to each other. For documentation purposes we use the word “influence”, and in the [DataTools Pro app](/datatools-for-salesforce/ \"Linking Metrics\") we give you 3 categories to relate influence to 2 metrics:\n\nMetric 1 **Has influence on** Metric 2\n\nMetric 2 **Is Influenced by** Metric 1\n\n## **Influence Options**\n\nBy default we have chosen to make Metrics configurable based on what metric they are “Has influence on” as a bottom. We have prepared a table to explain the concept:\n\n|  | **Has influence on** | **Is Influenced by** |\n| --- | --- | --- |\n| **Option 1** | included in calculation of | includes in the calculation |\n| **Option 2** | segment of | segmented by |\n| **Option 3** | directly impacts | impacted by |\n\n## **Linking Metrics Step by Step Guide**\n\nSelect a Metric\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-6.png)\n\nSelect the “Link” tab\n\n![](https://datatoolspro.com/wp-content/uploads/2024/01/image.png)\n\nSelect the Relationship type.\n\nSelect the metric that is linked based on the relationship type.\n\n## **How to Use this Information**\n\nIn upcoming versions of DataTools Pro we will have features that will not only help you auto-relate metric relationships but also view and analyze your metrics and their relationship to your reporting and dashboard objects. For now, DataTools Pro provides a place to capture these relationships and soon some nifty tools to help auto-relate metrics."
+}

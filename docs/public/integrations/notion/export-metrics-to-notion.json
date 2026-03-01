@@ -1,0 +1,16 @@
+{
+  "post_id": 9466,
+  "title": "Export Metrics to Notion",
+  "slug": "export-metrics-to-notion",
+  "url": "https://datatoolspro.com/tutorials/export-metrics-to-notion/",
+  "date": "2024-08-18T22:01:55",
+  "modified": "2024-08-18T22:02:12",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "notion"
+  ],
+  "excerpt": "Export DataTools Pro metrics glossary to Notion with our direct API integration.",
+  "content_markdown": "![Notion export](https://datatoolspro.com/wp-content/uploads/2024/08/icons8-notion-250.png)\n\nExport DataTools Pro metrics glossary to Notion with our direct API integration. This secured integration allows you to seamlessly push metrics definitions to business users making it accessible to Notion users.\n\nLearn more about [DataTools Pro Metrics Glossary](https://datatoolspro.com/lesson/metrics-glossary-for-salesforce/ \"Building Metrics Glossary for Salesforce with DataTools Pro\")\n\nLearn about other [DataTools Pro integrations](https://datatoolspro.com/integrations/ \"DataTools Pro Integrations for Metrics Governance\")\n\n## Conenct DataTools Pro to Notion\n\nStep 1: [Access Notion settings page](https://app.datatoolspro.com/user/notion \"DataTools Pro Notion Settings\")\n\nStep 2: Click “Connect DataTols Pro to Notion" button.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-12.png)\n\nStep 3. Proceed to grant permission from DataTools Pro to publish to Notion by clicking Next.\n\n***IMPORTANT NOTE:*** DataTools Pro does NOT request the permission to read content from your Notion app.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-13-869x1024.png)\n\nStep 4: Select the appropriate option for how DataTools Pro should publish to your Notion instance.\n\n#### Use a template provided by the developer\n\nThis option will use a standard template to publish your metrics glossary. If you would like to preview the template we use, [click here](https://www.notion.so/Salesforce-Metrics-Glossary-0b04d93aeed14ce3b6311d4480d39a10)\n\n#### Use a template provided by the developer\n\nThis option will allow you to select individual pages that are granted permission to publish your metrics glossary.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-14-1024x882.png)\n\n## Using Notion Export\n\nStep 1. Open the [Metrics Glossary](https://app.datatoolspro.com/metrics \"Metrics Glossary\")\n\nStep 2. Filter the metrics glossary contents that you would like to export\n\nStep 3. Click the Notion icon to open the export dialogue\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-10.png)\n\nStep 4. Select the page that you would like to create and nest your metrics glossary.\n\nStep 5. Open Notion to view your published metrics glossary.\n\n## Notes on Updating your Metrics Glossary\n\nOnce you publish your Metrics Glossary, DataTools pro will keep a list of all pages you have published but will not automatically update Notion as you update your metrics. You will need to re-publish to post updates to users in Notion."
+}

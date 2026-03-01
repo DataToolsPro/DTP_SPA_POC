@@ -1,0 +1,17 @@
+{
+  "post_id": 9730,
+  "title": "DataTools ERD Toolbar Overview",
+  "slug": "datatools-erd-toolbar-overview",
+  "url": "https://datatoolspro.com/tutorials/datatools-erd-toolbar-overview/",
+  "date": "2024-07-13T17:00:03",
+  "modified": "2024-07-13T17:00:07",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "ERD"
+  ],
+  "excerpt": "DataTools Pro ERDs features a series of tools to transform and export your Salesforce Entity Relationship diagrams. This article highlights all of the available options",
+  "content_markdown": "[DataTools ERD](https://datatoolspro.com/connected-salesforce-entity-relationship-diagram/ \"How to Create Salesforce Entity Relationship Diagram\") toolbar features a series of tools to transform and export your Salesforce Entity Relationship diagrams. This article highlights all of the available options\n\n![DataTools ERD Toolbar](https://datatoolspro.com/wp-content/uploads/2024/07/image-12.png)\n\n|  |  |\n| --- | --- |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-4.png) | **Add New Object**: This tool allows you to add a new object to your Entity Relationship Diagram (ERD). You can define the object's properties and its relationships with other objects. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-5.png) | **Zoom In/Out**: Use this tool to zoom in for a closer view or zoom out to see a larger portion of your ERD. It helps in navigating complex diagrams with ease. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-6.png) | **Fit to Canvas**: This tool adjusts the view to fit the entire ERD within the canvas, making it easier to see all the elements without needing to scroll. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-7.png) | **Collapse / Expand ERD**: This tool lets you collapse or expand sections of the ERD, making it simpler to focus on specific parts of the diagram while hiding less relevant details. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-8.png) | **Export PNG**: With this tool, you can export your ERD as a PNG image file, allowing you to share or include the diagram in documents and presentations. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-9.png) | **Export SVG**: Similar to the PNG export, this tool lets you export your ERD as an SVG file, which is scalable and can be used in various applications without losing quality. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-10.png) | **Group/Ungroup Lines**: This tool allows you to group or ungroup lines in your ERD, making it easier to manage and organize connections between objects. |\n| ![](https://datatoolspro.com/wp-content/uploads/2024/07/image-11.png) | **Lock ERD**: Use this tool to lock the ERD, preventing any changes from being made. This is useful when you want to ensure the integrity of the diagram once it's finalized. |\n|  | **Show User Relationships**: This tool highlights the relationships between users within the ERD, providing a clear view of how users interact with different objects and entities. |\n|  | **Use Field API Names**: This tool toggles between displaying the field names as seen in the user interface and the API names used in code, helping developers and administrators understand the mapping. |"
+}

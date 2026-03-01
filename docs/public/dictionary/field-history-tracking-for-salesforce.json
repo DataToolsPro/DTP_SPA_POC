@@ -1,0 +1,16 @@
+{
+  "post_id": 9245,
+  "title": "Field History Tracking for Salesforce",
+  "slug": "field-history-tracking-for-salesforce",
+  "url": "https://datatoolspro.com/tutorials/field-history-tracking-for-salesforce/",
+  "date": "2024-02-04T15:46:59",
+  "modified": "2024-02-04T15:47:11",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Dictionary"
+  ],
+  "excerpt": "Our latest release of DataTools Pro introduces our new Field History Tracking for Salesforce. Currently, this new feature is focused only on updates made to fields. This is our first step to help DataTools users understand Salesforce field history tracking and changes that could impact downstream reporting and analytics. Using Salesforce Field History Tracking Tracking […]",
+  "content_markdown": "Our latest release of DataTools Pro introduces our new Field History Tracking for Salesforce. Currently, this new feature is focused only on updates made to fields. This is our first step to help DataTools users understand Salesforce field history tracking and changes that could impact downstream reporting and analytics.\n\n## Using Salesforce Field History Tracking\n\nNo steps are required to enable history tracking.\n\n1. Within a [Salesforce object dictionary](https://datatoolspro.com/tutorials/salesforce-field-dictionary-with-datatools-pro/ \"Salesforce field dictionary\"), click on the refresh icon to pull the latest object.\n2. Click on the history icon (clock) to open a window containing the recorded history change log for all fields in the object.\n\n![View Field History Tracking for Salesforce](https://datatoolspro.com/wp-content/uploads/2024/02/image-5.png)\n\n## Notes for DataTools Field History Tracking for Salesforce\n\nCurrently, history tracing does not list “new” fields added to your Salesforce instance. We are currently working on an enhancement.\n\nHistory changes is currently tracked by DataTools Pro will pull changes based on the Salesforce “Last Modified Date”, so it will not be retro-active to your objects. This is why all history logs are empty. Multiple changes that occur in between object refresh are not tacked individually."
+}

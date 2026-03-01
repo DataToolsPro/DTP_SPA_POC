@@ -1,0 +1,17 @@
+{
+  "post_id": 9613,
+  "title": "Managing DataTools Pro Subscription",
+  "slug": "managing-datatools-pro-subscription",
+  "url": "https://datatoolspro.com/tutorials/managing-datatools-pro-subscription/",
+  "date": "2024-06-22T23:03:00",
+  "modified": "2024-06-22T23:03:04",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Administration",
+    "datatoolspro"
+  ],
+  "excerpt": "DataTools Pro uses Stripe to handle all payments transactions, handling of credit cards and monthly / annual recuring subscriptions. Currently we are using Stripe’s managed subscription functions. Access Stripe Subscription Console 1. Login to DataToolsPro. 2. View the Settings Page 3. Click on Billing & Subscription 4. Enter the email address used to purchase. For […]",
+  "content_markdown": "DataTools Pro uses Stripe to handle all payments transactions, handling of credit cards and monthly / annual recuring subscriptions. Currently we are using Stripe’s managed subscription functions.\n\n## Access Stripe Subscription Console\n\n1. Login to [DataToolsPro](https://app.datatoolspro.com \"DataTools Pro App\").\n\n2. View the [Settings Page](https://app.datatoolspro.com/user/settings \"Settings\")\n\n3. Click on [Billing & Subscription](https://billing.stripe.com/p/login/00g4hBbHdbmx3g4000 \"DataTools Stripe Billing and Subscription\")\n\n![](https://datatoolspro.com/wp-content/uploads/2024/06/image-3.png)\n\n4. Enter the email address used to purchase. For any assistance with billing, please contact support@datatoolspro.com.\n\n5. Stripe will send you an email with a one-time use URL that will direct you to the stripe subscription management.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/06/image-4.png)\n\n6. One logged in, you can update / upgrade your plan or cancel your plan.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/06/image-5-1024x286.png)\n\n## Update Plan\n\n### Increasing Users\n\nIncrease users will add additional licenses to your plan while maintaining the same subscription / billing cycle.\n\n### Decreasing Users\n\nDecreasing users will require the number of active users to fall within the number of available users. When users are decreased, at the end of your billing cycle administrators will receive a message upon logging in indicating there are not enough users. Access to some features is restricted to admins until the number of activated users falls within the available user limit.\n\n## Cancel Plan\n\nWhen you cancel a plan and end a subscription, users are not impacted until the end of the billing period. At the end of the billing term, the administrator account is reverted to the free version of DataTools Pro. Invited users are automatically expired upon cancelling a subscription at the end of the billing period."
+}

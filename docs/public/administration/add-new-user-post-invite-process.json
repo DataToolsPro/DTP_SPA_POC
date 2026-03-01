@@ -1,0 +1,17 @@
+{
+  "post_id": 10013,
+  "title": "Add new user post invite process",
+  "slug": "add-new-user-post-invite-process",
+  "url": "https://datatoolspro.com/tutorials/add-new-user-post-invite-process/",
+  "date": "2024-08-23T09:50:01",
+  "modified": "2024-08-23T09:50:12",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Administration",
+    "user management"
+  ],
+  "excerpt": "Post Invite, what happens next? When you invite a user they will receive an email with a one time password. When clicked it will open app.datatoolspro.com where they can authenticate with their Salesforce.com user. Until the user authenticates into your Salesforce org, they will remain in the invited user section Once an invited user has [\u2026]",
+  "content_markdown": "## Post Invite, what happens next?\n\nWhen you invite a user they will receive an email with a one time password. When clicked it will open app.datatoolspro.com where they can authenticate with their Salesforce.com user.\n\nUntil the user authenticates into your Salesforce org, they will remain in the invited user section\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-31-1024x243.png)\n\nOnce an invited user has logged in for the first time, you will see the user(s) with their current permission and the ability to disable access to DataToolsPro.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-30-1024x261.png)\n\n### Important note for customers with multiple Salesforce orgs and sandboxes\n\nOur invite email and redirect will not instruct the user which Salesforce org you invited them from. For example, if you invite them from a Sandbox, you may want to name your account name to be descriptive so it is clear which Salesforce org you are using. As shown in the example below, we will add the \"Account Name\" in the invite email to provide direction to the user the name of your Salesforce org.\n\n![](https://datatoolspro.com/wp-content/uploads/2024/08/image-29.png)"
+}

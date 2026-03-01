@@ -1,0 +1,19 @@
+{
+  "post_id": 9421,
+  "title": "Tableau Pulse Import to DataTools Pro Metrics Glossary",
+  "slug": "tableau-pulse-import-to-datatools-pro-metrics-glossary",
+  "url": "https://datatoolspro.com/tutorials/tableau-pulse-import-to-datatools-pro-metrics-glossary/",
+  "date": "2024-03-12T23:05:14",
+  "modified": "2024-05-12T16:21:20",
+  "categories": [
+    "DataTools Pro",
+    "Tableau"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Tableau",
+    "Tableau Pulse"
+  ],
+  "excerpt": "Before you can import Tableau Pulse into DataTools Pro Metrics Glossary, you need to create a connection. Importing Metrics from Tableau Pulse Step 1. Navigate to the DataTools Pro Metrics tab Step 2. On the import bar click on the Tableau icon NOTE: For first time, use follow the directions to Link a Tableau personal […]",
+  "content_markdown": "Before you can import Tableau Pulse into DataTools Pro Metrics Glossary, you need to create a connection.\n\n## Importing Metrics from Tableau Pulse\n\nStep 1. Navigate to the DataTools Pro Metrics tab\n\n![Select DataTools Metrics](https://datatoolspro.com/wp-content/uploads/2024/05/image-5.png)\n\nStep 2. On the import bar click on the Tableau icon\n\n![Import from Tableau](https://datatoolspro.com/wp-content/uploads/2024/05/image-7.png)\n\nNOTE: For first time, use follow the directions to [Link a Tableau personal access token in DataTools Pro](https://datatoolspro.com/tutorials/link-tableau-personal-access-token-to-datatools-pro)\n\nStep 3. From the list of Tableau Pulse metrics you can add or merge Tableau pulse metrics into other metrics definitons that you already manage or add brand new metrics into your Glossary.\n\n![Add or merge metrics](https://datatoolspro.com/wp-content/uploads/2024/05/image-3.png)\n\nStep 4. Upon adding or merging a Pulse metric, you will automatically see the linked Tableau analytics page for your metric so you have easy access to the Pulse metric moving forward.\n\n![Linked Tableau Pulse analytics](https://datatoolspro.com/wp-content/uploads/2024/05/image-4.png)\n\nWe will be continuously enhancing and tightening the integration to to provide deeper change management and lineage with Salesforce data in the near future! Feel free to contact us anytime with any feedback!\n\n[Video: Tableau Pulse Metrics Management with DataTools Pro](https://www.youtube.com/embed/0io6VVl5W0E?feature=oembed)\n\n## Securely Connect to Tableau Server\n\nTo connect DataTools Pro to Tableau Pulse, we connect to the Tableau Cloud instance using a personal access token to pull down Tableau Pulse metadata. View step by step tutorial to [Link a Tableau personal access token in DataTools Pro](https://datatoolspro.com/tutorials/link-tableau-personal-access-token-to-datatools-pro)\n\nCurrently, we implemented personal Access token as the first method to connect to Tableau Pulse APIs to return only meta data. For more authentication options, please contact our support team.\n\n[Video: Connect Tableau Server to DataTools Pro](https://www.youtube.com/embed/WlvQYhaCtPU?feature=oembed)"
+}

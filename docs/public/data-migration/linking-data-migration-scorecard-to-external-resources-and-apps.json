@@ -1,0 +1,19 @@
+{
+  "post_id": 8761,
+  "title": "Linking Salesforce Data Migration Scorecard to External Resources and Apps",
+  "slug": "linking-data-migration-scorecard-to-external-resources-and-apps",
+  "url": "https://datatoolspro.com/tutorials/linking-data-migration-scorecard-to-external-resources-and-apps/",
+  "date": "2023-08-17T19:50:08",
+  "modified": "2025-01-02T19:35:09",
+  "categories": [
+    "DataTools Pro",
+    "Salesforce Data Migration"
+  ],
+  "tags": [
+    "Data Migration",
+    "datatoolspro",
+    "Salesforce"
+  ],
+  "excerpt": "The Data Migration Object scorecard is designed to keep track of your Salesforce data migration project and can serve as a launchpad to link to supporting data assets",
+  "content_markdown": "The Data Migration Scorecard is designed to keep track of your Salesforce data migration project and can serve as a launchpad to link to supporting data assets including but not limited to:\n\n- ETL jobs\n- Data Pipeline Services\n- Documentation\n\nWhen linking to an external resource the Status is transformed into a clickable URL.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-5-1024x576.png)\n\n## Update Status and Link to an External URL:\n\n1. Once you have [added your source object](https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details/#addsourceobjects), click the “Edit” icon on the right denoted by a pencil icon.\n2. In the edit record screen, you can update the status and add URLs to any external resource.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/08/image-15-1024x741.png)\n\n**PRO TIP:** To ensure nothing is missed, we recommend mining your source database to fetch all distinct values that could be migrated and entering them into the data mapping tool.\n\n## Additional Tutorials: Data Mapping & Migration\n\n> [Salesforce Migration Field Mapping Details](https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details/)\n\n[“Salesforce Migration Field Mapping Details” — DataTools Pro](https://datatoolspro.com/tutorials/salesforce-migration-field-mapping-details/embed/#?secret=eGVz1chQb5)\n\n> [Mapping and Migrating Salesforce Picklists](https://datatoolspro.com/tutorials/mapping-and-migrating-salesforce-picklists/)\n\n[“Mapping and Migrating Salesforce Picklists” — DataTools Pro](https://datatoolspro.com/tutorials/mapping-and-migrating-salesforce-picklists/embed/#?secret=pUvsESU2WU)\n\n> [Migration Export SQL](https://datatoolspro.com/tutorials/migration-export-sql/)\n\n[“Migration Export SQL” — DataTools Pro](https://datatoolspro.com/tutorials/migration-export-sql/embed/#?secret=dDq9zsiIZf)"
+}

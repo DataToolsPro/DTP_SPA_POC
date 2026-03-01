@@ -1,0 +1,12 @@
+{
+  "post_id": 9536,
+  "title": "Salesforce Analyst Getting Started Guide to DataTools Pro",
+  "slug": "getting-started-with-metrics-analyst-ai-for-salesforce-2",
+  "url": "https://datatoolspro.com/tutorials/getting-started-with-metrics-analyst-ai-for-salesforce-2/",
+  "date": "2024-05-21T02:52:38",
+  "modified": "2024-05-22T21:27:12",
+  "categories": [],
+  "tags": [],
+  "excerpt": "Getting Started with Metrics Glossary DataTools for Salesforce demonstrates how to build a dictionary for the most important metrics within your organization.",
+  "content_markdown": "Thank you for signing up for DataTools Pro! As an analyst and data sense making professional, we understand first hand the value of having a quick and easy entity relationship and data reference guide. That is why we built DataTools Pro to help plug analyst and data professionals into Salesforce faster and easier. We hope to be a quick and easy solution for you to monitor, document, and understand your Salesforce data model.\n\n## Step 1: Connect your Salesforce Objects\n\nThe first step to using DataTools Pro dictionary and entity relationship diagrams is to add Salesforce objects. Click on the “Guided Tour” button to walk you step by step.\n\n## Resources to learn DataTools Pro and connect with our team…\n\nAfter you build your data dictionary we also recommend exploring our [Metrics Glossary](/metrics) builder where you can quickly turn existing Salesforce dashboards into a connected metrics glossary.\n\nTo access support resources for this page or any tool, simply click on the help icon for contextual articles and videos. You can also re-launch this getting started window and re-watch the guided tour anytime!\n\n![](https://datatoolspro.com/wp-content/uploads/2024/05/image-16.png)"
+}

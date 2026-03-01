@@ -1,0 +1,19 @@
+{
+  "post_id": 10845,
+  "title": "Loading Salesforce CRM Analytics Dashboards in DataTools Pro",
+  "slug": "crm-analytics-dashboards-in-datatools-pro",
+  "url": "https://datatoolspro.com/tutorials/crm-analytics-dashboards-in-datatools-pro/",
+  "date": "2024-12-22T23:54:04",
+  "modified": "2024-12-22T23:54:08",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "crm analytics",
+    "crma",
+    "datatools",
+    "datatoolspro"
+  ],
+  "excerpt": "DataTools Pro has added support for CRM Analytics Dashboards (CRMA) into DataTools Pro, alongside other reporting and dashboard assets. Currently CRM Analytics dashboards are the only assets accessed. Components and CRMA data sources are not currently loaded and referenced.",
+  "content_markdown": "DataTools Pro has added support for CRM Analytics Dashboards (CRMA) into DataTools Pro, alongside other reporting and dashboard assets.\n\n![CRM Analytics Dashboards in DataTools Pro](https://datatoolspro.com/wp-content/uploads/2024/12/image-39-1024x864.webp)\n\nCurrently CRM Analytics dashboards are the only assets accessed. Components and CRMA data sources are not currently loaded and referenced."
+}

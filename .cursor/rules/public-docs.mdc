@@ -1,0 +1,70 @@
+---
+description: Determines when public-facing documentation must be created or updated after completing a user story.
+alwaysApply: true
+---
+
+# Public-Facing Documentation Rule
+
+## When This Applies
+
+After **any user story is completed** (code done, PR ready), evaluate whether documentation is needed. There are two types of docs, and both must be considered.
+
+---
+
+## Two Doc Types
+
+| Type | Location | Format | Audience |
+|------|----------|--------|----------|
+| **Internal feature doc** | `docs/features/<MBT-XX>-<slug>.md` | Markdown | Developers / team |
+| **Public tutorial** | `docs/public/<folder>/<slug>.json` | JSON (per skill) | End users / customers |
+
+---
+
+## Decision Gate
+
+After completing a user story, answer these questions:
+
+### 1. Internal feature doc (`docs/features/`)
+
+| Jira Type | Required? | Action |
+|-----------|----------|--------|
+| **User Story** | ✅ Always | Create or update `docs/features/<MBT-XX>-<slug>.md` using `docs/features/_template.md` |
+| **Task** | ❌ No | PR description is sufficient |
+| **Bug** | ⚠️ Only if user-visible behavior changed | Update existing feature doc if applicable |
+
+### 2. Public tutorial (`docs/public/`)
+
+| Question | If yes |
+|----------|--------|
+| Does this feature introduce a **new capability** the customer would learn about? | Create a new `docs/public/<folder>/<slug>.json` using the datatools-pro-docs skill |
+| Does this feature **change how an existing capability works**? | Update the existing JSON doc — change `content_markdown` and `modified` timestamp |
+| Is this a **behind-the-scenes** change invisible to the customer? | No public doc needed |
+
+**Use the `datatools-pro-docs` skill** (`.cursor/skills/datatools-pro-docs/SKILL.md`) when creating or updating public docs. It defines the JSON format, folder structure, voice, and quality checklist.
+
+---
+
+## Where Public Docs Live
+
+| Folder | Content area |
+|--------|-------------|
+| `docs/public/_general/` | Getting started guides |
+| `docs/public/administration/` | Account, users, security |
+| `docs/public/api/` | REST API |
+| `docs/public/data-migration/` | Scorecard, mapping, SQL |
+| `docs/public/dictionary/` | Objects, fields, tracking |
+| `docs/public/erd/` | Entity relationship diagrams |
+| `docs/public/integrations/<partner>/` | Partner-specific |
+| `docs/public/metrics/` | Glossary, alias, AI analyst |
+| `docs/public/reports-and-dashboards-datatools/` | Reports, dashboards |
+
+---
+
+## PR Checklist
+
+Include in every user story PR:
+
+- [ ] **Internal doc:** Created or updated `docs/features/` entry (or noted "N/A — task/bug")
+- [ ] **Public doc evaluated:** New, updated, or not needed — state which
+- [ ] If public doc created/updated: follows datatools-pro-docs skill quality checklist
+- [ ] Related docs cross-linked

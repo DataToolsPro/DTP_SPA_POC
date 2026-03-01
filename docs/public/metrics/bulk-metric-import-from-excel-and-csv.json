@@ -1,0 +1,17 @@
+{
+  "post_id": 8963,
+  "title": "Bulk Metric Import from Excel and CSV",
+  "slug": "bulk-metric-import-from-excel-and-csv",
+  "url": "https://datatoolspro.com/tutorials/bulk-metric-import-from-excel-and-csv/",
+  "date": "2023-12-01T22:42:56",
+  "modified": "2023-12-01T22:42:58",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "metrics"
+  ],
+  "excerpt": "DataTools Pro provides a bulk import feature that translates any Excel or CSV file into the correct DataTools Pro format.",
+  "content_markdown": "[DataTools](/datatools-for-salesforce/ \"DataTools\") Pro provides a bulk import feature that translates any Excel or CSV file into the correct DataTools Pro format. Our goal was to remove manual data preparation steps if possible into a simple step by step wizard. This tutorial will step you through the process.\n\n## DataTools Pro Metrics Field Dictionary\n\nWhen importing metrics into DataTools Pro you can use the following dictionary to ensure you map your metrics data to the right fields.\n\n| **Metric Field** | **Field Definition** |\n| --- | --- |\n| Metric Name | Short Metric Name |\n| Definition | Text definition for your metric. |\n| Line of Business | Line of business for which the metric belongs. Multiple lines of business can be separated in text with a “,” |\n| Topic | Topic for which the metric belongs. Multiple lines of business can be separated in text with a “,” |\n| Alias | Alias is alternative names for your metric that could be used. For example an abbreviation or inversely a longer formal name for a metric |\n| Owner | The business owner for your metric. |\n\n## Import Process\n\n1. Acquire your Dictionary as a Comma Separated (CSV) or Excel\n\n2. Navigate to the Metrics tab and click “Start Import”\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-9.png)\n\n3. Drag your file or click “Browse Files” button to navigate to your computer and select an Excel or CSV file.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-10-1024x649.png)\n\n4. Select a Header Row that identifies each column of data. The header row does not need to match DataTools Pro\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-11-1024x368.png)\n\n5. Match the columns to the metrics columns.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-12-1024x591.png)\n\n6. Click “Continue” in the upper right hand corner. In the event you do not match column headers or you have extra columns you will get the following warning. You can **Skip** this warning acknolwging you are not going to import data for the columns that remain un-mapped.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-13.png)\n\n7. The last step is to review your data before final import. In this step DataTools will review the data for any invalid information or characters. For example Metric names as shown, supports a finite number of special characters.\n\nYou can edit any value within the table to correct or manually fill any remaining data that you would like to import as a metric.\n\n![](https://datatoolspro.com/wp-content/uploads/2023/12/image-14-1024x271.png)\n\n8. Click “Submit”\n\n## Do you have other formats or systems you want to import metrics from?\n\nIf you find yourself needing a better / faster way to import your metrics, we want to hear about it! Feel free to [contact us](/contact) with us or send us a note and we can share some other techniques to get your metrics dictionary into a CSV or Excel."
+}

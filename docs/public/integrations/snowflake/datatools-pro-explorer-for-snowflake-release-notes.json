@@ -1,0 +1,17 @@
+{
+  "post_id": 11966,
+  "title": "DataTools Pro Explorer for Snowflake Release Notes",
+  "slug": "datatools-pro-explorer-for-snowflake-release-notes",
+  "url": "https://datatoolspro.com/tutorials/datatools-pro-explorer-for-snowflake-release-notes/",
+  "date": "2025-10-10T18:52:27",
+  "modified": "2025-11-27T00:54:42",
+  "categories": [
+    "DataTools Pro Explorer",
+    "Snowflake"
+  ],
+  "tags": [
+    "Snowflake"
+  ],
+  "excerpt": "Request enhancements directly to our support team. Our team replies to 100% of the requests. View Product details | DataTools Pro Explorer Documentation | Snowflake Marketplace Listing Have an enhancement or bug fix? Send us an email to support@datatoolspro.com. Existing users are top priority for enhancements. Dec 2025 Release Automated persistence “last query” across sessions […]",
+  "content_markdown": "Request enhancements directly to our support team. Our team replies to 100% of the requests.\n\n[**View Product details**](https://datatoolspro.com/tutorials/datatools-pro-explorer/) | [DataTools Pro Explorer Documentation](https://datatoolspro.com/tutorials/datatools-pro-explorer/ \"DataTools Pro Explorer for Snowflake Documentation\") | [Snowflake Marketplace Listing](https://app.snowflake.com/marketplace/listing/GZ1M6ZUJBYW/datatools-pro-datatools-pro-explorer \"DataTools Pro Explorer Marketplace Listing\")\n\n## Have an enhancement or bug fix?\n\nSend us an email to support@datatoolspro.com. Existing users are top priority for enhancements.\n\n## Dec 2025 Release\n\nAutomated persistence “last query” across sessions – Triggered on query run\n\nNew query button\n\nRename saved queries\n\nUX Minor labeling and icon updates for consistency\n\nUX – Hide query during tag editing\n\nNumerous bug fixes related to incompatible operators and data types\n\nEdit saved explorations (excludes customized queries)\n\nRecall and edit saved explorations\n\n## November 2025 Release\n\nSave exploration categories (tags) - Line of Business and Topic\n\nCategory management tab\n\nFilter by Categories for saved queries\n\nTag saved queries\n\n## October 2025 Release\n\nSave explorations\n\nExpand dropdown width for readability (UX)\n\nAdd measure COUNT DISTINCT\n\nAdd measure `<<row count>>` for quick addition of row counts\n\nMinimize the select column accordion by default\n\nDocumentation for granting access to the database schema is displayed in-app by default\n\n## Initial Release: 9-30-2025"
+}
