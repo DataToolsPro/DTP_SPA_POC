@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-287",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Exclude Soft-Deleted Objects from ERD",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-21T22:09:48.447-0700",
+  "updated": "2024-05-24T02:25:01.560-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing the Entity Relationship Diagram, I want soft-deleted objects to be automatically excluded from the ERD, so that the diagram accurately reflects only the active objects in my data model.",
+  "description": "When an object is removed (soft-deleted) from the Dictionary, it continues to appear in the ERD. The SQL query that populates the ERD needs a filter condition to exclude soft-deleted items.\n\nThe root cause was that the query retrieved objects based on `user_id` rather than `team_id`, which meant the soft-delete flag was not being evaluated in the correct scope. After switching to a `team_id`-based lookup, soft-deleted objects are properly excluded from the diagram.",
+  "acceptance_criteria": [
+    "Soft-deleted objects no longer appear in the ERD diagram",
+    "Objects removed from the Dictionary are immediately excluded from the ERD on next load",
+    "ERD query filters on team_id to correctly scope soft-delete checks",
+    "Existing non-deleted objects continue to render normally in the ERD"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Soft-deleted objects no longer appear as nodes in the ERD diagram, keeping the visual representation in sync with the active data model.",
+  "middleware_changes": "Updated the ERD object query to filter by team_id instead of user_id, ensuring the soft-delete flag (isdeleted) is correctly evaluated at the team scope.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The initial fix was reported as complete but the issue persisted on re-test. The root cause was identified as querying objects by user_id rather than team_id. Once the query was corrected to use team_id, the soft-delete filter worked properly.",
+  "comment_summary": "Developer initially reported the fix was already in place, but re-testing showed the issue persisted. After debugging, the root cause was identified as a user_id vs team_id scoping issue in the query. Fix was deployed and verified.",
+  "comment_count": 6
+}

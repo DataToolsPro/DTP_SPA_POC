@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-950", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Standardize Date Format by Removing Time Component from Last Viewed Date",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-12T17:21:23.113-0700", "updated": "2024-11-03T19:04:35.997-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want all date columns (Created, Last Modified, Last Viewed) to use the same simple date format without time, so the table is clean and consistent.",
+  "description": "The Last Viewed Date was formatted differently from Created Date and Last Modified Date (it included a time component). Updated all three date columns to use the same simple date-only format for consistency.",
+  "acceptance_criteria": ["All three date columns use identical date-only format", "Time component is removed from Last Viewed Date", "Format is simple and human-readable"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Removed time component from Last Viewed Date; all three date columns now use identical simple date format.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-945"], "source_files": [],
+  "implementation_notes": "Updated moment.js format strings to use date-only format consistently across all three date columns.",
+  "comment_summary": "Waqar standardized all three date formats and deployed to development for review.", "comment_count": 2
+}

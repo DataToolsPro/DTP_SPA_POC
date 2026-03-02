@@ -1,0 +1,19 @@
+{
+  "issue_key": "MBT-1150", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Enhance Tableau PAT Management — Multi-Instance Support and End-User Guidance",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2025-06-27T11:06:30.157-0700", "updated": "2026-01-24T22:56:26.545-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "security"],
+  "story": "As a DataTools Pro user, I want clear guidance when Tableau content is unavailable, and as an admin, I want to manage multiple Tableau PATs for different sites so users can access the right dashboards.",
+  "description": "Comprehensive enhancement to Tableau Personal Access Token (PAT) management:\n\n1. **Multi-instance PAT support**: Users can add PATs for multiple Tableau server/site combinations (e.g., DataTools and Fundcanna). Dashboards are filtered to show only those associated with the selected Tableau site.\n2. **Duplicate prevention**: The system prevents adding duplicate tokens for the same server + site name combination.\n3. **End-user guidance for edge cases**:\n   - No PAT exists and user never connected: redirect to settings with standard setup UX\n   - PAT exists but is expired/invalid: show error explaining why and offer option to reconfigure\n   - Non-admin user wants Tableau access: two paths — either the admin grants them PAT management rights, or the user sets a personal PAT visible only during their authenticated session\n4. **Visibility nuance**: Users with a personal PAT may see Tableau reports they don't have access to inside Tableau itself. This needs documentation.",
+  "acceptance_criteria": ["Multiple Tableau PATs can be added for different server/site combinations", "Duplicate server+site PAT entries are prevented", "Selecting a Tableau site filters dashboards to that site", "Clear error messaging for expired/invalid PATs", "Non-admin users have a path to access Tableau content", "Blank screen scenario is eliminated with actionable guidance"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": true, "api": true, "infrastructure": false, "security": true},
+  "ux_changes": "Added multi-PAT management UI in settings; contextual error/redirect flows for various PAT states; site selector for filtering Tableau dashboards.",
+  "middleware_changes": "Added logic for multi-PAT storage, duplicate detection, PAT validation, and per-site dashboard filtering.",
+  "data_model_changes": "Extended PAT storage to support multiple PAT records per account with server and site_name fields.",
+  "api_changes": "Added endpoints for CRUD operations on multiple Tableau PATs; added site-specific dashboard retrieval.",
+  "dependencies": ["MBT-1149"], "source_files": [],
+  "implementation_notes": "Implemented in a separate branch to avoid affecting development. The PAT is set centrally per account. Future consideration: per-user PAT authentication and role-based access control for Tableau metadata.",
+  "comment_summary": "Waqar implemented multi-PAT support with duplicate prevention and site-specific dashboard filtering. Ryan confirmed the concept was great. No additional testing needed at this time.", "comment_count": 3
+}

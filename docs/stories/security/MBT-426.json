@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-426",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Cross-Tenant User Deletion Vulnerability",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-21T23:05:31.593-0800",
+  "updated": "2024-05-24T02:25:08.444-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity**\n\nAn admin of any tenant could delete users from a different tenant by intercepting the delete request and modifying the Team ID and User ID in the URL path (`/teams/members/{teamId}/{userId}`).\n\n## Attack Vector\n\n1. Login as Tenant A admin.\n2. Navigate to Manage Account > select user > click Delete.\n3. Intercept the request with Burp Suite.\n4. Change Team ID and User ID to Tenant B values.\n5. Tenant B user is deleted.\n\n## Fix\n\nThe deletion endpoint now uses the currently authenticated user's team from the server session instead of the URL-supplied team_id. Even if the request is intercepted and modified, the server operates against the authenticated team context only.",
+  "acceptance_criteria": [
+    "User deletion uses the server-side session team_id, not URL parameters",
+    "Modifying team_id in intercepted delete requests has no effect",
+    "Users can only be deleted from the authenticated user's own team",
+    "Cross-tenant user deletion is no longer possible"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "User deletion endpoint refactored to derive team_id from the authenticated session context instead of URL path parameters.",
+  "data_model_changes": "",
+  "api_changes": "DELETE /teams/members/{teamId}/{userId} no longer trusts the teamId from the URL. Server derives it from the authenticated user's current team.",
+  "dependencies": ["MBT-425"],
+  "source_files": [],
+  "implementation_notes": "Same pattern as MBT-425 fix. The deletion endpoint was using URL path parameters for team_id which could be manipulated. Fixed by deriving team_id from the authenticated session.",
+  "comment_summary": "Developer fixed the issue by using the current authenticated team for deletion operations. Changes deployed to staging for review.",
+  "comment_count": 1
+}

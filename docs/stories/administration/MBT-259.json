@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-259",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "User Permissions for Assigned Shared Accounts",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-27T00:23:21.035-0700",
+  "updated": "2024-05-24T02:24:57.460-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "As a product administrator, I want to assign granular permissions to users when granting them access to my shared account data, so that I can control what actions they can perform within my account.",
+  "description": "Implement a permission assignment system that allows account owners to define what level of access invited users have when sharing account data. When an owner invites another user to their account, they can set specific permissions controlling what the invited user can view, edit, add, or delete within the shared account context.",
+  "acceptance_criteria": [
+    "Account owner can set permissions when inviting a user to their account",
+    "Permissions control view, edit, add, and delete access independently",
+    "Invited users are restricted to the permissions set by the account owner",
+    "Account owner can update permissions for an existing shared user at any time",
+    "Permission changes take effect on the invited user's next action"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Permission selection UI on the account sharing/invitation page allowing owners to toggle individual permission levels for invited users.",
+  "middleware_changes": "Permission enforcement logic that checks the invited user's assigned permissions before allowing CRUD operations on shared account data.",
+  "data_model_changes": "Permission records stored via Laratrust linking users, roles, and teams to control access levels per shared account.",
+  "api_changes": "",
+  "dependencies": ["MBT-257"],
+  "source_files": [],
+  "implementation_notes": "Permissions are implemented using the Laratrust package, which manages role-based access control at the team (account) level. The account owner assigns permissions during the invitation flow.",
+  "comment_summary": "Developer implemented permissions and merged to staging for review. Permission controls are ready for QA.",
+  "comment_count": 2
+}

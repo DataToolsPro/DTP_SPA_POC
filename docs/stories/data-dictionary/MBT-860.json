@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-860",
+  "epic_key": "MBT-870",
+  "feature_folder": "data-dictionary",
+  "title": "Middleware Service to Retrieve Object View Memberships",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-10T13:54:47.627-0700",
+  "updated": "2024-11-03T19:05:07.042-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "ERD"],
+  "story": "",
+  "description": "Create a middleware service that, given a Salesforce object, returns the list of Object Views that include that object. For example, if the Account object belongs to three saved views, the service returns those three views with their names and IDs.\n\nThis service supports a planned UX enhancement: a tab or selector on the object detail page that shows which views the current object belongs to, allowing users to quickly switch to a relevant view.\n\nImplementation uses the existing Eloquent relationship between Scorecard (object) and ErdViews models:\n```php\n$objectID = 14;\n$scorecard = Scorecard::find($objectID);\n$views = $scorecard->erdViews;\n```",
+  "acceptance_criteria": [
+    "Service accepts a Scorecard object ID and returns all associated views",
+    "Response includes view name and ID for each view",
+    "Returns an empty array if the object is not in any saved views",
+    "Service is reusable from the frontend UX layer"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "New service method that queries the Scorecard-ErdViews relationship to return all views containing a given object. Uses Eloquent's many-to-many relationship between Scorecard and ErdViews models.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-360"],
+  "source_files": [],
+  "implementation_notes": "The relationship between Scorecard and ErdViews is a many-to-many via a pivot table. The Eloquent query leverages the existing `erdViews` relationship on the Scorecard model. This service supports a future UX ticket for view switching on the object detail page.",
+  "comment_summary": "Developer provided the Eloquent code snippet and confirmed the service works. Product owner noted this ticket supports another planned UX feature.",
+  "comment_count": 2
+}

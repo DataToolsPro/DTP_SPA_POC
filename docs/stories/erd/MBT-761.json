@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-761",
+  "skipped": true,
+  "skip_reason": "stub - description contains only an image reference with no substantive text",
+  "title": "ERD Returning 500 Error",
+  "status": "Done",
+  "feature_folder": "erd"
+}

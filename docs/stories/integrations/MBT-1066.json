@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1066",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Fix Snowflake Schema Import Hanging on Final Step",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-01-02T01:46:02.288-0800",
+  "updated": "2026-03-01T03:59:41.701-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "As a DataTools Pro user importing a Snowflake schema, I want the import to complete without hanging so that I can successfully add my Snowflake data source.",
+  "description": "When importing a Snowflake schema, the process completes all steps successfully but hangs on the final step where the schema is saved as a custom source object. The root cause was an oversized request payload being sent to the server.\n\n### Root Cause\nThe payload containing the full schema metadata exceeded server limits, causing the request to block. The fix involved compressing the payload using JavaScript's `btoa()` function to reduce payload size before transmission.",
+  "acceptance_criteria": [
+    "Snowflake schema import completes without hanging on the final step",
+    "Large schema payloads are compressed before transmission",
+    "Schema data is correctly saved after import",
+    "No regressions for schemas with fewer fields"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Import flow no longer hangs on the final step; user sees successful completion.",
+  "middleware_changes": "Server-side handler updated to accept and decode the compressed payload.",
+  "data_model_changes": "",
+  "api_changes": "Schema import endpoint now accepts base64-encoded (btoa) payloads to handle large schemas.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The issue was caused by large Snowflake schema payloads exceeding server request limits. The fix used JavaScript btoa() to compress the payload client-side. Adding custom source objects without the problematic fields worked fine, confirming the payload size was the issue. Fix deployed to production.",
+  "comment_summary": "Developer initially was blocked on the server and identified that certain fields caused the issue. The root cause was an oversized payload. The fix used btoa() to reduce payload size, and the fix was deployed directly to production.",
+  "comment_count": 4
+}

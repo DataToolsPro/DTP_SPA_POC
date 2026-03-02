@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-935",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Add Objects Button Visible on Empty Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-24T09:52:56.166-0700",
+  "updated": "2024-11-03T19:02:15.230-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "As a DataTools Pro user logging in for the first time, I want to see an 'Add Objects' button when my dictionary is empty, so that I know how to get started.",
+  "description": "When a user logs in for the first time and no objects exist in the dictionary, the 'Select Objects' dropdown button was not visible. This ticket adds a default 'Add Objects' button that remains visible even when no objects have been added, toggling the dropdown so the user can choose objects to include.",
+  "acceptance_criteria": [
+    "Add Objects button is visible when no objects exist in the dictionary",
+    "Button toggles the object selection dropdown",
+    "Button remains visible alongside the dropdown after objects are added"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "'Add Objects' button always visible on the dictionary page, including when the dictionary is empty.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented the always-visible button and shared a screenshot. Pushed to development for review.",
+  "comment_count": 1
+}

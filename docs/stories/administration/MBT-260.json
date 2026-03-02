@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-260",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Confirmation Popup When Updating User Permissions",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-31T21:06:46.396-0700",
+  "updated": "2024-05-24T02:24:57.513-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to see a confirmation popup when I update permission checkboxes for shared users, so that I have visual feedback that my permission changes were saved successfully.",
+  "description": "Add a confirmation toast/popup notification that appears when an account owner updates permission checkboxes for invited users on the account sharing page. The popup provides visual confirmation that the permission changes have been saved. The original \"Cheers!\" label was removed per feedback, keeping just the success icon and confirmation message.",
+  "acceptance_criteria": [
+    "A confirmation popup appears after successfully updating permission checkboxes",
+    "The popup includes a success icon without the word 'Cheers'",
+    "The popup auto-dismisses after a brief display period",
+    "The confirmation fires only after the permission change is persisted"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Toast/popup notification with success icon appears when permission checkboxes are updated on the account sharing page.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-259"],
+  "source_files": [],
+  "implementation_notes": "Initial implementation included the word 'Cheers!' which was removed per product feedback. The success icon was retained.",
+  "comment_summary": "Developer added the confirmation popup with a 'Cheers!' label. Product asked to remove the word 'Cheers' but keep the icon. Clarification confirmed just the text should be removed, not the icon.",
+  "comment_count": 4
+}

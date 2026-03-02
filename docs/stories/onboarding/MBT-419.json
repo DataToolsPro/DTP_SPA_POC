@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-419",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Activation Event Tracking via Server and Client Side",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-16T15:46:44.070-0800",
+  "updated": "2024-05-24T02:25:09.956-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Implement activation event tracking both server-side (for Zapier webhooks) and client-side (for marketing automation integration). The activation event is a key milestone that fires when a user completes a significant action, enabling conversion tracking across the marketing and product analytics stack.",
+  "acceptance_criteria": [
+    "Activation event fires server-side to Zapier webhook",
+    "Activation event fires client-side for marketing automation tools",
+    "Event data includes user identification details"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Server-side activation event trigger sends webhook to Zapier. Client-side event firing integrated with marketing automation tools.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Description was partially truncated in Jira. Event implemented and deployed to staging for review.",
+  "comment_summary": "Developer confirmed implementation complete on staging.",
+  "comment_count": 1
+}

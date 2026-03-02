@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1238",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Authentication Failure Redirect Codes for Analytics Tracking",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-10-18T14:47:58.202-0700",
+  "updated": "2026-03-01T04:03:40.864-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a product administrator, I want authentication-related redirects from app.datatoolspro.com to datatoolspro.com to include a redirect code parameter, so that I can track failure reasons in PostHog analytics and display contextual help messages to users.",
+  "description": "When users are redirected from `app.datatoolspro.com` to `datatoolspro.com` due to authentication issues, the redirect should include a `redirectcode` parameter identifying the specific failure scenario.\n\n### Goals\n1. Capture every scenario where the app redirects users back to the marketing site\n2. Assign a unique redirect code per scenario\n3. Display contextual messages to users based on the code\n4. Track redirect frequency per code in PostHog analytics\n5. Prevent frustrated users from signing up multiple times\n\n### Approach\nFirst, catalog all redirect scenarios in the authentication flow and assign codes. Then implement parameter passing and dynamic message display on the datatoolspro.com /beta page.",
+  "acceptance_criteria": [
+    "Every authentication redirect from app to marketing site includes a redirectcode parameter",
+    "Each redirect scenario has a unique code",
+    "Marketing site displays contextual messages based on the redirect code",
+    "PostHog can track redirect codes for analytics",
+    "Repeated sign-up attempts by the same user are flagged or prevented"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Contextual error/help messages displayed on the marketing site based on redirect code. Users see relevant guidance instead of a generic page.",
+  "middleware_changes": "All authentication redirect paths updated to include redirectcode parameter. Catalog of redirect scenarios and codes.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1206"],
+  "source_files": [],
+  "implementation_notes": "Waqar raised questions about how to generate redirect codes for all scenarios, particularly post-login redirects. IP-based tracking is unreliable due to dynamic IPs. Need to define the full list of redirect scenarios and their corresponding codes.",
+  "comment_summary": "Waqar asked for clarification on redirect code logic, noting that signup clicks are straightforward but other redirect scenarios (failed login, successful login redirects) are unclear. IP-based identification was considered but rejected as unreliable.",
+  "comment_count": 1
+}

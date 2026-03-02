@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-1106",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add Sort by API Name Option to Object Selection List",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-04-15T22:48:17.305-0700",
+  "updated": "2026-03-01T04:12:56.669-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to sort the object list by API name, so that I can group objects with the same prefix together for easier navigation.",
+  "description": "Add a sort dropdown to the object selection list allowing users to sort by either Label (default) or API Name. Sorting by API name groups objects with the same namespace prefix together, making it easier to find related objects.",
+  "acceptance_criteria": [
+    "Sort dropdown is available in the object selection list",
+    "Default sort is by Label",
+    "Sorting by API Name groups same-prefix objects together"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New sort dropdown with Label and API Name options in object selection list.",
+  "middleware_changes": "Sort logic for object list by API name.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Currently in progress.",
+  "comment_summary": "No comments yet.",
+  "comment_count": 0
+}

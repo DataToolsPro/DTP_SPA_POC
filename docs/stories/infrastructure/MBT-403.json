@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-403",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Spike: Document Identifier Mapping Across WordPress, Salesforce, and DataTools Pro",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-03T17:48:05.839-0800",
+  "updated": "2024-05-24T02:25:04.212-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Architecture spike to align on the data model and complex relationships for tracking user identifiers across three systems: WordPress (lead capture), Salesforce (CRM), and DataTools Pro (application).\n\n## Problem\nA single person can exist multiple times across systems, and email addresses may differ between Salesforce and sign-up forms. The challenge is tying the original web-to-lead form submission to the user's identity in DataTools Pro, especially when that person may not be identifiable by email alone.\n\n## Key Relationships\n- WordPress Gravity Form captures the initial lead via a one-time password (OTP) flow\n- Salesforce stores the CRM record with its own org ID and user identity\n- DataTools Pro maintains users and teams with their own IDs\n- A junction object exists in the CRM to support multiple DataTools Pro tenants and users per lead/account\n\n## Identity Flow\n1. WordPress Gravity Form submission triggers an OTP email for validation\n2. On first login, the user is created in DataTools Pro with a new user ID and team ID\n3. The user ID and team ID are passed to Zapier alongside the Salesforce SFID and SFOrgID\n4. Consistent public-facing IDs (same as Pendio tracking) should be used across all systems\n\n## User Invite Scenario\nWhen an existing user invites another without the web-to-lead form, the invite email becomes the customer email. This is pushed to the CRM when the invited user accepts the invite link.",
+  "acceptance_criteria": [
+    "Data model documents the relationships between WordPress leads, Salesforce contacts, and DataTools Pro users",
+    "Identity mapping handles cases where email differs between Salesforce and sign-up form",
+    "OTP validation flow ties Gravity Form submissions to new DataTools Pro user creation",
+    "First login passes userID, teamID, SFID, and SFOrgID to Zapier",
+    "Public-facing IDs are consistent across WordPress, Salesforce, DataTools Pro, and Pendio",
+    "User invite flow pushes the invite email to CRM on acceptance"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Integration logic connecting WordPress Gravity Form OTP flow to DataTools Pro user creation, and passing user/team identifiers to Zapier on first login.",
+  "data_model_changes": "Junction object in CRM supporting many-to-many between leads/accounts and DataTools Pro tenants/users. Identity mapping across WordPress lead IDs, Salesforce SFIDs, and DataTools Pro user/team IDs.",
+  "api_changes": "",
+  "dependencies": ["MBT-408", "MBT-332", "MBT-331"],
+  "source_files": [],
+  "implementation_notes": "The spike covered three integration points: (1) WordPress Gravity Form → OTP → DataTools Pro sign-up, (2) first login passing IDs to Zapier, (3) user invite email pushed to CRM. Uses the same public-facing IDs as Pendio for cross-system consistency.",
+  "comment_summary": "Waqar asked for clarification on the authentication flow from WordPress to Salesforce to DataTools Pro. Ryan detailed the three-part integration: OTP-based Gravity Form sign-up, first-login ID passing to Zapier (userID, teamID, SFID, SFOrgID), and the need for consistent public-facing IDs across all systems.",
+  "comment_count": 2
+}

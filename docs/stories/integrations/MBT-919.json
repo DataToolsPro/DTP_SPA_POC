@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-919",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier Publishing Requirements Compliance",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-14T00:23:27.880-0700",
+  "updated": "2024-10-15T19:08:42.590-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Address five Zapier publishing requirements to get the DataTools Pro integration approved and publicly listed:\n\n1. **API Documentation**: Update the Postman collection with GET and POST methods for the public API using API key authentication. Postman workspace URL provided for the DataTools Pro Metrics APIs collection.\n\n2. **Branding Consistency**: Integration name must match core branding exactly. Zapier noted the website shows 'Data Tools Pro' with a space while the integration used 'DataTools'. No code change needed — just notification to Zapier agent.\n\n3. **Description Convention**: Updated to: \"DataTools Pro harmonizes metrics and goals across your organization into a unified glossary used for cross-team alignment and AI agent context.\" Must be under 160 characters.\n\n4. **Authentication Help Text**: Format the API key help text link in markdown so it's clickable in Zapier's UI. Links to a tutorial page on datatoolspro.com.\n\n5. **Field Naming Conventions**: All fields in the Upsert Metrics action must have help text explaining expected input. Help text was added for all fields, not just the ones Zapier flagged.",
+  "acceptance_criteria": [
+    "Postman collection updated with all public API methods and API key auth",
+    "Integration description is under 160 characters and follows Zapier conventions",
+    "Authentication help text uses markdown formatting for clickable links",
+    "All Upsert Metrics fields have descriptive help text",
+    "Integration name matches core DataTools Pro branding"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Postman collection updated with complete public API documentation including GET and POST methods with API key authentication for the Zapier publishing review.",
+  "dependencies": ["MBT-918", "MBT-888"],
+  "source_files": [],
+  "implementation_notes": "The Zapier integration description must be under 160 characters. The final description was: 'DataTools Pro is harmonizes metrics and goals across your organization into a unified glossary used for cross-team alignment and AI agent context.' The Zapier team also flagged the website logo showing 'Data Tools Pro' with a space vs. the correct 'DataTools Pro'.",
+  "comment_summary": "Developer addressed all five Zapier publishing requirements: added Postman API documentation, updated the integration description to under 160 characters, formatted auth help text in markdown, and added help text to all input fields. Also discussed the branding discrepancy between the website logo and the integration name.",
+  "comment_count": 5
+}

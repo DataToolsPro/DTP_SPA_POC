@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-471",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Webhook Management as a Service",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-10T23:57:54.566-0800",
+  "updated": "2025-01-02T18:39:23.831-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "As a product administrator, I want to create and manage webhooks for different event types so that external systems can receive real-time notifications when metrics are added, updated, or deleted.",
+  "description": "Implement a customer-facing webhook management system. After evaluating options, the team chose to build a native webhook UI rather than using Svix (which was initially recommended by architects for security reasons).\n\nCustomers can create webhooks for specific event types:\n- Add Metric\n- Update Metric\n- Delete Metric\n\nWebhooks are scoped to a team (account) and fire HTTP POST requests to customer-specified endpoints when the corresponding events occur. This feature is gated as a premium/upgraded license feature.\n\nThe longer-term vision includes a native Zapier integration so customers don't need to manage webhook endpoints directly.",
+  "acceptance_criteria": [
+    "User can navigate to /webhooks to manage webhook subscriptions",
+    "User can create a new webhook with a target URL and select event types",
+    "Webhooks fire on metric create, update, and delete events",
+    "Webhooks are scoped to the user's team (account)",
+    "Feature is restricted to premium/upgraded license tier",
+    "Webhook list shows all active subscriptions with event types"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New webhook management page at /webhooks where users can create, view, and manage webhook subscriptions. Includes event type selection and endpoint URL configuration.",
+  "middleware_changes": "Event-driven webhook dispatcher that fires HTTP POST requests to registered endpoints when metric CRUD events occur. Webhook payloads include the metric data and event metadata.",
+  "data_model_changes": "New webhooks table with relationship to teams (accounts), storing endpoint URL, event types, and active status.",
+  "api_changes": "Outbound webhook POST calls to customer-defined endpoints. Internal CRUD endpoints for webhook subscription management.",
+  "dependencies": ["MBT-570"],
+  "source_files": [],
+  "implementation_notes": "Initially considered using Svix (recommended for security and orchestration), but the team built a native solution. Feature is gated behind a premium license check. Only available for production-like environments currently.",
+  "comment_summary": "Developer built the webhook UI with event triggers for metric CRUD. Product owner decided to gate this as a premium feature. The feature was enabled on development as a premium-only feature.",
+  "comment_count": 8
+}

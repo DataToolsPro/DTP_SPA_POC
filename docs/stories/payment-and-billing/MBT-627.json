@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-627",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Salesforce Flow: Auto-Link Contact on DTP User Creation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-18T20:03:03.326-0700",
+  "updated": "2024-05-24T02:25:38.274-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nWhen a new DataTools Pro user is created and linked to a lead that has already been converted to a contact, the system should automatically fill in the contact relationship. This prevents orphaned DTP User records that reference only the lead but not the corresponding contact.\n\n## Behavior\n\nBuild a Salesforce record-triggered flow on the DataTools Pro User object that fires on record creation:\n\n**Condition**: `Contact__c` is NULL AND `Lead__c` is NOT NULL AND the parent Lead record's `IsConverted` = true\n\n**Action**: Pull the `ConvertedContactId` from the parent lead and populate the DTP User's `Contact__c` field.\n\nOptionally, send a notification to the Slack Sales channel when this auto-linkage occurs.\n\n## Test Case\n\n1. A converted lead exists with an associated contact and a DTP User properly linked\n2. A new DTP signup occurs; the contact is not matched, but the lead is\n3. The new DTP User is associated with the lead\n4. Flow detects the lead is converted and auto-fills Contact__c\n5. Slack Sales channel is notified",
+  "acceptance_criteria": [
+    "Flow triggers on DataTools Pro User record creation",
+    "Flow checks if Contact__c is null, Lead__c is not null, and parent lead is converted",
+    "Flow auto-populates Contact__c with the lead's ConvertedContactId",
+    "Flow does not modify records where Contact__c is already populated",
+    "Flow does not modify records where Lead__c is null",
+    "Slack notification is sent to the Sales channel when auto-linkage occurs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce record-triggered flow on the DataTools Pro User object (fires on create). Checks if the associated lead is converted and auto-populates the Contact__c field from the lead's ConvertedContactId. This is a separate flow from MBT-626 because it triggers on a different object and event type (create vs. update).",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-626"],
+  "source_files": [],
+  "implementation_notes": "This flow requires a separate trigger from MBT-626 because it fires on DTP User creation rather than Lead update. A permissions challenge was encountered: converted leads were not appearing in the lookup when creating new DTP User records. This was resolved by enabling a custom permission set that allows visibility of converted leads. By default, Salesforce hides converted leads from lookups.",
+  "comment_summary": "Developer confirmed the need for a separate flow (different trigger object). Encountered an issue where converted leads were not visible in lookups — resolved by enabling a permission set. Flow was created on the sandbox and awaits final testing with proper converted lead visibility.",
+  "comment_count": 8
+}

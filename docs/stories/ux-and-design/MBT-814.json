@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-814",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Move Light/Dark Mode Toggle from Global Setting to Per-User Preference",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T18:45:35.655-0700",
+  "updated": "2024-09-15T13:21:56.355-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user on a team, I want to choose between light and dark mode independently from my teammates, so that I can use my preferred visual mode without affecting others.",
+  "description": "Currently the light/dark mode toggle is a global team setting — changing it affects all users in the organization. This needs to become a per-user personal preference.\n\n## Changes\n- Light/dark mode preference stored per individual user instead of at the team/organization level\n- Two users on the same team can have different mode preferences\n- Color/branding customization (accent color, logo, etc.) remains a team-level setting\n- The dropdown toggle for mode selection is made available as a personal preference",
+  "acceptance_criteria": [
+    "Light/dark mode setting is stored per individual user",
+    "Two users on the same team can have different mode preferences simultaneously",
+    "Color/branding customization remains a team-level setting",
+    "Changing mode does not affect other team members",
+    "Mode preference persists across sessions"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Light/dark mode toggle now applies per individual user rather than globally for the team. Each user can independently choose their preferred mode.",
+  "middleware_changes": "Mode preference now read from and written to the user record rather than the team/organization settings.",
+  "data_model_changes": "Mode preference (light/dark) field added to the user-level settings instead of the team-level settings.",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "Customer request from Fundcanna. Mode preference moved from organization-level to user-level storage. Color and branding (accent color, logo, favicon) remain team-level. This separation allows individual visual comfort while maintaining team brand consistency.",
+  "comment_summary": "Developer needed additional clarification on the scope. Product owner explained that light/dark is a personal preference while branding (colors, logo) is team-level. Developer implemented and deployed to development for review. Product owner also requested updating navigation to use nav-pills styling.",
+  "comment_count": 8
+}

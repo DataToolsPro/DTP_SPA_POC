@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-359",
+  "epic_key": "MBT-870",
+  "feature_folder": "data-dictionary",
+  "title": "Non-Destructive View Exploration and Edit Mode for Object Views",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-11T16:22:23.853-0800",
+  "updated": "2024-05-24T02:25:06.171-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "ERD"],
+  "story": "As a DataTools Pro user, I want to explore saved views by toggling objects on and off without permanently changing the view, so that I can investigate different object configurations without accidentally overwriting a saved view.",
+  "description": "Saved views (formerly ERD views) allow users to toggle objects on and off. Previously, any change was immediately persisted to the view. This change introduces a non-destructive exploration mode and an explicit edit workflow.\n\nChanges:\n1. **Non-destructive exploration**: When viewing a saved view, toggling objects on/off does not persist changes. The user must enter edit mode and save to commit changes.\n2. **Edit mode guidance**: When the user makes their first change to a saved view, a contextual message appears: 'You have unsaved changes. Click here to edit.' Clicking the link enters edit mode (same as the edit button). The message resets when switching views or saving.\n3. **Rename ERD to Object Views**: The label 'ERD' is changed to 'Object Views' across the UI to prepare for reuse on the Object Dictionary page.",
+  "acceptance_criteria": [
+    "Toggling objects in a saved view does not persist changes unless the user enters edit mode and saves",
+    "The 'All' view allows exploration without committing changes, consistent with saved views",
+    "A contextual message appears on first change: 'You have unsaved changes. Click here to edit.'",
+    "Clicking the contextual link enters edit mode",
+    "The message disappears when switching views or after saving",
+    "Label 'ERD' is renamed to 'Object Views' in the UI"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Introduces non-destructive exploration mode for saved views. Adds an inline notification when unsaved changes are detected with a link to enter edit mode. Renames 'ERD' to 'Object Views' throughout the UI.",
+  "middleware_changes": "View toggle changes are no longer auto-saved. Server-side save only fires when the user explicitly enters edit mode and commits.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The rename from ERD to Object Views is preparation for reusing the same view functionality on the Object Dictionary page. The edit-mode gate prevents accidental overwrites when users are just exploring.",
+  "comment_summary": "Developer implemented and deployed to staging for review. No significant design disagreements.",
+  "comment_count": 2
+}

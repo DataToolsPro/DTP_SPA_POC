@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1050",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Show Relationship Details on ERD Link Click",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-26T23:21:57.131-0800",
+  "updated": "2026-01-24T22:45:53.124-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user inspecting ERD connections, I want to click on a relationship line between two objects and see the specific field-level relationship details, so that I can understand exactly which fields link the objects together.",
+  "description": "When a user clicks on a connection line (link) between two ERD objects, the system displays the metadata for that specific relationship. For example, clicking the line between Account and User would show:\n\n- User.Id is referenced in Account as:\n  - Account Owner\n  - Created By\n  - Last Modified By\n\nThis surfaces the actual field-level relationships that define the connection, making the ERD more informative beyond just showing that two objects are connected.\n\nIf metadata fields have not been refreshed for the related objects, a notification message prompts the user to refresh. New customers get this functionality automatically, while existing customers may need to refresh their metadata first.",
+  "acceptance_criteria": [
+    "Clicking on an ERD relationship line displays the field-level relationship details",
+    "Details show the referenced field and which fields in the source object use it",
+    "Multiple relationships between two objects are listed together",
+    "If metadata is missing, a notification prompts the user to refresh",
+    "New customers see relationship details automatically without extra steps"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Clicking on an ERD connection line opens an info display showing the specific field-level relationships (e.g., 'User.Id referenced as Account Owner, Created By, Last Modified By'). Notification shown if metadata needs refresh.",
+  "middleware_changes": "Query to retrieve field-level relationship metadata for the two connected objects. Handles cases where metadata hasn't been refreshed by displaying a prompt.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Requires all related objects to have their metadata fields updated. Existing customers may need to refresh metadata before this feature works correctly. The implementation uses the object field metadata to match foreign key references and display the specific relationship chain.",
+  "comment_summary": "Developer implemented and noted the dependency on refreshed metadata. Added a notification message when relationships can't be found due to missing metadata. Screenshots showed the relationship details display for Account-User connections.",
+  "comment_count": 3
+}

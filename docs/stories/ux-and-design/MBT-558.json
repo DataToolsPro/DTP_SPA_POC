@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-558",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Redesign Login Page Button and License Agreement Text",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-04T12:17:14.660-0800",
+  "updated": "2026-03-01T04:23:04.585-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the login page to have a clean 'Continue' button with simplified license agreement text, so that the login experience is professional and aligned with Salesforce conventions.",
+  "description": "The login page was updated to align more closely with the Salesforce login pattern:\n\n1. **Button text**: Changed from the green \"Connect\" button to a \"Continue\" button\n2. **Button styling**: Changed to a grey outline style to match the Salesforce aesthetic\n3. **License text**: Simplified to: *'By clicking \"Continue\" you agree to our License Agreement'*\n\nThis change also establishes a foundation for future authentication options beyond Salesforce.",
+  "acceptance_criteria": [
+    "Login button text reads 'Continue' instead of 'Connect'",
+    "Button has a grey outline style matching Salesforce login aesthetics",
+    "Below the button, text reads: 'By clicking \"Continue\" you agree to our License Agreement'",
+    "Login functionality remains unchanged"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Login page button changed from green 'Connect' to grey-outlined 'Continue'. License agreement text simplified. Layout aligned with Salesforce login conventions.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The button outline was initially green but was changed to grey to match the Salesforce style after feedback.",
+  "comment_summary": "Developer deployed the button change. Reporter requested the button outline color be changed from green to grey to match Salesforce. Fix was applied promptly.",
+  "comment_count": 3
+}

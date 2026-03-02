@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1206",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Login Page Alert Bar and Uninstalled App Error Guidance",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-08T22:12:53.206-0700",
+  "updated": "2026-03-01T03:55:25.402-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want helpful guidance on the login page when authentication errors occur, so that I can resolve common issues like completing the install process or authorizing an uninstalled app.",
+  "description": "Add an alert bar to the login page and contextual error handling for Salesforce authentication failures.\n\n### Login Page Alert Bar\nLink to the install process tutorial: `/tutorials/completing-datatools-pro-install-process/`\n\n### Uninstalled App Error\nWhen a non-admin user tries to authenticate against Salesforce and gets an error related to an uninstalled app, display a notification with a link to: `/tutorials/authorizing-an-salesforce-uninstalled-app/`",
+  "acceptance_criteria": [
+    "Login page displays an alert bar linking to the install process tutorial",
+    "Uninstalled app authentication errors show a notification with a link to the authorization tutorial",
+    "Error handling distinguishes between uninstalled app errors and other authentication failures"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Alert bar on login page with tutorial link. Contextual error message for uninstalled app authentication failures with link to authorization tutorial.",
+  "middleware_changes": "Error detection for Salesforce uninstalled app authentication failures to trigger appropriate notification.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "",
+  "comment_count": 0
+}

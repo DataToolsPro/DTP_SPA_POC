@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-2",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Hyperlink Scorecard Entries",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-15T15:43:40.549-0800",
+  "updated": "2024-05-24T02:24:38.313-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to add hyperlinks to scorecard entries, so that I can navigate directly to related content and tools from within the scorecard.",
+  "description": "Scorecard entries need to support hyperlinks, allowing users to link and navigate to related content and tools directly from the scorecard table.\n\n### Requirements\n- Add an interface for users to add URLs, potentially within the cell edit popup dialog.\n- Users should be able to add a URL without dealing with markup syntax.\n- The UX must handle the conflict between editing cell contents and clicking hyperlinked values — the same cell needs to support both interaction modes.\n\n### Design Considerations\n- Reference: Sprint 3 Requirements — Scorecard Table Enhancements, Hyperlinked Selections (R&D) section.",
+  "acceptance_criteria": [
+    "User can add a URL to a scorecard entry via the edit popup dialog",
+    "URL input accepts plain URLs without requiring markup syntax",
+    "Hyperlinked cell values are visually distinguishable from plain text",
+    "Clicking a hyperlinked value navigates to the URL without triggering edit mode",
+    "Editing a cell with a hyperlink is still possible through the edit dialog",
+    "URL label displays 'URL' consistently (not 'Link')"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a URL input field to the scorecard cell edit popup. Hyperlinked cell values display as clickable links with distinct visual styling. Click behavior distinguishes between navigation (click) and editing (via popup).",
+  "middleware_changes": "Server-side logic handles storing and retrieving URL values alongside cell content. Validation ensures well-formed URLs.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Key UX challenge: the same cell value needs to support both click-to-navigate (hyperlink) and click-to-edit interactions. This requires careful event handling to distinguish user intent.",
+  "comment_summary": "Ryan requested the label be 'URL' instead of 'Link' for consistency. The developer confirmed and updated the label.",
+  "comment_count": 3
+}

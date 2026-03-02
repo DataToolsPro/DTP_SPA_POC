@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-825",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Fix ERD Toolbar Icon Wrapping by Adjusting Column Width",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-20T22:25:03.020-0700",
+  "updated": "2024-07-25T23:44:56.420-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user on the ERD page, I want the toolbar icons to not wrap to a second line, so that the interface looks clean and professional.",
+  "description": "The ERD page toolbar icons are wrapping to a second line due to insufficient column width. The fix is changing the column class from `col-md-5` to `col-md-7` to give the icons enough horizontal space.",
+  "acceptance_criteria": [
+    "ERD toolbar icons display on a single line without wrapping",
+    "Column width is sufficient for all toolbar icons",
+    "No layout regression on other elements in the row"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Increased ERD toolbar column width from col-md-5 to col-md-7 to prevent icon wrapping.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple Bootstrap grid class change from col-md-5 to col-md-7 on the toolbar icon container.",
+  "comment_summary": "Developer implemented and submitted for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-528",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Replace Deprecated FILTER_SANITIZE_STRING in EntityRelationshipController",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T21:28:23.291-0800",
+  "updated": "2024-05-24T02:25:43.876-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The deprecated PHP constant `FILTER_SANITIZE_STRING` was generating warning logs every second in the `EntityRelationshipController` (line 19). While not user-impacting, the warning was clogging New Relic logs and masking other errors.\n\n## Affected File\n\n`app/Http/Controllers/EntityRelationshipController.php` (line 19)\n\n## Observed Behavior\n\nNew Relic captured constant WARNING-level log entries: \"Constant FILTER_SANITIZE_STRING is deprecated\" on every request to the entity relationships endpoint.\n\n## Fix\n\nReplaced `FILTER_SANITIZE_STRING` with `htmlentities()` for input sanitization.",
+  "acceptance_criteria": [
+    "No deprecation warnings for FILTER_SANITIZE_STRING appear in New Relic logs",
+    "Input sanitization continues to function correctly using htmlentities()",
+    "Entity relationship endpoint behavior is unchanged",
+    "Log noise from this deprecation is eliminated"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Replaced deprecated `FILTER_SANITIZE_STRING` constant with `htmlentities()` in EntityRelationshipController for PHP 8.x compatibility.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "PHP 8.1 deprecated FILTER_SANITIZE_STRING. The replacement with htmlentities() provides equivalent sanitization while eliminating the deprecation warning.",
+  "comment_summary": "Developer replaced FILTER_SANITIZE_STRING with htmlentities() to resolve the deprecation warning.",
+  "comment_count": 1
+}

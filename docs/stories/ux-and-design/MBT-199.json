@@ -1,0 +1,29 @@
+{
+  "issue_key": "MBT-199",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "OpenAI Formula Description Icon Clarification",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T17:16:27.230-0700",
+  "updated": "2024-05-24T02:24:30.276-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Review the OpenAI formula description icon that appears on fields with `calculatedFormula` values. The icon triggers an OpenAI-powered formula description when clicked.\n\nAfter review, it was confirmed that the existing implementation was already correct and no changes were needed. The icon correctly appears only when a field has a calculated formula value from Salesforce.",
+  "acceptance_criteria": [
+    "OpenAI icon appears only on fields with calculatedFormula values",
+    "Clicking the icon triggers the formula description feature"
+  ],
+  "change_layers": { "ux": false, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "", "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "No action taken. The existing implementation was confirmed to be working correctly. Icon displays conditionally based on the calculatedFormula field value from Salesforce.",
+  "comment_summary": "Developer explained the existing formula icon behavior. Ryan confirmed no action was needed.",
+  "comment_count": 2
+}

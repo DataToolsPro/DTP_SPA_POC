@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-237",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Add Last Updated Date Column to Metrics Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T22:35:47.932-0700",
+  "updated": "2024-05-24T02:24:56.768-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to see when each metric was last updated in the glossary table, so that I can identify stale metrics and track recent changes.",
+  "description": "Adds a Last Updated Date column (date only, no time) to the Metrics Glossary data table. The column is positioned before the taxonomy category columns. Existing filters continue to work correctly with the new column.",
+  "acceptance_criteria": [
+    "A 'Last Updated' date column appears in the Metrics Glossary table",
+    "The date displays in date-only format without time",
+    "The column is sortable",
+    "Existing taxonomy filters continue to function with the new column present"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Last Updated' date column added to the Metrics Glossary data table, positioned before taxonomy columns. Date-only format for readability.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Quick 15-minute implementation. Ensured filter compatibility was maintained after adding the column.",
+  "comment_summary": "Developer implemented and verified filter compatibility. Initially missed pushing to staging; resolved quickly.",
+  "comment_count": 5
+}

@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-672",
+  "epic_key": "MBT-689",
+  "feature_folder": "metrics-glossary",
+  "title": "Searchable Merge Target Selector in Metric Wizard",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-27T21:21:39.709-0700",
+  "updated": "2024-05-24T02:25:41.028-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to search and select a merge target from my existing metrics list, so that I can quickly find the right metric even when the list contains 100+ entries.",
+  "description": "Replaces the long scrollable list of existing metrics in the Metric Wizard merge step with a searchable select control. Customers can accumulate 100+ metrics, making scroll-based selection impractical.\n\nThe merge option label is also refined from 'Merge into an existing metric' to 'Add as alias to existing metric' for clarity on the action being performed.",
+  "acceptance_criteria": [
+    "Merge target list uses a searchable select control instead of a scrollable list",
+    "User can type to filter existing metrics by name",
+    "Merge option label reads 'Add as alias to existing metric'"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Searchable select control for merge target selection. Label updated to 'Add as alias to existing metric'.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-595"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented search and select. Discussion refined the merge option label for clarity — 'Add as alias to existing metric' instead of 'Merge into an existing metric'.",
+  "comment_count": 8
+}

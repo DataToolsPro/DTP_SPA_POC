@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-704",
+  "epic_key": "MBT-599",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix 'fsg' Text Appended to Metric Names in Service 2 Output",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-16T07:48:07.499-0700",
+  "updated": "2024-05-24T02:26:02.238-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user reviewing metric recommendations, I want metric names to display correctly without extra characters appended, so that the recommended names are accurate and professional.",
+  "description": "The text 'fsg' was being appended to the end of metric names in the Metrics Analyst results, even though the Service 2 API output did not contain this extra text. The issue was a front-end processing bug where extra characters were being concatenated to the metric name during rendering.",
+  "acceptance_criteria": [
+    "Metric names display exactly as returned by Service 2 without extra characters",
+    "No 'fsg' or other spurious text is appended to metric names"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Metric names now display correctly without 'fsg' appended.",
+  "middleware_changes": "Fixed the metric name parsing/rendering logic that was appending extra characters.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The bug was a front-end code issue, not a Service 2 response problem. The developer acknowledged the mistake and fixed it on staging.",
+  "comment_summary": "Developer confirmed it was a front-end bug and fixed it on staging.",
+  "comment_count": 1
+}

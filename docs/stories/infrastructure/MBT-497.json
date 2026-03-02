@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-497",
+  "epic_key": "MBT-654",
+  "feature_folder": "infrastructure",
+  "title": "Laravel Vapor Deployment Prototype on AWS",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-15T21:29:26.553-0800",
+  "updated": "2024-08-20T08:51:01.946-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Prototype deployment of the DataTools Pro application using Laravel Vapor on AWS. The goal was to fork the repository, add the required Vapor libraries, and publish into the DataTools AWS environment to test and benchmark Vapor as a horizontal scaling approach.\n\n## Outcome\nThe prototype was successfully deployed to a Vapor farm URL. The database connection was established and tables were created. However, static asset loading encountered issues likely related to S3 bucket CDN and Content Security Policy (CSP) configuration.\n\nUltimately, the team decided against Vapor in favor of deploying directly to AWS without the Vapor abstraction layer, based on consultation with Tom.\n\n## Architecture Context\nThe long-term goal is to deploy DataTools Pro across multiple geographies with the ability to roll out code to multiple isolated instances simultaneously. This requires load balancing, routing, and subnet configuration to handle multi-AZ deployment without cross-AZ data sharing.",
+  "acceptance_criteria": [
+    "Application is deployed to a Vapor farm instance on AWS",
+    "Database connection is established and migrations run successfully",
+    "Salesforce OAuth callback is configured for the Vapor deployment URL",
+    "Static assets load correctly through the Vapor CDN/S3 pipeline",
+    "Benchmark results are captured comparing Vapor vs Lambda architecture"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Deployed successfully to vapor-farm-d1.com. Database connected and tables created. Asset loading issue likely caused by S3/CDN CSP policy mismatch. Salesforce callback URL needed reconfiguration for the new domain. Team ultimately decided against Vapor in favor of direct AWS deployment without the abstraction layer.",
+  "comment_summary": "Waqar deployed the app to a Vapor farm URL and confirmed database connectivity. Ryan noted CSP policy issues with S3-hosted assets and outlined the broader horizontal scaling vision (multi-geo deployment, load balancing, isolated instances). The team later decided against Vapor, choosing direct AWS integration instead based on Tom's input.",
+  "comment_count": 10
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-133",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Move Config and Database Credentials Outside Web Root",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-05T23:52:14.669-0700",
+  "updated": "2024-05-24T02:24:34.729-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Sensitive configuration files (`dbconnection.php`, `config.php`) containing database credentials were stored inside the `public_html` web root, making them potentially accessible via HTTP requests. These files need to be relocated outside the web root to prevent unauthorized access or information disclosure.\n\n## Requirements\n\n- Move `dbconnection.php` and `config.php` out of the `public_html/apps` folder.\n- Use a non-standard file extension (e.g., `.custom`) to prevent direct execution.\n- Update all `include_once` references to use relative paths navigating above the web root.\n- Set appropriate file permissions to restrict access.\n\n## Resolution\n\nThis task was ultimately deferred to the Laravel migration, which uses Laravel's built-in `.env` environment file functionality to manage all application-level passwords and tokens securely.",
+  "acceptance_criteria": [
+    "Database credentials are not stored inside the public_html directory",
+    "Configuration files use non-standard extensions to prevent direct execution",
+    "Application code correctly loads config from outside the web root",
+    "File permissions restrict access to authorized processes only",
+    "Laravel .env handles all credentials after framework migration"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Configuration files moved to a config folder outside web root with custom file extensions. Include paths updated across all PHP files.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer initially created a config folder at root level with .custom extension files and updated include_once paths. The task was later deferred to the Laravel migration to use Laravel's native .env functionality for managing credentials.",
+  "comment_summary": "Developer created config files with .custom extensions outside the apps folder. Product owner wanted files outside of public_html entirely (at the same level as public_html). Task was ultimately deferred to the Laravel migration to leverage Laravel's environment variable handling.",
+  "comment_count": 5
+}

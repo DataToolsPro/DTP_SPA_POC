@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-742",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Node Position Change Broken After View Switch",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-03T20:46:51.659-0700",
+  "updated": "2026-03-01T03:45:30.382-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user arranging an ERD, I want node repositioning to work reliably after switching views, so that I can customize the diagram layout without encountering broken drag behavior.",
+  "description": "## Bug\nAfter unlocking the position-change option and switching to a different view from the dropdown, dragging nodes to reposition them stops working. The same issue occurs on the first page load when position change is unlocked.\n\n## Reproduction\n1. Unlock the position-change option\n2. Select a different view from the dropdown\n3. Attempt to drag a node — it cannot be repositioned\n\nAlternatively: reload the page with position change already unlocked and attempt to move nodes.\n\n## Fix\nFixed the event binding so that the movable state is properly re-applied after view switches and page reloads.",
+  "acceptance_criteria": [
+    "Node repositioning works after switching views in the dropdown",
+    "Node repositioning works on first page load when position change is unlocked",
+    "Locking and unlocking position change continues to work correctly"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed drag-to-reposition for ERD nodes after view switching or page reload with position change unlocked.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The movable flag on GoJS nodes was not being re-applied after the diagram was re-rendered on view switch. Fix ensures the flag persists through view changes.",
+  "comment_summary": "Developer fixed the issue and deployed to staging.",
+  "comment_count": 1
+}

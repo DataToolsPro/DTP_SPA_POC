@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-127",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "CSS Fix for Multi-Select Row Highlighting with Colored Cells",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T18:42:26.315-0700",
+  "updated": "2026-03-01T03:54:57.965-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want multi-select row highlighting to display correctly even when cells have colored backgrounds, so that my selections are clearly visible.",
+  "description": "CSS updates were needed on both `Select.php` and `Object.php` to ensure that multi-select row highlighting works properly when table cells contain colored backgrounds. Without the fix, the selection highlight was being obscured by cell-level background colors.",
+  "acceptance_criteria": [
+    "Multi-select row highlighting is visible on rows with colored cells in Select.php",
+    "Multi-select row highlighting is visible on rows with colored cells in Object.php",
+    "Row selection styling takes visual precedence over cell-level background colors"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated CSS on Select.php and Object.php so that multi-select row highlighting overrides cell-level background colors, making selected rows visually distinct.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["Select.php", "Object.php"],
+  "implementation_notes": "CSS specificity or `!important` rules were applied to ensure the selection highlight takes precedence over cell background colors on both pages.",
+  "comment_summary": "Developer completed the CSS fix and submitted for review. No issues reported.",
+  "comment_count": 1
+}

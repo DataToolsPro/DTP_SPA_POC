@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-174",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Object Toggle State Mismatch Bug",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-17T23:31:32.834-0700",
+  "updated": "2024-05-24T02:24:30.706-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the Show Objects toggle to accurately reflect the panel state, so that I don't have to click twice to collapse it.",
+  "description": "Fix a bug where the object browser toggle defaults to a disabled visual state while the object panel is expanded. This forces the user to click twice — once to sync the toggle, once to collapse. The toggle's visual state should always match the actual panel visibility.",
+  "acceptance_criteria": [
+    "Toggle visual state matches the object panel visibility on page load",
+    "Single click toggles the panel in the expected direction",
+    "Toggle turns green when the panel is expanded"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Fixed toggle state synchronization so the Show Objects toggle accurately reflects whether the object browser panel is expanded or collapsed.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-80"],
+  "source_files": [],
+  "implementation_notes": "Toggle initialization logic was out of sync with the database-persisted panel state. Fixed by reading the stored preference on page load and setting the toggle accordingly.",
+  "comment_summary": "Developer fixed the state mismatch and committed to better QA before submitting for review.",
+  "comment_count": 2
+}

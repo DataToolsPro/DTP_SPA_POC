@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-747",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Spike: Investigate Report Load Latency and Redundant API Calls",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:02:47.026-0700",
+  "updated": "2024-09-15T13:16:42.542-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Investigation spike to identify the root cause of slow report load times. With 27 pages of reports, the load time was noticeably slow. The spike examined:\n\n- Whether each page load triggers a Salesforce API call or reads from the local SQL database\n- Which SQL queries run against the local database for reports and dashboards\n- Whether Redis caching (already installed and configured on the server) could improve performance\n- Identification of redundant API calls\n\n### Findings\nThe `getReports` function was being called 3 times on page load, with 2 of those calls failing. Additional unnecessary calls to tutorials and website endpoints were also detected. Several SQL queries were identified, including some that executed 6 times redundantly (e.g., `dtp_user_settings` and `dtp_brandings` queries).",
+  "acceptance_criteria": [
+    "Root cause of report load latency is identified",
+    "SQL queries used for report/dashboard loading are documented",
+    "Redundant API calls are identified and catalogued",
+    "Recommendations for optimization are provided"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Investigation revealed getReports being called 3 times (2 failing), redundant SQL queries for user settings and branding executing 6 times each, and unnecessary tutorial/website API calls.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-776"],
+  "source_files": [],
+  "implementation_notes": "Key SQL queries identified: folder list query on dtp_dashboards, plans query, team invites query, user settings query (executed 6x), brandings query (executed 6x), notifications query, and two taxonomy values queries. Redis is available on the server and could be used for caching. Linked to MBT-776 for follow-up optimization work.",
+  "comment_summary": "Balaji investigated and found getReports was being called 3 times with 2 failures, plus unnecessary tutorial/website calls. Documented the SQL queries and identified redundant executions. Ryan linked this to MBT-776 for follow-up.",
+  "comment_count": 10
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-451",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Add Billing and Subscription Link to Settings",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-03T20:36:54.406-0800",
+  "updated": "2024-05-24T02:25:31.764-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user, I want a Billing & Subscription link in the settings section that opens the Stripe billing portal, so that I can quickly manage my subscription and payment details.",
+  "description": "## Context\n\nUsers need a way to access their billing and subscription management directly from the DataTools Pro settings.\n\n## Behavior\n\nAdd a new link labeled \"Billing & Subscription\" in the settings section of the application. When clicked, the link opens the Stripe billing portal (billing.stripe.com) in a new browser tab, where the user can manage their subscription, update payment methods, and view invoices.",
+  "acceptance_criteria": [
+    "A 'Billing & Subscription' link appears in the settings section",
+    "Clicking the link opens the Stripe billing portal in a new browser tab",
+    "The link points to the correct Stripe customer portal URL"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a 'Billing & Subscription' navigation link to the settings section that opens the Stripe billing portal in a new tab.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation uses a static Stripe portal URL. Future iterations may dynamically generate a session-specific portal link.",
+  "comment_summary": "Developer confirmed feature was added and pushed to staging with a screenshot of the settings section.",
+  "comment_count": 2
+}

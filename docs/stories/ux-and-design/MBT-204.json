@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-204",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Move min-height CSS from Card Title to Card Header",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-23T10:16:49.502-0700",
+  "updated": "2026-03-01T03:58:40.840-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want card headers to maintain consistent minimum heights, so that the dashboard layout looks uniform regardless of title length.",
+  "description": "The `min-height: 55px` CSS property was incorrectly applied to `.card-title` instead of `.card .card-header`. This caused inconsistent card sizing because the min-height should apply to the entire header container, not just the title text element.\n\n### Change\n- Remove `min-height: 55px` from `.card-title`\n- Apply `min-height: 55px` to `.card .card-header`",
+  "acceptance_criteria": [
+    "The `.card-title` class no longer has a `min-height` property",
+    "The `.card .card-header` class has `min-height: 55px`",
+    "Card headers render with consistent heights across the dashboard"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Moved `min-height: 55px` from `.card-title` to `.card .card-header` for more consistent card header sizing across the dashboard.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple CSS selector change. The min-height property was moved from the child `.card-title` element to the parent `.card .card-header` container.",
+  "comment_summary": "Developer completed the change promptly. No issues reported.",
+  "comment_count": 1
+}

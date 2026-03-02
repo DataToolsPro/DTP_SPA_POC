@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-44",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Reorder and Resize Dictionary Table Columns",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-23T22:36:20.014-0800",
+  "updated": "2026-03-01T01:27:20.056-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user viewing the Object Dictionary, I want the table columns reordered so that Definition appears after Data Type and the column widths are more evenly distributed, so that the table is easier to scan and read.",
+  "description": "The Dictionary table columns were reordered for improved readability. The new order places Definition after Data Type, followed by Metric Relation and Picklist Values. Column widths were adjusted for a cleaner, more evenly distributed layout. Because the column show/hide logic was index-based, the reordering also required updating the visibility rules to ensure the correct columns display for both the Dictionary and Migration views.",
+  "acceptance_criteria": [
+    "Dictionary columns appear in the updated order with Definition after Data Type",
+    "Column widths are more evenly distributed for improved readability",
+    "Toggling between Dictionary and Migration shows the correct columns for each view",
+    "Column show/hide behavior is not broken by the reordering"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Reordered Dictionary table columns (Definition after Data Type, then Metric Relation, then Picklist Values) and adjusted column widths for a cleaner layout.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The column show/hide logic was index-based, so reordering required updating the visibility indices for both Dictionary and Migration views to prevent showing wrong columns in each context.",
+  "comment_summary": "Developer rearranged column order and verified that show/hide behavior remained correct across Dictionary and Migration views.",
+  "comment_count": 1
+}

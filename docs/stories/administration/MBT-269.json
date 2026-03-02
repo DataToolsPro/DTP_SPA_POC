@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-269",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Fix Resend Invitation Email Error",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-08T21:24:22.156-0700",
+  "updated": "2024-05-24T02:24:58.228-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want the resend invitation email function to work without errors, so that I can re-invite users who did not receive or act on their original invitation.",
+  "description": "Bug fix for an error that occurred when attempting to resend an invitation email to a pending user. The resend endpoint (`/teams/members/resend/{id}`) was throwing a server error, preventing administrators from re-sending invitations.",
+  "acceptance_criteria": [
+    "Resend invitation email function completes without error",
+    "Invited user receives the re-sent invitation email",
+    "The resend action is available for pending invitations"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed the resend invitation endpoint to properly handle the re-send logic without throwing a server error.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The specific error was related to the resend route handler. Fixed and deployed.",
+  "comment_summary": "Developer confirmed the issue was fixed.",
+  "comment_count": 1
+}

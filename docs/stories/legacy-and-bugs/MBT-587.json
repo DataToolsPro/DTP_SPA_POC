@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-587",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Backfill Pre-Generated User IDs for CRM Lookup",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-18T19:58:25.588-0800",
+  "updated": "2026-03-01T03:39:03.731-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nTo support CRM integration and API lookups, all existing DataTools Pro users need a referenceable user ID that maps to the CRM. Pre-generated user IDs were backfilled for all previously added users.\n\n## Action\nBackfill user ID prefixes for all existing users to enable CRM-to-DataTools-Pro mapping and future API integrations.",
+  "acceptance_criteria": [
+    "All existing users have pre-generated user IDs with the correct prefix",
+    "IDs are referenceable from the CRM",
+    "API integrations can use these IDs for lookup"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Backfilled pre-generated user IDs with standardized prefixes for all existing users.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "One-time data backfill to ensure all users have referenceable IDs for CRM and API integrations.",
+  "comment_summary": "",
+  "comment_count": 0
+}

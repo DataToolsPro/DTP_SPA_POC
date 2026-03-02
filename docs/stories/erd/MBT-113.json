@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-113",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Drill from ERD Node to Object Details",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:33:17.102-0700",
+  "updated": "2026-03-01T03:50:09.211-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to drill from an entity node directly into the object detail page, so that I can inspect individual fields with minimal friction.",
+  "description": "## Context\nUsers viewing the conceptual ERD often need to inspect the full field list for a specific object. Currently they must navigate away manually.\n\n## Behavior\nEach object node in the ERD includes a hyperlink that navigates to the DataTools object detail page for that entity. Clicking the link opens the object details view where all fields, data types, and metadata are displayed.",
+  "acceptance_criteria": [
+    "Each object node in the ERD contains a clickable hyperlink",
+    "Clicking the link navigates to the DataTools object detail page for that entity",
+    "Navigation preserves context so the user can return to the ERD",
+    "Link is visually indicated (e.g., underline or icon) without cluttering the node"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Each ERD entity node includes a hyperlink to the DataTools object detail page, enabling drill-down navigation from the diagram.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "GoJS node template updated to include a clickable text block or icon that constructs the object detail URL from the node's object API name.",
+  "comment_summary": "",
+  "comment_count": 0
+}

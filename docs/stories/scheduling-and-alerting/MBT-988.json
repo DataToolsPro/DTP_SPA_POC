@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-988",
+  "epic_key": "MBT-1008",
+  "feature_folder": "scheduling-and-alerting",
+  "title": "Add Instructional Video for Scheduled Objects",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-10T16:30:40.345-0800",
+  "updated": "2024-11-27T22:17:30.608-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to watch an instructional video about the Scheduled Objects feature, so that I can learn how to set up and manage object scheduling without reading lengthy documentation.",
+  "description": "An instructional video was added to the Scheduled Objects feature area to help users understand how scheduling works. The video (hosted on YouTube) walks through the scheduling workflow and is embedded directly in the application for easy access.\n\nVideo link: https://youtu.be/oIEd-NQ9Hy8",
+  "acceptance_criteria": [
+    "Instructional video is embedded or linked on the Scheduled Objects page",
+    "Video plays correctly when accessed by the user",
+    "Video covers the Scheduled Objects workflow"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added an embedded instructional video to the Scheduled Objects feature page, providing users with a visual walkthrough of the scheduling workflow.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer requested the video link, which was provided by the reporter. The video was added to the development environment and submitted for review.",
+  "comment_count": 4
+}

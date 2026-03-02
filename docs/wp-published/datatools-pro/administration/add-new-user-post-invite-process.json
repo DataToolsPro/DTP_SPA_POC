@@ -1,0 +1,19 @@
+{
+  "post_id": 10013,
+  "title": "Add new user post invite process",
+  "slug": "add-new-user-post-invite-process",
+  "url": "https://datatoolspro.com/tutorials/add-new-user-post-invite-process/",
+  "date": "2024-08-23T09:50:01",
+  "modified": "2024-08-23T09:50:12",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Administration",
+    "user management"
+  ],
+  "subfolder": "administration",
+  "excerpt": "<p>Post Invite, what happens next? When you invite a user they will receive an email with a one time password. When clicked it will open app.datatoolspro.com where they can authenticate with their Salesforce.com user. Until the user authenticates into your Salesforce org, they will remain in the invited user section Once an invited user has [&hellip;]</p>",
+  "content_html": "\n<h2 class=\"wp-block-heading\">Post Invite, what happens next?</h2>\n\n\n\n<p>When you invite a user they will receive an email with a one time password. When clicked it will open app.datatoolspro.com where they can authenticate with their Salesforce.com user.</p>\n\n\n\n<p>Until the user authenticates into your Salesforce org, they will remain in the invited user section</p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img data-dominant-color=\"f9f9f9\" data-has-transparency=\"true\" style=\"--dominant-color: #f9f9f9;\" loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"243\" src=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-31-1024x243.png\" alt=\"\" class=\"wp-image-10016 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-31-1024x243.png 1024w, https://datatoolspro.com/wp-content/uploads/2024/08/image-31-300x71.png 300w, https://datatoolspro.com/wp-content/uploads/2024/08/image-31-768x182.png 768w, https://datatoolspro.com/wp-content/uploads/2024/08/image-31.png 1116w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<p>Once an invited user has logged in for the first time, you will see the user(s) with their current permission and the ability to disable access to DataToolsPro.</p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img data-dominant-color=\"f9f9f9\" data-has-transparency=\"true\" style=\"--dominant-color: #f9f9f9;\" loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"261\" src=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-30-1024x261.png\" alt=\"\" class=\"wp-image-10015 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-30-1024x261.png 1024w, https://datatoolspro.com/wp-content/uploads/2024/08/image-30-300x76.png 300w, https://datatoolspro.com/wp-content/uploads/2024/08/image-30-768x196.png 768w, https://datatoolspro.com/wp-content/uploads/2024/08/image-30.png 1527w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<h3 class=\"wp-block-heading\">Important note for customers with multiple Salesforce orgs and sandboxes</h3>\n\n\n\n<p>Our invite email and redirect will not instruct the user which Salesforce org you invited them from. For example, if you invite them from a Sandbox, you may want to name your account name to be descriptive so it is clear which Salesforce org you are using. As shown in the example below, we will add the &#8220;Account Name&#8221; in the invite email to provide direction to the user the name of your Salesforce org.</p>\n\n\n\n<figure class=\"wp-block-image size-full\"><img data-dominant-color=\"f3f4f4\" data-has-transparency=\"true\" style=\"--dominant-color: #f3f4f4;\" loading=\"lazy\" decoding=\"async\" width=\"499\" height=\"238\" src=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-29.png\" alt=\"\" class=\"wp-image-10014 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/08/image-29.png 499w, https://datatoolspro.com/wp-content/uploads/2024/08/image-29-300x143.png 300w\" sizes=\"auto, (max-width: 499px) 100vw, 499px\" /></figure>\n"
+}

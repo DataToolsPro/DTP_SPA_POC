@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-189",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Standardize Slide-Out Panel Styling as Reusable Component",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T10:21:06.599-0700",
+  "updated": "2024-05-24T02:24:31.973-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want slide-out panels to have a consistent look across different pages, so that the app feels cohesive and predictable.",
+  "description": "Standardize the slide-out (offcanvas) panel styling so it can be componentized and reused across metrics, object detail, and other pages with consistent header formatting.",
+  "acceptance_criteria": [
+    "Slide-out panel styling is consistent on metrics page",
+    "Same styling applied to object detail page slide-out",
+    "Panel header uses standardized formatting"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Slide-out panel styling standardized across metrics and object detail pages for visual consistency.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer updated both metrics and object detail page slide-outs proactively.",
+  "comment_summary": "Developer updated the metrics page first, then proactively applied the same treatment to the object detail page.",
+  "comment_count": 2
+}

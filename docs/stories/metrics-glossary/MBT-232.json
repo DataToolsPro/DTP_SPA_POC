@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-232",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Filter Metrics by Line of Business and Topic",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-10T12:08:55.320-0700",
+  "updated": "2024-05-24T02:24:58.025-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to filter the Metrics Glossary table by Line of Business and Topic categories, so that I can quickly narrow down to the metrics relevant to my area of focus.",
+  "description": "Adds dynamic taxonomy-based filters to the Metrics Glossary data table. Users can filter the table by Line of Business, Topic, or any other tenant-configured taxonomy. Filters are generated dynamically based on the tenant's taxonomy configuration — adding new taxonomies automatically adds corresponding filter controls.\n\nThe implementation ensures scalability: filter UI elements are built from the taxonomy definition rather than hardcoded, so future taxonomy types are supported without code changes.",
+  "acceptance_criteria": [
+    "Filter controls for Line of Business and Topic appear above or alongside the Metrics Glossary table",
+    "Selecting a filter value narrows the table to metrics matching that taxonomy value",
+    "Filters are generated dynamically based on the tenant's configured taxonomies",
+    "Adding a new taxonomy type automatically adds a corresponding filter control",
+    "Clearing a filter restores the full metric list",
+    "Multiple filters can be applied simultaneously"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dynamic filter dropdowns above the Metrics Glossary table for each tenant taxonomy (Line of Business, Topic, etc.). Filters narrow the table in real-time.",
+  "middleware_changes": "Filter query logic joins metrics with taxonomy assignments and applies filter criteria. Dynamically builds filter options from the tenant's taxonomy value list.",
+  "data_model_changes": "",
+  "api_changes": "Metrics list endpoint accepts taxonomy filter parameters to return filtered results.",
+  "dependencies": ["MBT-137"],
+  "source_files": [],
+  "implementation_notes": "Filters are built dynamically from the taxonomy definitions rather than being hardcoded. This means adding a new taxonomy for a customer automatically adds a new filter without code changes.",
+  "comment_summary": "Developer noted the extra time needed for dynamic filter generation based on per-customer taxonomies. Pushed to staging for review.",
+  "comment_count": 1
+}

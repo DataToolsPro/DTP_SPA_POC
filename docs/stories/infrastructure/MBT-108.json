@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-108",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix Filter Dropdown Toggling When Switching Views on Object Page",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-28T11:44:36.557-0700",
+  "updated": "2026-03-01T03:47:26.012-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want filter dropdowns to only appear when I explicitly click the filter button so that switching between dictionary and migration views doesn't unexpectedly toggle filters.",
+  "description": "When switching between the dictionary and migration views on object.php, the migrate/report filter dropdown was unexpectedly appearing. The filter dropdown should only be visible when the user explicitly clicks the filter button.",
+  "acceptance_criteria": [
+    "Switching between dictionary and migration views does not toggle filter dropdowns",
+    "Filter dropdowns only appear when the filter button is clicked",
+    "No regressions in filter behavior within each view"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Filter dropdown no longer auto-toggles when switching between dictionary and migration views.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer also found and fixed a related display issue that was not mentioned in the ticket.",
+  "comment_summary": "Developer fixed the filter toggle issue and also addressed an additional related display bug.",
+  "comment_count": 1
+}

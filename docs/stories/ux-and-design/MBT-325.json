@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-325",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Disable Metric Alias Add Button Until Value Entered",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:45:45.354-0700",
+  "updated": "2024-05-24T02:25:06.586-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user adding metric aliases, I want the add button disabled until I enter a value, so that I cannot accidentally create blank alias entries.",
+  "description": "Prevent null/empty metric alias entries by disabling the add button until a value is entered in the input field. Server-side validation also prevents empty values even if the client-side disable is bypassed.",
+  "acceptance_criteria": [
+    "Add button is disabled when the alias input field is empty",
+    "Add button enables when a value is entered",
+    "Server-side validation rejects empty values as a fallback",
+    "Existing alias add functionality works normally with valid values"
+  ],
+  "change_layers": { "ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Metric alias add button disabled until a value is entered, preventing blank entries.",
+  "middleware_changes": "Server-side validation prevents empty alias values as defense in depth.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-320"],
+  "source_files": [],
+  "implementation_notes": "Fixed as part of the MBT-320 batch. Both client-side (disabled button) and server-side (validation) protections added.",
+  "comment_summary": "Developer confirmed this was already fixed in the MBT-320 work with both client and server-side protections.",
+  "comment_count": 1
+}

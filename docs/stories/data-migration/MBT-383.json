@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-383",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Markdown Document Export for Data Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2023-11-21T13:53:16.739-0800",
+  "updated": "2026-03-01T03:43:09.259-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want to export my data dictionary as a formatted markdown document, so that I can distribute a readable metrics glossary to business stakeholders or publish it to tools like Confluence.",
+  "description": "Add a markdown export option for the data dictionary. The export should produce a well-formatted document suitable for sharing with non-technical stakeholders or publishing to documentation platforms like Confluence.\n\n### Export Modes\n- **Draft** — working version for internal review\n- **Published** — finalized version for distribution (see MBT-586)\n\n### Use Case\nBusiness users often find it easier to read a formatted document than a large spreadsheet. Markdown is a widely supported format that renders cleanly across tools.",
+  "acceptance_criteria": [
+    "Data dictionary can be exported as a markdown document",
+    "Export includes all relevant dictionary fields formatted readably",
+    "Draft and Published export modes are supported",
+    "Exported markdown renders correctly in Confluence and GitHub"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New export button or menu option for markdown document download with Draft/Published mode selection.",
+  "middleware_changes": "Backend logic to transform dictionary data into structured markdown format.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-586"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer requested clarification on what information should appear in the markdown output and asked for an example.",
+  "comment_count": 2
+}

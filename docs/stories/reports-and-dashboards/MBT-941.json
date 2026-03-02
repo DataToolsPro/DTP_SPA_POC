@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-941", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Status Column Showing Wrong Content When Grouped by Topic or LOB",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-08T03:31:09.436-0700", "updated": "2024-11-03T18:59:52.047-0800",
+  "assignee": "waqar khan", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user using Group By, I want the Status column to display the correct status value when grouped by Topic or Line of Business, not a date value.",
+  "description": "Bug fix: when grouping by Topic or Line of Business, the Status column was displaying date values instead of the actual status. The column index mapping was incorrect after recent table column additions.",
+  "acceptance_criteria": ["Status column shows correct status values when grouped", "Column does not display date values in the status position"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed column index mapping so Status displays correctly when Group By is active.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-901"], "source_files": [],
+  "implementation_notes": "Column indices were offset after adding new columns to the table. Fixed the grouping column index references.",
+  "comment_summary": "Waqar fixed on development.", "comment_count": 1
+}

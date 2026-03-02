@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-753",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Resolve Created By and Modified By Names via SOQL Instead of DTP User Lookup",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:21:09.773-0700",
+  "updated": "2024-08-10T14:39:13.480-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Refactors the Created By and Modified By fields on reports and dashboards to resolve user names directly from Salesforce via SOQL, eliminating the \"Not a DTP user\" fallback label.\n\nPreviously, the system matched CreatedById and LastModifiedById to DTP user records, which failed for Salesforce users not registered in DTP. By updating the SOQL query to include `CreatedBy.Name` and `LastModifiedBy.Name` relationship fields, the actual Salesforce user names are retrieved and stored.\n\nThis required a database migration to add new columns for the name fields, updating the SOQL query, and persisting the names on import/refresh.",
+  "acceptance_criteria": [
+    "Created By displays the actual Salesforce user name, not 'Not a DTP user'",
+    "Modified By displays the actual Salesforce user name",
+    "SOQL query includes CreatedBy.Name and LastModifiedBy.Name relationship fields",
+    "Database migration adds new columns for created_by_name and modified_by_name",
+    "Names are updated on both reports and dashboards",
+    "Names persist correctly after data refresh"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Created By and Modified By columns now display actual Salesforce user names instead of 'Not a DTP user' for non-DTP members.",
+  "middleware_changes": "Updated the Salesforce SOQL query to include CreatedBy.Name and LastModifiedBy.Name relationship fields. Modified the import/refresh logic to persist these name values.",
+  "data_model_changes": "Laravel migration adds created_by_name and modified_by_name columns to the reports and dashboards tables.",
+  "api_changes": "",
+  "dependencies": ["MBT-604"],
+  "source_files": [],
+  "implementation_notes": "Initially implemented for reports only, then extended to dashboards. Changes were lost during a merge to development and had to be re-implemented. Team was advised to accept incoming changes on conflicts to prevent future data loss.",
+  "comment_summary": "Waqar proposed updating the SOQL query and adding new database columns via Laravel migration. Balaji attempted the task but ran into Salesforce permission issues. Waqar took over, implemented for reports first, then added dashboards. Changes were lost in a merge conflict and had to be re-implemented. Ryan approved the final result.",
+  "comment_count": 15
+}

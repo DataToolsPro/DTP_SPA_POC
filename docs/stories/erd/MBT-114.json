@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-114",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Toggle Between API Name and Label in ERD",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:36:35.612-0700",
+  "updated": "2026-03-01T03:50:27.991-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to toggle between Salesforce field labels and API names, so that I can switch context between end-user terminology and developer references.",
+  "description": "## Context\nSalesforce objects and fields have both a human-readable label and a developer API name. Different users need different views depending on whether they are doing business analysis or technical development.\n\n## Behavior\nA toggle button swaps all labels in the ERD diagram between:\n- **Label mode** — shows Salesforce field labels (e.g., \"Account Name\")\n- **API Name mode** — shows API names (e.g., \"Account.Name\")\n\nThe swap happens client-side without a full screen refresh.",
+  "acceptance_criteria": [
+    "A toggle button is available to switch between Label and API Name modes",
+    "All entity and field labels update when toggled",
+    "Toggle does not trigger a full page refresh",
+    "Toggle state persists while the user remains on the page",
+    "Both object names and field names are swapped"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New toggle button switches all ERD labels between Salesforce human-readable labels and developer API names without page reload.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "Both label and API name data are loaded in the initial page payload. Toggle swaps the displayed text property on GoJS node and field templates client-side.",
+  "comment_summary": "Reporter attached a screenshot showing the toggle result.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-713",
+  "epic_key": "MBT-644",
+  "feature_folder": "metrics-analyst",
+  "title": "Validate Service 1 Response Returns Correct Dashboard, Report, and Widget IDs",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-21T19:37:06.029-0700",
+  "updated": "2024-09-15T13:14:21.376-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "Service 1 needs to ensure that the Dashboard ID returned in the response is the original Salesforce Dashboard ID and not the widget or report ID. The logic and mapping in the service code need to be reviewed and corrected.\n\nAdditionally, the Report ID should be included in the Service 1 response (it was previously only available from Service 2).",
+  "acceptance_criteria": [
+    "Dashboard ID in the Service 1 response matches the original Salesforce Dashboard ID",
+    "Dashboard ID is not confused with widget ID or report ID",
+    "Report ID is included in the Service 1 response",
+    "ID mapping logic is reviewed and validated"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Service 1 API updated to return the correct Dashboard ID (original Salesforce ID) and to include Report ID in the response.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This was assigned to Anton (AI service team) to review the mapping logic in the Service 1 Lambda function.",
+  "comment_summary": "",
+  "comment_count": 0
+}

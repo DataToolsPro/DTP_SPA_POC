@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-184",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Re-install Heap Analytics Script",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T20:41:55.179-0700",
+  "updated": "2024-05-24T02:24:31.374-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Re-install the Heap analytics tracking script into the application's HTML head section, matching the previously used configuration. Separate script configurations are maintained for DEV and PROD environments.",
+  "acceptance_criteria": [
+    "Heap analytics script is installed before the closing </head> tag",
+    "Separate script configurations exist for DEV and PROD environments",
+    "Script matches the previously used Heap configuration"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Heap analytics script was re-installed in the HTML head with environment-specific configurations for DEV and PROD.",
+  "comment_summary": "Waqar confirmed the Heap script was inserted.",
+  "comment_count": 1
+}

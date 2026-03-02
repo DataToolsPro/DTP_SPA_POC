@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-368",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Hide Account Dropdown When User Has Only One Account",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-17T21:38:03.995-0800",
+  "updated": "2024-05-24T02:25:07.394-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user with only one account, I want the account dropdown in the top panel to be hidden, so that the interface is clean and I am not confused by an unnecessary control.",
+  "description": "The account switcher dropdown in the top navigation panel should be hidden when a user has no shared accounts — i.e., they only belong to a single account. This applies to users who signed up independently before being invited into a team organization.\n\n## Behavior\n- If the user has only one account (no shared/team accounts), the dropdown is hidden entirely\n- If the user has multiple accounts (personal + shared org), the dropdown is displayed as normal",
+  "acceptance_criteria": [
+    "Account dropdown is hidden in the top panel when the user belongs to only one account",
+    "Account dropdown is visible when the user has access to multiple accounts",
+    "Users who signed up before being invited to a team see the dropdown only after team invitation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Account switcher dropdown hidden from the top panel when user has only one account. Reduces visual clutter for solo users.",
+  "middleware_changes": "Server-side check added to determine the count of accounts associated with the user before rendering the dropdown.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Conditional rendering based on account count. The dropdown is only rendered when the user has more than one account (personal + shared). This handles the edge case of users who signed up independently before being invited to a team organization.",
+  "comment_summary": "Developer implemented and product owner confirmed it looks clean.",
+  "comment_count": 2
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-580",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "SQL Generation Excluding No-Migration Fields Investigation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-16T22:37:36.458-0800",
+  "updated": "2026-03-01T03:48:06.841-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "After setting a batch of fields to \"No Migration\" status, the generated SQL output appeared to hide some fields. Investigation revealed this was intentional behavior — fields marked \"No Migration\" are excluded from the SQL output since they are not part of the migration scope.\n\n### Observed Behavior\n- Fields set to \"No Migration\" are excluded from generated SQL\n- This appeared unexpected initially but was confirmed as the correct design\n- Fields that are being migrated continue to appear in the SQL output",
+  "acceptance_criteria": [
+    "Fields with No Migration status are excluded from SQL generation",
+    "Fields with active migration statuses are included in SQL output",
+    "Behavior is documented and understood"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "SQL generation logic confirmed to filter out fields with No Migration status.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This was an investigation ticket. The behavior was intentional — No Migration fields are excluded from SQL output by design since they will not be migrated.",
+  "comment_summary": "Developer explained that No Migration fields were intentionally excluded from the SQL output, as this condition was part of the original implementation.",
+  "comment_count": 1
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1195",
+  "epic_key": "MBT-1193",
+  "feature_folder": "integrations",
+  "title": "Streamlit Explorer: Visual ORDER BY Builder and CSV Export",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-27T19:44:28.770-0700",
+  "updated": "2025-09-01T17:42:31.320-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a data analyst, I want to visually build ORDER BY clauses and export query results as CSV so that I can sort my data and share it with stakeholders without writing SQL.",
+  "description": "Add two features to the Streamlit Explorer:\n\n1. **Visual ORDER BY builder**: An accordion-style UX (inspired by Datameer's approach) where users can:\n   - Select one or more fields to sort by\n   - Choose ascending or descending order for each field\n   - See the generated SQL code reflecting their selections\n\n   ORDER BY was chosen as the first clause builder because it's the simplest SQL operation to implement visually.\n\n2. **CSV export**: Add a download button that exports the current query results as a CSV file.",
+  "acceptance_criteria": [
+    "User can select fields for ORDER BY from the table's column list",
+    "User can choose ASC or DESC for each selected field",
+    "Generated SQL reflects the ORDER BY selections",
+    "Query results are sorted according to the ORDER BY configuration",
+    "User can download query results as a CSV file",
+    "Accordion UX collapses and expands the ORDER BY builder"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Accordion-style ORDER BY builder with field selector, ASC/DESC toggle per field, and SQL preview. CSV download button for exporting query results.",
+  "middleware_changes": "SQL generation logic to construct ORDER BY clauses from user selections. CSV file generation from Pandas DataFrame query results.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1194"],
+  "source_files": [],
+  "implementation_notes": "ORDER BY is the first visual SQL builder clause, chosen for its simplicity. The Datameer-inspired accordion UX pattern will be reused for subsequent clause builders (WHERE, GROUP BY).",
+  "comment_summary": "No comments. Ticket in To Do status.",
+  "comment_count": 0
+}

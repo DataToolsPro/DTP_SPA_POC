@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-957",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Update What's New Section for Report Management Feature",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-17T12:02:23.644-0700",
+  "updated": "2026-03-01T03:53:55.766-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the What's New section to showcase the latest Report Management feature, so that I'm informed about new capabilities when I log in.",
+  "description": "Update the What's New section to promote the Report Management and Governance feature:\n\n### Content\n- **Title**: \"What's New in DataTools\"\n- **Background image**: Updated product screenshot with green gradient overlay\n- **Feature headline**: \"Report Management and Governance for Salesforce\"\n- **Description**: \"Take control of your Salesforce reports and dashboards lifecycle. Explore and relationships, always find what you are looking for!\"\n- **Video**: Coming soon placeholder\n\nThe What's New section appears in two variants: one for OTP-authenticated users and one for direct login users. Both were updated.",
+  "acceptance_criteria": [
+    "What's New title reads 'What's New in DataTools'",
+    "Background image is updated to the new product screenshot",
+    "Feature headline reads 'Report Management and Governance for Salesforce'",
+    "Description text is updated with the report management messaging",
+    "Both OTP and direct login variants are updated"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated What's New section with new background image, title, headline, and description promoting the Report Management and Governance feature. Updated for both OTP and direct login user flows.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer noted the background image showed an older layout but was instructed to proceed since the green gradient overlay hides most of the detail. Two sections needed updating for OTP vs. direct login paths.",
+  "comment_summary": "Developer flagged that the provided image showed an older layout. Reporter confirmed to proceed since the green gradient hides most details and the title change was the priority. Developer clarified the two-section approach for OTP vs. direct login and completed the update.",
+  "comment_count": 4
+}

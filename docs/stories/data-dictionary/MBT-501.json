@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-501",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Add Formula Fields Filter to Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-16T10:00:14.067-0800",
+  "updated": "2026-03-01T01:29:05.036-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user on the Dictionary page, I want to filter the field list to show only formula fields, so that I can quickly locate and review all calculated fields for a given object.",
+  "description": "A new filter option was added to the Dictionary view that allows users to show only fields containing formulas. Formula fields are already visually denoted with special icons in the table. The new filter narrows the list to only display rows with those formula indicators, making it easy to locate all calculated fields. The filter was implemented on the Dictionary page only (not Migration), as the green formula icon is specific to the Dictionary context.",
+  "acceptance_criteria": [
+    "A formula field filter option appears in the Dictionary filter controls",
+    "Activating the filter shows only fields that have formula indicators",
+    "Deactivating the filter restores the full field list",
+    "The filter is available on the Dictionary page but not the Migration page"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a formula fields filter option to the Dictionary filter toolbar. When active, only fields with formula indicators are displayed.",
+  "middleware_changes": "Filter logic queries the field metadata to identify formula fields based on the calculated/formula flag and returns only matching rows.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The formula field indicator is based on the IsCalculated flag from Salesforce FieldDefinition metadata. The green icon is specific to the Dictionary view. The filter was intentionally excluded from Migration as it is not relevant in that context.",
+  "comment_summary": "Developer requested elaboration. After implementation, confirmed the filter was added to the Dictionary page only, not Migration.",
+  "comment_count": 2
+}

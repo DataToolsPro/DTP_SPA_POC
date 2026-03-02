@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-634",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Metrics Guide CSS Class and Guide Button to Toolbar",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-20T22:11:02.875-0700",
+  "updated": "2026-03-01T03:42:30.646-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want a 'Guide' button in the toolbar that launches an interactive help guide, so that I can learn how to use the metrics features.",
+  "description": "Two additions to support in-app guided help:\n\n1. **New CSS class** `.metricsguide` applied to the magic icon for targeting by the Pendo.io guide system\n2. **New 'Guide' button** added to the top toolbar, visible only on the first step of the metrics wizard alongside the existing 'Intro' video button\n\nThe Guide button has a CSS class `.analysisguide` and does not navigate to a URL — it serves as a trigger for the Pendo.io modal help guide.",
+  "acceptance_criteria": [
+    "Magic icon has the `.metricsguide` CSS class applied",
+    "A 'Guide' button appears in the top toolbar on the first step of the metrics wizard",
+    "Guide button is only visible on the first step",
+    "Guide button has the `.analysisguide` CSS class for Pendo.io targeting",
+    "Guide button does not navigate to a URL"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added `.metricsguide` class to the magic icon and a new 'Guide' button to the first-step toolbar. Both serve as targets for the Pendo.io in-app guidance system.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Guide button has no href — it is triggered by Pendo.io which targets the `.analysisguide` CSS class to open the guide modal.",
+  "comment_summary": "Developer added the class and button, asked about the button link. Reporter clarified no link is needed as Pendo.io will trigger the guide modal based on the CSS class.",
+  "comment_count": 3
+}

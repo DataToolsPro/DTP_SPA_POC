@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-568",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Reposition Cheers Popup to Lower Right with Auto-Dismiss",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-09T19:52:57.463-0800",
+  "updated": "2026-03-01T03:37:42.433-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the success notification (cheers popup) to appear in the lower right corner and auto-dismiss after a few seconds, so that it doesn't obstruct my workflow.",
+  "description": "The cheers/success notification popup was sticking on screen and blocking interaction. Changes:\n\n1. **Position**: Moved from its current location to the lower right corner of the viewport\n2. **Auto-dismiss**: Popup now automatically disappears after 2-3 seconds instead of persisting until manually closed",
+  "acceptance_criteria": [
+    "Cheers popup appears in the lower right corner of the viewport",
+    "Popup auto-dismisses after 2-3 seconds",
+    "Popup does not block user interaction with the underlying page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Cheers popup repositioned to lower right corner with a 2-3 second auto-dismiss timer, reducing obstruction of the user's workflow.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS position changed to fixed bottom-right. JavaScript setTimeout added for auto-dismiss.",
+  "comment_summary": "Developer deployed to staging. No issues reported.",
+  "comment_count": 1
+}

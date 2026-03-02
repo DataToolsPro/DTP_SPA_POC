@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-695",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix Loading Spinner Stuck After Tableau Config Error Alert",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-10T21:37:24.024-0700",
+  "updated": "2024-05-24T02:26:02.219-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "As a product administrator configuring Tableau, I want the loading spinner to dismiss after an error alert so that I can continue interacting with the configuration screen without being blocked.",
+  "description": "When configuring Tableau with an existing or incorrect Personal Access Token, a JavaScript alert is shown. After dismissing the alert, the loading GIF remains on screen and blocks all mouse events, making the page unusable.\n\nThe fix ensures the loading indicator is properly dismissed when the error alert is closed, restoring full interactivity to the configuration screen.",
+  "acceptance_criteria": [
+    "Loading spinner is dismissed after the error alert is closed",
+    "Mouse events are not blocked after dismissing the error alert",
+    "User can retry configuration or navigate away after an error"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the loading spinner to properly dismiss after a Tableau configuration error alert, restoring mouse event handling.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "The loading GIF overlay was not being hidden in the error callback/catch path. Added proper cleanup to dismiss the overlay on error.",
+  "comment_summary": "Waqar fixed the issue on staging.",
+  "comment_count": 1
+}

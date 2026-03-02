@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-718",
+  "epic_key": "MBT-342",
+  "feature_folder": "api",
+  "title": "Fix Internal Server Error from AWS API Gateway Endpoint",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-24T04:20:19.711-0700",
+  "updated": "2026-01-12T22:08:48.200-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "## Context\n\nIntermittent internal server errors (500) were occurring from the AWS API Gateway endpoint (`https://hkv22n88tc.execute-api.us-west-2.amazonaws.com/dev`) when processing Salesforce dashboard component and report metadata payloads. The errors returned generic server error messages instead of actionable error information.\n\n## Issue\n\nLarge JSON payloads containing Salesforce dashboard configurations (components, report metadata, extended metadata) were intermittently triggering 500 errors from the API Gateway/Lambda backend. The error responses lacked appropriate messaging to help diagnose the root cause.\n\n## Resolution\n\nThis issue was ultimately resolved through related work on the metrics analyst feature set. The underlying API infrastructure was improved as part of broader error handling and reliability efforts.",
+  "acceptance_criteria": [
+    "API Gateway endpoint returns descriptive error messages instead of generic 500 errors",
+    "Large Salesforce dashboard payloads are processed without intermittent failures",
+    "Error responses include sufficient detail for debugging"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Error handling improved in the Lambda function processing Salesforce dashboard payloads to return meaningful error messages.",
+  "data_model_changes": "",
+  "api_changes": "AWS API Gateway endpoint error responses updated to return descriptive JSON errors instead of generic 500 pages.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The issue involved the AWS API Gateway/Lambda endpoint used for processing Salesforce dashboard and report metadata. The payload example in the ticket shows a complex nested structure of dashboard components, report metadata, and extended metadata. The issue was ultimately resolved as part of other metrics analyst work rather than as a standalone fix.",
+  "comment_summary": "Ryan noted the issue was no longer relevant and marked it as resolved, as it had been addressed through related metrics analyst tickets.",
+  "comment_count": 1
+}

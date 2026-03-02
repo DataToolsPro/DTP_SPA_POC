@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-380",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Next/Previous Navigation Getting Stuck on Grouped Rows",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-18T23:29:37.384-0800",
+  "updated": "2026-03-01T04:16:44.166-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the left/right navigation arrows to skip over group header rows when grouping is enabled, so that I can navigate between data rows without getting stuck.",
+  "description": "When grouping is enabled on a table and the user navigates using left/right arrow icons, the navigation cursor would land on a group header row and become stuck — unable to advance to the next data row.\n\nThe fix detects when the current selection is on a grouped row and automatically advances to the next valid data row in the navigation sequence.",
+  "acceptance_criteria": [
+    "Left/right navigation arrows skip group header rows",
+    "Navigation advances to the next data row when landing on a group row",
+    "Navigation works correctly in both forward and backward directions when grouping is active",
+    "Behavior is unchanged when grouping is disabled"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Left/right navigation arrows now skip group header rows and auto-advance to the next data row, preventing navigation from getting stuck.",
+  "middleware_changes": "Added logic to detect group header rows during navigation and automatically skip to the next valid data row in sequence.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The navigation handler checks if the current row is a group header and, if so, recursively advances to the next data row.",
+  "comment_summary": "Developer fixed the issue and pushed to staging for review. No further discussion.",
+  "comment_count": 1
+}

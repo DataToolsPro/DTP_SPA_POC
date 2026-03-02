@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-64",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Database Connectivity via Environment Variables",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-15T20:33:53.641-0700",
+  "updated": "2024-05-24T02:24:36.428-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Externalize database connection settings into environment variables so that the application code correctly points to the appropriate database when deploying between stage and production environments on Cloudways.\n\nThe following environment variables are defined in a configuration file (`app/config.php`):\n- `DB_HOST` — hostname or IP of the database server\n- `DB_PORT` — port number for the connection\n- `DB_NAME` — database name\n- `DB_USER` — connection username\n- `DB_PASSWORD` — connection password\n\nAfter validating on the staging environment, the same environment variable pattern was deployed to the production server to ensure configuration consistency across environments.",
+  "acceptance_criteria": [
+    "Database connection settings are read from environment variables, not hardcoded",
+    "A config.php file defines DB_HOST, DB_PORT, DB_NAME, DB_USER, and DB_PASSWORD",
+    "Stage environment uses its own set of environment variable values",
+    "Production environment uses its own set of environment variable values",
+    "Application code redeploys successfully with environment variables intact",
+    "No database connection errors after deployment to either environment"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Database credentials were moved from hardcoded values into app/config.php. The Cloudways platform provides the environment variable management interface. After testing on staging, the configuration was replicated to production.",
+  "comment_summary": "Developer added the config file with database variables. Discussion about locating and updating environment variables on the production Cloudways application followed, with the Cloudways access details panel identified as the management interface.",
+  "comment_count": 3
+}

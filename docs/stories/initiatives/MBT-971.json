@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-971",
+  "epic_key": "MBT-1009",
+  "feature_folder": "initiatives",
+  "title": "Add Initiative Button Visibility After Creation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-28T01:57:14.103-0700",
+  "updated": "2024-11-27T22:25:57.097-0800",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Balaji Naiknavare",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user managing initiatives, I want the Add Initiative button to remain visible after creating an initiative, so that I can add multiple initiatives consecutively without refreshing the page.",
+  "description": "After creating an initiative, the Add Initiative button disappears from the interface. The user must manually refresh the page before the button reappears, preventing them from adding multiple initiatives in sequence.\n\nThe fix ensures the Add button remains visible in the toolbar immediately after a successful creation, allowing continuous workflow without a page reload.",
+  "acceptance_criteria": [
+    "Add Initiative button remains visible in the toolbar after successfully creating a new initiative",
+    "User can create multiple initiatives consecutively without refreshing the page",
+    "Newly created initiative appears in the table immediately after creation",
+    "Button state resets correctly after each creation cycle"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixes the Add Initiative button so it remains visible in the toolbar after creating an initiative, instead of disappearing until the page is refreshed.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Front-end state management fix — the component state that controls button visibility was not being reset after a successful initiative creation.",
+  "comment_summary": "Developer confirmed the fix was implemented and ready for review.",
+  "comment_count": 1
+}

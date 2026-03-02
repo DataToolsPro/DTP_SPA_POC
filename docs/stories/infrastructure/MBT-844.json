@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-844",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Fix Persistent Console Errors Including Undefined Tutorial Tag on Object Pages",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-06T17:50:35.919-0700",
+  "updated": "2024-09-15T13:30:06.048-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Two categories of persistent console errors were identified:\n\n1. **Generic template error** — An error originating from the base page template used across the application, likely a leftover from the starter template.\n\n2. **Undefined tutorial tag on /object/ pages** — The WordPress tutorials API was being called with `tags=undefined` on `/object/` pages, which threw an error. The fix sets the correct tag ID (224) for object pages so the tutorials API call succeeds.\n\nThe WordPress tutorials API endpoint is: `https://datatoolspro.com/wp-json/wp/v2/tutorials?tags=224`",
+  "acceptance_criteria": [
+    "No console errors appear on standard page loads",
+    "The /object/ page correctly passes tag=224 to the WordPress tutorials API",
+    "The generic template error from the starter template is eliminated",
+    "WordPress tutorials load correctly on the /object/ page"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed undefined tutorial tag parameter on /object/ pages to use tag ID 224. Eliminated a generic error from the base page template.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The tutorials widget calls the WordPress REST API for contextual help content. Each page type needs the correct tag ID. The /object/ pages were missing the tag mapping, causing tags=undefined in the API call.",
+  "comment_summary": "Waqar fixed both console errors and deployed to the development environment.",
+  "comment_count": 1
+}

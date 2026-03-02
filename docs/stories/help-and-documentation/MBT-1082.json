@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1082",
+  "epic_key": "MBT-443",
+  "feature_folder": "help-and-documentation",
+  "title": "Fix Snowflake OAuth Documentation to Use Uppercase Identifiers",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-02T21:00:14.764-0800",
+  "updated": "2026-03-01T04:03:45.802-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "The Snowflake OAuth integration documentation contained case-sensitivity issues. The `CREATE SECURITY INTEGRATION` statement used an uppercase identifier (`DATATOOLS_OAUTH_INTEGRATION`), but the subsequent `SYSTEM$SHOW_OAUTH_CLIENT_SECRETS` call used a different casing. Since Snowflake identifiers are case-sensitive, both must match in all caps.\n\nThe documentation was updated to ensure both the security integration name and the secrets query use consistent uppercase identifiers throughout the setup instructions.",
+  "acceptance_criteria": [
+    "The CREATE SECURITY INTEGRATION statement uses an all-caps integration name",
+    "The SYSTEM$SHOW_OAUTH_CLIENT_SECRETS call uses the same all-caps integration name",
+    "Both identifiers match exactly to avoid case-sensitivity errors",
+    "Documentation is consistent and copy-paste safe"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation-only change. The Snowflake OAuth setup instructions were updated to use consistent uppercase identifiers for the security integration name across all SQL statements.",
+  "comment_summary": "Developer confirmed the fix was deployed to production.",
+  "comment_count": 1
+}

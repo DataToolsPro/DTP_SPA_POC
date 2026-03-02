@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-485",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Bulk Assign Reports and Dashboards to Multiple Metrics",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-12T19:59:41.454-0800",
+  "updated": "2026-03-01T04:18:18.704-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "metrics"],
+  "story": "As a data analyst, I want to bulk-assign a report or dashboard to multiple selected metrics at once, so that I can save significant time when relating reports to metrics.",
+  "description": "When relating a dashboard or report to a metric, the user previously had to repeat the process individually for each metric (approximately 6-7 clicks per metric). This feature adds bulk assignment capability.\n\n### Approach\nSimilar to the existing bulk edit for Line of Business and Topic, a new tab was added to the bulk edit popup that allows selecting reports or dashboards to assign to all selected metrics at once.\n\n### Future Enhancement\nWhen the magic wand feature analyzes a dashboard, it will also return a list of reports to automatically suggest for metric relationships.",
+  "acceptance_criteria": [
+    "Users can multi-select metrics in the glossary table",
+    "Bulk edit popup includes a tab for assigning reports/dashboards",
+    "Selected reports/dashboards are assigned to all selected metrics in one action",
+    "Bulk assignment saves approximately 6-7 clicks per metric",
+    "Existing bulk edit functionality for Line of Business and Topic is unaffected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New tab in the bulk edit popup for assigning reports and dashboards to multiple selected metrics simultaneously.",
+  "middleware_changes": "Batch assignment endpoint that accepts multiple metric IDs and report/dashboard IDs for bulk relationship creation.",
+  "data_model_changes": "",
+  "api_changes": "Extended the bulk edit API to support report/dashboard assignment alongside existing LOB and Topic assignment.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Leverages the existing multi-select and bulk edit infrastructure. Future integration with the magic wand feature will enable automated report-to-metric suggestions.",
+  "comment_summary": "",
+  "comment_count": 0
+}

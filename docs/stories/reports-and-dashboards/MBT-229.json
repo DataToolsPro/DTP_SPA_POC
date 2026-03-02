@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-229",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add Hyperlink to Launch Salesforce Report from Dashboard View",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-09T21:19:55.745-0700",
+  "updated": "2026-03-01T04:05:28.171-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a data analyst, I want to click a link on the dashboard to open the associated Salesforce report in a new tab, so that I can quickly reference the actual report data.",
+  "description": "Added a hyperlink on each report/dashboard row that opens the corresponding Salesforce report in a new browser tab using the report ID. This allows users to quickly reference what is in the report directly from the DataTools Pro interface.\n\nThe link uses the Salesforce instance URL combined with the report ID and opens in `target=\"_blank\"`.",
+  "acceptance_criteria": [
+    "Each report row includes a clickable hyperlink that opens the Salesforce report in a new tab",
+    "Link uses the correct Salesforce instance URL and report ID",
+    "Clicking the link does not interfere with row selection or assignment actions",
+    "Link is available on both assigned and unassigned report lists"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added clickable hyperlink on report/dashboard rows to open the Salesforce report in a new tab. The entire row is an anchor link for easy access.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer noted the link was not added to the 'Not Related' reports section and suggested adding a tooltip ('click to assign to metric') for that section to distinguish the assign action from the launch action.",
+  "comment_summary": "Developer implemented the link as a full-row anchor and asked about extending to the Not Related reports list. Suggested adding a tooltip for clarity on the assign action.",
+  "comment_count": 1
+}

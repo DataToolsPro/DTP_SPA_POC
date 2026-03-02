@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-109",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Separate Salesforce Description from User-Defined Definition in Data Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2023-05-28T11:55:15.157-0700",
+  "updated": "2026-03-01T03:47:47.043-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to see both the Salesforce field description and my own custom definition in the data dictionary, so that I can reference the official metadata alongside my team's documentation.",
+  "description": "Distinguish between the Salesforce-sourced field description and user-entered definition in the data dictionary.\n\n### Desired UX\n- **Salesforce Description** column: pulled from Salesforce metadata (read-only)\n- **Definition** column: user-editable field for custom documentation\n- **Merged tooltip**: hovering shows both description and definition. Clicking opens a modal with editable definition text area\n\n### CodePen Mockup\nA prototype was created demonstrating the merged tooltip with click-to-edit behavior.\n\n### Technical Notes\n- Salesforce `description` field may require specific permissions to fetch\n- `HelpText` field is available as an alternative if description cannot be fetched",
+  "acceptance_criteria": [
+    "Salesforce description is pulled and stored separately from user-entered definition",
+    "User can edit the definition but not the Salesforce description",
+    "Tooltip shows merged view of both fields",
+    "Click on tooltip opens modal for editing definition"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": true, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Merged tooltip showing Salesforce description + user definition. Click-to-edit modal for definition field.",
+  "middleware_changes": "Fetch Salesforce description field from metadata API. Store separately from user-defined definition.",
+  "data_model_changes": "Separate columns for Salesforce description (read-only) and user definition (editable) in object_fields table.",
+  "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Waqar was able to fetch HelpText but not description from Salesforce — may be a permissions issue. Definition is currently editable via the edit icon on row selection.",
+  "comment_summary": "Waqar clarified that definition wasn't coming from Salesforce and asked which field to use. He found HelpText was available but the description field wasn't accessible, possibly due to permissions.",
+  "comment_count": 3
+}

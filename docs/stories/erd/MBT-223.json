@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-223",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Add Objects Link from ERD Back to Dictionary with Guided Popover",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T22:17:56.317-0700",
+  "updated": "2026-03-01T04:04:28.533-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want a clear link to navigate back to the dictionary page to add more objects, with a guided popover showing me where to click, so that I can easily expand my ERD without confusion.",
+  "description": "## Context\nDuring a demo, users were confused about how to add more objects while on the ERD page. The only option was to navigate back to the Dictionary manually, which was not discoverable.\n\n## Behavior\n1. An \"Add More Objects\" link is added to the upper-right area of the ERD page.\n2. The link navigates to `dashboard?view=dictionary&addobjects=true`.\n3. When the Dictionary page loads with `addobjects=true`, a popover tooltip appears over the \"Select Objects\" button guiding the user to click it.\n4. The popover is shown only when the `addobjects` parameter is present.\n\n## Implementation Detail\nThe \"Select Objects\" button is styled using a CSS `:before` pseudo-element to appear as a button, since clicking it triggers a multi-select dropdown. The popover is positioned above this element.",
+  "acceptance_criteria": [
+    "An Add More Objects link is visible in the upper-right of the ERD page",
+    "Link navigates to the dictionary page with addobjects=true parameter",
+    "A popover tooltip appears over the Select Objects button when addobjects=true",
+    "Popover is not shown during normal dictionary navigation",
+    "Navigation is consistent with existing dictionary and migration page patterns"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Add More Objects' link on the ERD page with guided popover tooltip on the Dictionary page when navigated via the addobjects parameter.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Select Objects button uses a CSS :before pseudo-element for styling. Popover is conditionally displayed based on the addobjects URL parameter. Positioned above the Select Objects multiselect trigger.",
+  "comment_summary": "Developer added the button and implemented the popover on the Select Objects element. Confirmed the popover appears above the button when addobjects=true.",
+  "comment_count": 5
+}

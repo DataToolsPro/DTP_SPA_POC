@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-1188",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Ensure Second Salesforce Instance Does Not Block Primary Instance Usage",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-08-24T23:07:29.335-0700",
+  "updated": "2026-03-01T03:53:40.679-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user with multiple Salesforce orgs, I want to add a second Salesforce instance without losing access to my primary instance, so that I can use Dictionary, ERD, and Metrics across both orgs.",
+  "description": "When a user signs up with a Sandbox and adds a second production or sandbox instance, the expectation is that both instances remain usable for all DataTools features (Dictionary, ERD, Metrics).\n\n### Architecture\n- Second instance uses completely separate tables (user info, instance info, objects, metadata) that are independent from the primary instance\n- Users can log out and re-authenticate with either instance\n\n### Limitation\nA customer cannot add the same instance used for initial authentication as a second instance. Any other production or sandbox instance can be added.\n\n### UX Enhancement\nWhen adding a second instance, add explanatory text clarifying this is for data migration mapping.",
+  "acceptance_criteria": [
+    "Second Salesforce instance can be added without blocking primary instance",
+    "Both instances are independently accessible after logout/login",
+    "Second instance data is stored in separate tables from primary",
+    "Explanatory text shown when adding second instance"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": true, "api": false, "infrastructure": false, "security": true},
+  "ux_changes": "Explanatory text when adding second instance clarifying migration mapping purpose.",
+  "middleware_changes": "Second instance uses independent data tables. Auth flow supports switching between instances.",
+  "data_model_changes": "Separate tables for second instance: user information, instance information, objects, and metadata.",
+  "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Waqar verified the existing architecture already supports multi-instance. Second instance uses separate tables. Only limitation: can't add the same instance as both primary and secondary.",
+  "comment_summary": "Waqar reviewed the code and tested the workflow end-to-end with a Trailhead Playground. Confirmed architecture supports multiple instances with separate data tables. Requested a customer meeting to investigate the specific user's issue.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1139",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Increase Icon Spacing and Add Action Tooltips on Object Cards",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-06-02T18:03:05.736-0700",
+  "updated": "2026-03-01T04:22:59.727-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want more space between action icons and descriptive tooltips, so that I can click the correct icon without accidental mis-clicks.",
+  "description": "User observation showed that icons were too close together, causing users to click the wrong icon. Two changes:\n\n1. **Increased padding** between the edit, trash, and visualize icons to give more click target space\n2. **Added tooltips** to each icon:\n   - Edit icon: \"View object Details\"\n   - Trash icon: \"Remove object from DataTools dictionary\"\n   - Visual icon: \"Visualize related objects\"",
+  "acceptance_criteria": [
+    "Padding between action icons is visibly increased",
+    "Edit icon tooltip reads 'View object Details'",
+    "Trash icon tooltip reads 'Remove object from DataTools dictionary'",
+    "Visual icon tooltip reads 'Visualize related objects'",
+    "Users can click each icon without accidentally triggering adjacent icons"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Increased spacing between action icons on object cards to prevent mis-clicks. Added descriptive tooltips to edit, trash, and visualize icons.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Based on direct user observation of mis-clicks. Padding and tooltip changes applied to object card action icons.",
+  "comment_summary": "Developer implemented the spacing and tooltip changes and deployed to development with a confirmation screenshot.",
+  "comment_count": 1
+}

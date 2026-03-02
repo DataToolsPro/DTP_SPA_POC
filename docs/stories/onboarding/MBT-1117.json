@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1117",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Personalized Onboarding Experience Based on User-Selected Solutions",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-05-05T21:05:30.138-0700",
+  "updated": "2026-03-01T04:16:31.685-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a new DataTools Pro user, I want a personalized onboarding experience based on the solutions I selected during sign-up, so that I can quickly get started with the features most relevant to my needs.",
+  "description": "Review and enhance the onboarding experience so that new users are guided based on their interests. During sign-up, users select their preferred starting points:\n\n1. Explore objects in a dictionary\n2. Visualize objects in an ERD\n3. Learn about metrics glossary\n\nThe selected solutions from the web-to-lead form are sent to the REST API during OTP generation. After successful authentication, the solutions are retrieved and stored on the user model. A personalized welcome popup is shown to new customers based on their saved solution preferences.\n\nThe goal is to connect the web-to-lead form data (role and selected solutions) to customize the initial in-app experience.",
+  "acceptance_criteria": [
+    "User-selected solutions from the beta sign-up form are sent to the REST API during OTP generation",
+    "Solutions are stored in the dtp_signup database table",
+    "Upon successful OTP authentication, solutions are transferred to the users model",
+    "A personalized welcome popup is displayed to new users based on their saved solutions",
+    "The welcome popup is only shown to new customers, not returning users",
+    "Users can start with Dictionary, ERD, or Metrics Glossary based on their selection"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "A personalized welcome popup is shown to new customers after first login, guiding them to their selected solutions (Dictionary, ERD, or Metrics Glossary).",
+  "middleware_changes": "Updated the OTP generation flow to accept and pass solution selections from the beta form. Updated authentication flow to retrieve solutions from dtp_signup and save them to the user model.",
+  "data_model_changes": "Added solutions field to the `dtp_signup` table. Added solutions field to the `users` model to persist the user's onboarding preferences.",
+  "api_changes": "REST API updated to accept solution selections during OTP generation. Solutions are included in the sign-up payload.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Solutions are captured during the beta form sign-up, stored in dtp_signup, then transferred to the user record upon successful authentication. The welcome popup logic checks if the user is new and displays personalized content accordingly.",
+  "comment_summary": "Developer implemented the solution: sign-up form selections flow through the API to dtp_signup, then to the user model on auth. A personalized welcome popup was built for new customers. Screenshot provided for review.",
+  "comment_count": 1
+}

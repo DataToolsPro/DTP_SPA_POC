@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-803",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Investigate Salesforce Chrome Extension Causing Page Load Delays",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-12T16:37:07.162-0700",
+  "updated": "2026-03-01T03:51:53.392-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Investigation determined this was NOT a DataTools Pro issue. The page load delay was caused by a Salesforce Chrome extension (`chrome-extension://jjghhkepijgakdammjldcbnjehfkfmha`) throwing an uncaught DOMException when trying to parse page data via XPath after the DOM had mutated. The error occurred in the extension's `page-context-builder.bundle.js`.",
+  "acceptance_criteria": [
+    "Root cause identified as external Chrome extension",
+    "No DataTools Pro code changes required"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The error was from the Salesforce Chrome extension's page context builder, not from DataTools Pro code. No fix needed on the app side.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

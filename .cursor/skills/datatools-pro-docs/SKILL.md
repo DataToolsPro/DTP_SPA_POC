@@ -1,6 +1,6 @@
 ---
 name: datatools-pro-docs
-description: Write, update, and organize DataTools Pro product documentation. Use when creating tutorials, feature docs, release notes, integration guides, or updating existing docs. Triggers on mentions of documentation, tutorials, knowledge files, docs/public/, or writing product content for DataTools Pro.
+description: Write, update, and organize DataTools Pro product documentation. Use when creating tutorials, feature docs, release notes, integration guides, or updating existing docs. Triggers on mentions of documentation, tutorials, knowledge files, docs/wp-published/, or writing product content for DataTools Pro.
 ---
 
 # DataTools Pro Documentation Authoring
@@ -41,7 +41,7 @@ Every doc is a single JSON file containing structured metadata and a `content_ma
 
 ## Folder Organization
 
-Place files in `docs/public/{folder}/` based on primary feature area:
+Place files in `docs/wp-published/{folder}/` based on primary feature area:
 
 | Folder | Content | Signature Tag | Secondary Category |
 |--------|---------|---------------|--------------------|
@@ -192,7 +192,7 @@ Before finalizing any doc, verify:
 - [ ] `categories` includes `"DataTools Pro"`
 - [ ] `tags` includes `"datatoolspro"` + feature-specific tag
 - [ ] `excerpt` is 1 plain-text sentence
-- [ ] File is in the correct `docs/public/` subfolder
+- [ ] File is in the correct `docs/wp-published/` subfolder
 - [ ] Slug matches filename (without `.json`)
 - [ ] No raw HTML in `content_markdown`
 - [ ] No HTML entities (`&amp;`, `&#8211;`)
@@ -212,7 +212,7 @@ Before finalizing any doc, verify:
 3. Write `content_markdown` following the content structure template
 4. Apply formatting rules (headings, bold, links, images)
 5. Run the quality checklist
-6. Save as `docs/public/{folder}/{slug}.json`
+6. Save as `docs/wp-published/{folder}/{slug}.json`
 
 ### Updating an Existing Doc
 

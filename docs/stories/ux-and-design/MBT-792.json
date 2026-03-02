@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-792",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Image Stretching and Text Alignment in Help Popout",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-05T11:19:13.747-0700",
+  "updated": "2024-07-25T23:44:55.197-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user viewing help content, I want images to display at their correct proportions and text to be left-aligned, so that the help popout is readable and professional.",
+  "description": "Two styling issues in the help popout window:\n1. **Image stretching**: Images loaded in the help popout stretch beyond their natural dimensions\n2. **Text alignment**: Text content is not left-aligned\n\n## Fix\nApply CSS to constrain image sizing (`max-width: 100%`, `height: auto`) and left-align text content in the help popout.",
+  "acceptance_criteria": [
+    "Images in the help popout display at correct proportions without stretching",
+    "Text content in the help popout is left-aligned",
+    "Help content remains readable and properly formatted"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed image stretching in help popout with CSS max-width constraint. Text content left-aligned.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Product owner fixed the icon sizing issue directly. Developer applied global alignment style for left-aligned text. Alternative approach via WordPress styling was discussed as a fallback.",
+  "comment_summary": "Product owner fixed the image sizing directly. Developer confirmed text alignment fix working on staging.",
+  "comment_count": 2
+}

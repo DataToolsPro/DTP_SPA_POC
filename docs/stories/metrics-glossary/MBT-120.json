@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-120",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Conditional Save Objects Button Visibility on Scorecard",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T13:17:06.536-0700",
+  "updated": "2026-03-01T01:27:40.891-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Save Objects button to only appear after I add or remove an object from the selection dropdown, so that it is clear when an action is needed and the interface feels more intuitive.",
+  "description": "The Save Objects button on the Scorecard was always visible, making it unclear to users when they needed to take action. This enhancement hides the button by default and only reveals it when the user adds a new object from the dropdown, signaling that a save action is required.\n\n## Behavior\n\n1. **Button hidden by default** — the \"Save Objects\" button (renamed from its previous label) is not visible on page load.\n2. **Button appears on add** — when a user selects a new object from the dropdown, the button appears.\n3. **Button hides after save** — once the user clicks \"Save Objects,\" the button hides again.\n4. **Delete triggers auto-update** — removing an object from the dropdown automatically updates the DataTable, so the save button is not needed for deletions.\n\n## Implementation Note\n\nThe button label was changed to \"Save Objects\" for clarity.",
+  "acceptance_criteria": [
+    "Save Objects button is hidden by default on page load",
+    "Button appears when a user selects a new object from the dropdown",
+    "Button hides again after the user clicks Save Objects",
+    "Removing an object from the dropdown auto-updates the DataTable without requiring a manual save",
+    "Button label reads 'Save Objects'"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Save Objects button is hidden by default and conditionally revealed only when a new object is added from the dropdown. Button renamed to 'Save Objects' for clarity. After saving, the button hides again. Object removal auto-updates without requiring a save action.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implemented via JavaScript show/hide toggling on the Save Objects button, triggered by the dropdown change event. The delete path already had auto-update behavior, so the button only needs to appear for additions.",
+  "comment_summary": "Developer updated the label and implemented the conditional visibility. Noted that delete already auto-updates the DataTable, so the button only shows on new object selection. Submitted for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-519",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix Deprecated OpenAI Model for Formula Description Popup",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-19T12:04:54.305-0800",
+  "updated": "2024-05-24T02:25:43.194-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "The GPT-powered formula description feature stopped returning results because the `text-davinci-003` model was deprecated by OpenAI. The API needed to be updated to use the `gpt-3.5-turbo` model with the chat completions endpoint.\n\nThe fix involved migrating from the legacy completions API (`/v1/completions`) to the chat completions API (`/v1/chat/completions`) with the appropriate message format including a system role prompt for Salesforce expertise.",
+  "acceptance_criteria": [
+    "Formula description popup returns results using the gpt-3.5-turbo model",
+    "API calls use the chat completions endpoint format",
+    "System prompt establishes Salesforce administrator expertise context"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Migrated OpenAI integration from text-davinci-003 completions API to gpt-3.5-turbo chat completions API. Updated request format to include system and user role messages.",
+  "data_model_changes": "",
+  "api_changes": "Outbound API call changed from POST /v1/completions to POST /v1/chat/completions with the gpt-3.5-turbo model and chat message format.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The PHP implementation uses Laravel's Http facade. The system prompt is set to 'You are a helpful assistant' with the formula content as the user message. Temperature set to 0.5 with max_tokens of 1000.",
+  "comment_summary": "Developer identified the deprecation from the OpenAI error response and found the migration guide. Updated the API and deployed to staging. Reporter then asked about explicitly moving to gpt-3.5-turbo, which had already been done.",
+  "comment_count": 3
+}

@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-177",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Header Design Overhaul: Remove Excess Spacing and Border Radius",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-18T16:13:46.448-0700",
+  "updated": "2024-05-24T02:24:31.410-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the header to be compact and clean, so that more screen space is available for the main content area.",
+  "description": "Remove excess CSS classes from the header to create a more compact, professional look.\n\n## CSS Classes to Remove\n- `min-height-100` — reduces header height\n- `border-radius-lg` and `border-radius-xl` — removes rounded corners\n- `mx-4` — removes horizontal margin\n- `shadow-none` — cleanup\n\n## card-navigation Update\n```css\n.card-navigation {\n  background-color: #f8f9fa;\n  padding-right: 10px;\n}\n```\nThis reduces the top screen real estate needed for navigation.",
+  "acceptance_criteria": [
+    "Header no longer has minimum height constraint",
+    "Border radius removed from header elements",
+    "Horizontal margin (mx-4) removed from header",
+    "card-navigation has light gray background with right padding",
+    "Header occupies less vertical space than before"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Header made significantly more compact by removing height constraints, border radius, margins, and updating card-navigation styling.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer discussed whether the green background should remain on the top bar. Changes were pushed to staging for review.",
+  "comment_summary": "Developer raised a question about the top bar background color theme consistency. Changes were applied and approved.",
+  "comment_count": 4
+}

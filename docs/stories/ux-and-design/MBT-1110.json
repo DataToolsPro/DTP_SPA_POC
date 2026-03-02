@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1110",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Alphabetical Sorting and Search to Object Dropdown",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-27T22:40:26.721-0700",
+  "updated": "2026-03-01T04:14:19.147-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want the object dropdown on the dictionary page to be sorted alphabetically and include a search function, so that I can quickly find and jump to the right object when managing many connections.",
+  "description": "The upper-right object dropdown on the Dictionary page was not sorted and lacked search functionality. For power users who connect to many objects, finding the right one required scrolling through an unsorted list.\n\n### Changes\n- Objects are sorted alphabetically in the dropdown\n- A search input is added to the dropdown for quick filtering\n- Applied to Dictionary, Migration, and ERD views",
+  "acceptance_criteria": [
+    "Object dropdown items are sorted alphabetically",
+    "Dropdown includes a search/filter input field",
+    "Search filters dropdown items as the user types",
+    "Sorting and search work on Dictionary, Migration, and ERD views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Object dropdown now sorted alphabetically with a search input for quick filtering. Applied across Dictionary, Migration, and ERD views.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Sorting and search were implemented across three views: Dictionary, Migration, and ERDs.",
+  "comment_summary": "Developer confirmed the scope (sort dropdown on the object list) and implemented sorting and search across Dictionary, Migration, and ERD views.",
+  "comment_count": 3
+}

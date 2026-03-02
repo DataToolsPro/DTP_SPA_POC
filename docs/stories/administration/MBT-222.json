@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-222",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Set Default Settings for New Users and Hide Snowflake Option",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T22:02:58.855-0700",
+  "updated": "2026-03-01T03:40:52.533-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a new DataTools Pro user, I want all tabs and features enabled by default and the Snowflake database option hidden, so that my initial experience is complete and not cluttered with unavailable features.",
+  "description": "## Changes\n1. **Default settings**: All tabs and features are enabled by default for newly authenticated users.\n2. **Hide Snowflake option**: The database dropdown (which included Snowflake) is hidden since the GPT code generation feature was removed.\n\n## Implementation\nDefault user settings are applied during the first authentication when the user record is inserted. This does not retroactively update existing users — only newly created users get the defaults.",
+  "acceptance_criteria": [
+    "New users have all tabs and features enabled by default",
+    "Snowflake/database dropdown is hidden from the settings page",
+    "Existing users' settings are not affected",
+    "Settings are applied during first authentication"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Database dropdown hidden from settings page. New users see all features enabled by default.",
+  "middleware_changes": "Default settings applied during user creation on first authentication.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Defaults are set during user record insertion on first OAuth authentication. The whole database dropdown is hidden (not just Snowflake) since the GPT code generation feature was removed. Existing users retain their current settings.",
+  "comment_summary": "Developer asked whether to hide just Snowflake or the whole dropdown. Reporter chose to hide the entire dropdown. Developer implemented defaults on user creation and confirmed it only applies to new users.",
+  "comment_count": 4
+}

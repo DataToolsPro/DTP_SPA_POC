@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-755",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Replace Description Column with Tooltip Icon and Add to Side Pane",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:31:29.120-0700",
+  "updated": "2024-07-25T23:44:54.134-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to see Salesforce descriptions via a tooltip icon in the table and as read-only text in the side pane, so that descriptions are available on demand without taking up column space.",
+  "description": "Descriptions (sourced from Salesforce) currently occupy a full table column, which wastes space when many records have no description. This ticket redesigns how descriptions are displayed.\n\n## Changes\n1. **Table**: Remove the Description column. Instead, add an inline icon with a tooltip that appears when a description exists. If no description exists, no icon is shown.\n2. **Side pane**: Add the description to the detail side pane as a non-editable, read-only field.\n\n## Note on Editability\nDescriptions come from Salesforce and are currently read-only. Writeback to Salesforce is technically possible but intentionally deferred.",
+  "acceptance_criteria": [
+    "Description column is removed from the table",
+    "Records with a description show an inline icon with a tooltip displaying the description",
+    "Records without a description show no icon",
+    "Description is displayed as a read-only field in the detail side pane",
+    "Description field in the side pane is not editable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the Description table column with an inline tooltip icon that appears only when a description exists. Added the description as a read-only field in the detail side pane.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Description column removed from DataTable configuration. Inline icon rendered conditionally based on description presence. Side pane updated to include a read-only description field. Salesforce writeback for descriptions is deferred.",
+  "comment_summary": "Developer removed the description from the table and added it to the side pane. Confirmed working on staging.",
+  "comment_count": 2
+}

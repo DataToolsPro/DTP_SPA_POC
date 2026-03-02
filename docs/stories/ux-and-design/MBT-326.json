@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-326",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Invite Text Readability with White Color",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:48:14.147-0700",
+  "updated": "2024-05-24T02:25:06.723-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the invite text to be readable against its background, so that I can see the invitation information clearly.",
+  "description": "Fix the invite text color to white so it is readable against the dark/colored background. The current text color blends into the background making it unreadable.",
+  "acceptance_criteria": [
+    "Invite text is displayed in white color",
+    "Text is clearly readable against the background"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Invite text color changed to white for readability against the dark background.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer changed the text to white and pushed to staging.",
+  "comment_count": 1
+}

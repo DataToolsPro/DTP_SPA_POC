@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-706",
+  "epic_key": "MBT-723",
+  "feature_folder": "infrastructure",
+  "title": "Improve Error Handling in Metrics Lambda Service 1",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-19T21:54:28.096-0700",
+  "updated": "2024-07-25T23:52:18.494-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "The Metrics Service 1 Lambda was returning a generic internal server error during customer use case testing. The root cause was that the API request to the Lambda endpoint and the subsequent database write were combined in a single try-catch block, making it impossible to distinguish between external API failures and internal database errors.\n\n## Required Change\nSeparate the error handling into two distinct try-catch blocks:\n1. **API request block** — captures errors from the external Lambda service call\n2. **Database write block** — captures true internal errors from inserting/updating `MetricApiResponse` and `ApiResponseWidget` records\n\nThis allows the system to return meaningful error messages to the user rather than a generic 500 error.",
+  "acceptance_criteria": [
+    "API request to the Lambda endpoint has its own try-catch block with specific error messaging",
+    "Database insert/update operations have a separate try-catch block",
+    "API errors return the Lambda service error message to the frontend",
+    "Database errors return a distinct internal error message",
+    "Widget data is correctly parsed and saved to ApiResponseWidget table on success"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Refactored the Metrics Service 1 controller to separate the Lambda API call and database write into distinct try-catch blocks. Error messages are now specific to the failure point rather than generic.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The original code combined the HTTP POST to the Lambda endpoint (https://hkv22n88tc.execute-api.us-west-2.amazonaws.com/dev) and the MetricApiResponse/ApiResponseWidget database writes in one try-catch. The refactored code isolates each operation for precise error reporting.",
+  "comment_summary": "Waqar deployed the updated error handling to the staging environment.",
+  "comment_count": 1
+}

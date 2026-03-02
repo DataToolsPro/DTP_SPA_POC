@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-770",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Bulk Multi-Select Edit for Report and Dashboard Taxonomies and Status",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-16T15:20:59.330-0700",
+  "updated": "2024-10-15T19:09:36.661-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user managing reports and dashboards, I want to bulk-select multiple items and assign categories, lines of business, or status in a single action, so that I can efficiently categorize and manage large numbers of reports.",
+  "description": "Adds multi-select and bulk edit functionality to the Reports and Dashboards page, mirroring the existing Metrics Glossary bulk edit pattern. Users can select multiple rows using Ctrl+click or Shift+click, then apply taxonomy values (categories, lines of business) or status changes in bulk.\n\nThe implementation should prioritize reusable code patterns since the same functionality will be needed on an upcoming Data Governance tab with different status values and metadata. Abstracting shared behavior into reusable classes or global functions is preferred over per-page reimplementation.",
+  "acceptance_criteria": [
+    "User can multi-select report/dashboard rows using Ctrl+click and Shift+click",
+    "Bulk edit modal appears showing selected count and available categories",
+    "User can assign Line of Business and Topic categories in bulk",
+    "User can update Status field in bulk for selected items",
+    "Changes write back to the data model and persist",
+    "Bulk edit code is reusable for future pages (Data Governance tab)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added Ctrl+click and Shift+click multi-select to the Reports/Dashboards data table. Bulk edit modal allows assigning categories, lines of business, and status to multiple selected items.",
+  "middleware_changes": "New bulk-update controller logic for applying taxonomy values and status changes to multiple report/dashboard records. Reuses existing modal patterns from Metrics Glossary.",
+  "data_model_changes": "Reports and dashboards records now support taxonomy value associations (categories, lines of business) and a status attribute.",
+  "api_changes": "Bulk update endpoint for applying category and status changes to multiple report/dashboard records.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implementation mirrors the Metrics Glossary bulk edit. The existing modal was reused rather than creating a new one. An error was encountered during initial testing and fixed. Emphasis on making the code reusable for an upcoming Data Governance tab.",
+  "comment_summary": "Ryan requested grooming with Waqar to determine middleware needs. Balaji implemented with impact analysis estimating 10 hours. Waqar confirmed the existing modal could be reused. Ryan tested, found an error which was fixed, then approved.",
+  "comment_count": 5
+}

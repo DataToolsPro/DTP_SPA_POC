@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-942", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Modified Date Column Showing Last Viewed Date Instead",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-08T04:18:22.469-0700", "updated": "2024-11-03T18:59:41.239-0800",
+  "assignee": "waqar khan", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Modified Date column to show the actual last modified date from Salesforce, not the last viewed date.",
+  "description": "Bug fix: the Modified Date column in the Reports and Dashboards table was displaying the Last Viewed Date instead of the actual Last Modified Date. Verified by comparing with Salesforce data where the actual last modified date was different from the date shown.",
+  "acceptance_criteria": ["Modified Date column shows the correct LastModifiedDate from Salesforce", "Last Viewed Date is not mixed up with Modified Date"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed the Modified Date column to display the correct date field.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-789"], "source_files": [],
+  "implementation_notes": "Column was binding to the wrong data field. Fixed the data source reference to use LastModifiedDate instead of LastViewedDate.",
+  "comment_summary": "Waqar identified the issue and fixed on development.", "comment_count": 1
+}

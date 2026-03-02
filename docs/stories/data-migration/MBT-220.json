@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-220",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Add Required Field Validation for Migration Object Creation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T20:08:49.084-0700",
+  "updated": "2026-03-01T04:03:26.980-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "The application allowed saving a migration object record without an object identifier. Add client-side validation to require the identifier and name fields. Description remains optional.\n\n### Additional UX Fix\nClean up spacing between the Update/Cancel buttons and the object description field — buttons were visually too close to the description text area.",
+  "acceptance_criteria": [
+    "Object identifier field is required on save",
+    "Object name field is required on save",
+    "Description field remains optional",
+    "Update/Cancel buttons have proper spacing from the description field",
+    "Validation error is shown when required fields are empty"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Required field indicators added to identifier and name. Button spacing cleaned up below the description field.",
+  "middleware_changes": "Server-side validation added to reject object records without identifier or name.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed the validation and submitted for review.",
+  "comment_count": 1
+}

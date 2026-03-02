@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-60",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Replace Migrate Yes/No Toggle with Multi-Status Dropdown",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-06T21:18:06.140-0800",
+  "updated": "2026-03-01T03:38:46.555-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want field-level migration status options beyond yes/no, so that I can track disposition and progress for each field.",
+  "description": "Replace the binary yes/no \"Migrate\" toggle on the migration field mapping page with a multi-status dropdown that combines disposition (skip) and progress tracking into a single field.\n\n### New Status Options\n- **Not Reviewed** (default, replaces NULL)\n- **No Migration** (signals the field will be ignored)\n- **In Progress**\n- **Blocked**\n- **QA**\n- **Business Review**\n- **Completed**\n\n### Requirements\n- Status dropdown is inline-editable directly on the page (no modal/edit window required)\n- Color coding matches the existing scorecard status colors\n- Applies to both migration mapping files\n- Default value for unmapped fields is \"Not Reviewed\" instead of \"Not Started\"",
+  "acceptance_criteria": [
+    "Migrate yes/no column is replaced with a multi-status dropdown",
+    "Dropdown includes: Not Reviewed, No Migration, In Progress, Blocked, QA, Business Review, Completed",
+    "Status is inline-editable without opening an edit modal",
+    "Color coding matches scorecard conventions",
+    "Default status for new/unmapped fields is Not Reviewed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Migrate column changes from a yes/no toggle to an inline-editable status dropdown with color-coded options matching the scorecard.",
+  "middleware_changes": "Backend logic updated to handle the new status values instead of boolean migrate flag.",
+  "data_model_changes": "Migration status column changes from boolean to an enum/string field supporting the seven status values.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The status options mirror the scorecard component's existing status set for consistency.",
+  "comment_summary": "Developer initially misunderstood the requirement as renaming yes/no labels. After clarification that the full scorecard status set was needed (Not Reviewed, No Migration, In Progress, Blocked, QA, Business Review, Completed), the feature was implemented and submitted for review.",
+  "comment_count": 4
+}

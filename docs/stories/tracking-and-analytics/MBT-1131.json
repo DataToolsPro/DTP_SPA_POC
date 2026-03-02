@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1131",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "ReadyPaid Lead Channel Tracking and Marketing Attribution",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-05-30T15:25:02.484-0700",
+  "updated": "2026-03-01T04:21:12.541-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Implement lead channel tracking for the ReadyPaid application process to measure the effectiveness of omni-channel marketing (email, paid ads, direct mail, events). When a ReadyPaid partner originates from a marketing channel and reaches ReadyPaid.com, the system should capture:\n\n- **Lead Source**: Where the lead originally came from\n- **UTM Parameters**: Campaign tracking data from the URL\n\nCurrently, the application process uses a 'Lead Source' field for business process purposes, but marketing attribution needs to be decoupled from business process automation. The goal is to have independent tracking for marketing attribution separate from the operational lead source field.\n\nThis enables measuring results and impact of co-branded outreach across partners and channels.",
+  "acceptance_criteria": [
+    "Lead source is captured when a partner starts the ReadyPaid application process",
+    "UTM parameters are captured from the referring URL",
+    "Marketing attribution tracking is separate from the business process Lead Source field",
+    "Tracking works across all channels: email, paid ads, direct mail, and events",
+    "Attribution data can be reported on to measure channel effectiveness"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Capture and store UTM parameters and lead source from incoming traffic to the ReadyPaid application. Decouple marketing attribution from business process lead source.",
+  "data_model_changes": "New fields or table to store marketing attribution data (UTMs, lead source) separately from the business process lead source.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The existing Lead Source field serves business process needs and should not be overloaded with marketing attribution data. A separate tracking mechanism is needed for UTMs and marketing channel attribution.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1239",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Consistent PostHog Flag Evaluations with User Identity",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-27T21:55:40.272-0700",
+  "updated": "2026-03-01T04:25:25.891-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Ensure consistent PostHog feature flag evaluations across frontend and backend by declaring the DataTools Pro user ID as the distinct ID in PostHog, similar to how Pendo identifies users.\n\nBefore redirecting to the dashboard after authentication, the user's unique data is sent to PostHog using the PHP SDK:\n\n```php\nPostHog::identify([\n    'distinctId' => $user->dtuserId . $user->id,\n    'properties' => [\n        'email' => $user->email,\n        'name'  => trim($user->firstname . ' ' . $user->lastname),\n        '$host' => request()->getHost(),\n    ]\n]);\n```\n\nThis ensures feature flag evaluations use the same user identity on both the frontend and backend, enabling consistent flag targeting.",
+  "acceptance_criteria": [
+    "PostHog identifies users with the DTP user ID as the distinct ID",
+    "The distinct ID is consistent between frontend and backend PostHog calls",
+    "Feature flag evaluations return the same result on both frontend and backend for the same user",
+    "User properties (email, name, host) are attached to the PostHog person record"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "PostHog::identify() called with the DTP user ID as distinctId, along with email, name, and host properties, ensuring consistent identity across frontend and backend.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1236"],
+  "source_files": [],
+  "implementation_notes": "The distinct ID is composed of dtuserId + id to create a unique identifier. This mirrors the Pendo identification pattern. The $host property is included to distinguish between environments.",
+  "comment_summary": "Developer shared the PostHog::identify() implementation code showing distinct ID composition and user properties being sent before dashboard redirect.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1122",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Replace Incremental IDs with GUIDs in User-Facing URLs",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-05-20T14:00:08.957-0700",
+  "updated": "2026-03-01T04:02:33.656-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\nIncremental (auto-increment) IDs are exposed in URLs and UI. In a multi-tenant pooled database, this poses a security risk (enumeration attacks) and is flagged by ISO 27001 requirements.\n\n## Change\nReplace all user-facing incremental IDs (particularly `view_id`) with GUIDs. This affects:\n- Dictionary views\n- Migration views\n- Entity Relationship Diagram views\n- Options and objects associated with each diagram\n\n## Impact\nSignificant testing required as many features rely on `view_id` for routing and data association.",
+  "acceptance_criteria": [
+    "All user-facing URLs use GUIDs instead of incremental IDs",
+    "Dictionary, Migration, and ERD views use GUID-based routing",
+    "No incremental IDs are exposed in the UI or URLs",
+    "All existing features continue to work with GUID-based IDs"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "URLs and UI no longer show incremental IDs — replaced with GUIDs.",
+  "middleware_changes": "Route resolution and data lookup updated to use GUIDs instead of incremental IDs.",
+  "data_model_changes": "GUID columns added alongside or replacing incremental ID references in view-related tables.",
+  "api_changes": "All endpoints that accept view_id now accept GUID format.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Large change touching dictionary, migration, ERD, and associated options/objects. Extensive testing needed before merging to dev. GUIDs prevent enumeration attacks in the multi-tenant pooled database.",
+  "comment_summary": "Developer completed development but emphasized thorough testing is needed before merging since many features rely on view_id. Deployed to dev for review.",
+  "comment_count": 2
+}

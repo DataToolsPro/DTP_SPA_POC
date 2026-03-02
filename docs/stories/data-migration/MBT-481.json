@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-481",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "Fix Picklist Mapping Window Height Hiding First Row",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-12T16:12:51.974-0800",
+  "updated": "2024-05-24T02:25:31.386-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want the picklist mapping window to be tall enough to show all rows including the first one, so that I can click on and paste values into any row without obstruction.",
+  "description": "The picklist mapping popup window's default height was too small, causing the first row to be hidden below the header. This made it impossible to click on or paste values into the first picklist mapping row.\n\nThe fix increases the default height of the picklist mapping window to ensure all rows are visible and accessible.",
+  "acceptance_criteria": [
+    "First row of the picklist mapping table is fully visible",
+    "User can click and paste values into any row including the first",
+    "Window height accommodates the header and all visible rows"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Increased the default height of the picklist mapping popup window to ensure the first row is not hidden behind the header.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed the height issue on staging and provided a screenshot showing the corrected layout.",
+  "comment_count": 1
+}

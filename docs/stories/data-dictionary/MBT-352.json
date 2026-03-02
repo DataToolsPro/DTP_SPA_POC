@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-352",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Remove Checkboxes and Rename Title on Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:55:40.345-0800",
+  "updated": "2026-03-01T01:28:57.160-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user on the Dictionary page, I want the row-selection checkboxes removed and the page title changed from 'Field Dictionary' to 'Object Dictionary', so that the interface is cleaner and the terminology is accurate.",
+  "description": "Two changes were made to the Dictionary page:\n\n1. **Checkbox Removal**: Row-selection checkboxes were removed from the Dictionary view. These checkboxes were originally used to select rows for CSV/PDF export of selected items, but were deemed unnecessary for the Dictionary context. Checkboxes remain on the Migration view.\n\n2. **Title Rename**: The page title was changed from 'Field Dictionary' to 'Object Dictionary' to better reflect the content scope.\n\nThe developer also noted a UX concern: on page load, all column headers briefly flash before the table finishes rendering and hides the irrelevant columns. A loading animation was suggested as a follow-up improvement.",
+  "acceptance_criteria": [
+    "Dictionary page does not display row-selection checkboxes",
+    "Migration page retains its row-selection checkboxes",
+    "Dictionary page title reads 'Object Dictionary' instead of 'Field Dictionary'",
+    "CSV/PDF export functionality is not affected on Migration"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed row-selection checkboxes from the Dictionary page and renamed the page title from 'Field Dictionary' to 'Object Dictionary'.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Checkboxes were only removed from the Dictionary context; Migration retains them for selective export. A loading animation to prevent column header flash on initial render was suggested as a separate enhancement.",
+  "comment_summary": "Developer confirmed the change was Dictionary-only (not Migration) and noted that checkboxes were used for selective CSV/PDF export. Developer also flagged a UX issue where column headers flash on page load before the table is ready, suggesting a loading animation as a future task.",
+  "comment_count": 3
+}

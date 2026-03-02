@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1305",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Package Salesforce External Client App as 2GP Managed Package",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-01-12T18:58:08.764-0800",
+  "updated": "2026-03-01T04:15:01.331-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Package the DataTools Pro Salesforce external client app as a second-generation managed package (2GP) for distribution to customers. This allows customers to install the package in their org without manually creating the external client app.\n\n### Process\n1. Bundle the external client app into a 2GP managed package for version control and automated packaging\n2. Distribute via AppExchange or direct installation\n3. OAuth consumer credentials are stored in a non-ephemeral org (Dev Hub) and shared globally, not included in the package\n\n### Benefits\n- Customers don't need to create the external client app manually\n- Version control and automated packaging\n- Multiple packages under the same namespace\n- Sensitive OAuth credentials securely managed outside the package",
+  "acceptance_criteria": [
+    "External client app is packaged as a 2GP managed package",
+    "Package can be installed in a customer Salesforce org",
+    "OAuth credentials are not included in the package",
+    "Package versioning works correctly"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1306"],
+  "source_files": [],
+  "implementation_notes": "This was completed as part of MBT-1306. OAuth consumer credentials are stored in the Dev Hub org and shared globally across deployments.",
+  "comment_summary": "Developer noted this was completed in the related task MBT-1306.",
+  "comment_count": 1
+}

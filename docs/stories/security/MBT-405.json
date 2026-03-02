@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-405",
+  "epic_key": "MBT-413",
+  "feature_folder": "security",
+  "title": "Add New Relic Domain to CSP Allowlist",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-06T23:39:46.548-0800",
+  "updated": "2024-05-24T02:25:04.970-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Add the New Relic JavaScript agent domain (`js-agent.newrelic.com`) to the Content Security Policy (CSP) allowlist so the New Relic browser monitoring agent can load without CSP violations.",
+  "acceptance_criteria": [
+    "js-agent.newrelic.com is added to the CSP script-src directive",
+    "New Relic browser monitoring agent loads without CSP errors",
+    "No other CSP directives are weakened"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "CSP middleware updated to include js-agent.newrelic.com in the script-src directive.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-17"],
+  "source_files": [],
+  "implementation_notes": "New Relic domain was already added to the staging CSP. Production CSP update would apply when staging changes are merged to production.",
+  "comment_summary": "Developer confirmed the domain was already added on staging and would take effect on production after the next merge.",
+  "comment_count": 1
+}

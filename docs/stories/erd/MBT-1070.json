@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1070",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Add Visualize ERD Icon to Dictionary Object Details (Fields) Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-01-06T21:19:13.742-0800",
+  "updated": "2026-01-24T22:55:39.882-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Dictionary"],
+  "story": "As a DataTools Pro user browsing an object's field details in the Dictionary, I want a 'Visualize' icon that opens the ERD representation of that object, so that I can quickly see how the object relates to others without navigating away from the fields page.",
+  "description": "Adds a \"Visualize\" icon to the Dictionary object details (fields) page, positioned after the filter control. Clicking the icon navigates the user to the ERD page with the selected object highlighted, providing a quick way to see the entity relationship context for the object being reviewed.\n\nThis extends the Visualize button concept from MBT-1056 to the individual object detail level.",
+  "acceptance_criteria": [
+    "A Visualize icon appears on the Dictionary object details (fields) page after the filter",
+    "Clicking the icon navigates to the ERD with the current object highlighted",
+    "The ERD loads with the appropriate view context for the object",
+    "The icon is visually consistent with other action icons on the page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Visualize icon added to the Dictionary object details page next to the filter control. Provides one-click navigation to the ERD view for that object.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1056"],
+  "source_files": [],
+  "implementation_notes": "Extends the Dictionary-to-ERD navigation pattern to the object field detail level. Complements MBT-1056 which adds the Visualize button at the Dictionary list level.",
+  "comment_summary": "Developer implemented most functionality quickly, needed a few tweaks, then deployed to development for review.",
+  "comment_count": 2
+}

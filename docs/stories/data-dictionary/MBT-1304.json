@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1304",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Separate Label and API Name Columns in Dictionary Export and Remove Internal IDs",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-30T12:36:14.855-0800",
+  "updated": "2026-03-01T04:14:13.892-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want Label and API Name as separate columns in my export, so that I don't have to manually split them after exporting.",
+  "description": "Two refinements to the dictionary object export:\n\n1. **Separate Label and API Name**: When exporting or copying to clipboard, split the combined Label/API Name field into two distinct columns. These columns can be hidden in the UI but must appear in exports.\n\n2. **Remove internal auto-increment IDs**: Never display internal auto-incrementing database IDs to end users, as they reveal tenant position relative to other customers. Remove from all user-facing views and exports.",
+  "acceptance_criteria": [
+    "Exported data has separate Label and API Name columns",
+    "Copy to clipboard includes separate Label and API Name columns",
+    "Internal auto-incrementing IDs are not visible anywhere to end users",
+    "Applied to both Dictionary and Migration pages"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": true},
+  "ux_changes": "Separate Label and API Name columns in export. Internal IDs removed from all user-facing views.",
+  "middleware_changes": "Export query and formatter updated to split label/API name and exclude internal IDs.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Security improvement: internal auto-increment IDs expose tenant ordering. Applied to dictionary and migration.",
+  "comment_summary": "Waqar fixed on dev for both dictionary and migration pages.",
+  "comment_count": 1
+}

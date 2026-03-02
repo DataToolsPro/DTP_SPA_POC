@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-703",
+  "epic_key": "MBT-599",
+  "feature_folder": "metrics-analyst",
+  "title": "Service 2 API Returning Duplicate Metrics in Response",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-14T16:22:03.220-0700",
+  "updated": "2024-05-24T02:26:02.177-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "The new Service 2 API configuration is returning duplicate metric entries in the response. The duplicates are coming from the API service itself, not from the front-end processing. While a client-side deduplication filter could be added, the preference is to have the service fix the issue to avoid business logic living in multiple places, which complicates testing and future API licensing.",
+  "acceptance_criteria": [
+    "Service 2 API no longer returns duplicate metric entries",
+    "Metric recommendation counts match expected totals based on dashboard widgets",
+    "No client-side deduplication workaround is needed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Service 2 API was updated by the AI service team (Anton and Raj) to eliminate duplicate metric entries in the response.",
+  "dependencies": ["MBT-643"],
+  "source_files": [],
+  "implementation_notes": "Decision was made to fix the duplication at the service level rather than adding client-side filtering. This keeps business logic centralized in the service for cleaner architecture, especially important if the API services are licensed independently.",
+  "comment_summary": "Ryan recommended fixing the issue at the service level to avoid distributed business logic. Developer confirmed dupes were from the API. The AI service team (Anton and Raj) fixed the duplicate issue.",
+  "comment_count": 3
+}

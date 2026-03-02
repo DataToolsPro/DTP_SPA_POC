@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-526",
+  "epic_key": "MBT-544",
+  "feature_folder": "security",
+  "title": "Document Solution Architecture for Salesforce Certification",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T00:27:53.877-0800",
+  "updated": "2024-05-24T02:25:43.549-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Salesforce certification requires documentation showing the solution architecture including detailed information flow, authentication mechanisms, encryption on data transfer, and data touchpoints.\n\n## Requirements\n\n- Share detailed information flow diagrams\n- Document authentication and encryption mechanisms for data in transit\n- Identify all data touchpoints between DataTools Pro and Salesforce\n- Provide basic usage instructions to orient Salesforce reviewers\n\n## Deliverable\n\nUpdated Salesforce App Store Listing documentation on Confluence with architecture details.",
+  "acceptance_criteria": [
+    "Solution architecture documentation covers information flow between DataTools Pro and Salesforce",
+    "Authentication mechanisms are documented with diagrams",
+    "Encryption methods for data in transit are specified",
+    "All data touchpoints are identified and mapped",
+    "Basic usage instructions are included for Salesforce reviewer orientation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation-only task for Salesforce AppExchange certification. Covers the overall solution architecture diagram and data flow documentation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

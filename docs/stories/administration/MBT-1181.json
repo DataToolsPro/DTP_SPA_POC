@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1181",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Enterprise Feature Gating with Premium Upgrade Funnel",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-08-05T23:45:38.253-0700",
+  "updated": "2026-03-01T04:04:53.934-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro free/team user, I want to see that enterprise features exist but with a clear upgrade path, so that I understand what's available and how to evaluate premium capabilities.",
+  "description": "## Context\nEnterprise-only features (Snowflake, HubSpot, API, Webhook, Tableau, enterprise migrations) need to be gated for free and paid team plans while remaining visible as upgrade opportunities.\n\n## Implementation Architecture\n\n### Config-Driven Feature Gating\n- **`config/features.php`** defines plan-to-feature mappings:\n  - Free: no enterprise features\n  - Pro: no enterprise features\n  - Enterprise: snowflake, hubspot, api, webhook, tableau, enterprise_migrations\n\n### FeatureGate Service\n- `app/Services/FeatureGate.php` checks if the authenticated user's team plan includes the requested feature.\n- Resolves the team → plan → premium_type → allowed features chain.\n\n### Blade Directives\n- `@feature('snowflake')` / `@noFeature('snowflake')` for conditional view rendering.\n- Registered via `FeatureServiceProvider`.\n\n### RequireFeature Middleware\n- Protects routes: returns 403 JSON for API requests, redirects with premium message for web requests.\n- Registered in `Kernel.php` as `'feature'`.\n\n### Data Model\n- `Plan` model with `premium_type` column (default: 'free').\n- `Team` has-many `Plan` relationship.\n\n### Blocked User Experience\nInstead of the feature's authentication config, blocked users see:\n> \"This premium feature is currently not available in our Salesforce contributor and team DataTools. If you would like to evaluate our data and analytics features, we are happy to get you connected with an evaluation.\"\n\nWith a CTA linking to the integration evaluation page.",
+  "acceptance_criteria": [
+    "Free and team plan users cannot access Snowflake, HubSpot, API, Webhook, or Tableau features",
+    "Enterprise plan users can access all features",
+    "Blocked users see the premium upgrade message with evaluation CTA",
+    "API requests to blocked features return 403 with evaluation URL",
+    "Enterprise migration data sources show the premium message for non-enterprise users",
+    "Feature icons remain visible for all users as upgrade awareness"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Enterprise features show premium upgrade message for non-enterprise users. Feature icons remain visible. CTA links to evaluation page.",
+  "middleware_changes": "New RequireFeature middleware gates routes by plan tier. FeatureGate service centralizes plan-to-feature checks. Blade directives for conditional rendering.",
+  "data_model_changes": "New premium_type column on Plan table (default: 'free'). Team-to-Plan relationship established.",
+  "api_changes": "API routes return 403 with evaluate_url for non-enterprise plan requests to gated features.",
+  "dependencies": ["MBT-1078"],
+  "source_files": ["config/features.php", "app/Services/FeatureGate.php", "app/Providers/FeatureServiceProvider.php", "app/Http/Middleware/RequireFeature.php"],
+  "implementation_notes": "Config-driven architecture allows easy addition of new features and plan tiers. Blade @feature/@noFeature directives simplify view-level gating. Middleware registered in Kernel.php as 'feature'. Premium gating implemented for Snowflake, Tableau, HubSpot, and Webhooks. API gating needs further specification from product. The Tableau feature should be checked for existing customer usage before restricting.",
+  "comment_summary": "Developer implemented a comprehensive feature gating system with config-driven plan mapping, FeatureGate service, Blade directives, and RequireFeature middleware. Reporter approved the approach. Developer completed Snowflake, Tableau, HubSpot, and Webhook gating but needed clarification on API gating specifics.",
+  "comment_count": 5
+}

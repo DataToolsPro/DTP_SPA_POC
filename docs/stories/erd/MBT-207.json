@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-207",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix Incorrect URL Generated from ERD Launch Button",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-27T18:13:19.769-0700",
+  "updated": "2026-03-01T03:59:35.981-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user clicking the launch button on an ERD entity, I want to be taken to the correct object detail URL, so that I can view the dictionary page without encountering broken links.",
+  "description": "## Bug\nThe ERD launch button generates an incorrect URL after the Laravel migration. Clicking the launch icon on an entity node navigates to a query-parameter-style URL instead of the new RESTful route.\n\n## Reproduction\n1. Open the ERD\n2. Click the launch button on any entity (e.g., Account)\n3. Observe: navigates to `/object?object=Account&view=migration`\n4. Expected: should navigate to `/object/Account?view=dictionary`\n\n## Fix\nUpdate the URL generation logic in the ERD to produce the correct Laravel-style RESTful route format.",
+  "acceptance_criteria": [
+    "ERD launch button navigates to /object/{ObjectName}?view=dictionary",
+    "Old query-parameter URL format is no longer generated",
+    "All entity nodes produce correct URLs"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed ERD launch button URL generation to use the correct Laravel RESTful route format (/object/{name}?view=dictionary).",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-113"],
+  "source_files": [],
+  "implementation_notes": "URL template in the GoJS node click handler updated from query-parameter format to RESTful path format after Laravel migration.",
+  "comment_summary": "Developer confirmed the fix was applied.",
+  "comment_count": 1
+}

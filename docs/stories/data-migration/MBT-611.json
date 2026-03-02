@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-611",
+  "skipped": true,
+  "skip_reason": "no description — summary indicates withdrawn, reporter could not replicate",
+  "title": "Withdrawn - Looks like Migration slide out is appearing on Dictionary",
+  "status": "Done",
+  "feature_folder": "data-migration"
+}

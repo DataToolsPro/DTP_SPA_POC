@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1257",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Empty Formula Field in Popup",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-15T23:04:25.707-0800",
+  "updated": "2026-03-01T04:09:25.928-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see the formula content when clicking a formula field, so that I can review and understand the field's calculation.",
+  "description": "## Bug\nWhen clicking on a formula field in the Cardiff account, the formula popup displays empty content instead of showing the formula definition.\n\n## Reproduction\n1. Log in as the Cardiff account\n2. Navigate to a formula field\n3. Click to view the formula\n4. Observe: formula field in the popup is empty\n\n## Fix\nFixed the formula field data retrieval to properly populate the popup content.",
+  "acceptance_criteria": [
+    "Formula popup displays the formula content when clicked",
+    "Formula is visible for all formula fields across accounts"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Formula popup now correctly displays formula content when a formula field is clicked.",
+  "middleware_changes": "Fixed formula data retrieval for the popup display.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was specific to formula field popup data retrieval. Fixed on production.",
+  "comment_summary": "Developer fixed the issue on production and marked it ready for review.",
+  "comment_count": 1
+}

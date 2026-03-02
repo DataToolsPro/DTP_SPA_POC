@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1176",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Snowflake Metrics Analyst — Table, View, and Semantic Model Import",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-07-26T23:41:24.510-0700",
+  "updated": "2026-03-01T03:47:54.188-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Snowflake"],
+  "story": "As a data analyst, I want to select a Snowflake table, view, or semantic model and run it through Metrics Analyst, so that I can automatically discover and catalog numeric metrics from my data warehouse.",
+  "description": "Extend Metrics Analyst to support Snowflake as a data source. Users can select a Snowflake table or view, batch-process all numeric fields (int, float), and receive AI-analyzed metric suggestions.\n\n### Workflow\n\n1. **Select Source** — User chooses a Snowflake table, view, or semantic model\n2. **Batch Analysis** — Instead of processing fields one-by-one, send the full field list to an OpenAI agent that returns results in the standard metrics JSON format\n3. **Present Results** — Display suggestions using the refined Metrics Analyst interface (Lovable mockup) for quick add/merge actions\n\n### Architecture\n- OpenAI calls are routed through a DataTools Pro backend service (not called directly from JavaScript)\n- The wizard should support selecting: Table, View, or Semantic Model as source types\n- Multiple semantic views can roll up into the metrics glossary\n- Scheduled sync capability to continuously monitor for changes in Snowflake semantic models\n\n### JSON Payload Format\nThe payload sent to OpenAI includes metric objects with name, description, definition, business_owner, target_interval, date_field_name, aliases, taxonomy (Line of Business), and logic (system + logic_definition referencing Snowflake table.column paths).\n\n### Strategic Vision\nThis positions DataTools Pro as a primary semantics and metrics management tool for Snowflake, enabling import from multiple layers with merge and reconciliation capabilities.",
+  "acceptance_criteria": [
+    "User can select a Snowflake table, view, or semantic model as the analysis source",
+    "All numeric fields (int, float) from the selected source are batch-processed through the AI analyst",
+    "OpenAI calls are routed through the DataTools Pro backend service, not called from JavaScript directly",
+    "Results are displayed in the refined Metrics Analyst interface with add/merge actions",
+    "JSON payload includes metric name, description, aliases, taxonomy, and Snowflake logic definitions",
+    "Semantic views can be imported and their metrics merged into the glossary"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New source selector for Snowflake tables/views/semantic models in Metrics Analyst. Refined results interface (Lovable mockup) for reviewing and adding/merging discovered metrics.",
+  "middleware_changes": "Backend service to proxy OpenAI requests with Snowflake field metadata. Batch processing of numeric fields. Metric merge and reconciliation logic using similar_text matching with configurable thresholds.",
+  "data_model_changes": "Metrics glossary extended to store Snowflake logic definitions (system + table.column paths). Semantic view association with metrics, facts, and dimensions stored in dedicated models.",
+  "api_changes": "New backend endpoint to accept Snowflake metadata payload and return AI-analyzed metric suggestions. REST API integration with Snowflake SQL statement API for semantic view operations.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "JSON payload structure shared with metric objects containing name, description, definition, business_owner, target_interval, date_field_name, aliases, taxonomy, and logic arrays. Semantic view management includes import, refresh (with last-refresh timestamp), and potential export back to Snowflake via CREATE OR REPLACE SEMANTIC VIEW SQL. Match scoring uses PHP similar_text() function comparing metric names and aliases. 100% match suppresses 'Create as alias' option. Ryan suggested exploring a Snowflake native app extension to bridge DataTools Pro and Snowflake for executing semantic view updates.",
+  "comment_summary": "Waqar shared the JSON payload structure and implemented metric import from Snowflake semantic views with metrics/facts/dimensions storage. Extensive discussion about semantic view CRUD operations — Waqar implemented SQL-based semantic view creation and view/refresh functionality. Ryan expanded scope to include Table/View/Semantic Model selection and raised concerns about executing SQL in customer Snowflake instances, suggesting a native app bridge. Match scoring and alias creation logic were refined with percentage thresholds.",
+  "comment_count": 6
+}

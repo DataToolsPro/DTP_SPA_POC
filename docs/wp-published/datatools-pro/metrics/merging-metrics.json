@@ -1,0 +1,18 @@
+{
+  "post_id": 9470,
+  "title": "Merging Metrics with DataTools Pro",
+  "slug": "merging-metrics",
+  "url": "https://datatoolspro.com/tutorials/merging-metrics/",
+  "date": "2024-04-28T13:19:03",
+  "modified": "2024-04-28T13:19:07",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "metrics"
+  ],
+  "subfolder": "metrics",
+  "excerpt": "<p>Merge your DataTools Pro metrics together for consolidated metrics management. </p>",
+  "content_html": "\n<p>Merging metrics through our <a href=\"https://datatoolspro.com/tutorials/getting-started-with-metrics-analyst-ai-for-salesforce\" title=\"Metrics Analyst\">Data Analyst feature</a> is available so newly discovered metrics in your Salesforce dashboards that may already exist in your metrics glossary can be merged as a <a href=\"/tutorials/metrics-alias/\" title=\"metrics alias\">metrics alias</a>.</p>\n\n\n\n<h2 class=\"wp-block-heading\" id=\"merge\">Data Analyst Metrics Merging Feature.</h2>\n\n\n\n<p>Select one or multiple recommended metrics that you would like to merge. You can merge two recommendations together by selecting the checkbox to both metrics, then clicking merge, you can choose to merge the metrics with each other or with a single metric that already exists in your glossary</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img data-dominant-color=\"eef1f0\" data-has-transparency=\"true\" loading=\"lazy\" decoding=\"async\" width=\"690\" height=\"715\" src=\"https://datatoolspro.com/wp-content/uploads/2024/03/image-11.png\" alt=\"\" class=\"wp-image-9414 has-transparency\" style=\"--dominant-color: #eef1f0; width:277px;height:auto\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/03/image-11.png 690w, https://datatoolspro.com/wp-content/uploads/2024/03/image-11-290x300.png 290w\" sizes=\"auto, (max-width: 690px) 100vw, 690px\" /></figure>\n\n\n\n<p>Select the metric that you would like to either create and merge or merge into.</p>\n\n\n\n<figure class=\"wp-block-image size-full is-resized\"><img data-dominant-color=\"e8f1ee\" data-has-transparency=\"true\" loading=\"lazy\" decoding=\"async\" width=\"831\" height=\"894\" src=\"https://datatoolspro.com/wp-content/uploads/2024/03/image-14.png\" alt=\"\" class=\"wp-image-9417 has-transparency\" style=\"--dominant-color: #e8f1ee; width:350px;height:auto\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/03/image-14.png 831w, https://datatoolspro.com/wp-content/uploads/2024/03/image-14-279x300.png 279w, https://datatoolspro.com/wp-content/uploads/2024/03/image-14-768x826.png 768w\" sizes=\"auto, (max-width: 831px) 100vw, 831px\" /></figure>\n\n\n\n<p>Merging a metric will add the recommended name as an &#8220;Alias&#8221;.</p>\n\n\n\n<h2 class=\"wp-block-heading\">Coming Soon! &#8211; Metrics Glossary Record Merging</h2>\n\n\n\n<p>We are actively working on a new metrics merging feature that will allow existing metrics within your glossary to be thoughtfully merged so you can retain linkage to reports, dashboards, aliases, and existing linked metrics.</p>\n"
+}

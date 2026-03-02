@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-49",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "Scorecard Row Height and Status Cell Color Coding",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-25T10:20:41.604-0800",
+  "updated": "2024-05-24T02:24:33.605-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user viewing the scorecard, I want status cells to be color-coded and rows to have a consistent minimum height, so that I can quickly scan migration status at a glance.",
+  "description": "Apply design refinements to the scorecard on select.php to improve visual readability.\n\n## Requirements\n- Set minimum row height to 60px on select.php\n- Apply background colors to status cells:\n  - Complete: `#defaf1`\n  - Blocked: `#fff7e4`\n  - In Progress: `#edf6ff`\n- Hardcode status column widths in pixels for consistency\n- Apply a distinct CSS class for hyperlinks inside the scorecard grid",
+  "acceptance_criteria": [
+    "Scorecard rows have a minimum height of 60px",
+    "Complete status cells display with #defaf1 background",
+    "Blocked status cells display with #fff7e4 background",
+    "In Progress status cells display with #edf6ff background",
+    "Status column widths are set to fixed pixel values",
+    "Long text content in cells causes row height to expand beyond 60px rather than clipping"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Color-coded status cells on the scorecard (green for Complete, yellow for Blocked, blue for In Progress) with consistent minimum row height and fixed-width status columns.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Min-height was implemented as a CSS minimum rather than a fixed height to allow rows with long text to expand naturally. Status column widths were hardcoded in pixels for visual consistency.",
+  "comment_summary": "Developer implemented status colors and row height. Discussion around min-height vs fixed height concluded that min-height was preferable to avoid text clipping. Status column widths were set to reasonable pixel values.",
+  "comment_count": 5
+}

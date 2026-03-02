@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1075",
+  "skipped": true,
+  "skip_reason": "stub - description is only a GitHub link",
+  "title": "Ryan - Explore new microservice",
+  "status": "To Do",
+  "feature_folder": "infrastructure"
+}

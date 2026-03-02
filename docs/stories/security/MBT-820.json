@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-820",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Standardize IP Geolocation Lookup Library",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-14T21:44:57.975-0700",
+  "updated": "2026-03-01T03:52:20.548-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Align the WordPress site and the DataTools Pro application to use the same IP geolocation library for determining user country. Previously, WordPress was updated to use user IP for country detection, but the main app may have been using a different method, causing inconsistent geographic enforcement for invite links.\n\n### Solution\nSwitched to ipregistry.co API for consistent IP-based geolocation across all application entry points.",
+  "acceptance_criteria": [
+    "Both WordPress and DataTools Pro use the same geolocation library",
+    "User country is determined consistently regardless of entry point",
+    "Geographic access restrictions work consistently for invite link and direct login flows"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Replaced existing geolocation implementation with ipregistry.co API call to determine user country code from client IP address.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-589"],
+  "source_files": [],
+  "implementation_notes": "Using ipregistry.co API: GET https://api.ipregistry.co/{clientIp}?key={apiKey}. Response parsed for location.country.code. Tested and confirmed working.",
+  "comment_summary": "Waqar implemented the ipregistry.co API integration, tested it, and confirmed it was working.",
+  "comment_count": 1
+}

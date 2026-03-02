@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-943", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Custom Date Range Picker Default Starting from Current Month",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-08T05:44:03.860-0700", "updated": "2024-11-27T22:04:26.911-0800",
+  "assignee": "waqar khan", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user selecting a custom date range, I want the calendar to start from the current month, not from 2014, so that I can quickly select recent dates.",
+  "description": "Bug fix: the custom date range picker was defaulting to start from 2014 instead of the current month. Updated the default range to show the previous month and current month when the custom range option is selected.",
+  "acceptance_criteria": ["Custom date range picker opens showing the current month", "Default range is set to previous month and current month", "Users can still navigate to earlier dates if needed"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Custom date range picker now defaults to showing previous month and current month instead of starting from 2014.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-603"], "source_files": [],
+  "implementation_notes": "Updated the daterangepicker default start/end date configuration.",
+  "comment_summary": "Waqar set the default range to previous and current month.", "comment_count": 1
+}

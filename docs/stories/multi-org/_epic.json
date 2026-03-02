@@ -1,0 +1,21 @@
+{
+  "folder": "multi-org",
+  "label": "Multi-Org Connections",
+  "type": "product-feature",
+  "doc_tag": "Administration",
+  "epic_count": 1,
+  "epics": [
+    {
+      "epic_key": "MBT-1014",
+      "epic_id": "11290",
+      "summary": "Multi-Org Connections",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 3,
+  "stories": [
+    "MBT-932",
+    "MBT-938",
+    "MBT-1044"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-539",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Feedback Gate Before Unlocking Second User Invite",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-25T08:44:13.871-0800",
+  "updated": "2026-03-01T03:45:41.074-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro account owner, I want to share access with my first team member for free by providing quick feedback, so that I can collaborate while the product team gets valuable user insights.",
+  "description": "## Context\nUser feedback collection was insufficient. The solution gates the second user invite behind a simple feedback form to gather product insights.\n\n## Behavior\n1. New accounts start with access for 1 user.\n2. To unlock the first team invite, the user must submit a 2-question feedback form:\n   - \"What feature do you like best so far?\"\n   - \"What is one feature that we can add or change to make DataTools Pro better for you?\"\n3. After submitting feedback, the invite functionality is unlocked.\n4. The invite area shows a preview mockup image that is clickable to open the feedback sidebar, providing two paths to the same form.\n5. Feedback is emailed to the product team.\n6. Subsequent invites follow the existing purchase flow.\n\n## Note\nOnly applies to new users. Existing users already have access for 2 users.",
+  "acceptance_criteria": [
+    "New users see a feedback prompt instead of the invite form",
+    "Feedback form has two questions about liked features and improvement suggestions",
+    "Submitting feedback unlocks the first team invite",
+    "Preview mockup image is clickable and opens the feedback sidebar",
+    "Feedback is emailed to the product team",
+    "Existing users are not affected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Feedback gate replaces the invite form for new users. Clickable preview mockup image and feedback sidebar provide two paths to submit. Invite is unlocked after submission.",
+  "middleware_changes": "Feedback submission handler that emails responses and unlocks the invite capability for the account.",
+  "data_model_changes": "Track whether feedback has been submitted per account to control invite access.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Default user count reduced to 1. Feedback form submissions are emailed to the product team. The invite area shows a preview PNG image that is clickable. Only applies to new users created after this change.",
+  "comment_summary": "Developer implemented the feedback gate on staging. Reporter refined the copy and added a clickable preview mockup. Developer updated the implementation with revised text and deployed to staging.",
+  "comment_count": 5
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-438",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Reflected XSS in Migration Scorecard URL Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:49:26.176-0800",
+  "updated": "2024-05-24T02:25:08.991-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — Medium Severity**\n\nURL fields in the Migration Scorecard Record were vulnerable to Reflected XSS. Users with migration editing permissions could enter `javascript:alert(document.domain)//` in URL fields. When any user clicked the link, the XSS payload executed.\n\n## Affected Endpoint\n\n`/dashboard?view=migration`\n\n## Risk\n\nMedium — requires user interaction (clicking the link) for execution. Attacker could execute arbitrary JavaScript and exfiltrate CSRF tokens.\n\n## Fix\n\nURL validation rule implemented so all links must be proper URLs. Invalid URLs trigger a server-side validation error displayed below each affected field.",
+  "acceptance_criteria": [
+    "URL fields validate that values are well-formed URLs",
+    "javascript: protocol and other non-HTTP schemes are rejected",
+    "Server returns validation errors for invalid URL values displayed below each field",
+    "Legitimate URLs are accepted and rendered as clickable links"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Validation error messages now display below URL fields when invalid URLs are entered.",
+  "middleware_changes": "Server-side URL validation rule added to migration scorecard update controller. Non-HTTP URLs are rejected with descriptive error responses.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Unlike the Stored XSS fixes which use HTML entity encoding, this fix validates URL format to ensure only proper http/https URLs are accepted.",
+  "comment_summary": "Developer implemented URL validation on staging. All links must be proper URLs; invalid entries show server-side validation errors below each field.",
+  "comment_count": 1
+}

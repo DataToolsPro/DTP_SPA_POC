@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-849",
+  "epic_key": "MBT-922",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Google Analytics 4 Metrics Source Integration",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-08T21:25:17.041-0700",
+  "updated": "2024-09-15T13:24:21.318-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to browse and add standard Google Analytics 4 metrics to my glossary, so that I can include industry-standard GA4 metrics in my catalog without manually entering each one.",
+  "description": "Add standard GA4 metrics as a pre-loaded source that users can browse and add to their metrics glossary. Users do not need to connect to their own GA account — the full list of standard GA4 metrics is provided out of the box.\n\nA new `GA4MetricsSource` table holds the available metrics, populated via a database seeder that imports from a CSV file. The seeder includes name-based deduplication logic so it can be re-run safely without creating duplicates.\n\nThe UI displays the GA4 metrics list with individual \"Add\" buttons. Metrics that already exist in the user's main metrics table can potentially be marked as ignored, following the same pattern as the Salesforce import flow.",
+  "acceptance_criteria": [
+    "Standard GA4 metrics are available in a browsable list",
+    "User can add individual GA4 metrics to their glossary via an Add button",
+    "GA4MetricsSource table is populated via a database seeder from CSV",
+    "Seeder checks for duplicate metric names before inserting",
+    "Metrics already in the user's glossary can be identified for potential ignore/match handling",
+    "Re-running the seeder does not create duplicate entries"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New UI panel displaying GA4 metrics from the source table with individual Add buttons per metric. Layout follows the established pattern similar to the Salesforce import flow.",
+  "middleware_changes": "Logic to add selected GA4 metrics from the source table into the user's metrics glossary, with deduplication and potential matching detection against existing metrics.",
+  "data_model_changes": "New `GA4MetricsSource` table holding standard GA4 metric definitions (name, description, category). Database seeder imports metrics from a CSV file with name-based deduplication.",
+  "api_changes": "Endpoints to list available GA4 metrics from the source table and add selected metrics to the user's glossary.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The database seeder pulls GA4 metrics from a CSV file and uses metric name as the deduplication key. The Add button works one metric at a time in the initial implementation, with potential for bulk add and ignore/match features in future iterations.",
+  "comment_summary": "Waqar initially needed clarification on the requirements. After discussion, he implemented a database seeder importing GA4 metrics from CSV with deduplication checks and a UI for adding metrics individually. Ryan approved the final implementation.",
+  "comment_count": 4
+}

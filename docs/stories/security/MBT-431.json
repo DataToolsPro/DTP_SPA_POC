@@ -1,0 +1,38 @@
+{
+  "issue_key": "MBT-431",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Duplicate: Stored XSS in Dictionary Notes and Metrics Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:44:55.036-0800",
+  "updated": "2024-05-24T02:25:08.604-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Duplicate of MBT-430.**\n\nThis ticket describes the same Stored XSS vulnerability in the Dictionary Notes and Metrics fields (CVSS 7.1). The fix was already implemented in MBT-430 using `strip_tags()` input sanitization.",
+  "acceptance_criteria": [
+    "Fix applied in MBT-430 covers this vulnerability"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Duplicate of MBT-430. Developer confirmed the task was already created and fixed under MBT-430.",
+  "comment_summary": "Developer noted this is a duplicate of MBT-430 which was created the previous day.",
+  "comment_count": 1
+}

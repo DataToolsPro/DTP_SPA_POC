@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1200",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Add Dimension and Measure Selection for Aggregate in Streamlit App",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-09-03T21:14:34.528-0700",
+  "updated": "2026-03-01T04:06:24.107-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "As a data analyst using the Streamlit app, I want to select dimensions and measures for aggregation so that the query is automatically structured without manual column selection.",
+  "description": "Update the aggregate functionality in the Streamlit app to support dimension and measure selection. When a user adds a dimension, the column selection should be ignored in favor of the dimension/measure-based aggregation approach.\n\nThis provides a more intuitive analytics workflow where users think in terms of dimensions (group-by fields) and measures (aggregated values) rather than raw column selection.",
+  "acceptance_criteria": [
+    "User can select dimensions for group-by operations",
+    "User can select measures with aggregation functions",
+    "Selecting a dimension overrides raw column selection",
+    "Aggregated results are displayed correctly in the app"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New dimension and measure selection UI for the aggregate feature, replacing raw column selection when dimensions are specified.",
+  "middleware_changes": "Query builder updated to construct aggregation queries from dimension/measure selections instead of raw columns.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1199"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

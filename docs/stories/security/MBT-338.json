@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-338",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "500 Error Page with User Feedback Form and Slack Notification",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-07T00:09:08.685-0800",
+  "updated": "2024-05-24T02:25:07.329-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to describe what I was doing when an error occurred, so that the development team can diagnose and fix issues faster with real-time context.",
+  "description": "Enhance the production 500 error page (from MBT-317) with a user feedback form. When a 500 error occurs, the user sees a branded error page with a text input where they can describe what they were doing. On submission, the user's context, IP address, and user info are sent to a Slack channel for near real-time notification.\n\n## User-Facing Message\n\n**Oops! An Error Occurred.**\nWe have logged the issue and a ticket on our side. What would help us a ton is context about what you were doing to land on this issue! Thanks in advance for your help to make DataTools error free!\n\n## Behavior\n\n- The 500 status code is hidden from the user.\n- A text input form allows the user to describe their actions.\n- On submit, user info, IP address, and feedback are sent to the `#datatoolsystemalerts` Slack channel.\n- Page is responsive (desktop and mobile).",
+  "acceptance_criteria": [
+    "500 error page displays a branded message without showing error codes",
+    "A text input form is available for users to describe what they were doing",
+    "Submitting the form sends user info, IP address, and feedback to Slack",
+    "The Slack notification posts to the #datatoolsystemalerts channel",
+    "The error page is responsive on mobile devices",
+    "The 500 status code is not visible to end users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Branded 500 error page with feedback form. Hides technical error details. Shows friendly message asking users to describe their actions. Responsive layout for mobile and desktop.",
+  "middleware_changes": "Error page form submission triggers a Slack API notification with user context, IP address, and feedback text. Integrated with Slack webhook for the alerts channel.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-317"],
+  "source_files": [],
+  "implementation_notes": "Initially configured for #datatoolsystemalerts channel but Slack returned channel-not-found. Temporarily using slackapitest channel. The error page was refined based on product owner feedback to hide the '500 Error' label and use a friendlier message. Page is responsive for mobile.",
+  "comment_summary": "Developer implemented the feedback form with Slack integration but encountered channel-not-found errors for the target channel. Used test channel as fallback. Product owner requested hiding the 500 error label and provided specific user-facing copy. Developer updated the content and verified responsive layout on both desktop and mobile.",
+  "comment_count": 7
+}

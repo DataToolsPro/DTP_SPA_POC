@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1270",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Central Auth Domain with Cookie Isolation",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:47.867-0800",
+  "updated": "2025-12-17T21:45:48.038-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Establish a single auth domain (`auth.datatoolspro.com`) so that each tenant subdomain remains cookie-isolated while authentication flows through a central point.\n\n## Requirements\n\n- Unauthenticated users on `toyota.us1.datatoolspro.com` redirect to `auth.datatoolspro.com/login?...` with tenant context\n- No cookies are shared between tenant subdomains and pooled hosts\n- The auth domain is the only service that directly communicates with Stytch login endpoints",
+  "acceptance_criteria": [
+    "Unauthenticated requests redirect to auth.datatoolspro.com with tenant context",
+    "No cookies are shared between different tenant subdomains",
+    "Auth domain is the sole interface to Stytch login endpoints",
+    "Return redirects after login land the user on the correct tenant subdomain"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Auth domain application handles login initiation, Stytch communication, and post-login redirects back to tenant subdomains.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1267", "MBT-1268"],
+  "source_files": [],
+  "implementation_notes": "Central auth domain pattern provides cookie isolation between tenants. The auth domain acts as a trusted intermediary between tenant subdomains and Stytch, preventing direct Stytch API exposure on tenant hosts.",
+  "comment_summary": "",
+  "comment_count": 0
+}

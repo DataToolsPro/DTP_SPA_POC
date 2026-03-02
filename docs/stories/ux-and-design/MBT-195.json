@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-195",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Replace Tabs with Button Navigation in Slide-Out Panels",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T16:11:13.816-0700",
+  "updated": "2024-05-24T02:24:31.821-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want slide-out panels to use button-style navigation instead of tabs, so that the UX clearly indicates mutually exclusive selections rather than co-existing views.",
+  "description": "Replace tab-style navigation in metrics and migration slide-out panels with Bootstrap button navigation (nav-tabs JS behavior). This creates a UX distinction: tabs group co-existing elements, while button navigation indicates mutually exclusive selections.\n\n## Scope\n- Metrics page slide-out panel\n- Migration (object detail) page slide-out panel\n- Use Bootstrap 5 nav-tabs JavaScript behavior for toggle functionality",
+  "acceptance_criteria": [
+    "Metrics slide-out uses button-style navigation instead of tabs",
+    "Migration slide-out uses button-style navigation instead of tabs",
+    "Navigation style clearly indicates mutually exclusive selection",
+    "Toggle functionality works correctly between sections"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Slide-out panels on metrics and object detail pages updated from tabs to button-style navigation for clearer UX semantics (mutually exclusive vs co-existing selections).",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Ryan explained the UX distinction: tabs for grouping co-existing elements, button navigation for mutually exclusive selections. This is a subtle but important consistency principle across the app.",
+  "comment_summary": "Developer initially confused about whether to update the sidebar tabs or the top navigation. Ryan clarified the UX distinction between tabs (co-existing groups) and button navigation (mutually exclusive selections). Developer updated both metrics and object detail slide-outs.",
+  "comment_count": 6
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-378",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Harden XSRF-TOKEN Cookie with Secure and HttpOnly Flags",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-18T10:30:56.880-0800",
+  "updated": "2024-05-24T02:25:05.602-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "A security scan recommended setting the `Secure` flag on the XSRF-TOKEN cookie to ensure it is only transmitted over encrypted HTTPS connections.\n\n## Enhancements Applied\n\n- **Custom parameter**: Added `dtp_pro` parameter to the cookie.\n- **SameSite=Strict**: Prevents the cookie from being sent with cross-origin requests.\n- **HttpOnly=true**: Prevents client-side JavaScript from accessing the cookie.\n- **Encrypt=true**: Ensures cookie value is encrypted.",
+  "acceptance_criteria": [
+    "XSRF-TOKEN cookie has the Secure flag set",
+    "Cookie includes SameSite=Strict attribute",
+    "Cookie has HttpOnly=true to prevent JavaScript access",
+    "Cookie value is encrypted",
+    "Changes deployed to both staging and production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel cookie configuration updated to add SameSite=Strict, HttpOnly=true, Secure flag, and encryption for the XSRF-TOKEN cookie.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Added custom 'dtp_pro' parameter, SameSite=strict, HttpOnly=true, and encryption to the cookie configuration. Changes pushed to staging and then merged to production for penetration test re-validation.",
+  "comment_summary": "Developer confirmed the XSRF-TOKEN was already encrypted and asked for clarification. Product owner clarified the scanner recommended adding a parameter. Developer added multiple security attributes and deployed to production for pen test re-validation.",
+  "comment_count": 5
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-815",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Add DataExportButton CSS Class for Pendo Analytics Tracking",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T18:56:46.026-0700",
+  "updated": "2024-08-10T15:02:05.830-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Add a CSS class `DataExportButton` to all data export buttons across the application (CSV, Excel, PDF, Notion). The class has no visual effect — its purpose is to provide a consistent selector for Pendo to track how often individual users use export features.\n\nThis establishes a convention for future feature tracking: new features that should be tracked will receive dedicated CSS classes that Pendo can identify without requiring code changes in the analytics tool itself.",
+  "acceptance_criteria": [
+    "All CSV export buttons have the DataExportButton CSS class",
+    "All Excel export buttons have the DataExportButton CSS class",
+    "All PDF export buttons have the DataExportButton CSS class",
+    "All Notion export buttons have the DataExportButton CSS class",
+    "CSS class does not affect the visual appearance of any buttons",
+    "Pendo can identify and track clicks on elements with this class"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-423"],
+  "source_files": [],
+  "implementation_notes": "The DataExportButton class is purely for analytics targeting — it carries no styles. This pattern of adding tracking-specific CSS classes should be followed for new features that need Pendo usage tracking.",
+  "comment_summary": "Waqar completed the implementation and submitted for review on development.",
+  "comment_count": 1
+}

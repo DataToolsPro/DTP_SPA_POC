@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-838",
+  "epic_key": "MBT-818",
+  "feature_folder": "metrics-glossary",
+  "title": "Inverse Metric Lookup — View Associated Metrics from Report or Dashboard",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-29T19:36:16.367-0700",
+  "updated": "2024-08-10T14:44:56.664-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to see which metrics are associated with a specific report or dashboard, so that I can understand the inverse of the metric-to-report relationship.",
+  "description": "Adds a middleware service that returns all associated metrics for a given report or dashboard ID. This is the inverse of the existing metric-to-report/dashboard relationship — instead of viewing reports from a metric, users can now view metrics from a report or dashboard.\n\nThe backend developer created Eloquent ORM relationships on the Report and Dashboard models to support this lookup:\n- Report::find($id)->metrics()->get()\n- Dashboard::find($id)->metrics()->get()\n\nA second developer will integrate the middleware into the UI to display associated metrics on the reports and dashboards pages.",
+  "acceptance_criteria": [
+    "Middleware returns all metrics associated with a given report ID",
+    "Middleware returns all metrics associated with a given dashboard ID",
+    "Multiple metrics per report/dashboard are supported"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Eloquent relationships added to Report and Dashboard models: metrics() returns associated metrics via the existing junction tables.",
+  "data_model_changes": "",
+  "api_changes": "New endpoint accepts a report or dashboard ID and returns associated metric records.",
+  "dependencies": ["MBT-164"],
+  "source_files": [],
+  "implementation_notes": "Backend ORM only — UI integration handled in a separate ticket by a different developer.",
+  "comment_summary": "Backend developer created ORM relationships and shared the usage pattern with the frontend developer. Product owner confirmed the division of work between backend and frontend developers.",
+  "comment_count": 3
+}

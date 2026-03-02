@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-727",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Deploy to Dev Lambda for Live Testing and Benchmarking",
+  "status": "Done",
+  "feature_folder": "infrastructure"
+}

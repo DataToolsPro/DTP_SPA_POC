@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-392",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "Fix Truncated Formula Display in Migration Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-25T20:26:53.307-0800",
+  "updated": "2024-05-24T02:25:05.724-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to see the full formula text for Salesforce formula fields in the migration table, so that I can review complete formulas without truncation when planning my migration.",
+  "description": "Salesforce formula fields can contain long, multi-line expressions. In the DataTools Pro migration table, these formulas were being truncated, showing only partial text.\n\nThe root cause was identified as an issue with JSON parsing — line breaks within the formula text were causing the JSON response to truncate. The fix involved updating how formulas are retrieved and rendered to handle multi-line content correctly.\n\nThe full formula should be visible in the application, matching what is shown in Salesforce's field definition.",
+  "acceptance_criteria": [
+    "Long Salesforce formulas display in full without truncation",
+    "Multi-line formulas are handled correctly",
+    "Formula display matches the content shown in Salesforce's field definition",
+    "JSON parsing handles line breaks within formula text"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Formula fields now display their full content in the migration data table without truncation.",
+  "middleware_changes": "Fixed the formula retrieval logic to properly handle line breaks in JSON-serialized formula text. Changed the approach from CSS fixes to proper server-side formula handling.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initially suspected as a CSS issue but was actually caused by line breaks in the formula text breaking JSON parsing. The developer first applied a CSS fix (putting the formula on one line) but the actual fix required updating the server-side logic for how formula content is retrieved and serialized.",
+  "comment_summary": "Developer could not reproduce the issue initially. First attempted a CSS fix, but the actual cause was JSON parsing failing on line breaks within formula text. After updating the formula retrieval method, the full formula displayed correctly. Reporter confirmed the fix worked.",
+  "comment_count": 6
+}

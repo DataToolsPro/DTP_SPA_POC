@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-163",
+  "skipped": true,
+  "skip_reason": "no_description",
+  "title": "Scorecard Button Does Not Return User to /select",
+  "status": "Done",
+  "feature_folder": "metrics-glossary"
+}

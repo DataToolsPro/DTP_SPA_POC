@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-764",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Object Management Toolbar on ERD Page",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-11T22:37:18.688-0700",
+  "updated": "2024-07-28T10:37:00.287-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Dictionary"],
+  "story": "As a DataTools Pro user working on the ERD page, I want to add and manage data model objects directly from the ERD without switching to the Dictionary page, so that I can build my ERD efficiently in one place.",
+  "description": "Replicates the object management toolbar from the Dictionary page onto the ERD page. Instead of a simple '+' button, the ERD page now uses the same button and toolbar experience as the Dictionary page for opening, adding, and hiding the object management controls.\n\nThis ensures a consistent user experience across tabs — as users switch between Dictionary and ERD, they encounter the same interaction patterns for managing objects. Based on revisions from MBT-763.",
+  "acceptance_criteria": [
+    "The ERD page includes the same object management toolbar as the Dictionary page",
+    "Users can add objects to the data model directly from the ERD page",
+    "The toolbar open/close behavior matches the Dictionary page experience",
+    "The previous '+' button is replaced with the replicated toolbar button",
+    "Object additions from the ERD page are immediately reflected in the diagram"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replicated the Dictionary page object management toolbar on the ERD page, replacing the previous '+' button. Users get an identical experience for adding and managing objects across both pages.",
+  "middleware_changes": "Shared the Dictionary page's object management controller logic on the ERD page, reusing existing code for the toolbar and object add operations.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-763"],
+  "source_files": [],
+  "implementation_notes": "Based on the revised UX from MBT-763. The same button component and toolbar behavior from the Dictionary page was ported to the ERD page for consistency.",
+  "comment_summary": "Developer completed the implementation and merged to staging for review. Straightforward port of existing Dictionary toolbar to the ERD page.",
+  "comment_count": 1
+}

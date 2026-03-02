@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-584",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "SPIKE: Understand User-to-Team Mapping Data Model",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-18T17:57:13.568-0800",
+  "updated": "2026-03-01T03:48:17.347-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Investigate and clarify the relationship between `dtp_user.CURRENT_TEAM_ID` and the `dtp_team_user` mapping table. A scenario was identified where one user ID is tied to two different teams.\n\n### Data Model\n- **dtp_users** — user records\n- **dtp_teams** — team records\n- **dtp_team_user** — many-to-many mapping between users and teams\n\n### Question\nCan `dtp_user.CURRENT_TEAM_ID` be relied upon as the user's primary/current team when the mapping table shows them in multiple teams?\n\n### Findings\nThe `dtp_team_user` table manages the many-to-many relationship. `CURRENT_TEAM_ID` on the user record indicates their active team context, while the mapping table tracks all team memberships.",
+  "acceptance_criteria": [
+    "User-team relationship is documented",
+    "CURRENT_TEAM_ID role is clarified",
+    "Multi-team membership scenario is understood"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Clarified the role of dtp_user.CURRENT_TEAM_ID as the active team context vs. dtp_team_user for full team membership history.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This was a spike/investigation ticket. The three-table structure (dtp_users, dtp_teams, dtp_team_user) uses a standard many-to-many pattern. CURRENT_TEAM_ID on the user table serves as the active team selector.",
+  "comment_summary": "Developer explained the many-to-many mapping table structure and confirmed the three-table relationship. The spike concluded without code changes.",
+  "comment_count": 3
+}

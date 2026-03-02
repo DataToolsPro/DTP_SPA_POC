@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-73",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "Scorecard Edit Pencil Icon Hover Effect",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-20T17:05:09.346-0700",
+  "updated": "2024-05-24T02:24:30.097-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the pencil edit icon on the scorecard to have a visible hover effect, so that it is clearly recognizable as a clickable button.",
+  "description": "Add a CSS hover effect to the pencil edit icon on the scorecard to make it visually obvious that it is an interactive button.\n\n## CSS Specification\n```css\n#example .fa-pencil:hover {\n  background-color: #23E1AF;\n  padding: 10px;\n  border-radius: 50px;\n  color: #FFF;\n}\n```",
+  "acceptance_criteria": [
+    "Pencil icon displays a green circular background on hover",
+    "Icon color changes to white on hover",
+    "Hover effect clearly communicates the icon is clickable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a green (#23E1AF) circular hover effect with white icon color to the scorecard pencil edit icon, making it visually identifiable as a button.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple CSS addition targeting the fa-pencil class within the scorecard table.",
+  "comment_summary": "Developer completed the implementation promptly.",
+  "comment_count": 1
+}

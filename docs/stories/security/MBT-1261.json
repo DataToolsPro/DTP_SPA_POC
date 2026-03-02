@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1261",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Create Stytch B2B Organization per Tenant",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-12-17T21:44:41.062-0800",
+  "updated": "2025-12-29T05:37:15.573-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Each customer tenant must be represented as a Stytch B2B Organization so that authentication and SSO configuration are isolated per tenant.\n\n## Requirements\n\n- A tenant record stores `tenant_slug` and `stytch_organization_id`\n- A Stytch Organization is created for each tenant (via admin API)\n- User authentication is scoped to the correct Organization — no cross-tenant access\n\n## Implementation\n\n### Setup\n\n1. Created Stytch account and project\n2. Obtained API keys: Project ID, Secret, Public Token\n3. Added Stytch credentials to `.env` configuration\n4. Installed `stytch/stytch-php` via Composer\n\n### Database Changes\n\n- Added `stytch_organization_id` column to `teams` table\n- Added `tenant_slug` column to `teams` table\n- Added `stytch_user_id` column to `users` table\n\n### Code Changes\n\n- **`config/stytch.php`**: New configuration file for Stytch API keys and settings\n- **`app/Services/StytchService.php`**: Service class with methods for creating organizations, sending magic links, authenticating users, and managing members\n- **`app/Team.php`**: Auto-generates `tenant_slug` on creation; automatically creates Stytch Organization on save and stores the organization ID\n- **`app/Http/Controllers/SalesforceController.php`**: On new team creation, creates Stytch org; on existing team login, creates org if missing; links user to Stytch organization as member and saves member ID",
+  "acceptance_criteria": [
+    "Each team has a stytch_organization_id and tenant_slug in the database",
+    "Stytch Organization is auto-created when a team is saved",
+    "Users are linked to the correct Stytch Organization as members on login",
+    "stytch_user_id is saved to the users table",
+    "Cross-tenant authentication is prevented by Organization scoping"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New StytchService class handles organization creation, member management, and authentication flows. SalesforceController updated to create/link Stytch organizations and members during login.",
+  "data_model_changes": "Migration adds three columns: `stytch_organization_id` (teams table), `tenant_slug` (teams table), `stytch_user_id` (users table).",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Stytch B2B Organizations provide tenant isolation at the auth layer. The Team model auto-generates tenant_slug and creates the Stytch Organization on save. The SalesforceController handles both new team creation (creates org) and existing team login (creates org if missing, links user as member). Verified by logging in via Salesforce and checking the Stytch dashboard.",
+  "comment_summary": "Developer completed the Stytch integration: created account, installed PHP SDK, added database migrations for stytch_organization_id/tenant_slug/stytch_user_id, built StytchService, and updated Team model and SalesforceController. Tested via Salesforce login and verified in Stytch dashboard.",
+  "comment_count": 1
+}

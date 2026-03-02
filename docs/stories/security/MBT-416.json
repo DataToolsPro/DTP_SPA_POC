@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-416",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "Update Email Address to Salesforce Login Email",
+  "status": "Done",
+  "feature_folder": "security"
+}

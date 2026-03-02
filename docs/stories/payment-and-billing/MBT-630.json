@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-630",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "Provision Sandbox for PBO Dev",
+  "status": "Done",
+  "feature_folder": "payment-and-billing"
+}

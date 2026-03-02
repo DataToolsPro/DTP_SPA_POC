@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-271",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Fix Mismatched URL in Invitation Email",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-12T21:19:24.957-0700",
+  "updated": "2024-05-24T02:24:58.389-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user receiving an invitation email, I want the displayed link and the actual link destination to match, so that I can trust and click the invitation link to join a shared account.",
+  "description": "Bug fix for a discrepancy in invitation emails where the displayed URL text differed from the actual href destination. The visible link label showed the correct URL, but the underlying anchor tag pointed to a different URL, likely caused by SendGrid's link tracking or the email template's anchor tag formatting.\n\nThe fix replaced anchor tag links (`[Label](URL)` format) with plain URL links in the email template, which prevented SendGrid from rewriting the href while displaying a different label.",
+  "acceptance_criteria": [
+    "Invitation email displays the correct invitation URL",
+    "The displayed URL and the actual href destination match",
+    "Clicking the link in the invitation email navigates to the correct acceptance page",
+    "Fix applies to all future invitation email templates"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Invitation emails now display plain URLs instead of anchor-tagged links, ensuring the visible and actual URLs match.",
+  "middleware_changes": "Email template updated to use plain URL links instead of anchor tag format to prevent SendGrid link rewriting issues.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-270"],
+  "source_files": [],
+  "implementation_notes": "The issue was caused by SendGrid's click tracking feature rewriting anchor tag hrefs while the label retained the original URL. Using plain URLs instead of anchor tags resolved the mismatch. This pattern should be followed for all future email templates.",
+  "comment_summary": "Developer investigated and found the mismatch was caused by SendGrid's link handling with anchor tags. Fixed by switching to plain URL links in the email template. Noted this pattern should be used for future templates.",
+  "comment_count": 4
+}

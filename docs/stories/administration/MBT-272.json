@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-272",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Rename Account for Shared Data Context",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-12T21:24:11.859-0700",
+  "updated": "2024-05-24T02:24:57.909-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to rename my account before sharing it with other users, so that the shared account has a meaningful name rather than my personal Salesforce username.",
+  "description": "Add the ability for account owners to rename their account. When an account is created, it defaults to the authenticated user's Salesforce username. The account detail page now displays the account name with a pencil/edit icon. Clicking the icon reveals an inline edit form where the owner can type a new name and press Enter or click Update to save.\n\nThe updated account name propagates to all users who have accepted invitations — they see the new name in their account dropdown selector. The owner's own dropdown shows \"My Account\" as a label for their primary account.\n\nThe rename feature is designed to encourage meaningful naming before sharing, so that invited users see a descriptive account name rather than a personal username.",
+  "acceptance_criteria": [
+    "Account name defaults to the Salesforce username on initial creation",
+    "Account detail page shows the account name with an edit icon",
+    "Clicking the edit icon reveals an inline text input for renaming",
+    "Pressing Enter or clicking Update saves the new account name",
+    "Updated account name appears in the account dropdown for all shared users",
+    "Owner's dropdown shows 'My Account' label for their primary account"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Inline edit for account name on the account detail page with pencil icon trigger. Account name update propagates to shared users' dropdown selectors.",
+  "middleware_changes": "Endpoint to update the account/team name. Validation ensures only the account owner can rename. The updated name is reflected across all shared user contexts.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-257"],
+  "source_files": [],
+  "implementation_notes": "The account (team) name field already existed in the database, initially populated with the Salesforce username. The rename simply updates this field. The inline edit UI uses a focus-on-reveal pattern.",
+  "comment_summary": "Developer implemented inline account rename with pencil icon, auto-focus on the text field, Enter key support, and propagation to shared user dropdowns. The default name comes from Salesforce on authentication.",
+  "comment_count": 3
+}

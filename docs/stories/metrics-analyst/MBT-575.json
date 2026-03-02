@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-575",
+  "skipped": true,
+  "skip_reason": "stub — description is only 'Implement MBT-565' (<20 characters of substance)",
+  "title": "Work with Raj and Anton to Implement Metrics API in Metrics AI",
+  "status": "Done",
+  "feature_folder": "metrics-analyst"
+}

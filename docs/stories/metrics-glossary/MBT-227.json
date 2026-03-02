@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-227",
+  "epic_key": "MBT-818",
+  "feature_folder": "metrics-glossary",
+  "title": "Simplify Reports and Dashboards Sub-Tab for Metrics",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-08T21:23:35.482-0700",
+  "updated": "2026-03-01T01:28:43.118-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user viewing reports and dashboards related to a metric, I want a simplified two-tab layout showing only Related and Not Related items, so that I can quickly see which reports are linked to my metric without navigating unnecessary views.",
+  "description": "The Reports and Dashboards sub-tab within the Metric view was simplified from three tabs (All, Related, Not Related) to two tabs (Related, Not Related). The \"Add New\" functionality was also suppressed since Salesforce is the source of truth for reports.\n\n## Changes\n\n1. **Remove \"All\" tab** — the combined view was unnecessary since users primarily care about whether a report is related to the current metric.\n2. **Suppress \"Add New\" button** — Salesforce is always the source of truth for reports. The ability to add custom reports beyond Salesforce will be re-enabled in a future enhancement.\n3. **Keep pull functionality** — the ability to pull dashboards and reports from Salesforce remains active on both tabs.\n\n## Future Consideration\n\nThe \"Add New\" functionality for custom reports beyond Salesforce is a planned future enhancement but is suppressed for now to keep the UX simple.",
+  "acceptance_criteria": [
+    "Reports/Dashboards sub-tab shows only 'Related' and 'Not Related' tabs",
+    "'All' tab is removed",
+    "'Add New' button is suppressed",
+    "Pull dashboards/reports from Salesforce functionality remains active on both tabs"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Reports/Dashboards sub-tab simplified from three tabs to two (Related, Not Related). 'All' tab removed. 'Add New' button suppressed. Pull functionality from Salesforce retained.",
+  "middleware_changes": "Tab rendering logic updated to remove the 'All' tab and hide the 'Add New' button. Pull functionality retained for both remaining tabs.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The 'Add New' functionality for custom reports is architecturally preserved but hidden from the UI. It will be re-enabled when the product supports reports beyond Salesforce as a source.",
+  "comment_summary": "Developer confirmed the scope: remove 'All' tab and 'Add New' button, keeping only Related and Not Related tabs. Developer asked whether the pull dashboards/reports functionality should also be removed from the tabs; this was retained.",
+  "comment_count": 3
+}

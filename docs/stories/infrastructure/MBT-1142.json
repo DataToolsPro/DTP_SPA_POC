@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1142",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix Development License Warning on Field Dictionary Diagram",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-06-03T18:45:11.803-0700",
+  "updated": "2026-03-01T04:23:32.797-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the field dictionary visualization to display without a 'not for distribution' watermark so that the diagram looks professional.",
+  "description": "The field dictionary visualization diagram displays a 'Development not for distribution' message on staging and development environments. The diagram library license key is registered only for the production domain. The registered key should be used in all environments or environment-specific keys should be configured.",
+  "acceptance_criteria": [
+    "Diagram renders without development/distribution watermark on production",
+    "Staging and development environments use appropriate keys or suppress the warning"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Development watermark removed from diagram visualization by using the registered license key.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The diagram library key is domain-registered for the production URL. Staging and dev show the watermark because their domains don't match. Production works correctly.",
+  "comment_summary": "Developer confirmed the issue only affects staging and dev because the license key is registered for the production domain. Production displays correctly.",
+  "comment_count": 1
+}

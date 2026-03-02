@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-117",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Zoom In/Out and Auto-Fit Controls",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:43:16.385-0700",
+  "updated": "2026-03-01T03:51:36.998-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want explicit zoom in/out and auto-fit buttons, so that I can orient myself in the diagram without relying on non-obvious trackpad gestures.",
+  "description": "## Context\nZooming and panning the ERD currently relies on mouse/trackpad gestures which are not discoverable for all users.\n\n## Behavior\nToolbar buttons are added for:\n- **Zoom In** — increases diagram scale\n- **Zoom Out** — decreases diagram scale\n- **Auto-Fit** — scales and centers the diagram to fit all nodes within the visible window",
+  "acceptance_criteria": [
+    "Zoom In button increases the diagram zoom level",
+    "Zoom Out button decreases the diagram zoom level",
+    "Auto-Fit button scales and centers the diagram to fit the viewport",
+    "Buttons are clearly labeled or use recognizable icons",
+    "Zoom controls work alongside existing trackpad/mouse gestures"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New zoom in, zoom out, and auto-fit toolbar buttons for explicit diagram navigation control.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "Uses GoJS CommandHandler.increaseZoom(), decreaseZoom(), and zoomToFit() APIs.",
+  "comment_summary": "Reporter attached a screenshot showing the zoom controls in the toolbar.",
+  "comment_count": 1
+}

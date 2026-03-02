@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-991",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier Webhook 0008: Badge Assignment Alert",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-11T20:37:33.935-0800",
+  "updated": "2026-01-24T22:46:22.480-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Add a new Zapier webhook (event ID 0008) that fires when a badge is assigned to a user. The webhook sends the event to Salesforce via Zapier for logging and tracking user achievement milestones.\n\nThe payload follows the standard DTSignal format and includes:\n- DTB user identifier\n- Badge name (as eventname)\n- Badge description (as message)\n\nThis webhook enables Salesforce to track which users earn badges, supporting engagement analytics and potential gamification-driven marketing campaigns.",
+  "acceptance_criteria": [
+    "Zapier webhook fires when a badge is assigned to a user",
+    "Webhook uses the standard DTSignal payload format with eventid 0008",
+    "Payload includes the user's DTB identifier",
+    "Payload includes the badge name and badge description",
+    "Webhook URL is configurable as an environment variable"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Extended the badge assignment logic to fire a Zapier webhook (eventid 0008) with the badge name, description, and user identifier in the DTSignal payload format.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-775"],
+  "source_files": [],
+  "implementation_notes": "The DTSignal payload uses the badge name as the eventname and badge description as the message. Initial testing returned 404 from the Zapier endpoint, suggesting the webhook URL may not have been correctly configured in Zapier. The Zapier webhook needed to be created and activated before the application endpoint would accept data.",
+  "comment_summary": "Developer implemented the webhook and shared the payload structure but encountered a 404 response from the Zapier endpoint, indicating it may not have been fully configured yet. Product owner confirmed the Zapier side was ready but testing showed no data coming through, requiring further joint debugging.",
+  "comment_count": 3
+}

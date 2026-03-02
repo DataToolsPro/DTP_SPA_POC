@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-980", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Reports/Dashboards Onboarding Experience — Empty State Guidance and Contextual Help",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-03T16:22:19.939-0800", "updated": "2024-11-27T22:24:42.023-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a new DataTools Pro user, I want contextual guidance when my filter selections result in no records, so I understand why and how to take corrective action.",
+  "description": "Feature to improve the onboarding experience when users encounter empty data grids due to filter selections:\n\n1. **Capture 'Last Set Filter' event** on the frontend\n2. **Detect 'No Matching Records'** event when a filter results in zero rows\n3. **Show contextual popup** explaining in plain English how the last action resulted in no records and how to fix it (e.g., 'You have no reports with a Status set — assign a status to see results')\n4. **Suppress inapplicable views** by default until the user has completed prerequisite actions (e.g., setting report status)\n5. **Badge/unlock framework** — users earn badges and unlock new views as they complete onboarding steps\n\nContent for the guidance popups is sourced from WordPress posts for easy editing.",
+  "acceptance_criteria": ["Empty state shows contextual guidance based on last filter action", "Guidance explains why no records are shown and how to fix", "Content is sourced from WordPress posts", "Views that require prerequisites are suppressed until conditions are met"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": false},
+  "ux_changes": "Added contextual empty-state guidance popups that explain filter results and suggest corrective actions. Badge/unlock framework for progressive feature disclosure.",
+  "middleware_changes": "Added logic to capture last-set-filter events, detect zero-result states, and fetch guidance content from WordPress API.",
+  "data_model_changes": "", "api_changes": "Integrated with WordPress REST API to retrieve onboarding guidance content.",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "The guidance content is managed in WordPress posts so it can be updated without code changes. The frontend captures filter events and checks row count after each filter action.",
+  "comment_summary": "Waqar discussed the approach with Ryan, requested a meeting for clarification, then implemented the logic with content sourced from WordPress posts. Deployed to development for review.", "comment_count": 3
+}

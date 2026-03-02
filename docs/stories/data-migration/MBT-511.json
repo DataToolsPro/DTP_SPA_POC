@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-511",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Auto-Select Mapped Source in Mapping Side Panel Dropdown",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T21:46:31.927-0800",
+  "updated": "2024-05-24T02:25:42.366-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want the mapping side panel to automatically select the previously mapped source when I reopen it, so that I can immediately see my existing mappings without manually navigating through dropdowns.",
+  "description": "When a field has already been mapped to a source object and the user opens the mapping side panel, the dropdown should auto-select the first mapped source and expand to show the existing mapping. This saves two clicks per field and significantly reduces effort when reviewing or editing existing mappings across many fields.",
+  "acceptance_criteria": [
+    "Side panel auto-selects the first mapped source object in the dropdown when opened",
+    "Existing mapping data is immediately visible without additional clicks",
+    "Unmapped fields still show the default empty dropdown state"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Mapping side panel dropdown automatically selects and expands the first mapped source object when the panel is opened for a field that has existing mappings.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-77"],
+  "source_files": [],
+  "implementation_notes": "This was initially implemented directly on production for a customer demo, then merged to staging via MBT-538.",
+  "comment_summary": "Developer deployed the fix to production only, ready for review.",
+  "comment_count": 1
+}

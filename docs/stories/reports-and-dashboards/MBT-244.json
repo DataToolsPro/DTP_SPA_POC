@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-244",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add Search and Launch Button to Unassigned Reports List",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-15T08:54:17.573-0700",
+  "updated": "2026-03-01T04:07:11.521-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a data analyst, I want to search the list of unassigned reports and open them in Salesforce, so that I can identify the right report to assign when managing hundreds or thousands of reports.",
+  "description": "For Salesforce instances with hundreds or thousands of reports, finding the right one to assign was difficult. Two features were added to the unassigned reports list:\n\n1. **Search box**: Filter the unassigned reports list by keyword\n2. **Launch button**: Open the Salesforce report in a new tab to verify it before assignment\n\nThe original row-click-to-assign behavior was replaced with a dedicated 'Add' button since the row now has two actions (launch and assign). This provides clear visual separation between the two actions.",
+  "acceptance_criteria": [
+    "Search box filters the unassigned reports list by keyword",
+    "Each row has a launch link to open the report in Salesforce in a new tab",
+    "Each row has a distinct 'Add' button for assigning the report to a metric",
+    "Launch and assign actions do not interfere with each other",
+    "Add button uses a green 'Add' button style for clear affordance"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added search box and launch link to unassigned reports list. Changed row-click-to-assign to a dedicated 'Add' button for clear action separation. Green 'Add' button provides distinct visual contrast from the launch link.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-229"],
+  "source_files": [],
+  "implementation_notes": "Initial implementation used a checkbox icon for assignment but was changed to a green 'Add' button for better clarity when two actions are on the same row. The row-click event was replaced with an icon/button-based assignment to avoid conflict with the launch link.",
+  "comment_summary": "Developer initially used a checkbox icon for assignment but the row click event conflicted with the launch link. Changed to an icon-based approach, then to a green 'Add' button per reviewer feedback for better UX clarity. Final implementation with 'Add' button was approved.",
+  "comment_count": 6
+}

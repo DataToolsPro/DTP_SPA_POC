@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-835",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Add Token Regeneration Link for Expired Tableau Tokens",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-27T20:36:39.023-0700",
+  "updated": "2026-03-01T03:49:56.044-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security", "Tableau"],
+  "story": "As a DataTools Pro user, I want to see a link to the Tableau Pulse Settings page when my Tableau token is expired or invalid, so that I can quickly regenerate a valid token without hunting for the settings page.",
+  "description": "When a Tableau token expires and the user clicks refresh, if the token is invalid the app shows an error screen. The error page needs a helpful link guiding the user to regenerate their token.\n\n### Change\nAdd a message to the expired token error screen: \"Please re-generate and add a valid token: [Tableau Pulse Settings](/user/tableau-server-setting)\"",
+  "acceptance_criteria": [
+    "Expired/invalid Tableau token error screen displays a link to Tableau Pulse Settings",
+    "Link navigates to /user/tableau-server-setting",
+    "Message reads: 'Please re-generate and add a valid token: Tableau Pulse Settings'"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Added a link to Tableau Pulse Settings page on the expired token error screen, guiding users to regenerate their token.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple UX improvement on the token error page. Deployed to development for review.",
+  "comment_summary": "Waqar requested a Tableau token for testing and implemented the change on development.",
+  "comment_count": 2
+}

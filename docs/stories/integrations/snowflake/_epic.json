@@ -1,0 +1,23 @@
+{
+  "folder": "snowflake",
+  "label": "Snowflake",
+  "type": "product-feature",
+  "doc_tag": "Snowflake",
+  "epic_count": 2,
+  "epics": [
+    {
+      "epic_key": "MBT-1006",
+      "epic_id": "11282",
+      "summary": "Snowflake MVP",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-1193",
+      "epic_id": "13934",
+      "summary": "DataTools Streamlit Explorer",
+      "status": "In Progress"
+    }
+  ],
+  "story_count": 0,
+  "stories": []
+}

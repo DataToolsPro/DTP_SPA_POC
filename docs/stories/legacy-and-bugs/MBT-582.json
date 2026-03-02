@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-582",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Add USA Prefix to Supported Salesforce Instance Locations",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-17T21:58:45.858-0800",
+  "updated": "2026-03-01T03:38:54.790-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nSalesforce orgs provisioned in the US may have instance keys prefixed with either \"NA\" or \"USA\". The location middleware only recognized \"NA\" prefixes, blocking users with \"USA\" prefixed instances.\n\n## Implementation\nThe middleware resolves the instance key prefix by querying the Salesforce Status API (`/v1/instanceAliases/{orgAlias}`) and comparing the prefix against the location lookup table. The fix adds \"USA\" as a supported prefix that maps to the \"NA\" region, allowing those users through.\n\n## Technical Detail\n- Instance key is extracted from the `SalesforceUserInformation` model (1:1 with team account)\n- Prefix comparison uses the `key` column in the location lookup model\n- If the resolved location is \"NA\", the user is allowed access; otherwise they're redirected to a \"not allowed\" page",
+  "acceptance_criteria": [
+    "Users with USA-prefixed Salesforce instance keys can authenticate successfully",
+    "NA-prefixed instances continue to work",
+    "Non-NA/USA prefixed instances are correctly redirected to the not-allowed page"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated location middleware to recognize USA prefix as a valid NA region identifier when checking Salesforce instance keys.",
+  "data_model_changes": "Added USA prefix entry to the location lookup table mapping to the NA region.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The middleware queries the Salesforce Status API for the instance alias, extracts the prefix, and validates it against the location lookup table. USA prefix now maps to NA region.",
+  "comment_summary": "Developer implemented the solution and deployed to production. Explained the middleware logic for instance key prefix validation. Reporter confirmed it works.",
+  "comment_count": 3
+}

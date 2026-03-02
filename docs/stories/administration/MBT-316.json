@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-316",
+  "epic_key": "MBT-344",
+  "feature_folder": "administration",
+  "title": "Redirect to My Accounts on User Limit Exceeded",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T20:20:21.354-0700",
+  "updated": "2024-05-24T02:25:00.761-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to be redirected back to my accounts page with a clear error message when I exceed the user limit, so that I understand the issue without seeing a raw error screen.",
+  "description": "Improve the error handling for the plan-limit middleware when a user attempts to invite more users than their plan allows. Instead of showing a standalone error page, redirect the user back to the My Accounts page with an inline error message explaining that the user limit has been exceeded.",
+  "acceptance_criteria": [
+    "Exceeding the user invitation limit redirects to /myaccounts with an error message",
+    "Error message clearly explains the user limit has been exceeded",
+    "No standalone error page or raw error is shown"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Inline error message on the My Accounts page when the user limit is exceeded, instead of a standalone error screen.",
+  "middleware_changes": "Plan-limit middleware updated to redirect to /myaccounts with a flash error message instead of rendering a separate error page.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-261"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer updated the middleware to redirect with an error message to the myaccounts page instead of showing a standalone error.",
+  "comment_count": 1
+}

@@ -1,0 +1,28 @@
+{
+  "folder": "help-and-documentation",
+  "label": "Help and Documentation",
+  "type": "platform",
+  "doc_tag": "datatoolspro",
+  "epic_count": 1,
+  "epics": [
+    {
+      "epic_key": "MBT-443",
+      "epic_id": "10494",
+      "summary": "Help and Documentation",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 10,
+  "stories": [
+    "MBT-87",
+    "MBT-379",
+    "MBT-402",
+    "MBT-475",
+    "MBT-560",
+    "MBT-576",
+    "MBT-1048",
+    "MBT-1082",
+    "MBT-1159",
+    "MBT-1162"
+  ]
+}

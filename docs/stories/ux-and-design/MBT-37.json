@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-37",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "UX Cleanup for Filters and General Usability",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-22T01:23:53.412-0800",
+  "updated": "2024-05-24T02:24:36.924-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want a cleaner and more intuitive filter experience, so that I can navigate and use the application more efficiently.",
+  "description": "General UX improvement pass focused on cleaning up the user experience around filters and overall usability. Scope documented in a linked Confluence page covering filter behavior, layout cleanup, and interaction refinements.",
+  "acceptance_criteria": [
+    "Filter controls are visually cleaned up and consistent",
+    "User experience improvements are applied as documented in the linked Confluence page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "General cleanup of filter controls and user interface elements to improve usability and visual consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Detailed requirements were maintained in a Confluence page. Work was completed and submitted for review.",
+  "comment_summary": "Developer completed the work and submitted for review.",
+  "comment_count": 1
+}

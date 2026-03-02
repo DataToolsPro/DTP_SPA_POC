@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-541",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Upload Updated Penetration Test Report for Salesforce Certification",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-25T18:07:52.326-0800",
+  "updated": "2024-05-24T02:25:42.398-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "After completing the penetration testing remediation cycle, the updated penetration test report was compiled and uploaded to partners.salesforce.com as part of the Salesforce AppExchange certification process.\n\n## Deliverable\n\nUpdated penetration test report uploaded to the Salesforce partner portal.",
+  "acceptance_criteria": [
+    "Updated penetration test report is uploaded to partners.salesforce.com",
+    "Report reflects all remediated vulnerabilities from the pen test cycle",
+    "Upload is accessible to Salesforce certification reviewers"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-377"],
+  "source_files": [],
+  "implementation_notes": "Administrative task — no code changes. Compiled remediation evidence and uploaded to Salesforce partner portal for certification review.",
+  "comment_summary": "",
+  "comment_count": 0
+}

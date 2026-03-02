@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-518",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "New Migration Status and Formula Field Filters",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-19T12:02:23.118-0800",
+  "updated": "2024-05-24T02:25:43.256-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to filter fields by migration status and formula type, so that I can focus on specific subsets of fields during my review process.",
+  "description": "Add new filter options specific to the migration workflow:\n\n1. **Migration Status filter**: Filter the field table by migration status (e.g., Not Reviewed, In Progress, Complete, No Migration).\n2. **Show Formula Fields**: Available in both Dictionary and Migration views — filters to show only fields that have formulas.\n\nThese filters help users focus on specific field subsets during review, particularly useful for large objects with hundreds of fields.",
+  "acceptance_criteria": [
+    "Migration Status filter is available on the migration screen",
+    "User can filter by individual status values",
+    "Show Formula Fields filter is available on both Dictionary and Migration screens",
+    "Formula filter shows only fields that have formula definitions",
+    "Filters can be combined with existing filters"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New Migration Status dropdown filter and Show Formula Fields toggle added to the filter bar on both Migration and Dictionary screens.",
+  "middleware_changes": "Query logic updated to support filtering by migration status and formula field presence.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented the filters on staging and marked ready for review.",
+  "comment_count": 1
+}

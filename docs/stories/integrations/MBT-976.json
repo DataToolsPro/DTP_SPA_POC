@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-976",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Connect Snowflake East SYSTEM_DBT user into DBT instance",
+  "status": "Withdrawn",
+  "feature_folder": "integrations"
+}

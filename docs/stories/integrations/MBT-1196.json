@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1196",
+  "epic_key": "MBT-1193",
+  "feature_folder": "integrations",
+  "title": "Streamlit Explorer: Visual Filter (WHERE Clause) Builder",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-27T19:45:53.265-0700",
+  "updated": "2025-09-01T17:42:31.597-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a data analyst, I want to visually build filter conditions for my Snowflake queries so that I can narrow down data results without writing WHERE clauses in SQL.",
+  "description": "Add the filter (WHERE clause) portion of the visual SQL builder accordion in the Streamlit Explorer. This is the second clause builder after ORDER BY.\n\nThis feature is prioritized because once filtering is complete, the app is ready for a beta release to customers like Fundcanna for feedback. The accordion UX pattern follows the same approach as the ORDER BY builder.\n\nGROUP BY will be implemented as a separate ticket (MBT-1198).",
+  "acceptance_criteria": [
+    "User can add filter conditions using the accordion UI",
+    "User can select a field, operator, and value for each filter condition",
+    "Multiple filter conditions can be combined",
+    "Generated SQL reflects the WHERE clause with all filter conditions",
+    "Query results are filtered according to the configured conditions",
+    "Accordion UX is consistent with the ORDER BY builder pattern"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Accordion-style WHERE clause builder with field selector, operator picker, value input, and multi-condition support. Consistent with the ORDER BY accordion UX pattern.",
+  "middleware_changes": "SQL generation logic to construct WHERE clauses from user-defined filter conditions. Condition combining with AND/OR operators.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1195"],
+  "source_files": [],
+  "implementation_notes": "This feature, combined with ORDER BY and data preview, constitutes the beta-ready version of the Streamlit Explorer. GROUP BY is deferred to a separate ticket (MBT-1198).",
+  "comment_summary": "No comments. Ticket in To Do status.",
+  "comment_count": 0
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1049",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD View Enhancements — Object Identifier Toggle and External ID Color Change",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-26T23:15:48.999-0800",
+  "updated": "2026-01-24T22:54:47.016-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user configuring ERD views, I want to toggle visibility of all object identifiers and see external IDs in a neutral color instead of red, so that the diagram is clearer and doesn't mislead users into thinking red indicates a problem.",
+  "description": "Two enhancements to ERD view settings:\n\n### 1. Show All Object Identifiers Toggle\nA new toggle to control whether all object identifier fields (IDs) are displayed in the ERD. When turned off, the ERD only shows IDs for objects visible within the Dictionary, reducing visual noise on complex diagrams.\n\n### 2. External ID Color Change\nChanges the External ID icon color from red to brown or purple. The red color was causing confusion during presentations because users associate red with errors or poor data performance. A neutral color (brown/purple) better communicates that External IDs are informational, not problematic.",
+  "acceptance_criteria": [
+    "A new 'Show All Object Identifiers' toggle is available in ERD view settings",
+    "When toggled off, only IDs for Dictionary-visible objects are shown",
+    "When toggled on, all object IDs are displayed",
+    "External ID icons use brown or purple instead of red",
+    "The color change applies consistently across all ERD views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New toggle for showing/hiding all object identifiers. External ID icon color changed from red to brown/purple to avoid negative connotation.",
+  "middleware_changes": "Logic to filter object identifier visibility based on the toggle state and Dictionary membership. Updated External ID color rendering.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-881"],
+  "source_files": [],
+  "implementation_notes": "The red-to-neutral color change was driven by user feedback during presentations — red was interpreted as indicating data quality issues. Brown or purple conveys informational status without negative connotation.",
+  "comment_summary": "Developer requested clarification, then completed both enhancements and deployed to development for review.",
+  "comment_count": 2
+}

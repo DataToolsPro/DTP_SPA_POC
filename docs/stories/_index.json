@@ -1,0 +1,300 @@
+{
+  "project": "MBT",
+  "project_name": "datatoolsproapp",
+  "total_folders": 22,
+  "total_epics": 93,
+  "generated": "2026-02-28",
+  "folders": [
+    {
+      "folder": "reports-and-dashboards",
+      "label": "Reports and Dashboards",
+      "type": "product-feature",
+      "doc_tag": "Reports and Dashboards DataTools",
+      "epic_count": 3,
+      "epic_keys": [
+        "MBT-75",
+        "MBT-602",
+        "MBT-1015"
+      ]
+    },
+    {
+      "folder": "metrics-glossary",
+      "label": "Metrics Glossary",
+      "type": "product-feature",
+      "doc_tag": "metrics",
+      "epic_count": 9,
+      "epic_keys": [
+        "MBT-83",
+        "MBT-149",
+        "MBT-243",
+        "MBT-464",
+        "MBT-598",
+        "MBT-689",
+        "MBT-707",
+        "MBT-818",
+        "MBT-869"
+      ]
+    },
+    {
+      "folder": "metrics-analyst",
+      "label": "Metrics Analyst (AI)",
+      "type": "product-feature",
+      "doc_tag": "metrics",
+      "epic_count": 3,
+      "epic_keys": [
+        "MBT-374",
+        "MBT-543",
+        "MBT-644"
+      ]
+    },
+    {
+      "folder": "erd",
+      "label": "ERD Entity Relationship Diagram",
+      "type": "product-feature",
+      "doc_tag": "ERD",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-297"
+      ]
+    },
+    {
+      "folder": "data-migration",
+      "label": "Data Migration",
+      "type": "product-feature",
+      "doc_tag": "Data Migration",
+      "epic_count": 5,
+      "epic_keys": [
+        "MBT-39",
+        "MBT-84",
+        "MBT-255",
+        "MBT-536",
+        "MBT-1011"
+      ]
+    },
+    {
+      "folder": "data-dictionary",
+      "label": "Data Dictionary",
+      "type": "product-feature",
+      "doc_tag": "Dictionary",
+      "epic_count": 7,
+      "epic_keys": [
+        "MBT-23",
+        "MBT-597",
+        "MBT-740",
+        "MBT-870",
+        "MBT-871",
+        "MBT-923",
+        "MBT-1013"
+      ]
+    },
+    {
+      "folder": "security",
+      "label": "Security and Compliance",
+      "type": "platform",
+      "doc_tag": "security",
+      "epic_count": 9,
+      "epic_keys": [
+        "MBT-13",
+        "MBT-146",
+        "MBT-373",
+        "MBT-377",
+        "MBT-413",
+        "MBT-442",
+        "MBT-544",
+        "MBT-1260",
+        "MBT-1294"
+      ]
+    },
+    {
+      "folder": "administration",
+      "label": "Administration and User Management",
+      "type": "platform",
+      "doc_tag": "Administration",
+      "epic_count": 5,
+      "epic_keys": [
+        "MBT-74",
+        "MBT-279",
+        "MBT-344",
+        "MBT-444",
+        "MBT-535"
+      ]
+    },
+    {
+      "folder": "onboarding",
+      "label": "Onboarding and Activation",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 2,
+      "epic_keys": [
+        "MBT-56",
+        "MBT-450"
+      ]
+    },
+    {
+      "folder": "integrations",
+      "label": "Third-Party Integrations",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 8,
+      "epic_keys": [
+        "MBT-296",
+        "MBT-490",
+        "MBT-491",
+        "MBT-646",
+        "MBT-655",
+        "MBT-873",
+        "MBT-885",
+        "MBT-1046"
+      ]
+    },
+    {
+      "folder": "snowflake",
+      "label": "Snowflake",
+      "type": "product-feature",
+      "doc_tag": "Snowflake",
+      "epic_count": 2,
+      "epic_keys": [
+        "MBT-1006",
+        "MBT-1193"
+      ]
+    },
+    {
+      "folder": "api",
+      "label": "DataTools REST API",
+      "type": "platform",
+      "doc_tag": "API",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-342"
+      ]
+    },
+    {
+      "folder": "tagging-and-categories",
+      "label": "Tagging and Categories",
+      "type": "product-feature",
+      "doc_tag": "datatoolspro",
+      "epic_count": 3,
+      "epic_keys": [
+        "MBT-492",
+        "MBT-1007",
+        "MBT-1010"
+      ]
+    },
+    {
+      "folder": "ux-and-design",
+      "label": "UX and Design",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 8,
+      "epic_keys": [
+        "MBT-40",
+        "MBT-200",
+        "MBT-343",
+        "MBT-642",
+        "MBT-645",
+        "MBT-731",
+        "MBT-833",
+        "MBT-1012"
+      ]
+    },
+    {
+      "folder": "infrastructure",
+      "label": "Infrastructure and DevOps",
+      "type": "engineering",
+      "doc_tag": "datatoolspro",
+      "epic_count": 10,
+      "epic_keys": [
+        "MBT-201",
+        "MBT-445",
+        "MBT-446",
+        "MBT-447",
+        "MBT-531",
+        "MBT-654",
+        "MBT-708",
+        "MBT-723",
+        "MBT-1313",
+        "MBT-1344"
+      ]
+    },
+    {
+      "folder": "tracking-and-analytics",
+      "label": "Product Analytics and Tracking",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 3,
+      "epic_keys": [
+        "MBT-202",
+        "MBT-878",
+        "MBT-922"
+      ]
+    },
+    {
+      "folder": "payment-and-billing",
+      "label": "Payment and Billing",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 3,
+      "epic_keys": [
+        "MBT-461",
+        "MBT-623",
+        "MBT-1024"
+      ]
+    },
+    {
+      "folder": "scheduling-and-alerting",
+      "label": "Scheduling and Alerting",
+      "type": "product-feature",
+      "doc_tag": "datatoolspro",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-1008"
+      ]
+    },
+    {
+      "folder": "initiatives",
+      "label": "Initiatives",
+      "type": "product-feature",
+      "doc_tag": "datatoolspro",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-1009"
+      ]
+    },
+    {
+      "folder": "multi-org",
+      "label": "Multi-Org Connections",
+      "type": "product-feature",
+      "doc_tag": "Administration",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-1014"
+      ]
+    },
+    {
+      "folder": "help-and-documentation",
+      "label": "Help and Documentation",
+      "type": "platform",
+      "doc_tag": "datatoolspro",
+      "epic_count": 1,
+      "epic_keys": [
+        "MBT-443"
+      ]
+    },
+    {
+      "folder": "legacy-and-bugs",
+      "label": "Legacy, POC, and Bug Fixes",
+      "type": "engineering",
+      "doc_tag": "datatoolspro",
+      "epic_count": 7,
+      "epic_keys": [
+        "MBT-1",
+        "MBT-3",
+        "MBT-30",
+        "MBT-48",
+        "MBT-391",
+        "MBT-606",
+        "MBT-624"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1241",
+  "epic_key": "MBT-342",
+  "feature_folder": "api",
+  "title": "Confirm API Methods and Salesforce Connected App Configuration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-11-09T12:02:09.476-0800",
+  "updated": "2026-03-01T04:10:07.363-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Review Salesforce Connected App API access control configuration to confirm that DataTools Pro is using REST APIs (not SOAP) and that the connected app settings align with current best practices.\n\nReference: [Salesforce Connected Apps API Access Control article](https://doug-merrett.medium.com/salesforce-connected-apps-api-access-control-and-soap-api-login-calls-an-update-b6e377f4c7ac)\n\n### Findings\n\nDataTools Pro does not use SOAP APIs. All Salesforce integrations use REST APIs exclusively.",
+  "acceptance_criteria": [
+    "Salesforce connected app configuration is reviewed against the reference article",
+    "Confirmed that DataTools Pro uses REST APIs exclusively, not SOAP",
+    "Any configuration gaps are identified and documented"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Confirmed DataTools Pro uses Salesforce REST APIs exclusively. No SOAP API usage found in the configuration.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Review confirmed REST-only API usage. No changes required to the Salesforce connected app configuration.",
+  "comment_summary": "",
+  "comment_count": 0
+}

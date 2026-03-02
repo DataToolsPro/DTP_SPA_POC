@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-81",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "Open Salesforce Object Links in Same Tab",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-01T12:38:49.733-0700",
+  "updated": "2024-05-24T02:24:28.762-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want clicking on a Salesforce object to navigate in the same tab, so that I can use the browser back button for natural navigation.",
+  "description": "Change Salesforce object links to open in the same browser tab instead of a new window. User feedback from two beta testers indicated that opening new tabs was disruptive. Same-tab navigation also facilitates future in-app user guides.",
+  "acceptance_criteria": [
+    "Clicking a Salesforce object link opens in the same tab",
+    "Browser back button returns the user to the previous page",
+    "No new browser tabs or windows are opened when clicking object links"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Salesforce object links now open in the same tab instead of a new window, enabling standard back-button navigation.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Removed target='_blank' from object link elements. Change driven by user feedback from two beta testers.",
+  "comment_summary": "Developer completed promptly.",
+  "comment_count": 1
+}

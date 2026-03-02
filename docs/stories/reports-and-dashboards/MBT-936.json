@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-936",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Report and Dashboard Grouping not working properly",
+  "status": "Done",
+  "feature_folder": "reports-and-dashboards"
+}

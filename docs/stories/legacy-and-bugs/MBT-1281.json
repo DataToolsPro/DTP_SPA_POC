@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1281",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Implement Central Auth Service on auth.datatoolspro.com",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:49:28.690-0800",
+  "updated": "2026-03-01T04:10:15.868-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Phase 3: Central Auth Service\n\nThis is part of the multi-phase authentication architecture overhaul.\n\n### Tasks\n1. Set up `auth.datatoolspro.com` as a dedicated authentication service.\n2. Implement tenant lookup from email domain.\n3. Integrate with Stytch for authentication (handling SSO and non-SSO flows).\n4. Generate and manage handoff codes for secure session transfer between auth service and application.\n\n### Deliverables\n- Central auth service deployed at auth.datatoolspro.com\n- Stytch authentication integration\n- Handoff code generation and validation service",
+  "acceptance_criteria": [
+    "auth.datatoolspro.com service is deployed and operational",
+    "Tenant lookup from email domain resolves the correct org",
+    "Stytch integration handles SSO and non-SSO authentication flows",
+    "Handoff codes are generated securely and validated on the app side",
+    "Existing Salesforce OAuth flow continues to work"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "New centralized login flow at auth.datatoolspro.com handling SSO and non-SSO authentication.",
+  "middleware_changes": "New auth service with tenant lookup, Stytch integration, and handoff code management.",
+  "data_model_changes": "New tables for tenant-to-domain mapping and handoff code storage.",
+  "api_changes": "New auth endpoints for tenant lookup, Stytch callback, and handoff code generation/validation.",
+  "dependencies": ["MBT-1260"],
+  "source_files": [],
+  "implementation_notes": "Part of epic MBT-1260. Phase 3 of the authentication architecture overhaul. Stytch is the chosen auth provider supporting both SSO and non-SSO flows.",
+  "comment_summary": "",
+  "comment_count": 0
+}

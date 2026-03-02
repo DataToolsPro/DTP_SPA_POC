@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1263",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Support passwordless/magic link (or email OTP) for pooled tenants",
+  "status": "Withdrawn",
+  "feature_folder": "security"
+}

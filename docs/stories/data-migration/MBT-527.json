@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-527",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix Foreign Key Constraint Violation on ERD View Save",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T21:16:01.560-0800",
+  "updated": "2024-05-24T02:25:43.849-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "A SQL integrity constraint violation occurs when saving an ERD view. The error is a foreign key constraint failure on `dtp_scorecard_erd_views.object_id` referencing `dtp_scorecards.id`, indicating an attempt to insert an ERD view record with an object_id that does not exist in the scorecards table.\n\nThe error was logged in New Relic on the `saveERDView` action. After investigation, the error could not be reproduced in subsequent months and was resolved or self-correcting.",
+  "acceptance_criteria": [
+    "ERD view save operation does not produce foreign key constraint violations",
+    "Object ID is validated before insert into erd_views table"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Validation added or data integrity check applied to prevent inserting ERD view records with invalid object_id references.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Error was captured via New Relic monitoring. The issue occurred on the saveERDView transaction. After months without recurrence, the ticket was marked done. The foreign key constraint is between dtp_scorecard_erd_views.object_id and dtp_scorecards.id.",
+  "comment_summary": "Developer acknowledged the issue but could not reproduce it over several months of testing. Both agreed to mark it done/withdrawn as the error had not recurred.",
+  "comment_count": 3
+}

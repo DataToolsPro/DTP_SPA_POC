@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-896", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Simplify Group By UX with Toggle Behavior and Updated Labels",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T00:56:55.554-0700", "updated": "2024-10-15T19:08:09.970-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want a simpler way to enable and disable the Group By feature, so that I can quickly toggle between grouped and ungrouped views without confusion.",
+  "description": "Redesigns the Group By UX to be more intuitive:\n\n1. Removes the \"Group By\" label\n2. Updates dropdown option labels for clarity\n3. Moves the dropdown to the same row as the icon\n4. Adds a contextual tooltip when grouping is active: \"Click to disable group by browsing\"\n5. Clicking the icon when grouping is active toggles it off (resets dropdown and removes groups)\n6. Re-selecting the first dropdown option also disables grouping\n\nThe icon serves as a quick toggle — clicking it enables the dropdown, and clicking it again disables grouping entirely.",
+  "acceptance_criteria": ["Group By label is removed", "Dropdown options have updated labels", "Dropdown is positioned on the same row as the icon", "Active tooltip reads 'Click to disable group by browsing'", "Clicking the icon when active resets grouping and the dropdown", "Re-selecting the first option also disables grouping", "Gear icon does not overlap with the dropdown"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Simplified Group By to a toggle icon with inline dropdown. Removed label, updated option text, added toggle-off behavior, and contextual tooltip.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-895"], "source_files": [],
+  "implementation_notes": "Initial implementation had a gear icon overlap with the dropdown. Ryan also noted that disabling grouping should reset the dropdown and remove groups from the table.",
+  "comment_summary": "Balaji implemented. Ryan noted the gear icon overlap and that disabling grouping should reset the dropdown. Balaji fixed both issues.", "comment_count": 4
+}

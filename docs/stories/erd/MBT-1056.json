@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1056",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Visualize Button on Dictionary and Shareable ERD View URL Parameter",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2024-12-28T13:11:58.441-0800",
+  "updated": "2026-01-24T22:57:03.472-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Dictionary"],
+  "story": "As a DataTools Pro user navigating between Dictionary and ERD, I want a 'Visualize' button that takes me from a Dictionary view directly to the corresponding ERD view, and I want ERD view URLs to be shareable, so that I can maintain context while switching pages and share specific ERD perspectives with teammates.",
+  "description": "Two UX improvements based on end-user feedback:\n\n### 1. ERD View URL Parameter\nWhen a user selects an ERD view, the URL is updated with a view parameter. This allows users to bookmark or share a specific ERD view by copying the URL. If the view parameter is invalid (deleted view or tampered URL), the system gracefully falls back to the default view.\n\n### 2. Visualize Button on Dictionary\nA \"Visualize\" button is added to the Dictionary page that navigates the user to the ERD page with the same view context. This eliminates the disruptive context switching that users reported when moving between Dictionary and ERD.\n\nThese are fine-tuning UX items identified by observing end users navigate DataTools Pro.",
+  "acceptance_criteria": [
+    "Selecting an ERD view updates the URL with a view parameter",
+    "Copying and sharing the URL loads the specified ERD view for the recipient",
+    "Invalid or deleted view parameters fall back to the default view",
+    "A 'Visualize' button on the Dictionary navigates to the corresponding ERD view",
+    "Context (selected view) is preserved when switching from Dictionary to ERD",
+    "The URL parameter updates on every view change without a full page reload"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "ERD view selection reflected in URL parameters for bookmarking and sharing. 'Visualize' button on the Dictionary page for quick navigation to the corresponding ERD view.",
+  "middleware_changes": "URL parameter parsing on ERD page load to restore the correct view. Validation logic to fall back to default when the view parameter is invalid or the view has been deleted.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1052"],
+  "source_files": [],
+  "implementation_notes": "Inspired by observing users lose context when switching between Dictionary and ERD tabs. The URL parameter approach also enables sharing specific ERD views between team members via link.",
+  "comment_summary": "Developer requested more description clarity. Implemented on dev with some additional testing needed. Deployed and ready for review.",
+  "comment_count": 4
+}

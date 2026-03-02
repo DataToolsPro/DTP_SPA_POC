@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-769",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "International User Sign-Up Redirect and Cookie Workflow",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-16T14:55:25.423-0700",
+  "updated": "2024-09-17T22:47:35.658-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a user from a country outside the US or Canada, I want to receive clear messaging that the software is not yet available in my region when I attempt to sign up, so that I have proper expectations and do not repeatedly try to register.",
+  "description": "Implement a workflow for international (non-US/CA) users who attempt to sign up via the beta form. When a user from an unsupported geography submits the form, they are redirected to a secondary landing page explaining regional availability. A 1-hour cookie is set so that if they return to the sign-up page, they are automatically redirected.\n\n### Problem\nInternational users were signing up multiple times and generating support emails complaining about access issues. The existing workflow did not clearly communicate the geographic restriction before or during sign-up, causing confusion and risking negative reviews.\n\n### Solution\n- After form submission, detect the user's geography\n- If outside US/CA, redirect to a secondary landing page with availability messaging\n- Set a 1-hour cookie to prevent re-submission and auto-redirect on return visits\n- Block the verification email for non-US/CA users",
+  "acceptance_criteria": [
+    "Non-US/CA users are redirected to a secondary landing page after form submission",
+    "Secondary page clearly communicates regional availability status",
+    "A 1-hour cookie is set to auto-redirect on return visits to the sign-up page",
+    "Cookie expires after 1 hour allowing the user to try again",
+    "US and CA users continue through the normal sign-up flow unaffected",
+    "Repeated form submissions from international users are reduced"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "International users see a dedicated landing page explaining that DataTools Pro is not yet available in their region. Return visits within 1 hour auto-redirect to this page instead of showing the sign-up form.",
+  "middleware_changes": "Geography detection on form submission triggers either the normal sign-up flow (US/CA) or the international redirect with cookie setting. Cookie-based redirect logic added to the beta sign-up page.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-332", "MBT-777"],
+  "source_files": [],
+  "implementation_notes": "Cookie is scoped to datatoolspro.com (not app.datatoolspro.com). The redirect landing page was created within WordPress. Tested with international form submissions.",
+  "comment_summary": "Developer implemented the cookie-based redirect for non-US/CA users. Tested and confirmed working with a 1-hour cookie window.",
+  "comment_count": 3
+}

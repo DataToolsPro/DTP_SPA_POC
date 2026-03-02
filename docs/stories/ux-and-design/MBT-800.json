@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-800",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Remove Accent Color from H1-H5 Headers — Use Standard Text Colors",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-10T08:58:32.582-0700",
+  "updated": "2024-07-25T23:44:55.880-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want header text (H1-H5) to use standard dark/light text colors instead of the accent color, so that headers are not confused with clickable elements.",
+  "description": "The current styling guide applies the accent/primary color to heading tags (H1-H5). This creates confusion because the accent color is typically used for clickable elements. Headers should use standard text colors instead.\n\n## Change\n- Remove accent color from H1-H5 globally\n- In dark mode: headers display in white\n- In light mode: headers display in black/dark text\n- Accent color reserved exclusively for interactive/clickable elements",
+  "acceptance_criteria": [
+    "H1-H5 headers no longer use the accent/primary color",
+    "Headers display in white text in dark mode",
+    "Headers display in dark text in light mode",
+    "Accent color remains on clickable/interactive elements only",
+    "No visual regressions on pages that relied on colored headers"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed accent/primary color from H1-H5 headers globally. Headers now use standard dark/light text colors. Accent color reserved for clickable elements only.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "Global CSS change removing the primary color from H1-H5 selectors. Dark mode uses white, light mode uses default dark text. This aligns with the design principle that accent color = clickable.",
+  "comment_summary": "Developer removed accent color from H1-H5 and pushed to development. Dark mode headers use white, light mode headers use black.",
+  "comment_count": 1
+}

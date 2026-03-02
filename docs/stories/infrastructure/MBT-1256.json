@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1256",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Comprehensive Performance Audit for DataTools Pro",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-15T21:46:20.238-0800",
+  "updated": "2026-03-01T04:09:15.404-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Conduct a comprehensive performance audit to identify and resolve slow page loading issues. Areas to investigate:\n\n- **PostHog** — Check if the analytics script is causing slowdowns\n- **Long-running queries** — Identify and optimize slow database queries\n- **Cartesian products** — Find unintended cross joins\n- **Loops** — Check for N+1 queries and inefficient loops\n- **Code scan** — Identify performance gaps in application code\n- **JS profiling** — Find hanging or slow-running JavaScript",
+  "acceptance_criteria": [
+    "PostHog impact on page load assessed",
+    "Long-running queries identified and optimized",
+    "N+1 query patterns identified and resolved",
+    "JavaScript profiling completed with findings documented",
+    "Overall page load time improved"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Faster page load times after performance optimizations.",
+  "middleware_changes": "Query optimization, N+1 resolution, and code performance improvements.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

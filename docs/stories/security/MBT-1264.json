@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1264",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Configure Microsoft Entra SSO per Tenant via Stytch",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:01.298-0800",
+  "updated": "2026-01-02T19:57:03.502-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a Salesforce administrator, I want to connect our Microsoft Entra identity provider so that employees can sign in to DataTools Pro using company SSO, so that we maintain centralized access control and reduce credential sprawl.",
+  "description": "Each tenant needs the ability to configure its own Microsoft Entra (Azure AD) SSO connection within Stytch. The configuration must ensure that starting SSO for one tenant cannot invoke another tenant's identity provider connection.\n\n## Requirements\n\n- Each tenant can configure its own SSO connection in Stytch under its Organization\n- Starting SSO for tenant A cannot invoke tenant B's connection\n- SSO login completes and returns the user into the correct Organization\n\n## Blocker\n\nMicrosoft partnership approval is required before Entra SSO integration can proceed. This is currently being pursued separately.",
+  "acceptance_criteria": [
+    "Each tenant can have its own Entra SSO connection configured in Stytch",
+    "SSO initiation is scoped to the tenant's Stytch Organization",
+    "Cross-tenant SSO invocation is prevented",
+    "Successful SSO login returns the user authenticated within the correct Organization"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New SSO login flow for tenants using Microsoft Entra — employees see an Entra sign-in option that redirects through their company's identity provider.",
+  "middleware_changes": "SSO connection configuration per tenant in Stytch. Login initiation logic ensures the correct tenant's SSO connection is invoked based on Organization mapping.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1261", "MBT-1262"],
+  "source_files": [],
+  "implementation_notes": "Blocked on Microsoft partnership approval. Stytch supports SAML and OIDC connections per Organization, so the technical path is clear once the Microsoft relationship is established.",
+  "comment_summary": "Ryan noted that Entra SSO configuration is owned by him and requires the Microsoft partnership to be finalized first. Not needed for early launch.",
+  "comment_count": 1
+}

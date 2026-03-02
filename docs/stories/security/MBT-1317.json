@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1317",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Integrate Continue with Microsoft Authentication via Stytch B2B",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-02-10T04:28:05.682-0800",
+  "updated": "2026-03-01T04:17:48.206-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to log in using my Microsoft account, so that I can authenticate with my existing corporate identity without needing a separate Salesforce credential.",
+  "description": "Add Microsoft OAuth as an additional authentication method in DataTools v2, alongside existing Google SSO. The integration uses the Stytch B2B Discovery flow and the Microsoft Identity Platform (Azure App Registration).\n\n### Implementation\n- Microsoft OAuth follows the same discovery-based flow as Google SSO\n- Uses Stytch B2B Discovery flow for authentication\n- New `auth_provider` field on the `users` table to track which provider was used (Google, Microsoft, Salesforce)\n- Follows OAuth 2.0 best practices aligned with multi-tenant SaaS architecture",
+  "acceptance_criteria": [
+    "Users can authenticate using Continue with Microsoft button",
+    "Microsoft OAuth uses Stytch B2B Discovery flow",
+    "auth_provider field on users table tracks authentication method",
+    "Microsoft auth works alongside existing Google SSO and Salesforce OAuth",
+    "Multi-tenant scoping works correctly for Microsoft-authenticated users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Continue with Microsoft button added to login page alongside existing Google SSO option.",
+  "middleware_changes": "Microsoft OAuth flow implemented via Stytch B2B Discovery. Authentication routing handles Microsoft alongside Google and Salesforce providers.",
+  "data_model_changes": "New auth_provider field on users table to track authentication method (Google, Microsoft, Salesforce).",
+  "api_changes": "OAuth callback endpoint extended to handle Microsoft Identity Platform responses via Stytch.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Uses Stytch B2B Discovery flow which provides a consistent authentication experience across multiple identity providers. Azure App Registration required for Microsoft Identity Platform integration.",
+  "comment_summary": "Waqar described the implementation approach: Microsoft OAuth via Stytch B2B Discovery flow, matching the existing Google SSO pattern, with a new auth_provider field on the users table.",
+  "comment_count": 1
+}

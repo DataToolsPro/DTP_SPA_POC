@@ -1,0 +1,19 @@
+{
+  "post_id": 10847,
+  "title": "Adding Multiple Salesforce orgs into DataTools Pro",
+  "slug": "adding-multiple-salesforce-orgs-into-datatools-pro",
+  "url": "https://datatoolspro.com/tutorials/adding-multiple-salesforce-orgs-into-datatools-pro/",
+  "date": "2024-12-23T00:02:28",
+  "modified": "2025-03-08T17:59:47",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Administration",
+    "datatoolspro"
+  ],
+  "subfolder": "administration",
+  "excerpt": "<p>In DataTools Pro, you can add multiple Salesforce orgs in Settings. Using multiple orgs in DataTools Pro Data Migration The current supported tools for using multiple Salesforce orgs is data migration. Within the data migration tab, while mapping and creating a source data source, a &#8220;Get From Salesforce&#8221; will allow you to directly access additional [&hellip;]</p>",
+  "content_html": "\n<p>In DataTools Pro, you can add multiple Salesforce orgs in Settings. </p>\n\n\n\n<ol class=\"wp-block-list\">\n<li>Go to Settings</li>\n\n\n\n<li>Click on Add Instance</li>\n\n\n\n<li>Click &#8220;Login with Salesforce&#8221;</li>\n\n\n\n<li>Login to your Salesforce org</li>\n\n\n\n<li>Objects are visible and available within your org</li>\n</ol>\n\n\n\n<figure class=\"wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio\"><div class=\"wp-block-embed__wrapper\">\n<div class=\"ratio ratio-16x9\"><iframe loading=\"lazy\" title=\"Adding multiple Salesforce instances into DataTools Pro\" width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/c1hjMYra3aU?feature=oembed\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe></div>\n</div></figure>\n\n\n\n<h2 class=\"wp-block-heading\">Using multiple orgs in DataTools Pro</h2>\n\n\n\n<h4 class=\"wp-block-heading\">Data Migration</h4>\n\n\n\n<p>The current supported tools for using multiple Salesforce orgs is data migration. Within the data migration tab, while mapping and creating a source data source, a &#8220;Get From Salesforce&#8221; will allow you to directly access additional orgs that are connected to DataTools Pro.<a href=\"https://datatoolspro.com/tutorials/data-migration-scorecard-for-salesforce/\" title=\"Data Migration Scorecard for Salesforce\"> Learn more about importing data</a></p>\n\n\n\n<figure class=\"wp-block-image size-large is-resized\"><img data-dominant-color=\"a8aaa8\" data-has-transparency=\"false\" loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"463\" src=\"https://datatoolspro.com/wp-content/uploads/2024/12/image-40-1024x463.webp\" alt=\"\" class=\"wp-image-10848 not-transparent\" style=\"--dominant-color: #a8aaa8; width:563px;height:auto\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/12/image-40-1024x463.webp 1024w, https://datatoolspro.com/wp-content/uploads/2024/12/image-40-300x136.webp 300w, https://datatoolspro.com/wp-content/uploads/2024/12/image-40-768x347.webp 768w, https://datatoolspro.com/wp-content/uploads/2024/12/image-40-1536x694.webp 1536w, https://datatoolspro.com/wp-content/uploads/2024/12/image-40-2048x925.webp 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n"
+}

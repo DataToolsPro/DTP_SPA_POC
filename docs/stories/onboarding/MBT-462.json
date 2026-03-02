@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-462",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Rename Zapier Event 0003 from Onboarded to Activated",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-07T15:51:14.362-0800",
+  "updated": "2024-05-24T02:25:30.993-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Rename the Zapier event 0003 from 'Onboarded' to 'Activated' to accurately reflect the event's meaning. The event fires when a user adds their first object, which represents activation (first meaningful product usage), not onboarding completion.\n\n'Onboarded' will be reserved for a future event tied to when a user subscribes and pays (potentially triggered by the Stripe callback).\n\nThe Zapier webhook endpoint URL was also updated to a new catch hook.",
+  "acceptance_criteria": [
+    "Event 0003 is labeled as 'Activated' in the Zapier webhook request",
+    "Webhook endpoint URL is updated to the new Zapier catch hook",
+    "A future event for 'Onboarded' can be created separately when needed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Event 0003 name changed from 'Onboarded' to 'Activated' in the Zapier webhook payload. Endpoint URL updated to new Zapier hook.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Event taxonomy: 0001 = First Time Login, 0002 = Recurring Login, 0003 = Activated (first object added). Onboarding event to be created later tied to Stripe payment callback.",
+  "comment_summary": "Developer updated the label and endpoint URL. Product owner confirmed and planned to test on staging.",
+  "comment_count": 2
+}

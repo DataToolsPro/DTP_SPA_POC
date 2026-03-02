@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-144",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Update Icons for DDL Export and Code View Actions",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-17T15:39:10.562-0700",
+  "updated": "2026-03-01T03:56:05.919-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the DDL export and code view buttons to use appropriate icons, so that their purpose is immediately recognizable.",
+  "description": "Two icon updates were required for the object view toolbar:\n\n1. **Export DDL** button: Updated to use `bi bi-filetype-sql` icon to clearly indicate SQL file generation\n2. **Code view** button: Updated to use `bi bi-journal-code` icon for the code/SELECT view\n\nAdditionally, the SELECT code action is only relevant for migrations, so it was hidden on the Dictionary page to reduce clutter.\n\n### Scope\n- Icons updated on both Dictionary and Migration views\n- SELECT code button conditionally hidden on Dictionary view\n- Same navigation layout applied to the Metrics page for consistency (related to MBT-151)",
+  "acceptance_criteria": [
+    "DDL export button displays the `bi bi-filetype-sql` icon",
+    "Code view button displays the `bi bi-journal-code` icon",
+    "SELECT code button is hidden on the Dictionary page",
+    "SELECT code button remains visible on the Migration page",
+    "Icon changes are consistent across all object views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated toolbar icons: DDL export uses `bi bi-filetype-sql`, code view uses `bi bi-journal-code`. SELECT code button conditionally hidden on Dictionary pages. Metrics page also received the same layout update for consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-151"],
+  "source_files": [],
+  "implementation_notes": "Bootstrap Icons used for both new icons. The SELECT code button visibility is controlled by checking the current view context (Dictionary vs Migration). The same navigation pattern was also applied to the Metrics page as part of this change.",
+  "comment_summary": "Developer completed the icon update and applied the same layout to the Metrics page. Initial confusion about which icon was underlined for the SQL action was clarified and resolved.",
+  "comment_count": 5
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-613",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix Broken Intro Video on Metrics Analyst Page",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-10T19:29:06.783-0700",
+  "updated": "2026-03-01T01:30:40.156-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Metrics Analyst intro video to play when I click on it, so that I can learn how the feature works.",
+  "description": "The intro video link on the Metrics Analyst page was showing as unavailable when clicked. The video source was replaced with a working YouTube link (https://www.youtube.com/watch?v=uLJ4QmpoPo8) to restore the onboarding video experience.",
+  "acceptance_criteria": [
+    "Clicking the intro video link opens a playable video",
+    "The video loads without showing an 'unavailable' message",
+    "The replacement YouTube video is the correct Metrics Analyst overview"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the broken intro video link with a working YouTube URL so users can view the Metrics Analyst onboarding video.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple video URL replacement. Deployed directly to production.",
+  "comment_summary": "Developer deployed the fix directly to production and confirmed it was ready for review.",
+  "comment_count": 1
+}

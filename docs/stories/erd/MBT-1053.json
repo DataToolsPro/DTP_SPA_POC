@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1053",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Discovery — From/To Relationship Explorer",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-28T12:08:00.518-0800",
+  "updated": "2025-01-07T23:39:29.595-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user who is not deeply familiar with Salesforce, I want to click on an ERD object and use From/To dropdowns to discover which objects are related in each direction, so that I can quickly understand entity relationships without visually parsing the entire diagram.",
+  "description": "Adds a relationship discovery feature to the ERD. When a user clicks on an object, a discovery panel appears above the diagram with \"From\" and \"To\" dropdowns.\n\n- **From**: Shows objects that the selected object references outbound (objects this object points to)\n- **To**: Shows objects that reference the selected object inbound (objects that point to this one)\n\nSelecting a direction highlights the relevant related objects in the diagram, making it visually clear which objects are connected and in what direction.\n\nFor example, selecting Account (PBO):\n- **From**: Only Lead appears (Lead references Account via ConvertedAccountId)\n- **To**: Campaign Member, Contact, Lead, User, and Opportunity appear (these objects have foreign keys pointing to Account)\n\nThis feature targets users who know little about Salesforce data models and need a simple, guided way to understand entity relationships.",
+  "acceptance_criteria": [
+    "Clicking an ERD object opens a discovery panel with From and To dropdown options",
+    "Selecting 'From' highlights objects the selected object references outbound",
+    "Selecting 'To' highlights objects that reference the selected object inbound",
+    "Highlighted objects are visually distinct from non-related objects",
+    "The discovery panel shifts content down to avoid overlapping the diagram",
+    "The From/To logic correctly reflects inbound vs outbound field relationships"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New discovery panel appears above the ERD diagram on object click. From/To dropdowns highlight related objects directionally. Content shifts down to accommodate the panel.",
+  "middleware_changes": "Logic to compute inbound (To) and outbound (From) related objects based on the foreign key metadata for the selected object.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer initially questioned the From/To direction labels — the description had them reversed. Confirmed that 'To' means objects that reference the selected object (inbound). The feature targets non-technical users who need guided relationship discovery.",
+  "comment_summary": "Developer noted the From/To direction was reversed in the original description and asked for clarification. Confirmed 'To' = inbound references. Implemented on local with screenshots, then deployed to development for review.",
+  "comment_count": 6
+}

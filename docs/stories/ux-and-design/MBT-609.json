@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-609",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Top Navigation Spacing and Reports Label",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-07T07:11:32.018-0800",
+  "updated": "2026-03-01T03:42:06.620-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the top navigation to have consistent spacing and clear labels, so that the navigation is easy to read and visually balanced.",
+  "description": "Two updates to the top navigation bar:\n\n1. **Label rename**: Changed \"Reports/dashboards\" to \"Reports & Dashboards\" for cleaner formatting\n2. **Column width**: Adjusted navigation column widths for better spacing and visual balance",
+  "acceptance_criteria": [
+    "Navigation label reads 'Reports & Dashboards' instead of 'Reports/dashboards'",
+    "Navigation column widths are adjusted for balanced spacing",
+    "Navigation layout is visually consistent across all pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Renamed 'Reports/dashboards' to 'Reports & Dashboards' in the top navigation. Adjusted column widths for improved spacing.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer deployed to staging. No issues reported.",
+  "comment_count": 1
+}

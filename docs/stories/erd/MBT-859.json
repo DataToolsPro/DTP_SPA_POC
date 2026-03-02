@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-859",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Move Dictionary Field Edit from Popup to Side Panel",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-10T13:50:08.043-0700",
+  "updated": "2024-09-15T13:21:16.505-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Dictionary"],
+  "story": "As a DataTools Pro user editing field details in the Dictionary, I want the edit interface to appear in a consistent side panel rather than a DataTables popup, so that the experience matches other panels in the application and feels more natural.",
+  "description": "Moves the Dictionary field edit functionality from a DataTables popup modal to a sidebar panel, creating a consistent side-panel editing experience across the application.\n\nThe side panel should:\n1. Display the name of the object being edited\n2. Include a notes field with the note editing interface\n3. Remove the metrics section (to be re-added at a later date)",
+  "acceptance_criteria": [
+    "Editing a field in the Dictionary opens a side panel instead of a DataTables popup",
+    "The side panel displays the object name",
+    "A notes field with editing capability is present in the side panel",
+    "The metrics section is removed from the edit interface",
+    "The side panel UX is consistent with other sidebar panels in the application"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dictionary field edit moved from a DataTables popup to a right-side panel. Panel shows object name and notes editing. Metrics section removed from the edit interface.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of a broader effort to create consistent sidebar editing experiences across the application. The metrics section was intentionally removed and will be re-added in a future iteration.",
+  "comment_summary": "Developer implemented and submitted for review. Straightforward UX migration from popup to sidebar.",
+  "comment_count": 2
+}

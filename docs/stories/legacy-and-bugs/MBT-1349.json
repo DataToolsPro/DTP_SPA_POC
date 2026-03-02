@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1349",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Microsoft Entra OAuth Callback Error",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-26T16:52:05.509-0800",
+  "updated": "2026-03-01T03:38:24.155-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Bug\nAttempting to log in via Microsoft Entra ID (Azure AD) with the GoodmanGroup account results in a callback error after the approval step. The production Azure environment with paid Entra should now be used.\n\n## Reproduction\n1. Navigate to the DataTools Pro login page\n2. Select Microsoft login\n3. Approve the authentication with GoodmanGroup credentials\n4. Error is returned on the callback redirect\n\n## Context\nThe production Azure instance with paid Entra should be configured for the OAuth callback.",
+  "acceptance_criteria": [
+    "Microsoft Entra login callback completes without errors",
+    "Production Azure with paid Entra is properly configured",
+    "Users can authenticate via Microsoft SSO"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fix the OAuth callback handler for Microsoft Entra authentication.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1281"],
+  "source_files": [],
+  "implementation_notes": "Need to debug the Microsoft Entra callback flow. Production Azure with paid Entra should be used. Reporter offered to debug live together.",
+  "comment_summary": "",
+  "comment_count": 0
+}

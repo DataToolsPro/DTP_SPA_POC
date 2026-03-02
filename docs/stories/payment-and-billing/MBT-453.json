@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-453",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Add Purchase Users Button with Stripe Integration",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-04T02:34:06.208-0800",
+  "updated": "2024-06-23T00:47:38.498-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want a 'Purchase Users' button that opens Stripe checkout with my team and user identifiers pre-filled as the client_reference_id, so that additional license purchases are automatically attributed to my account.",
+  "description": "## Context\n\nThe existing 'Request More Users' button triggers a Zapier request. This needs to be replaced with a direct Stripe purchase flow that identifies the purchasing account.\n\n## Behavior\n\nReplace the Zapier-based user request flow with a 'Purchase Users' button. The button constructs a Stripe checkout URL by concatenating the team ID and user ID (delimited by underscore) as the `client_reference_id` parameter. This allows the downstream automation (Zapier -> API endpoint from MBT-454) to identify which account and user initiated the purchase.\n\nThe page should also display a 'Powered by Stripe' badge below the button, sized similarly to how Stripe displays it on their checkout page.\n\n## Purchase Flow\n\n1. User clicks 'Purchase Users' button\n2. Browser opens Stripe checkout URL with `client_reference_id=teamId_userId`\n3. User completes purchase on Stripe\n4. Stripe sends transaction to Zapier\n5. Zapier calls the Add Users API (MBT-454) to increase the team's license count\n6. Salesforce subscription record is also updated",
+  "acceptance_criteria": [
+    "A 'Purchase Users' button replaces the previous 'Request Users' Zapier-based flow",
+    "Clicking the button opens Stripe checkout in a new window",
+    "The Stripe URL includes client_reference_id with format teamId_userId",
+    "Both the account (team) and user public-facing IDs are used, not internal integer IDs",
+    "A 'Powered by Stripe' badge is displayed below the button",
+    "The old Zapier request flow is deprecated"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaces the 'Request More Users' button with a 'Purchase Users' button and adds a 'Powered by Stripe' badge. Button opens Stripe checkout in a new window.",
+  "middleware_changes": "Constructs the Stripe checkout URL dynamically by concatenating the team's public-facing unique ID and user's unique ID as the client_reference_id parameter.",
+  "data_model_changes": "",
+  "api_changes": "Integrates with Stripe checkout via URL parameter passing. Downstream Zapier automation calls POST /api/addusers with the team_id extracted from the client_reference_id.",
+  "dependencies": ["MBT-454"],
+  "source_files": [],
+  "implementation_notes": "The client_reference_id format evolved during implementation. Initially used internal team_id integers, then switched to public-facing unique IDs (e.g., 74FA03E64532_74FA03E64551) to avoid exposing internal database IDs externally. The Stripe payment link format: https://buy.stripe.com/aEU2bI6ST6s7bEQeUV?client_reference_id=[teamId_userId].",
+  "comment_summary": "Developer implemented the button and asked about handling the Stripe payment response to update the user count. Discussion clarified the workflow: Stripe -> Zapier -> API endpoint, using public-facing IDs rather than internal integers for security. Both team and user IDs are included in the client_reference_id.",
+  "comment_count": 2
+}

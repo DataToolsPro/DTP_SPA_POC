@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-589",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Review Geographic Access Blocking — Non-NA Users Bypassing Restriction",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-20T16:58:50.152-0800",
+  "updated": "2026-03-01T03:48:47.919-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Users outside of the US and Canada were bypassing the geographic access restriction and getting into the system. One user from AP (Asia-Pacific) region gained access, and several users had no location recorded.\n\n### Current Architecture\n- All Salesforce-authenticated users are created in the database regardless of location\n- A middleware checks user region on each authorized HTTP request\n- Only US and NA locations are granted access to authorized pages\n- Non-NA users are shown a region denied message\n\n### Issue\nThe geographic check occurs at the middleware level after user creation, not at the authentication boundary. This allows user records to be created for non-NA users even though they cannot access the app.",
+  "acceptance_criteria": [
+    "Non-NA users cannot bypass geographic access restrictions",
+    "All users have location data recorded during authentication",
+    "Geographic validation middleware correctly blocks non-NA access"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Reviewed geographic access middleware to ensure non-NA users are properly blocked. Location attribute checked during authentication flow.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-553"],
+  "source_files": [],
+  "implementation_notes": "Architecture uses usedByTeam trait with middleware checking SalesforceInstanceLocationLookup for region. User records are still created in DB for non-NA users but access is denied at middleware level. Question raised about whether to block DB entry entirely based on location.",
+  "comment_summary": "Waqar explained the current architecture where users are created in DB regardless of location, with middleware blocking non-NA access on each request. Asked whether DB entry should be blocked at the authentication boundary instead.",
+  "comment_count": 1
+}

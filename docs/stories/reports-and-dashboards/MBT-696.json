@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-696",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Revoke and Refresh Token Flow for Tableau Personal Access Token",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-10T21:46:03.324-0700",
+  "updated": "2024-05-24T02:26:02.249-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "security"],
+  "story": "As a product administrator, I want to revoke my Tableau token and add a new one without seeing the stored token, so that my credentials are protected from being queried or displayed in the web application.",
+  "description": "After saving a Tableau Personal Access Token, the system no longer returns the token value to the web application on subsequent page loads. Instead, the user is shown a Revoke Token option and a Refresh Token option, mimicking Tableau's own token management pattern.\n\nThis prevents the stored PAT from being exposed through API queries. To update credentials, the user revokes the existing token and enters a new one. The refresh token option re-authenticates using the stored credentials to obtain a fresh auth token for Pulse API calls.",
+  "acceptance_criteria": [
+    "Saved Personal Access Token is never returned to the frontend",
+    "User sees a Revoke Token option after saving credentials",
+    "User sees a Refresh Token option to re-authenticate",
+    "Revoking clears the stored token and prompts for new credentials",
+    "Refresh Token re-authenticates using stored credentials without exposing them",
+    "Token management works consistently from both Settings and Metrics pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Replaced the editable token field with Revoke and Refresh Token buttons after initial save. Token value is no longer displayed or queryable from the frontend.",
+  "middleware_changes": "API endpoint no longer returns the PAT value in responses. Added revoke and refresh token server-side logic.",
+  "data_model_changes": "",
+  "api_changes": "Token retrieval endpoint now excludes the PAT value. New revoke endpoint clears stored credentials. Refresh endpoint re-authenticates with stored credentials.",
+  "dependencies": ["MBT-596", "MBT-622"],
+  "source_files": [],
+  "implementation_notes": "The approach mirrors Tableau's own PAT management pattern. After the user saves credentials, only the auth token (obtained from Tableau API sign-in) is used for Pulse API calls. The PAT itself is never sent back to the client.",
+  "comment_summary": "Waqar implemented revoke and refresh token options on the settings page and shared screenshots. Ryan approved the approach. Waqar confirmed the same pattern would be applied to the metrics page as well.",
+  "comment_count": 4
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-209",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Line of Business Update Disables Metric Navigation Toggle",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-27T18:28:17.768-0700",
+  "updated": "2024-05-24T02:24:30.938-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Previous/Next metric navigation to continue working after I update a taxonomy value, so that I can efficiently edit multiple metrics in sequence without reopening the sidebar.",
+  "description": "Bug fix for an issue where updating the Line of Business or Topic taxonomy on a metric caused the Previous/Next navigation buttons in the sidebar to stop functioning. After the taxonomy update, clicking the arrows would not advance to the adjacent metric, and the UI remained locked on the current metric. Closing and reopening the sidebar restored normal behavior.\n\nThe root cause was that the taxonomy update event was interfering with the sidebar's metric navigation state.",
+  "acceptance_criteria": [
+    "Previous/Next navigation continues to work after updating Line of Business on a metric",
+    "Previous/Next navigation continues to work after updating Topic on a metric",
+    "Sidebar data and main data table both update correctly when navigating after a taxonomy change",
+    "No need to close and reopen the sidebar to restore navigation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixes the sidebar Previous/Next navigation so it remains functional after a taxonomy (Line of Business or Topic) update. Navigation state is no longer reset by taxonomy change events.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-137", "MBT-139"],
+  "source_files": [],
+  "implementation_notes": "The taxonomy update handler was resetting the navigation state. Fix ensures the metric index tracking persists through taxonomy save events.",
+  "comment_summary": "Developer acknowledged the issue and fixed it promptly. Pushed fix for review.",
+  "comment_count": 1
+}

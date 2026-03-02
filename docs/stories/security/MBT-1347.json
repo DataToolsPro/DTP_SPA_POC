@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1347",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Cloudflare Zero Trust Setup for Developer Access and Static Egress IP",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T20:55:53.420-0800",
+  "updated": "2026-03-01T04:24:38.466-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Set up Cloudflare Zero Trust for securing developer access to non-production environments and provisioning a static egress IP for client system connectivity.\n\n### Requirements\n\n1. **Developer Access via Zero Trust**\n   - Define policies authenticating developers via identity provider\n   - Lock down dev and stage environments from the public internet\n   - Allow identified developers to access these environments through Cloudflare\n\n2. **Dedicated Static Egress IP**\n   - Obtain one static IP through Cloudflare exclusively for outbound requests to client systems (e.g., Snowflake)\n   - Restrict that IP's use to internal machines and developers only\n   - Instruct clients to whitelist this IP for their systems\n\n3. **Fully Integrated within Cloudflare** — no external tools needed",
+  "acceptance_criteria": [
+    "Dev and stage environments are not accessible from the public internet",
+    "Developers can access non-production environments via Cloudflare Zero Trust",
+    "Identity provider-based authentication policies are configured",
+    "A dedicated static egress IP is provisioned for outbound client connections",
+    "Static IP is restricted to internal machines and developer traffic only",
+    "All configuration is within Cloudflare services"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1345"],
+  "source_files": [],
+  "implementation_notes": "Cloudflare Zero Trust replaces VPN-style access for dev/stage environments. Static egress IP required for client-side whitelisting (e.g., Snowflake IP restrictions). All configuration within Cloudflare ecosystem — no external tooling required.",
+  "comment_summary": "",
+  "comment_count": 0
+}

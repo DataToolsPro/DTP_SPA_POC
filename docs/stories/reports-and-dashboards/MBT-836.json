@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-836",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Detect and Merge Duplicate Tableau Pulse Metrics into Existing Glossary",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-27T20:38:21.819-0700",
+  "updated": "2026-03-01T03:50:34.680-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "metrics"],
+  "story": "As a data analyst, I want the system to detect when a Tableau Pulse metric already exists in my glossary and offer to merge it, so that I avoid creating duplicate metric entries.",
+  "description": "When connecting and adding metrics from Tableau Pulse, the system should check if the metric already exists in the DataTools Pro metrics glossary. Detection uses a case-insensitive exact match against metric names and aliases.\n\n### Behavior\n- During fetch and save, each Tableau metric is checked against existing metric names and aliases\n- **Suggested metrics**: New metrics that don't match any existing entries\n- **Ignored metrics**: Metrics that match an existing name or alias\n\n### UI\n- Tiles showing count of total metrics, suggested, and ignored\n- Suggested metrics list with option to ignore individual metrics\n- Ignored metrics list with option to revert back to suggested\n- Merge button to combine a Tableau metric with an existing glossary entry",
+  "acceptance_criteria": [
+    "System checks each Tableau Pulse metric against existing metric names and aliases (case-insensitive)",
+    "Metrics matching an existing name or alias are marked as 'ignored'",
+    "Non-matching metrics appear in the 'suggested' list",
+    "Tiles show counts for total, suggested, and ignored metrics",
+    "Users can move metrics between suggested and ignored lists",
+    "Merge button allows combining a Tableau metric with an existing glossary entry"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New metric ingestion UI with suggested/ignored/merged tiles, sortable lists, and merge workflow matching the existing metric analyst pattern.",
+  "middleware_changes": "Case-insensitive matching logic against metric names and aliases during Tableau Pulse metric import. Suggested/ignored/merge state management.",
+  "data_model_changes": "",
+  "api_changes": "Extended Tableau Pulse import endpoint to include deduplication logic and merge capability.",
+  "dependencies": ["MBT-835"],
+  "source_files": [],
+  "implementation_notes": "Developer sequenced this after MBT-835 to have access to the Tableau metrics. Matching uses lowercase exact match on both metric name and alias fields. Future enhancement will use a web service for more sophisticated analysis.",
+  "comment_summary": "Developer completed the implementation with tiles for suggested/ignored metrics, merge functionality, and deduplication. Screenshots provided showing the three-tile interface and merge workflow.",
+  "comment_count": 3
+}

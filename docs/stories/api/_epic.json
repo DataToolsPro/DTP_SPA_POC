@@ -1,0 +1,28 @@
+{
+  "folder": "api",
+  "label": "DataTools REST API",
+  "type": "platform",
+  "doc_tag": "API",
+  "epic_count": 1,
+  "epics": [
+    {
+      "epic_key": "MBT-342",
+      "epic_id": "10377",
+      "summary": "DataTools REST API",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 10,
+  "stories": [
+    "MBT-101",
+    "MBT-333",
+    "MBT-470",
+    "MBT-718",
+    "MBT-866",
+    "MBT-884",
+    "MBT-920",
+    "MBT-1062",
+    "MBT-1081",
+    "MBT-1241"
+  ]
+}

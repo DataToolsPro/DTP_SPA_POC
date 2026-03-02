@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-816",
+  "epic_key": "MBT-818",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix Duplicate Report Listing When Adding Dashboard to a Metric",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T19:00:57.113-0700",
+  "updated": "2026-03-01T01:31:11.504-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user adding a dashboard to a metric, I want the report selection list to show each report only once, so that I can clearly identify and select the correct reports without confusion from duplicate entries.",
+  "description": "After adding a dashboard to a metric, the system prompts the user to associate reports. The report list was displaying duplicate entries of the same report, making it difficult to identify unique reports.\n\n## Root Cause\n\nThe query joining reports to the dashboard-metric mapping was producing a cartesian product due to missing deduplication. Reports with the same Salesforce report ID appeared multiple times when they existed in the mapping table across multiple relationships.\n\n## Fix\n\nA deduplication step was added to consolidate the report list. The solution ensures each unique report (by Salesforce report ID) appears only once in the selection list, regardless of how many mapping relationships exist.\n\n## Investigation\n\nInitial investigation across three environments (fundacanna, dtpwaqar, goodmangroup) did not reproduce the issue. The duplicates were specific to environments where custom links (added via \"Add Custom Link\") coexisted with Salesforce-sourced reports. The bug was confirmed by comparing Salesforce report IDs in the affected environment, which showed identical IDs appearing multiple times.",
+  "acceptance_criteria": [
+    "Report selection list shows each unique report only once when adding a dashboard to a metric",
+    "Duplicate reports are consolidated by Salesforce report ID",
+    "Custom-linked reports (added via 'Add Custom Link') and Salesforce-sourced reports do not cause cartesian product duplication",
+    "Fix works across all customer environments"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Report selection list when adding a dashboard to a metric now shows each report exactly once, eliminating confusing duplicate entries.",
+  "middleware_changes": "Query that fetches reports for the dashboard-metric association now includes deduplication logic (GROUP BY or DISTINCT) to prevent cartesian products from the mapping table join.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The duplication occurred because the join between reports and the dashboard-metric mapping table produced a cartesian product when a report existed in multiple mapping relationships. The fix adds GROUP BY / DISTINCT on the Salesforce report ID. The bug was environment-specific — it only manifested when custom links coexisted with Salesforce-sourced reports in the mapping table. Testing was required in the specific affected environment to reproduce.",
+  "comment_summary": "Developer initially could not reproduce across three test environments and suspected the duplicates were Salesforce-sourced. Product owner provided screenshots showing identical Salesforce report IDs appearing multiple times, confirming the duplication was in the application query rather than Salesforce data. Developer requested access to the specific environment to reproduce, then implemented a deduplication solution on the development server. Fix was reviewed and approved.",
+  "comment_count": 7
+}

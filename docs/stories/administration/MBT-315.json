@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-315",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Email Validation Error Handling on User Invitation",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T20:16:07.104-0700",
+  "updated": "2024-05-24T02:25:00.795-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to see a clear error message when I enter an invalid email address while inviting a user, so that I can correct the input without encountering a system error page.",
+  "description": "Fix error handling when an invalid email address is entered during the user invitation flow. Previously, submitting an invalid email caused an unhandled server error. The fix adds client-side or server-side email format validation with a user-friendly error message.",
+  "acceptance_criteria": [
+    "Entering an invalid email during invitation shows a user-friendly validation error",
+    "No unhandled server errors or Laravel error pages for invalid email input",
+    "Valid emails continue to process normally"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "User-friendly validation error message displayed when an invalid email is entered in the invitation form.",
+  "middleware_changes": "Added email format validation to the invitation endpoint with proper error response handling.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed the validation issue and pushed to staging for review.",
+  "comment_count": 1
+}

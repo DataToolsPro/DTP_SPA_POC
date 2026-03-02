@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-230",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Simplify Alias Modal UX with Tooltip Explanation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-09T21:40:40.025-0700",
+  "updated": "2026-03-01T04:06:45.564-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the alias modal to have a simplified layout with a clear tooltip explaining what an alias is, so that I can quickly understand and add alternative names for metrics.",
+  "description": "The alias management modal was simplified to reduce visual clutter:\n\n1. **Removed** the card class and card header wrapper, leaving just the input text box and action button\n2. **Added** an \"i\" (info) icon to the header with a tooltip explaining the concept: *\"Alias is an alternative name that you use for a metric name. Example: SQL, Sales Qualified Lead and Qualified Lead could all mean the same thing.\"*\n\nThis streamlines the UX for adding and managing metric aliases.",
+  "acceptance_criteria": [
+    "Alias modal no longer uses card class or card header styling",
+    "An info icon appears in the alias section header",
+    "Hovering the info icon displays a tooltip explaining what an alias is",
+    "Tooltip text reads: 'Alias is an alternative name that you use for a metric name. Example: SQL, Sales Qualified Lead and Qualified Lead could all mean the same thing.'",
+    "Input text box and action button remain functional"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Simplified the alias modal by removing the card wrapper and adding an info icon tooltip. The modal now shows just the input field and button with a contextual tooltip explaining the alias concept.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation had a z-index issue where the tooltip rendered behind the popup. This was resolved by consulting a front-end developer for the correct tooltip positioning.",
+  "comment_summary": "Developer initially had a tooltip z-index issue with the tooltip showing behind the modal popup. After consulting with a front-end colleague, the issue was resolved and the change was completed.",
+  "comment_count": 2
+}

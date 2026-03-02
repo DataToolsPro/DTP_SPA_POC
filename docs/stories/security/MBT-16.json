@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-16",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Cloudflare Web Application Firewall Configuration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2023-01-17T19:56:47.319-0800",
+  "updated": "2024-05-24T02:24:39.163-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": ["Security"],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Review and configure a Web Application Firewall (WAF) for the DataTools Pro application. WAFs are intended to reduce compromises on public-facing web applications caused by poor coding or application management practices. This requires research into Cloudflare's WAF capabilities and configuration options appropriate for the application's traffic patterns and security requirements.",
+  "acceptance_criteria": [
+    "Cloudflare WAF rules are reviewed and configured for the production domain",
+    "WAF configuration does not block legitimate application traffic",
+    "Security rules are documented for future reference"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Research task requiring investigation of Cloudflare WAF capabilities. Assigned to Ryan for infrastructure-level configuration.",
+  "comment_summary": "",
+  "comment_count": 0
+}

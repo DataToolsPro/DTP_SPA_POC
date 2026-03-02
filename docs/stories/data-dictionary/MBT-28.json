@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-28",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Breadcrumb Navigation with Object Selector Dropdown",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T21:03:44.680-0800",
+  "updated": "2024-05-24T02:24:38.021-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want a breadcrumb with an object selector dropdown on the detail page, so that I can see where I am in the application and quickly switch to another Salesforce object without navigating back to the scorecard.",
+  "description": "The object detail page needs a breadcrumb navigation element that provides location context and quick object switching.\n\nBreadcrumb format: `Objects >> [Object Dropdown]`\n\n- 'Objects' is a clickable link that navigates back to the scorecard view.\n- The object name is a dropdown pre-selected with the current object, populated with all objects in the user's configured data model.\n- Selecting a different object from the dropdown navigates to that object's detail page.\n- The breadcrumb is right-aligned with 8px top margin.\n\nEdge case: If a user has two windows open and deletes an object in one, the dropdown in the other window may still list it. The existing validation rule (MBT-25) handles this scenario on navigation.",
+  "acceptance_criteria": [
+    "Breadcrumb displays 'Objects >> [Current Object]' format",
+    "'Objects' link navigates back to the scorecard view",
+    "Current object name is a dropdown control pre-selected with the active object",
+    "Dropdown lists all Salesforce objects in the user's configured data model",
+    "Selecting a different object navigates to that object's detail page",
+    "Breadcrumb is right-aligned with 8px top margin"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a breadcrumb bar at the top of the detail page with a clickable 'Objects' link and a dropdown for switching objects. Right-aligned layout with 8px top margin.",
+  "middleware_changes": "Loads the list of configured objects for the current user to populate the breadcrumb dropdown on page load.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-25"],
+  "source_files": [],
+  "implementation_notes": "The dropdown is populated from the user's data model on page load. When the dropdown value changes, the page reloads with the new object parameter. The validation rule from MBT-25 handles stale object references.",
+  "comment_summary": "Developer added breadcrumbs with an object dropdown that reloads the page on selection change. Expressed uncertainty about the approach but it was confirmed as correct behavior.",
+  "comment_count": 1
+}

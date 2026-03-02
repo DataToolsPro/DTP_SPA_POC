@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1339",
+  "epic_key": "MBT-1008",
+  "feature_folder": "scheduling-and-alerting",
+  "title": "Define Strategy for Scheduled vs On-Demand Data Refresh",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:44.242-0800",
+  "updated": "2026-03-01T04:21:24.216-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Define the strategy for data refresh in DataTools Pro: scheduled background refresh (cron jobs) versus on-demand end-user-driven refresh. This is a discovery and alignment task to determine which jobs can technically run without an end user being logged in, and which should remain user-triggered.\n\nThe outcome should document the chosen strategy and update relevant documentation including the product README and tool-specific docs where they reference sync behavior.",
+  "acceptance_criteria": [
+    "Strategy for scheduled vs on-demand refresh is chosen and documented",
+    "docs/product/README.md is updated with the refresh strategy",
+    "Tool-specific documentation is updated where they reference sync behavior",
+    "Clear definition of which jobs can run autonomously vs which require user session"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Strategy decision for cron-based scheduled jobs vs on-demand user-triggered refresh. Implementation will follow based on chosen approach.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of Phase 4. Current options include on-end-user refresh. Need to assess which jobs can run headlessly via cron and which require an active user session. See docs/JIRA_TICKET_BACKLOG.md Phase 4.",
+  "comment_summary": "",
+  "comment_count": 0
+}

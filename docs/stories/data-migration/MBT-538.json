@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-538",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Merge SQL and Mapping Enhancements from Production to Staging",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-24T22:25:31.803-0800",
+  "updated": "2024-05-24T02:25:42.360-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Merge the SQL code generation updates and the mapping side panel auto-select feature (MBT-511, MBT-482) from production into the staging environment. These enhancements were deployed directly to production for a customer demo and need to be synchronized back to the development/staging branch.",
+  "acceptance_criteria": [
+    "SQL generation enhancements from MBT-482 are available on staging",
+    "Mapping auto-select feature from MBT-511 is available on staging",
+    "Staging environment matches production functionality"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-511", "MBT-482"],
+  "source_files": [],
+  "implementation_notes": "Code was deployed to production first for a time-sensitive customer demo, requiring a reverse merge to staging to keep environments in sync.",
+  "comment_summary": "Developer confirmed the specific tickets (MBT-511, MBT-482) that needed merging and completed the merge to staging.",
+  "comment_count": 6
+}

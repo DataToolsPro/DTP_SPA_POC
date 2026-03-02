@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-467",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Fix Staging Login Failure",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-08T17:22:00.273-0800",
+  "updated": "2024-05-24T02:25:30.957-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to be able to log into the staging environment without errors, so that I can test and validate features before they go to production.",
+  "description": "Fix a login failure on the staging environment that prevented the product owner from authenticating. The issue was related to the region check / sandbox instance resolution logic introduced in MBT-468.\n\nThe fix was implemented as part of the MBT-468 resolution, which addressed the broader sandbox instance lookup problem.",
+  "acceptance_criteria": [
+    "Users can successfully log into the staging environment",
+    "Login does not throw errors related to region validation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Resolves login failure that showed an error screen on the staging environment.",
+  "middleware_changes": "Fix applied in MBT-468 to handle sandbox instance resolution during region check middleware.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-468"],
+  "source_files": [],
+  "implementation_notes": "This was a symptom of the sandbox region check issue fixed in MBT-468.",
+  "comment_summary": "Developer noted the fix was applied in MBT-468.",
+  "comment_count": 1
+}

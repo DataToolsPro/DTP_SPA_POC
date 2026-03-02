@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-92",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Preserve Navigation Context When Drilling into Object Views",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-11T21:25:37.921-0700",
+  "updated": "2026-03-01T03:44:23.006-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a data migration specialist, I want the application to preserve my current tab context when I drill from the migration view into an object, so that I land on the same tab I was working in rather than the default Dictionary view.",
+  "description": "When drilling from the Migration view into a specific object (e.g., Account), the application was navigating to the default Dictionary tab instead of preserving the Migration context. This broke the user's workflow continuity.\n\nThe solution uses a URL parameter (`view=migration`) to indicate which tab context the user came from, ensuring the object page opens to the correct tab.\n\n### Expected Behavior\nClicking an object link from the Migration view navigates to `object.php?object=Account&view=migration`, landing the user on the Migration tab of that object.",
+  "acceptance_criteria": [
+    "Drilling from Migration view into an object opens the object on the Migration tab",
+    "URL includes a `view` parameter that controls which tab is active on load",
+    "Default behavior without the parameter still opens the Dictionary tab",
+    "Back navigation returns the user to their previous position in the Migration view"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Object drill-down links from the Migration view now include a `view` parameter that preserves the user's tab context, landing them on the Migration tab instead of the default Dictionary tab.",
+  "middleware_changes": "Object page reads the `view` URL parameter and activates the corresponding tab on page load.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implemented via a URL query parameter `view=migration` appended to drill-down links. The object page checks for this parameter on load and switches to the appropriate tab.",
+  "comment_summary": "Developer completed the implementation and requested review. No further discussion.",
+  "comment_count": 1
+}

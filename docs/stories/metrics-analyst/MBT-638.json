@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-638",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix Empty Step 1 Results When Re-Running Metrics Analyst After Completion",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-21T22:02:29.446-0700",
+  "updated": "2024-05-24T02:25:38.804-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to re-run the Metrics Analyst on a new dashboard after completing a previous analysis, so that I can analyze multiple dashboards in sequence without encountering empty results.",
+  "description": "After completing a full Metrics Analyst cycle (run analysis, create metrics, complete), restarting the Analyst and selecting a new dashboard results in an empty Step 1. The UX shows no data. A browser refresh resolves the issue, indicating stale state is carried over from the previous session.\n\nReproduction steps:\n1. Run Metrics Analyst for a dashboard\n2. Create a new metric from recommendations\n3. Complete the workflow\n4. Re-start Metrics Analyst\n5. Add a new dashboard and run Step 1\n6. Result: empty UX with no data",
+  "acceptance_criteria": [
+    "Re-starting Metrics Analyst after completion properly resets all state",
+    "Selecting a new dashboard after restart produces Step 1 results",
+    "No browser refresh is required between analysis sessions",
+    "Previous session data does not interfere with new analysis"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the empty state issue when re-running Metrics Analyst after a completed session. Results now display correctly without requiring a browser refresh.",
+  "middleware_changes": "Fixed state cleanup on Metrics Analyst restart to properly reset previous session data before initiating a new analysis.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The root cause was stale state from the previous analysis session not being cleared on restart. A HAR file was provided for debugging.",
+  "comment_summary": "Developer fixed the state cleanup issue on staging.",
+  "comment_count": 1
+}

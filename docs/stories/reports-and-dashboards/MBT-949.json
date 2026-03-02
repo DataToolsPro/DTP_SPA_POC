@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-949", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Add Prominent Show Filters Button When Filter Pane Is Closed",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-12T17:18:16.046-0700", "updated": "2024-11-03T19:00:01.552-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want a visible 'Show Filters' button in front of the search bar when the filter pane is closed, so I can easily reopen filters without hunting for the control.",
+  "description": "UX improvement: when the filter navigation pane is closed, a prominent 'Show Filters' button appears in front of the search bar to make filter access front and center. This keeps the experience consistent and ensures users can always easily access filtering.",
+  "acceptance_criteria": ["Show Filters button appears in front of search when filter pane is closed", "Clicking the button reopens the filter pane", "Button is hidden when filter pane is already open"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a Show Filters button that appears in front of the search bar when the filter pane is closed.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-946"], "source_files": [],
+  "implementation_notes": "Button visibility is toggled based on filter pane state.",
+  "comment_summary": "Waqar implemented and deployed to development for review.", "comment_count": 1
+}

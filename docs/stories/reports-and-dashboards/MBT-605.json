@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-605",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Tableau Token Expiration Check and Auto-Renewal",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-01T02:34:09.999-0800",
+  "updated": "2024-05-24T02:25:39.452-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "security"],
+  "story": "",
+  "description": "Implements automatic token expiration checking for Tableau API authentication. Tableau Personal Access Tokens expire after 7 days. Before making any API request to Tableau, the system now checks if the stored token is still valid. If expired, a new token is automatically regenerated using the stored credentials without requiring user intervention.\n\nThis ensures a seamless experience when users click the Import from Tableau button — the token renewal is transparent.",
+  "acceptance_criteria": [
+    "System checks token expiration before each Tableau API request",
+    "Expired tokens are automatically regenerated using stored credentials",
+    "Token renewal is transparent to the user with no additional prompts",
+    "Valid tokens within the 7-day window are reused without regeneration"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added token expiration check logic before Tableau API calls. If the stored token is older than 7 days, the system automatically re-authenticates using the stored PAT credentials and replaces the token.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "Tableau PATs expire after 7 days. The auto-renewal triggers only when the user initiates a Tableau action (e.g., Import from Tableau). No background renewal process.",
+  "comment_summary": "Waqar implemented and confirmed that token auto-regeneration triggers only when the user clicks Import from Tableau and the existing token has expired.",
+  "comment_count": 1
+}

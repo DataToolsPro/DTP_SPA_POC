@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-95",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Clean Up Legacy and Development Files from Stage Directory",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-16T11:42:02.593-0700",
+  "updated": "2026-03-01T03:44:58.832-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Clean up the staging directory by removing development, legacy, and backup files that are no longer used in production. Originally proposed creating an 'archive' folder at root or prefixing non-production files with `test_` or `_archive`. Developer opted to simply remove unused files since Git history preserves them for future retrieval.",
+  "acceptance_criteria": [
+    "All unused development and legacy files are removed from the stage directory",
+    "No production-critical files are accidentally removed",
+    "Files are recoverable from Git history if needed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Unused files were removed directly rather than archived, since Git history serves as the archive. This keeps the deployment directory clean.",
+  "comment_summary": "Developer removed unused and backup files, noting that Git history makes a separate archive folder unnecessary.",
+  "comment_count": 1
+}

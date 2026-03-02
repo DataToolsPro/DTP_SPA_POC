@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-417",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix Pendo User Tracking to Log All Users",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-14T17:00:24.143-0800",
+  "updated": "2026-03-01T04:17:00.884-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Both the internal event logging and Pendo analytics tracking are only recording a single user (the product owner's email). Other users in the system are not being tracked. This is a critical issue for auditing, analytics, and understanding product usage.\n\n### Issues\n1. Event logs in the database are all linked to one email address\n2. Pendo only shows 1 user despite multiple active users\n\n### Root Cause\nThe Pendo script was using a hardcoded or incorrectly scoped user ID instead of the authenticated user's ID. The user ID field needed to be dynamically populated from the session.",
+  "acceptance_criteria": [
+    "Pendo tracks all authenticated users, not just one",
+    "Event logs correctly attribute actions to the logged-in user",
+    "Pendo dashboard shows multiple unique users"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed Pendo initialization to use the authenticated user's ID dynamically from the session instead of a static value.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Pendo script is included on every page via a layout tag. The user ID was fixed but new entries still were not appearing in the Pendo dashboard. Decision was made to purge the Pendo account and create a new one with a fresh key for clean testing.",
+  "comment_summary": "Developer confirmed the Pendo script was included on all pages and fixed the user ID. However, new entries weren't appearing in the Pendo dashboard. Decision was to purge the Pendo account and re-test with a fresh setup.",
+  "comment_count": 3
+}

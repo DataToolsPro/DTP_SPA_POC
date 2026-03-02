@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-282",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Salesforce Instance URL and Environment Detection for Invitations",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-17T23:25:58.672-0700",
+  "updated": "2024-05-24T02:25:01.382-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "",
+  "description": "Move Salesforce instance URL management from the user model to an account-level model and add sandbox/production environment detection for invitations.\n\nChanges implemented:\n1. **Account-level instance URL**: Created a `SalesforceUserInformation` model to store instance_url and base_url at the account level rather than the user level\n2. **Environment detection**: The system detects whether a user's Salesforce instance is a sandbox or production environment based on the base_url\n3. **Invitation type**: Added an `invitation_type` field to the `team_invites` table to record whether the invitation is for a sandbox or production environment\n4. **Validation on acceptance**: When accepting an invitation, the system checks that both the Salesforce organization and the environment type (sandbox/production) match\n5. **Service container**: Implemented a centralized service container for accessing Salesforce instance URL data",
+  "acceptance_criteria": [
+    "Salesforce instance URL is stored at the account level, not the user level",
+    "System detects sandbox vs production environment from the base_url",
+    "Invitation form includes sandbox/production environment selection",
+    "Invitation acceptance validates matching Salesforce org AND environment type",
+    "Mismatched environment types are rejected with an error"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Invitation form includes an environment type selector (sandbox or production) so the inviter can specify which Salesforce environment the invited user should connect from.",
+  "middleware_changes": "New SalesforceUserInformation model and service container for centralized access to Salesforce instance data. Invitation acceptance validates both org and environment match.",
+  "data_model_changes": "New SalesforceUserInformation model storing instance_url, base_url, and environment type at the account level. New invitation_type field in team_invites table.",
+  "api_changes": "",
+  "dependencies": ["MBT-280"],
+  "source_files": [],
+  "implementation_notes": "Each user in Salesforce is 1:1 with an instance, but the system now stores this at the account level for proper shared account support. The base_url distinguishes sandbox (test.salesforce.com) from production (login.salesforce.com). Email suffixes like .prod are used for multi-instance users.",
+  "comment_summary": "Developer proposed moving instance_url to an account-level model for cleaner data management. Product agreed and clarified that users are 1:1 with Salesforce instances. Developer implemented environment detection and added invitation_type to the invites table.",
+  "comment_count": 10
+}

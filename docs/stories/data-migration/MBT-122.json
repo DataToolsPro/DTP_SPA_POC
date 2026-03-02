@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-122",
+  "skipped": true,
+  "skip_reason": "status is Withdrawn",
+  "title": "Abstract the Data Mapping Markup into its own PHP",
+  "status": "Withdrawn",
+  "feature_folder": "data-migration"
+}

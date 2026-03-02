@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1166",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Evaluate Redis Caching for Repetitive Database Queries",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-07-13T12:12:57.948-0700",
+  "updated": "2026-03-01T04:03:51.107-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Evaluate and implement Redis caching to improve scalability. Many queries in the application are repetitive, serving the same data multiple times unless a Salesforce refresh is triggered. Redis can serve as an in-memory cache layer to reduce database round trips for these read-heavy, infrequently changing data sets.\n\nThis becomes increasingly important as the user base grows and concurrent requests increase.",
+  "acceptance_criteria": [
+    "Redis is evaluated as a caching layer for repetitive queries",
+    "Candidate queries are identified for caching",
+    "Cache invalidation strategy is defined (e.g., on Salesforce refresh)",
+    "Implementation plan is documented"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Cache layer added for repetitive queries, with invalidation on Salesforce data refresh.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Many queries serve the same data unless a Salesforce refresh is triggered. Redis can cache these results and invalidate on refresh. Laravel has built-in Redis cache driver support.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

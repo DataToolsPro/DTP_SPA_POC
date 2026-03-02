@@ -1,0 +1,29 @@
+{
+  "issue_key": "MBT-702",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Dictionary Object Dropdown Bug",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-13T13:53:25.077-0700",
+  "updated": "2024-05-24T02:26:02.179-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "",
+  "description": "Fixes a bug in the dictionary page object dropdown selector. The issue was reported with a screenshot showing incorrect dropdown behavior. Resolved quickly on staging.",
+  "acceptance_criteria": [
+    "Dictionary object dropdown works correctly"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed dictionary object dropdown behavior.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed and deployed to staging.",
+  "comment_count": 1
+}

@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-389",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Import Metrics Creates Duplicate Taxonomy Values",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-22T21:20:46.646-0800",
+  "updated": "2024-05-24T02:25:06.049-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Bug fix for the bulk metric import process where duplicate taxonomy values (Line of Business, Topic) were being created in the database. When importing metrics with repeated category values, the import script was inserting every occurrence instead of deduplicating.\n\nThe fix adds a distinct-value check before inserting taxonomy values — if a Line of Business or Topic value already exists for the tenant, the existing record is reused rather than creating a duplicate.",
+  "acceptance_criteria": [
+    "Importing metrics with repeated Line of Business values creates only distinct entries",
+    "Importing metrics with repeated Topic values creates only distinct entries",
+    "Existing taxonomy values are reused rather than duplicated"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Import processing now deduplicates taxonomy values before insertion, checking for existing values per tenant.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-291"],
+  "source_files": [],
+  "implementation_notes": "The import script now extracts distinct values from the imported data for each taxonomy before database insertion. Applied to both staging and production.",
+  "comment_summary": "Quick fix — developer updated the import script to insert only distinct taxonomy values. Deployed to staging and production.",
+  "comment_count": 2
+}

@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1069",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add Metrics Analyst Analysis to Reports and Dashboards Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-04T17:58:11.656-0800",
+  "updated": "2026-03-01T04:00:00.999-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "metrics"],
+  "story": "As a data analyst, I want to launch the Metrics Analyst analysis from the Reports & Dashboards page, so that I can discover and assign metrics directly while managing dashboards.",
+  "description": "Abstract and reuse the Metrics Analyst code so it can be launched from the Reports & Dashboards page. An 'Analyze Metrics' option is added to dashboards, launching the metrics analyst sidebar with the selected dashboard's metrics.\n\nGoal: manage code from one place for consistency across tabs, reducing duplicate QA effort. Also serves as a demo/onboarding flow from Reports → Metrics Glossary.",
+  "acceptance_criteria": [
+    "Metrics Analyst can be launched from the Reports & Dashboards page",
+    "Abstracted code is shared between Metrics tab and Reports & Dashboards tab",
+    "Analyze Metrics link appears on the Metrics tab within the Reports & Dashboards sidebar",
+    "Analysis results are consistent between both locations"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "'Analyze Metrics' option added to Reports & Dashboards page, launching the shared Metrics Analyst sidebar.",
+  "middleware_changes": "Abstracted Metrics Analyst code into a reusable module shared between Metrics Glossary and Reports & Dashboards pages.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Code was abstracted from the Metrics Glossary page to be reusable. A 'Metric Analytics' link was added to the Metrics tab within the Reports & Dashboards sidebar.",
+  "comment_summary": "Developer abstracted the analytics code and integrated it into the Reports & Dashboards page with a screenshot of the new Metric Analytics link.",
+  "comment_count": 1
+}

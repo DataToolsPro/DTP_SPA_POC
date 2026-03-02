@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-986",
+  "epic_key": "MBT-885",
+  "feature_folder": "integrations",
+  "title": "Fix HubSpot Trademark Capitalization in Settings",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-10T15:53:44.307-0800",
+  "updated": "2024-11-28T10:08:01.278-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user viewing the settings page, I want to see 'HubSpot' spelled correctly with proper capitalization so that the application reflects accurate trademark compliance.",
+  "description": "Fix the display of 'hubspot' in the settings navigation and page to use the correct trademark capitalization 'HubSpot' (capital H and capital S). This ensures compliance with HubSpot's brand guidelines.",
+  "acceptance_criteria": [
+    "Settings navigation shows 'HubSpot' with correct capitalization",
+    "HubSpot settings page title uses correct capitalization",
+    "All references to HubSpot in the UI use the correct trademark format"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated all UI references from 'hubspot' to 'HubSpot' to comply with trademark capitalization requirements.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-886"],
+  "source_files": [],
+  "implementation_notes": "Simple text label fix across the settings UI to match HubSpot's official trademark capitalization.",
+  "comment_summary": "Developer requested clarification, then fixed the capitalization on the development environment.",
+  "comment_count": 2
+}

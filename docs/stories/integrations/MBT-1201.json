@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1201",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Update Filter UI in Streamlit App to Show Empty Column on Expand",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-04T03:11:43.174-0700",
+  "updated": "2026-03-01T04:06:51.699-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "As a data analyst using the Streamlit app, I want the filter section to expand showing an empty column without a button so that I can add filters more intuitively.",
+  "description": "Update the filter UI in the Streamlit app so that expanding the filter section shows an empty column immediately, rather than displaying a button to add a filter. This provides a more direct interaction pattern for adding filter criteria.",
+  "acceptance_criteria": [
+    "Expanding the filter section shows an empty column for input",
+    "No separate 'add filter' button is required to begin filtering",
+    "Existing filter functionality remains intact"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Filter section expands to show an empty column ready for input instead of showing a button to add a filter.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1200"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

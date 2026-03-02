@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-187",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Metrics Detail View Default State and Group By Toggle Fix",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T21:59:45.893-0700",
+  "updated": "2024-05-24T02:24:31.852-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the metrics detail view to be collapsed by default, so that I see a simplified view unless I explicitly choose to see more detail.",
+  "description": "Set the metrics detail view to be off/collapsed by default for simplicity. Also fix a bug where toggling the Group By control inadvertently re-enables the detail view.\n\n## Changes\n- Default the detail toggle to off (collapsed)\n- Fix Group By toggle re-enabling the detail view\n- Detail view state does not need database persistence — resetting on page reload is acceptable",
+  "acceptance_criteria": [
+    "Metrics detail view defaults to collapsed/off on page load",
+    "Toggling Group By does not re-enable the detail view",
+    "User can manually toggle detail view on when needed",
+    "Page reload resets detail view to collapsed state"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Metrics detail view defaults to collapsed for a simpler initial experience. Fixed a bug where Group By toggle was inadvertently restoring the detail view.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer proactively asked about database persistence for the toggle state. Decision was made to keep it session-only (no database persistence) for simplicity.",
+  "comment_summary": "Developer fixed the bug and asked about persisting the toggle state to the database. Ryan confirmed session-only behavior was acceptable — no database persistence needed.",
+  "comment_count": 2
+}

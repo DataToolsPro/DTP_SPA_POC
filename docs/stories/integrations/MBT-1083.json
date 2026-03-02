@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1083",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Troubleshoot Snowflake OAuth Connectivity for Client Accounts",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-03-02T21:04:33.471-0800",
+  "updated": "2026-03-01T04:04:01.695-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "",
+  "description": "Snowflake connectivity was failing when authenticating with the same account used to create the Security Integration (OAuth client ID and secret). The issue was reproduced: authenticating with the integration-creator account returned an error, while a different service account (SYSTEM_DBT) authenticated successfully.\n\n### Root Cause\nThe account that created the Snowflake Security Integration had elevated permissions that conflicted with the OAuth authentication flow. Using a lower-privileged service account (e.g., SYSTEM_DATATOOLS) resolved the issue.\n\n### Resolution\nCreate a dedicated `SYSTEM_DATATOOLS` user with appropriately scoped permissions for the OAuth flow, rather than using the admin account that created the integration.",
+  "acceptance_criteria": [
+    "Snowflake OAuth authentication succeeds with a dedicated service account",
+    "Authentication does not fail due to elevated permissions on the integration-creator account",
+    "Client accounts can connect to Snowflake through the app"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Snowflake Security Integration creator account has elevated permissions that interfere with OAuth token exchange. A lower-privilege service account works correctly. The fix was to create a dedicated SYSTEM_DATATOOLS user with appropriate read-level permissions.",
+  "comment_summary": "Developer reproduced the issue and identified that the account used to create the Security Integration could not authenticate via OAuth, while a different account (SYSTEM_DBT) worked. The root cause was elevated permissions. Resolution was to create a dedicated lower-privilege service account.",
+  "comment_count": 4
+}

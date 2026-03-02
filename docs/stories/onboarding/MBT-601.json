@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-601",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Add Authenticated Flag to DTP_SIGNUP Table",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-27T21:05:50.260-0800",
+  "updated": "2026-03-01T03:41:16.617-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Add an `Authenticated` field (0/1) to the `DTP_SIGNUP` data model. When the Salesforce OAuth callback URL is processed, the system stamps the authenticated status on the sign-up record. This allows tracking whether a user successfully authenticated through Salesforce independently of whether a user account was ultimately created.",
+  "acceptance_criteria": [
+    "An Authenticated field exists on the DTP_SIGNUP table with values 0 or 1",
+    "The Authenticated field is set to 1 when the Salesforce OAuth callback completes successfully",
+    "Sign-up records accurately reflect authentication status independent of user creation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated the Salesforce OAuth callback handler to set the Authenticated flag to 1 on the corresponding DTP_SIGNUP record upon successful authentication.",
+  "data_model_changes": "Added `Authenticated` boolean field (0/1) to the `DTP_SIGNUP` table.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Deployed to staging and production. Tested by creating a new user on dtpwaqar Salesforce instance, completing the OTP flow, authenticating via Salesforce, and verifying the Authenticated field was updated to 1.",
+  "comment_summary": "Developer confirmed implementation on staging and production with end-to-end testing. A new user was created, went through the OTP and Salesforce auth flow, and the Authenticated field was verified as updated to 1.",
+  "comment_count": 1
+}

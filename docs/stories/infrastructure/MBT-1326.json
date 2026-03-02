@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1326",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Provision New AWS RDS PostgreSQL Databases for Dev, Stage, and Prod",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:51.895-0800",
+  "updated": "2026-02-22T18:47:02.769-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Provision new AWS RDS PostgreSQL databases for the V3 architecture across dev, stage, and production environments. The decision is to use PostgreSQL on RDS (Laravel supports both MySQL and PostgreSQL).\n\n## Approach\n- Create a new database on the same RDS engine rather than provisioning a separate instance to avoid additional cost\n- Traffic will shift between databases during migration; concurrency is not a concern\n- Use the existing dev, stage, and prod PostgreSQL databases and add a second database on the same engine for V3",
+  "acceptance_criteria": [
+    "New PostgreSQL database is created on the existing RDS engine for V3",
+    "Dev, stage, and prod environments each have their own V3 database",
+    "Database connection strings are configured in each environment's .env",
+    "No additional RDS instance cost is incurred"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "New PostgreSQL database provisioned on existing RDS engine for the V3 application. Separate databases for dev, stage, and prod environments.",
+  "api_changes": "",
+  "dependencies": ["MBT-166"],
+  "source_files": [],
+  "implementation_notes": "Part of V3 Architecture Planning. Leverages the PostgreSQL POC work from MBT-166. Uses the same RDS engine to minimize cost while supporting the V3 migration.",
+  "comment_summary": "",
+  "comment_count": 0
+}

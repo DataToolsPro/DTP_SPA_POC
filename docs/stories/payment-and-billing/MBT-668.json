@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-668",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Create Invoice Custom Object in Salesforce",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-27T20:14:24.512-0700",
+  "updated": "2024-05-24T02:25:40.683-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nA new Salesforce custom object is needed to track invoices with a many-to-one relationship to the Account object. QuickBooks serves as the system of record, with Salesforce used for reporting and visibility.\n\n## Object Definition\n\n**Object Name**: Invoice\n**Relationship**: Many-to-one to Account (lookup or master-detail)\n\n### Fields\n| Field | Type |\n|-------|------|\n| Invoice # | Auto-number or text |\n| Status | Picklist |\n| Invoice Date | Date |\n| Due Date | Date |\n| Terms | Text |\n| Reference # | Text |\n| Subtotal | Currency |\n| Amount | Currency |\n| Account | Lookup to Account |\n| QB Id | Text 255, External ID enabled |\n\n## Additional Requirements\n\nAdd a related list on the Account object page layout to display all invoice records for an account. No automations or flows are needed — data will be managed via QuickBooks integration.",
+  "acceptance_criteria": [
+    "Invoice custom object is created in Salesforce PBO instance",
+    "All specified fields are present with correct types",
+    "QB Id field is enabled as an External ID",
+    "Many-to-one relationship to Account exists via lookup",
+    "Related list for Invoices appears on the Account page layout",
+    "No automations or flows are attached to the object"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "New Salesforce custom object 'Invoice' with fields: Invoice#, Status, Invoice Date, Due Date, Terms, Reference#, Subtotal, Amount, Account (lookup), and QB Id (External ID). Related list added to Account page layout. QuickBooks is the system of record.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The related list on Account was automatically created by Salesforce when the lookup relationship was established. QB Id field is set as an External ID to support upsert operations from QuickBooks.",
+  "comment_summary": "Developer created the object and confirmed the related list was auto-added by Salesforce on the Account page layout.",
+  "comment_count": 3
+}

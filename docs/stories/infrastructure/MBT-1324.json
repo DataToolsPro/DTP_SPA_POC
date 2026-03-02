@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1324",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Decision: Standardize on MBT-XX Jira Project Key Convention",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:46.883-0800",
+  "updated": "2026-02-22T18:46:55.945-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Repository documentation and templates were inconsistently using both DTP-XX and MBT-XX as Jira project key prefixes. The active Jira board uses the MBT project at goodmangroup.atlassian.net.\n\n## Decision\nStandardize on **MBT-XX** as the official Jira project key convention across all repository files, documentation, and templates.\n\n## Actions\n- Update all repo files referencing DTP-XX to use MBT-XX\n- Document the decision in docs/WORKFLOW.md\n- Align the team on the convention before creating additional tickets",
+  "acceptance_criteria": [
+    "Decision documented in docs/WORKFLOW.md",
+    "All repository files updated to use MBT-XX convention",
+    "Team is aligned on using MBT-XX for all future tickets"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["docs/WORKFLOW.md"],
+  "implementation_notes": "Part of V3 Architecture Planning Phase 1. Resolves ambiguity between DTP and MBT project key prefixes.",
+  "comment_summary": "",
+  "comment_count": 0
+}

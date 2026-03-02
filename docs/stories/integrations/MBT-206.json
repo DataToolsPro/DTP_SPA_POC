@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-206",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Delete Account Activity Event and Zapier Webhook",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-27T17:52:47.090-0700",
+  "updated": "2026-03-01T03:59:14.629-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "When a user deletes their account, the system should capture a DTSignal event in the events table and forward it to a Zapier webhook endpoint. This follows the same pattern used for other onboarding events (login, object selection).\n\n### Event Payload Structure\n\nThe DTSignal event uses the `DTS.salesforceapp` namespace with event ID `0004` and includes:\n- `userid` (session sfuid)\n- `orgid`\n- `email` (authenticated user email)\n- `eventname`: \"User Account Deleted for {email}\"\n- `eventdate`: current timestamp\n\nThe event is also logged to the internal logs table for audit purposes.",
+  "acceptance_criteria": [
+    "Deleting an account fires a DTSignal event with eventid 0004",
+    "The event payload is sent to the configured Zapier webhook endpoint",
+    "The event is recorded in the internal events/logs table",
+    "Payload structure matches the existing onboarding event format",
+    "Webhook returns a success response upon receiving the payload"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Account deletion handler now fires a DTSignal event and sends the payload to the Zapier webhook endpoint using the same pattern as login and object-selection events.",
+  "data_model_changes": "Event record inserted into the events/logs table on account deletion.",
+  "api_changes": "Outbound POST to Zapier webhook endpoint (hooks.zapier.com) with DTSignal payload on account deletion.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial deployment required running migrations on the server. Webhook payload delivery had an issue where Zapier received empty payloads from a cloned project; resolved by creating a new Zapier webhook project from scratch.",
+  "comment_summary": "Developer implemented the DTSignal event and log entry. Testing revealed the Zapier webhook was receiving empty payloads. After troubleshooting, the issue was traced to the Zapier project being cloned rather than created fresh. A new webhook URL resolved the issue.",
+  "comment_count": 17
+}

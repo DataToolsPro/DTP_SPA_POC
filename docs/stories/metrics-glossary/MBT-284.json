@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-284",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Metrics Side Panel UX Refinement — Layout and Navigation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-20T12:23:21.174-0700",
+  "updated": "2024-05-24T02:25:00.979-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want an improved sidebar layout with the metric name and aliases prominently displayed at the top and a more accessible edit button, so that I can quickly identify the metric and enter edit mode.",
+  "description": "UX refinements to the metrics sidebar detail panel:\n\n1. Move the 'Metric Name and Aliases' section to the top of the sidebar, above the Definition. Display the primary name first, followed by listed aliases.\n2. Move the Edit button to the left of the Definition section so it is not obstructed by other elements.\n3. Change the pencil/edit icon action in the main data table to open the sidebar detail panel (instead of inline table editing).\n\nThese changes consolidate all metric interaction into the sidebar panel and improve the visual hierarchy.",
+  "acceptance_criteria": [
+    "Metric Name and Aliases section appears at the top of the sidebar, above Definition",
+    "Primary metric name is displayed first, with aliases listed below",
+    "Edit button is positioned to the left of the Definition section",
+    "Clicking the pencil/edit icon in the data table opens the sidebar detail panel",
+    "Single edit button covers all alias and detail editing"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Sidebar layout reordered: Metric Name and Aliases at top, edit button repositioned to left of Definition, data table edit icon now opens sidebar instead of inline editing.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-235", "MBT-233"],
+  "source_files": [],
+  "implementation_notes": "Pure frontend layout changes. No backend modifications required.",
+  "comment_summary": "Developer updated the design per specification and submitted a screenshot for review. Approved immediately.",
+  "comment_count": 2
+}

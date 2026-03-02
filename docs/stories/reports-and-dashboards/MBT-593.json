@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-593",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add Rating System for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-02-20T21:20:02.966-0800",
+  "updated": "2026-03-01T03:40:16.338-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a Salesforce administrator, I want to assign a quality rating to each report and dashboard, so that I can indicate the validity and data quality of analytics assets.",
+  "description": "Analytics professionals typically assign a rating or grade to reports based on data validity and quality. This feature adds a 3-star rating system per analytics asset (report or dashboard).\n\nPending customer feedback before implementation.",
+  "acceptance_criteria": [
+    "Each report and dashboard has a rating data point",
+    "Rating uses a 3-star scale",
+    "Rating can be set and updated from the report/dashboard sidebar",
+    "Rating is visible in the reports/dashboards list view"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "3-star rating UI on report/dashboard sidebar and list view.",
+  "middleware_changes": "Rating CRUD logic for analytics assets.",
+  "data_model_changes": "New rating column on report/dashboard records.",
+  "api_changes": "",
+  "dependencies": ["MBT-591"],
+  "source_files": [],
+  "implementation_notes": "Awaiting customer feedback before implementation. 3-star scale chosen for simplicity.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,29 @@
+{
+  "issue_key": "MBT-1033",
+  "epic_key": "MBT-1015",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Document Tableau to Salesforce Flow for Campaign Member Assignment",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-13T21:37:05.807-0800",
+  "updated": "2026-03-01T03:55:30.073-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "",
+  "description": "Documentation for the Salesforce Flow that processes Lead IDs and Campaign IDs from Tableau data collections and creates CampaignMember records.\n\n### Flow: Add Leads to Campaign From Tableau Data Collection\nThe flow processes collections of Lead IDs and Campaign IDs sent from Tableau via External Actions. It loops through both collections, matches corresponding pairs by index, validates records in Salesforce, and creates CampaignMember records if they don't already exist.\n\n### Flow Elements\n1. Loop on LeadIDsCollection\n2. Set LeadIdCurrentIndex\n3. Initialize CampaignId Index\n4. Loop on CampaignIDsCollection\n5. Assign Campaign Id index\n6. Decision: Check Index (match Lead/Campaign by position)\n7. Get Lead Record\n8. Get Campaign Record\n9. Check CampaignMember Record (deduplication)\n10. Decision: Validate Lead and Campaign exist\n11. Decision: Check CampaignMember existence\n12. Create CampaignMember record",
+  "acceptance_criteria": [
+    "Documentation covers the complete Salesforce Flow for Tableau-to-Salesforce campaign member creation",
+    "All flow elements and decision points are documented",
+    "Documentation is suitable for publication on SalesforceBen"
+  ],
+  "change_layers": {"ux": false, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "", "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Documentation was prepared in Google Docs format for SalesforceBen publication. Covers the full Salesforce Flow including collection variables, record lookups, decision nodes, and CampaignMember creation with deduplication.",
+  "comment_summary": "Developer provided comprehensive documentation of the Salesforce Flow with screenshots of each flow element.",
+  "comment_count": 1
+}

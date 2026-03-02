@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-961", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Remove Time from Last Refreshed Label Format",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-20T22:27:03.053-0700", "updated": "2024-11-27T22:26:40.533-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the 'Last Refreshed' label to show only the date without time, so it is clean and consistent with other date displays.",
+  "description": "Remove the time component from the 'Last Refreshed' label on the Reports/Dashboards page. The developer suggested keeping time with AM/PM format for use cases where a user returns on the same day, but the decision was to remove time for simplicity.",
+  "acceptance_criteria": ["Last Refreshed label shows date only, no time", "Format is consistent with other date displays on the page"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Removed time component from the Last Refreshed label; now shows date only.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-950"], "source_files": [],
+  "implementation_notes": "Updated the moment.js format string for the Last Refreshed display to exclude time.",
+  "comment_summary": "Waqar suggested keeping time with AM/PM format but ultimately removed it per Ryan's request.", "comment_count": 2
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-578",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Add BCC to Salesforce Email-to-Case for Select SendGrid Templates",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-15T21:50:51.827-0800",
+  "updated": "2026-03-01T03:48:01.586-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Add a BCC recipient to specific SendGrid email templates so that outbound emails are automatically captured in Salesforce via Email-to-Case. The BCC address is a Salesforce email service address and must not be visible to the end user — it is strictly for server-to-server communication.\n\n### Templates to BCC\n- Feedback Before More Users\n- Pending Shared Delete\n- Shared User Deletion\n\n### Excluded Templates\n- OTP (one-time password) links should NOT include the BCC.",
+  "acceptance_criteria": [
+    "The three specified SendGrid templates include the Salesforce BCC address",
+    "OTP email templates do not include the BCC",
+    "The BCC address is not visible in the email headers received by the end user",
+    "Emails are successfully captured in Salesforce via Email-to-Case"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated SendGrid email dispatch logic to conditionally add a BCC recipient for Feedback Before More Users, Pending Shared Delete, and Shared User Deletion templates.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The BCC address routes to Salesforce Email-to-Case. Only select templates are BCC'd to avoid OTP emails being logged in Salesforce.",
+  "comment_summary": "Developer confirmed BCC was added to the three notification templates on staging.",
+  "comment_count": 1
+}

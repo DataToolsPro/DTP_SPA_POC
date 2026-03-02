@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1266",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Enforce Organization-Scoped Authorization on All Requests",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:14.655-0800",
+  "updated": "2026-01-14T01:43:34.807-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Every request must be authorized against the tenant/organization to ensure data never crosses tenant boundaries. The session must contain `organization_id` and all data access must be scoped accordingly.\n\n## Requirements\n\n- Session contains `organization_id` (and user/member ID)\n- All app data access is scoped by `organization_id` (and other authz rules)\n- Attempting cross-tenant access is denied and logged as a security event",
+  "acceptance_criteria": [
+    "Session includes organization_id and user/member ID",
+    "All database queries and data access are scoped by organization_id",
+    "Cross-tenant access attempts are denied with appropriate error response",
+    "Cross-tenant access attempts are logged as security incidents"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Authorization middleware extracts and validates organization_id from session on every request. All data access paths enforce organization-scoped queries.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1261"],
+  "source_files": [],
+  "implementation_notes": "This extends the existing Laravel UsedByTeam trait pattern to the new Stytch-based auth system. The organization_id from Stytch sessions replaces the current team_id-based scoping.",
+  "comment_summary": "",
+  "comment_count": 0
+}

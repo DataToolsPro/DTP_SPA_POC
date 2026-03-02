@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-828",
+  "skipped": true,
+  "skip_reason": "status_withdrawn",
+  "title": "Update to Salesforce Data Model showing in history and not in dictionary",
+  "status": "Withdrawn",
+  "feature_folder": "data-dictionary"
+}

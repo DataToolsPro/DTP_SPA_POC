@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-577",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Update Production Login Page Video URL",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-15T18:06:24.901-0800",
+  "updated": "2026-03-01T03:47:41.863-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see the latest product video on the login page, so that I get an up-to-date introduction to the application.",
+  "description": "The embedded video on the app login page (`app.datatoolspro.com/login`) was still showing an older ERD video. It needed to be updated to the latest product overview video hosted on YouTube.\n\nThe update was specifically for the login page, not the splash/marketing page.",
+  "acceptance_criteria": [
+    "Login page at app.datatoolspro.com/login displays the updated YouTube video",
+    "Video ID is correctly set to the new production video",
+    "Video loads and plays correctly on the login page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated the embedded YouTube video on the login page from the old ERD video to the latest product overview video.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-556"],
+  "source_files": [],
+  "implementation_notes": "Initial confusion about whether the video should be updated on the splash page or the login page. Clarified that the target was the app login page at app.datatoolspro.com/login.",
+  "comment_summary": "Developer initially thought the update was for the splash page. Reporter clarified it was for the app login page which was still showing the ERD video. Developer updated and deployed.",
+  "comment_count": 3
+}

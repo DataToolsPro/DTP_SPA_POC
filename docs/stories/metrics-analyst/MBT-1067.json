@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1067",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Metrics Analyst 3.0 — Single-Request Dashboard Analysis",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-01-03T12:31:44.999-0800",
+  "updated": "2026-03-01T03:59:46.649-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want Metrics Analyst to process an entire dashboard in a single AI request, so that analysis is faster and more cost-effective.",
+  "description": "Next iteration of Metrics Analyst that consolidates dashboard analysis into a single AI request instead of multiple calls.\n\n### Token Economics\n- Model context window limit: 128,000 tokens\n- Typical dashboard input: 10,000–20,000 tokens\n- Cost per 1M input tokens: $0.15\n- Estimated cost per dashboard analysis: ~$0.000255–$0.00225\n\nThis is an early-stage planning ticket. Implementation deferred to a later sprint.",
+  "acceptance_criteria": [
+    "Metrics Analyst processes a full dashboard in a single AI request",
+    "Dashboard input stays within the 128K token context window",
+    "Per-analysis cost remains under $0.01"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated Metrics Analyst interface for single-request dashboard analysis flow.",
+  "middleware_changes": "Consolidates multiple AI API calls into a single request per dashboard, bundling all dashboard metadata within the token limit.",
+  "data_model_changes": "",
+  "api_changes": "Refactored AI API integration to send a single prompt with full dashboard context rather than per-component requests.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Deferred to February/March timeframe. Token budget analysis shows dashboards fit well within the 128K context window at low cost.",
+  "comment_summary": "Waqar asked for clarification on the task. Ryan indicated the work is not ready yet and is planned for a later sprint (February or March).",
+  "comment_count": 2
+}

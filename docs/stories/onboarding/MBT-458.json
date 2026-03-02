@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-458",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Fix Integrity Constraint Error When Linking Metrics with Empty Dropdown",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-04T23:34:56.222-0800",
+  "updated": "2024-05-24T02:25:30.288-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user adding metric links, I want the system to prevent errors when no metrics exist in the linked metrics dropdown, so that I don't encounter application crashes during normal usage.",
+  "description": "Fix an integrity constraint violation (`linked_metric_id cannot be null`) that occurred when a user tried to link metrics but no metrics existed in the dropdown. The error was triggered in the `dtp_metric_links` table during insert.\n\n### Root Cause\nThe linked metrics dropdown was empty because newly added metrics were not being populated in it automatically. When a user attempted to create a link with no metric selected, the null value caused a database constraint violation.\n\n### Fix\n- Newly added metrics are now automatically included in the linked metrics dropdown\n- Server-side validation returns a user-friendly error if the linked metric field is empty",
+  "acceptance_criteria": [
+    "Newly added metrics appear in the linked metrics dropdown automatically",
+    "Server-side validation prevents null linked_metric_id from being submitted",
+    "User receives a friendly error message if no linked metric is selected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Linked metrics dropdown now auto-populates with newly added metrics. Error message displayed if user attempts to link without selecting a metric.",
+  "middleware_changes": "Server-side validation added to check that linked_metric_id is not empty before attempting database insert.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Error was `SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'linked_metric_id' cannot be null`. Fix ensures metrics are auto-added to dropdown and server rejects null values with a validation error.",
+  "comment_summary": "Developer identified the issue occurs when no metrics exist in the dropdown and added both auto-population and server-side null check.",
+  "comment_count": 1
+}

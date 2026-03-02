@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-436",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Taxonomy Values",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:48:10.381-0800",
+  "updated": "2024-05-24T02:25:08.782-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity**\n\nTaxonomy Values were vulnerable to Stored XSS due to missing input validation. Any user with Categories editing permissions could inject an XSS payload (e.g., `![](x)`) into a category cell. When other users visited the Metrics page, the stored payload would execute arbitrary JavaScript.\n\n## Affected Endpoint\n\n`/categories`\n\n## Risk\n\nHigh — attacker could execute arbitrary JavaScript, exfiltrate CSRF tokens, and compromise confidentiality and integrity of user data. Session cookies were protected by HTTPOnly attribute, limiting cookie exfiltration.\n\n## Fix\n\nInput validation implemented on the categories endpoint, converting malicious characters to HTML entities to prevent stored XSS.",
+  "acceptance_criteria": [
+    "Taxonomy Value fields sanitize HTML and script tags on save",
+    "XSS payloads injected via category editing are neutralized before storage",
+    "Legitimate text content in category fields is preserved",
+    "Metrics page renders category values safely without executing injected scripts"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input validation added to the categories endpoint to convert malicious characters to HTML entities before storage.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Same approach as other XSS fixes in the penetration testing remediation cycle — HTML entity encoding applied to user-editable fields.",
+  "comment_summary": "Developer fixed and deployed to staging.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1167",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Account Closure and Customer Data Purge Process",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2025-07-13T14:30:02.760-0700",
+  "updated": "2026-03-01T04:04:14.160-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security", "Administration"],
+  "story": "",
+  "description": "Define and implement the account closure and data purge process for customers who request account deletion from Account Settings.\n\n### Requirements\n\n1. **Soft Delete:** When an admin requests deletion, soft-delete the account. The user and related users should no longer be able to access DataTools Pro.\n2. **Data Retention:** Maintain a record of the sign-up and usage, but remove all customer metadata (objects, fields, entered data) for privacy and data protection.\n3. **Manual Purge via Stored Procedure:** Create a stored procedure (not an API) that accepts a team ID and purges customer metadata. No automated code should exist that can remove data from the database.\n4. **Monthly Batch Process:** Evaluate and confirm deletions, then run a monthly purge unless immediate action is requested.\n\n### Data Models Requiring Purge\nOver 70 models store customer data, including: Scorecards, ObjectFields, Metrics, Reports, Dashboards, ERD views, Salesforce tokens/org info, Snowflake connections, Tableau connections, HubSpot tokens, Notion info, mappings, taxonomies, badges, webhooks, initiatives, permissions, and all related child records.",
+  "acceptance_criteria": [
+    "Account soft-delete prevents the admin and all related users from accessing the app",
+    "Stored procedure accepts team_id and purges all customer metadata across all related models",
+    "Account record itself is retained (soft-deleted) for historical reference",
+    "No API endpoint exists that can trigger data deletion",
+    "Monthly purge process is documented with evaluation and confirmation steps"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Account deletion request from Account Settings triggers soft-delete. Deleted users see access denied on login.",
+  "middleware_changes": "",
+  "data_model_changes": "Stored procedure to cascade-delete customer metadata across 70+ models while retaining the soft-deleted account record. Models include Scorecard, ObjectField, Metric, Report, Dashboard, ErdView, all integration tokens, mappings, taxonomies, badges, webhooks, initiatives, permissions, and child records.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Currently, delete account functionality is suppressed in the UI. Previous implementation only set a soft-delete flag without purging data. Waqar provided a comprehensive inventory of 70+ models that store customer data. Stored procedure approach chosen over API to prevent accidental or malicious data deletion through code. Blocked pending decision on which models to include in the purge.",
+  "comment_summary": "Waqar provided a comprehensive inventory of 70+ data models that store customer data and asked for confirmation on which should be included in the stored procedure purge. The delete account UI was previously suppressed. Discussion identified the need for a team_id-scoped stored procedure rather than an API-based approach.",
+  "comment_count": 1
+}

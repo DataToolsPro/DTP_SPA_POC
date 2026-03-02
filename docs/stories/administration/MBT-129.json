@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-129",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Fix Cross-Tenant Data Access Using Email as Identifier",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-01T21:15:40.513-0700",
+  "updated": "2026-03-01T03:40:23.074-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Bug\nLogging in with a new Salesforce user showed another user's data. The system was using email as the unique identifier, but the same email can exist across multiple Salesforce tenants (production, sandbox, etc.).\n\n## Root Cause\nEmail addresses are not unique across Salesforce tenants. A user with the same email in a different org would match the existing record instead of creating a new one.\n\n## Fix\nSwitched the unique identifier from email to `sfuid` (Salesforce User ID), which is globally unique across all Salesforce instances. This ensures proper user isolation per tenant.\n\n## Validation\n- New Salesforce PBO instance successfully created a new user record.\n- Account record was created with the correct `SFOrgID` to capture the tenant.",
+  "acceptance_criteria": [
+    "Users are uniquely identified by sfuid, not email",
+    "New users from different tenants create separate user records",
+    "Account records include the correct SFOrgID for tenant identification",
+    "Existing users are not affected by the change"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Changed user lookup/creation logic to use sfuid instead of email as the unique identifier.",
+  "data_model_changes": "sfuid is now the unique identifier for users. Account records include SFOrgID for tenant identification.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Critical security fix. Email is a VARCHAR attribute, not a key. The sfuid (Salesforce User ID) is globally unique and properly isolates users across tenants. Account records now capture the SFOrgID.",
+  "comment_summary": "Reporter identified the root cause: email was being used as a unique ID but the same email can exist across tenants. Switched to sfuid. Validated that new PBO instances create proper user and account records.",
+  "comment_count": 2
+}

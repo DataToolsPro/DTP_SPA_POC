@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-796",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Link Grouping Not Combining Connected Objects",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-09T21:08:59.441-0700",
+  "updated": "2024-07-28T10:36:30.569-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user using the ERD grouping feature, I want objects with multiple connections to correctly consolidate their link lines when grouping is enabled, so that the diagram is visually simplified as expected.",
+  "description": "The ERD grouping/simplify feature was not correctly combining link lines in certain scenarios. When two objects had multiple relationships and the user enabled the group option, the lines were not being consolidated into a single bundled link as expected.\n\nThe fix ensures that the GoJS link bundling logic correctly identifies and groups all connections between any two nodes, reducing multiple lines to a single consolidated line when the simplify toggle is active.",
+  "acceptance_criteria": [
+    "Enabling the group/simplify toggle consolidates multiple link lines between two objects into a single line",
+    "The fix works for both inbound and outbound relationships",
+    "Before grouping, all individual relationship lines are visible",
+    "After grouping, each pair of connected objects shows at most one consolidated line",
+    "The grouping behavior is consistent across different object configurations"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the link grouping/simplify feature so that multiple relationship lines between two objects correctly consolidate into a single line when the simplify toggle is enabled.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-474"],
+  "source_files": [],
+  "implementation_notes": "The issue was in the GoJS link bundling logic. Developer verified with screenshots that Account-to-AccountPartner links correctly consolidated from multiple lines to one when grouped. The fix was deployed to dev for review.",
+  "comment_summary": "Developer tested with Account/AccountPartner objects showing the before/after of grouping. Initially confirmed it was working, then continued to fix additional scenarios after discussion. Final fix deployed to development.",
+  "comment_count": 4
+}

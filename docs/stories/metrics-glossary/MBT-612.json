@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-612",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Disable Arrow Key Table Navigation When Editing Text Inputs",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-10T15:52:20.122-0700",
+  "updated": "2026-03-01T01:30:36.778-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user editing a metric description or definition in an inline text input, I want left and right arrow keys to move my cursor within the text field instead of advancing to the next table column, so that I can edit text naturally.",
+  "description": "When clicking into an inline text input (e.g., metric description or definition) in the Metrics Glossary table, the left and right arrow keys were advancing to the previous/next table column instead of moving the cursor within the text field. This made it impossible to navigate within the text being edited.\n\n## Fix\n\nA condition was added so that when an input text element has focus, the left/right arrow key handlers for table column navigation are disabled. Arrow keys resume their table navigation behavior when the input loses focus.",
+  "acceptance_criteria": [
+    "Left and right arrow keys move the cursor within the text when an inline text input has focus",
+    "Left and right arrow keys resume table column navigation when no text input is focused",
+    "Behavior applies to all inline text inputs in the Metrics Glossary table (description, definition, etc.)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Arrow key behavior now checks for active text input focus. When editing inline text, arrow keys control the cursor within the input. When no input is focused, arrow keys navigate between table columns as before.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "JavaScript keydown handler updated to check if the active element is a text input. If so, left/right arrow key events are not intercepted by the table navigation handler, allowing default browser cursor movement within the input.",
+  "comment_summary": "Developer implemented the fix and submitted for review.",
+  "comment_count": 1
+}

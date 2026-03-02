@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1118",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Date Sorting in Refresh Modal with Descending Default",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-05-05T21:12:17.747-0700",
+  "updated": "2026-03-01T04:16:55.493-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the refresh modal to properly sort data by date in ascending and descending order with descending as the default, so that I see the most recent refresh operations first.",
+  "description": "The refresh modal's date sorting was not functioning correctly. The data was not properly sorted when toggling between ascending and descending order.\n\n### Changes\n- Fixed date-based sorting to work correctly for both ascending and descending\n- Set default sort to date descending (most recent first)",
+  "acceptance_criteria": [
+    "Date column sorting works correctly in ascending order",
+    "Date column sorting works correctly in descending order",
+    "Default sort is date descending (most recent first)",
+    "Clicking the sort header toggles between ascending and descending"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed date sorting in the refresh modal. Default sort is now date descending, showing the most recent operations first.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Date comparison logic was corrected for proper chronological sorting. Default sort order set to descending on initial modal open.",
+  "comment_summary": "Developer deployed the fix to production for review.",
+  "comment_count": 1
+}

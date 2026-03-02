@@ -1,0 +1,45 @@
+{
+  "issue_key": "MBT-588",
+  "epic_key": "MBT-597",
+  "feature_folder": "data-dictionary",
+  "title": "Track Field Additions and Removals in Dictionary Field History",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-20T16:13:28.905-0800",
+  "updated": "2026-03-01T01:30:22.165-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a Salesforce administrator using DataTools Pro, I want the Dictionary field history to show when fields are added to or removed from a Salesforce object, so that I can track schema changes over time without checking Salesforce directly.",
+  "description": "The Dictionary field history was enhanced to track two additional change types beyond field updates:\n\n1. **New Field Detection**: When a refresh pulls fields from Salesforce that do not exist in the local data model, they are logged as 'New Field' in the history.\n\n2. **Field Removal (Soft Delete)**: When a previously tracked field is no longer returned by the Salesforce describe/SOQL query, it is flagged as deleted in the data model and logged as 'Deleted' in the history. The field is soft-deleted (not physically removed) so the history record is preserved.\n\nTesting was performed by adding and then deleting a field (`Lead.Is_Activated__c`) in Salesforce and refreshing from DataTools Pro.",
+  "acceptance_criteria": [
+    "Refreshing an object detects newly added fields from Salesforce and logs them as 'New Field' in history",
+    "Refreshing an object detects removed fields and flags them as soft-deleted with a 'Deleted' history entry",
+    "Soft-deleted fields are hidden from the active field list but preserved in history",
+    "Field history view shows New Field, Field Updated, and Deleted change types",
+    "Deleting a test field from Salesforce and refreshing produces the expected 'Deleted' history entry"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Field history view now includes 'New Field' and 'Deleted' change type entries alongside existing 'Field Updated' entries.",
+  "middleware_changes": "Refresh logic compares the incoming Salesforce field set against the local data model to detect additions and removals. New fields trigger an insert + history log. Missing fields trigger a soft-delete flag + history log.",
+  "data_model_changes": "Added a soft-delete flag to the fields table. History log entries now include 'New Field' and 'Deleted' change types.",
+  "api_changes": "",
+  "dependencies": ["MBT-524"],
+  "source_files": [],
+
+  "implementation_notes": "The 'Field Updated' and 'New Field' history entries were added in a prior sprint. This ticket added the 'Deleted' (soft-delete) capability. Testing used the Lead.Is_Activated__c field as a sacrificial test field. Implementation took longer than expected due to the delete detection logic.",
+  "comment_summary": "Developer confirmed prior work already tracked 'Field Updated' and 'New Field' history. The remaining piece was soft-delete detection. Developer implemented and tested on production, including the ability to mark fields as deleted when they no longer appear in the Salesforce response.",
+  "comment_count": 2
+}

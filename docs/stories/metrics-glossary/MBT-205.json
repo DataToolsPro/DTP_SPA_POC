@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-205",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Analytics Tab — Unified Reports and Dashboards Browsing",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-26T18:51:20.606-0700",
+  "updated": "2024-05-24T02:24:30.555-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Reports and Dashboards DataTools"],
+  "story": "As a data analyst, I want dedicated pages to browse and search through all Salesforce reports and dashboards with inherited taxonomy columns, so that I can discover analytics assets organized by Line of Business and Topic.",
+  "description": "Creates standalone Reports and Dashboards pages that present Salesforce metadata in searchable, sortable data tables. While reports and dashboards are stored in separate database tables, the UI may union them for a unified browsing experience.\n\nThe table columns include: Report/Dashboard Name, Description, Folder, Last Modified, and taxonomy columns (Line of Business and Topic) inherited from related metrics. Taxonomy values are dynamically rendered based on the tenant's configured taxonomies — if new taxonomies are added, additional filter columns appear automatically.\n\nThis page is independent from the metric detail panel's Reports/Dashboards tabs (MBT-164). A future phase will create a standalone analytics navigation experience.",
+  "acceptance_criteria": [
+    "A Reports page displays all Salesforce reports in a searchable, sortable data table",
+    "A Dashboards page displays all Salesforce dashboards in a searchable, sortable data table",
+    "Columns include Name, Description, Folder, Last Modified, and tenant taxonomy columns",
+    "Taxonomy columns (Line of Business, Topic) are inherited from related metrics",
+    "Taxonomy filter columns are generated dynamically based on the tenant's configured taxonomies",
+    "Minor CSS refinements applied per review feedback"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New standalone /reports and /dashboards pages with DataTable interfaces. Columns for name, description, folder, last modified, and dynamic taxonomy columns inherited from metric relationships.",
+  "middleware_changes": "Query layer to join reports/dashboards with their related metric taxonomy values. Dynamic column generation based on tenant taxonomy configuration.",
+  "data_model_changes": "",
+  "api_changes": "Endpoints serving reports and dashboards lists with joined taxonomy data for table rendering.",
+  "dependencies": ["MBT-164"],
+  "source_files": [],
+  "implementation_notes": "Reports and dashboards tables leverage the same Salesforce SOQL sync from MBT-164. Taxonomy columns (Line of Business, Topic) are rendered dynamically, so adding new taxonomies automatically adds filter columns.",
+  "comment_summary": "Developer created /reports and /dashboards pages. CSS refinements applied per review. Taxonomy columns confirmed as dynamic per-tenant categories — same Line of Business and Topic taxonomy values used in the metrics glossary.",
+  "comment_count": 8
+}

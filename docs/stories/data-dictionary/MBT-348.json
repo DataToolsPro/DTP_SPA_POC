@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-348",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Contextual Popup for Dictionary vs Migration Views",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:23:52.633-0800",
+  "updated": "2026-03-01T01:28:53.473-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user viewing the Dictionary, I want the onboarding popup to display dictionary-specific content rather than migration content, so that the guidance I receive is relevant to the view I am currently using.",
+  "description": "The onboarding/guidance popup was incorrectly showing migration-related content when the user was on the Dictionary view. The popup was made context-aware so it displays the appropriate content based on whether the user is viewing the Dictionary or Migration tab. The implementation detects the current active view and renders the corresponding popup content. There was also discussion about adding a time delay or repositioning the popup to improve UX, but those changes were deferred pending further brainstorming.",
+  "acceptance_criteria": [
+    "When on the Dictionary view, the popup displays dictionary-specific content",
+    "When on the Migration view, the popup displays migration-specific content",
+    "Popup content switches correctly when toggling between views",
+    "Popup does not appear with incorrect context on initial page load"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Popup content is now context-specific to the active view (Dictionary or Migration). The popup label and messaging change based on which tab the user is on.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The popup now checks the active view state before rendering content. A potential time delay and repositioning of the popup were discussed but deferred as future enhancements.",
+  "comment_summary": "Developer asked about delay timing and position changes. After implementing the context-aware popup, both dictionary and migration views now show their respective content. Position and delay changes were tabled for future discussion.",
+  "comment_count": 2
+}

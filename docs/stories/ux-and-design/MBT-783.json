@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-783",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Update Date Dropdown Border Color for Consistency",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-30T19:55:07.105-0700",
+  "updated": "2024-07-25T23:44:54.826-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the date picker dropdown borders to be consistent with other form element borders, so that the interface has a uniform visual style.",
+  "description": "The date picker dropdown border color is inconsistent with other form elements. Update the border color to match the standard styling used across the application.",
+  "acceptance_criteria": [
+    "Date picker dropdown border color matches other form element borders",
+    "Styling is consistent in both light and dark modes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated date picker dropdown border color to match other form element borders for visual consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS border color change for date picker dropdown elements.",
+  "comment_summary": "Developer implemented the border color update and confirmed it working on staging.",
+  "comment_count": 3
+}

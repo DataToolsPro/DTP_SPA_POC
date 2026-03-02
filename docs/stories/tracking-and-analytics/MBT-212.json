@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-212",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Event Tracking Review and Activation vs Onboarding Event Validation",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-29T16:14:35.088-0700",
+  "updated": "2024-05-24T02:24:30.943-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Review and validate the full set of Day 1 tracking events that log user behavior for auditing, marketing, and sales analytics. A specification document captures all required events, which should match the events table in the database.\n\nThe review covers event triggers, payloads, and correctness. Activation events need to be distinguished from onboarding events. Events are verified through a Google Docs integration that logs captured events with an approximate 5-minute delay.\n\nAll events except the Activation event were already implemented at the time of this review. The goal was to refine triggers, re-test, and validate end-to-end with a brand new production user.",
+  "acceptance_criteria": [
+    "All Day 1 tracking events are implemented and firing correctly",
+    "Event triggers and payloads match the specification document",
+    "Activation events are properly distinguished from onboarding events",
+    "Event data appears in the Google Docs verification document",
+    "Delete user event endpoint is updated to the correct new endpoint",
+    "Events can be validated through end-to-end testing with a new production user"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Review and refinement of server-side event triggers to ensure they match the updated specification. Delete user event endpoint was corrected.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Events are logged to a Google Docs sheet with ~5 minute delay for verification. The delete user event endpoint was updated in the specification PDF.",
+  "comment_summary": "Waqar confirmed understanding of the validation scope. Ryan provided an updated PDF with the correct delete user event endpoint and proposed collaborative testing with a new production client. The team agreed to schedule a joint walkthrough to validate all events.",
+  "comment_count": 6
+}

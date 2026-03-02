@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1136",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "First Login Loading State Blocks User Until Objects Are Fetched",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-06-02T17:47:04.697-0700",
+  "updated": "2026-03-01T04:22:17.844-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a new DataTools Pro user on first login, I want a clear loading experience while my Salesforce objects are being fetched, so that I am not stuck on an empty screen needing to manually refresh the browser.",
+  "description": "On first login, users were getting stuck because clicking 'Add Object' showed an empty state while Salesforce objects were still being fetched in the background. Users had to manually refresh the browser to see their objects.\n\nThe solution implements a non-dismissible modal that displays during object loading. The modal polls every 5 seconds to check if objects have been loaded. Once objects are available, a 'Get Started' button appears that refreshes the page without the modal, providing a smooth onboarding experience.",
+  "acceptance_criteria": [
+    "A non-dismissible modal is displayed during first-login object fetching",
+    "The modal indicates that objects are currently being loaded",
+    "The system polls every 5 seconds to detect when objects are available",
+    "A 'Get Started' button appears once objects are loaded",
+    "Clicking 'Get Started' refreshes the page without showing the modal again",
+    "Users cannot interact with the empty Add Object screen while objects are loading"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Non-dismissible loading modal during first-login object fetch with a polling mechanism and a 'Get Started' button that appears when objects are ready.",
+  "middleware_changes": "Added polling logic to check object availability every 5 seconds and control modal state based on object fetch status.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Originally reported as a bug but reclassified as a UX enhancement. The existing implementation already showed a message asking users to refresh, but this was improved to automatically detect when objects are ready and provide a seamless transition.",
+  "comment_summary": "Discussion between developer and reporter clarified this was a UX enhancement rather than a bug. Agreed on a non-dismissible modal with 5-second polling and a 'Get Started' button. Developer implemented on dev and submitted for review.",
+  "comment_count": 6
+}

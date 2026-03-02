@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-251",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Exclude Soft-Deleted Objects from ERD",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-20T22:30:47.440-0700",
+  "updated": "2026-03-01T04:09:20.519-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want soft-deleted objects to be excluded from the diagram, so that I only see active objects and their relationships.",
+  "description": "## Bug\nWhen an object is deleted from the Dictionary, it still appears in the ERD because deletion uses soft-delete and the ERD query does not filter by deletion status.\n\n## Root Cause\nThe ERD query fetches from `dtp_object_fields` using only `user_id` and data type filters, without joining to the `scorecards` table to check soft-delete status.\n\n## Fix\nAdd a JOIN to the `scorecards` table and filter out records where the scorecard has been soft-deleted (`deleted_at IS NULL` or equivalent).",
+  "acceptance_criteria": [
+    "Soft-deleted objects do not appear in the ERD",
+    "ERD query joins to the scorecards table to check deletion status",
+    "Active objects and their relationships continue to display correctly",
+    "Performance impact of the additional join is minimal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Soft-deleted objects no longer appear in the ERD diagram.",
+  "middleware_changes": "ERD data query updated to JOIN the scorecards table and filter out soft-deleted records.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The existing query on dtp_object_fields was updated to include a JOIN to the scorecards table, filtering where deleted_at IS NULL. Developer confirmed this was a soft-delete issue and updated the query accordingly.",
+  "comment_summary": "Developer confirmed soft-delete was the cause and added a join to the scorecards table to filter deleted objects. Query was updated and deployed to staging for review.",
+  "comment_count": 3
+}

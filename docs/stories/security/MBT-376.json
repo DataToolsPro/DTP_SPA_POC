@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-376",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Set Strict-Transport-Security (HSTS) Header",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2023-11-18T10:25:18.875-0800",
+  "updated": "2024-05-24T02:25:05.418-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Configure the Strict-Transport-Security (HSTS) response header to enforce HTTPS connections and prevent protocol downgrade attacks.\n\n## Required Header\n\n```\nStrict-Transport-Security: max-age=31536000; includeSubDomains; preload\n```\n\nThis can be set via `.htaccess`, server configuration, or application middleware. The `max-age` of 31536000 seconds (1 year) tells browsers to always use HTTPS for the domain and all subdomains.",
+  "acceptance_criteria": [
+    "Strict-Transport-Security header is set on all HTTPS responses",
+    "Header includes max-age=31536000, includeSubDomains, and preload directives",
+    "Header is applied consistently across all application routes"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Infrastructure-level configuration task assigned to Ryan. Developer offered to implement via code snippet but was told it's an infrastructure task.",
+  "comment_summary": "Developer offered to implement via code. Product owner confirmed this is an infrastructure task assigned to himself.",
+  "comment_count": 2
+}

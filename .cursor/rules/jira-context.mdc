@@ -63,7 +63,7 @@ mcp: atlassian → get_issue(issueKey: "MBT-42")
 
 For **User Stories**:
 - Create or update **internal** doc: `docs/features/MBT-XX-<slug>.md` (use `docs/features/_template.md`)
-- Evaluate **public** doc: does the feature need a new or updated `docs/public/` tutorial? Use the `datatools-pro-docs` skill if yes.
+- Evaluate **public** doc: does the feature need a new or updated `docs/wp-published/` tutorial? Use the `datatools-pro-docs` skill if yes.
 
 For **Tasks**: no doc needed. PR description is sufficient.
 

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-239",
+  "skipped": true,
+  "skip_reason": "duplicate",
+  "title": "Backlog- Read-only role",
+  "status": "Done",
+  "feature_folder": "administration"
+}

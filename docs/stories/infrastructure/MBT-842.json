@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-842",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Implement PostgreSQL Row-Level Security for Tenant Isolation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-08-03T00:10:04.874-0700",
+  "updated": "2026-03-01T03:50:57.448-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement PostgreSQL Row-Level Security (RLS) as an additional database-level security layer for tenant data isolation in the Laravel application.\n\n### Implementation Plan\n\n1. **Enable RLS** on tenant-scoped tables with `ALTER TABLE ENABLE ROW LEVEL SECURITY`\n2. **Create policies** using `current_setting('myapp.current_tenant')` to restrict row access by tenant_id\n3. **Laravel middleware** (`SetTenant`) sets the tenant context on each request via `DB::statement(\"SET myapp.current_tenant = ?\", [$tenantId])`\n4. **Apply middleware** to web route group alongside auth middleware\n5. **Test** that each tenant can only access their own data\n\n### Benefits\n- Database-level security ensures data isolation even if application-layer bugs exist\n- Centralizes access control, reducing application code complexity\n- Works as a complementary layer to Laravel's existing tenant scoping",
+  "acceptance_criteria": [
+    "RLS is enabled on all tenant-scoped tables",
+    "Tenant policies restrict row access based on tenant_id",
+    "SetTenant middleware correctly sets the tenant context for each request",
+    "Each tenant can only access their own data",
+    "No cross-tenant data leakage under any query pattern"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New SetTenant middleware that sets the PostgreSQL session variable for the current tenant from the authenticated user or request header.",
+  "data_model_changes": "RLS policies added to all tenant-scoped PostgreSQL tables. Tables require tenant_id column for policy enforcement.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "RLS policies use PostgreSQL's current_setting function to read the tenant ID set by the middleware. This approach requires all tenant-scoped tables to have a tenant_id column and all queries to be executed within a session that has the tenant context set.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

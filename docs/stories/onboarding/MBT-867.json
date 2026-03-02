@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-867",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Fix Duplicate Invitation Email Sent to Inviter",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-19T16:41:53.197-0700",
+  "updated": "2024-09-15T13:22:51.337-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a product administrator inviting another user, I want only the invitee to receive the invitation email, so that I do not receive a confusing copy of the same invite.",
+  "description": "Investigate and fix a reported bug where the person sending a user invitation also receives a copy of the invitation email. Only the invitee should receive the invitation email.\n\nThe developer was unable to reproduce the issue during testing — the invitation email was correctly sent only to the invitee. The issue may have been a transient or environment-specific problem.",
+  "acceptance_criteria": [
+    "Only the invitee receives the invitation email",
+    "The person sending the invite does not receive a copy of the email"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Invitation email delivery corrected to only go to the invitee, not the inviter.",
+  "middleware_changes": "Email sending logic reviewed to ensure the recipient list only includes the invitee address.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer could not reproduce the issue. The email sending logic appeared correct during testing. May have been a transient SendGrid routing issue.",
+  "comment_summary": "Developer attempted to reproduce the issue but the invitation email was correctly delivered only to the invitee during testing.",
+  "comment_count": 1
+}

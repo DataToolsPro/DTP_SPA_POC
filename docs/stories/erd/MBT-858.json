@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-858",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Color-Code Field Icons on Selected ERD Nodes to Show Relationships",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-10T13:27:26.307-0700",
+  "updated": "2024-09-17T23:17:22.394-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user exploring entity relationships, I want the field icons inside ERD nodes to change color when I select an object to clearly show which fields are related, so that I can visually trace primary key and foreign key relationships across connected objects.",
+  "description": "Enhances the ERD selection behavior to update the colors of field icons within object nodes. When a user clicks on an object:\n\n- The selected object's primary key (ID) icon turns blue\n- Connected objects' foreign key icons that reference the selected object also turn blue\n- Non-related field icons in faded (non-connected) nodes are grayed out\n- Green foreign key icons on connected objects are color-matched to show the relationship\n- Fields with \"Converted\" in the label (e.g., \"Converted Contact ID\") are also highlighted when relevant\n\nA hidden `originalLabel` attribute was added to the node item data to handle the mismatch between field labels and field API names. When the \"Use Field API Name\" view option is enabled, the displayed label differs from the field label (e.g., \"Id\" vs \"LeadId\"), making it impossible to match related fields. The hidden attribute stores the original field label for consistent matching regardless of the display mode.",
+  "acceptance_criteria": [
+    "Selecting an object highlights its primary key ID field icon in blue",
+    "Foreign key fields on connected objects that reference the selected object are highlighted in blue",
+    "Non-connected nodes have their field icons grayed out",
+    "Color highlighting works correctly whether 'Use Field API Name' is on or off",
+    "Fields containing 'Converted' in the label are included in the highlight matching",
+    "Clicking the diagram background resets all field icon colors to default"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Field icons within ERD nodes dynamically change color on selection. Primary keys turn blue, related foreign keys on connected objects turn blue, and non-related fields are grayed out. Provides clear visual tracing of relationships.",
+  "middleware_changes": "Added a hidden `originalLabel` attribute to node item data so field matching works correctly regardless of whether the 'Use Field API Name' display option is active. Updated the GoJS node click handler to iterate through node items and adjust icon colors based on relationship matching.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-807"],
+  "source_files": [],
+  "implementation_notes": "The main challenge was matching fields when the 'Use Field API Name' option changes displayed labels. For example, Lead's primary key shows as 'Id' but LeadHistory references it as 'LeadId'. A hidden originalLabel attribute was added to node items so matching can be done consistently. Fields containing 'Converted' (e.g., 'Converted Contact ID') are also matched. Developer requested a demo before merging to development.",
+  "comment_summary": "Developer initially needed clarification and requested a meeting. Key technical challenge was matching field labels when API name display mode is active (labels differ between primary and foreign key nodes). Solved by adding a hidden originalLabel attribute. Also handles 'Converted' field labels. Deployed to development after demo.",
+  "comment_count": 12
+}

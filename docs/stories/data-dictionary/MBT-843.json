@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-843",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Object Refresh Deleting All Field Data on Expired Salesforce Session",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-06T16:09:52.286-0700",
+  "updated": "2026-03-01T03:51:47.713-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want object refresh to handle expired Salesforce sessions gracefully, so that my field data is not deleted when the session times out.",
+  "description": "Refreshing or adding a data object in the dictionary was deleting all field records, leaving \"No data available in table\". The bug also affected a customer (Fundcanna).\n\n### Root Cause\nWhen the Salesforce session expired, the refresh API call returned an empty/error response. The existing logic then compared the empty response against stored fields and deleted everything, treating all fields as removed.\n\n### Fix\n- Added session expiry detection: when the Salesforce API returns a timeout (HTTP 524) or session error, the app now shows a popup prompting the user to re-authenticate or exit\n- The popup prevents the destructive delete-all logic from executing\n- Deployed to main, staging, and development branches\n\n### Performance Optimization\nWaqar identified that the refresh was making two Salesforce API calls (sObject describe + FieldDefinition SOQL query). Proposed consolidating to a single describe call to reduce timeout risk.",
+  "acceptance_criteria": [
+    "Expired Salesforce sessions do not cause field data deletion",
+    "User sees a re-authentication popup when session expires during refresh",
+    "Refresh works correctly with active sessions",
+    "Customer (Fundcanna) environments are not affected"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": true},
+  "ux_changes": "Session expiry popup with Continue (re-auth) and Exit (logout) options during object refresh.",
+  "middleware_changes": "Added Salesforce session expiry detection. Prevented destructive field deletion on API errors. Proposed consolidating dual API calls into single describe call.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Root cause was expired Salesforce sessions returning empty data, triggering the change-detection logic to delete all fields. Fix guards against empty API responses before comparison.",
+  "comment_summary": "Waqar reproduced the issue when sessions expire. Found the refresh was making two API calls causing timeouts. Added session expiry popup and prevented data deletion on error. Suggested consolidating to one API call for better reliability.",
+  "comment_count": 11
+}

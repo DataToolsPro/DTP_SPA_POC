@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-930",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Update Application Logo with Revised Spacing",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-17T23:39:25.211-0700",
+  "updated": "2024-11-03T19:04:17.102-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the application logo to display the updated version with correct spacing, so that the branding is current and professional.",
+  "description": "Replace the application logo with a new version that has shortened spacing between 'Data' and 'Tools'. This is an interim logo update — a full logo redesign is planned for the future.",
+  "acceptance_criteria": [
+    "Application logo updated to the new version with corrected spacing",
+    "Logo displays correctly across all pages where it appears"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Application logo replaced with updated version featuring corrected spacing.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Interim logo update. Full logo redesign planned for the future. Simple image file replacement.",
+  "comment_summary": "Developer deployed the updated logo to staging.",
+  "comment_count": 1
+}

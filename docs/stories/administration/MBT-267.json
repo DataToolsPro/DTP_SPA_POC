@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-267",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Fix Laravel Error When Sending User Invitations",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-05T12:07:39.385-0700",
+  "updated": "2024-05-24T02:24:58.205-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want the user invitation process to work without errors, so that I can successfully invite team members to share my account data.",
+  "description": "Fix a Laravel error that occurred when sending user invitations. The first invitation attempt generated a Laravel error page.\n\nThe root cause was a plan-limit middleware that was accidentally applied to all routes instead of just the invitation route. This middleware checks whether the user has exceeded their plan's shared user limit. Because it was applied globally, it caused errors on unrelated routes. The fix scoped the middleware to only the invitation route.",
+  "acceptance_criteria": [
+    "User invitation can be sent without encountering a Laravel error page",
+    "Plan-limit middleware only applies to the invitation route",
+    "Other application routes are not affected by the plan-limit middleware",
+    "Invitation still enforces the plan's shared user limit correctly"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Scoped the plan-limit middleware from being applied globally to only the user invitation route, preventing it from interfering with other application routes.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-261"],
+  "source_files": [],
+  "implementation_notes": "The middleware was designed to prevent users from inviting more members than their plan allows. It was accidentally registered on all routes rather than just the invitation POST endpoint.",
+  "comment_summary": "Developer identified the issue as the plan-limit middleware being applied to all routes instead of just the invitation route. Fixed by scoping the middleware correctly.",
+  "comment_count": 2
+}

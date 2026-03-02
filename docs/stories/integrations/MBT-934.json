@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-934",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Add Timezone (Zoneinfo) to Login and Activation Zapier Webhooks",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-24T09:03:58.706-0700",
+  "updated": "2024-11-03T19:04:28.800-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Include the user's timezone (ZONEINFO) in the Zapier webhook payloads for login and activation events. This data flows back to Salesforce to:\n\n1. Adjust activation rate calculations based on user geography\n2. Remove international users from US/CA-targeted email campaigns for signup and activation reminders\n\nThe timezone information helps filter activation data by region and improve targeting of email marketing campaigns.",
+  "acceptance_criteria": [
+    "Login webhook payload includes the user's ZONEINFO",
+    "Activation webhook payload includes the user's ZONEINFO",
+    "Timezone data is correctly formatted for Salesforce consumption",
+    "Change is deployed to production (where Zapier hooks are active)"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added ZONEINFO field to the Zapier webhook payload for login and first-time registration events. Timezone is extracted from the authenticated user's profile.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-775"],
+  "source_files": [],
+  "implementation_notes": "Implemented on production only (not on development or staging) since Zapier hooks are only active in production. The ZONEINFO field is used downstream in Salesforce for geographic filtering of activation data and email campaign targeting.",
+  "comment_summary": "Developer added timezone to login and first-time registration hooks and deployed to production. Noted the change was only on production, not dev/staging.",
+  "comment_count": 1
+}

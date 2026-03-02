@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-992",
+  "epic_key": "MBT-1007",
+  "feature_folder": "tagging-and-categories",
+  "title": "Gamification Badges for Metrics Activities",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-11T20:37:42.106-0800",
+  "updated": "2024-11-27T22:11:36.145-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to earn achievement badges for completing metrics-related activities such as finishing the Metrics Analyst workflow, linking dashboards to metrics, and tagging metrics with categories, so that I feel recognized and motivated to engage deeply with the platform.",
+  "description": "Introduces three gamification badges that reward users for key metrics activities:\n\n**Metrics Analyst** — Awarded when a user completes the Metrics Analyst workflow to the end.\n\n**Metrics Weaver** — Awarded when a user establishes at least 3 liked metrics and associates at least 3 dashboards to a metric.\n\n**Tag Master** — Awarded when a user adds at least 2 Lines of Business AND 2 Topics and assigns a tag to at least 3 metrics or reports.\n\nBadges are displayed in a locked/greyed-out state until the user meets the criteria, at which point they become fully visible and awarded. Custom badge artwork was provided for each badge (MetricsAnalyst.png, metricsweaver.png, tagmaster.png).",
+  "acceptance_criteria": [
+    "Three badges are displayed in the user's profile or achievements area: Metrics Analyst, Metrics Weaver, Tag Master",
+    "Unearned badges appear in a locked/greyed-out state",
+    "Metrics Analyst badge is awarded when the user completes the Metrics Analyst workflow",
+    "Metrics Weaver badge is awarded when the user has at least 3 liked metrics and 3 associated dashboards",
+    "Tag Master badge is awarded when the user has added at least 2 Lines of Business, 2 Topics, and assigned tags to at least 3 metrics or reports",
+    "Badge award status is persisted and displayed correctly across sessions"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Displays three badge icons (Metrics Analyst, Metrics Weaver, Tag Master) in the user's profile area. Unearned badges appear greyed-out; earned badges display in full color with award status.",
+  "middleware_changes": "Implements badge award logic that evaluates user activity against the criteria for each badge. Checks are triggered when relevant actions occur (completing a workflow, liking metrics, associating dashboards, adding tags).",
+  "data_model_changes": "Stores badge award status per user, including which badges have been earned and when they were awarded.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Three custom badge images were provided as assets. The award functionality was implemented to automatically evaluate criteria and award badges. Badge state (locked vs. awarded) is persisted and rendered accordingly.",
+  "comment_summary": "Waqar added all three badges with award functionality on the development environment. Unearned badges display in a locked state until criteria are met.",
+  "comment_count": 1
+}

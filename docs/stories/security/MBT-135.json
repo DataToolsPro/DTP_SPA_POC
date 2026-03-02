@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-135",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Passcode Cookie Security Enhancement (SameSite, Secure, HttpOnly)",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-08T21:10:21.573-0700",
+  "updated": "2024-05-24T02:24:34.778-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The passcode cookie in `passcode.php` lacked several security attributes. This task adds the `SameSite`, `Secure`, and `HttpOnly` flags to the cookie to mitigate CSRF and XSS attack vectors.\n\n## Security Enhancements\n\n1. **SameSite=Strict**: Cookie is only sent in first-party contexts, reducing CSRF risk.\n2. **Secure flag**: Cookie is only transmitted over HTTPS connections.\n3. **HttpOnly flag**: Cookie cannot be accessed by client-side JavaScript, reducing XSS risk.",
+  "acceptance_criteria": [
+    "Passcode cookie includes the SameSite attribute set to Strict",
+    "Passcode cookie includes the Secure flag for HTTPS-only transmission",
+    "Passcode cookie includes the HttpOnly flag to prevent JavaScript access",
+    "Cookie functionality remains intact after security enhancements"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated setcookie() call in passcode.php to include Secure, HttpOnly, and SameSite=Strict attributes.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Modified the setcookie function call to include $cookie_secure=true, $cookie_httponly=true, and SameSite=Strict attributes.",
+  "comment_summary": "Developer requested clarification on the requirements. Product owner provided the detailed security attributes to implement.",
+  "comment_count": 2
+}

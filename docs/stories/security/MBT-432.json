@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-432",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Dictionary Definition Field",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:45:14.197-0800",
+  "updated": "2024-05-24T02:25:08.567-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity (CVSS 7.1)**\n\nThe Definition field in the Dictionary section was vulnerable to Stored XSS. Users with edit access could inject JavaScript payloads that would execute for all users visiting the Dictionary page.\n\n## Fix\n\nInput sanitization applied using an HTML purifier package to clean user input before storage, converting malicious characters to their HTML entity equivalents while preserving legitimate content.",
+  "acceptance_criteria": [
+    "HTML and script tags are sanitized from the Definition field before storage",
+    "XSS payloads in the Definition field are neutralized",
+    "Legitimate text and formatting in Definition is preserved",
+    "Fix deployed to staging for pen test re-validation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization via HTML purifier package applied to the Definition field update controller.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Used an HTML purifier package for more robust sanitization than strip_tags(), allowing safe HTML while removing malicious scripts. Deployed to staging.",
+  "comment_summary": "Developer used a purifier package to sanitize input and pushed fix to staging.",
+  "comment_count": 1
+}

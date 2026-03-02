@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1180",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Test ORM Database Composition on PostgreSQL",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-08-01T18:55:23.283-0700",
+  "updated": "2026-03-01T03:50:14.908-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Practical testing phase for database composability. Apply existing ORM code to PostgreSQL and attempt to build the database from ORM definitions without migrations. Compare the composed database with the migration-built version for consistency.\n\n### Outcome\nBased on findings from MBT-1179, the composability approach was determined to not be beneficial for this project. Migrations remain the recommended approach.",
+  "acceptance_criteria": [
+    "ORM code applied to PostgreSQL database",
+    "Database composition tested without migrations",
+    "Results compared with migration-built database",
+    "Findings documented"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Testing ORM-based database composition vs migration-based approach.",
+  "api_changes": "",
+  "dependencies": ["MBT-1179"],
+  "source_files": [],
+  "implementation_notes": "As concluded in MBT-1179, the compose option is not better than the existing migration approach. Migrations are retained.",
+  "comment_summary": "Developer confirmed that as reviewed in MBT-1179, the composability option is not suitable. Sticking with migrations.",
+  "comment_count": 1
+}

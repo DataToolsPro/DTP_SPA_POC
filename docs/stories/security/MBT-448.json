@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-448",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Cross-Tenant Data Leakage via Browser Cache",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-28T11:50:36.115-0800",
+  "updated": "2026-03-01T04:17:58.662-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a Salesforce administrator, I want the application to always load data for my authenticated tenant, so that I never see another organization's data due to browser caching.",
+  "description": "A cross-tenant data leakage issue was observed in production where a user authenticated as one Salesforce org (FundCanna) but the app loaded data from a different org (PBO). The issue appeared to be related to browser caching passing through a different team context than the authenticated user.\n\n### Behavior\n- User logged in as FundCanna org\n- DataTools Pro loaded PBO org data instead\n- In a different browser, FundCanna loaded correctly\n- Issue was intermittent and difficult to reproduce\n\n### Architecture Context\nThe app uses a `usedByTeam` trait that automatically injects the current team ID into the WHERE clause of each query. The issue may have been caused by cached team context from a previous session.\n\n### Resolution\nClosed as unable to reproduce — the video evidence was lost (wrong recording was shared). The `usedByTeam` trait should prevent this issue. Further investigation needed if it recurs.",
+  "acceptance_criteria": [
+    "Authenticated user always sees data from their own tenant",
+    "Browser caching does not cause cross-tenant data leakage",
+    "usedByTeam trait correctly injects current team ID on all queries"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Investigated usedByTeam trait for potential caching issues with team ID injection in query WHERE clauses.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Uses usedByTeam trait to auto-inject team_id into queries. Issue could not be reproduced. Video evidence was lost (wrong recording). Closed pending recurrence.",
+  "comment_summary": "Waqar investigated but couldn't reproduce the issue. The video link was inaccessible, and the replacement video was for a different task. Ryan acknowledged the recording was lost and agreed to close the ticket since the issue couldn't be reproduced.",
+  "comment_count": 7
+}

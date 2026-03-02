@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-658",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Temporarily Hide Premium Features for Beta Users",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-21T21:08:44.852-0700",
+  "updated": "2024-05-24T02:25:40.008-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user on the beta plan, I want to only see features available to me, so that I am not confused by premium features I cannot access.",
+  "description": "Temporarily hide premium features from the UI using `display:none` for beta users. The hidden features include:\n\n- **Branding** — custom branding options\n- **Notion** — Notion integration\n- **Tableau** — Tableau integration\n- **Reports and Dashboards** — reporting features\n\nThis is a quick UI-level hide rather than a full feature-gating implementation, intended to simplify the beta experience.",
+  "acceptance_criteria": [
+    "Branding section is hidden from the UI",
+    "Notion integration is hidden from the UI",
+    "Tableau integration is hidden from the UI",
+    "Reports and Dashboards section is hidden from the UI"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Branding, Notion integration, Tableau integration, and Reports and Dashboards sections are hidden via CSS display:none for beta users.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Quick CSS-level hide using display:none. Not a full feature-gate implementation — these features will be re-enabled when premium plans are available.",
+  "comment_summary": "Developer confirmed the features were hidden.",
+  "comment_count": 1
+}

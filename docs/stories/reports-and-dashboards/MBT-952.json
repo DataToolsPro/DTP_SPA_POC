@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-952", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Bulk Edit UX Tweaks — Contextual Assign Button, Radio for Status, Z-Index Fix",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-12T17:33:15.094-0700", "updated": "2024-11-03T19:04:06.664-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user performing bulk edits, I want the Assign button to only appear when items are selected and use contextual labels, so the bulk edit flow is intuitive.",
+  "description": "UX improvements to the Bulk Edit feature:\n\n1. **Hide Assign button by default** — only show it when one or more checkboxes are selected, appearing at the footer center\n2. **Contextual button labels** — button reads 'Apply Status', 'Apply Topic', or 'Apply Line of Business' based on the action\n3. **Status should be radio button** — since only one status can be applied at a time, use radio buttons instead of checkboxes\n4. **Z-Index fix** — the filter pane z-index was set too high, overlapping the bulk edit UI",
+  "acceptance_criteria": ["Assign button is hidden by default", "Assign button appears at footer center when items are selected", "Button label is contextual (Apply Status, Apply Topic, Apply LOB)", "Status selection uses radio buttons instead of checkboxes", "Filter pane z-index does not overlap bulk edit controls"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Hid Assign button until selection; added contextual button labels; changed Status to radio buttons; fixed filter pane z-index overlap.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-770"], "source_files": [],
+  "implementation_notes": "Listens for checkbox change events to toggle Assign button visibility. Dynamic label text based on the bulk action type. Fixed CSS z-index on filter pane.",
+  "comment_summary": "Waqar completed all tweaks and deployed to development for review.", "comment_count": 1
+}

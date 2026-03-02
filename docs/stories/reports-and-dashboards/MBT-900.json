@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-900", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Bootstrap Tooltip for Open in Salesforce Icons",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:12:50.302-0700", "updated": "2024-11-03T19:05:09.053-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Salesforce icon tooltip to indicate whether I'm opening a dashboard or report, using consistent Bootstrap-styled tooltips.",
+  "description": "Updates the Salesforce icon tooltips to use consistent Bootstrap-styled tooltips instead of raw HTML title attributes. The tooltip text indicates whether the item is a report or dashboard: \"Open Report in Salesforce\" or \"Open Dashboard in Salesforce.\" This provides visual consistency with other tooltips across the application.",
+  "acceptance_criteria": ["Salesforce icon uses Bootstrap-styled tooltips", "Tooltip text differentiates between Report and Dashboard", "Tooltip styling is consistent with other tooltips in the application"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Replaced HTML title tooltips with Bootstrap-styled tooltips. Text now differentiates between 'Open Report in Salesforce' and 'Open Dashboard in Salesforce'.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-766"], "source_files": [],
+  "implementation_notes": "Initial implementation used HTML title tooltips. Ryan requested Bootstrap tooltips for consistency. Waqar updated the implementation.",
+  "comment_summary": "Balaji initially used HTML tooltips. Ryan requested Bootstrap tooltips for consistency. Waqar updated and submitted for review.", "comment_count": 3
+}

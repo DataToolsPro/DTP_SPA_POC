@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-1138",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Metrics Dictionary Showing Duplicate Dashboard Widgets",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-06-02T17:51:45.996-0700",
+  "updated": "2026-03-01T01:32:04.225-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "metrics"],
+
+  "story": "As a DataTools Pro user running the Metrics Dictionary widget analysis, I want the dashboard widget list to show only the actual widgets on a dashboard without duplicates, so that the widget count is accurate and I am not confused by inflated numbers.",
+  "description": "The Metrics Dictionary was displaying far more dashboard widgets than actually existed on a dashboard (e.g., 45 widgets for a dashboard that has far fewer). The root cause was duplicate records being returned by the Salesforce metadata service. The service was producing a cartesian-product-like result where some widgets appeared multiple times. The application was deleting all widget records before inserting the fresh set on each fetch, but since the service itself returned duplicates, the inflated count persisted.\n\nThe issue was confirmed by inspecting the raw service response, which showed duplicate widget entries with identical IDs. The fix needs to be applied at the service layer to deduplicate before returning results to the application.",
+  "acceptance_criteria": [
+    "Dashboard widget list shows only unique widgets matching the actual dashboard contents",
+    "No duplicate widget records are stored in the database after a widget fetch",
+    "Widget count accurately reflects the number of widgets on the Salesforce dashboard",
+    "Previously inflated widget data is corrected on the next fetch"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Widget list now shows accurate, deduplicated widget counts matching the actual Salesforce dashboard.",
+  "middleware_changes": "The widget fetch logic needs deduplication — either at the service layer before results are returned, or at the application layer before database insertion.",
+  "data_model_changes": "",
+  "api_changes": "The Salesforce metadata service that returns dashboard widget data needs to be fixed to eliminate duplicate records in the response.",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Investigation showed the duplicate widgets originate from the service layer, not from the application's insert logic (which correctly deletes-before-inserting). The service returns entries with identical widget IDs (e.g., id: 01aHs000002mh2yIAA appears twice). The fix should be a deduplication step either in the service or as a post-processing filter in the application. Tested with Fundcanna production instance.",
+  "comment_summary": "Developer inspected the raw service response and confirmed duplicate widget records with identical IDs. The application correctly clears old records before inserting but the service itself returns duplicates. Developer concluded the fix needs to be applied at the service layer. Product owner and developer discussed scheduling a webinar to review the issue together.",
+  "comment_count": 5
+}

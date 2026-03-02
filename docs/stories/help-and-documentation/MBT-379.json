@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-379",
+  "epic_key": "MBT-443",
+  "feature_folder": "help-and-documentation",
+  "title": "Fix Help Icon Opening Unintended New Window",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-18T15:29:32.804-0800",
+  "updated": "2024-05-24T02:25:05.459-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the help icon to display its popup without opening a new browser window, so that I can access help content inline without being redirected away from my current page.",
+  "description": "Clicking the help icon was incorrectly opening a new browser window in addition to displaying the help popup. The expected behavior is for the help popup to appear inline within the current page without spawning a separate window.\n\nThe fix corrected the click handler to prevent the default new-window behavior while still rendering the help popup overlay.",
+  "acceptance_criteria": [
+    "Clicking the help icon displays the help popup within the current page",
+    "No new browser window or tab is opened when the help icon is clicked",
+    "Help popup content loads and displays correctly after the fix"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Corrected the help icon click behavior so the popup renders inline without opening a new browser window.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Fix was applied to the help icon click handler to prevent unintended new-window behavior. Deployed to staging and verified.",
+  "comment_summary": "Developer pushed a fix to staging. Reporter confirmed the fix and encouraged continued iteration on quality.",
+  "comment_count": 3
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1265",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Enable SCIM Provisioning for Enterprise Tenants",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:08.027-0800",
+  "updated": "2026-01-02T19:56:56.973-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a Salesforce administrator, I want Microsoft Entra to automatically provision and deprovision users in DataTools Pro, so that employee onboarding and offboarding is handled without manual intervention.",
+  "description": "Enterprise tenants need SCIM (System for Cross-domain Identity Management) provisioning so that their identity provider (Microsoft Entra) can automatically create and disable user accounts.\n\n## Requirements\n\n- SCIM endpoint and token are available per tenant\n- Provisioned users appear in the correct Stytch Organization\n- Deprovisioning disables access within minutes per the SLA\n\n## Blocker\n\nThis is a Microsoft-specific feature that depends on the Microsoft partnership being finalized. Not required for early launch.",
+  "acceptance_criteria": [
+    "SCIM endpoint is available per tenant with a unique provisioning token",
+    "Users provisioned via SCIM appear in the correct Stytch Organization",
+    "Deprovisioned users have access disabled within minutes",
+    "SCIM operations are scoped to the tenant's Organization"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "SCIM endpoint handler that processes provisioning and deprovisioning requests from Microsoft Entra, mapping users to the correct Stytch Organization.",
+  "data_model_changes": "SCIM token storage per tenant. User records need to support SCIM-based creation and deactivation states.",
+  "api_changes": "New SCIM 2.0 endpoint per tenant for user provisioning lifecycle (create, update, deactivate).",
+  "dependencies": ["MBT-1261", "MBT-1264"],
+  "source_files": [],
+  "implementation_notes": "Blocked on Microsoft partnership. Stytch supports SCIM provisioning per Organization. Implementation will wrap Stytch's SCIM capabilities.",
+  "comment_summary": "Ryan confirmed this is a Microsoft-specific item that won't be needed for early launch.",
+  "comment_count": 1
+}

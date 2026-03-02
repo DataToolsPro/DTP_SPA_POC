@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-581",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Add Migration Status Filter to Field List",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-16T22:40:06.195-0800",
+  "updated": "2026-03-01T03:37:55.999-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want to filter the field list by migration status, so that I can focus on fields in a specific workflow state.",
+  "description": "Add a filter option to the migration field list that allows users to filter by migration status (Not Reviewed, No Migration, In Progress, Blocked, QA, Business Review, Completed).",
+  "acceptance_criteria": [
+    "A migration status filter is available on the field list page",
+    "Filter supports all migration status values",
+    "Filtered results update the table in real time",
+    "Filter can be cleared to show all fields"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New dropdown or filter control for migration status added to the field list page.",
+  "middleware_changes": "Backend query updated to support filtering by migration status.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed the filter on staging and submitted for review.",
+  "comment_count": 1
+}

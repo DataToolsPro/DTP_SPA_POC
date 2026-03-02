@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-406",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Fix Email Delivery from Production via SendGrid",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-07T00:01:13.664-0800",
+  "updated": "2024-05-24T02:25:04.577-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Investigate and fix email delivery failures from the production environment. Emails sent to the product owner's own address worked, but deliveries to other addresses (external users) were not going through. No records were found in SendGrid for the failed deliveries.\n\nThe issue was resolved by fixing the SendGrid configuration and email delivery pipeline.",
+  "acceptance_criteria": [
+    "Emails are successfully delivered to all valid recipient addresses from production",
+    "Email delivery is routed through SendGrid with proper logging",
+    "SendGrid logs show delivery records for all sent emails"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Emails are sent through SendGrid, not directly from the Laravel application. The 2FA requirement on the SendGrid account initially blocked investigation. Issue was ultimately resolved and all email deliverability confirmed working.",
+  "comment_summary": "Developer noted emails are sent through SendGrid (not Laravel) and needed 2FA to access SendGrid logs. No email logging existed in the app at the time. Product owner confirmed all deliverability was fixed.",
+  "comment_count": 4
+}

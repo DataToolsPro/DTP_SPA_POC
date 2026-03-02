@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1042",
+  "skipped": true,
+  "skip_reason": "no_description",
+  "title": "Upgrade Paths for Connecting to Second Salesforce Instance",
+  "status": "Done",
+  "feature_folder": "data-dictionary"
+}

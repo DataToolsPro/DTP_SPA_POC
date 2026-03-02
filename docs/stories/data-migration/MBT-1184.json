@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1184",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Database Migration to AWS RDS DEV with Dual-User Configuration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-08-13T21:02:55.818-0700",
+  "updated": "2026-03-01T03:52:02.047-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Migrate the development database to AWS RDS with a dual-user credential model: an app service user for runtime operations and a DBA user for schema changes.\n\n### AWS RDS Details\n- Endpoint: `dtp-dev-us1.cj6gueok454c.us-west-1.rds.amazonaws.com`\n- Engine: MariaDB (not MySQL — Cloudways uses MariaDB)\n\n### Migration Steps\n1. Spin up AWS RDS — DONE\n2. Lock down access — DONE\n3. Create App Service User — DONE\n4. Connect directly to Cloudways Dev DB — DONE\n5. Deliver App Service + DBA user details to developer — DONE\n6. Execute Data Export — DONE\n7. Execute Import — DONE\n8. Re-point ENV variables for the DataTools app\n9. Deliver app data management user (has app service + DDL abilities)\n\n### Credential Model\n- **App Service User** — stored in `.env`, used for runtime database operations\n- **DTP_DBA** — used within developer-led deployment pipelines, ORM migrations, and schema changes\n\n### Note\nMySQL Workbench was abandoned due to incompatibility with MariaDB. Sticking with MariaDB instead of MySQL.",
+  "acceptance_criteria": [
+    "Dev database is running on AWS RDS",
+    "App service user connects for runtime operations",
+    "DBA user is used for Laravel migrations and schema changes",
+    "Normal app user cannot alter schema or drop tables",
+    "Laravel .env updated with both connection configurations"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel configured with dual database connections: default connection for app runtime (app service user) and a separate migration connection for schema changes (DBA user).",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "MySQL Workbench was incompatible with MariaDB, so the migration used alternative tooling. The dual-user model ensures least-privilege: the app service user cannot perform DDL operations, while the DBA user handles migrations and schema changes through Laravel's migration connection.",
+  "comment_summary": "Developer configured the dual-connection model. Verified that the normal user could create tables but not alter schema or drop tables. Added a separate migration connection using the DBA account for schema changes.",
+  "comment_count": 1
+}

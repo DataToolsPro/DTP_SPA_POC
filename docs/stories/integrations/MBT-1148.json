@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1148",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Stripe Checkout Webhook to Auto-Increase User Limit via Zapier",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-06-24T03:17:58.646-0700",
+  "updated": "2026-03-01T03:39:15.044-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Implement a webhook-based integration between Stripe and the DataTools Pro Laravel app to automatically increase a tenant's user limit (`account_member_quantity`) when a successful Stripe checkout occurs.\n\n### Flow\n1. Stripe fires a `checkout.session.completed` event\n2. Zapier automation catches the event and maps Stripe fields (team_id, user_number) to the webhook payload\n3. Zapier POSTs to the `/addusers` endpoint in the DataTools Pro app\n4. The app looks up the user by `dtUserID` (first 10 characters of team_id), finds their plan, and increments `account_member_quantity` by the purchased user count\n\n### Endpoint Logic\n- Route: `POST /addusers`\n- Lookup user by `dtuserId` from team_id parameter\n- Find the user's first plan\n- Increment `account_member_quantity` by `user_number`\n- Return success response",
+  "acceptance_criteria": [
+    "Stripe checkout.session.completed event triggers the Zapier automation",
+    "Zapier correctly maps Stripe fields to the /addusers endpoint payload",
+    "The /addusers endpoint increments account_member_quantity by the purchased count",
+    "User lookup by dtUserID correctly identifies the target account",
+    "Error response returned if no plan is associated with the user",
+    "Activity is logged for audit purposes"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New /addusers route handler that looks up user by dtUserID, retrieves their plan, and increments account_member_quantity. Includes logging.",
+  "data_model_changes": "Updates account_member_quantity field on the Plan model.",
+  "api_changes": "POST /addusers - accepts team_id and user_number, returns success/error JSON.",
+  "dependencies": ["MBT-1107"],
+  "source_files": [],
+  "implementation_notes": "The Zapier automation 'New Subscription_Stripe-Post to DTP and SFDC DTP_User' handles the Stripe trigger. team_id is truncated to 10 characters to match dtUserID format. The endpoint uses withoutGlobalScopes() when querying plans to bypass tenant scoping.",
+  "comment_summary": "Developer configured the Zapier automation for the checkout.session.completed Stripe event, mapped the required fields, and implemented the /addusers endpoint. The endpoint was tested successfully, confirming the user limit increment works.",
+  "comment_count": 1
+}

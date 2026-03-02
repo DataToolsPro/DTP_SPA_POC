@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-759",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Prototype Sidebar Navigation Layout with Bootstrap 5 Upgrade",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-11T21:38:17.204-0700",
+  "updated": "2024-07-25T23:44:54.477-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Fork the application codebase to prototype a new UX layout concept. The primary change is moving the top navigation to a collapsible sidebar following Bootstrap 5 sidebar patterns.\n\n## Prototype Scope\n- Move navigation from top bar to a collapsible sidebar (icon-only by default, labels appear on hover popout)\n- Focus prototype on the Reports/Dashboards page\n- Use custom SVG icons for each navigation item (Analytics & AI, Entity Diagram, Data Migration, Report Management, Data Governance, ML & AI, Data Dictionary, Metric Glossary, Snowflake Data Prep, Marketing Journeys)\n- Consider Bootstrap 5 upgrade (with Flexbox) for responsive layout\n- Implement DataTables fixed header extension alongside the new layout\n\n## Technical Considerations\n- Bootstrap upgrade may break existing functionality — fork required to isolate changes\n- Developer needed GitHub fork permissions (initially disabled)\n- Prototype paused as a time-consuming effort; will be resumed later",
+  "acceptance_criteria": [
+    "Application code forked to a separate branch/repository",
+    "Sidebar navigation prototype implemented on at least one page",
+    "SVG icons displayed for each navigation item",
+    "Sidebar collapses to icon-only and expands on hover",
+    "Bootstrap 5 or Flexbox layout applied for responsive design"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Prototype sidebar navigation replacing top navigation bar. Collapsible sidebar with SVG icons and hover-to-expand labels. Based on Bootstrap 5 sidebar pattern.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Forked codebase for prototyping. Developer used Bootstrap with Flexbox for responsive layout. Prototype paused due to time-consuming nature of modifying all pages. Initial work done on sidebar layout with SVG icons. Bootstrap 5 upgrade identified as having potential to break existing functionality.",
+  "comment_summary": "Product owner emphasized the need to fork to avoid breaking the main codebase. Developer initially couldn't fork due to GitHub permissions. Prototype work started but was paused as it was time-consuming. Developer requested approval to use Bootstrap with Flexbox for responsive design.",
+  "comment_count": 6
+}

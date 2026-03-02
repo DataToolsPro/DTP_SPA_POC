@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-268",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Fix Tenant Isolation and Cross-Tenant Authorization Vulnerability",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-05T12:09:58.752-0700",
+  "updated": "2024-05-24T02:24:58.333-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "",
+  "description": "Critical security fix for a tenant isolation vulnerability. Users could view data from other tenants by simply modifying the account ID in the URL, bypassing all authorization checks.\n\nThe fix involved:\n1. Removing the account ID from URLs entirely (routing to `/myaccounts` instead of `/myaccounts/{id}`)\n2. Dynamically resolving the authenticated user's account from the session rather than from URL parameters\n3. Removing legacy code that relied on URL-based account identification\n4. Adding server-side validation that only the account owner can perform administrative actions (invite, manage permissions) — any attempt to inject a different ID returns an error.",
+  "acceptance_criteria": [
+    "Users cannot view other tenants' data by modifying URL parameters",
+    "Account context is derived from the authenticated session, not URL parameters",
+    "Only the account owner can perform invite and permission management actions",
+    "Attempts to inject a foreign account ID return an error",
+    "Legacy code using URL-based account lookup is removed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Account routing changed from URL parameter-based to session-based. Owner ID is resolved dynamically for the authenticated user. Server-side validation prevents unauthorized access to other tenants' accounts and data.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-265"],
+  "source_files": [],
+  "implementation_notes": "This was flagged as a critical security vulnerability. The fix removed all URL-based account ID references and replaced them with session-based account resolution. Legacy code was also cleaned up during this fix.",
+  "comment_summary": "Developer fixed the vulnerability by removing the account ID from URLs, switching to session-based account resolution, and removing legacy code. Product confirmed appreciation for the legacy code cleanup.",
+  "comment_count": 4
+}

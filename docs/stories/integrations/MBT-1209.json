@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1209",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Add Dimensions to Aggregate Filters in Streamlit App",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-09-09T06:56:16.084-0700",
+  "updated": "2026-03-01T04:24:43.949-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "As a data analyst using the Streamlit app, I want to add both dimensions and measures to aggregate filters so that I can build more comprehensive analytical queries.",
+  "description": "Currently the aggregate filter functionality only allows adding measures. The Datameer app reference implementation also adds dimensions in aggregate filters. This task extends the aggregate filter to support both dimensions and measures, matching the expected analytics UX pattern.",
+  "acceptance_criteria": [
+    "Dimensions can be added to aggregate filters alongside measures",
+    "Dimension filters apply group-by logic correctly",
+    "Existing measure-only filters continue to work",
+    "Filter UI matches the Datameer reference pattern"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Aggregate filter UI expanded to allow selecting dimensions in addition to measures.",
+  "middleware_changes": "Query builder updated to handle dimension-based filters in aggregate queries.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1200"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

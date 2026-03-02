@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-979", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Report Data Not Updating on Refresh — Stale Last Viewed Dates and Timezone Correction",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-03T15:38:14.153-0800", "updated": "2024-11-27T22:24:55.413-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the report data (especially Last Viewed Date) to update when I refresh, and I want dates to match what I see in Salesforce.",
+  "description": "Two issues fixed:\n\n1. **Stale data on refresh**: Sorting by Last Viewed Date showed all records stuck at 9/9 despite newer activity. The Last Refreshed Date was being pulled from the database rather than computed from the current data table. Fixed by computing the max of Last Modified Date from the data table after refresh.\n\n2. **Timezone mismatch**: Dates returned by the Salesforce REST API are in UTC. When compared to the Salesforce UI (which shows user-local time), dates appeared off by several hours. Fixed by setting the timezone to 'America/Los_Angeles' for date conversion.",
+  "acceptance_criteria": ["Last Refreshed Date updates automatically on table refresh without page reload", "Dates displayed match what Salesforce shows in the UI", "Timezone conversion is applied correctly"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Last Refreshed Date now updates in real-time from the data table instead of requiring a page reload.",
+  "middleware_changes": "Changed Last Refreshed Date computation to derive from max(LastModifiedDate) in the data table. Applied timezone conversion (America/Los_Angeles) to Salesforce UTC dates.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-789"], "source_files": [],
+  "implementation_notes": "Salesforce REST API returns dates in UTC. The Salesforce UI converts to user timezone. Applied moment-timezone with 'America/Los_Angeles' to match. Also changed the Last Refreshed calculation from a database query to a client-side max() from the data table.",
+  "comment_summary": "Waqar investigated the timezone discrepancy between Salesforce UI and API, confirmed UTC vs local offset, and fixed by applying timezone conversion. Also changed Last Refreshed to compute from the data table.", "comment_count": 5
+}

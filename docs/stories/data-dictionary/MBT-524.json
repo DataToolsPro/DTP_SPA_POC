@@ -1,0 +1,48 @@
+{
+  "issue_key": "MBT-524",
+  "epic_key": "MBT-597",
+  "feature_folder": "data-dictionary",
+  "title": "Extend Object Field Model with Salesforce FieldDefinition Metadata and Change Tracking",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-22T21:12:27.968-0800",
+  "updated": "2026-03-01T01:29:21.381-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user viewing the Object Dictionary, I want to see additional Salesforce field metadata (such as calculated status, security classification, and last modified date) and view a history of field changes, so that I can understand field characteristics and track when fields were last modified in Salesforce.",
+  "description": "This enhancement extends the object field data model by querying Salesforce's FieldDefinition SOQL endpoint to capture additional metadata attributes not available through the standard describe API. A secondary SOQL query is daisy-chained after the existing describe call, and the results are merged into the existing field records by matching on field name.\n\n### New Fields Added to the Data Model\n- `IsCalculated` — whether the field is a formula/calculated field\n- `ExtraTypeInfo` — additional type metadata\n- `IsPolymorphicForeignKey` — polymorphic lookup indicator\n- `LastModifiedById` — who last modified the field in Salesforce\n- `LastModifiedDate` — when the field was last modified in Salesforce\n- `ReferenceTo` — target object for lookup/reference fields\n- `SecurityClassification` — field security classification\n\n### Change Tracking\nEach time an object is refreshed, the system calculates `MAX(LastModifiedDate)` across all fields and logs it. This enables tracking:\n- Last time DataTools Pro refreshed the object\n- Last time any field was modified in Salesforce\n- Whether anything changed since the last refresh\n\n### UX for Field History\nA 'View All History' icon was added to the object detail header showing a table of all field changes. Additionally, individual field rows display a history icon (visible only when that field has been modified) linking to the field-level change history. The product owner requested suppressing two specific attributes from the UX to keep the interface simple.",
+  "acceptance_criteria": [
+    "Refreshing an object fetches additional metadata via SOQL FieldDefinition query",
+    "New metadata fields (IsCalculated, ExtraTypeInfo, IsPolymorphicForeignKey, LastModifiedById, LastModifiedDate, ReferenceTo, SecurityClassification) are stored in the existing field table",
+    "Existing field records are updated (not duplicated) when SOQL results are merged",
+    "New fields from the SOQL query that do not exist in the describe results are inserted",
+    "A 'View All History' icon in the object header opens a table of all field changes",
+    "Individual field rows show a history icon only when that field has modification history",
+    "Clicking a field-level history icon shows that specific field's change history",
+    "The last refresh timestamp is recorded for each object"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added 'View All History' icon to object header and per-field history icons on rows with modifications. History tables display field change records. Two metadata attributes were suppressed from the UX per product owner direction to keep the interface simple.",
+  "middleware_changes": "Added a secondary SOQL query to FieldDefinition after the describe API call. Results are matched by field name — existing records are updated, new fields are inserted. MAX(LastModifiedDate) is calculated on each refresh.",
+  "data_model_changes": "Extended the object fields table with columns: IsCalculated, ExtraTypeInfo, IsPolymorphicForeignKey, LastModifiedById, LastModifiedDate, ReferenceTo, SecurityClassification. Added refresh timestamp tracking per object.",
+  "api_changes": "New SOQL query: SELECT DataType, Description, DeveloperName, DurableId, EntityDefinitionId, ExtraTypeInfo, Id, IsCalculated, IsNameField, IsPolymorphicForeignKey, Label, LastModifiedById, LastModifiedDate, Length, MasterLabel, QualifiedApiName, ReferenceTargetField, ReferenceTo, RelationshipName, SecurityClassification, ServiceDataTypeId, ValueTypeId FROM FieldDefinition WHERE EntityDefinitionId = '{objectName}'.",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The existing describe API (`/services/data/v56.0/sobjects/{objectName}/describe`) returns field names but not the additional FieldDefinition attributes. The SOQL query supplements this. Both results are merged in a single table rather than using a join, for query performance. A future DataTools Native Salesforce object was mentioned as a longer-term solution for change log tracking. An 'Audit' tab concept was discussed for housing change tracking features.",
+  "comment_summary": "Developer initially confused about where to use the SOQL query (vs describe API). Product owner clarified it's a SOQL query, not a REST endpoint. Developer implemented the two-pass approach (describe + SOQL update) and built field history UX with both object-level and field-level views. Product owner requested suppressing two metadata attributes from the UX and mentioned a future DataTools Native Salesforce object for change log tracking.",
+  "comment_count": 11
+}

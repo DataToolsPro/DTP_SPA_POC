@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-633",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Remove Complete Button During Feedback Collection to Require User Response",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-20T22:03:54.566-0700",
+  "updated": "2024-05-24T02:25:38.516-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a product administrator, I want the Complete button hidden during the feedback step so that free-tier users must provide feedback (thumbs up/down) before finishing, ensuring we collect usage data for product improvement.",
+  "description": "When the feedback form is displayed after clicking Complete, the Complete button itself should be removed so users cannot bypass the feedback step. The feedback form (thumbs up/down + optional recommendations) becomes the only path forward.\n\nIf the user cancels the feedback form, the Complete button reappears with the full recommendations view. This approach forces feedback from free-tier users while potentially removing this requirement for paid users in the future.",
+  "acceptance_criteria": [
+    "Complete button is hidden when the feedback form is displayed",
+    "Users must interact with the feedback form (thumbs up/down) to proceed",
+    "Cancel returns the user to the full view with the Complete button restored",
+    "Feedback submission closes the modal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed the Complete button during feedback collection. The feedback form is the only exit path. Cancel restores the Complete button and full recommendations view.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-621"],
+  "source_files": [],
+  "implementation_notes": "This is a free-tier engagement strategy. The Complete button is conditionally hidden when the feedback form is active and restored on cancel.",
+  "comment_summary": "Developer implemented on staging. Complete button hides on feedback display and reappears on cancel.",
+  "comment_count": 1
+}

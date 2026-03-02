@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-522",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Edit Object Fields Creating Duplicate Rows",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-22T04:24:20.716-0800",
+  "updated": "2026-03-01T01:29:12.955-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user editing object fields, I want field updates to modify existing rows rather than inserting duplicates, so that my field list remains accurate and does not show inflated record counts.",
+  "description": "When editing object fields, the system was inserting new rows instead of updating existing ones. For example, an object with 5 fields would show 10 records after updating one field — the original 5 plus 5 duplicates. The bug was specifically triggered when adding a Text field type and then editing it. The root cause was an insert-instead-of-update path in the field save logic. The fix ensures that edits perform an update on the existing record rather than creating a new one.",
+  "acceptance_criteria": [
+    "Editing an existing field updates the record in place without creating a duplicate row",
+    "Field count remains correct after editing operations",
+    "Adding a Text field and then editing it does not produce duplicate records",
+    "Existing fields are not affected by the fix"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Field list no longer shows duplicate rows after editing. Record count accurately reflects the actual number of fields.",
+  "middleware_changes": "Fixed the field save logic to perform an update on existing records instead of inserting new rows when editing a field.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The bug was reproducible by adding a few fields, then adding a Text field, and editing it. The save logic was not correctly detecting the existing record for update, falling through to an insert path. Fixed on staging first, then deployed to production.",
+  "comment_summary": "Developer identified the reproduction steps (add fields, add a Text field, edit it) and fixed the insert-vs-update logic on staging for review.",
+  "comment_count": 1
+}

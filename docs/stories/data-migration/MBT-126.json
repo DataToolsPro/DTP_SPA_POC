@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-126",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Increase size of migration column 2",
+  "status": "Done",
+  "feature_folder": "data-migration"
+}

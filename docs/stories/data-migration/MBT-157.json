@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-157",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Migrate Data Model Schema Changes to Production",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-21T12:40:34.479-0700",
+  "updated": "2026-03-01T03:57:24.182-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Migrate accumulated schema changes from the staging database to production without impacting existing customer data. The last production push was after the ERD diagram was completed, so multiple schema diffs had accumulated.\n\n### Approach\n- Run a schema compare between staging and production\n- Apply schema diffs manually to production\n- Verify both environments are mirrored after migration",
+  "acceptance_criteria": [
+    "Production schema matches staging schema",
+    "Existing customer data in production is preserved",
+    "Schema compare confirms both environments are mirrored"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Production database schema updated to mirror staging, incorporating all schema changes made since the ERD diagram phase.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Ryan performed the migration manually using a schema compare tool. Post-migration verification confirmed both environments were mirrored.",
+  "comment_summary": "Ryan migrated the schema diffs himself using a schema compare and confirmed production now mirrors staging.",
+  "comment_count": 2
+}

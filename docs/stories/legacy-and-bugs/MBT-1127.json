@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1127",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Add PostHog Analytics Script to App.DataToolsPro.com",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-05-25T22:46:07.724-0700",
+  "updated": "2026-03-01T04:19:16.904-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nPostHog is being added as the analytics platform for app.datatoolspro.com to track user events and behavior.\n\n## Implementation\n1. Add the PostHog tracking script to the application.\n2. Future enhancement: pass userId and teamId to PostHog for user identification.\n\n## Blocker\nThe initial deployment was blocked because PostHog's script domain was not included in the Content Security Policy (CSP). The CSP `script-src` directive needed to be updated to allow the PostHog script to load.\n\n## Resolution\nUpdated CSP to include PostHog's domain, and analytics events are now flowing to PostHog.",
+  "acceptance_criteria": [
+    "PostHog script is loaded on all app.datatoolspro.com pages",
+    "CSP is updated to allow PostHog script loading",
+    "Analytics events are captured and visible in PostHog dashboard",
+    "No CSP violation errors in browser console"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "PostHog tracking script added to the application template.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSP update was required to allow PostHog script loading. The Content-Security-Policy script-src directive was updated to include PostHog's domain alongside existing allowed sources (Salesforce, jQuery, ShareThis, Pendo).",
+  "comment_summary": "Developer added the script but analytics weren't captured initially due to CSP blocking. Reporter identified the CSP violation. Developer updated CSP on production and confirmed analytics are now flowing.",
+  "comment_count": 3
+}

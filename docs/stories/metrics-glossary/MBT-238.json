@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-238",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Multi-Tenant Sharing and Role-Based Access POC",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T22:39:52.916-0700",
+  "updated": "2024-05-24T02:24:56.696-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "security", "Administration"],
+  "story": "",
+  "description": "Spike/POC to design and prototype multi-user access for a single DataTools Pro account tied to a Salesforce instance. The goal is to allow multiple users within the same organization to view and edit shared data (metrics, dictionary, ERD, migration) while maintaining tenant isolation and security.\n\nThe proposed architecture uses Laravel-native frameworks:\n- **Teamwork** library for team/account management: each authenticated user gets an account (team), and invitation-based sharing allows users to join other accounts\n- **Laratrust** for role-based permissions: roles (owner, editor, viewer) with granular permissions (edit-metrics, view-metrics) scoped per team\n- Data is queried by team_id rather than user_id, enabling shared access\n- Users can belong to multiple teams and toggle between them\n- Security considerations: preventing cross-tenant data leakage, handling users who belong to multiple accounts with the same Salesforce org, and invitation-based access control\n\nKey design constraints:\n- A single Salesforce org ID is NOT unique in the system — two separate DTP accounts can point to the same org\n- Users must be explicitly invited to join a shared account\n- Account data is isolated by default — no co-mingling without explicit sharing\n- The architecture should leverage Laravel native security patterns to minimize attack surface",
+  "acceptance_criteria": [
+    "Architecture design documented for multi-tenant team-based access",
+    "POC demonstrates user invitation and team membership flow",
+    "Data isolation verified — users only see data from their assigned teams",
+    "Role-based permissions prevent unauthorized edits",
+    "Design reviewed for security vulnerabilities before production implementation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Team-based data scoping — all queries use team_id instead of user_id. Invitation flow for adding users to teams. Team switching logic for users with multiple team memberships.",
+  "data_model_changes": "Account/team table, user-team membership table, role and permission tables (via Laratrust). All data tables gain a team_id foreign key for tenant scoping.",
+  "api_changes": "Invitation endpoints, team management endpoints, team-switching endpoint. All data endpoints scoped by active team_id.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Explored three Laravel libraries: Teamwork (team membership/invitations), Laratrust (roles/permissions per team), and archtechx/tenancy (single-DB multi-tenancy). The Teamwork + Laratrust combination was proposed as the primary approach. Work done on a separate Git branch to avoid impacting staging. Design intended for security review before production merge.",
+  "comment_summary": "Extensive architectural discussion about multi-tenant design. Key decisions: team-based data isolation (team_id replaces user_id), invitation-only sharing, same Salesforce org can exist in multiple DTP accounts, roles/permissions via Laratrust scoped per team. Design documented for security peer review before implementation. References to Medium article and archtechx/tenancy library for comparison.",
+  "comment_count": 21
+}

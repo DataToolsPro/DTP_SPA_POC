@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-218",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Suppress Category Editing Gear Icon Until First Metric Is Added",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T19:53:37.239-0700",
+  "updated": "2026-03-01T01:28:39.291-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the category editing gear icon to be hidden until I add my first metric, so that I am not confused by an editing control that has no data to operate on.",
+  "description": "The category gear icon (for editing Line of Business and Topics) was visible even when no metrics existed, which was confusing because the category pre-fill data is not populated until the first metric is created. This change suppresses the gear icon until at least one metric exists.\n\n## Behavior\n\n1. **Gear icon hidden** when the user has zero metrics.\n2. **Gear icon visible** once the user adds their first metric.\n3. **Default categories auto-created** — when the first metric is inserted, the system automatically creates the two default categories (Line of Business and Topic) for the customer's account.\n\n## Implementation Approach\n\nRather than checking on every page load whether categories exist and conditionally showing the gear, the implementation was simplified: default categories (Line of Business and Topic) are created at the time of first metric insertion. Since categories always exist after the first metric, the gear icon visibility simply checks whether at least one metric exists.",
+  "acceptance_criteria": [
+    "Category gear icon is hidden when the user has zero metrics",
+    "Category gear icon becomes visible after the first metric is added",
+    "Default categories (Line of Business and Topic) are automatically created when the first metric is inserted",
+    "Gear icon visibility check is based on metric count, not category existence"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Category gear icon is conditionally hidden until the user's first metric is created. This prevents confusion from showing an editing control when no category data exists.",
+  "middleware_changes": "On first metric insertion, the system auto-creates default Line of Business and Topic categories for the customer account. Gear icon visibility is driven by a metric count check.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The original approach would have required checking category existence on every page load. Instead, the implementation auto-creates default categories (Line of Business and Topic) during first metric insertion, simplifying the gear icon visibility to a single metric count check. Category pre-population was confirmed working on staging but needed verification on production.",
+  "comment_summary": "During production testing, categories appeared missing for a new user. Developer clarified that the auto-creation script runs on first metric insertion, which was already implemented on staging. Product owner requested suppressing the gear icon entirely until the first metric is added. Developer proposed auto-creating categories at user registration instead, and ultimately the solution was simplified to create defaults on first metric insertion and hide the gear until metrics exist.",
+  "comment_count": 7
+}

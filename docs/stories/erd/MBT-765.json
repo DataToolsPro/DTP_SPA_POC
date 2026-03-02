@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-765",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Settings Sidebar to Declutter Toolbar",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-11T22:39:55.590-0700",
+  "updated": "2024-07-25T23:50:09.132-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want a Settings icon on the ERD that opens a sidebar for less frequently used controls, so that the main toolbar is simplified and I can focus on the diagram without visual clutter.",
+  "description": "The ERD top toolbar has become crowded with too many controls (view management, simplify toggle, lock toggle, user relationships toggle, etc.). To improve the UX, a Settings gear icon is added to the toolbar that toggles a sidebar panel.\n\nThe sidebar consolidates the two existing toggle buttons and provides a home for upcoming enhanced ERD features. This declutters the main toolbar while keeping all settings easily accessible. The settings sidebar also sets the stage for future sidebar-based features.",
+  "acceptance_criteria": [
+    "A Settings gear icon appears in the ERD toolbar",
+    "Clicking the gear icon toggles a settings sidebar panel",
+    "The existing toggle buttons (simplify links, lock positions) are moved into the sidebar",
+    "The main toolbar is visually simplified with fewer controls",
+    "The sidebar can be toggled closed to return to the full diagram view",
+    "The sidebar serves as a container for future ERD enhancement features"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New Settings gear icon in the ERD toolbar that opens a sidebar panel. Existing toggle controls (simplify, lock) relocated from the toolbar to the sidebar, reducing visual clutter on the main toolbar.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer was asked to coordinate the commit with the team lead for review on dev. This sidebar serves as the foundation for future ERD features that will live in sidebar panels.",
+  "comment_summary": "Developer implemented the settings sidebar and requested review. Coordination with the team lead was requested to ensure the commit was reviewed on dev before merging.",
+  "comment_count": 2
+}

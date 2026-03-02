@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-241",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Reset Edit Mode When Navigating Between Metrics",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-14T17:24:38.649-0700",
+  "updated": "2024-05-24T02:24:56.712-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want edit mode to automatically reset to read-only when I navigate to another metric using Previous/Next arrows, so that unsaved changes are clearly discarded and I start fresh with each metric.",
+  "description": "When the sidebar is in edit mode and the user clicks Previous or Next to navigate to another metric, the sidebar should automatically switch back to read-only (output) mode and refresh all data for the newly selected metric. This prevents confusion where edit-mode fields from one metric carry over visually to another.\n\nThe fix also ensures that Reports and Dashboards tabs refresh correctly when navigating between metrics — previously they would show stale data from the prior metric.",
+  "acceptance_criteria": [
+    "Clicking Previous/Next while in edit mode automatically resets to read-only mode",
+    "All metric detail fields refresh with data from the newly selected metric",
+    "Reports tab refreshes to show reports linked to the new metric",
+    "Dashboards tab refreshes to show dashboards linked to the new metric",
+    "Unsaved edits are discarded without a save prompt on navigation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Previous/Next navigation resets the sidebar to read-only mode. All tabs (detail, reports, dashboards) refresh with the new metric's data. Edit mode state is cleared on navigation.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-233"],
+  "source_files": [],
+  "implementation_notes": "Navigation handlers now call the edit-mode reset function before loading the new metric's data. Reports and dashboards tab data is also refreshed during navigation. Implemented in 45 minutes.",
+  "comment_summary": "Issue clarified via a recorded screencast video. Developer fixed navigation to reset edit mode and refresh all tabs. Reports and dashboards stale data issue also resolved in the same fix.",
+  "comment_count": 7
+}

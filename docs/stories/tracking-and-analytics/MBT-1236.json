@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1236",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Integrate PostHog Feature Flags for Premium Integrations",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-16T07:00:42.927-0700",
+  "updated": "2026-03-01T04:09:50.779-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Integrate PostHog feature flags into the DataTools Pro application to control visibility of premium integration features. Snowflake, HubSpot, and Tableau features in the left toolbar should be disabled by default and enabled via PostHog feature flags.\n\nThree feature flags were created in the PostHog dashboard. The PostHog PHP SDK is initialized during authentication, and user identity (email, name) is sent to PostHog via `PostHog::identify()`. This enables per-customer feature flag targeting in the PostHog dashboard.\n\nCode implementation:\n```php\nPostHog::init(config('services.posthog.key'), [\n    'host' => config('services.posthog.host'),\n]);\nPostHog::identify($userDB->id, [\n    'email' => $userDB->email,\n    'name'  => trim($userDB->firstname . ' ' . $userDB->lastname),\n]);\n```",
+  "acceptance_criteria": [
+    "PostHog feature flags are integrated into the DataTools Pro app",
+    "Snowflake, HubSpot, and Tableau features are hidden by default in the left toolbar",
+    "Features become visible when their corresponding PostHog feature flag is enabled",
+    "User identity is sent to PostHog for per-customer targeting",
+    "Feature flags can be toggled per user from the PostHog dashboard"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Snowflake, HubSpot, and Tableau toolbar items are conditionally shown based on PostHog feature flag state.",
+  "middleware_changes": "PostHog PHP SDK initialized on authentication. User identity sent via PostHog::identify(). Feature flag checks added for premium integration toolbar items.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "PostHog SDK is initialized with the app's API key and host from services config. User identity (id, email, name) is declared during authentication. Three feature flags were created in the PostHog dashboard for Snowflake, HubSpot, and Tableau. Per-customer targeting is possible by attaching user identities.",
+  "comment_summary": "Developer implemented three PostHog feature flags, integrated the SDK with user identity, and asked whether flags should target specific customers or all users.",
+  "comment_count": 1
+}

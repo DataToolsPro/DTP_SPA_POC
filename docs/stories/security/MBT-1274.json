@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1274",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Short-Lived Code Exchange to Establish Session on Target Host",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:24.540-0800",
+  "updated": "2025-12-17T22:09:30.885-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The target tenant host must exchange a short-lived OIDC authorization code with Stytch server-to-server to establish a session, setting an httpOnly cookie for subsequent requests.\n\n## Flow\n\n1. Auth domain redirects back to target host with `?code=...` (OIDC authorization code)\n2. Target host exchanges code server-to-server with Stytch\n3. Receives `session_token` and `session_jwt` from Stytch\n4. Sets `session_jwt` in an httpOnly cookie on the target host\n\n## Security Requirements\n\n- Code cannot be replayed — invalid/expired codes fail safely\n- Exchange is server-to-server only (code never exposed to client-side)\n- Stytch handles all session creation and JWT signing\n- No custom session storage or signing logic needed",
+  "acceptance_criteria": [
+    "Target host exchanges OIDC code for session tokens via Stytch SDK",
+    "session_jwt is set as an httpOnly secure cookie on the target host",
+    "Expired or replayed authorization codes are rejected safely",
+    "Code exchange is server-to-server only, never client-side",
+    "Session is fully established after code exchange"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "OIDC code exchange endpoint on the target host. Uses Stytch SDK to exchange the authorization code for session tokens and sets the session_jwt cookie.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1273", "MBT-1287"],
+  "source_files": [],
+  "implementation_notes": "Stytch SDK handles the code exchange and session creation. The target host only needs to call the SDK and set the resulting JWT as a cookie. No custom cryptographic operations required.",
+  "comment_summary": "",
+  "comment_count": 0
+}

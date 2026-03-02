@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-994", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Create WordPress Custom Posts for Zero-Result Filter Guidance Content",
+  "type": "task", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-11T22:03:08.900-0800", "updated": "2024-11-27T22:10:23.797-0800",
+  "assignee": "Ryan Goodman", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Create WordPress custom post content for each filter's zero-result guidance. When a filter returns 0 records, the corresponding WP post content is displayed to help the user.\n\nWordPress post IDs by filter:\n- Views: 10336\n- Line of Business: 10329\n- Topics: 10331\n- Status (Analytics): 10332\n- Date Created: 10333\n- Date Last Modified: 10334\n- Refreshing Dashboards and Reports list: 10335\n- Created By: 10338\n- Last Modified By: 10339\n- Folder: 10352 (added by Waqar, was missing)\n- Status (workflow): 10353 (added by Waqar, separate from analytics status)",
+  "acceptance_criteria": ["Each filter has a corresponding WP custom post with helpful guidance", "Post IDs are mapped correctly in the application", "Folder and workflow Status posts are included"],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Mapped each filter type to its corresponding WordPress post ID for zero-result content retrieval.",
+  "data_model_changes": "", "api_changes": "Fetches WordPress custom post content by post ID when filter returns zero results.",
+  "dependencies": ["MBT-980"], "source_files": [],
+  "implementation_notes": "Waqar discovered that 'Folder' and 'Status (workflow)' post types were missing from the initial list and created WP posts 10352 and 10353 to cover them.",
+  "comment_summary": "Waqar identified missing custom post types for Folder (10352) and Status workflow (10353), created them, and deployed to development.", "comment_count": 4
+}

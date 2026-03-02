@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-650",
+  "epic_key": "MBT-708",
+  "feature_folder": "infrastructure",
+  "title": "Cache Salesforce Objects Locally to Improve Dictionary Page Load Speed",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-16T20:21:13.644-0700",
+  "updated": "2024-05-24T02:25:40.341-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user working with the Data Dictionary, I want Salesforce objects to be cached locally after the first fetch so that the page loads quickly on subsequent visits, and I can manually refresh the object list when needed.",
+  "description": "The migration/dictionary page was fetching the full list of Salesforce objects on every page load, causing slow performance. The optimization caches all objects into the local database on first fetch and provides a refresh button to re-sync from Salesforce.\n\nWhen viewing object details for the first time, fields are fetched from Salesforce with a loading indicator. On subsequent visits, cached data is served immediately.\n\n## Edge Cases\nDuring testing, a scenario was identified where adding a brand-new object showed empty fields on the detail page. This was investigated but could not be consistently reproduced by the developer and was resolved after re-testing.",
+  "acceptance_criteria": [
+    "Salesforce objects are fetched and cached in the database on first page load",
+    "Subsequent page loads serve objects from the local cache without Salesforce API calls",
+    "A refresh button allows users to re-sync the object list from Salesforce",
+    "Object detail page fetches fields from Salesforce on first view with a loading indicator",
+    "Previously viewed object fields are served from cache on subsequent visits",
+    "Newly added objects display their fields correctly on the detail page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a refresh button to re-sync Salesforce objects. Object detail page shows a loading message on first-time field fetch.",
+  "middleware_changes": "Object list is now fetched from Salesforce only once and cached. Subsequent requests served from database. Refresh action triggers a re-fetch that checks for changes before updating.",
+  "data_model_changes": "Salesforce objects and their fields are now stored in the local database for caching purposes.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The caching approach stores all Salesforce objects in the database on first fetch. The refresh button compares existing cached objects with the Salesforce response to avoid unnecessary writes. Fields are lazy-loaded on object detail view.",
+  "comment_summary": "Waqar implemented the caching and deployed to staging. Ryan found an issue where newly added objects showed empty detail pages. Waqar could not reproduce the issue. After further testing with incognito mode and custom objects, the issue was resolved and the feature was approved.",
+  "comment_count": 10
+}

@@ -1,0 +1,49 @@
+{
+  "issue_key": "MBT-557",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Metrics Dictionary Completion Flow with Feedback and Modal Controls",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-02T10:19:10.199-0800",
+  "updated": "2026-03-01T01:29:54.931-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "metrics"],
+
+  "story": "As a DataTools Pro user completing a Metrics Dictionary analysis, I want structured completion controls (Start Over, Minimize, Complete) and a feedback prompt, so that I can signal when I am done, provide feedback on the Metric Analyst recommendations, and minimize the modal to check existing metrics without losing my progress.",
+  "description": "This enhancement overhauls the Metrics Dictionary modal workflow after the user runs the recommendation service. Once the second service call returns recommendations, the modal behavior changes:\n\n### Modal Controls (replace the close button)\n1. **Start Over** — Clears selections and returns to the first screen (dashboard picker)\n2. **Minimize** — Closes the modal and shows a floating button in the bottom-right corner to re-open (maximize) it, preserving state\n3. **Complete** — Triggers the feedback flow before closing\n\n### Feedback Flow (on Complete)\n- Displays thumbs up/down rating for the Metric Analyst\n- Shows a text box: 'What additional instructions would you give to the Metric Analyst to prepare better recommendations?'\n- Feedback is shown for both thumbs up and thumbs down\n- Feedback is collected directly in the app database (not via Google Analytics)\n- If no recommendations were added, the feedback form still appears\n\n### Modal Behavior Changes\n- After the recommendation service runs, the close (X) button and escape key are disabled\n- Clicking outside the modal does not close it\n- The back button is removed after the second service call (user must Start Over)\n- Feedback appears every time metrics dictionary is run\n\n### Analytics Intent\nThe product owner wants to track how many times a user clicks the magic wand, runs recommendations, and completes the feedback — to understand funnel drop-off and recommendation quality.",
+  "acceptance_criteria": [
+    "After recommendations load, Start Over / Minimize / Complete buttons replace the close button",
+    "Start Over clears selections and returns to the dashboard picker screen",
+    "Minimize closes the modal and shows a floating 'maximize' button in the bottom-right corner",
+    "Clicking the maximize button re-opens the modal with preserved state",
+    "Complete triggers the feedback form with thumbs up/down and text input",
+    "Feedback is stored in the application database, not external analytics",
+    "Modal cannot be closed via escape key, clicking outside, or the X button after recommendations load",
+    "Back button is not available after the second service call",
+    "Completing the flow clears the selected dashboard for a fresh start on next use"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the modal close button with Start Over / Minimize / Complete controls after recommendations load. Added a minimize/maximize floating button. Added feedback form with thumbs up/down and text input. Disabled escape and backdrop-click dismissal. Removed back button after second service call.",
+  "middleware_changes": "Feedback submission (rating + text) is handled via application controller and stored in the database. Dashboard selection is cleared on completion.",
+  "data_model_changes": "Feedback table or columns added to store thumbs up/down rating, text feedback, and user/session context for each metrics dictionary completion event.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The product owner explicitly rejected Google Analytics in favor of first-party data collection. The minimize behavior mimics a chat widget (floating bottom-right button). A separate tracking table for funnel analytics (magic wand clicks, recommendation runs, completions) was discussed but implementation status is unclear — may be a follow-up.",
+  "comment_summary": "Developer implemented Start Over, Minimize, and Complete buttons with the modal lockdown behavior. Developer asked about using Google Analytics for tracking; product owner rejected it in favor of direct database collection. Minimize was implemented as a bottom-right floating button. The need for a detailed funnel tracking table was discussed but may have been deferred.",
+  "comment_count": 9
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1262",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Map Tenant Slug/Subdomain to Stytch Organization",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:44:47.640-0800",
+  "updated": "2026-01-05T02:55:51.455-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Establish a canonical mapping between tenant subdomains (e.g., `toyota.datatoolspro.com`) and their Stytch Organizations so that login can be initiated deterministically based on the URL.\n\n## Requirements\n\n- Tenant directory stores `tenant_slug` → `stytch_organization_id` mapping\n- Lookup is fast (<50ms typical, via edge cache or KV)\n- Unknown tenant slugs return a safe error page with no auth information leakage\n\n## Open Questions\n\n- Will every tenant have a separate subdomain (e.g., `toyota.datatoolspro.com`)?\n- Should there also be a shared login domain alongside tenant-specific subdomains?\n- For SSO customers, should login be strictly locked to the tenant's Stytch Organization based on subdomain with no fallback?\n- Should tenant resolution also determine regional routing (EU/US/APAC)?",
+  "acceptance_criteria": [
+    "Tenant directory maps tenant_slug to stytch_organization_id with fast lookup",
+    "Lookup latency is under 50ms via edge cache or KV",
+    "Unknown tenant slugs return a safe error page without leaking auth details",
+    "Mapping is deterministic — same slug always resolves to same Organization"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Tenant directory lookup service that resolves tenant_slug to stytch_organization_id. Includes edge caching layer for sub-50ms response times.",
+  "data_model_changes": "Tenant directory data structure storing slug-to-organization mappings, potentially in Cloudflare KV or database with cache.",
+  "api_changes": "",
+  "dependencies": ["MBT-1261"],
+  "source_files": [],
+  "implementation_notes": "Key architectural decisions pending: subdomain strategy (per-tenant subdomains vs shared login domain), SSO strictness policy, and regional routing integration. These decisions affect the tenant directory schema and lookup logic.",
+  "comment_summary": "Developer asked for clarification on subdomain strategy: whether every tenant gets a unique subdomain, whether there's a shared login domain fallback, whether SSO should be strictly scoped to subdomain, and whether tenant resolution should include regional routing.",
+  "comment_count": 3
+}

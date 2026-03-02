@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-928", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Group By Feature Throwing Errors on Selection",
+  "type": "story", "original_jira_type": "Bug", "status": "Done", "priority": "Medium",
+  "created": "2024-09-17T22:55:34.958-0700", "updated": "2024-11-03T19:02:57.859-0800",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Group By feature to work without errors when selecting a grouping option, so that I can browse reports by category.",
+  "description": "Bug fix: selecting a group option in the Reports and Dashboards Group By dropdown was throwing JavaScript errors, preventing the grouping feature from functioning.",
+  "acceptance_criteria": ["Selecting a group option does not throw errors", "Grouped view displays correctly after selection"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed the Group By dropdown to properly apply grouping without JavaScript errors.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-896"], "source_files": [],
+  "implementation_notes": "Error in the grouping logic was likely introduced during recent UX refactoring of the Group By feature.",
+  "comment_summary": "Balaji resolved the grouping display error.", "comment_count": 1
+}

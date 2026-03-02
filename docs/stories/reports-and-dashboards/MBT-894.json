@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-894",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Include Hidden Report/Dashboard ID Column in Data Export",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-04T00:48:11.911-0700",
+  "updated": "2024-09-17T23:13:16.691-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a data analyst exporting report data, I want the Salesforce record ID included in the export even though it is hidden in the table view, so that I can use it for cleanup actions like purging unused reports.",
+  "description": "Adds a visually hidden ID column to the Reports and Dashboards data table that includes the Salesforce record ID. The column is not visible in the UI but is included when the user exports the data, enabling downstream actions like identifying and purging unused reports.",
+  "acceptance_criteria": [
+    "ID column is hidden in the data table UI",
+    "ID column is included in exported data (CSV/Excel)",
+    "ID contains the Salesforce record ID for each report/dashboard"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a visually hidden ID column to the data table that appears only in exports.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "The ID was already available in the data — Balaji confirmed it was already present. The column was configured as visually hidden but export-included.",
+  "comment_summary": "Balaji confirmed the ID was already available in the data. Completed and submitted for review.",
+  "comment_count": 2
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-620",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Exclude Soft-Deleted Metrics from Merge Screen",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T22:20:52.830-0700",
+  "updated": "2024-05-24T02:25:38.113-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user merging metrics, I want the merge screen to only show active metrics and exclude any I've previously deleted, so that I don't see duplicate entries from soft-deleted records.",
+  "description": "The merge metric screen was displaying duplicate entries because soft-deleted metrics were being included in the query results. The merge screen query needs to filter out soft-deleted records.",
+  "acceptance_criteria": [
+    "Soft-deleted metrics are excluded from the merge screen dropdown/list",
+    "Only active (non-deleted) metrics appear as merge targets",
+    "Previously deleted metrics do not cause apparent duplicates"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Merge screen no longer displays soft-deleted metrics, eliminating apparent duplicate entries.",
+  "middleware_changes": "Updated the merge screen query to filter out soft-deleted metric records.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The fix was a query filter addition to exclude records where the soft-delete flag is set.",
+  "comment_summary": "Developer fixed the query filter on staging.",
+  "comment_count": 1
+}

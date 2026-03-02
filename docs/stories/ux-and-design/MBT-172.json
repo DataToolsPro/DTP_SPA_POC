@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-172",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Update Theme Colors to New Brand Palette",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T23:33:19.522-0700",
+  "updated": "2024-05-24T02:24:31.121-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the app to use the updated brand color palette, so that the interface has a professional and consistent color scheme where green indicates interactive elements.",
+  "description": "Update the application color scheme to the new brand palette. Green (`#08BC8C`) should primarily indicate clickable/interactive elements rather than serving as a background color.\n\n## Color Changes\n- Update `.dtp-green` class to use `#08BC8C`\n- Update disabled button style: background `#b0c8c1`, text color `#222222`\n- Update toggle control colors in local `bootstrap.min.css`:\n  - `.custom-control-input:checked ~ .custom-control-label::before` border and background: `#08BC8C`\n  - Toggle text color: `#222222`\n- Remove `min-height-200` class from the header background area",
+  "acceptance_criteria": [
+    "dtp-green class uses #08BC8C as the primary green",
+    "Disabled buttons show #b0c8c1 background with #222222 text",
+    "Toggle controls use #08BC8C when checked",
+    "Header area no longer uses min-height-200 constraint",
+    "Green is reserved for interactive/clickable elements across the UI"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Comprehensive color scheme update across the application. Primary green changed to #08BC8C for interactive elements. Disabled button and toggle control styles updated. Header background area height constraint removed.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Updated both the custom CSS (.dtp-green class) and the local bootstrap.min.css for toggle controls. Developer raised a valid concern about modifying bootstrap.min.css directly (upgrade risk), but the change was applied to the local copy. Caching issues required incognito testing to verify changes.",
+  "comment_summary": "Multiple rounds of color adjustments. Developer updated .dtp-green but raised concerns about modifying bootstrap.min.css (upgrade compatibility). Ryan identified the specific toggle CSS rule to update. Caching required incognito testing to verify changes.",
+  "comment_count": 10
+}

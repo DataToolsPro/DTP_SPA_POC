@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1345",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Set Up Cloudflare Pages for React Frontend Deployment",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T19:19:51.444-0800",
+  "updated": "2026-03-01T04:23:38.029-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Set up Cloudflare Pages for the React v3 frontend deployment with proper security configuration.\n\n### A) Cloudflare Pages for React\n- Project `dtp-app-v3` connected to Git repository\n- Domain: `us1.datatoolspro.com`\n- SPA fallback configured for deep link refresh support\n- Build options: Direct Git (auto-deploy on push) or GitHub Actions (wrangler pages deploy)\n- Environment variable: `VITE_API_URL` set per environment\n\n### B) Cloudflare Proxied API and Origin Lockdown\nFor `us1api.datatoolspro.com`:\n- Orange-cloud DNS record (proxied through Cloudflare)\n- WAF managed rules ON\n- Bot protection ON\n- Rate limiting: strict on `/auth/*`, moderate on `/api/*`\n- Origin lockdown: Cloudflare IP ranges only, or Authenticated Origin Pulls (mTLS)\n\n### C) CORS and Cookies\n- Laravel CORS allowlist: `https://app.datatoolspro.com`, `https://staging.datatoolspro.com`\n- Cookie settings: `Domain=.datatoolspro.com`, `Secure`, `HttpOnly`\n- `SameSite=Lax` preferred; `None` only if required with tightened CSRF checks\n- Never use `*` origin with credential cookies\n\n### Security Model\nPublic pages (`/`, `/login`) are React routes. The app is gated because all meaningful actions require API calls, and the API enforces session, tenant, and RBAC. JavaScript bundles being publicly downloadable is acceptable — IP is in data and authorization logic, not the JS bundle.",
+  "acceptance_criteria": [
+    "Cloudflare Pages project dtp-app-v3 is created and connected to Git",
+    "SPA fallback is configured for deep link refresh",
+    "API is proxied through Cloudflare with WAF, bot protection, and rate limiting",
+    "Origin lockdown prevents direct API access bypassing Cloudflare",
+    "CORS and cookie configuration supports cross-subdomain auth securely",
+    "docs/architecture/backend.md is updated with configuration decisions"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel CORS allowlist updated. Cookie domain and SameSite configuration. CSRF/origin check tightening.",
+  "data_model_changes": "",
+  "api_changes": "Rate limiting rules for /auth/* (strict) and /api/* (moderate). Cloudflare WAF and bot protection on API endpoints.",
+  "dependencies": ["MBT-1280"],
+  "source_files": [],
+  "implementation_notes": "Two deployment options: Direct Git (Cloudflare auto-builds on push to main) or GitHub Actions (wrangler pages deploy via deploy-staging.yml / deploy-production.yml with approval). Origin lockdown options: firewall to Cloudflare IPs, Authenticated Origin Pulls (TLS client cert), or mTLS. Must choose and enforce one to prevent attackers from hitting the API server directly.",
+  "comment_summary": "",
+  "comment_count": 0
+}

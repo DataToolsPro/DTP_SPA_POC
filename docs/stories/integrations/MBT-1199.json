@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1199",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Optimize Streamlit App Performance with Caching",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-09-03T04:43:36.815-0700",
+  "updated": "2026-03-01T04:05:57.106-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "",
+  "description": "The Streamlit app deployed on Snowflake and share.streamlit.io had slow UI responsiveness, even for simple interactions like button clicks. The fix involved implementing caching to avoid redundant data fetches and re-computations on each interaction.",
+  "acceptance_criteria": [
+    "Streamlit app responds quickly to UI interactions",
+    "Caching is implemented for data queries and computed results",
+    "App performance is consistent on both Snowflake-hosted and share.streamlit.io deployments"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Significantly faster UI interactions due to cached data and reduced re-rendering.",
+  "middleware_changes": "Implemented Streamlit caching decorators to cache data queries and computed results.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Streamlit reruns the entire script on each interaction by default. Caching was added to prevent redundant Snowflake queries. App is deployed to both Snowflake native (SFDC.PUBLIC) and share.streamlit.io.",
+  "comment_summary": "Developer implemented caching and confirmed the app is now fast. Deployed to both Snowflake native app and share.streamlit.io.",
+  "comment_count": 1
+}

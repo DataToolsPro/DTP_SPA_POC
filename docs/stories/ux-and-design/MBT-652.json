@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-652",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Status Badge Background Colors in Dark Mode for Migration and Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-16T21:38:30.991-0700",
+  "updated": "2024-05-24T02:25:39.791-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a DataTools Pro user in dark mode, I want the status badges on migration and dictionary pages to have visible background colors, so that I can quickly distinguish between statuses like Not Started, In Progress, and Blocked.",
+  "description": "In dark mode, status badge background colors for migration workflow stages (Data Mapping, Migration Development, Data QA and Validation) are not visible. The status values (Not Started, In Progress, Blocked, etc.) lose their color coding against the dark background.\n\n## Fix\nAdjust CSS for status badges in dark mode to ensure background colors remain visible and provide sufficient contrast against the dark page background.",
+  "acceptance_criteria": [
+    "Status badges on migration pages display visible background colors in dark mode",
+    "Status badges on dictionary pages display visible background colors in dark mode",
+    "All status values (Not Started, In Progress, Blocked, etc.) are visually distinguishable",
+    "Status badge colors provide sufficient contrast against the dark background"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed status badge background colors in dark mode for migration and dictionary pages. All status values now display with visible, contrasting background colors.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "CSS fix for dark mode status badge visibility. Background colors adjusted to maintain contrast against the dark page background.",
+  "comment_summary": "Developer fixed the issue and deployed to staging.",
+  "comment_count": 1
+}

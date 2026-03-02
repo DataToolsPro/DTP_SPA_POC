@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-27",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Display Dynamic Object Title on Detail Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T20:44:00.193-0800",
+  "updated": "2024-05-24T02:24:37.901-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to see a dynamic page title that reflects the current view mode and Salesforce object, so that I always know what data I am looking at.",
+  "description": "The object detail page needs a dynamic title that updates based on the active view and selected object. The title format is:\n\n`[View Mode] - [Object Label] ([Object API Name])`\n\nExamples:\n- Migration - Lead (Lead)\n- Dictionary - Lead (Lead)\n- Migration - Custom Object (Custom_Object__c)\n\nThe title must update when toggling between Migration and Dictionary views without a page reload.",
+  "acceptance_criteria": [
+    "Page title displays in the format: '[View Mode] - [Object Label] ([API Name])'",
+    "Title updates dynamically when switching between Migration and Dictionary views",
+    "Object label and API name are both displayed",
+    "Custom objects display with their full API name including the __c suffix"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dynamic page title label shows the current view mode (Migration or Dictionary) alongside the Salesforce object label and API name. Updates on view toggle.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-22"],
+  "source_files": [],
+  "implementation_notes": "Title is rendered from the object metadata already loaded on the page. JavaScript updates the title text when the view toggle fires.",
+  "comment_summary": "Product owner clarified the requirements after initially forgetting to save ticket details. Title needed to update when clicking Migration or Dictionary toggle. Developer implemented and submitted for review.",
+  "comment_count": 3
+}

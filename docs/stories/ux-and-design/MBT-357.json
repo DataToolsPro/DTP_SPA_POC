@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-357",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Apply Consistent Gridline Styling to All DataTables Globally",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-10T00:42:47.084-0800",
+  "updated": "2024-05-24T02:25:06.155-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want all data tables to have consistent gridline styling, so that the interface looks polished and uniform across all pages.",
+  "description": "DataTables across the application had inconsistent border/gridline styling. Some tables had visible gridlines while others did not, creating a disjointed visual experience.\n\n## CSS Fix\nTwo global CSS overrides applied to all DataTable instances:\n- `table.dataTable.no-footer` — adds a consistent bottom border (`1px solid #ddd`)\n- `table.dataTable thead th, table.dataTable thead td` — adds a consistent bottom border to header cells\n\nBoth rules use `!important` to override DataTables default styles and ensure uniform gridlines across all table views.",
+  "acceptance_criteria": [
+    "All DataTable instances display consistent gridline borders",
+    "Table footer borders are uniform across all pages",
+    "Table header cell borders are uniform across all pages",
+    "No visual regressions on existing table layouts"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Applied global CSS overrides to DataTables for consistent gridline borders. All tables now show uniform 1px solid #ddd borders on header cells and table footers.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Two CSS rules added globally with !important to override DataTables default styles: border-bottom on .no-footer class and on thead th/td elements. Uses #ddd color for subtle gridlines.",
+  "comment_summary": "Developer implemented the CSS changes and pushed to staging for review in incognito mode.",
+  "comment_count": 1
+}

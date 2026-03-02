@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-890",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix Duplicate Edit Report Buttons Appearing on Multi-Select",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-04T00:27:36.211-0700",
+  "updated": "2024-09-17T22:49:36.000-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user multi-selecting reports, I want to see only one Edit Report button, so that the interface remains clean and unambiguous.",
+  "description": "Bug fix: when multi-selecting report rows, three Edit Report buttons appeared instead of one. The duplicate buttons created a confusing interface. The fix ensures only a single Edit Report button is rendered regardless of the number of selected rows.",
+  "acceptance_criteria": [
+    "Only one Edit Report button appears when multi-selecting rows",
+    "Button count does not increase with additional row selections",
+    "Bulk edit functionality works correctly with the single button"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed duplicate Edit Report buttons from appearing when multi-selecting report rows. Only one button is now rendered.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-770"],
+  "source_files": [],
+  "implementation_notes": "The button was being appended on each row selection event rather than checking if it already existed.",
+  "comment_summary": "Ryan reported with screenshots. Balaji fixed and submitted for review.",
+  "comment_count": 3
+}

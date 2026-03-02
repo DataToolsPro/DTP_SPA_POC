@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-434",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Metrics Analytics Custom Link Field",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:46:29.583-0800",
+  "updated": "2024-05-24T02:25:08.642-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity**\n\nThe Text field of Custom Link in the Metrics Analytics section was vulnerable to Stored XSS. Users with metric editing permissions could inject JavaScript payloads that execute for all users visiting the Metrics page.\n\n## Fix\n\nInput sanitization applied to the Custom Link text field before storage, stripping HTML/script tags to prevent stored XSS.",
+  "acceptance_criteria": [
+    "HTML and script tags are sanitized from Custom Link text field before storage",
+    "XSS payloads in Custom Link text are neutralized",
+    "Legitimate custom link text is preserved",
+    "Fix deployed to staging"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization applied to the Custom Link text field in the metrics analytics update controller.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Same sanitization approach applied to the Custom Link text field in Metrics Analytics.",
+  "comment_summary": "Developer fixed and pushed to staging.",
+  "comment_count": 1
+}

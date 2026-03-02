@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-732",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Upgrade DataTables Libraries to Latest Version",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2024-05-27T21:50:56.321-0700",
+  "updated": "2024-08-10T15:03:42.489-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Upgrade all jQuery DataTables libraries to the latest version to take advantage of new features, enhancements, bug fixes, and security patches. This is a maintenance task to keep the codebase up to date.\n\n## Motivation\n- Access new DataTables features and enhancements\n- Apply security patches and bug fixes\n- Maintain codebase currency for long-term supportability",
+  "acceptance_criteria": [
+    "DataTables libraries upgraded to the latest stable version",
+    "All existing table functionality continues to work after upgrade",
+    "No visual regressions in table rendering",
+    "Dark mode table styling remains functional",
+    "Editor plugin (if upgraded) continues to work for inline editing"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Currently blocked. DataTables is used extensively across the application — upgrade requires comprehensive regression testing across all table views, dark mode, editor popups, and custom styling.",
+  "comment_summary": "",
+  "comment_count": 0
+}

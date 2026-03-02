@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1107",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "REST Endpoint for Adding Users via Stripe Webhook and Salesforce",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-04-15T23:13:24.419-0700",
+  "updated": "2026-03-01T04:13:20.840-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "API"],
+  "story": "",
+  "description": "Create a REST endpoint that allows adding additional users to a tenant. This endpoint will serve two integration flows:\n\n1. **Stripe Integration** — When someone purchases a subscription via Stripe, the webhook triggers this endpoint to provision user access on the tenant.\n2. **Salesforce Admin Integration** — Salesforce administrators can manually add users to a tenant through this endpoint when needed.\n\nThe endpoint must support both automated webhook calls and manual admin invocations.",
+  "acceptance_criteria": [
+    "REST endpoint accepts a request to add a user to a specified tenant",
+    "Stripe webhook can trigger the endpoint on purchase events",
+    "Salesforce admin interface can call the endpoint to manually add users",
+    "Endpoint validates the tenant and user data before provisioning",
+    "Appropriate error responses for invalid requests"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New user provisioning logic that handles tenant lookup, user creation, and role assignment when triggered by Stripe or Salesforce.",
+  "data_model_changes": "User record creation with tenant association.",
+  "api_changes": "New REST endpoint for adding users to a tenant, accepting user details and tenant identifier.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Endpoint needs to be secured and support both Stripe webhook signatures and Salesforce admin authentication.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

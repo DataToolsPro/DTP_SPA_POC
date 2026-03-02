@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-61",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Restructure PHP File Naming and Routing Conventions",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-11T00:05:11.778-0800",
+  "updated": "2026-03-01T03:38:50.468-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Restructure the PHP file naming conventions for cleaner URLs and future extensibility:\n\n1. Move `login.php` to root as `index.php` so no file extension is needed in the URL\n2. Rename `Migration.php` to `hub.php` for a generic landing page\n3. Rename the dictionary object-level page to `object.php`\n\nAuthentication redirects:\n- Unauthenticated users accessing `select.php` or `migrate.php` are redirected to `index.php`\n- Authenticated users accessing `index.php` are redirected to `select.php`",
+  "acceptance_criteria": [
+    "login.php is moved to root as index.php",
+    "Migration.php is renamed to hub.php",
+    "Dictionary object-level page is renamed to object.php",
+    "Unauthenticated users are redirected to index.php",
+    "Authenticated users on index.php are redirected to select.php"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Authentication redirect logic added: unauthenticated → index.php, authenticated → select.php. File renaming and routing updates.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "File renames: login.php → index.php (moved to root), Migration.php → hub.php, dictionary page → object.php. Redirect logic ensures proper routing based on auth state.",
+  "comment_summary": "Developer implemented the file moves and redirect logic. QA was performed to verify all redirects work correctly.",
+  "comment_count": 2
+}

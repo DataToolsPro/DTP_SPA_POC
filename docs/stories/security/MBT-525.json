@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-525",
+  "epic_key": "MBT-544",
+  "feature_folder": "security",
+  "title": "Document Authentication Request Flow for Salesforce Certification",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T00:24:36.292-0800",
+  "updated": "2024-05-24T02:25:43.843-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Salesforce certification requires documentation of sample API callouts showing HTTP requests and responses for all header values. This task updates the existing SSO Authentication Process and Customer Salesforce OAuth Refresh Token Encryption documentation with the latest authentication request snapshots.\n\n## Requirements\n\n- Provide sample API callouts showing full HTTP requests and responses\n- Document all header values for authentication requests\n- Cover all requests the app makes to authenticate with Salesforce\n- Update the Confluence docs: SSO Authentication Process and Customer Salesforce OAuth Refresh Token Encryption\n\n## Deliverable\n\nUpdated Confluence documentation with URLs requested for Salesforce authentication and the headers received from Salesforce in response.",
+  "acceptance_criteria": [
+    "SSO Authentication Process Confluence page is updated with current authentication request details",
+    "All Salesforce-bound authentication URLs are documented",
+    "Request and response headers are documented for each authentication call",
+    "Documentation covers the complete authentication handshake flow"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation-only task for Salesforce AppExchange certification. Updated Confluence pages with authentication URLs and header values.",
+  "comment_summary": "Developer updated the SSO Authentication Process Confluence page with the Salesforce authentication URLs and response headers. Approved by reviewer.",
+  "comment_count": 4
+}

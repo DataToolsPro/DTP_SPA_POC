@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-275",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Secure Token Storage and Session Management Review",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-14T22:27:18.280-0700",
+  "updated": "2024-05-24T02:25:02.380-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "",
+  "description": "Review and improve how Salesforce OAuth tokens and refresh tokens are stored and used. Previously, tokens were stored in the users table as plain text.\n\nImprovements implemented:\n1. **Separate token table**: Created `dtp_salesforce_authtokens` table isolating token data from user records for security\n2. **Encrypted storage**: Tokens are now stored in encrypted form instead of plain text\n3. **Session timeout**: Implemented automatic logout after 60 minutes of inactivity, aligning with Salesforce session behavior\n4. **Token lifecycle**: Salesforce sessions have no fixed duration — they expire on inactivity. The app mirrors this by monitoring user activity\n\nAdditional discussion addressed how tokens and instance URLs should be managed in the context of shared accounts, since the logged-in user's tokens should not be used to access another user's Salesforce data. A recommendation was made to move instance_url and Salesforce metadata to an account-level table rather than the user table.",
+  "acceptance_criteria": [
+    "OAuth tokens are stored in a dedicated dtp_salesforce_authtokens table with 1:1 relation to users",
+    "Tokens are stored in encrypted form, not plain text",
+    "Users are automatically logged out after 60 minutes of inactivity",
+    "Token table supports future extension for expiration times and token types",
+    "Salesforce session documentation is captured for reference"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Auto-logout middleware that terminates sessions after 60 minutes of inactivity. Token retrieval logic updated to use the new authtokens table with decryption.",
+  "data_model_changes": "New dtp_salesforce_authtokens table with encrypted token and refresh_token fields, related 1:1 to users via user_id FK.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Salesforce expires_in returns null, meaning sessions expire on inactivity rather than on a fixed timer. The app mirrors this with a 60-minute inactivity timeout. Refresh tokens are not currently used — they are intended for server-to-server communication. A follow-up discussion identified that instance_url should be moved to an account-level table for proper shared account support.",
+  "comment_summary": "Developer created a separate encrypted token table, isolating auth tokens from user data. Discussion about shared account token management revealed that instance_url should be account-scoped, not user-scoped. Comprehensive session management documentation was produced covering Salesforce session behavior and the Laravel auto-logout implementation.",
+  "comment_count": 17
+}

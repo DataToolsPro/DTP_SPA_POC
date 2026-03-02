@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1073",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add Managed Package Filter to Object Selector on Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-14T02:53:35.249-0800",
+  "updated": "2026-03-01T04:00:31.810-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to filter objects by managed package when adding objects, so that I can quickly locate package-specific objects in large Salesforce orgs.",
+  "description": "Add a dropdown labeled \"Objects Related to Managed Package\" to the Add Object selection on Dictionary, Migration, and Entity Relationship pages.\n\n### Dropdown Options\n- **All Objects**: shows all objects including those unrelated to managed packages\n- **All Managed Package Objects**: shows only objects associated with any managed package\n- **Specific Managed Package**: lists each available managed package for targeted filtering",
+  "acceptance_criteria": [
+    "Managed package dropdown appears on Dictionary, Migration, and Entity Relationship pages",
+    "All Objects option shows all available objects",
+    "All Managed Package Objects option filters to only package-related objects",
+    "Selecting a specific package filters to that package's objects only"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New managed package dropdown filter in the Add Object selection area across Dictionary, Migration, and ER pages.",
+  "middleware_changes": "Query logic to identify managed package associations for objects and filter accordingly.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Applied to Dictionary, Migration, and Entity Relationship pages consistently.",
+  "comment_summary": "Waqar implemented the dropdown with all three filter options and shared screenshots of the UI.",
+  "comment_count": 1
+}

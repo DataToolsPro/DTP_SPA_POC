@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1338",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Frontend Technical Stack Decision: State, HTTP, Styling, Forms",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:36.070-0800",
+  "updated": "2026-03-01T04:20:49.003-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Resolve the open frontend technical stack decisions documented in `docs/architecture/frontend.md`. This covers seven areas:\n\n### Decisions\n1. **Server state**: TanStack Query for all data from Laravel (caching, retries, background refetch, mutation lifecycle)\n2. **Client/UI state**: Zustand for ephemeral UI state (sidebar, modals, toasts, filters, wizard steps). Rule: server data → Query, UI state → Zustand\n3. **HTTP client**: `fetch` with a thin `apiClient.ts` wrapper (JSON parsing, error normalization, AbortController timeouts, `credentials: include`)\n4. **Styling**: Tailwind CSS with component primitives (shadcn-like pattern). Enforce reusable components, no ad-hoc styling\n5. **Forms**: React Hook Form + Zod schema validation. Standardized `<FormField>` wrapper with consistent error display\n6. **Storybook**: Not initially — add later if component library grows\n7. **Error boundaries**: Three layers — global boundary (app shell), route-level boundaries (per section), and inline API errors via TanStack Query states. Never leak raw backend errors to UI\n\n### Loading Conventions\n- Initial page load: skeleton placeholders matching layout\n- Background refetch: keep content visible with subtle updating indicator\n- Mutations: disable submit, inline spinner, preserve form state\n- TanStack Query defaults: `staleTime: 30-120s`, `retry: 1 for 4xx / 2 for 5xx`, `refetchOnWindowFocus: false`, `keepPreviousData: true` for paginated tables",
+  "acceptance_criteria": [
+    "All seven frontend stack decisions are documented in docs/architecture/frontend.md",
+    "spa/package.json includes the chosen dependencies (TanStack Query, Zustand, Tailwind, React Hook Form, Zod)",
+    "apiClient.ts wrapper is implemented around fetch",
+    "Error boundary strategy is implemented at global and route levels",
+    "Loading skeleton conventions are documented and baseline components exist"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Establishes the frontend component architecture: Tailwind styling, React Hook Form for forms, skeleton loading patterns, and consistent error display conventions.",
+  "middleware_changes": "apiClient.ts wrapper around fetch for standardized HTTP communication with Laravel backend. TanStack Query configuration for server state management.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["docs/architecture/frontend.md", "spa/package.json"],
+  "implementation_notes": "This is a Phase 3 architecture decision ticket. The recommended stack is: TanStack Query + Zustand + fetch wrapper + Tailwind + React Hook Form + Zod. Storybook deferred. Error boundaries at global and route levels. Skeleton-first loading with consistent TanStack Query defaults.",
+  "comment_summary": "",
+  "comment_count": 0
+}

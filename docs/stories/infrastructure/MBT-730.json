@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-730",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Lambda Rollback Process for Bad Deployments",
+  "status": "Withdrawn",
+  "feature_folder": "infrastructure"
+}

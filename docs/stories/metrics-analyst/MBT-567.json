@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-567",
+  "skipped": true,
+  "skip_reason": "no description — Jira issue has no description field populated",
+  "title": "500 Error Handling on Metrics API Service 1",
+  "status": "Done",
+  "feature_folder": "metrics-analyst"
+}

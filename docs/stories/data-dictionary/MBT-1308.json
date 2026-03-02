@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1308",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Integrate External Client App for Adding Additional Salesforce Instances in V2",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-01-20T20:18:34.275-0800",
+  "updated": "2026-03-01T04:15:07.408-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "",
+  "description": "Integrate the new Salesforce External Client App (ECA) package into DataTools V2 to authenticate customers when adding additional Salesforce instances beyond the primary. Supports both production and sandbox instance addition via the installed ECA package.",
+  "acceptance_criteria": [
+    "Users can add a new Salesforce instance using the ECA package authentication",
+    "Both production and sandbox instances are supported",
+    "Authentication flow uses the installed External Client App"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": true},
+  "ux_changes": "New option in settings to add Salesforce instance via ECA package authentication for both sandbox and production.",
+  "middleware_changes": "Integration of External Client App OAuth flow for secondary instance authentication.",
+  "data_model_changes": "",
+  "api_changes": "OAuth flow using External Client App for secondary Salesforce instance authentication.",
+  "dependencies": ["MBT-1306"], "source_files": [],
+  "implementation_notes": "Supports both sandbox and production environments for secondary instances.",
+  "comment_summary": "Waqar added the option to add new instances via the ECA package, supporting both sandbox and production.",
+  "comment_count": 1
+}

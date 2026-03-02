@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-104",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix SQL Injection Error When Adding Salesforce Objects with Apostrophes",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-26T08:47:35.590-0700",
+  "updated": "2026-03-01T03:46:31.083-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to add Salesforce objects with special characters in field names without encountering errors so that all objects can be imported successfully.",
+  "description": "Adding Salesforce objects with apostrophes in field names (e.g., \"Contact's Name\") caused a fatal PDOException due to unescaped single quotes in the SQL query. The error occurred in `object.php` line 192.\n\n### Root Cause\nSQL query was using string concatenation instead of prepared statements, causing syntax errors when field values contained single quotes.\n\n### Fix\n- Fixed the SQL injection vulnerability by using parameterized queries\n- Added try-catch error handling around all SQL queries to prevent raw database errors from being displayed to end users\n- Errors are now logged server-side and a user-friendly message is shown instead",
+  "acceptance_criteria": [
+    "Objects with apostrophes in field names can be added without errors",
+    "SQL queries use parameterized statements to prevent injection",
+    "Database errors are never displayed to end users",
+    "Errors are logged to the server error log"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "User-friendly error messages displayed instead of raw database exceptions.",
+  "middleware_changes": "SQL queries converted to use prepared statements. Try-catch error handling added around database operations.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The bug was in object.php line 192 where a raw SQL query used string concatenation. Fixed with PDO prepared statements. Also added global try-catch pattern for all SQL operations to prevent error information leakage.",
+  "comment_summary": "Product owner requested adding try-catch error handling to all SQL queries to prevent exposing database internals. Developer identified and fixed the apostrophe issue, added error handling, and also fixed a related display issue. Contact object rendering was confirmed working after the fix.",
+  "comment_count": 6
+}

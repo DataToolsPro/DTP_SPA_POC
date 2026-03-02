@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-191",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Standardize Page and Slide-Out Header Typography",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T10:32:10.087-0700",
+  "updated": "2024-05-24T02:24:32.007-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want all page and panel headers to use consistent sizing and styling, so that the visual hierarchy is predictable across the application.",
+  "description": "Standardize header typography across page titles and slide-out panel headers.\n\n## Changes\n- Change all header titles from H4 to H5 for a slightly smaller, balanced appearance\n- Remove any inline CSS from title elements\n- Update `.card-title` CSS: `margin: 3px 0px !important; min-height: 55px;`\n- Create new `infotooltip` CSS class for info icons with tooltip initialization\n- Add Bootstrap tooltip initialization script at the bottom of all pages",
+  "acceptance_criteria": [
+    "All page and panel headers use H5 instead of H4",
+    "No inline CSS on title elements",
+    "card-title class has correct margin and min-height",
+    "Info tooltip class provides consistent icon styling",
+    "Tooltips are initialized and functional on all pages"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "All headers standardized to H5 with consistent card-title styling. New infotooltip class added for info icons. Bootstrap tooltip initialization added globally.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer noted that the Argon template already includes tooltip initialization. H5 had extra default margin that was corrected via the card-title class override.",
+  "comment_summary": "Developer changed H4 to H5, updated card-title CSS, and noted that tooltip initialization was already provided by the Argon template.",
+  "comment_count": 1
+}

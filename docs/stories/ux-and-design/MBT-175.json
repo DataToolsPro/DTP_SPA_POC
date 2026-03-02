@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-175",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Card Navigation CSS Padding and Header Background Color Tweak",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-17T23:37:13.013-0700",
+  "updated": "2024-05-24T02:24:30.805-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the card header background to be a subtle light gray, so that the interface has consistent visual hierarchy.",
+  "description": "Update the card header background color and fix a dropdown alignment issue in the card-navigation area.\n\n## CSS Changes\n- `.card .card-header` background-color: `#f8f9fa`\n- Fix extra margin on the right-side dropdown in card-navigation on the object detail page",
+  "acceptance_criteria": [
+    "Card headers use #f8f9fa background color",
+    "Card-navigation dropdown on object detail page has correct alignment without extra margin"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Card headers updated to light gray (#f8f9fa) background. Fixed dropdown margin issue in card-navigation on object detail page.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-170"],
+  "source_files": [],
+  "implementation_notes": "Developer used padding: 10px instead of padding-right: 10px for better balance, and fixed extra margin on the card-navigation dropdown.",
+  "comment_summary": "Developer adjusted padding approach (full padding vs right-only) and also fixed an extra margin issue on the dropdown.",
+  "comment_count": 2
+}

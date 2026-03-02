@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-14",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Move Public and Private Keys Out of Source Code",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:49:18.357-0800",
+  "updated": "2024-05-24T02:24:39.121-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Security"],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Salesforce private keys and tokens were stored directly within the PHP web application directory source code. Even though PHP would not directly expose the keys to end users, storing secrets in the web root is a security anti-pattern that risks exposure through source control and unauthorized access.\n\n## Requirements\n\n- Move all Salesforce public/private keys out of the PHP web application folder.\n- Store keys in a configuration file on the application server that PHP can load at runtime.\n- Ensure keys are excluded from source control so future developers without root access cannot access them.\n\n## Implementation\n\nKeys were moved to a `.env` file placed at the project root (outside the `apps` folder). A Composer package was installed to load environment variables into the application. This ensures keys are never checked into version control and can be rotated independently of deployments.",
+  "acceptance_criteria": [
+    "No private keys or tokens exist within the web application directory",
+    "Keys are loaded from a .env file outside the public web root",
+    "Application functions correctly using environment-loaded credentials",
+    "Keys are excluded from source control via .gitignore",
+    "Credentials can be rotated by updating the .env file and restarting the server"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Application code updated to read Salesforce credentials from environment variables instead of hardcoded config files. Composer package added to support .env file loading.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Keys were saved in a .env file at the project root. A Composer package (likely vlucas/phpdotenv) was installed to read env variables in PHP. The plan was to re-key all credentials before go-live and store them in a password manager for audit readiness.",
+  "comment_summary": "Developer initially was unsure how to move keys to Apache config. Solution pivoted to using a .env file with a Composer package. Product owner confirmed the approach and noted plans to re-key credentials before production launch for audit cleanliness.",
+  "comment_count": 4
+}

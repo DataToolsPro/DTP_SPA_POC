@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-600",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Column Label Naming and Hide Internal ID Column",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-27T19:58:47.519-0800",
+  "updated": "2026-03-01T03:40:44.288-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want column labels to be clean and professional, so that the UI looks polished during demos and daily use.",
+  "description": "## Changes\n1. Capitalize \"description\" to \"Description\" in column headers.\n2. Hide the \"Report\" column — its IDs are not business-friendly.\n3. Rename \"Col Explanation\" column header to \"Definition\".",
+  "acceptance_criteria": [
+    "Description column header is capitalized",
+    "Report column is hidden from the table view",
+    "Col Explanation column is renamed to Definition"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Capitalized 'Description' header, hidden 'Report' column, renamed 'Col Explanation' to 'Definition'.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Label changes deployed to staging and production. Feature was not yet available to customers on production at the time.",
+  "comment_summary": "Reporter requested prioritization for upcoming demos. Developer completed on staging and pushed to production, noting the feature was not yet customer-facing in production.",
+  "comment_count": 4
+}

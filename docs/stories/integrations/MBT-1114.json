@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1114",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Fetch/Refresh Hubspot Custom Objects with meta fields",
+  "status": "In Review",
+  "feature_folder": "integrations"
+}

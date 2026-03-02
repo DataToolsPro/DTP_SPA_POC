@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-666",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "CSS Design Refresh for Metrics Glossary Side Pane",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-25T23:28:29.056-0700",
+  "updated": "2024-05-24T02:25:40.592-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user working in the Metrics Glossary, I want the side pane to have a cleaner, more consistent design, so that editing and viewing metric details feels more polished.",
+  "description": "Design refinements to the Metrics Glossary side pane (detail/edit panel) for improved visual consistency and readability. Product owner experimented with CSS tweaks and provided updated styles to the developer for implementation.\n\n## Changes\n- Updated CSS for the Metrics side pane to improve layout consistency\n- Design tweaks for better visual flow and readability",
+  "acceptance_criteria": [
+    "Metrics Glossary side pane displays with updated CSS styling",
+    "Layout is consistent with other side panes in the application",
+    "Design changes do not introduce regressions in functionality"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "CSS refresh for the Metrics Glossary side pane — improved layout consistency, typography, and visual flow.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Product owner provided CSS updates after experimenting with design tweaks. Developer applied the CSS changes iteratively with staging reviews.",
+  "comment_summary": "Developer applied CSS updates in stages, shared screenshots for review. Product owner approved the final design enthusiastically.",
+  "comment_count": 3
+}

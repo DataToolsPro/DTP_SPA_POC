@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-293",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Implement X-Frame-Options Header to Prevent Clickjacking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-01T09:24:07.078-0700",
+  "updated": "2024-05-24T02:25:01.455-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The server was not returning an `X-Frame-Options` header, leaving the application vulnerable to clickjacking attacks where a malicious site could embed DataTools Pro pages in an iframe.\n\n## Requirements\n\n- Add `X-Frame-Options: DENY` header to all HTTP responses.\n- Implement via Laravel middleware for centralized control (not per-page).\n- Design must allow future flexibility to permit iframe embedding within Salesforce when needed.",
+  "acceptance_criteria": [
+    "X-Frame-Options header is set to DENY on all HTTP responses",
+    "Implementation uses Laravel middleware for centralized control",
+    "No pages can be embedded in iframes by external sites",
+    "The middleware can be updated in one place when Salesforce iframe embedding is needed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel middleware added to set X-Frame-Options: DENY on all HTTP responses. Centralized implementation allows single-point modification when Salesforce iframe embedding is needed.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implemented via Laravel middleware to ensure the header is applied to all requests centrally. Product owner emphasized the need for centralized control rather than per-page implementation, anticipating future need to allow Salesforce iframe embedding.",
+  "comment_summary": "Product owner wanted centralized implementation (not per-page) with future flexibility for Salesforce iframe embedding. Developer implemented via Laravel middleware and confirmed the centralized approach. Header verified in response headers.",
+  "comment_count": 3
+}

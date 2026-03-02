@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-990",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Social Advocate Badge for Social Sharing",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-11-11T20:37:17.466-0800",
+  "updated": "2026-03-01T03:54:45.620-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a DataTools Pro user, I want to earn a 'Social Advocate' badge when I share content using the social sharing feature, so that I am recognized for promoting the platform.",
+  "description": "Award a 'Social Advocate' badge when a user uses the social sharing feature. The badge artwork has been provided.\n\nA technical limitation exists: the `share.js` library only opens the sharing dialog (Twitter, Facebook, LinkedIn) but does not confirm whether the user actually completed the share. A proposed workaround is to use a setTimeout after the share button click to award the badge after a delay.\n\nThis ticket has been moved to backlog for future implementation as part of broader social media integration plans.",
+  "acceptance_criteria": [
+    "A 'Social Advocate' badge is awarded when a user initiates a social share",
+    "The badge appears in the user's badge collection in Settings & Badges",
+    "Badge artwork matches the provided design"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Social Advocate badge displayed in the user's badge collection after sharing content via social sharing buttons.",
+  "middleware_changes": "Badge trigger logic to detect social share button click and award the badge. Workaround needed since share.js cannot confirm actual share completion.",
+  "data_model_changes": "New badge record for 'Social Advocate' with associated artwork and metadata.",
+  "api_changes": "",
+  "dependencies": ["MBT-310"],
+  "source_files": [],
+  "implementation_notes": "The share.js library does not provide confirmation of completed shares. A setTimeout-based approach was proposed but the ticket was moved to backlog for broader social media integration planning.",
+  "comment_summary": "Developer noted that share.js cannot verify if a user actually completed a share, only that the dialog was opened. Proposed a setTimeout workaround. Reporter moved the ticket to backlog for future social media integration work.",
+  "comment_count": 2
+}

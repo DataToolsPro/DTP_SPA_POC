@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-286",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Save Objects Reminder Popup and Button Styling",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-20T12:37:38.351-0700",
+  "updated": "2024-05-24T02:25:00.940-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want a reminder popup when I select objects, so that I don't forget to save my selections to the dictionary.",
+  "description": "Add a visual reminder popup that appears when a user checks a new object in the dropdown, prompting them to click \"Save Objects\" to commit their selections. Style the Save Objects button to match the Select Objects button size.\n\n## Changes\n1. Show a popup reminder under the Save Objects button each time a checkbox is toggled: \"Click 'Save Objects' to commit your selected objects to your dictionary.\"\n2. Use the same popup style as the ERD save reminder\n3. Fix Save Objects button CSS to match Select Objects button sizing and remove extra margin-bottom that changes the header bar height",
+  "acceptance_criteria": [
+    "Popup reminder appears when an object checkbox is toggled",
+    "Popup displays under the Save Objects button",
+    "Popup text reads 'Click Save Objects to commit your selected objects to your dictionary'",
+    "Save Objects button matches Select Objects button in size",
+    "Header bar height is not affected by Save Objects button margin"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "New popup reminder that guides users to save their object selections. Save Objects button restyled for visual consistency with Select Objects button.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Popup follows the same pattern used for the ERD save reminder.",
+  "comment_summary": "Developer implemented the popup and button styling, pushed to staging for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-353",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Improve Empty View Name Validation Alert Message",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:59:48.583-0800",
+  "updated": "2024-05-24T02:25:08.041-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want a clear validation message when I try to save without entering a view name, so that I understand what action is needed.",
+  "description": "Replaces the generic validation alert shown when a user attempts to save an empty view name with a more descriptive message: 'Please enter a view name before saving.' The save button should also be disabled until the user starts typing to prevent premature submissions.",
+  "acceptance_criteria": [
+    "Attempting to save with an empty view name shows 'Please enter a view name before saving'",
+    "Save button is disabled until the user begins entering a view name"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Validation alert text updated to 'Please enter a view name before saving.' Save button disabled until input begins.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer added the message and proposed disabling save until typing begins, matching the metric name pattern.",
+  "comment_count": 2
+}

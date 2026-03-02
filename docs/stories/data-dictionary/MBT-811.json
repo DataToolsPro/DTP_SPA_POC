@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-811",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Arrow Keys and Buttons Not Working on Metrics Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T16:15:27.515-0700",
+  "updated": "2026-03-01T01:31:07.521-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "metrics"],
+
+  "story": "As a DataTools Pro user on the Metrics Dictionary page, I want the arrow keys and navigation buttons to work correctly, so that I can navigate the page without issues.",
+  "description": "Arrow keys and navigation buttons were reported as non-functional on the Dictionary view in production (e.g., `/object/Campaign?view=dictionary`). Testing by the developer across all environments (dev, staging, production) and for all arrow directions (Up, Down, Left, Right) showed the arrows working correctly. The issue may have been transient or browser-specific. The `/metrics` page was also tested and confirmed working.",
+  "acceptance_criteria": [
+    "Arrow keys (Up, Down, Left, Right) function correctly on the Dictionary view",
+    "Navigation buttons are responsive on the Dictionary page",
+    "Behavior is consistent across dev, staging, and production environments"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Verified and ensured arrow key navigation and button functionality works correctly on the Metrics Dictionary page across all environments.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Developer was unable to reproduce the issue. All arrow keys tested and working across dev, stage, and prod. May have been a transient browser or caching issue.",
+  "comment_summary": "Developer tested all arrow keys across all environments and found them working. Also verified the /metrics page. The issue could not be reproduced.",
+  "comment_count": 2
+}

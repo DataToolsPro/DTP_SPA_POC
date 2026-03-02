@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-302",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Hide Guest Users Section When No Guests Exist",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-11T22:54:18.962-0700",
+  "updated": "2026-03-01T04:13:45.066-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro account owner, I want the Guest Users section to be hidden on the Account Sharing screen when I have no guest users, so that the interface is clean and not confusing.",
+  "description": "## Bug\nThe Guest Users section was visible on the My Account Sharing screen even when there were no guest users. This occurred after switching from a shared account back to the user's own account — the Guest Users section from the other account's context persisted.\n\n## Fix\nConditionally hide the Guest Users section when no guest users exist for the current account owner.\n\n## Testing\n- When Account A invites Account B: Account A sees the Guest Users section with Account B listed and can delete the invite.\n- When Account B has not invited anyone: Account B does not see the Guest Users section at all.",
+  "acceptance_criteria": [
+    "Guest Users section is hidden when the account has no guest users",
+    "Guest Users section appears with the list when guests exist",
+    "Account owner can see and manage their own guest invites",
+    "Switching between accounts does not leak guest user sections"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Guest Users section is conditionally hidden when no guest users exist for the current account.",
+  "middleware_changes": "Added conditional check on guest user count before rendering the Guest Users section.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Follow-up discussion raised the question of adding explicit permissions to grant or deny the ability for guest accounts to invite other users, potentially tied to account licensing.",
+  "comment_summary": "Developer fixed the visibility issue and provided detailed test scenarios. Reporter raised a follow-up question about adding explicit invite permissions tied to account licensing.",
+  "comment_count": 2
+}

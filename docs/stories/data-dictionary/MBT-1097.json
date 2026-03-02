@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-1097",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add Reporting Status Filter to Data Dictionary",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-29T19:20:35.991-0700",
+  "updated": "2026-03-01T04:08:26.855-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to filter dictionary fields by Reporting Status, so that I can quickly find fields that are actively used in reports.",
+  "description": "Add a \"Reporting Status\" dropdown filter to the dictionary page filter section. Users can select a reporting status value to show or hide fields based on their reporting usage status.",
+  "acceptance_criteria": [
+    "Reporting Status dropdown appears in the dictionary filter section",
+    "Selecting a status value filters the field list to only matching records",
+    "Clearing the filter shows all fields again"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New Reporting Status dropdown in the dictionary page filter section.",
+  "middleware_changes": "Filter query logic to support reporting status filtering.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Uses the same reporting status values already available in the field detail dropdown.",
+  "comment_summary": "Waqar confirmed the requirement and implemented the filter. Shared a screenshot of the new dropdown in the filter section.",
+  "comment_count": 4
+}

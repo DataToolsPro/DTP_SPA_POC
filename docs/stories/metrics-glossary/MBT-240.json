@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-240",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Spike/POC — Bulk Metric Import via Spreadsheet",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T23:31:26.161-0700",
+  "updated": "2024-05-24T02:24:56.738-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user with an existing metric dictionary, I want to bulk-import metrics using a spreadsheet interface, so that I can onboard my existing metrics quickly without entering each one individually.",
+  "description": "Spike/POC for a bulk metric import feature. Users click a 'Bulk Import' button that opens a Handsontable spreadsheet control with all metric columns (excluding Reports). Users can paste or type data into the spreadsheet, then click 'Save Metrics' to commit all rows to the database at once.\n\nUnlike the regular table editor, changes are not saved on each cell edit — the spreadsheet acts as a staging area. The user reviews and manipulates data, then commits with a single save action. A page refresh after save is acceptable.\n\nThis was later superseded by MBT-291 with detailed requirements for the production implementation.",
+  "acceptance_criteria": [
+    "A 'Bulk Import' button opens a spreadsheet interface for metric entry",
+    "The spreadsheet includes all metric columns except Reports",
+    "Users can paste data from external spreadsheets into the interface",
+    "Changes are not saved until the user clicks 'Save Metrics'",
+    "All rows are committed to the database in a single batch operation",
+    "Taxonomy columns (Line of Business, Topic) support the existing dropdown values"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Bulk Import button opens a full-width Handsontable spreadsheet overlay or modal. Save Metrics button commits all entered data. Spreadsheet supports paste operations from external tools.",
+  "middleware_changes": "Batch insert service that validates and commits multiple metric records in a single transaction, including taxonomy assignments.",
+  "data_model_changes": "",
+  "api_changes": "POST endpoint for batch metric creation accepting an array of metric records with taxonomy values.",
+  "dependencies": ["MBT-291"],
+  "source_files": [],
+  "implementation_notes": "This was the initial spike/POC. Production implementation moved to MBT-291 with detailed requirements. The challenge is handling taxonomy columns (Line of Business, Topic) since they reference separate tables.",
+  "comment_summary": "Developer requested a sample spreadsheet from a customer. Implementation was later completed under MBT-291 with full requirements.",
+  "comment_count": 3
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-851",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Update Object Detail Launch Icon to Salesforce Brand Icon",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-08T22:57:54.333-0700",
+  "updated": "2026-03-01T01:31:38.334-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user, I want the object detail launch icon to use the Salesforce brand icon, so that I can immediately recognize it as a link to Salesforce.",
+  "description": "The existing generic icon used for the 'Open in Salesforce' action on the object detail page was replaced with the official Salesforce brand icon. This provides better visual recognition and aligns with the Salesforce branding the user is familiar with.",
+  "acceptance_criteria": [
+    "The Salesforce launch icon on the object detail page uses the Salesforce brand icon",
+    "The icon is visually consistent with the rest of the toolbar",
+    "Clicking the icon still opens Salesforce Object Manager in a new tab"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the generic cloud icon with the official Salesforce brand icon on the object detail page for the 'Open in Salesforce' action.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-210"],
+  "source_files": [],
+
+  "implementation_notes": "Simple icon swap from a generic icon class to the Salesforce brand icon. The underlying link behavior (open Object Manager in new tab) was unchanged.",
+  "comment_summary": "Developer updated the icon on the development environment and shared a screenshot showing the new Salesforce brand icon in place.",
+  "comment_count": 2
+}

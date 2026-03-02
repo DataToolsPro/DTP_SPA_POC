@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-618",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Notify User When Metrics Analyst Completes While Minimized",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T22:01:58.245-0700",
+  "updated": "2024-05-24T02:25:38.012-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user who minimized the Metrics Analyst during processing, I want to see a visual notification when analysis is complete, so that I know my recommendations are ready without constantly checking.",
+  "description": "When the Metrics Analyst is minimized and processing completes, the minimized button text should change to 'Your metrics recommendations are ready' to signal completion. When the user maximizes and then re-minimizes, the text reverts to 'Maximize Metric Analyst'.",
+  "acceptance_criteria": [
+    "Minimized button text changes to 'Your metrics recommendations are ready' when Service 2 responds",
+    "After maximizing and re-minimizing, text reverts to 'Maximize Metric Analyst'",
+    "Notification only appears after the final (Service 2) response completes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Minimized Metrics Analyst button dynamically changes text to 'Your metrics recommendations are ready' when processing completes, then reverts on re-minimize after viewing.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The text change is triggered by the Service 2 API response callback. The state resets when the user maximizes the modal and views the results.",
+  "comment_summary": "Developer implemented the dynamic text change on the minimize button. Text updates on Service 2 response and resets on maximize.",
+  "comment_count": 1
+}

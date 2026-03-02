@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-472",
+  "epic_key": "MBT-491",
+  "feature_folder": "integrations",
+  "title": "SendGrid Authorized Sender Email Configuration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-11T00:15:26.388-0800",
+  "updated": "2024-05-24T02:25:31.398-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Audit and verify that the application only sends emails from authorized SendGrid sender addresses. At the time of this ticket, only two email addresses were authorized for sending: support@datatoolspro.com and info@datatoolspro.com.\n\nStaging was configured to send from support@datatoolspro.com while production used info@datatoolspro.com. The goal was to confirm no other unauthorized sender addresses were being used.",
+  "acceptance_criteria": [
+    "Application only sends emails from authorized SendGrid sender addresses",
+    "Staging environment uses support@datatoolspro.com as the from address",
+    "Production environment uses info@datatoolspro.com as the from address",
+    "No emails are sent from unauthorized addresses"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Verified and corrected sender email addresses in the email service configuration to match SendGrid authorized senders per environment.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Staging uses support@datatoolspro.com; production uses info@datatoolspro.com. Both are the only authorized SendGrid sender addresses.",
+  "comment_summary": "Developer confirmed the from email addresses in staging and production environments matched the authorized SendGrid senders.",
+  "comment_count": 1
+}

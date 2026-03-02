@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1034",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Customize LearnDash Course Widget Buttons for Learning Hub",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-12-15T00:09:25.886-0800",
+  "updated": "2026-03-01T03:55:34.706-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a visitor to the DataTools Pro Learning Hub, I want to see contextual call-to-action buttons (Register, Enroll, or Start Learning) based on my authentication and enrollment status, so that the getting started experience is intuitive.",
+  "description": "## Context\nDataTools Pro is launching a premium learning hub using LearnDash. The default LearnDash course widget buttons are not intuitive enough for the desired flow.\n\n## Proposed Flow\n1. **Not logged in**: Show \"Register for Free\" button linking to the WordPress registration page (with social login support).\n2. **Logged in but not enrolled**: Show \"Purchase and Enroll\" button linking to the course purchase page.\n3. **Logged in and enrolled**: Show \"Login and Learn\" / \"Start Learning\" button linking directly to the course content.\n\n## Implementation\nOverride the `learndash_course_status_widget` filter in the WordPress theme's `functions.php` to customize button text and URLs based on user state.\n\n**Note**: On hold until prerequisite link testing is complete.",
+  "acceptance_criteria": [
+    "Non-logged-in users see a 'Register for Free' button",
+    "Logged-in but unenrolled users see a 'Purchase and Enroll' button",
+    "Enrolled users see a 'Start Learning' button",
+    "Buttons link to the correct destinations",
+    "Existing LearnDash functionality is not broken"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Contextual CTA buttons on LearnDash course widgets based on user authentication and enrollment status.",
+  "middleware_changes": "WordPress filter override on learndash_course_status_widget to customize button rendering logic.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "On hold pending prerequisite link testing. Implementation uses the learndash_course_status_widget filter in functions.php to conditionally render Register, Enroll, or Start Learning buttons.",
+  "comment_summary": "Developer acknowledged the hold and is waiting for the go-ahead.",
+  "comment_count": 1
+}

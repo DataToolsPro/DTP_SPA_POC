@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-137",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Taxonomy MVP — Line of Business and Topic Assignment",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-11T20:44:02.322-0700",
+  "updated": "2024-05-24T02:24:35.164-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to assign Line of Business and Topic taxonomy values to each metric using inline dropdowns, so that I can categorize and organize my metrics for easier filtering and discovery.",
+  "description": "Introduces the first two taxonomy categories — Line of Business and Topic — that can be assigned to each metric in the Metrics Glossary. The taxonomy table starts empty per tenant; users create values on the fly through an inline dropdown interface inspired by Handsontable's dropdown cell type.\n\nThe data model supports tenant-scoped taxonomies (each Salesforce user/account sees only their own values) and is designed to scale to additional objects and custom taxonomies in the future. A relational model links taxonomy values to metrics through a many-to-many relationship.\n\nFor the MVP, users cannot create new taxonomy types — only populate values for Line of Business and Topic. Custom taxonomy creation is reserved for a future premium feature. An icon-triggered popup allows adding and editing taxonomy values inline.",
+  "acceptance_criteria": [
+    "User can see Line of Business and Topic columns in the Metrics Glossary data table",
+    "User can create new taxonomy values through an inline dropdown or popup interface",
+    "Taxonomy values are scoped to the tenant — users only see their own values",
+    "User can assign taxonomy values to individual metrics via dropdown selection",
+    "Data model supports future addition of custom taxonomy types and additional objects",
+    "Taxonomy values persist and are available for filtering and search"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Adds Line of Business and Topic dropdown columns to the Metrics Glossary table. An icon-triggered popup allows creating and editing taxonomy values inline. Dropdowns support inline value entry for rapid categorization.",
+  "middleware_changes": "New service layer for taxonomy CRUD operations — creating taxonomy values, assigning values to metrics, and retrieving tenant-scoped taxonomy data.",
+  "data_model_changes": "New taxonomy tables: a taxonomy type table, a taxonomy values table scoped by tenant, and a many-to-many junction table linking taxonomy values to metrics. Designed to extend to other object types.",
+  "api_changes": "New endpoints for taxonomy value CRUD and metric-taxonomy assignment. Endpoints enforce tenant isolation.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Uses Handsontable dropdown cell type for inline editing. Taxonomy values are stored per-tenant using the Salesforce user/account as the tenant identifier. The relational model follows a WordPress-like taxonomy pattern to support future extensibility to other objects.",
+  "comment_summary": "Developer clarified the tenant-scoping model (taxonomies per tenant, not per user). Implementation added icon-triggered popup for value creation. Reviewed and approved after adding inline dropdown functionality.",
+  "comment_count": 7
+}

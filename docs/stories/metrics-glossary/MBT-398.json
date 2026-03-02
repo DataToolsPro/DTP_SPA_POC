@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-398",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Bulk Import Not Assigning Topic and Line of Business",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-29T01:21:51.269-0800",
+  "updated": "2024-05-24T02:25:04.328-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Bug fix for the bulk metric import process where Line of Business and Topic taxonomy values were being created in the categories table but not actually assigned to the imported metrics. The import was inserting the taxonomy values but skipping the junction table assignment step.\n\nThe fix ensures that during import, each metric's taxonomy values are both created (or matched) in the categories model AND assigned to the metric through the metrics_taxonomies junction table.",
+  "acceptance_criteria": [
+    "Importing metrics with Topic values creates the values AND assigns them to the metrics",
+    "Importing metrics with Line of Business values creates the values AND assigns them to the metrics",
+    "Column mapping correctly maps source file 'Category' to the 'Topic' taxonomy"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Import processing now creates taxonomy values AND establishes the metric-taxonomy assignment relationship during import.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-291"],
+  "source_files": [],
+  "implementation_notes": "The import script was fetching and creating categories but not inserting into the junction table. Fixed to assign categories to metrics during the same import transaction.",
+  "comment_summary": "Developer found that categories were being imported but not assigned. Fixed the import to both create and assign taxonomy values. Deployed to staging and production.",
+  "comment_count": 5
+}

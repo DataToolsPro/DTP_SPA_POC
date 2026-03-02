@@ -1,0 +1,86 @@
+{
+  "folder": "legacy-and-bugs",
+  "label": "Legacy, POC, and Bug Fixes",
+  "type": "engineering",
+  "doc_tag": "datatoolspro",
+  "epic_count": 7,
+  "epics": [
+    {
+      "epic_key": "MBT-1",
+      "epic_id": "10000",
+      "summary": "POC App",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-3",
+      "epic_id": "10003",
+      "summary": "Scorecard Table Enhancements",
+      "status": "Done"
+    },
+    {
+      "epic_key": "MBT-30",
+      "epic_id": "10044",
+      "summary": "Ajax / Javascript Console",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-48",
+      "epic_id": "10074",
+      "summary": "Bug - JS Errors Cleanup",
+      "status": "In Review"
+    },
+    {
+      "epic_key": "MBT-391",
+      "epic_id": "10426",
+      "summary": "Formula Field Truncation Fix",
+      "status": "Done"
+    },
+    {
+      "epic_key": "MBT-606",
+      "epic_id": "10664",
+      "summary": "Beta Loop Replicated",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-624",
+      "epic_id": "10682",
+      "summary": "DTP WordPress Site",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 32,
+  "stories": [
+    "MBT-2",
+    "MBT-4",
+    "MBT-5",
+    "MBT-6",
+    "MBT-7",
+    "MBT-8",
+    "MBT-11",
+    "MBT-20",
+    "MBT-159",
+    "MBT-217",
+    "MBT-263",
+    "MBT-300",
+    "MBT-302",
+    "MBT-551",
+    "MBT-582",
+    "MBT-587",
+    "MBT-600",
+    "MBT-714",
+    "MBT-758",
+    "MBT-771",
+    "MBT-1034",
+    "MBT-1041",
+    "MBT-1093",
+    "MBT-1101",
+    "MBT-1127",
+    "MBT-1137",
+    "MBT-1173",
+    "MBT-1232",
+    "MBT-1257",
+    "MBT-1281",
+    "MBT-1309",
+    "MBT-1349"
+  ]
+}

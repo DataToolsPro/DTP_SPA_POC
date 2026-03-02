@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-166",
+  "epic_key": "MBT-201",
+  "feature_folder": "infrastructure",
+  "title": "PostgreSQL Proof of Concept Migration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T21:44:32.011-0700",
+  "updated": "2024-05-24T02:24:34.298-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Validate the feasibility and effort required to migrate from MySQL/MariaDB to PostgreSQL. The goal is to confirm that the application can run on PostgreSQL without issues, but not to roll this change into production yet — the production migration would wait until the move to Forge.\n\nThe POC was completed successfully on a local machine. The application ran correctly on PostgreSQL with only connection configuration changes needed (updating the `.env` file).",
+  "acceptance_criteria": [
+    "Application starts and connects to a PostgreSQL database without errors",
+    "All existing queries execute correctly against PostgreSQL",
+    "Migration requires only .env connection string changes, no application code rewrites",
+    "POC is validated on a local development environment"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Database engine swap from MySQL/MariaDB to PostgreSQL. Schema and queries validated for compatibility. Connection configuration updated in environment variables.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Tested successfully on local machine. Production migration deferred to Forge transition. Only .env connection info changes required — no application code modifications needed.",
+  "comment_summary": "Waqar confirmed the POC worked on his local machine with PostgreSQL and that production deployment would only require updating the .env connection information.",
+  "comment_count": 1
+}

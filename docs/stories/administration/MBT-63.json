@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-63",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "CRM Signals and Key Events for Onboarding and Activation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-11T23:32:46.762-0800",
+  "updated": "2024-05-24T02:24:36.308-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Build an event logging model for application usage that captures key user lifecycle events and streams them to Zapier for CRM integration.\n\nA new `events_log` table stores event data with fields: `userid`, `orgid`, `eventid`, `eventdate`, `eventname`, and `message`. Three initial events are defined:\n\n- **Event 0001 — First Time Login**: Triggered when a new user record is created in the database. Posts to a Zapier webhook.\n- **Event 0002 — SFDC Login**: Triggered on every login. Posts to a separate Zapier webhook.\n- **Event 0003 — Onboarded Salesforce Fields**: Triggered the first time a user drills into a Salesforce object and field metadata is written to the local database. Posts to a third Zapier webhook.\n\nEach event sends a POST body with a `DTSignal` payload containing the signal namespace, user/org identifiers, event metadata, and timestamp. The email field was removed from the events table per discussion — a foreign key relationship to the users table via `userid` is used instead.",
+  "acceptance_criteria": [
+    "Events log table is created with userid, orgid, eventid, eventdate, eventname, and message columns",
+    "Event 0001 fires on first-time user record creation and posts to the designated Zapier webhook",
+    "Event 0002 fires on every Salesforce login and posts to its Zapier webhook",
+    "Event 0003 fires when Salesforce field metadata is first written for an object and posts to its Zapier webhook",
+    "POST body follows the DTSignal schema with signal_namespace, userid, orgid, eventid, eventdate, eventname, and message",
+    "Email is not stored in the events log table; userid serves as the foreign key to the users table"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "New event logging service that captures lifecycle events (first login, every login, first object drill-down) and dispatches POST requests to Zapier webhook endpoints with the DTSignal payload.",
+  "data_model_changes": "New events_log table with columns: userid (FK to users), orgid, eventid, eventdate, eventname, message.",
+  "api_changes": "Outbound POST calls to three Zapier webhook URLs with DTSignal JSON payload for each event type.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Events are triggered inline during login and object drill-down flows. Zapier webhooks are called via curl requests. Email was intentionally excluded from the events table in favor of a foreign key relationship to the users table.",
+  "comment_summary": "Discussion confirmed email should be excluded from the events log table in favor of a FK to users. Developer asked about Zapier integration approach and was directed to use the webhook URLs. Testing confirmed the login event worked correctly.",
+  "comment_count": 6
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-365",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Write ERD and Object Views Tutorial Documentation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-17T11:19:01.263-0800",
+  "updated": "2024-05-24T02:25:07.003-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "Create a WordPress tutorial for the DataTools ERD and Object Views feature. Published at the tutorials section of the DataTools Pro website.\n\nTutorial URL: https://datatoolspro.com/tutorials/data-tools-erd-and-object-views/",
+  "acceptance_criteria": [
+    "Tutorial published on WordPress at the specified URL",
+    "Tutorial covers ERD and Object Views functionality",
+    "Tutorial is accessible from the tutorials navigation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation task — tutorial written and published on WordPress.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-563",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Fix False Positive Path Traversal Vulnerability in Pen Test",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-06T23:01:22.039-0800",
+  "updated": "2026-03-01T03:46:20.187-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "A penetration test flagged a path traversal false positive on the `POST /get_erd_views_objectsAlert` endpoint. Bots were injecting path traversal sequences (`c:/`) into the `_token` parameter. Although middleware was cleansing the input, the endpoint still returned a 200 response, causing the pen test scanner to report it as a vulnerability.\n\n### Attack Vector\n`_token=c%3A%2F&view_id=13&showUserRelationships=false`\n\nThe decoded attack was `c:/` injected into the token parameter — a lazy bot attack. The OWASP classifications referenced: A01:2021 Broken Access Control and WSTG-v42-ATHZ-01.\n\n### Fix\nApply `htmlspecialchars()` sanitization to input strings, which both prevents the actual vulnerability and returns appropriate error responses that satisfy pen test scanners (instead of 200 success).",
+  "acceptance_criteria": [
+    "Path traversal attempts in token parameters do not return HTTP 200",
+    "Input is sanitized using htmlspecialchars() function",
+    "Pen test rescans pass without path traversal findings",
+    "Existing token validation continues to work correctly"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Applied htmlspecialchars() sanitization to input parameters. Ensures path traversal attempts return proper error responses instead of 200 success.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-528"],
+  "source_files": [],
+  "implementation_notes": "Previous fix (MBT-528) resolved a deprecation issue but still returned 200 for malicious input, failing the pen test. htmlspecialchars() sanitization resolves both the deprecation and pen test false positive. Requires rescan of the application after deployment.",
+  "comment_summary": "Waqar identified that the previous MBT-528 fix addressed deprecation but still failed the pen test due to returning 200 responses. Applied htmlspecialchars() sanitization and deployed to staging. Requested app rescan to verify.",
+  "comment_count": 2
+}

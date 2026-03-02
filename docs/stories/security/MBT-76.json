@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-76",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "SSL Certificate Renewal and Documentation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-26T11:16:58.574-0700",
+  "updated": "2026-03-01T03:41:05.639-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Renew the application SSL certificate and document the process for DevOps reference. Documentation maintained in Confluence under SSL Certificates and Key Rotation.",
+  "acceptance_criteria": [
+    "SSL certificate is renewed and active",
+    "Renewal process is documented in Confluence for future reference"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "SSL certificate renewal documented in Confluence: SSL Certificates and Key Rotation page.",
+  "comment_summary": "",
+  "comment_count": 0
+}

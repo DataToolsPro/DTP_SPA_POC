@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-162",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Add a object_detail refresh and last refreshed button on the object.php page",
+  "status": "Done",
+  "feature_folder": "metrics-glossary"
+}

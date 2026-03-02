@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-125",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix onSelectRow Dropdown Positioning in Data Mapping Off-Canvas",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T18:12:19.460-0700",
+  "updated": "2026-03-01T03:39:54.008-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Updated the `onSelectRow()` function in `Data_Mapping_offCanvas.js` to fix dropdown positioning alignment and hide deactivated fields that were affecting row height calculations.\n\n### Changes\n- Dropdown now aligns precisely to the selected row using absolute positioning relative to the first column cell\n- Deactivated fields (`DTE_Field_migrate`, `DTE_Field_reporting`) are hidden on row selection to prevent layout shifts\n- Dictionary view and migration view both handle row selection with appropriate dropdown visibility toggling\n- Code was updated directly on FTP and pulled by developer",
+  "acceptance_criteria": [
+    "Dropdown aligns correctly to the selected row in dictionary view",
+    "Dropdown aligns correctly to the selected row in migration view",
+    "Deactivated fields are hidden on row selection",
+    "No layout shifts caused by hidden fields changing row height"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dropdown menu now properly aligns to the selected row and deactivated fields no longer cause visual layout shifts.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["Data_Mapping_offCanvas.js"],
+  "implementation_notes": "Code was pushed directly to FTP by the reporter. Developer pulled the updated file and confirmed no additional changes were needed.",
+  "comment_summary": "Developer confirmed the file was already pulled from FTP and no re-implementation was needed. Ticket marked complete.",
+  "comment_count": 1
+}

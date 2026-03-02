@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-468",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Fix Access Denied for Sandbox Salesforce Users Due to Instance Lookup Failure",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-08T17:24:19.870-0800",
+  "updated": "2024-05-24T02:25:30.813-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user connecting via a Salesforce sandbox instance, I want to be able to log in without being blocked by the region check, so that I can use the application for development and testing regardless of how my sandbox instance is registered.",
+  "description": "Fix a bug where users connecting from Salesforce sandbox instances were denied access because the Salesforce Status API (`/v1/instanceAliases/`) doesn't return instance data for sandbox orgs. This caused the instance key to be empty, which the region check middleware interpreted as non-NA, blocking access.\n\n### Root Cause\nThe Salesforce Status API only returns instance alias data for production orgs. Sandbox orgs return 404, leaving the instance key empty in the database. The region check middleware treated empty instance keys as non-NA.\n\n### Investigation\n- 8-9 sandbox users were affected\n- Attempted alternative approaches: DNS lookup via `dig` command (inconsistent results), `exec()` command (disabled on server)\n- Salesforce API documentation confirmed no sandbox support for the instanceAliases endpoint\n\n### Solution\nWhen the Status API returns null (sandbox case), fall back to determining the region from the user's country (derived from Salesforce zone info). Currently allowed countries: US and CA.",
+  "acceptance_criteria": [
+    "Sandbox Salesforce users can log in without Access Denied",
+    "Production users continue to be validated via the Salesforce Status API",
+    "Fallback to country-based validation when Status API returns null",
+    "US and CA countries are allowed in the fallback check"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Sandbox users no longer see Access Denied page when their Salesforce instance can't be resolved via the Status API.",
+  "middleware_changes": "Region check middleware updated with fallback logic: if Salesforce Status API returns null for the instance key, the system validates by country (US/CA allowed) derived from Salesforce zone info.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-332"],
+  "source_files": [],
+  "implementation_notes": "The Salesforce Status API (`api.status.salesforce.com/v1/instanceAliases/`) does not support sandbox orgs — returns 404. Alternative approaches attempted: DNS dig (inconsistent), server exec (disabled on Cloudways). Final solution uses country from Salesforce user zoneinfo as fallback. Applied to both staging and production. Approximately 8-9 existing sandbox users were affected.",
+  "comment_summary": "Customer (plater@apple.com) reported Access Denied on sandbox instance CS249. Developer traced the issue to empty instance keys for sandbox orgs. Multiple alternative approaches explored before settling on country-based fallback. Fix deployed to staging and production. Product owner requested list of affected sandbox users for re-engagement outreach.",
+  "comment_count": 20
+}

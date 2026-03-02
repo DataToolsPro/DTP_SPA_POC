@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1043",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Enhanced Salesforce Instance Management with Metadata",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-22T19:00:08.175-0800",
+  "updated": "2026-01-24T22:54:14.533-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration", "Administration"],
+  "story": "As a Salesforce administrator managing multiple Salesforce instances, I want to name each instance and classify them by type and relationship, so that I can clearly identify which instance serves which purpose in my migration workflow.",
+  "description": "Add metadata fields to the Salesforce instance management screen to support multi-instance workflows:\n\n**New Fields:**\n1. **Name** — User-defined label for the instance (e.g., \"Production CRM\", \"Migration Sandbox\")\n2. **Type** — Instance classification: Production or Sandbox\n3. **Org Relationship** — Role of this instance: Primary, Migration Source, or Mapping Source (initially only \"Migration Source\" is supported)\n\nThe primary authenticated Salesforce org should also be displayed with the ability to name it, with the type and relationship auto-set to \"Production\" and \"Primary\" respectively.\n\nThis enables users to connect multiple Salesforce orgs and clearly identify each one's role in the migration process.",
+  "acceptance_criteria": [
+    "User can assign a custom name to each Salesforce instance",
+    "Type dropdown offers Production and Sandbox options",
+    "Org Relationship dropdown offers Primary, Migration Source, and Mapping Source",
+    "Primary authenticated org is displayed with auto-set type and relationship",
+    "Instance metadata is persisted and displayed on subsequent visits",
+    "Migration Source is the only initially supported relationship for secondary instances"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Instance management screen gains Name input, Type dropdown (Production/Sandbox), and Org Relationship dropdown (Primary/Migration Source/Mapping Source) for each connected Salesforce instance.",
+  "middleware_changes": "Backend support for storing and retrieving instance metadata fields (name, type, org relationship).",
+  "data_model_changes": "New fields on the Salesforce instance record: name (string), type (enum: Production/Sandbox), org_relationship (enum: Primary/Migration Source/Mapping Source).",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Only 'Migration Source' relationship is actively supported in the initial release. Sandbox/Production instance type selection was implemented with the new instance creation flow.",
+  "comment_summary": "Developer implemented name and type fields first, requested clarification on the org relationship feature. Both were deployed to development for review.",
+  "comment_count": 2
+}

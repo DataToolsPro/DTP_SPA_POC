@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1064",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Snowflake Connection Window UI Cleanup",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-01-01T23:49:17.663-0800",
+  "updated": "2025-01-07T23:40:18.143-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration", "Snowflake"],
+  "story": "As a Salesforce administrator setting up a Snowflake connection, I want the connection window to have clear, properly formatted titles and helpful tutorial links, so that I can follow the setup process without confusion.",
+  "description": "Clean up the Snowflake connection window UI with proper title casing and organized content:\n\n**Title:** \"Connect to your Snowflake account\"\n\n**Accordion labels:**\n- \"How to generate your Oauth credentials\"\n- \"How to whitelist DataTools Pro IP address\"\n\n**Subtitle:** \"Configure your Snowflake Oauth credentials:\"\n\n**Tutorial links (added to the dialog):**\n- Generate Snowflake Client ID and Secret for OAuth\n- Snowflake network policy overview\n- Using Snowflake as a Source for Data Mapping\n\nAll titles follow sentence case (caps only on proper nouns and buttons) rather than title case.",
+  "acceptance_criteria": [
+    "Main title reads 'Connect to your Snowflake account' in sentence case",
+    "Accordion 1 label reads 'How to generate your Oauth credentials'",
+    "Accordion 2 label reads 'How to whitelist DataTools Pro IP address'",
+    "OAuth subtitle reads 'Configure your Snowflake Oauth credentials:'",
+    "Three tutorial links are displayed with correct URLs",
+    "Tutorial video placeholder is included (video URL pending)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated title casing throughout the Snowflake connection window. Added three tutorial links. Reorganized accordion labels and subtitles for clarity.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1063"],
+  "source_files": [],
+  "implementation_notes": "Video URL was still pending at time of implementation — currently showing the Tableau video as a placeholder.",
+  "comment_summary": "Developer deployed the UI changes but noted the tutorial video URL was still missing.",
+  "comment_count": 1
+}

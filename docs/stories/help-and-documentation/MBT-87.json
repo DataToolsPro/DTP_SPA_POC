@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-87",
+  "epic_key": "MBT-443",
+  "feature_folder": "help-and-documentation",
+  "title": "Custom Page Layout for Tutorials Post Type on WordPress",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-05T19:18:04.264-0700",
+  "updated": "2026-03-01T03:42:24.844-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a DataTools Pro website visitor, I want tutorials to have a clean, dedicated page layout with a right sidebar, so that I can focus on the tutorial content without distracting navigation elements.",
+  "description": "Create a custom page layout for the WordPress `tutorials` custom post type. The layout changes include:\n\n- Remove the featured image from the tutorial page\n- Remove the left sidebar (posts sidebar) and replace with a right-side sidebar only\n- Create a new widget area in WordPress admin for managing tutorial sidebar content\n- Remove the next/previous navigation links\n\nThe right sidebar is powered by a custom WordPress widget area, allowing content to be managed through the widgets admin panel.",
+  "acceptance_criteria": [
+    "Tutorials custom post type uses a dedicated page layout distinct from standard posts",
+    "The left sidebar is removed for tutorial pages",
+    "A new right sidebar widget area is available in WordPress admin for tutorials",
+    "Featured image is not displayed on tutorial pages",
+    "Next and previous navigation links are removed from tutorial pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Custom tutorial page layout with content on the left and a right sidebar powered by a dedicated widget area. Featured image and prev/next navigation removed.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implemented as a WordPress theme customization. A new widget area was registered for the tutorials sidebar. Custom CSS classes (.schedulesession, .recentblogs) were applied for styling adjustments. Some layout issues occurred when removing the left sidebar but were resolved.",
+  "comment_summary": "Developer implemented the custom layout and deployed to staging. After review, the left sidebar was removed per request, leaving only the right sidebar. Featured image was removed and the final layout was approved.",
+  "comment_count": 12
+}

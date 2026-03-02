@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-192",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Consistent Widget Spacing with mb-3 Class",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T10:46:42.570-0700",
+  "updated": "2024-05-24T02:24:31.980-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want consistent spacing between UI widgets, so that the layout feels organized and professional.",
+  "description": "Standardize vertical spacing between widgets by adding the `mb-3` class to navigation elements and card containers. Remove inline styles that were creating inconsistent spacing.\n\n## Approach\n- Add `mb-3` class to navigation bar for separation from content below\n- Replace inline margin/padding styles on card elements with `mb-3`\n- Ensure consistent spacing between all stacked elements",
+  "acceptance_criteria": [
+    "Navigation has mb-3 margin bottom for separation from content",
+    "Inline margin styles are replaced with mb-3 class on card elements",
+    "Spacing is consistent between all stacked widgets on the page"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Standardized widget spacing using Bootstrap mb-3 class, replacing inconsistent inline styles across the application.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer applied mb-3 across multiple pages proactively.",
+  "comment_summary": "Developer applied the spacing changes across multiple pages and pushed to staging.",
+  "comment_count": 1
+}

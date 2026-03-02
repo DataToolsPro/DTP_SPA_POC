@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-948",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "External ID Metadata — Map External System, Object, and Field to Salesforce External IDs",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-12T03:57:51.919-0700",
+  "updated": "2024-11-27T22:28:29.497-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Data Migration"],
+  "story": "As a DataTools Pro user managing Salesforce integrations, I want to label each External ID field with the external system name, object, and field it maps to, so that I can document and maintain the connections between Salesforce and external applications like HubSpot.",
+  "description": "Creates a metadata management layer for External ID fields in Salesforce. For each field marked as an External ID, users can assign:\n\n- **System name**: The external application (e.g., \"Hubspot\", \"NetSuite\")\n- **Object name**: The table/object in the external system (e.g., \"Contact\")\n- **Field name**: The specific field in the external system (e.g., \"Id\")\n\nThis leverages the existing migration scorecard infrastructure — migration already supports adding external objects and mapping fields. The concept is the same, but reframed as \"External Object\" management rather than \"Source Object\" management.\n\nThe feature enables users to document cross-system integrations directly within the ERD and Dictionary, which is a major competitive differentiator. Tooltips were added to explain Related, Foreign, and External relationship types.",
+  "acceptance_criteria": [
+    "External ID fields can be assigned a system name (e.g., 'Hubspot')",
+    "External ID fields can be mapped to an external object name",
+    "External ID fields can be mapped to an external field name",
+    "The metadata is visible in the ERD Related To tab under the External section",
+    "Tooltips explain the meaning of Related, Foreign, and External relationship types",
+    "The external metadata table stores system name, object name, and field mapping per External ID"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "External ID fields in the ERD 'Related To' tab now display the mapped system name, object, and field. Tooltips explain the three relationship types.",
+  "middleware_changes": "CRUD operations for external ID metadata — saving system name, object, and field mappings. Retrieval logic integrated into the ERD Related To tab's External section.",
+  "data_model_changes": "New metadata table to store external ID mappings with system name, external object name, and external field name per Salesforce External ID field.",
+  "api_changes": "",
+  "dependencies": ["MBT-881", "MBT-947"],
+  "source_files": [],
+  "implementation_notes": "Repurposes the migration scorecard concept — external objects are managed similarly to migration source objects but labeled as 'External Objects'. The long-term vision includes connecting to second Salesforce instances or HubSpot to auto-import metadata. For now, mappings are manually maintained. This is identified as a major competitive feature.",
+  "comment_summary": "Developer requested clarification and a meeting on the UI design. Implemented and shared screenshots showing the external ID mapping interface in the Related To tab. Added tooltips for Related, Foreign, and External sections.",
+  "comment_count": 7
+}

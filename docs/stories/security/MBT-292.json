@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-292",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Laravel Vapor Prototype - AWS Deployment Research (Withdrawn)",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-28T17:15:37.479-0700",
+  "updated": "2024-11-28T10:00:22.263-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Research spike to evaluate Laravel Vapor as a deployment option for hosting DataTools Pro on AWS. Vapor provides serverless deployment using AWS Lambda and manages infrastructure via a CLI tool.\n\n## Scope\n\n- Install Vapor Core and Vapor CLI packages.\n- Configure `vapor.yml` with production environment settings.\n- Evaluate deployment workflow and cost implications.\n\n## Outcome\n\nThis spike was **withdrawn**. The decision was made to use Laravel Forge as the intermediary hosting management tool instead of Vapor, with plans to deploy directly on AWS infrastructure. Forge was deemed the better intermediate step for managing compute and database resources.",
+  "acceptance_criteria": [
+    "Vapor deployment prototype was evaluated",
+    "Cost and complexity assessment was completed",
+    "Decision documented to use Forge instead of Vapor"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer had previously deployed the app on AWS via Vapor but the costs were incurred on their personal account. The spike was withdrawn in favor of Laravel Forge for infrastructure management with direct AWS deployment.",
+  "comment_summary": "Developer had prior experience deploying via Vapor on AWS but at personal cost. Product owner discussed the approach and marked as low priority. Later withdrawn after consulting with a team member (Tom) who agreed Forge is the better intermediate step before direct AWS deployment.",
+  "comment_count": 4
+}

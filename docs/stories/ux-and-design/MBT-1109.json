@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1109",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Formula Modal Rendering Empty Screen",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-04-27T14:25:29.182-0700",
+  "updated": "2026-03-01T04:14:01.260-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the formula modal to render correctly when clicked, so that I can view and manage field formulas without encountering a blank screen.",
+  "description": "Clicking on the Formula modal resulted in an empty/blank screen, requiring a full browser refresh to recover. The modal failed to render its content properly.",
+  "acceptance_criteria": [
+    "Clicking the formula icon opens the formula modal with content rendered",
+    "Modal does not display a blank screen",
+    "User does not need to refresh the browser after opening the modal",
+    "Formula modal works correctly on production"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Formula modal now correctly renders content instead of showing a blank screen.",
+  "middleware_changes": "Fixed the modal rendering logic that was causing the blank screen on formula modal open.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was fixed directly on production due to its user-facing impact.",
+  "comment_summary": "Developer requested a screenshot to identify which object had formulas for testing. Fix was deployed directly to production and verified.",
+  "comment_count": 2
+}

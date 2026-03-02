@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1207",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Merge group by into Aggregate",
+  "status": "In Review",
+  "feature_folder": "integrations"
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-569",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Improve Loading UX During Metrics Service 2 Processing",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-09T19:54:20.311-0800",
+  "updated": "2026-03-01T01:30:08.143-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user running Metrics Analyst, I want to see rotating progress messages and be able to minimize the processing modal, so that the wait feels shorter and I can continue working while analysis completes.",
+  "description": "Service 2 has a long processing time due to batch analysis and metrics dictionary generation. To improve the perceived wait experience, two UX enhancements were implemented:\n\n### Rotating Progress Messages\n\nInstead of a static loading spinner, the modal cycles through descriptive status messages every 4 seconds:\n\n1. \"We are processing your meta-data\"\n2. \"We are generating metric definitions\"\n3. \"We are discovering overlapping metrics\"\n4. \"We are formulating recommendations\"\n5. \"We are considering any duplicates\"\n\nThis gives the impression of multiple processing steps completing and resets the user's internal clock so the wait feels shorter.\n\n### Modal-Scoped Loading\n\nThe loading indicator was moved from a full-screen black overlay to within the modal itself, allowing users to see the rest of the application behind it.\n\n### Minimize During Processing\n\nUsers can minimize the processing modal while Service 2 runs in the background. This lets them continue working in DataTools Pro while waiting for analysis results, rather than being blocked by a modal overlay.",
+  "acceptance_criteria": [
+    "Progress messages rotate every 4 seconds during Service 2 processing",
+    "All five progress messages display in sequence",
+    "Loading indicator is contained within the modal, not full-screen",
+    "User can minimize the modal while processing continues",
+    "Minimized processing does not cause errors or conflicts",
+    "Results display correctly when the modal is restored after processing completes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced static loading spinner with rotating progress messages that cycle every 4 seconds. Moved loading indicator from full-screen overlay to within the modal. Added ability to minimize the modal during Service 2 processing so users can continue working.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The developer confirmed that minimizing during processing is safe and does not risk conflicts. All changes were implemented and deployed to staging for review.",
+  "comment_summary": "Developer confirmed minimizing during processing is not risky and implemented all changes. Deployed to staging. Ryan approved the implementation.",
+  "comment_count": 3
+}

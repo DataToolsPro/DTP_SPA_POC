@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-459",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Fix First-Time Login Crash Due to Missing Team Association",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-05T15:59:05.719-0800",
+  "updated": "2024-05-24T02:25:30.210-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a new DataTools Pro user logging in for the first time, I want the application to handle my initial authentication without crashing, so that I can complete the activation process successfully.",
+  "description": "Fix a critical production bug where first-time users encountered a fatal error (white screen) during their initial login. The error was `No authenticated user with selected team present` thrown from the Teamwork package's `UsedByTeams` trait.\n\n### Root Cause\nThe Zapier webhook (event 0001 - First Time Login) was referencing the team ID before it was attached to the user during the authentication callback. The race condition caused the team ID to be null when the Zapier request fired, which triggered a cascade of errors in the `AppServiceProvider` view composer that expected a valid team.\n\n### Impact\nMultiple first-time users experienced this crash, including a customer demo. The error was reproducible on every first login attempt.\n\n### Fix\nReordered the Zapier webhook trigger to fire after the team association is established during the authentication callback, ensuring team ID is available in the payload.\n\n### Event Mapping\n- Event 0001: First-time login\n- Event 0002: Every subsequent login",
+  "acceptance_criteria": [
+    "First-time users can log in without encountering a fatal error",
+    "Zapier event 0001 fires with correct team ID and user ID",
+    "Team association is established before any webhook triggers",
+    "Existing users continue to log in normally"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Eliminates the white screen / fatal error that first-time users experienced during initial login.",
+  "middleware_changes": "Reordered authentication callback to ensure team association is complete before Zapier webhook fires. Event 0001 (first login) and 0002 (recurring login) now receive correct team and user IDs.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-452"],
+  "source_files": [],
+  "implementation_notes": "Root cause was in the authentication callback sequence: Zapier webhook fired before team association was complete, causing `UsedByTeams::teamGuard()` to throw when the Plan model tried to scope by team. Fixed by moving the Zapier trigger after team assignment. Tested with new user creation on production. Error trace: AppServiceProvider.php(43) → Eloquent Model → UsedByTeams.php(62).",
+  "comment_summary": "Customer (jared@fundcanna.com) repeatedly failed to log in. Developer identified the root cause as a race condition between Zapier webhook (using team ID) and team assignment during auth callback. Fix was applied and verified — the specific customer was able to log in successfully afterward. Product owner emphasized the importance of reliable first-login experience for reputation.",
+  "comment_count": 19
+}

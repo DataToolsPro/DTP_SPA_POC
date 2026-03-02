@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1163",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Fix Snowflake Connection URL Construction with Regional Domains",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-07-11T22:40:42.802-0700",
+  "updated": "2026-03-01T03:44:17.834-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "",
+  "description": "The Snowflake authentication URL construction changed. Previously, customers could provide just the instance name and the app would construct `https://<instance>.snowflakecomputing.com`. This no longer works; the full regional domain is now required, e.g., `https://<instance>.<region>.<cloud>.snowflakecomputing.com`.\n\n### Instance Name Format\nThe instance name can follow different patterns:\n- `<account>.<region>.<cloud>` (e.g., `rsa34655.east-us-2.azure`)\n- Full account locator (e.g., `zckuxij-snow_dtp_azure_east2`)\n\n### Additional Fix\nThe server's IP address must be whitelisted in the Snowflake network policy for the connection to succeed:\n```sql\nALTER NETWORK POLICY GGPOLICY SET ALLOWED_IP_LIST = ('147.182.234.144');\n```\nBoth production and development IP addresses were added to the whitelist.",
+  "acceptance_criteria": [
+    "Snowflake connection URL includes the full regional domain",
+    "Users can connect using either the full account locator or regional format",
+    "Production and development server IPs are whitelisted in Snowflake network policies",
+    "Existing Snowflake connections continue to work after the URL format change"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated Snowflake authentication URL construction to include the full regional domain instead of just the instance name.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Two issues were resolved: (1) the instance name must include the region and cloud provider for the auth URL, and (2) the DataTools Pro server IPs needed to be added to the Snowflake network policy whitelist. Use `SHOW NETWORK POLICIES` to find the policy name, then `ALTER NETWORK POLICY` to add IPs.",
+  "comment_summary": "Developer identified two issues: incorrect instance name format (missing regional domain) and missing IP whitelist entries. Both production and development IPs were added to the Snowflake network policy. Connection now works correctly.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-80",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "Collapsible Object Browser Panel with Persistent State",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-01T00:07:17.807-0700",
+  "updated": "2024-05-24T02:24:28.359-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to hide the object selection browser via a toggle, so that I can reclaim screen space after my initial setup is complete.",
+  "description": "Add a toggle button labeled \"Show Objects\" that slides the object selection panel up and down with a smooth CSS animation. The toggle state persists per user in the database so it is remembered across browser sessions.\n\n## Behavior\n- Toggle button slides the object selector panel up (hide) or down (show)\n- Slide animation provides smooth UX transition\n- User's toggle preference is saved to the database\n- On page reload, the panel state matches the user's last selection",
+  "acceptance_criteria": [
+    "Toggle button labeled 'Show Objects' is visible on the page",
+    "Clicking the toggle slides the object browser panel up or down with animation",
+    "Toggle state is persisted in the database per user",
+    "Page reload restores the user's last toggle selection",
+    "Panel defaults to expanded for new users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Show Objects' toggle button with slide animation to collapse/expand the object selection browser panel.",
+  "middleware_changes": "Server-side logic to save and retrieve the user's toggle preference.",
+  "data_model_changes": "New user preference field to store the object browser toggle state.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer proactively added database persistence for the toggle state without being asked, saving the selection per user so it persists across sessions.",
+  "comment_summary": "Developer implemented the toggle with slide animation and proactively added database persistence for the user's preference. Ryan approved the implementation.",
+  "comment_count": 2
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1085",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Advanced Config: Admin Feature Flags for Beta Features",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-11T17:18:20.303-0700",
+  "updated": "2026-03-01T03:59:30.405-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro administrator, I want to enable or disable beta/experimental features per user, so that I can control feature rollout and test new features with specific clients before general availability.",
+  "description": "## Context\nNew and experimental features like Initiatives and Mapping need to be selectively enabled for testing with specific clients before releasing to all users. The existing fine-grained permissions system serves as the conceptual model.\n\n## Behavior\n1. Admin-only section in Account Settings allows enabling/disabling specific features per user.\n2. Controlled features: Initiatives, Mapping (more to be added).\n3. Backend middleware blocks access to disabled features even via direct URL access.\n4. Feature access overrides all other access controls and is intended for admin use during beta periods.\n5. Once a feature is publicly released, all users are removed from the allowed list and normal access controls apply.\n\n## Implementation\n- Admin visibility gated by `is_admin` column in `dtp_users` table.\n- Middleware checks feature flags before granting access.\n- Blocked users see a clear message indicating the feature is not available.",
+  "acceptance_criteria": [
+    "Admin can enable/disable Initiatives and Mapping per user",
+    "Non-admin users cannot see the feature flags section",
+    "Middleware blocks direct URL access to disabled features",
+    "Blocked users see an appropriate message",
+    "Feature flags override tenant-level permissions during beta"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Admin-only section in Account Settings for toggling feature flags per user. Blocked features show a clear message.",
+  "middleware_changes": "Feature flag middleware checks user's allowed features before granting access. Blocks direct URL access to disabled features.",
+  "data_model_changes": "Feature flag entries per user. Uses is_admin column in dtp_users to gate admin access to the configuration section.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Admin access is controlled via the is_admin field in dtp_users. Feature flags are designed as temporary overrides during beta — once features are publicly released, the allowed list is cleared and standard access controls apply. Important: avoid building too many cross-tenant admin features as future multi-instance deployments won't share databases.",
+  "comment_summary": "Developer implemented backend for Mapping feature flags with admin-only visibility. Reporter cautioned against building too many cross-tenant admin features for future multi-instance support. Developer clarified the flags are temporary overrides for beta access only. Feature flags implemented for Mapping and Initiatives, gated by is_admin. Deployed to production.",
+  "comment_count": 7
+}

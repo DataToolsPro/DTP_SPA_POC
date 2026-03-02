@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1065",
+  "epic_key": "MBT-1006",
+  "feature_folder": "integrations",
+  "title": "Snowflake Settings Navigation and Icon Enhancements",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-01-02T01:35:36.697-0800",
+  "updated": "2026-01-24T22:55:21.628-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a DataTools Pro user navigating the Snowflake integration settings, I want breadcrumb navigation showing Database > Schema > Table hierarchy and improved icons so that I can easily move up and down the Snowflake object hierarchy.",
+  "description": "Enhance the Snowflake settings pages with improved iconography and hierarchical breadcrumb navigation.\n\n**Navigation**: Add a breadcrumb trail showing the current position in the Snowflake hierarchy:\n- Database: List of databases\n- Schema: List of schemas within the selected database\n- Table: List of tables within the selected schema\n\nThe breadcrumb allows users to navigate up the hierarchy without using the browser back button.\n\n**Icons**: Update the icons across all Snowflake settings pages to be more visually consistent and appropriate for the database/schema/table context.",
+  "acceptance_criteria": [
+    "Breadcrumb navigation shows Database > Schema > Table hierarchy",
+    "Users can click breadcrumb links to navigate up the hierarchy",
+    "Icons are updated across all Snowflake settings pages",
+    "Icons are visually consistent with the rest of the application"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Breadcrumb navigation added to Snowflake settings showing Database > Schema > Table hierarchy with clickable links. Updated icons across database list, schema list, table list, and field detail pages for visual consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-993"],
+  "source_files": [],
+  "implementation_notes": "Navigation breadcrumbs were already partially present and were refined. Icon updates were applied across six Snowflake settings pages.",
+  "comment_summary": "Developer refined the existing navigation and updated icons across all Snowflake pages. Provided screenshots of each updated page.",
+  "comment_count": 1
+}

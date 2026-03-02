@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-480",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Separate Migration and Dictionary into Distinct Pages",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-12T12:09:45.878-0800",
+  "updated": "2024-05-24T02:25:31.426-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Refactors the application to separate the Migration and Dictionary pages into distinct routes and views. Previously they shared a page. After refactoring, login redirects to /dictionary as the default landing page.\n\nThis is a low-priority refactoring task that was de-prioritized behind feature work but eventually completed.",
+  "acceptance_criteria": [
+    "Migration and Dictionary are separate pages with distinct routes",
+    "Login redirects to /dictionary by default",
+    "Each page loads independently without shared state"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Separate navigation entries for Migration and Dictionary pages. Login lands on /dictionary.",
+  "middleware_changes": "Route separation and login redirect logic updated.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Refactoring task — separated shared page into independent views. De-prioritized multiple times behind feature work.",
+  "comment_summary": "Developer requested elaboration, was deprioritized, then eventually completed. Separate pages for migration and dictionary pushed to staging.",
+  "comment_count": 6
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1135",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Implement DevSecOps Pipeline with Security Scanning and Code Formatting",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-06-01T20:36:26.065-0700",
+  "updated": "2026-03-01T04:23:27.693-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security", "GitHub"],
+  "story": "",
+  "description": "Establish a minimal DevSecOps pipeline for the Laravel application using GitHub Actions. The stack includes security vulnerability scanning, automated code formatting, and optional static analysis.\n\n### Stack Components\n\n1. **Symfony Security Checker** — Scans `composer.lock` for known CVEs on every pull request\n2. **Laravel Pint** — Zero-config code formatting enforcement on pull requests\n3. **Larastan** (optional) — Static analysis at level 2 for app and routes directories\n\n### GitHub Actions Workflows\n- `security-check.yml` — Runs Symfony security checker on PRs\n- `code-style.yml` — Runs Laravel Pint in test mode on PRs\n\n### Future Expansion\n- Pest test framework for automated testing\n- AI-generated tests\n- SonarCloud for code quality dashboards",
+  "acceptance_criteria": [
+    "Symfony Security Checker GitHub Action runs on every PR",
+    "Laravel Pint code style check GitHub Action runs on every PR",
+    "PRs with known CVEs in dependencies are flagged",
+    "PRs with code style violations are flagged",
+    "Optional: Larastan static analysis at level 2"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Motivated by upcoming pen-tests and the application's access to sensitive Tableau and Snowflake data via PATs. Laravel Pint requires no configuration. Larastan config targets app and routes directories at level 2.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

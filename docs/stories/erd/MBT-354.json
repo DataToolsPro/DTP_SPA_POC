@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-354",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Object Hyperlinks All Pointing to Account",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T23:07:16.210-0800",
+  "updated": "2024-05-24T02:25:08.094-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user navigating the ERD, I want the hyperlink on each object label to correctly link to that object's detail page, so that I can quickly drill into any object's configuration from the diagram.",
+  "description": "Each object node in the ERD has a hyperlink icon to the left of its label that should navigate to the corresponding object's detail page. All hyperlinks were incorrectly pointing to the Account object regardless of which node was clicked.\n\nThe fix required updating the GoJS link template to pass the correct object identifier for each node rather than a hardcoded reference. During testing, a regression was discovered where the view checkbox hide/show behavior stopped working in real-time — objects only hid after saving/updating the view, which was an intentional change per MBT-359.",
+  "acceptance_criteria": [
+    "Clicking the hyperlink on any ERD object node navigates to that specific object's detail page",
+    "The Account object link still correctly navigates to the Account detail page",
+    "All object nodes in the ERD render with the correct hyperlink target"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the hyperlink target on each ERD node so it correctly points to the respective object's detail page instead of always linking to Account.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-359"],
+  "source_files": [],
+  "implementation_notes": "The fix was in the GoJS diagram template, which required learning the GoJS API. The node link binding was not passing the correct object key, causing all links to resolve to Account. After the fix, a side effect was noted where checkbox toggle behavior changed — this was traced to MBT-359 which intentionally changed hide/show to only take effect on view save.",
+  "comment_summary": "Developer fixed the GoJS link bindings after ramping up on the library. Testing revealed that checkbox hide/show stopped working in real-time, but this was traced to an intentional change from MBT-359 where objects only hide after saving the view.",
+  "comment_count": 4
+}

@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-895", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Add Tooltip to Group By Feature Toggle Icon",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T00:51:57.835-0700", "updated": "2024-10-15T19:08:05.283-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want a tooltip on the Group By icon explaining its function and that multi-select is disabled when grouping is active, so that I understand the feature behavior.",
+  "description": "Adds a styled tooltip to the Group By toggle icon reading: \"Group by and browse by category. Multi-select is disabled when the group by feature is enabled.\" This provides inline guidance for users who may not be familiar with the grouping feature's impact on row selection.",
+  "acceptance_criteria": ["Tooltip appears on hover over the Group By icon", "Tooltip text reads the specified message about multi-select being disabled", "Tooltip styling matches the existing info icon tooltip pattern"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a styled tooltip to the Group By toggle icon explaining the feature and its impact on multi-select.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Initial implementation placed the tooltip on the wrong icon. Ryan clarified it should be on the Group By toggle icon specifically.",
+  "comment_summary": "Ryan found the tooltip was on the wrong icon and returned to working. Balaji corrected the placement.", "comment_count": 2
+}

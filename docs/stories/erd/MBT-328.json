@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-328",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD View UI Polish — Placeholder Text, Label, and Save Icon",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:56:14.320-0700",
+  "updated": "2024-05-24T02:25:06.860-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user managing ERD views, I want the view name input, dropdown label, and save icon to use clear, consistent styling, so that the ERD views interface is intuitive and visually consistent with the rest of the application.",
+  "description": "Minor UI refinements to the ERD views feature:\n\n1. The view name text input should use the placeholder text \"Enter your ERD View Name\".\n2. The dropdown label should read \"Saved ERD Views\".\n3. The save icon should use Bootstrap Icons `bi bi-check-square` instead of the previous icon for visual consistency.",
+  "acceptance_criteria": [
+    "View name input displays placeholder 'Enter your ERD View Name'",
+    "Dropdown label reads 'Saved ERD Views'",
+    "Save action uses the bi bi-check-square Bootstrap Icon"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated placeholder text in the view name input, renamed the dropdown label to 'Saved ERD Views', and swapped the save icon to bi bi-check-square for consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-294"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented the changes and submitted for review. Straightforward UI polish with no complications.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-153",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Reposition Salesforce Object Selector Below Navigation Bar",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-19T12:18:52.268-0700",
+  "updated": "2026-03-01T04:21:52.797-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the 'Your Salesforce Object' selector to appear after the navigation bar, so that the page layout is consistent across all screens and navigation clarity is improved.",
+  "description": "The 'Your Salesforce Object' row was positioned before the navigation links, which was inconsistent with other screens. Moving it below the navigation bar improves layout clarity and maintains a consistent page structure.\n\nThe same layout adjustment was also applied to the Metrics page (related to MBT-151) where the navigation links appeared after the add form instead of before it.",
+  "acceptance_criteria": [
+    "The 'Your Salesforce Object' selector row appears below the navigation bar on the Select page",
+    "Navigation links appear before the object selector consistently across all screens",
+    "Metrics page navigation links are repositioned above the add form for consistency"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Repositioned the 'Your Salesforce Object' selector to appear below the navigation bar on the Select page. Applied the same navigation-first layout to the Metrics page for cross-screen consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-151"],
+  "source_files": [],
+  "implementation_notes": "DOM element reordering in the page templates. The navigation bar now consistently appears first, followed by context-specific content like the object selector or add form.",
+  "comment_summary": "Developer applied the layout change to both the Select page and the Metrics page for consistency. Screenshots provided confirming the updated layout. Change was approved.",
+  "comment_count": 5
+}

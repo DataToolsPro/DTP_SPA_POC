@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-737",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Fix Dictionary Filter Showing Empty for Sandbox Instances",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-28T22:29:50.605-0700",
+  "updated": "2026-03-01T01:31:03.724-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user connected to a Salesforce sandbox instance, I want the Dictionary filter to display data correctly, so that I can use the dictionary with sandbox environments without encountering empty results.",
+  "description": "When connected to a Salesforce sandbox instance, the Dictionary filter was displaying empty/blank results — an issue that had previously been encountered and fixed on staging. The bug was reported when connecting to a sandbox instance. Testing with the PBO instance showed the filter working correctly, and the developer was unable to consistently reproduce the issue across all instances.",
+  "acceptance_criteria": [
+    "Dictionary filter displays data correctly when connected to a sandbox Salesforce instance",
+    "Dictionary filter continues to work correctly for production Salesforce instances",
+    "No empty/blank filter results appear on the Dictionary page"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dictionary filter no longer shows empty/blank results when connected to sandbox Salesforce instances.",
+  "middleware_changes": "Investigated and addressed the filter data retrieval logic to handle sandbox instance edge cases.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The issue was intermittent and instance-specific. Developer was unable to reproduce with the PBO instance. The root cause may be related to how sandbox instances return metadata differently than production instances.",
+  "comment_summary": "Developer could not reproduce the issue initially. Product owner suggested testing with PBO org's Opportunity object. Developer tested PBO and found it working. The issue may have been specific to certain sandbox configurations.",
+  "comment_count": 3
+}

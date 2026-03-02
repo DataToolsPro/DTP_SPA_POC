@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-774",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Install and Configure Stripe Connector for Salesforce",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-23T16:16:14.886-0700",
+  "updated": "2024-07-09T21:36:10.470-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nAll Stripe subscriptions and payment events need to flow automatically into Salesforce for operations visibility and reporting.\n\n## Requirements\n\n1. Install the native Stripe Connector for Salesforce following the official installation guide\n2. Configure Salesforce roles and profiles for the connector\n3. Configure Stripe webhooks to send events to Salesforce\n4. Run an end-to-end payment test to verify data flows correctly\n\n## Outcome\n\nThe Stripe connector was installed and configured. Stripe events now flow automatically into Salesforce as Stripe Event records. Webhooks are enabled for subscription and payment events, creating Salesforce records that can trigger downstream automations.",
+  "acceptance_criteria": [
+    "Stripe Connector for Salesforce is installed in the PBO instance",
+    "Salesforce roles and profiles are configured for the connector",
+    "Stripe webhooks are configured to send events to Salesforce",
+    "Stripe Event records appear in Salesforce when payments occur",
+    "End-to-end payment test confirms data flows from Stripe to Salesforce"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Installed the native Stripe connector package for Salesforce. Enabled webhooks for subscription and payment events. Stripe Event records are stored in the stripeGC__Stripe_Event__c object. Events are flowing and will serve as triggers for new Salesforce flows for invoice and opportunity automation.",
+  "comment_summary": "Ryan installed the Stripe integration, confirmed events are flowing into Salesforce, and shared screenshots of the webhook configuration and event records. The Stripe Events list view is accessible at the stripeGC__Stripe_Event__c object.",
+  "comment_count": 4
+}

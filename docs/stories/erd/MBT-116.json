@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-116",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Export ERD as SVG or PNG",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:41:25.859-0700",
+  "updated": "2026-03-01T03:51:08.240-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to export the diagram as SVG or PNG, so that I can share or embed it in documentation and presentations.",
+  "description": "## Context\nUsers need to share ERD diagrams outside the application for documentation, presentations, or reviews.\n\n## Behavior\nDownload icons are added to the ERD toolbar offering two export formats:\n- **SVG** — scalable vector format for high-quality embedding\n- **PNG** — raster format for quick sharing\n\nGoJS natively supports both export formats, so the implementation leverages its built-in export APIs.",
+  "acceptance_criteria": [
+    "Download icons for SVG and PNG are visible in the ERD toolbar",
+    "Clicking SVG export downloads the current diagram as an SVG file",
+    "Clicking PNG export downloads the current diagram as a PNG file",
+    "Exported images include all visible nodes and relationships",
+    "Export captures the current toggle state (expanded/contracted, labels/API names)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New SVG and PNG download icons in the ERD toolbar. Clicking each triggers a client-side export of the current diagram state.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "Uses GoJS built-in makeSvg() and makeImage() APIs for export. Export captures the current diagram state including all toggle settings.",
+  "comment_summary": "Reporter attached a screenshot showing the export icons in the toolbar.",
+  "comment_count": 1
+}

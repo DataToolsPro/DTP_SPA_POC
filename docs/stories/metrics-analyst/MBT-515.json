@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-515",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Clean Up Metrics Analyst Results Widget — Hide IDs and Fix Table Overflow",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-18T11:48:35.631-0800",
+  "updated": "2024-05-24T02:25:43.087-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user reviewing Metrics Analyst results, I want internal IDs hidden and the table properly contained within the widget, so that the interface is clean and I can scroll through all data without overflow issues.",
+  "description": "The Metrics Analyst results widget needs cleanup:\n\n1. Hide the report ID column — end users should not see internal Salesforce IDs.\n2. Move the Add/Ignore action buttons to the leftmost column.\n3. Add a horizontal scrollbar so the table fits within the widget boundaries instead of overflowing.\n4. Review column distribution to determine which columns to show or hide.",
+  "acceptance_criteria": [
+    "Report ID column is hidden from the results table",
+    "Dashboard ID column is hidden from the results table",
+    "Add/Ignore action buttons are in the leftmost column",
+    "Table has a horizontal scrollbar when content exceeds widget width",
+    "No table content overflows outside the widget boundaries"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Hidden internal ID columns (report ID, dashboard ID) from the results table. Moved action buttons to leftmost column. Added horizontal scrollbar to contain the table within the widget.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer hid the dashboard ID column and confirmed no user IDs were displayed. Ready for review except for potential user ID clarification.",
+  "comment_summary": "Developer asked for clarification on which IDs to hide. Confirmed it was the dashboard ID, not user IDs. Hid the ID column and made it reversible.",
+  "comment_count": 3
+}

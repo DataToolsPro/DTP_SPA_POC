@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-42",
+  "epic_key": "MBT-40",
+  "feature_folder": "ux-and-design",
+  "title": "Install Pendo Analytics Script",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-22T21:28:26.957-0800",
+  "updated": "2024-05-24T02:24:37.307-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Install the Pendo analytics script on the select.php and migrate.php pages to enable user onboarding flows and in-app messaging. The script must include the same unique user ID used by the existing Heap analytics integration.\n\n## Requirements\n- Install Pendo script per official setup instructions on select.php and migrate.php\n- Pass the same unique user ID that Heap receives for consistent user identification\n- Script installation only; Pendo configuration to be completed separately",
+  "acceptance_criteria": [
+    "Pendo script is installed on select.php",
+    "Pendo script is installed on migrate.php",
+    "Pendo receives the same unique user ID as Heap analytics",
+    "Pendo initialization is verifiable via browser console"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Pendo script snippet added to both PHP pages. The unique user ID must match the Heap analytics user ID for consistent cross-tool user identification. Initial install showed verification issues that were resolved by passing the correct user identifier.",
+  "comment_summary": "Developer added the code snippet but encountered verification issues. After discussion, the same user ID from Heap was added to the Pendo visitor ID field, resolving the setup.",
+  "comment_count": 4
+}

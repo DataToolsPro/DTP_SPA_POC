@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-290",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Video Modal on Passcode Page",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-22T20:14:29.795-0700",
+  "updated": "2024-05-24T02:25:01.716-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user on the passcode page, I want the splash screen video play button to work, so that I can watch the product introduction video.",
+  "description": "The YouTube video modal on the login page works correctly, but the same play button on the passcode page does not open the modal. Fix the modal functionality on the passcode page to match the login page behavior.",
+  "acceptance_criteria": [
+    "Play button on the passcode page opens the YouTube video modal",
+    "Video modal functions identically on both login and passcode pages",
+    "Fix deployed to both staging and production"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Fixed the YouTube video modal on the passcode page so the play button correctly opens the video overlay.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-289"],
+  "source_files": [],
+  "implementation_notes": "Fix deployed to both staging and production environments.",
+  "comment_summary": "Developer fixed on staging and asked about production deployment. Ryan confirmed, and the fix was pushed to production.",
+  "comment_count": 3
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1302",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Analytics Tracking Classes to Card Body Elements",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-29T20:54:57.504-0800",
+  "updated": "2026-03-01T04:14:40.162-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Tag card body elements with contextual CSS classes to enable analytics tracking of button clicks within each card. This allows the product team to track which features users are interacting with through Pendo or similar analytics tools.\n\nEach card body receives a unique class identifier so that analytics can attribute button clicks to the correct feature context.",
+  "acceptance_criteria": [
+    "Each card body element has a unique contextual CSS class for analytics tracking",
+    "Classes are applied consistently across all card bodies in the UI",
+    "Analytics tool (Pendo) can identify which card/feature area a button click originated from"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added contextual CSS classes to card body elements for Pendo analytics tracking of user interactions per feature area.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Classes are used by Pendo.io for click tracking analytics. No functional behavior change — purely for analytics instrumentation.",
+  "comment_summary": "Developer added the classes to card bodies and deployed to development for review.",
+  "comment_count": 1
+}

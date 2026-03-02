@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-661",
+  "epic_key": "MBT-870",
+  "feature_folder": "data-dictionary",
+  "title": "Select All Checkbox for Object Views",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-21T21:21:29.457-0700",
+  "updated": "2024-05-24T02:25:40.700-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "ERD"],
+  "story": "As a DataTools Pro user, I want a 'Select All' checkbox on the Object Views panel, so that I can quickly deselect all objects and then pick only the ones I need for a new view.",
+  "description": "The Object Views side panel lists checkboxes for each Salesforce object. A 'Select All / Deselect All' checkbox is added at the top of the list to enable bulk toggling.\n\nBehavior:\n- When the 'All' view is selected and the panel opens, the select-all checkbox is checked (all objects visible).\n- When a saved view is selected, the select-all checkbox reflects whether all objects in that view are checked.\n- If any object is unchecked, the select-all checkbox becomes unchecked.\n- Toggling the select-all checkbox checks or unchecks all individual object checkboxes.",
+  "acceptance_criteria": [
+    "A 'Select All' checkbox appears at the top of the object list in the views panel",
+    "Checking it selects all object checkboxes",
+    "Unchecking it deselects all object checkboxes",
+    "Select-all is checked when all individual objects are checked",
+    "Select-all is unchecked when any individual object is unchecked",
+    "Works correctly when switching between 'All' and saved views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a 'Select All / Deselect All' checkbox at the top of the Object Views panel. State syncs with individual object checkboxes in both directions.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-360"],
+  "source_files": [],
+  "implementation_notes": "Client-side JavaScript manages the select-all state. The checkbox auto-updates when individual items change and vice versa.",
+  "comment_summary": "Developer described the implementation plan: select-all reflects view state and syncs with individual checkboxes. Deployed to staging.",
+  "comment_count": 2
+}

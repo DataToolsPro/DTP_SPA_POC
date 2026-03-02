@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-784",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix Created By and Modified By Dropdown Filters to Show All Available Users",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-30T20:07:12.401-0700",
+  "updated": "2024-07-25T23:29:28.758-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Created By and Modified By dropdowns to show all available users from the report data, so that I can filter reports by any content creator or editor in my organization.",
+  "description": "Fixes the Created By and Modified By dropdown filters which were only showing \"All\" as an option. The dropdowns should be populated from the table data so users in organizations with many people can focus on who is creating content.\n\nThe dropdown values should update after clicking the Refresh button to reflect any changes in the underlying Salesforce data.",
+  "acceptance_criteria": [
+    "Created By dropdown shows all distinct user names from the report/dashboard data",
+    "Modified By dropdown shows all distinct user names from the report/dashboard data",
+    "Dropdown options update after clicking the Refresh button",
+    "Selecting a user filters the data table to matching records"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed Created By and Modified By dropdowns to populate with all distinct user names from the data table. Dropdowns refresh when data is refreshed.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-753"],
+  "source_files": [],
+  "implementation_notes": "Initially blocked by the 'Not a DTP user' issue which was resolved in MBT-753. After that fix provided real user names, the dropdown population could be properly tested.",
+  "comment_summary": "Balaji initially found only 'Not a DTP user' values, blocking testing. After MBT-753 resolved user name resolution, the dropdown was completed and verified on staging.",
+  "comment_count": 4
+}

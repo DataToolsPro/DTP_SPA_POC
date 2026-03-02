@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-546",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Configurable Status Update on Field Mapping",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-26T20:55:26.121-0800",
+  "updated": "2024-05-24T02:25:42.585-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to choose what migration status is automatically applied when I map a field, so that the workflow matches my team's review process — whether that means marking fields as 'Complete' or requiring a QA step.",
+  "description": "Add a configurable \"Update Status on Match\" option that lets users choose what migration status is automatically set when they map a field. Different customers have different workflows — some want mapped fields set to \"Complete\" immediately, while others want them set to \"QA\" for a review step.\n\nThe setting is a global option (not per-object) presented as a dropdown. It applies to both auto-matching and individual field mapping in the side panel.\n\nAfter discussion, the dropdown was moved to the first step of adding a new data source, so it's set once when configuring the source rather than during each mapping session.",
+  "acceptance_criteria": [
+    "Dropdown allows selecting which status to set when a field is mapped",
+    "Setting applies globally to all mapping operations (auto-match and manual)",
+    "Dropdown is presented during the first step of adding a new data source",
+    "Selected status is applied both for auto-match and individual field mappings",
+    "Status options include available migration statuses"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Update Status on Match' dropdown added to the data source creation step. Users select the desired status that will be auto-applied when fields are mapped.",
+  "middleware_changes": "Mapping save logic updated to read the configured status preference and apply it when a mapping is created, for both auto-match and individual mappings.",
+  "data_model_changes": "New field to store the user's preferred mapping status at the data source level.",
+  "api_changes": "Data source creation and mapping endpoints updated to accept and apply the status preference.",
+  "dependencies": ["MBT-77"],
+  "source_files": [],
+  "implementation_notes": "Initially placed on the auto-match screen but moved to the data source creation step after discussion, making it a one-time global setting per source. The dropdown shows available migration statuses from the system.",
+  "comment_summary": "Developer implemented the dropdown on the auto-match screen initially. After discussion, it was decided to move it to the first step of adding a new data source for a better UX. The setting was made global to apply to all mapping methods.",
+  "comment_count": 4
+}

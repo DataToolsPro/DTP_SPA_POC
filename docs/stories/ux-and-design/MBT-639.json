@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-639",
+  "epic_key": "MBT-642",
+  "feature_folder": "ux-and-design",
+  "title": "Customized Login Page Experience After OTP Email Verification",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-15T09:27:18.683-0700",
+  "updated": "2024-05-24T02:25:38.956-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user who just verified my email, I want to see a personalized welcome screen on the login page instead of the default sign-up prompts, so that I understand the next step is to log in with Salesforce.",
+  "description": "After a new user verifies their email via OTP, they are redirected to the login page. The current login page shows generic content including a \"New to DataTools Pro?\" prompt which confuses verified users. The experience needs to be tailored for post-verification.\n\n## Changes\n1. **Remove confusion**: Hide the \"New DataTools Pro?\" section for verified users\n2. **Right pane content**: Replace the default promotional content with a welcome message:\n   - Heading: \"Welcome!\"\n   - Subheading: \"Login with Salesforce to start using DataTools Pro.\"\n   - Body: \"Thank you for signing up and verifying your email. DataTools Pro is a Salesforce connected app. Login to your Salesforce org to start using DataTools Pro.\"\n3. **Custom imagery**: Use a welcome-specific background image and video\n\n## Technical Approach\nInstead of adding a URL query parameter (`status=verified`), the existing session stamp from OTP verification is reused to detect the post-verification state and conditionally render the welcome content.",
+  "acceptance_criteria": [
+    "After OTP email verification, user sees a customized welcome login page",
+    "The 'New DataTools Pro?' section is hidden for verified users",
+    "Right pane displays 'Welcome!' heading with Salesforce login instructions",
+    "Welcome message includes guidance about DataTools Pro being a Salesforce connected app",
+    "Post-verification state detected via existing session stamp, not URL parameters",
+    "Default login page remains unchanged for non-verified visitors"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Post-OTP-verification login page shows a customized welcome screen: removes confusing 'New DataTools Pro?' prompt, displays welcome heading and Salesforce login instructions, uses a welcome-specific background image.",
+  "middleware_changes": "Reuses existing OTP verification session stamp to conditionally render the welcome variant of the login page instead of the default layout.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Leveraged the existing session variable stamped during OTP verification flow rather than adding a URL parameter. This avoids exposing verification status in the URL. A follow-up ticket was created for custom welcome background image and video.",
+  "comment_summary": "Developer noted that an existing session variable from OTP verification could replace the proposed URL parameter approach. Implemented and deployed directly to production. Product owner praised the result and created a follow-up ticket for custom background image and video for the welcome screen.",
+  "comment_count": 3
+}

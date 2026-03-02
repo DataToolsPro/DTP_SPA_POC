@@ -1,0 +1,18 @@
+{
+  "post_id": 9480,
+  "title": "Metrics Change History",
+  "slug": "metrics-change-history",
+  "url": "https://datatoolspro.com/tutorials/metrics-change-history/",
+  "date": "2024-04-28T13:43:39",
+  "modified": "2024-04-28T13:43:47",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "change management"
+  ],
+  "subfolder": "change-management",
+  "excerpt": "<p>DataTools metrics change history tool provides a detailed view of all historical changes to your metrics over time by user.</p>",
+  "content_html": "\n<p><a href=\"/salesforce-metrics-glossary/\" title=\"Metrics glossary\">DataTools metrics </a>change history tool provides a detailed view of all historical changes to your metrics over time by user. Metrics naturally change over time with your business. Changes in metrics are typically not distributed across business, technology, data an analytics universally. </p>\n\n\n\n<figure class=\"wp-block-image size-large\"><img data-dominant-color=\"f9fafa\" data-has-transparency=\"true\" style=\"--dominant-color: #f9fafa;\" loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"408\" src=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-7-1024x408.png\" alt=\"Metrics Alias\" class=\"wp-image-9478 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-7-1024x408.png 1024w, https://datatoolspro.com/wp-content/uploads/2024/04/image-7-300x120.png 300w, https://datatoolspro.com/wp-content/uploads/2024/04/image-7-768x306.png 768w, https://datatoolspro.com/wp-content/uploads/2024/04/image-7.png 1129w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<h2 class=\"wp-block-heading\">How to Access Metrics History for All Metrics</h2>\n\n\n\n<ol class=\"wp-block-list\">\n<li>On the metrics tab, click the &#8220;History&#8221; icon in the upper right corner of the metrics table.</li>\n</ol>\n\n\n\n<figure class=\"wp-block-image size-full\"><img data-dominant-color=\"e5f0ed\" data-has-transparency=\"true\" style=\"--dominant-color: #e5f0ed;\" loading=\"lazy\" decoding=\"async\" width=\"580\" height=\"134\" src=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-8.png\" alt=\"Metrics change history\" class=\"wp-image-9479 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-8.png 580w, https://datatoolspro.com/wp-content/uploads/2024/04/image-8-300x69.png 300w\" sizes=\"auto, (max-width: 580px) 100vw, 580px\" /></figure>\n\n\n\n<p>2. Select the type of change you would like to view:</p>\n\n\n\n<figure class=\"wp-block-image size-full\"><img data-dominant-color=\"e1e9f2\" data-has-transparency=\"true\" style=\"--dominant-color: #e1e9f2;\" loading=\"lazy\" decoding=\"async\" width=\"590\" height=\"242\" src=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-9.png\" alt=\"\" class=\"wp-image-9481 has-transparency\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/04/image-9.png 590w, https://datatoolspro.com/wp-content/uploads/2024/04/image-9-300x123.png 300w\" sizes=\"auto, (max-width: 590px) 100vw, 590px\" /></figure>\n\n\n\n<p>3. Within the change log, you will see all changes for all metrics.</p>\n\n\n\n<h2 class=\"wp-block-heading\">How to Access Metrics History for Individual Metrics</h2>\n\n\n\n<p>Individual metric change history is coming soon and will be accessible from within the metrics information window.</p>\n"
+}

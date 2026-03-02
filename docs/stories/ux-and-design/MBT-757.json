@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-757",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Date Picker CSS for Dark Mode on Reports and Metrics Pages",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-09T22:40:46.757-0700",
+  "updated": "2024-07-25T23:44:53.019-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user in dark mode, I want the date picker on Reports/Dashboards and Metrics pages to render with proper dark mode styling, so that the date controls are readable and usable.",
+  "description": "The date picker dropdowns on the Reports and Dashboards page do not render correctly in dark mode — the styling conflicts with the dark background.\n\n## Fix\nApply dark mode CSS overrides to the date picker component. The same issue was also found on the Metrics page (Add Metrics) and was fixed simultaneously.",
+  "acceptance_criteria": [
+    "Date picker on Reports and Dashboards renders correctly in dark mode",
+    "Date picker on Metrics page renders correctly in dark mode",
+    "Date range filters (Date Created, Last Modified) have proper dark mode styling",
+    "Calendar popup and preset options are readable in dark mode"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dark mode CSS applied to date picker components on Reports/Dashboards and Metrics pages.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "Same date picker CSS issue found on both Reports/Dashboards (Date Created, Last Modified filters) and Metrics (Add Metrics) pages. Fixed in both locations. Related to MBT-762.",
+  "comment_summary": "Developer found the same dark mode date picker issue on the Metrics page while fixing it for Reports/Dashboards. Both were fixed together. Confirmed working on staging.",
+  "comment_count": 3
+}

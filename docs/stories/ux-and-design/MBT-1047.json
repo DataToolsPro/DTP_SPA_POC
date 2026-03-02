@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1047",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Tutorial Video to Salesforce Add Instance Help Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-22T22:55:24.788-0800",
+  "updated": "2026-01-24T22:48:06.007-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user adding a new Salesforce instance, I want a tutorial video embedded on the help page, so that I can follow along visually while setting up my connection.",
+  "description": "Embed a YouTube tutorial video on the Salesforce \"Add Instance\" help page to guide users through the process of adding multiple Salesforce orgs.\n\n## Resources\n- YouTube video: https://youtu.be/c1hjMYra3aU\n- Tutorial page: https://datatoolspro.com/tutorials/adding-multiple-salesforce-orgs-into-datatools-pro/\n- Topic: Loading Salesforce CRM Analytics Dashboards in DataTools Pro",
+  "acceptance_criteria": [
+    "Tutorial video is embedded on the Salesforce Add Instance help page",
+    "Video plays correctly within the application",
+    "Video has rel=0 parameter to restrict related videos"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "YouTube tutorial video embedded on the Salesforce Add Instance help page.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Embedded the provided YouTube video on the Add Instance help page. Links to the full tutorial on the DataTools Pro website.",
+  "comment_summary": "Developer implemented and pushed to development for review.",
+  "comment_count": 1
+}

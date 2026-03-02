@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1321",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Prototype End-to-End DevOps and SPA Foundation for DataTools Pro v2",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2026-02-22T11:59:12.463-0800",
+  "updated": "2026-03-01T04:16:36.769-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Modernize the DataTools Pro product delivery pipeline by creating a SPA proof-of-concept and establishing a foundation that will be migrated to the v2 codebase. The repository includes knowledge, AI skills, and a refined development process.\n\n### SPA Setup\n- Vite + React 19 + TypeScript scaffolded in the `spa/` folder\n- React DOM, Vite 7, ESLint configured\n- `.env.example` with API URL, app name, and feature flags\n- Title set to \"DataTools Pro\"\n\n### Repository\n- GitHub: DataToolsPro/DTP_SPA_POC\n- Branches: `create-react-app` for initial setup, `foundation-of-app` for enhancements\n\n### Objective\nBuild the fastest software delivery flywheel between senior full-stack engineer and product leader.",
+  "acceptance_criteria": [
+    "SPA POC scaffolded with Vite + React + TypeScript",
+    "Development server runs locally",
+    "Repository includes AI skills and process documentation",
+    "Foundation ready to be migrated into v2 codebase"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "New SPA frontend using React 19, TypeScript, and Vite as the build tool.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The SPA is intentionally frontend/process only in this POC repo. Laravel backend is in a separate v2 repo. Frontend technical stack decisions are tracked in MBT-1338.",
+  "comment_summary": "Developer cloned the repo, confirmed it's frontend/process only (no Laravel), and scaffolded the Vite + React + TypeScript project in the spa/ folder. Dev server is running and ready for further development.",
+  "comment_count": 4
+}

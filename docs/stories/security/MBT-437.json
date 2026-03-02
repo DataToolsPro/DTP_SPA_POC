@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-437",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Migration Scorecard Record Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:48:41.057-0800",
+  "updated": "2024-05-24T02:25:08.830-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity**\n\nMultiple fields in the Migration Scorecard Record were vulnerable to Stored XSS: Notes, Source Object, Priority, Module, and Metrics. Any user with migration editing permissions could inject an XSS payload (e.g., `![](x)`) into these fields, causing arbitrary JavaScript execution for all users visiting the migration endpoint.\n\n## Affected Endpoint\n\n`/dashboard?view=migration`\n\n## Risk\n\nHigh — attacker could execute arbitrary JavaScript, exfiltrate CSRF tokens. Session cookies protected by HTTPOnly attribute.\n\n## Fix\n\nInput validation applied to all affected Migration Scorecard fields to strip or encode malicious content.",
+  "acceptance_criteria": [
+    "Notes, Source Object, Priority, Module, and Metrics fields sanitize HTML/script content on save",
+    "XSS payloads injected through migration record editing are neutralized",
+    "Legitimate text in affected fields is preserved without corruption",
+    "Migration page renders scorecard records safely"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization applied to Migration Scorecard update controller for Notes, Source Object, Priority, Module, and Metrics fields.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of the broader penetration test remediation effort. Same sanitization pattern used across all editable fields.",
+  "comment_summary": "Developer fixed and pushed to staging for review.",
+  "comment_count": 1
+}

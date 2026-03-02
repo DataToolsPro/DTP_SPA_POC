@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-861",
+  "epic_key": "MBT-655",
+  "feature_folder": "integrations",
+  "title": "Enhanced Notion Export with Additional Metric Columns",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-10T23:15:51.683-0700",
+  "updated": "2024-09-15T13:23:12.697-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "notion"],
+  "story": "As a DataTools Pro user exporting metrics to Notion, I want to see Line of Business, Topic, and Business Owner columns in the Notion database so that I have a complete view of my metrics data for documentation and governance purposes.",
+  "description": "Enhance the Notion metrics push to include additional columns beyond the original name and definition:\n- Line of Business\n- Topic\n- Business Owner\n\nThe Notion API creates database columns (properties) in alphabetical order regardless of the order defined in the API call. This caused issues when new columns were added because the data push relied on column ordering. The fix required reading back the Notion-generated column order and mapping data accordingly.\n\nAn edge case was discovered: if no metrics have a Business Owner assigned, the push fails. At least one record must have a Line of Business value for the push to succeed.",
+  "acceptance_criteria": [
+    "Notion database includes Line of Business column",
+    "Notion database includes Topic column",
+    "Notion database includes Business Owner column",
+    "All existing metric data still pushes correctly with the new columns",
+    "Push succeeds even when some metrics have empty Business Owner or Line of Business values",
+    "Column ordering in Notion does not break the data push"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Users now see Line of Business, Topic, and Business Owner columns in their exported Notion database alongside the existing name and definition columns.",
+  "middleware_changes": "Updated the Notion push service to include additional metric fields. Implemented column order detection to handle Notion's alphabetical property sorting. Added null handling for optional fields to prevent push failures.",
+  "data_model_changes": "",
+  "api_changes": "Expanded the Notion database creation payload to include Line of Business, Topic, and Business Owner properties. Updated row insertion to map data to Notion's generated column order.",
+  "dependencies": ["MBT-585"],
+  "source_files": [],
+  "implementation_notes": "Notion API sorts database properties alphabetically regardless of creation order. This broke the initial implementation when new columns were added. The fix reads back the Notion-generated property order and maps data accordingly. Edge case: empty Business Owner across all records caused a push failure that required null-safe handling.",
+  "comment_summary": "Developer encountered issues with Notion's alphabetical column ordering breaking data pushes. Also discovered that fully empty optional columns (e.g., Business Owner with no values across all records) caused failures. Both issues were resolved and the enhanced push was made available on development.",
+  "comment_count": 5
+}

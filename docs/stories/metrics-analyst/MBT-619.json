@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-619",
+  "epic_key": "MBT-599",
+  "feature_folder": "metrics-analyst",
+  "title": "Suppress Previous Step Details When Navigating Between Steps",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T22:03:58.239-0700",
+  "updated": "2024-05-24T02:25:38.135-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user navigating through Metrics Analyst steps, I want the 'more info' detail panel to close when I switch to a different step, so that I don't see stale information from a previous step that confuses the current context.",
+  "description": "When a user clicks Step 2 or Step 3 in the Metrics Analyst, whatever 'more info' detail panel is currently displayed should be suppressed/closed. The bug occurs when a user has the Step 2 widgets 'more info' open and Step 3 completes — the user still sees the Step 2 detail content, which is confusing because Step 3 is now the active step.\n\nTo reproduce: Open 'more info' on Step 2 widgets, then click Step 3.",
+  "acceptance_criteria": [
+    "Clicking a different step closes any open 'more info' detail panel",
+    "Step 3 completion does not display Step 2's detail content",
+    "Each step's 'more info' panel is independent and dismisses when switching"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Step navigation now automatically closes any open 'more info' detail panel, preventing stale content from a previous step from being displayed.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed the issue on staging.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-831",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Configure Environment-Specific Lambda URLs for Metrics Glossary Services",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-25T18:32:19.313-0700",
+  "updated": "2024-08-19T20:13:20.773-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Configure the DataTools Pro Laravel application to use environment-specific URLs for the Metrics Glossary Lambda services (Service 1 and Service 2). Previously, all environments pointed to a single Lambda URL. The change ensures each environment (dev, stage, prod) calls its own corresponding Lambda endpoint.\n\n## Service 1 (parsedashboard)\n- Dev: API Gateway endpoint with `/dev/parsedashboard` stage\n- Stage: API Gateway endpoint with `/stage/parsedashboard` stage\n- Prod: API Gateway endpoint with `/prod/parsedashboard` stage\n\n## Service 2 (Metrics Glossary)\n- Dev, Stage, Prod: Each environment has a separate Lambda function URL",
+  "acceptance_criteria": [
+    "Dev environment calls the dev Lambda endpoints for both services",
+    "Stage environment calls the stage Lambda endpoints for both services",
+    "Prod environment calls the prod Lambda endpoints for both services",
+    "Service URLs are configured via .env files, not hardcoded",
+    "Code is promoted across environments without URL changes needed"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Lambda service endpoint URLs moved from hardcoded values to environment-specific .env configuration. Each environment's .env file contains the correct service 1 and service 2 URLs.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-738"],
+  "source_files": [],
+  "implementation_notes": "Initially encountered a Lambda ARN validation error when switching to the new API Gateway stage URLs. Resolved with help from Tom and Anton via Slack. Final implementation stores service 1 and service 2 endpoint URLs in each environment's .env file.",
+  "comment_summary": "Ryan requested starting with dev and stage only. Waqar encountered a Lambda ARN validation error with the new endpoint and was directed to Slack for troubleshooting with Tom and Anton. Eventually resolved; all environments now have their own endpoint URLs configured in .env files.",
+  "comment_count": 4
+}

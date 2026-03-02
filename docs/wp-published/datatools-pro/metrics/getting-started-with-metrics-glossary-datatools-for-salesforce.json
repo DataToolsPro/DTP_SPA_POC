@@ -1,0 +1,19 @@
+{
+  "post_id": 8852,
+  "title": "Getting Started with Metrics Glossary DataTools for Salesforce",
+  "slug": "getting-started-with-metrics-glossary-datatools-for-salesforce",
+  "url": "https://datatoolspro.com/tutorials/getting-started-with-metrics-glossary-datatools-for-salesforce/",
+  "date": "2023-10-10T21:40:57",
+  "modified": "2024-11-18T17:19:50",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "metrics"
+  ],
+  "subfolder": "metrics",
+  "excerpt": "<p>Getting Started with Metrics Glossary DataTools for Salesforce demonstrates how to build a dictionary for the most important metrics within your organization.</p>",
+  "content_html": "\n<p>Metrics glossary DataTools serves as a dictionary for the most important metrics and KPIs within your organization. While DataTools Pro was designed originally for use with Salesforce, the utilization of the metrics dictionary can extend beyond Salesforce to Google Analytics. Additionally you can share and distribute your metrics through <a href=\"https://datatoolspro.com/zapier-to-datatools-pro/\" title=\"Connect Zapier to DataTools Pro\">Zapier</a>, <a href=\"https://datatoolspro.com/tutorials/import-metrics-into-coda-with-datatools-pro-c/\" title=\"Import your metrics into Coda with DataTools Pro Bundle\">Coda</a>, and other integrations.</p>\n\n\n\n<p>The following getting started guide will step you through all of the the key metrics glossary features including:</p>\n\n\n\n<ul class=\"wp-block-list\">\n<li>Manually Adding Metrics</li>\n\n\n\n<li>Creating Line of Business and Topic categories</li>\n\n\n\n<li>Assigning Categories to Metrics</li>\n\n\n\n<li>Organizing and Grouping </li>\n\n\n\n<li>Exporting your metrics dictionary</li>\n\n\n\n<li><a href=\"https://datatoolspro.com/tutorials/getting-started-with-metrics-analyst-ai-for-salesforce/\" title=\"Import metrics from Salesforce with Metrics Analyst\">Import metrics from Salesforce dashboards with metrics analyst</a></li>\n</ul>\n\n\n\n<iframe loading=\"lazy\" src=\"https://scribehow.com/embed/Creating_and_configuring_metrics_in_Scribe_workspace__47w8gmxkSFulu0apMfiDEQ\" width=\"100%\" height=\"640\" allowfullscreen frameborder=\"0\"></iframe>\n"
+}

@@ -1,0 +1,16 @@
+{
+  "issue_key": "MBT-897", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Folder Dropdown CSS Readability in Light Mode",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:02:25.047-0700", "updated": "2024-09-17T22:57:18.452-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user in light mode, I want the folder dropdown to be readable, so that I can use the filter without CSS rendering issues.",
+  "description": "The folder dropdown CSS was making text unreadable in light mode. Investigation revealed the issue was caused by browser caching of stale CSS rather than a code defect. Resolved by clearing the browser cache.",
+  "acceptance_criteria": ["Folder dropdown text is readable in light mode", "Dropdown styling is consistent between light and dark modes"],
+  "change_layers": {"ux": false, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "", "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Issue was caused by browser caching, not a code defect. No code changes required.",
+  "comment_summary": "Balaji could not reproduce. Ryan confirmed it was browser caching on his end.", "comment_count": 2
+}

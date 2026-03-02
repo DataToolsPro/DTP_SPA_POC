@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-20",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Custom WordPress Template for Tutorial Post Type",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-22T14:01:32.999-0800",
+  "updated": "2026-03-01T04:18:52.725-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro website visitor, I want tutorials to display in a clean layout with a navigation sidebar and without blog metadata clutter, so that I can focus on learning the content.",
+  "description": "## Context\nA custom post type called \"Tutorial\" was created in WordPress for datatoolspro.com. The default blog template showed metadata (title, author, date, featured image, previous/next links, tags) that was not desired for tutorials.\n\n## Requirements\n- Use a traditional blog-style layout with a narrow sidebar for a post list widget on the left and single post content on the right.\n- Hide: Title, Author + date, Featured image, Previous/Next navigation, Tags.\n- Only apply these changes to the Tutorial custom post type; regular blog posts remain unchanged.",
+  "acceptance_criteria": [
+    "Tutorial custom post type uses a dedicated template",
+    "Sidebar displays a post list widget",
+    "Title, author, date, featured image are hidden on tutorial pages",
+    "Previous/Next navigation and tags are removed from tutorial pages",
+    "Regular blog posts are unaffected by these changes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Custom tutorial template with sidebar navigation and hidden metadata elements (title, author, date, featured image, nav links, tags).",
+  "middleware_changes": "New WordPress template file for the Tutorial custom post type with conditional display logic.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "WordPress custom post type template overrides. Metadata elements hidden only for the Tutorial post type.",
+  "comment_summary": "Developer removed the specified sections from the tutorial detail page and confirmed other post types work normally.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-641",
+  "epic_key": "MBT-642",
+  "feature_folder": "ux-and-design",
+  "title": "Review and Act on Usability Testing Feedback Wave 1",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-15T10:14:59.867-0700",
+  "updated": "2024-05-24T02:25:38.950-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Review usability testing feedback from the first wave of testers and identify actionable improvements. Feedback collected from 6 users via the usability survey form.\n\n## Key Findings\n- Users most interested in data governance features as a next priority\n- Feedback about slow loading times when selecting objects in the Dictionary — fields fetched from Salesforce via AJAX on each checkbox click causes noticeable delay\n\n## Proposed Improvements (from developer)\n1. **Background field fetching**: When a user checks an object, immediately store the selection and fetch fields in the background. If the user navigates to the object detail before fields are loaded, show a loading indicator with a message.\n2. **Cache objects locally**: Instead of fetching available Salesforce objects on every page load, cache them in the database on first fetch and provide a refresh button to re-sync.",
+  "acceptance_criteria": [
+    "Usability feedback from all respondents reviewed",
+    "Actionable improvements identified and documented as tickets",
+    "Performance improvement proposals for Dictionary object loading documented"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-635"],
+  "source_files": [],
+  "implementation_notes": "This was a review/analysis task, not a direct code change. Developer proposed two performance improvements for Dictionary object loading: background AJAX fetching and local object caching. These would be implemented in separate tickets.",
+  "comment_summary": "Product owner shared usability feedback showing data governance as the most requested feature. Developer reviewed feedback, proposed background field fetching and object caching to address load time complaints, and requested a meeting to align on implementation priorities. Six users provided feedback in total.",
+  "comment_count": 5
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-540",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Update Metrics Analyst Summary Card Icons and Labels",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-25T09:51:25.481-0800",
+  "updated": "2024-05-24T02:25:42.345-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user viewing Metrics Analyst results, I want each summary card to have a distinct, meaningful icon, so that I can visually differentiate the categories at a glance.",
+  "description": "Update the icons on the Metrics Analyst summary cards to be distinct and meaningful for each category:\n\n- Dashboards Processed\n- Reports Processed\n- Dashboard Widgets\n- Suggested Metrics\n- Ignored Facts\n- Suggested Categories",
+  "acceptance_criteria": [
+    "Each of the six summary cards has a unique, category-appropriate icon",
+    "Icons are visually consistent in size and style",
+    "Card labels match the specified names"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated all six Metrics Analyst summary card icons to distinct, category-appropriate Bootstrap icons.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-502"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed the icon updates on staging.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-503",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Display Last Analyzed Date on Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T01:59:07.708-0800",
+  "updated": "2024-05-24T02:25:42.692-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to see the 'Last Analyzed' date on each dashboard in the Metrics Analyst, so that I can track which dashboards have been analyzed for metrics and when.",
+  "description": "When a dashboard completes metric analysis, the system should stamp it with a 'Last Analyzed' timestamp. This date should be displayed on the dashboard selection screen so users can identify which dashboards have and haven't been processed. In the future this will feed into a metric history/change log.\n\nA new field was added to the dashboards model to store the analyzed date, captured when the user clicks the analyze button.",
+  "acceptance_criteria": [
+    "A 'Last Analyzed' timestamp is recorded when a dashboard analysis completes",
+    "The 'Last Analyzed' date is displayed on the dashboard selection screen",
+    "Dashboards that have never been analyzed show no date",
+    "The timestamp updates each time the same dashboard is re-analyzed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added 'Last Analyzed' date column to the dashboard selection list in the Metrics Analyst modal.",
+  "middleware_changes": "Captures the analyzed timestamp when a user clicks the analyze button and persists it to the dashboard record.",
+  "data_model_changes": "Added a new field to the dashboards model to store the last analyzed date.",
+  "api_changes": "",
+  "dependencies": ["MBT-507"],
+  "source_files": [],
+  "implementation_notes": "Implemented alongside MBT-507. The analyzed date is stored on the dashboard model (the Salesforce dashboard records synced locally). The date is captured on the click event of the analyze button.",
+  "comment_summary": "Developer added a new field to the dashboards model to hold the analyzed date, captured when the user clicks analyze. Implemented during MBT-507.",
+  "comment_count": 1
+}

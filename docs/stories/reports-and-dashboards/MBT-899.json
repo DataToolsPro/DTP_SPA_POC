@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-899", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Analytics Type Dropdown Showing Too Many Values",
+  "type": "story", "original_jira_type": "Bug", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:11:35.098-0700", "updated": "2024-09-17T22:47:53.006-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Analytics Type dropdown to show only the expected values (Report and Dashboard), so that I can filter without confusion from extraneous options.",
+  "description": "Bug fix: the Analytics Type dropdown was displaying too many values instead of just Report and Dashboard. The dropdown was cleaned up to only show the valid analytics types present in the data.",
+  "acceptance_criteria": ["Analytics Type dropdown shows only valid types (Report, Dashboard)", "No extraneous values appear in the dropdown"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed Analytics Type dropdown to only display valid type values.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-781"], "source_files": [],
+  "implementation_notes": "Dropdown was populating from raw data without proper deduplication or filtering.",
+  "comment_summary": "Balaji fixed and submitted for review.", "comment_count": 2
+}

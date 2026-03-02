@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-66",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Onboarding Design and Guided Walkthrough",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-15T23:39:11.758-0700",
+  "updated": "2024-05-24T02:24:36.619-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user logging in for the first time, I want guided onboarding that shows me how to use the application, so that I can quickly learn my way around and start being productive.",
+  "description": "Design and implement an onboarding experience for first-time users using Pendo.io. The onboarding covers the activation funnel with guided flows and alerts to help new users understand key application features.\n\nThe onboarding guides were built and managed through the Pendo platform, leveraging the existing Pendo integration already present in the application codebase.",
+  "acceptance_criteria": [
+    "First-time users see an onboarding walkthrough upon initial login",
+    "Onboarding covers key application features and navigation",
+    "Onboarding flows and alerts are managed via Pendo.io",
+    "Activation funnel events are tracked through the onboarding process"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds guided onboarding walkthrough for first-time users via Pendo. Includes multi-step tooltips, activation flows, and contextual alerts to orient new users.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Onboarding was implemented entirely through Pendo.io's guide builder, not custom code. The Pendo script integration was already in place from earlier development.",
+  "comment_summary": "Developer asked for clarification on onboarding format. Product owner clarified it was a Pendo-managed guide, not a custom multi-step UI component.",
+  "comment_count": 2
+}

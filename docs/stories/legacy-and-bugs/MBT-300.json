@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-300",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Team Invite Bug with Base URL Lookup",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-10T22:10:32.917-0700",
+  "updated": "2026-03-01T04:13:08.254-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user inviting a colleague, I want the invite email to work correctly so that my colleague can accept and join my account.",
+  "description": "## Bug\nTeam invite emails sent from the staging server were failing when the invited user tried to accept. The same-org validation check was broken.\n\n## Root Cause\nThe system checks whether both users belong to the same Salesforce org by comparing their `base_url` (login.salesforce.com for production, test.salesforce.com for sandbox). The query was returning a multi-row array instead of a single row for the user, causing the comparison to fail.\n\n## Fix\nUpdated the base_url lookup to return only a single row per user instead of the full array.",
+  "acceptance_criteria": [
+    "Team invite acceptance works when both users are from the same Salesforce org",
+    "Base URL lookup returns a single row per user",
+    "Production vs. sandbox org differentiation works correctly"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed base_url lookup to return a single user row instead of a multi-row array, correcting same-org validation for team invites.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The base_url field distinguishes production (login.salesforce.com) from sandbox (test.salesforce.com) orgs. The query was not using LIMIT 1 or equivalent, returning multiple rows and breaking the comparison logic.",
+  "comment_summary": "Developer identified the multi-row array issue in the base_url query and fixed it to return a single row. Reporter confirmed the fix.",
+  "comment_count": 2
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-846",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Move Service Endpoint URLs from Source Code to Environment Configuration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-07T22:28:04.204-0700",
+  "updated": "2024-08-19T20:13:46.063-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Externalize all API endpoint URLs from the source code into the Laravel `.env` configuration file. This is a security and configuration best practice that ensures endpoint URLs are not hardcoded in the repository and can vary by deployment environment.\n\n## Environment Variables Added\n- `service_one_all`, `service_one_dev`, `service_one_stage`, `service_one_prod` — Metrics Service 1 (parsedashboard) API Gateway endpoints\n- `service_two_all`, `service_two_dev`, `service_two_stage`, `service_two_prod` — Metrics Service 2 Lambda function URLs\n- `notion_rest_api` — Notion REST API base URL",
+  "acceptance_criteria": [
+    "All service endpoint URLs are removed from source code and placed in .env",
+    "Each environment (dev, stage, prod) has its own .env with correct URLs",
+    "Application reads endpoint URLs from environment configuration at runtime",
+    "No API endpoint URLs remain hardcoded in the repository",
+    "Notion REST API URL is also externalized to .env"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "All hardcoded API endpoint URLs replaced with env() calls referencing .env configuration. Service 1, Service 2, and Notion API endpoints are now environment-driven.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-831"],
+  "source_files": [],
+  "implementation_notes": "Follows Laravel convention of using .env for environment-specific configuration. The env vars follow a naming pattern: service_{number}_{environment}. Notion API URL was also externalized during this cleanup.",
+  "comment_summary": "Balaji initially started working on the ticket. Waqar completed it and deployed to development with all service URLs and the Notion API URL externalized to .env variables.",
+  "comment_count": 3
+}

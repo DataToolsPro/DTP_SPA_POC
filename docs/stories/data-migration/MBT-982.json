@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-982",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Show All Source Objects in Export File Dialog",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-03T19:14:07.026-0800",
+  "updated": "2024-11-27T22:21:20.712-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to see all available source data objects in the export dialog without needing to filter, so that I can quickly select the source I need and generate my mapping file.",
+  "description": "Simplify the source data selection in the mapping file export dialog. Instead of requiring users to first filter by source data and then select an object, show all available source data objects directly in the dropdown. This reduces the number of steps needed to reach the export.\n\nThe source data dropdown previously required a filter selection before displaying objects. The enhancement shows all source objects upfront, with Salesforce auto-selected as the default.",
+  "acceptance_criteria": [
+    "All source data objects are shown in the source dropdown without a pre-filter step",
+    "Salesforce is auto-selected as the default source",
+    "Object dropdown shows objects for the selected source data",
+    "Existing export functionality (copy, download) continues to work"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Source data dropdown in the export dialog now shows all available source objects directly, removing the filter-first step.",
+  "middleware_changes": "Updated query to return all source data objects without requiring a pre-filter selection.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-912"],
+  "source_files": [],
+  "implementation_notes": "Multiple source data types can be mapped to the same field (e.g., HubSpot, Salesforce), so the source data dropdown is still needed to scope the object selection, but now loads all options by default.",
+  "comment_summary": "Developer explained the current architecture where multiple source data types can map to the same field, requiring source data selection. Implemented the 'All' option and deployed to development.",
+  "comment_count": 2
+}

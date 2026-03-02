@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-680",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Dark Mode Styling for jQuery DataTable Editor Popup",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-01T04:35:00.366-0700",
+  "updated": "2024-07-25T23:44:52.807-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user in dark mode, I want the DataTable inline editor popup to have proper dark mode styling, so that the editor is readable and visually consistent with the rest of the interface.",
+  "description": "The jQuery DataTable Editor popup (used for inline cell editing) does not properly adapt to dark mode. The popup appears with light-mode styling against the dark background, creating a jarring visual contrast.\n\n## Fix\nApply dark mode CSS overrides to the DataTable Editor popup so it matches the application's dark theme.",
+  "acceptance_criteria": [
+    "DataTable Editor popup displays with dark mode styling when dark mode is active",
+    "Popup text, background, and borders are consistent with the dark theme",
+    "Editor popup remains functional and readable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "DataTable Editor popup now displays with proper dark mode colors — background, text, and borders adapted to the dark theme.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "CSS dark mode overrides applied to the jQuery DataTable Editor popup elements.",
+  "comment_summary": "Developer shared before/after screenshots showing the popup properly styled in dark mode.",
+  "comment_count": 1
+}

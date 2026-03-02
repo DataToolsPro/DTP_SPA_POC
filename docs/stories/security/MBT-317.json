@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-317",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "User-Friendly 500 Error Page for Production",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T20:21:24.066-0700",
+  "updated": "2024-05-24T02:25:01.129-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to see a friendly, branded error page when a server error occurs in production, so that I understand something went wrong without seeing technical error details.",
+  "description": "In staging, the full Symfony error page should be visible for debugging. However, in production, 500 errors should be intercepted and the user redirected to a user-friendly branded error page instead of showing raw stack traces or technical details.\n\n## Requirements\n\n- Set Laravel environment to `production` with `APP_DEBUG=false`.\n- Override the default 500 error template with a branded page.\n- Capture invalid URLs and display the same friendly error page.\n- Hide technical error details (status codes, stack traces) from end users.",
+  "acceptance_criteria": [
+    "Production 500 errors display a branded, user-friendly error page",
+    "No stack traces or technical details are shown to end users",
+    "Staging environment continues to show detailed Symfony error pages",
+    "Invalid URLs are captured and redirect to the error page",
+    "APP_DEBUG is set to false in production .env"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Custom branded 500 error page replaces the default Laravel/Symfony error page in production. Page hides all technical details.",
+  "middleware_changes": "Laravel .env configured with APP_ENV=production and APP_DEBUG=false. Error handler overrides the default error template.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Set APP_ENV=production and APP_DEBUG=false in .env. Laravel's default error handling was customized by overwriting the error templates. Production now shows a clean branded error page while staging retains the full Symfony debug page.",
+  "comment_summary": "Developer set the environment to production with debug disabled and the default Laravel error page showed a clean template. Product owner approved the approach and confirmed the templates can be further customized.",
+  "comment_count": 1
+}

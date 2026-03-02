@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1100",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Export Metrics Glossary as DBT/PowerBI Compatible YAML",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-01T00:47:51.897-0700",
+  "updated": "2026-03-01T04:00:41.910-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data engineer, I want to export my metrics glossary in YAML format compatible with DBT and PowerBI, so that I can integrate metrics definitions into my data pipeline tooling.",
+  "description": "Add a YAML export option for the metrics glossary that produces output compatible with DBT's `metrics.yml` format and PowerBI semantic models.\n\n### YAML Structure (DBT v2 format)\n```yaml\nversion: 2\nmetrics:\n  - name: snake_case_metric_name\n    label: Human Readable Name\n    description: Metric definition\n    model: ref('generic_model')\n    calculation_method: expression\n    expression: logic formula\n    timestamp: date_field_name or created_at\n    time_grains: [day, week, month]\n    dimensions: []\n    tags: [topic, line_of_business]\n```\n\n### Field Mapping\n- **name**: metric name converted to snake_case\n- **label**: original metric name\n- **description**: metric definition\n- **expression**: logic field\n- **timestamp**: date field name or `created_at` default\n- **tags**: derived from Topic and Line of Business fields\n\nA reference PHP script using `Symfony\\Component\\Yaml\\Yaml` is provided in the ticket for guidance.",
+  "acceptance_criteria": [
+    "Metrics can be exported as a .yml file",
+    "YAML follows DBT v2 metrics format",
+    "Metric name is converted to snake_case",
+    "Tags are derived from Topic and Line of Business fields",
+    "Empty/null fields have sensible defaults",
+    "Generated YAML is valid and parseable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New YAML export option added to the metrics glossary page download/export menu.",
+  "middleware_changes": "Backend generates YAML output by transforming metric records into the DBT v2 metrics schema using Symfony YAML component.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer had questions about mapping: label (uses Name), model (generic placeholder), calculation_method (expression), timestamp (created_at default), expression and time_grains. These were clarified and implementation was submitted for review on development.",
+  "comment_summary": "Developer implemented the YAML export and had clarifying questions about field mappings (label, model, timestamp, expression, time_grains). After clarification, the export was completed and submitted for review on development.",
+  "comment_count": 3
+}

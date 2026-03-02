@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-997",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Update Deprecation Recommendation Filter to Exclusive Date Logic",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-17T13:57:49.113-0800",
+  "updated": "2026-03-01T03:54:52.299-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a Salesforce administrator, I want to filter reports by a 'not viewed in X days' condition, so that I can identify unused reports to recommend for deprecation.",
+  "description": "The existing date range filters operated on an inclusive basis (show reports viewed within the range). The deprecation recommendation feature requires an exclusive condition: show reports **not** viewed in the last N days.\n\n### Logic\nTo find reports not viewed in the last 90 days:\n- Calculate end date as `TODAY - 90 days`\n- Set start date to a safe historical date (e.g., 2015-01-01)\n- Filter for reports where `last_viewed` falls within this range (i.e., last viewed more than 90 days ago)\n\n### Implementation\nA new dropdown was added above the \"Last Viewed Date\" filter with an inclusive/exclusive condition toggle (`=` or `!=`). A help icon tooltip explains: *\"This filter only applies if a date range is selected in the 'Last Viewed Date' field. Without a selected date range, changing this condition will have no impact on the displayed results.\"*",
+  "acceptance_criteria": [
+    "A condition dropdown appears above the Last Viewed Date filter",
+    "Dropdown allows selecting inclusive (=) or exclusive (!=) conditions",
+    "Exclusive condition correctly filters reports NOT viewed within the selected date range",
+    "Help icon tooltip explains the filter dependency on date range selection",
+    "Default 90-day deprecation recommendation works correctly using the exclusive filter"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a condition dropdown above the Last Viewed Date filter allowing inclusive/exclusive filtering. Help icon tooltip explains the filter behavior.",
+  "middleware_changes": "Updated date filter logic to support exclusive (!=) conditions, calculating the date range for reports not viewed within the specified period.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The exclusive condition inverts the typical date range filter. For a 90-day deprecation window, the system calculates TODAY - 90 days as the end date and uses a far historical start date to capture all reports not viewed recently. This required overriding the standard filter behavior since the existing filter configuration didn't support exclusive conditions natively.",
+  "comment_summary": "Extended discussion about how to implement an exclusive date filter when the existing filter system only supports inclusive conditions. The solution involved adding a condition dropdown with inclusive/exclusive options and a help icon explaining the dependency on date range selection.",
+  "comment_count": 5
+}

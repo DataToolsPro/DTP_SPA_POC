@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-916",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier 'Stream Metrics' Button in Metrics Page UX",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-13T00:31:01.064-0700",
+  "updated": "2024-10-15T19:08:37.211-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "As a DataTools Pro user, I want a 'Stream Metrics from Zapier' option on the metrics page so that I can easily discover and access the Zapier integration to import metrics from thousands of connected apps.",
+  "description": "Add a new 'Stream Metrics from Zapier' option to the metrics page that opens a Zapier modal for the user to take next steps. This serves as the primary entry point for users to discover and use the Zapier integration.\n\nThe Zapier integration initially supports importing metrics (where Zapier creates metrics in DataTools Pro). Future iterations will add export capabilities.\n\nThe strategic value is significant: connecting to Zapier's 7,000+ app ecosystem means any app can technically insert metrics into DataTools Pro. The plan is to identify the 10-15 most relevant integrations, write blog articles, and build SEO visibility through partner linking.\n\nNote: The Zapier option is only visible in the production environment since Zapier does not have separate dev/stage integrations configured.",
+  "acceptance_criteria": [
+    "A 'Stream Metrics from Zapier' option appears on the metrics page",
+    "Clicking the option opens a modal with Zapier setup instructions and next steps",
+    "The option includes a Zapier icon",
+    "The option is only visible in the production environment",
+    "Modal guides users to connect their Zapier account and configure metric streaming"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Stream Metrics from Zapier' button/option on the metrics page with a Zapier icon. Opens a modal with instructions for connecting Zapier. Conditionally displayed only in production environments.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-888"],
+  "source_files": [],
+  "implementation_notes": "Zapier does not support multiple environment configurations, so the stream button is only rendered in production. A Zapier icon SVG is needed for the button. The modal currently supports import (Zapier creates metrics) with export planned for future iterations.",
+  "comment_summary": "Developer requested a meeting to clarify the feature. Implemented the option visible only in production and noted the need for a Zapier icon asset.",
+  "comment_count": 2
+}

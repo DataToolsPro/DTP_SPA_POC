@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-893",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Filter Pane Header with Row Count, Total Population, and Clear Filters Link",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-04T00:40:29.006-0700",
+  "updated": "2024-10-15T19:08:01.678-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user filtering reports, I want to see how many results match my filters out of the total population, with a quick way to clear all filters, so that I understand the scope of my filtered view.",
+  "description": "Adds a filter pane header showing the filtered row count versus total data population, plus a \"Clear Filters\" hyperlink. Also reduces the height of section headers to match other tabs and minimize wasted vertical space.\n\nExample display: \"Showing 42 of 1,250 | Clear Filters\"\n\nWaqar added the result count functionality, and Balaji handled the UI layout and clear filters implementation.",
+  "acceptance_criteria": [
+    "Filter pane displays filtered row count and total population",
+    "Clear Filters hyperlink resets all active filters",
+    "Section header height is reduced to match other tabs",
+    "Counts update dynamically as filters are applied or removed"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a filter metadata header showing 'X of Y' count with a Clear Filters link. Reduced section header height for consistency.",
+  "middleware_changes": "Added server-side result count calculation to support filtered vs. total population display.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Waqar implemented the result count functionality. Balaji handled the UI. Space constraints in the filter pane required layout adjustments. Clear filter was implemented as a hyperlink.",
+  "comment_summary": "Waqar added result count functionality. Balaji reported space constraints for displaying content. Implemented clear filters as a link per discussion.",
+  "comment_count": 4
+}

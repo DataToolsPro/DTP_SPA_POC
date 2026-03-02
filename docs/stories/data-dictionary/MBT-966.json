@@ -1,0 +1,46 @@
+{
+  "issue_key": "MBT-966",
+  "epic_key": null,
+  "feature_folder": "data-dictionary",
+  "title": "Stripe Salesforce Object Event Parsing and Subscription Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-24T20:26:56.956-0700",
+  "updated": "2026-03-01T01:31:49.513-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "",
+  "description": "This task defines a Salesforce Flow that triggers on record creation in the custom Stripe Event object (`stripeGC__Stripe_Event__c`). The flow detects the Stripe event type and parses relevant fields from the JSON body to write back to the Stripe Event record. The DataTools Pro user ID is extracted from the `client_reference_id` field in the checkout event.\n\n### Supported Event Types\n\n1. **checkout.session.completed** — Captures subscription ID, amount total, customer ID, name, email, and payment status.\n2. **customer.subscription.created** — Captures subscription ID, customer ID, plan details (ID, product, nickname, amount, interval), status, billing period dates, invoice ID, trial dates, and quantity.\n3. **invoice.created** — Captures invoice ID, customer information, subscription ID, amounts (due, paid, remaining, shipping), payment intent, charge ID, and status.\n4. **customer.subscription.updated** — Captures subscription ID, customer ID, status, plan details, billing period, payment method, and latest invoice.\n5. **customer.subscription.deleted** — Captures subscription ID, customer ID, cancellation details, and final status.\n\n### Data Model Proposal\nA DTP Subscription custom object is proposed with a lookup to the DTP User object. The relationship is 1:1 between checkout and subscription, and 1:many between subscription and transactions (invoices). Future plans include tying an Opportunity to a Subscription 1:1.",
+  "acceptance_criteria": [
+    "A Salesforce Flow triggers on creation of stripeGC__Stripe_Event__c records",
+    "The flow correctly identifies the event type from the record",
+    "For each of the 5 supported event types, the specified JSON fields are parsed and written to the Stripe Event record",
+    "The DTP user ID is extracted from client_reference_id in checkout events",
+    "An Apex class handles the JSON parsing logic",
+    "The solution is deployed via sandbox before production"
+  ],
+
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce Flow with Apex class for JSON parsing. Triggers on record creation, detects event type, parses event-specific fields, and writes parsed values back to the Stripe Event record.",
+  "data_model_changes": "Custom fields on stripeGC__Stripe_Event__c for parsed Stripe data. Proposed DTP Subscription custom object with lookup to DTP User for subscription and transaction tracking.",
+  "api_changes": "Stripe webhook events are received by the existing Stripe-Salesforce connector (stripeGC). The new Flow processes records after creation to extract and store structured data.",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Requires Apex class deployment to Salesforce (sandbox first, then production). The developer confirmed understanding of the data model: subscription relates to DTP user, transactions (invoices) relate 1:many to subscription. The product owner emphasized keeping tight control over updates and noted this could become a packaged service offering.",
+  "comment_summary": "Product owner provided detailed field mapping for 5 Stripe event types and proposed a subscription data model. Developer confirmed understanding and requested sandbox access for Apex deployment. There was a question about whether this was completed under another Jira ticket.",
+  "comment_count": 4
+}

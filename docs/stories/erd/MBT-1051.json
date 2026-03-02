@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1051",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Add Color Legend Key Below ERD Diagram",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-26T23:24:30.718-0800",
+  "updated": "2026-01-24T22:55:02.221-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing the ERD, I want a color legend displayed below the diagram that explains what each icon color represents, so that I can quickly understand the meaning of blue, green, and brown colored field icons.",
+  "description": "Renders a color legend key on a single line below the ERD diagram that explains the three field icon colors:\n\n- **Blue** — Primary Key\n- **Green** — Foreign Key\n- **Brown** — External Object Key (previously red)\n\nThe legend appears when a node is selected, providing contextual help for understanding the field type color coding in the ERD.",
+  "acceptance_criteria": [
+    "A color legend is displayed below the ERD diagram when a node is selected",
+    "Blue is labeled 'Primary Key'",
+    "Green is labeled 'Foreign Key'",
+    "Brown is labeled 'External Object Key'",
+    "The legend renders on a single line and does not overlap the diagram"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Color legend key displayed below the ERD diagram showing Blue (Primary Key), Green (Foreign Key), and Brown (External Object Key) with colored box indicators.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1049"],
+  "source_files": [],
+  "implementation_notes": "The legend appears contextually when a node is selected, matching the node selection highlighting behavior.",
+  "comment_summary": "Developer completed quickly and showed screenshot of the legend appearing below the diagram on node selection.",
+  "comment_count": 1
+}

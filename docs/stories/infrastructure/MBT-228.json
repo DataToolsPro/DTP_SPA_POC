@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-228",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Hide Primary Alias from Alias Column in Data Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-08T21:30:04.163-0700",
+  "updated": "2026-03-01T03:41:59.055-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the primary alias hidden from the alias column so that the table is less cluttered and easier to read.",
+  "description": "When rendering the data table, the alias column shows the primary alias alongside other aliases, creating visual clutter. The primary alias is already displayed as the field name, so showing it again in the alias column is redundant. The label was also updated from \"Add Alias\" to a simpler icon-based interaction.",
+  "acceptance_criteria": [
+    "Primary alias is not displayed in the alias column",
+    "Other (non-primary) aliases continue to display correctly",
+    "Alias add interaction uses an icon instead of text label"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Primary alias hidden from alias column. Add alias label replaced with an icon.",
+  "middleware_changes": "Updated alias rendering logic to filter out the primary alias from the alias column display.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CEO feedback drove this change to reduce visual noise in the table.",
+  "comment_summary": "Developer implemented the change quickly. Product owner liked it and requested replacing the 'Add Alias' label with an icon. Developer updated and deployed to staging.",
+  "comment_count": 5
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-766",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Consistent Open in Salesforce Icon and Button for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-16T14:11:34.898-0700",
+  "updated": "2024-07-21T10:18:20.911-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a Salesforce administrator, I want a clear and consistent icon to indicate which buttons will open Salesforce, so that I can distinguish between DataTools actions and Salesforce navigation at a glance.",
+  "description": "Adds a standardized Salesforce vector icon (color #0D9DDA) to the Reports and Dashboards data table and sidebar. The icon serves as a hyperlink that opens the corresponding report or dashboard directly in Salesforce.\n\nThe icon includes a tooltip reading \"Open in Salesforce\" and uses consistent sizing across the entire DataTools Pro application. This establishes the visual pattern for all Salesforce navigation links throughout the product.",
+  "acceptance_criteria": [
+    "Salesforce icon is displayed in the data table as a clickable column",
+    "Clicking the icon opens the corresponding Salesforce report/dashboard in a new tab",
+    "Icon uses color #0D9DDA",
+    "Tooltip displays 'Open in Salesforce' on hover",
+    "Icon size is consistent across the entire DataTools Pro application",
+    "Icon appears in the sidebar detail view as well"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a Salesforce vector icon (#0D9DDA) as a hyperlink column in the Reports/Dashboards data table and sidebar. Includes 'Open in Salesforce' tooltip. Establishes a consistent icon pattern for Salesforce navigation across the app.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The icon is a simple hyperlink to the Salesforce page URL for the report/dashboard — not an API call. Icon was clarified during implementation to ensure consistent understanding between the team.",
+  "comment_summary": "Balaji initially misunderstood the icon as triggering a Salesforce API call. Waqar and Ryan clarified it is just a hyperlink to the Salesforce page. Balaji completed and pushed to development.",
+  "comment_count": 6
+}

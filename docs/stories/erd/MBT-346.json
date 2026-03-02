@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-346",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Responsive ERD Toolbar Layout and Edit Views Button ID",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-08T22:27:00.937-0800",
+  "updated": "2026-03-01T04:15:19.945-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user on a smaller monitor, I want the ERD toolbar to remain clean and properly aligned as the browser window shrinks, so that controls are usable at any viewport width.",
+  "description": "## Context\nThe ERD toolbar looks good at full width but breaks visually on smaller screens. Toggles become misaligned and the \"Edit Views\" button wraps awkwardly.\n\n## Changes\n1. Add `@media` CSS queries to handle toolbar layout at resolutions below 1200px.\n2. Stack the two toggle controls with proper alignment when space is limited.\n3. Apply `white-space: nowrap` to the \"Edit Views\" button to prevent text wrapping.\n4. Add `id=\"Edit_ERD_Views\"` to the Edit Views button for analytics tracking.\n\n## Edge Cases\n- Toggle alignment at various breakpoints between desktop and tablet widths needed multiple iterations to get right.",
+  "acceptance_criteria": [
+    "Toolbar layout is clean at full desktop width",
+    "Below 1200px, toggles stack and remain aligned",
+    "Edit Views button does not wrap text at any width",
+    "Edit Views button has id='Edit_ERD_Views' for analytics",
+    "Toolbar is usable on tablet-sized viewports"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Responsive CSS media queries for the ERD toolbar ensure clean layout at all viewport widths. Toggles stack properly below 1200px. Edit Views button uses white-space: nowrap and has an analytics ID.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-112", "MBT-115"],
+  "source_files": [],
+  "implementation_notes": "CSS @media breakpoint at 1200px handles toggle stacking. white-space: nowrap on Edit Views button. ID attribute added for analytics integration. Required multiple iterations to get toggle alignment right at intermediate widths.",
+  "comment_summary": "Developer implemented responsive fixes and deployed to staging. Initial review found toggles still slightly offset at certain widths. After a second iteration the alignment was corrected.",
+  "comment_count": 5
+}

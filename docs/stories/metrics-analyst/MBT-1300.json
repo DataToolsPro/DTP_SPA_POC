@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1300",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Handle Missing Snowflake Semantic Views During Metrics Import",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-29T20:45:18.383-0800",
+  "updated": "2026-03-01T04:12:50.720-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Snowflake"],
+  "story": "As a DataTools Pro user, I want to be notified when no Snowflake semantic views are available during Metrics Analyst import, so that I can trigger a refresh or navigate to the semantic views page to set one up.",
+  "description": "When a user attempts to import Snowflake data via the Metrics tab and no semantic views are available, the system should handle this gracefully.\n\n### Options\n1. **In-context refresh** — Notify the user and either auto-trigger a semantic view refresh or provide a button to trigger one from the metrics import screen\n2. **Redirect** — If adding refresh logic to the import screen is complex, redirect the user to the Semantic Views page where refresh is already available\n\nThe preferred approach depends on implementation complexity.",
+  "acceptance_criteria": [
+    "User is notified when no Snowflake semantic views are available during import",
+    "User can trigger a semantic view refresh or is redirected to the Semantic Views page",
+    "After refresh completes, the import flow can proceed with the now-available semantic views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Notification or empty-state message when no semantic views are found during Metrics Analyst import. Option to trigger refresh inline or navigate to Semantic Views page.",
+  "middleware_changes": "Check for available semantic views before import. Optional: trigger semantic view refresh from the metrics import context.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1252"],
+  "source_files": [],
+  "implementation_notes": "Implemented on dev and ready for review. Approach chosen was to handle the empty state with notification and refresh/redirect option.",
+  "comment_summary": "Waqar implemented the feature on dev and marked it ready for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1025",
+  "epic_key": "MBT-1024",
+  "feature_folder": "payment-and-billing",
+  "title": "Create Opportunity Record Types for Online and Enterprise Sales",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-09T10:46:58.176-0800",
+  "updated": "2024-12-22T21:32:25.099-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nDifferent types of sales opportunities need distinct configurations in Salesforce to reflect their different sales processes.\n\n## Record Types\n\n### Online\nFor software subscriptions and self-service purchases. Uses a streamlined sales process.\n\n### Enterprise\nFor formal sales cycles with traditional opportunity stages. Uses the default Salesforce stage progression.\n\n## Implementation\n\nEach record type requires a corresponding Sales Process in Salesforce. Two sales processes were created, and two record types were configured on the Opportunity object. Implemented on the sandbox first.",
+  "acceptance_criteria": [
+    "Two record types exist on the Opportunity object: Online and Enterprise",
+    "Online record type is configured for software/subscription/self-service opportunities",
+    "Enterprise record type uses the default opportunity stages for formal sales cycles",
+    "Corresponding sales processes are created for each record type",
+    "Record types are functional in the sandbox and ready for production deployment"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Two new Opportunity record types (Online and Enterprise) with corresponding Sales Processes configured in Salesforce. Online is for self-service subscriptions; Enterprise is for formal sales cycles.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Salesforce requires a Sales Process to be created before a Record Type can be associated with it. Both were set up on the sandbox first. The Online record type is used by the automated opportunity creation flow (MBT-1029).",
+  "comment_summary": "Developer added both record types and sales processes on the sandbox, confirmed with screenshots. Product owner expressed excitement about importing accounts and opportunities to visualize the consulting pipeline.",
+  "comment_count": 2
+}

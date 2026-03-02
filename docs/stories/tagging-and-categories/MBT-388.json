@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-388",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Auto-Default to Not Related Tab When No Categories Are Selected",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-22T14:54:07.351-0800",
+  "updated": "2024-05-24T02:25:05.877-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user creating or editing a metric, I want the application to automatically show the 'Not Related' tab when no items are selected for categories, reports, or dashboards, so that I can immediately browse unselected items without an extra click.",
+  "description": "When a user opens the categories, reports, or dashboards section of a metric and has no items selected, the app previously defaulted to the 'Related' tab which showed an empty list. The user then had to manually click 'Not Related' to see available items — an unnecessary extra step repeated many times across a large glossary.\n\nThe enhancement auto-defaults to the 'Not Related' tab when there are zero selected items. Once the user has at least one related item, the app defaults to the 'Related' tab as before. Additionally, the 'Related' tab is only visible when at least one item is selected, reducing visual clutter.",
+  "acceptance_criteria": [
+    "When no categories are selected for a metric, the 'Not Related' tab is automatically active on open",
+    "When no reports are selected for a metric, the 'Not Related' tab is automatically active on open",
+    "When no dashboards are selected for a metric, the 'Not Related' tab is automatically active on open",
+    "When at least one item is selected, the 'Related' tab is shown and active by default",
+    "The 'Related' tab is hidden when no items are selected",
+    "Behavior is consistent across categories, reports, and dashboards sections"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Auto-selects the 'Not Related' tab when there are zero related items, saving an extra click per section. Hides the 'Related' tab entirely when no items are selected to reduce clutter.",
+  "middleware_changes": "Updated the tab initialization logic to check the count of related items and conditionally set the default active tab and visibility of the 'Related' tab.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The implementation required careful handling of the tab state — when no items are selected, clicking 'Related' has no effect because the tab is hidden. Waqar noted this required more effort than expected due to the tab component's state management.",
+  "comment_summary": "Waqar noted unexpected complexity in the implementation. The fix was pushed to staging with the 'Related' tab hidden when no items exist. Ryan was asked to review on staging.",
+  "comment_count": 3
+}

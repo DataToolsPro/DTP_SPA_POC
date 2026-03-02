@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-902", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Distinct Salesforce Icons for Report vs Dashboard with Type Column Removal",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:18:01.590-0700", "updated": "2024-10-15T19:08:21.181-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want distinct Salesforce icons for reports vs dashboards so that I can visually identify the analytics type at a glance without a separate Type column.",
+  "description": "Replaces the single Salesforce cloud icon with two distinct SVG icons — one for reports and one for dashboards. The icons serve as visual type indicators, allowing the separate \"Type\" column to be removed from the table view (freeing screen space) while remaining in the data model for exports.\n\nEach icon includes a contextual tooltip (\"Open Report in Salesforce\" or \"Open Dashboard in Salesforce\"). The table column header is renamed to indicate the type. Icons were resized to square dimensions to avoid increasing row height.",
+  "acceptance_criteria": ["Distinct SVG icons display for reports vs dashboards", "Type column is visually hidden from the table", "Type data remains in the data model for exports", "Tooltips read 'Open Report in Salesforce' or 'Open Dashboard in Salesforce'", "Icons are square and do not increase row height"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Replaced single Salesforce icon with distinct report/dashboard SVG icons. Removed the Type column visually. Added contextual tooltips per analytics type.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-766"], "source_files": [],
+  "implementation_notes": "Initial icons had extra height causing row expansion. Ryan provided square SVGs to resolve. The Type column was hidden visually but kept in the data model for export purposes.",
+  "comment_summary": "Balaji requested icons. Ryan provided square SVGs after initial icons caused row height issues. Ryan also requested removing the Type column and merging its heading with the icon column.", "comment_count": 10
+}

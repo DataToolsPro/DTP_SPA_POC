@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1271",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Login Initiation for Dedicated Tenant Path",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:56.699-0800",
+  "updated": "2025-12-17T21:45:56.812-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user on a dedicated tenant, I want to click 'Sign in' and be automatically taken through my company's SSO, so that I don't have to manually select my identity provider or enter my tenant information.",
+  "description": "Dedicated tenant users visiting their subdomain (e.g., `toyota.us1.datatoolspro.com`) should be seamlessly redirected through SSO for their tenant's Stytch Organization.\n\n## Flow\n\n1. User visits `toyota.us1.datatoolspro.com`\n2. If unauthenticated, redirect to `auth.datatoolspro.com` with tenant context\n3. Auth domain starts SSO for Toyota's Stytch Organization\n4. After successful SSO, user lands back on `toyota.us1.datatoolspro.com` authenticated",
+  "acceptance_criteria": [
+    "Visiting a dedicated tenant subdomain triggers redirect to auth domain with tenant context",
+    "Auth domain initiates SSO for the correct tenant's Stytch Organization",
+    "Post-login redirect returns the user to the original tenant subdomain",
+    "User is fully authenticated on the tenant subdomain after the redirect flow"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Seamless SSO login flow for dedicated tenant users — clicking 'Sign in' triggers an automatic redirect through the tenant's identity provider without manual tenant selection.",
+  "middleware_changes": "Login initiation handler on the auth domain that receives tenant context from the redirect and starts the correct SSO flow via Stytch.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1270", "MBT-1262"],
+  "source_files": [],
+  "implementation_notes": "The tenant context (slug, region) is passed as URL parameters in the redirect to the auth domain. The auth domain uses this to look up the Stytch Organization and initiate the correct SSO connection.",
+  "comment_summary": "",
+  "comment_count": 0
+}

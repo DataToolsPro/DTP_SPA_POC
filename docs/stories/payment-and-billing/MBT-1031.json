@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1031",
+  "epic_key": "MBT-1024",
+  "feature_folder": "payment-and-billing",
+  "title": "Purge Deprecated H&L Tracking Fields from Lead Object",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-13T21:28:05.398-0800",
+  "updated": "2024-12-22T21:41:51.443-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nThe Lead object contains deprecated custom fields prefixed with \"handl\" from the H&L web tracking integration. This tracking data has been migrated to a separate Web Source Detail child object, making the lead-level fields redundant and cluttering the data model.\n\n## Behavior\n\nPurge (delete) all custom fields prefixed with \"handl\" from the Lead object in the production Salesforce instance. The web tracking data is now stored in the Web Source Detail records related to each lead.\n\n## Data Model\n\nBefore: Lead object has both direct handl__ fields AND related Web Source Detail records\nAfter: Lead object references Web Source Detail records only; handl__ fields are removed",
+  "acceptance_criteria": [
+    "All custom fields prefixed with 'handl' are removed from the Lead object",
+    "Web Source Detail records remain intact and functional",
+    "Lead page layout does not reference removed fields",
+    "No flows or automations reference the removed fields"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Removed all custom fields prefixed with 'handl' from the Salesforce Lead object. Web tracking data is now exclusively stored in the related Web Source Detail child object.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Fields were purged directly on the production instance after confirming all tracking data was available in Web Source Detail records.",
+  "comment_summary": "Developer confirmed the fields to be removed and purged all handl-prefixed fields from the Lead object on the production instance.",
+  "comment_count": 2
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-887",
+  "epic_key": "MBT-655",
+  "feature_folder": "integrations",
+  "title": "Notion Integration URL Redirect for Unauthenticated Users",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-29T23:39:57.005-0700",
+  "updated": "2024-09-15T13:21:41.146-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "notion"],
+  "story": "As a potential DataTools Pro user discovering the product through the Notion marketplace, I want to be redirected to an informative landing page instead of seeing an error when I click the install link without being logged in, so that I understand what DataTools Pro is and how to get started.",
+  "description": "The Notion marketplace integration listing links to https://app.datatoolspro.com/user/notion as the install URL. When an unauthenticated visitor clicks this link, they see an error page instead of helpful content.\n\nThe fix redirects unauthenticated visitors to a dedicated landing page with UTM tracking parameters:\nhttps://datatoolspro.com/datatools-pro-notion-integration-and-templates/?utm_source=notion&utm_medium=organic&utm_campaign=notionlisting\n\nThis landing page provides context about the integration, next steps for signing up, and a clear path to getting started — rather than dumping the visitor on a generic login page with no context.",
+  "acceptance_criteria": [
+    "Unauthenticated visitors to /user/notion are redirected to the Notion landing page",
+    "Redirect URL includes UTM tracking parameters for analytics",
+    "Authenticated users accessing /user/notion see the normal Notion integration page",
+    "Redirect is applied to dev, stage, and production environments"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Unauthenticated visitors to the Notion integration URL are redirected to an informative landing page instead of seeing an error, providing context and next steps for the Notion integration.",
+  "middleware_changes": "Authentication check on the /user/notion route that redirects unauthenticated users to the marketing landing page with UTM parameters instead of showing an error.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-585"],
+  "source_files": [],
+  "implementation_notes": "Redirecting to the login page was considered but rejected because visitors from Notion have no context about DataTools Pro and would end up on a generic sign-up page without understanding the product. The landing page provides proper onboarding context.",
+  "comment_summary": "Developer initially redirected to the login page but product owner explained that Notion marketplace visitors need contextual information. Redirect was updated to the dedicated landing page with UTM tracking. Deployed to all environments including production.",
+  "comment_count": 4
+}

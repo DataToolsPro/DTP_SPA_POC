@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-562",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Remove Google Analytics Script from App Domain",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-06T22:44:54.310-0800",
+  "updated": "2026-03-01T04:24:59.513-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Remove the Google Analytics script from `app.datatoolspro.com`. The script was flagged during a security scan, and Google Analytics is not needed on the application domain (only on the marketing website). Removing it also reduces confusion in marketing attribution data.\n\nUpon investigation, the app only had Heap Analytics, not Google Analytics. The script flagged in the security scan turned out to be Salesforce tracking, not Google Analytics. The ticket was effectively withdrawn.",
+  "acceptance_criteria": [
+    "No Google Analytics script is loaded on app.datatoolspro.com",
+    "Heap Analytics remains functional on the app domain",
+    "Security scan no longer flags analytics scripts as an issue"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Investigation revealed the app only had Heap Analytics, not Google Analytics. The flagged script was Salesforce tracking. No changes were ultimately made; the ticket was effectively withdrawn after investigation.",
+  "comment_summary": "Developer confirmed only Heap Analytics was present, not Google Analytics. Reporter investigated and determined the flagged script was Salesforce tracking, not Google Analytics, and withdrew the request.",
+  "comment_count": 4
+}

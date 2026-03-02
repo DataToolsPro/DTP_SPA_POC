@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1277",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Observability and Audit Trail for Auth and Routing",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:48.687-0800",
+  "updated": "2025-12-17T21:46:48.859-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Monitoring and audit logging infrastructure for authentication and routing to enable rapid troubleshooting.\n\n## Required Log Fields\n\n- `tenant_slug`, `org_id`, `region`, `mode`, `request_id`, `auth_flow_id`\n\n## Metrics\n\n- Auth success/failure rates\n- Code exchange failures\n- Tenant lookup misses\n- Routing errors\n\n## Alerts\n\n- Spikes in auth failures\n- Sustained tenant lookup misses\n- Routing error rate increases",
+  "acceptance_criteria": [
+    "All auth and routing logs include tenant_slug, org_id, region, mode, request_id, and auth_flow_id",
+    "Metrics are tracked for auth success/failure, code exchange failures, tenant lookup misses, and routing errors",
+    "Alerts fire on spikes in failures or lookup misses",
+    "Logs are queryable for troubleshooting auth issues"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Structured logging added to auth and routing middleware with required context fields. Metrics collection for auth flow success/failure rates.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1275", "MBT-1269"],
+  "source_files": [],
+  "implementation_notes": "Logging should use structured JSON format for easy querying. Metrics can be collected via Cloudflare Analytics or pushed to an external monitoring system. Alert thresholds should be tunable to avoid alert fatigue.",
+  "comment_summary": "",
+  "comment_count": 0
+}

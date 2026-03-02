@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-123",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Data Model Enhancement for Per-Field Picklist Values in Migration",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T15:35:48.311-0700",
+  "updated": "2026-03-01T03:53:03.719-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want to define multiple picklist value sets per object (one per mapped field), so that each field's picklist values are independent during data migration mapping.",
+  "description": "Refactor the picklist data model to support per-field picklist value sets instead of per-object. The existing model ties picklist values to the source_object, limiting each object to a single collection of picklist values. Real migration projects require multiple picklist sets under one parent object.\n\n### Current vs Required Data Hierarchy\n**Current:** Source Object > Salesforce Object > Picklist Values (1:1 per object)\n**Required:** Source Object > SOURCE_OBJECT_META_DATA (mapped to SF Object_Field) > Picklist Values (1:many per object)\n\n### Approach\n1. User navigates to the Picklist tab for a mapped field\n2. A button creates a new SOURCE_OBJECT_META_DATA + MAP_META_FIELDS_SALESFORCEOBJECT record\n3. The picklist value spreadsheet control appears with the correct data relationships\n4. Picklist values are stored and recalled per-field, not per-object\n\n### Validation\n- If no field is mapped, show an alert when the user clicks the Map button for picklist values\n- Picklist source values are related to the selected field",
+  "acceptance_criteria": [
+    "Multiple picklist value sets can be defined per source object (one per mapped field)",
+    "Each picklist set is associated with a specific SOURCE_OBJECT_META_DATA field record",
+    "Switching between mapped fields shows the correct picklist values for that field",
+    "An alert is shown if the user tries to map picklist values before mapping a field",
+    "New source_object_meta_field_id column is added to the picklist database table"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Picklist mapping now shows field-specific picklist values instead of object-level values. An alert displays when attempting to map picklist values for an unmapped field.",
+  "middleware_changes": "Picklist CRUD operations now filter and store values by source_object_meta_field_id rather than source_object alone.",
+  "data_model_changes": "Added source_object_meta_field_id column to the picklist values table, creating a three-level hierarchy: source_object > source_object_meta_data > picklist_values.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation had a bug where switching between mapped fields showed the wrong picklist values (carried over from the first field). This was resolved by filtering picklist queries by the selected field's meta data ID. Browser caching also caused issues during testing - incognito mode was needed to verify fixes.",
+  "comment_summary": "Developer needed clarification on the data model change. After a meeting, the implementation tied picklist values to the source_object_meta_field_id. Testing uncovered a bug where picklist values from one field bled into another; this was fixed by scoping queries to the selected field. A 500 error on picklist selection was also identified and resolved.",
+  "comment_count": 19
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-452",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Include Team ID and User ID in All Zapier Webhook Payloads",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-04T02:30:42.650-0800",
+  "updated": "2024-05-24T02:25:30.658-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Update all Zapier webhook outputs to include the public-facing Team ID and User ID (not the auto-increment integer values). These identifiers are critical for tracking activation events — user creation, first login, and first object addition — and connecting them back to the correct user and team.\n\nThe user ID format used is a concatenation of the public `dtuserId` and the internal `auth()->user()->id` to enable lookups either way.",
+  "acceptance_criteria": [
+    "All Zapier webhook payloads include the public-facing Team ID",
+    "All Zapier webhook payloads include the public-facing User ID",
+    "Auto-increment integer IDs are not exposed in webhook payloads",
+    "Activation events (new user, first login, first object) all include both IDs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "All Zapier webhook callouts updated to include public Team ID and User ID in the payload. User ID format: `dtuserId.id` concatenation.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-459"],
+  "source_files": [],
+  "implementation_notes": "User ID is formatted as `auth()->user()->dtuserId.auth()->user()->id` — concatenating the public-facing ID with the internal ID for bidirectional lookup. This change later caused MBT-459 (race condition with team ID attachment during first login).",
+  "comment_summary": "Developer added team ID and user ID to all Zapier webhooks. Noted the user ID concatenation format. Product owner confirmed after review.",
+  "comment_count": 3
+}

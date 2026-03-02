@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-307",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Add Categories Management Page to Settings",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-16T01:25:20.989-0700",
+  "updated": "2024-05-24T02:25:02.393-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to manage categories (Line of Business and Topics) from the Settings section, so that I can organize and edit categorization options without leaving the administration area.",
+  "description": "Add a Categories management page to the Settings/Sharing navigation. The page reuses the same spreadsheet-style editing experience used for Metrics Line of Business and Topics. Account owners can add, edit, and delete categories. A new permission controls whether shared users can also manage categories.",
+  "acceptance_criteria": [
+    "A 'Categories' option appears in the left navigation under Settings",
+    "Account owner can view, add, edit, and delete categories from the Categories page",
+    "The Categories page uses the same spreadsheet-style UI as Metrics LOB/Topics",
+    "A permission flag controls whether shared users can manage categories",
+    "Changes to categories are reflected across the account for all shared users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New Categories page in the Settings section with spreadsheet-style CRUD interface. Left navigation updated with Categories link.",
+  "middleware_changes": "Categories CRUD operations available from the settings context. New permission for category management added to the permissions system.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Categories here refer to the Line of Business and Topics taxonomies used for organizing metrics, not WordPress-style post categories.",
+  "comment_summary": "Developer requested clarification on what 'categories' meant. After a screenshot and explanation, implemented the spreadsheet-style categories page in the settings section.",
+  "comment_count": 7
+}

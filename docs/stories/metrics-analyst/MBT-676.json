@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-676",
+  "skipped": true,
+  "skip_reason": "withdrawn — duplicate of MBT-504, marked withdrawn in title and comments",
+  "title": "WITHDRAWN - Adding Dashboard on Add Metric",
+  "status": "Done",
+  "feature_folder": "metrics-analyst"
+}

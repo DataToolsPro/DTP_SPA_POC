@@ -1,0 +1,21 @@
+{
+  "post_id": 10845,
+  "title": "Loading Salesforce CRM Analytics Dashboards in DataTools Pro",
+  "slug": "crm-analytics-dashboards-in-datatools-pro",
+  "url": "https://datatoolspro.com/tutorials/crm-analytics-dashboards-in-datatools-pro/",
+  "date": "2024-12-22T23:54:04",
+  "modified": "2024-12-22T23:54:08",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "crm analytics",
+    "crma",
+    "datatools",
+    "datatoolspro"
+  ],
+  "subfolder": "crm-analytics",
+  "excerpt": "<p>DataTools Pro has added support for CRM Analytics Dashboards (CRMA) into DataTools Pro, alongside other reporting and dashboard assets. Currently CRM Analytics dashboards are the only assets accessed. Components and CRMA data sources are not currently loaded and referenced.</p>",
+  "content_html": "\n<p>DataTools Pro has added support for CRM Analytics Dashboards (CRMA) into DataTools Pro, alongside other reporting and dashboard assets.</p>\n\n\n\n<figure class=\"wp-block-image size-large is-resized\"><img data-dominant-color=\"e8ebed\" data-has-transparency=\"false\" loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"864\" src=\"https://datatoolspro.com/wp-content/uploads/2024/12/image-39-1024x864.webp\" alt=\"CRM Analytics Dashboards in DataTools Pro\" class=\"wp-image-10846 not-transparent\" style=\"--dominant-color: #e8ebed; width:435px;height:auto\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/12/image-39-1024x864.webp 1024w, https://datatoolspro.com/wp-content/uploads/2024/12/image-39-300x253.webp 300w, https://datatoolspro.com/wp-content/uploads/2024/12/image-39-768x648.webp 768w, https://datatoolspro.com/wp-content/uploads/2024/12/image-39-1536x1295.webp 1536w, https://datatoolspro.com/wp-content/uploads/2024/12/image-39-png.webp 1590w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<p>Currently CRM Analytics dashboards are the only assets accessed. Components and CRMA data sources are not currently loaded and referenced. </p>\n\n\n\n<p></p>\n"
+}

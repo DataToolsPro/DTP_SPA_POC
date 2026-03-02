@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-954",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Salesforce Flow: Stamp Lead on Account During Conversion",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-13T16:15:43.418-0700",
+  "updated": "2024-11-28T10:02:38.632-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nSalesforce natively stamps the Lead with the Account on conversion (via ConvertedAccountId), but does not create the reverse relationship. Having the Account stamped with the originating Lead enables powerful reporting: slicing and dicing opportunities based on when and where the lead originated.\n\n## Behavior\n\nCreate a Salesforce flow that, on lead conversion, populates a custom field on the Account object (`Converted_From_Lead__c`) with the lead ID. This creates a bidirectional foreign relationship between Lead and Account.\n\n## Outcome\n\nUpon investigation, the team discovered this functionality was already implemented by an existing flow using the `Converted_From_Lead__c` custom field on the Account object. The ticket was completed as the requirement was already met.",
+  "acceptance_criteria": [
+    "Account object has a Converted_From_Lead__c field that references the originating lead",
+    "On lead conversion, the Account's Converted_From_Lead__c is populated with the lead ID",
+    "Bidirectional relationship exists: Lead -> Account (native) and Account -> Lead (custom)"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce flow on lead conversion that stamps the Account with the originating Lead via the Converted_From_Lead__c custom field. Investigation revealed this was already implemented by a prior flow.",
+  "data_model_changes": "Custom field Converted_From_Lead__c on the Account object (already existed from prior implementation).",
+  "api_changes": "",
+  "dependencies": ["MBT-626"],
+  "source_files": [],
+  "implementation_notes": "Developer investigated and found the functionality was already covered by an existing flow. Salesforce natively provides ConvertedAccountId, ConvertedContactId, and ConvertedOpportunityId on the Lead object after conversion. The custom Converted_From_Lead__c field on Account completes the bidirectional relationship.",
+  "comment_summary": "Developer explained that Salesforce already stamps Lead with Account (ConvertedAccountId) natively, and the custom Converted_From_Lead__c field on Account was already being populated by an existing flow. The requirement was already met.",
+  "comment_count": 3
+}

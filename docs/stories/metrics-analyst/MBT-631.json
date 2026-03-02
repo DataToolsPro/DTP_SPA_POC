@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-631",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Add to Analysis Button with Premium Upgrade Modal for Multi-Dashboard",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-20T20:50:46.943-0700",
+  "updated": "2024-05-24T02:25:38.484-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to see an 'Add to Analysis' button on each dashboard with a clear upgrade prompt when I try to analyze multiple dashboards, so that I understand the free tier limitation and know multi-dashboard analysis is a future premium feature.",
+  "description": "Rename the dashboard selection action to 'Add to Analysis'. When a user clicks a second dashboard, show a modal that reads:\n\n'Currently the free version of DataTools Pro will analyze 1 dashboard at a time.'\n\nThe modal has an 'OK' button to close it and a disabled/grayed-out 'Upgrade' button with a tooltip: 'Multi-dashboard analysis coming soon to DataTools Pro team edition.'",
+  "acceptance_criteria": [
+    "Dashboard selection button reads 'Add to Analysis'",
+    "Selecting a second dashboard triggers a limitation modal",
+    "Modal displays the free-tier limitation message",
+    "OK button closes the modal",
+    "Upgrade button is visible but disabled/grayed out",
+    "Disabled Upgrade button has a tooltip about team edition"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Renamed dashboard action to 'Add to Analysis'. Added a premium upgrade modal that appears when selecting a second dashboard, with an OK button and a disabled Upgrade button with tooltip.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-607"],
+  "source_files": [],
+  "implementation_notes": "This implements the monetization touchpoint for multi-dashboard analysis as a premium feature.",
+  "comment_summary": "Developer added the modal and pushed to staging.",
+  "comment_count": 1
+}

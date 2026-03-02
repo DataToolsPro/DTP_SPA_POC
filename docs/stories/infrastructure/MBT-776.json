@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-776",
+  "epic_key": "MBT-708",
+  "feature_folder": "infrastructure",
+  "title": "Optimize Salesforce Metadata Refresh Batch Sizes for Performance",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-24T17:49:52.062-0700",
+  "updated": "2024-09-15T13:22:13.519-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user refreshing Salesforce metadata in the Data Dictionary, I want the refresh process to complete faster so that it does not feel slow or broken when syncing field changes from Salesforce.",
+  "description": "The Salesforce metadata refresh process makes multiple sequential passes to Salesforce to retrieve metadata, record data, and then assess changes. Users reported the process felt slow and appeared broken.\n\n## Optimization Areas\n1. Review and optimize batch sizes for Salesforce API requests when pulling updated field data\n2. Consider a modal UX pattern (similar to Metrics Analyst) to provide feedback during the refresh process\n3. Optimize the order of operations for metadata → records → change detection",
+  "acceptance_criteria": [
+    "Salesforce metadata refresh completes noticeably faster than before optimization",
+    "Batch sizes for Salesforce API requests are tuned for performance",
+    "User receives feedback during the refresh process indicating progress",
+    "Refresh process handles large object field lists without timeout or failure"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Improved perceived performance of the metadata refresh process. Consider modal pattern for progress feedback during long-running refresh operations.",
+  "middleware_changes": "Optimized batch sizes and request sequencing for Salesforce metadata retrieval. Reduced unnecessary API calls and improved the order of operations for metadata sync.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Code was optimized and deployed to the development environment. Initial testing confirmed improved speed. The approach focused on batch size tuning rather than architectural changes.",
+  "comment_summary": "Waqar optimized the code and deployed to the dev environment. Ryan confirmed it felt faster on first test.",
+  "comment_count": 2
+}

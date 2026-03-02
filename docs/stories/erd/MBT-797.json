@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-797",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Update ERD Grouping Icon and Add Tooltip",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-09T21:11:49.971-0700",
+  "updated": "2024-07-28T10:36:41.170-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user interacting with the ERD toolbar, I want the grouping toggle icon to clearly convey merge/split behavior and include a tooltip, so that I understand what the control does without guessing.",
+  "description": "Updates the ERD link grouping toggle icon to better convey its function. The merge-together state uses one icon, and the pull-apart state uses a different icon. A tooltip is also added to the icon to describe the merge behavior on hover.",
+  "acceptance_criteria": [
+    "The grouping toggle displays a distinct icon for the merge state",
+    "The grouping toggle displays a distinct icon for the unmerge/pull-apart state",
+    "A tooltip appears on hover describing the merge functionality",
+    "Icons are visually consistent with the rest of the ERD toolbar"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Updated grouping toggle icons to clearly indicate merge vs. split states. Added a tooltip on hover to describe the merge functionality.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-474", "MBT-796"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "",
+  "comment_count": 0
+}

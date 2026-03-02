@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-150",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Add Input Validation for Passcode Parameter",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-18T21:58:23.428-0700",
+  "updated": "2024-05-24T02:24:35.739-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Add server-side input validation to ensure the passcode URL parameter consists of exactly a 6-digit number before processing. Uses a regular expression (`/^\\d{6}$/`) to validate the format, rejecting any input that does not match the expected pattern.",
+  "acceptance_criteria": [
+    "Passcode parameter is validated against a 6-digit numeric pattern before processing",
+    "Invalid passcode formats are rejected with an appropriate error response",
+    "Valid 6-digit passcodes continue to work as expected",
+    "Regex validation runs before any database query"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added preg_match validation against /^\\d{6}$/ pattern before processing the passcode parameter.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-147"],
+  "source_files": [],
+  "implementation_notes": "Input validation added using PHP preg_match to enforce a 6-digit numeric format. This provides defense-in-depth alongside the prepared statements fix in MBT-147.",
+  "comment_summary": "Developer implemented and submitted for review promptly.",
+  "comment_count": 1
+}

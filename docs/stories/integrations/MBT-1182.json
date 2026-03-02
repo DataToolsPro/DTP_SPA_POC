@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1182",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Replace Zapier with Direct Stripe Webhook Endpoint",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-06T12:22:56.054-0700",
+  "updated": "2026-03-01T03:51:25.249-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "API"],
+  "story": "",
+  "description": "Replace the current Zapier-mediated Stripe webhook flow with a direct public API endpoint in the DataTools Pro app. This provides real-time subscription updates without the Zapier intermediary.\n\n### Endpoint\n`POST /api/stripe_payment_confirm`\n\n### Stripe Events to Handle\n- `customer.subscription.created`\n- `customer.subscription.updated`\n- `customer.subscription.deleted`\n- `invoice.payment_succeeded`\n- `invoice.payment_failed`\n\n### Setup\n1. Add `STRIPE_WEBHOOK_SECRET` to environment secrets\n2. Configure webhook in Stripe Dashboard pointing to the app endpoint\n3. Select the target events\n4. Copy the webhook signing secret\n\n### Benefits\n- Real-time subscription status updates\n- No manual checking required\n- Handles cancellations, renewals, and failed payments automatically\n- The existing success/cancel URL flow continues as a backup",
+  "acceptance_criteria": [
+    "Public endpoint receives and validates Stripe webhook events",
+    "Webhook signature is verified using STRIPE_WEBHOOK_SECRET",
+    "Subscription created/updated/deleted events update the user's plan accordingly",
+    "Invoice payment succeeded increments user access",
+    "Invoice payment failed triggers appropriate handling",
+    "Existing success/cancel URL flow continues to work as backup"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New Stripe webhook handler that processes subscription and invoice events, validates signatures, and updates plan records.",
+  "data_model_changes": "Plan model updated based on subscription lifecycle events.",
+  "api_changes": "POST /api/stripe_payment_confirm - public endpoint for receiving Stripe webhook events.",
+  "dependencies": ["MBT-1148"],
+  "source_files": [],
+  "implementation_notes": "Pattern based on a Lovable/Supabase edge function implementation. The endpoint must be publicly accessible (no auth middleware) but validates Stripe webhook signatures. Development can use Stripe sandbox for testing.",
+  "comment_summary": "Developer confirmed ability to create the webhook and asked about using Stripe sandbox for development.",
+  "comment_count": 1
+}

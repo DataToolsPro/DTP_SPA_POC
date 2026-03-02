@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-331",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Automatic Cookie Handoff from WordPress to App Login Page",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-27T07:55:44.008-0700",
+  "updated": "2024-05-24T02:25:07.102-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement automatic cookie-based authentication handoff between the WordPress marketing site and the DataTools Pro Laravel application. When a user submits the beta signup form on the WordPress site, a cookie is set that allows them to bypass the passcode screen on the app.\n\nThe solution uses a shared `betapasscode` database table cloned from the Laravel app to WordPress. A Gravity Forms hook fires after successful form submission, retrieves a random passcode from the database, and sets a cross-subdomain cookie (`.datatoolspro.com`). The Laravel app validates this cookie against its own passcode table.\n\nA region check was also implemented so that only US-based form submissions trigger the cookie bypass.",
+  "acceptance_criteria": [
+    "Cookie is set on `.datatoolspro.com` domain after successful Gravity Form submission",
+    "Laravel app validates the cookie against the betapasscode table",
+    "Only US-region submissions trigger the passcode bypass",
+    "Cookie handoff works across WordPress and Laravel subdomains"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Gravity Forms hook sets a cross-subdomain cookie after form submission. Laravel middleware validates the cookie against the betapasscode table before granting access.",
+  "data_model_changes": "Cloned `betapasscode` table from Laravel to WordPress database for shared passcode validation.",
+  "api_changes": "",
+  "dependencies": ["MBT-332"],
+  "source_files": [],
+  "implementation_notes": "WordPress Gravity Form hook (`gform_after_submission`) retrieves a random passcode and sets the `appdatatoolspro` cookie for `.datatoolspro.com`. Laravel middleware checks this cookie exists in the betapasscode table. Region check added to restrict to US submissions only.",
+  "comment_summary": "Developer implemented the cookie handoff with WordPress Gravity Forms hook and Laravel middleware validation. Region check was added for US-only bypass. Product owner referenced MBT-332 for additional region check details.",
+  "comment_count": 3
+}

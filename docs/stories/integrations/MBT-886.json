@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-886",
+  "epic_key": "MBT-885",
+  "feature_folder": "integrations",
+  "title": "HubSpot OAuth Authentication Prototype",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-28T21:50:38.363-0700",
+  "updated": "2024-10-15T19:09:29.189-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Create a prototype HubSpot OAuth connection to establish the authentication foundation for the HubSpot integration.\n\nThe implementation follows HubSpot's OAuth 2.0 flow to obtain and store access tokens. Once authenticated, the system can retrieve HubSpot objects and their schema/properties.\n\nKey findings during prototyping:\n- HubSpot does not provide an API endpoint to list standard objects; they must be predefined\n- Custom objects can be listed via API but require a paid HubSpot plan\n- Standard object schemas are available through HubSpot's documentation and can be fetched per-object",
+  "acceptance_criteria": [
+    "Application can initiate HubSpot OAuth 2.0 authorization flow",
+    "Access token and refresh token are obtained and stored in the database",
+    "Authenticated requests can retrieve HubSpot object schemas",
+    "Token storage is associated with the team/account",
+    "Basic HubSpot connection settings page exists"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "HubSpot OAuth 2.0 client implementation handling authorization, token exchange, and token storage. Service layer for fetching HubSpot object schemas using the access token.",
+  "data_model_changes": "New database model to store HubSpot OAuth tokens (access token, refresh token) with a relationship to the team/account.",
+  "api_changes": "OAuth callback endpoint for HubSpot authorization flow. Outbound calls to HubSpot API for object schema retrieval.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "HubSpot standard objects must be predefined (seeded) since there is no API to list them. Custom object listing requires a paid HubSpot plan. The prototype successfully authenticates and retrieves access tokens stored per-team.",
+  "comment_summary": "Developer built the OAuth flow and confirmed it works for authentication and token storage. Discovered that HubSpot has no API to list standard objects (only custom objects, which require a paid plan). Identified all standard object schemas from HubSpot documentation.",
+  "comment_count": 4
+}

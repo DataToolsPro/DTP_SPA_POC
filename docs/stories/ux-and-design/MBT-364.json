@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-364",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Active Page Indicator Styling on Settings Navigation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-14T23:00:19.870-0800",
+  "updated": "2024-05-24T02:25:06.425-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user navigating Settings pages, I want the left navigation links to be visually distinct — green for clickable links and black for the current page — so that I have clear feedback about which page I am on.",
+  "description": "The Settings pages left navigation sidebar lacks visual feedback for the currently selected page. All links appear the same, making it unclear which page is active.\n\n## Changes\n- Navigation links styled in brand green to signal they are clickable\n- The currently active page link changes from green to black to indicate selection\n- Standard link CSS conventions applied consistently across all Settings sub-pages",
+  "acceptance_criteria": [
+    "Left navigation links on Settings pages are displayed in brand green",
+    "The currently active Settings page link is displayed in black",
+    "Visual distinction is clear between clickable and selected navigation items",
+    "Styling is consistent across all Settings sub-pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Applied brand green color to left navigation links on Settings pages. Active/current page link switches to black to provide visual feedback for the selected state.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS changes applied to the Settings page left navigation to add active state indicator. Green for clickable links, black for selected page.",
+  "comment_summary": "Developer implemented and pushed to staging. No revisions needed.",
+  "comment_count": 1
+}

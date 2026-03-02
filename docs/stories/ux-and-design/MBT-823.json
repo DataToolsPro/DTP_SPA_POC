@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-823",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Consistent Toolbar Layout for Dictionary Object Detail Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-20T19:44:48.026-0700",
+  "updated": "2024-07-25T23:44:56.245-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want the Dictionary object detail page toolbar layout to match the updated layout used on the object management page, so that search, filters, and export icons are consistently positioned.",
+  "description": "The Dictionary object detail page (when drilling into a specific object) uses the old toolbar layout where search and export icons are inconsistently placed. Update to match the new standard layout.\n\n## Changes\n- Push search bar to the left\n- Push action icons to the right\n- Move the Filter icon to be the first icon (before the clipboard icon)",
+  "acceptance_criteria": [
+    "Search bar is on the left side of the toolbar",
+    "Action icons (export, filter, etc.) are on the right side",
+    "Filter icon is the first icon in the right-side icon group",
+    "Layout matches the Dictionary object management page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dictionary object detail page toolbar updated to match the standard layout: search on left, icons on right, filter icon first.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Toolbar DOM restructured to move search left and icons right. Filter icon reordered to first position.",
+  "comment_summary": "Developer implemented quickly and pushed to development. Shared screenshot confirming the updated layout.",
+  "comment_count": 3
+}

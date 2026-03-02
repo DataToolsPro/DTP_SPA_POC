@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-424",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Add Sign-Up Link Below Login Box",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-21T15:51:47.220-0800",
+  "updated": "2024-05-24T02:25:08.246-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a potential DataTools Pro user on the login page, I want to see a sign-up link that takes me to the beta registration page, so that I can easily create an account if I don't have one yet.",
+  "description": "Add a sign-up link below the login box on the application's login/passcode page. The link directs users to the `/beta` signup page on the marketing site, providing a clear path for new users who arrive at the login page but haven't registered yet.",
+  "acceptance_criteria": [
+    "A sign-up link is visible below the login box",
+    "The link navigates to the /beta signup page",
+    "Link is positioned on the passcode screen (not the Salesforce login screen)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New sign-up link added below the login/passcode box, directing unregistered users to the beta signup page.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer suggested placing the link on the passcode screen rather than the login screen, which was the more appropriate location for catching unregistered users.",
+  "comment_summary": "Developer added the link to staging and suggested it should be on the passcode screen instead of the login screen for better placement.",
+  "comment_count": 2
+}

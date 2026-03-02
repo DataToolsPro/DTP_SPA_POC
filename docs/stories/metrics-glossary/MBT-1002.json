@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1002",
+  "epic_key": "MBT-869",
+  "feature_folder": "metrics-glossary",
+  "title": "Dashboard InfoWindow Report List Enhancement",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-17T17:42:53.270-0800",
+  "updated": "2026-01-24T22:49:07.961-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Dashboard InfoWindow to go directly to the report list, deduplicate entries, and include a green icon to open the report detail in DataTools, so that I can quickly browse associated reports.",
+  "description": "Enhances the Dashboard InfoWindow (popup showing reports associated with a dashboard) with three improvements:\n\n1. Skip the intermediate box view and go directly to the flat report list\n2. Deduplicate the report list to avoid showing the same report multiple times\n3. Add a green arrow icon next to each report that opens the report detail in the DataTools Pro right-side panel (InfoWindow)",
+  "acceptance_criteria": [
+    "Dashboard InfoWindow opens directly to the flat report list without the intermediate box view",
+    "Report list is deduplicated",
+    "Green arrow icon next to each report opens the report detail in the right popup window"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "InfoWindow skips box view, shows deduplicated flat report list. Green arrow icon opens report detail in right popup.",
+  "middleware_changes": "Report list query deduplicated before returning to frontend.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer requested elaboration, then implemented with a green arrow icon that opens the report in the right popup window. Pushed for review.",
+  "comment_count": 4
+}

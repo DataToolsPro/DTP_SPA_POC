@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-1149", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Handle Tableau Error with Redirect When PAT Is Missing or Expired",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2025-06-27T11:05:59.377-0700", "updated": "2026-01-24T22:56:38.768-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "As a DataTools Pro user, I want to be redirected to the settings page if Tableau is not set up, and see a clear error message if my Personal Access Token has expired, instead of seeing a broken page.",
+  "description": "Error handling improvement for Tableau integration:\n\n1. **No PAT configured**: If the user has not added a Tableau Personal Access Token, redirect them automatically to the settings page where they can add one\n2. **Expired/invalid PAT**: If a PAT exists but is expired or invalid (Tableau server removed it due to system PAT policy), show a clear error message explaining the issue\n3. **Spelling fix**: 'Tableau' was misspelled in the UI — corrected",
+  "acceptance_criteria": ["Users without a PAT are redirected to settings page", "Users with an expired PAT see a clear error message", "Error message explains the likely cause (PAT expiry)", "'Tableau' is spelled correctly throughout"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": true},
+  "ux_changes": "Added redirect to settings when no PAT exists; clear error message for expired PATs; fixed 'Tableau' spelling.",
+  "middleware_changes": "Added PAT existence check and validation logic to handle expired/invalid tokens gracefully.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "PAT expiration is driven by Tableau Server's system policy. The app now checks PAT status before making Tableau API calls and routes users accordingly.",
+  "comment_summary": "Waqar implemented conditional redirect: no PAT redirects to settings, expired PAT shows an error message with guidance.", "comment_count": 1
+}

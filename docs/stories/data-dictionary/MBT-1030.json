@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1030",
+  "epic_key": "MBT-923",
+  "feature_folder": "data-dictionary",
+  "title": "Picklist Value Change Tracking in Change Log",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-12T18:54:37.034-0800",
+  "updated": "2026-01-24T22:51:22.119-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a Salesforce administrator, I want the Data Dictionary change log to detect and record when picklist values change on a field, so that I can track additions, removals, or modifications to picklist options over time.",
+  "description": "Adds a new change tracking type called 'Picklist Value Change' to the Data Dictionary change log. When the scheduled refresh detects that a picklist field's available values have changed (values added, removed, or modified), a change log entry is created with this type.\n\nThis extends the existing change detection system to cover metadata changes at the picklist value level, not just at the field level.",
+  "acceptance_criteria": [
+    "A new change type 'Picklist Value Change' appears in the change log",
+    "Change log records when picklist values are added to a field",
+    "Change log records when picklist values are removed from a field",
+    "Change log records when picklist values are modified",
+    "Change type filter dropdown includes 'Picklist Value Change' as an option"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Picklist Value Change' entries appear in the change log table. The change type filter dropdown includes this new type.",
+  "middleware_changes": "Change detection logic extended to compare picklist values between refresh cycles. When differences are found, a change log entry is created with the 'Picklist Value Change' type.",
+  "data_model_changes": "New change type enum value added. Change log entries store picklist value change details.",
+  "api_changes": "",
+  "dependencies": ["MBT-908"],
+  "source_files": [],
+  "implementation_notes": "The detection compares the current picklist values from the Salesforce describe API with the previously stored values. Differences are logged as individual change entries.",
+  "comment_summary": "Developer asked for more description. Implemented the detection and deployed to dev for review.",
+  "comment_count": 3
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1022",
+  "epic_key": "MBT-1313",
+  "feature_folder": "infrastructure",
+  "title": "Handle Salesforce IP-Restricted OAuth Error with User-Friendly Error Page and Notifications",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-02T23:08:13.282-0800",
+  "updated": "2026-01-24T22:53:13.661-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a Salesforce administrator whose org enforces IP restrictions, I want to see a clear error message explaining why I cannot authenticate with DataTools Pro so that I can resolve the IP restriction issue in my Salesforce settings without contacting support.",
+  "description": "When a Salesforce org has IP restrictions configured on user profiles and the Connected App uses 'Enforce IP Restrictions', users attempting to authenticate from a non-whitelisted IP receive a generic 400 Bad Request error from the Salesforce OAuth endpoint.\n\n## Problem\nThe previous behavior showed a generic error page with no actionable information. Since the error occurs during the OAuth callback, Salesforce does not identify the specific user — only a \"Guest User\" error is returned.\n\n## Solution\n1. Detect the IP-restricted error from the Salesforce OAuth callback response\n2. Display a specific, user-friendly error page explaining the IP restriction issue\n3. Send notification emails to administrators when this error occurs (user shown as \"Guest User\" since identity is unknown)\n4. Create a tutorial page explaining how to resolve the IP restriction: whitelist DataTools Pro IP ranges in the Salesforce profile's Login IP Ranges\n\n## Tutorial\nPublished at: https://datatoolspro.com/tutorials/how-to-resolve-ip-restricted-error-and-grant-access-to-our-app/",
+  "acceptance_criteria": [
+    "IP-restricted OAuth error is detected and handled specifically",
+    "User sees a clear error page explaining the IP restriction issue",
+    "Notification email is sent to administrators on IP-restricted authentication failure",
+    "Notification email identifies the user as 'Guest User' when identity cannot be determined",
+    "Tutorial page is published explaining how to resolve IP restrictions in Salesforce",
+    "Error page links to or references the tutorial for self-service resolution"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Generic error page replaced with a specific IP-restricted error page that explains the issue and provides resolution steps. Links to a tutorial for self-service resolution.",
+  "middleware_changes": "OAuth callback error handling now detects IP-restricted errors from Salesforce and routes to the specific error page. Notification email system triggers on IP-restricted authentication failures.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The error occurs during Salesforce OAuth callback when a user's profile has Login IP Ranges configured and the Connected App enforces IP restrictions. Since the error is pre-authentication, Salesforce does not return user identity — only an error message. The notification email uses 'Guest User' as a placeholder.",
+  "comment_summary": "Waqar explained the IP restriction enforcement setup and proposed showing the exact error message to customers instead of a generic screen. He implemented a specific error page, set up admin notification emails, and published a tutorial on resolving IP restrictions in Salesforce.",
+  "comment_count": 2
+}

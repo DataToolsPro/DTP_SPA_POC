@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-542",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Replace Salesforce Logo on Login Page and Update Right Pane Content",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-26T20:11:13.721-0800",
+  "updated": "2024-05-24T02:25:42.920-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the login page to display the correct DataTools Pro branding without any Salesforce logos, so that the product identity is clearly established at sign-in.",
+  "description": "The login page graphic contains the Salesforce logo which must be removed per Salesforce brand usage guidelines. A replacement graphic (same dimensions) is provided without the Salesforce logo.\n\n## Changes\n1. **Left pane**: Replace the graphic containing the Salesforce logo with a new branded graphic (same sizing)\n2. **Right pane**: Update the promotional content:\n   - Heading: \"What's New: Metrics Glossary for Salesforce\"\n   - Copy: \"Connect your business metrics, KPIs, and semantics to your Salesforce reporting and dashboards.\"\n   - New background image for the right pane\n3. **Cookie consent page**: Layout updated to match login page design (consistent box sizing)",
+  "acceptance_criteria": [
+    "Login page graphic no longer contains the Salesforce logo",
+    "Replacement graphic maintains identical sizing to the previous one",
+    "Right pane displays 'What's New: Metrics Glossary for Salesforce' heading",
+    "Right pane includes updated copy about Metrics Glossary",
+    "Right pane uses the new background image",
+    "Cookie consent page layout matches login page design"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced login page graphic to remove Salesforce logo. Updated right pane with Metrics Glossary promotional content and new background image. Aligned cookie consent page layout with login page for visual consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Salesforce brand elements cannot be used on application pages per their guidelines. Replacement graphic provided by product owner. Developer also proactively aligned the cookie consent page layout to match the login page design for consistency.",
+  "comment_summary": "Developer updated the graphic, text, and background image. Also proactively aligned the cookie consent page to match the login page layout. Initially forgot to push to staging but quickly resolved. Product owner confirmed it looked fantastic.",
+  "comment_count": 3
+}

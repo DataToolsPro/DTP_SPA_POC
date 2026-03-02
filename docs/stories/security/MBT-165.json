@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-165",
+  "skipped": true,
+  "skip_reason": "no_description",
+  "title": "Encrypt Salesforce Refresh Token",
+  "status": "Done",
+  "feature_folder": "security"
+}

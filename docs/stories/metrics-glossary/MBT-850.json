@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-850",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Change Global H5 Heading Color from Primary to Standard Text Color",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-08T22:50:50.721-0700",
+  "updated": "2026-03-01T01:31:34.449-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want H5 headings to use standard text colors instead of the primary brand color, so that headings are not mistaken for clickable elements and the visual hierarchy is clearer.",
+  "description": "The global `<h5>` heading style was using the primary brand color, which is conceptually reserved for interactive/clickable elements. This created visual confusion where headings looked like links or buttons. The fix changes H5 headings to use standard text colors that differ between light and dark mode.\n\n## Color Specification\n\n- **Light mode**: `#555555` (dark gray)\n- **Dark mode**: `#CCCCCC` (light gray)\n\n## Design Rationale\n\nPrimary color should be reserved for interactive elements (links, buttons, actionable controls). Non-interactive headings should use neutral text colors to maintain a clear visual hierarchy.",
+  "acceptance_criteria": [
+    "H5 headings display in #555555 (dark gray) in light mode",
+    "H5 headings display in #CCCCCC (light gray) in dark mode",
+    "H5 headings no longer use the primary brand color",
+    "Change applies globally across all pages using H5 headings"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Global H5 heading color changed from primary brand color to neutral text colors — #555555 for light mode and #CCCCCC for dark mode. This prevents headings from being visually confused with clickable elements.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS global style update targeting the `h5` selector. Separate color values set for light mode and dark mode themes.",
+  "comment_summary": "Developer deployed the update to the development environment and requested review in incognito mode to bypass cached styles.",
+  "comment_count": 1
+}

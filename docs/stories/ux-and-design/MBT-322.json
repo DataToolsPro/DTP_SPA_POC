@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-322",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Confirm and Cancel Icons for Category and Line of Business Actions",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:34:53.599-0700",
+  "updated": "2024-05-24T02:25:06.516-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user editing categories or lines of business, I want clear confirm and cancel icons, so that I understand my options without guessing what the red X on the edit icon means.",
+  "description": "Replace the confusing edit+red-X icon pattern with distinct confirm (check) and cancel (close) icons for category and line of business dropdown actions.\n\n## Icons\n- `bi bi-check-square` — confirm action\n- `bi bi-x-square` — cancel action\n\nBoth icons perform the same technical function (close the dropdown), but the two-icon pattern is more intuitive for users. Usability testing showed users interpreted the red X as \"delete\" rather than \"close/dismiss\".\n\n## Context\nChanges are auto-saved when the user selects a value, so both confirm and cancel effectively just close the dropdown. The dual-icon pattern provides psychological confirmation that the action was completed.",
+  "acceptance_criteria": [
+    "Check and close icons appear as a pair for category/LOB dropdown actions",
+    "Both icons close the dropdown",
+    "Icons use bi-check-square and bi-x-square from Bootstrap Icons",
+    "Icons are right-aligned and properly sized",
+    "Previous edit+red-X icon pattern is replaced"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Category and LOB dropdown actions now show paired confirm/cancel icons (check + close) instead of the confusing edit+red-X pattern. Driven by usability testing feedback.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Usability testing revealed users interpreted the red X as a delete action rather than a dismiss action. The check+close pair provides clearer intent even though both perform the same function (close the dropdown).",
+  "comment_summary": "Developer initially asked for clarification on the check icon's purpose. Ryan explained the usability testing feedback — users confused the red X with delete. The dual icon pattern provides clear confirm/cancel semantics even though both close the dropdown.",
+  "comment_count": 4
+}

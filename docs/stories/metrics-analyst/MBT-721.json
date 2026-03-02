@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-721",
+  "epic_key": "MBT-644",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix Metrics Analyst Service 2 Error After 5-24 Production Release",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-25T00:28:22.597-0700",
+  "updated": "2024-05-27T21:56:24.874-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "After the 5-24 production release, the Metrics Analyst was throwing an error when trying to analyze a dashboard in production. The root cause was that production was still pointed at the old Service 2 endpoint, while the front-end code had been updated to expect new response fields (e.g., 'Metric Formula (LLM)') that only exist in the new service version.\n\nThe fix was to switch production to the new Service 2 endpoint and update the payload JSON to include existing metrics data.",
+  "acceptance_criteria": [
+    "Metrics Analyst works correctly in production after the 5-24 release",
+    "Production points to the new Service 2 endpoint",
+    "Payload includes existing metrics for comparison",
+    "No errors when analyzing dashboards in production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated production configuration to point to the new Service 2 Lambda endpoint. Updated the payload JSON to include existing metrics alongside the analyze request.",
+  "data_model_changes": "",
+  "api_changes": "Switched production from the old Service 2 endpoint to the new Lambda function URL. Updated request payload format to match the new service's expected input.",
+  "dependencies": ["MBT-643"],
+  "source_files": [],
+  "implementation_notes": "The error occurred because the new front-end code expected fields like 'Metric Formula (LLM)' that the old service didn't return. Ryan confirmed it was safe to cut over to the new service. The developer updated the endpoint and payload, then tested on production.",
+  "comment_summary": "Developer identified that production was using the old service while the code expected new fields. Ryan confirmed the switch to the new service was approved. Developer updated the endpoint and payload, tested successfully on production.",
+  "comment_count": 7
+}

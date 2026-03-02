@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-54",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Establish Unique DataTools Pro User ID for All Users",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-25T12:02:56.770-0800",
+  "updated": "2024-05-24T02:24:33.976-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Establish a unique internal user identifier (dtUserID) for every user who authenticates with their Salesforce credentials. This ID provides a consistent, non-sequential identifier for all user records stored in the DataTools Pro database.\n\n## Requirements\n\n- Generate a random 18-digit alphanumeric ID when creating a user record (not a simple auto-increment).\n- Store the dtUserID in the users table.\n- Integrate with Heap Analytics by calling `heap.identify(dtUserID)` on key pages (migrate.php, select.php) so analytics events are tied to the internal user ID.\n- Document the table, field, and generation logic in the Authentication Security and User Identification wiki page.",
+  "acceptance_criteria": [
+    "A unique 18-digit alphanumeric dtUserID is generated for each new user on first authentication",
+    "The dtUserID is stored in the users database table",
+    "heap.identify(dtUserID) is called on migrate.php and select.php pages",
+    "The dtUserID is visible in the page source for analytics verification",
+    "Existing users receive a dtUserID upon next authentication if not already assigned"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "User registration flow updated to generate a random 18-digit alphanumeric ID and store it in the users table upon first authentication.",
+  "data_model_changes": "New dtUserID field added to the users table storing a unique 18-character alphanumeric identifier generated at registration time.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer added a database field and generates a unique 18-digit alphanumeric value on first registration. The value is passed to heap.identify() on key pages. Existing users needed their records purged and re-authenticated to receive the new ID.",
+  "comment_summary": "Developer implemented the 18-digit ID generation on first authentication. Product owner noted the ID wasn't showing in page source for existing accounts since it was only generated at registration time. After purging the test account and re-authenticating, the ID appeared correctly in heap.identify().",
+  "comment_count": 7
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-795",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Feature Vote Widget Integration with Rapidr",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-07T22:27:56.691-0700",
+  "updated": "2024-07-26T00:01:37.868-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see and vote on upcoming features, so that I can help prioritize what matters most and know what new capabilities are coming.",
+  "description": "Integration of a Rapidr feature-voting widget embedded in a new \"Vote\" sub-tab under the Help tab. The goal was a minimum viable product allowing anonymous voting on feature boards without SSO. Per-tool boards would be embedded using board IDs provided by the product owner.\n\n**Outcome:** The feature was ultimately withdrawn after two findings:\n1. Product voting adoption is typically low without a large user base\n2. Pendo already offers contextual feedback and a built-in voting mechanism for future use\n\nThe Vote tab and all Rapidr integration code were removed. Pendo's contextual feedback was implemented as the preferred alternative for collecting user input.",
+  "acceptance_criteria": [
+    "Vote sub-tab is added to the Help section",
+    "Rapidr voting widget is embedded per tool with configured board IDs",
+    "Anonymous voting is enabled without SSO requirement",
+    "Widget renders correctly within the application frame",
+    "Feature was ultimately withdrawn — Vote tab and all Rapidr code were removed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "A 'Vote' sub-tab was added to the Help tab containing an embedded Rapidr voting widget. The tab and widget were later fully removed after the feature was withdrawn in favor of Pendo contextual feedback.",
+  "middleware_changes": "Rapidr API key configuration and widget embedding code were added and subsequently removed during cleanup.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "SSO issues were encountered during Rapidr widget integration. The vendor was contacted but the feature was withdrawn before resolving them. Pendo's built-in feedback and voting features were identified as the long-term replacement, avoiding the need for a third-party voting tool.",
+  "comment_summary": "Balaji estimated 5 hours and encountered SSO issues embedding the Rapidr widget. Ryan contacted the vendor but ultimately withdrew the feature based on feedback that voting adoption is low without many users. Pendo contextual feedback was implemented instead. All Rapidr code and the Vote tab were removed.",
+  "comment_count": 7
+}

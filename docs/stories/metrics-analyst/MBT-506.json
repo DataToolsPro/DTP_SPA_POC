@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-506",
+  "epic_key": "MBT-644",
+  "feature_folder": "metrics-analyst",
+  "title": "Service 2 Enhancement Requests for Metrics Analyst API",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T11:58:40.339-0800",
+  "updated": "2024-09-15T13:12:34.089-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "A collection of enhancement requests for the Metrics Analyst Service 2 API response to improve the quality of metric recommendations:\n\n1. **Add Report IDs** in the response so the app can link reports to metrics.\n2. **Ensure all standard fields** are returned: Metric Name, Metric Formula, Metric Description, Metric Definition.\n3. **Known Metric detection** — automatically place recognized duplicates in the ignore section.\n\nThe Service 2 work was moved to its own sprint board (DTPSERVICE project). The new service version returns additional fields including Known Metric, Known Formula, and Known Metric by Formula, but initially still lacked Report IDs.",
+  "acceptance_criteria": [
+    "Service 2 response includes Report IDs alongside report names",
+    "Metric Formula, Description, and Definition fields are populated in the response",
+    "Known Metric field is populated when a duplicate is detected",
+    "Service enhancement work is tracked on the DTPSERVICE sprint board"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Service 2 API response enhanced with Report IDs, Known Metric, Known Formula, and Known Metric by Formula fields. Response now includes full metric metadata for better recommendation quality.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The new service version initially returned report names but not Report IDs. The developer confirmed the new service response includes Known Metric matching fields but Report IDs were still missing at the time of comment.",
+  "comment_summary": "Developer synced with the API team. New service version returns enhanced fields including Known Metric matching but was still missing Report IDs in the response at the time.",
+  "comment_count": 2
+}

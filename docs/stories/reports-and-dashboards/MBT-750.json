@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-750",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Persistent Left Sidebar Filter Pane for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:14:52.318-0700",
+  "updated": "2024-07-18T03:33:25.439-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want filters displayed in a persistent left sidebar so that I can work left to right to narrow down reports and take action without toggling a filter panel.",
+  "description": "Redesigns the filter layout on the Reports and Dashboards page by removing the filter toggle and moving all filter controls to a persistent left sidebar pane. This creates a left-to-right workflow where the user selects and constrains filters on the left and views matching reports on the right.\n\nThe search button was also considered for relocation to the left pane so all constraint options live in one place. The sidebar was sized to col-2 to maximize table data width.",
+  "acceptance_criteria": [
+    "Filter controls are displayed in a persistent left sidebar",
+    "Filter toggle button is removed",
+    "Sidebar is sized to col-2 for optimal table width",
+    "All existing filters (date range, created by, modified by, folder) are present in the sidebar",
+    "Search functionality is accessible from the sidebar",
+    "Layout works correctly on staging"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the collapsible filter toggle with a persistent col-2 left sidebar containing all filter controls. Creates a left-to-right workflow for filtering and browsing reports.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Some margin/padding container issues were resolved during implementation. Ryan suggested reducing sidebar to col-2 class after initial implementation to give more room to the data table.",
+  "comment_summary": "Balaji completed the initial implementation, then Ryan suggested narrowing the sidebar to col-2 for more table space. Balaji made the adjustment and verified it worked on staging.",
+  "comment_count": 6
+}

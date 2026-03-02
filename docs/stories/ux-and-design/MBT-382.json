@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-382",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Comments Functionality to Metrics",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2023-11-21T13:51:36.293-0800",
+  "updated": "2026-03-01T03:42:42.881-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to add comments to individual metrics, so that I can collaborate with my team on metric definitions and decisions directly within DataTools Pro.",
+  "description": "Each metric should support its own comment thread, similar to how Jira handles comments. This enables in-app collaboration on metric definitions, changes, and decisions.\n\n### Proposed Approach\nUse the [Laravel Comments](https://spatie.be/products/laravel-comments) package by Spatie to implement the commenting system.\n\n### Future Considerations\n- Slack integration: eventually align in-app comments with Slack notifications/threads\n- Layout: TBD whether comments appear on a metric detail page or via a link/modal on the metrics list",
+  "acceptance_criteria": [
+    "Each metric has its own comment thread",
+    "Users can add, view, and manage comments on individual metrics",
+    "Comments are associated with the authenticated user",
+    "Comment thread is accessible from the metrics interface"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New commenting interface on metrics, allowing users to add and view comment threads per metric.",
+  "middleware_changes": "Integration of Spatie Laravel Comments package for comment CRUD operations tied to metric records.",
+  "data_model_changes": "New comments table (provided by the Laravel Comments package) with polymorphic relationship to metrics.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Spatie Laravel Comments package was identified as the implementation approach. License status needs to be confirmed before proceeding. Layout for where comments will appear (detail page vs. modal) is still to be determined.",
+  "comment_summary": "Developer asked about the layout approach (detail page vs. link per metric) and confirmed the need for a package license. No resolution yet on either point.",
+  "comment_count": 2
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-105",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Entity Relationship Page with Abstracted CSS",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-26T11:09:56.848-0700",
+  "updated": "2026-03-01T03:46:45.404-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want to navigate to a dedicated Entity Relationship page from the SELECT page, so that I can view entity diagrams in a clean, standalone layout.",
+  "description": "## Context\nThe ERD visualization was embedded in existing pages. Users need a dedicated route to access it cleanly.\n\n## Behavior\nA new page is created at `/entity-diagram` that includes all elements from the SELECT page plus the ERD visualization. CSS is abstracted so the page uses shared styles rather than inline or page-specific styling.\n\n## Navigation\nA navigation link is added to the SELECT.php page pointing to the new entity diagram route.",
+  "acceptance_criteria": [
+    "A dedicated /entity-diagram route is accessible from the SELECT page",
+    "The page includes the ERD visualization and relevant elements from SELECT",
+    "CSS is abstracted into shared stylesheets rather than inline styles",
+    "Navigation link is visible and functional from the SELECT page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New dedicated Entity Relationship page at /entity-diagram with navigation link from the SELECT page. Shared CSS styling applied.",
+  "middleware_changes": "New route handler and page template for the /entity-diagram endpoint, incorporating elements from SELECT.php.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "Page abstracts CSS into shared styles to maintain consistency across the app. The entity-diagram route serves the GoJS-powered ERD built in MBT-89.",
+  "comment_summary": "",
+  "comment_count": 0
+}

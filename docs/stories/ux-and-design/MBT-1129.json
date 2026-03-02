@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1129",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Redesign Integration Sidebar with Anchored Layout and Tooltips",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-05-27T21:26:22.202-0700",
+  "updated": "2026-03-01T04:19:33.240-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the integration sidebar to have an anchored layout with clear tooltips and non-conflicting styling, so that I can easily identify and access each integration.",
+  "description": "Redesign the left sidebar for integrations:\n\n1. **Anchored layout**: Fix the left sidebar position instead of allowing it to float\n2. **Button styling**: Replace the green background with a 3px outline and `#ccc` background color to avoid conflicting with the logo colors\n3. **Tooltips**: Add tooltips to each integration button explaining its purpose",
+  "acceptance_criteria": [
+    "Left sidebar is anchored/fixed in position",
+    "Integration buttons use a 3px outline with #ccc background instead of green",
+    "Each integration button has a descriptive tooltip",
+    "Button styling does not conflict with the logo colors"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Redesigned integration sidebar with anchored position, neutral #ccc background with 3px outline (replacing green), and tooltips on each button.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer requested tooltip content for each integration option and proceeded with implementation. Tooltips were added along with the UI styling changes.",
+  "comment_summary": "Developer asked for tooltip content, then implemented the full UI update including anchored sidebar, button styling, and tooltips. Deployed to development for review.",
+  "comment_count": 2
+}

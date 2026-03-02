@@ -1,0 +1,19 @@
+{
+  "post_id": 8892,
+  "title": "Data Tools Access and Region Availability",
+  "slug": "data-tools-access-and-region-availability",
+  "url": "https://datatoolspro.com/tutorials/data-tools-access-and-region-availability/",
+  "date": "2023-11-14T23:46:45",
+  "modified": "2023-12-03T12:28:17",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Administration",
+    "datatoolspro"
+  ],
+  "subfolder": "administration",
+  "excerpt": "<p>DataTools Pro has been developed with global delivery in mind but we are running our initial beta close to home to ensure we thoughtfully roll out DataTools for Salesforce in alignment with Salesforce…</p>",
+  "content_html": "\n<p>DataTools Pro has been developed with global delivery in mind but we are running our initial beta close to home to ensure we thoughtfully roll out DataTools for Salesforce in alignment with Salesforce instance location and regional security and privacy in mind.</p>\n\n\n\n<h2 class=\"wp-block-heading has-medium-font-size\"><strong>How do we Determine Location?</strong></h2>\n\n\n\n<p>Currently DataTools Pro on authentication validates the Salesfoce instance location to determine the geography. You or your Salesforce end users could be located in most regions, but access and permissions are controlled within your Salesforce organization. </p>\n\n\n\n<h2 class=\"wp-block-heading has-medium-font-size\" id=\"accessreason\"><strong>Were you Blocked from Accessing DataTools Pro App?</strong></h2>\n\n\n\n<p>Please review to ensure your Salesforce org is based in the US.</p>\n\n\n\n<p>1. Login to Salesforce</p>\n\n\n\n<p>2. Go to Settings</p>\n\n\n\n<p>3. Search for &#8220;Company Information&#8221;</p>\n\n\n\n<figure class=\"wp-block-image size-large is-resized\"><img loading=\"lazy\" decoding=\"async\" width=\"1024\" height=\"151\" src=\"https://datatoolspro.com/wp-content/uploads/2023/11/image-1024x151.png\" alt=\"\" class=\"wp-image-8893\" style=\"aspect-ratio:6.7993630573248405;width:840px;height:auto\" srcset=\"https://datatoolspro.com/wp-content/uploads/2023/11/image-1024x151.png 1024w, https://datatoolspro.com/wp-content/uploads/2023/11/image-300x44.png 300w, https://datatoolspro.com/wp-content/uploads/2023/11/image-768x113.png 768w, https://datatoolspro.com/wp-content/uploads/2023/11/image-1536x226.png 1536w, https://datatoolspro.com/wp-content/uploads/2023/11/image-2048x301.png 2048w\" sizes=\"auto, (max-width: 1024px) 100vw, 1024px\" /></figure>\n\n\n\n<p>4. Within Company information&#8221; you will see the instance, which is tied to a Salesforce instance location where your data is stored within Salesforce.</p>\n\n\n\n<p>If you see NA and still cannot access, there could be another issue we need to evaluate. Please contact our team.</p>\n\n\n\n<h2 class=\"wp-block-heading has-medium-font-size\"><strong>Early Access to New Geographies</strong></h2>\n\n\n\n<p>We are excited to roll out more geographies in 2024. Feel free to sign up for our newsletter for more up to date info, or feel free to contact us directly for more finite timelines.</p>\n"
+}

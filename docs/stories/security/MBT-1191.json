@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1191",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Snyk Code Scan Remediation for Salesforce Security Audit",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-26T22:39:00.636-0700",
+  "updated": "2026-03-01T04:05:46.238-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Review and remediate findings from a Snyk code scan (DataToolsPro_DTP_Bootstrap_V2_Baseline) to prepare for a Salesforce security audit resubmission. The scan results need to be reviewed, false positives identified, and genuine issues resolved before resubmitting for the audit.",
+  "acceptance_criteria": [
+    "All Snyk scan findings are reviewed and categorized as genuine or false positive",
+    "Genuine vulnerabilities are remediated",
+    "Application passes Snyk scan without critical or high findings",
+    "Ready for Salesforce security audit resubmission"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Code remediation based on Snyk scan findings. SQL injection false positives confirmed safe due to Eloquent/Query Builder prepared statements.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1190"],
+  "source_files": [],
+  "implementation_notes": "Snyk scan baseline report generated. Some SQL injection findings are false positives — the code uses Eloquent/Query Builder with prepared statements. Encrypted data is read from the database, not from forms, so some data exposure findings are also false positives.",
+  "comment_summary": "",
+  "comment_count": 0
+}

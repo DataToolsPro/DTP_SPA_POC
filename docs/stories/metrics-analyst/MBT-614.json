@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-614",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Improve Button Clarity in Metric Analyst Widget Expansion",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-10T19:31:36.111-0700",
+  "updated": "2026-03-01T01:30:43.754-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user viewing expanded widgets in the Metrics Analyst, I want the action buttons to be clearly visible and intuitive, so that I know where to click to proceed.",
+  "description": "User feedback indicated that the action buttons were not clear when expanding widgets in the Metrics Analyst. The button layout and styling were adjusted to make the available actions more obvious and improve the click-target visibility after widget expansion.",
+  "acceptance_criteria": [
+    "Action buttons are clearly visible after expanding a widget",
+    "Button placement and styling make the next action obvious",
+    "Buttons are accessible without scrolling after expansion"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adjusted button layout and styling in the widget expansion view to improve clarity. Buttons are now more prominent and their placement makes the intended user action obvious.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "UX-only change driven by user feedback. Deployed directly to production.",
+  "comment_summary": "Developer deployed the button adjustments to production and confirmed it was ready for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-270",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Integrate SendGrid SMTP for Transactional Emails",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-10T22:30:24.261-0700",
+  "updated": "2024-05-24T02:24:58.440-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Integrate SendGrid as the SMTP email provider for transactional emails (invitations, notifications). The setup involves:\n\n1. Storing the SendGrid API key as an environment variable (`SENDGRID_API_KEY`)\n2. Installing the SendGrid PHP package via Composer (`sendgrid/sendgrid ~7`)\n3. Configuring the from address as `Support@DataToolsPro.com` with the display name \"DataTools Pro Support\"\n4. Sending invitation and notification emails through the SendGrid SMTP relay",
+  "acceptance_criteria": [
+    "SendGrid API key is stored as an environment variable, not hardcoded",
+    "SendGrid PHP package is installed via Composer",
+    "Invitation emails are sent through SendGrid SMTP",
+    "From address is Support@DataToolsPro.com with display name 'DataTools Pro Support'",
+    "Emails are successfully received by invited users"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Email sending logic updated to use SendGrid SMTP instead of the default mail driver. Configured with MAIL_FROM_ADDRESS and MAIL_FROM_NAME environment variables.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "SendGrid was integrated using their SMTP relay rather than the API client directly. The MAIL_FROM_ADDRESS was set to Support@DataToolsPro.com. SendGrid did not work on the developer's local machine but functioned correctly on staging.",
+  "comment_summary": "Developer requested the API key, integrated SendGrid SMTP via Composer, and configured the from address. Initial issue with key sharing was resolved. SendGrid worked on staging but not locally. From address was set to Support@DataToolsPro.com per product direction.",
+  "comment_count": 13
+}

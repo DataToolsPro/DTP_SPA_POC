@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1315",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Test HubSpot Connection on DataTools Pro v2",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-01-30T03:04:19.571-0800",
+  "updated": "2026-03-01T04:17:06.132-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Validate HubSpot OAuth connection on DataTools Pro v2. This involves creating a HubSpot developer account, setting up an authentication app to obtain client ID and secret, adding the new callback URL for v2, and verifying the end-to-end connection flow.",
+  "acceptance_criteria": [
+    "HubSpot OAuth connection works on DataTools Pro v2",
+    "Developer account with authentication app is configured",
+    "Callback URL is updated for v2 environment",
+    "End-to-end connection flow is verified"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated HubSpot OAuth callback URL for v2 environment.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Created a new HubSpot developer account, added authentication app, configured client ID/secret, and updated callback URL for v2. Connection tested and working.",
+  "comment_summary": "Developer tested the HubSpot connection on v2 by creating a developer account, configuring OAuth credentials, and verifying the flow works as expected.",
+  "comment_count": 1
+}

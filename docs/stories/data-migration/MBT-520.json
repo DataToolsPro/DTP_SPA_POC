@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-520",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Static Value Support in Field Mapping",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-19T12:06:24.845-0800",
+  "updated": "2024-05-24T02:25:43.465-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to define static (hardcoded) values in my field mappings and have them visually distinct from dynamic mappings, so that I can specify default values for fields that don't have a source and easily distinguish them in the mapping table and code output.",
+  "description": "Add support for static values in the data mapping workflow. When a field should be mapped to a hardcoded value rather than a source field, users can flag it as a static value.\n\n**Mapping UI**: A new option to mark a mapping as static, with a visual indicator (e.g., \"Static:\" prefix) in the mapping table so static values are immediately distinguishable from dynamic field mappings.\n\n**Code generation**: Static values use a dedicated quoting identifier in the SQL output. For example, a static value renders as `'value'` (single-quoted) while dynamic field references use `\"Object\".\"Field\"` (double-quoted), making it clear in the generated code which values are static.\n\n**Data model**: A boolean `is_static` field in the mapping data model tracks whether a mapping is static.",
+  "acceptance_criteria": [
+    "User can flag a mapping as a static value",
+    "Static mappings are visually distinguished in the mapping table",
+    "Static values use the 'Static Value' quoting identifier in code generation",
+    "Dynamic field mappings continue to use the standard Object.Field quoting",
+    "Data model includes an is_static flag for each mapping",
+    "Static values render correctly in SQL export"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New static value option in the mapping panel. Static mappings display with a visual 'Static' indicator in the data table. Code generation modal applies dedicated quoting for static values.",
+  "middleware_changes": "SQL generation logic updated to check the is_static flag and apply static value quoting (single quotes) instead of object/field quoting (double quotes) for static mappings.",
+  "data_model_changes": "New boolean `is_static` field added to the mapping data model to distinguish static values from dynamic field mappings.",
+  "api_changes": "Mapping save/update endpoint accepts and persists the is_static flag. SQL generation endpoint respects the flag for quoting.",
+  "dependencies": ["MBT-77", "MBT-482"],
+  "source_files": [],
+  "implementation_notes": "Static values are stored in the same mapping table with the is_static flag. The static value feature was first implemented on staging, then code generation enhancements were merged from production. The developer confirmed the data model already tracked static status before this feature was explicitly added to the UI.",
+  "comment_summary": "Developer asked about whether static fields should appear alongside regular mapped fields in the data table. Confirmed static values are treated as special mappings. Discussion about whether code generation should use separate quoting for static values — decided on single-quote style. Developer deployed to staging, then merged code generation changes for review.",
+  "comment_count": 7
+}

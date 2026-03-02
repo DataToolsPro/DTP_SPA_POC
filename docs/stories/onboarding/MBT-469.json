@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-469",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Add GFEntryId and TeamAdminUserId to Webhook 0001",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-10T00:20:57.483-0800",
+  "updated": "2024-05-24T02:25:31.028-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Add two new attributes to the Zapier webhook 0001 (Create User) payload to distinguish between the two user creation paths:\n\n1. **GFEntryId** — populated when the user entered via the web-to-lead Gravity Form signup\n2. **TeamAdminUserID** — populated when the user was invited by an existing tenant admin (uses the public userId, not the auto-increment INT)\n\nIn any given event, one of these values should be populated and the other should be null, identifying which path the user took to enter the system.",
+  "acceptance_criteria": [
+    "Webhook 0001 payload includes GFEntryId for Gravity Form users",
+    "Webhook 0001 payload includes TeamAdminUserID for invited users",
+    "TeamAdminUserID uses the public userId format",
+    "One field is populated and the other is null for each event",
+    "Changes deployed to both staging and production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Webhook 0001 payload extended with GFEntryId (from DTPSignup record) and TeamAdminUserID (public userId of the inviting admin). Logic determines which path the user took and populates the appropriate field.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-463"],
+  "source_files": [],
+  "implementation_notes": "Also implements MBT-463 (adding GFEntryId). Deployed to staging and production. Tested and verified by product owner.",
+  "comment_summary": "Developer deployed to staging and production. Product owner tested and verified both attributes are correctly populated.",
+  "comment_count": 3
+}

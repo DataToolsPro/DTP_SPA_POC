@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-745",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Move Status Dropdown from Analytics Tab to Details Tab in Metric Side Pane",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-05T23:56:43.769-0700",
+  "updated": "2024-07-25T23:44:54.311-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user editing metrics, I want the Status dropdown on the Details tab instead of the Analytics tab, so that I can update a metric's status alongside its other detail fields without switching tabs.",
+  "description": "The Status dropdown for metrics is currently on the Analytics tab in the metric detail side pane. It should be moved to the Details tab for a more logical grouping.\n\n## Changes\n- Move the Status dropdown from the Analytics tab to the Details tab\n- Position it above the Update button\n- Changing the status should trigger an independent save (not require clicking Update)\n- Notes feature may be deprecated in a future release",
+  "acceptance_criteria": [
+    "Status dropdown is on the Details tab, not the Analytics tab",
+    "Status dropdown is positioned above the Update button",
+    "Changing the status triggers an independent save",
+    "All Report and Dashboard tab options remain editable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Status dropdown relocated from Analytics tab to Details tab in the metric side pane. Positioned above the Update button. Status change triggers an immediate independent save.",
+  "middleware_changes": "Status update logic now fires independently from the main Update form submission, allowing real-time status changes without requiring a full form save.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Status dropdown moved to Details tab above the Update button. Made the status change trigger an independent AJAX save rather than requiring the user to click Update. Notes feature flagged for potential deprecation.",
+  "comment_summary": "Developer asked about positioning — product owner directed placing it above the Update button and making status changes trigger an independent save. Notes feature may be deprecated. Confirmed working on staging.",
+  "comment_count": 3
+}

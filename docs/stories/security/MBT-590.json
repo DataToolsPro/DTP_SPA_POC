@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-590",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Update Subject in DataTools Pro OTP",
+  "status": "Withdrawn",
+  "feature_folder": "security"
+}

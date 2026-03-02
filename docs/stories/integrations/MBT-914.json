@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-914",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier Integration UX Improvements: Tooltips and Labels",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-12T22:18:46.800-0700",
+  "updated": "2024-09-18T05:35:58.275-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "As a DataTools Pro user configuring a Zapier integration, I want clear tooltips and help text for each field so that I understand what data is expected without needing to reference external documentation.",
+  "description": "Minor UX refinements to the Zapier integration:\n\n1. **Tooltips/help text**: Add explanatory help text to Zapier action fields so users understand each attribute when hovering or viewing the field\n2. **Capitalize 'Alias' label**: Fix the capitalization of the Alias field label\n3. **Remove Dimensionality attribute**: Remove the Dimensionality field from the Zapier integration. While it may exist in the data model and API, it's not ready for customer use and should be reserved for future use\n4. **Help document**: Consider linking to a Zapier-specific help document or dictionary that explains all columns and expected values",
+  "acceptance_criteria": [
+    "All Zapier action fields have appropriate help text/tooltips",
+    "Alias field label is properly capitalized",
+    "Dimensionality attribute is removed from the Zapier integration fields",
+    "Help text guides users on expected input format for each field"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added help text to all Zapier action fields. Capitalized the Alias label. Removed the Dimensionality attribute from the visible Zapier fields to simplify the user experience.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-888"],
+  "source_files": [],
+  "implementation_notes": "The Dimensionality attribute was intentionally removed from Zapier even though it exists in the data model and API. This attribute is reserved for future functionality and should not be exposed to customers yet.",
+  "comment_summary": "No comments. Requirements were clear and implementation was straightforward.",
+  "comment_count": 0
+}

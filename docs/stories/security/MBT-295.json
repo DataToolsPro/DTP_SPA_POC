@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-295",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Remove Unused FontAwesome JS and Bootstrap Alpha References",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-10T17:53:27.071-0700",
+  "updated": "2024-05-24T02:25:01.998-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "During a security review, two issues were identified with third-party JavaScript references:\n\n1. **Bootstrap Alpha**: The application was referencing an alpha version of a Bootstrap component. Production applications should rely on stable releases, not alpha/pre-release versions.\n2. **FontAwesome JS**: An unnecessary FontAwesome JavaScript reference was found. The purpose was unclear and it should be removed if not needed.\n\n## Requirements\n\n- Remove all references to Bootstrap alpha versions from the source code.\n- Replace with stable Bootstrap 5.3.2 from CDN if needed.\n- Remove the FontAwesome JavaScript reference if not required.\n- Preference is to self-host libraries via Cloudflare CDN rather than relying on third-party CDNs.",
+  "acceptance_criteria": [
+    "No references to Bootstrap alpha versions exist in the codebase",
+    "Bootstrap references use stable version 5.3.2",
+    "FontAwesome JS reference is removed if not needed",
+    "Application renders correctly after library cleanup"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "FontAwesome JS and Bootstrap alpha references were removed from the codebase. Bootstrap 5.3.2 from CDN was retained as the stable version.",
+  "comment_summary": "Developer removed FontAwesome and asked for clarification on Bootstrap alpha. Product owner confirmed using stable Bootstrap 5.3.2 from CDN is fine, but all alpha references must be purged. Developer completed cleanup.",
+  "comment_count": 3
+}

@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-1105",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add Object Type Filters for Custom, Share, History, and Change Objects",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-15T22:45:09.977-0700",
+  "updated": "2026-03-01T04:12:28.629-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to filter the object picker by object type (Custom, Share, History, Change), so that I can quickly find the category of objects I need.",
+  "description": "Add new filter options to the object selection dropdown to categorize Salesforce objects:\n\n- **Custom Objects**: objects ending with `__c` in the API name\n- **Share Objects**: labels prefixed with \"Share:\"\n- **History Objects**: labels prefixed with \"History:\"\n- **Change Objects**: labels prefixed with \"Change:\"\n\nAlso revisit the managed package filter to ensure it works correctly after refreshing the object list.",
+  "acceptance_criteria": [
+    "Custom Objects filter shows only __c objects",
+    "Share Objects filter shows only Share:-prefixed objects",
+    "History Objects filter shows only History:-prefixed objects",
+    "Change Objects filter shows only Change:-prefixed objects",
+    "Managed package filter works after object list refresh"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New filter categories in object picker: Custom, Share, History, Change. Updated managed package filter.",
+  "middleware_changes": "Filter logic for object name suffix (__c) and label prefix matching (Share:, History:, Change:).",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-1073"], "source_files": [],
+  "implementation_notes": "Managed package filters require refreshing the object list first to populate correctly.",
+  "comment_summary": "Waqar deployed to production and noted the managed package filter requires an object list refresh.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-877",
+  "epic_key": "MBT-599",
+  "feature_folder": "metrics-analyst",
+  "title": "Update Front End to Reflect Service 2 API Field Renames",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-26T23:29:09.516-0700",
+  "updated": "2024-12-08T19:48:22.221-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "Service 2 made two changes to its API response:\n\n1. Renamed the 'Reports' field to 'Report Name'\n2. Added a new 'Report ID' field to the output\n\nThe front-end database columns and parsing logic need to be updated to match the new field names so that metric recommendations display correctly and the Report ID can be utilized for auto-relating reports to metrics.",
+  "acceptance_criteria": [
+    "Front-end database column updated from 'Reports' to 'Report Name'",
+    "New 'Report ID' column added to the database",
+    "Metric recommendations display correctly with the renamed field",
+    "Report ID is captured and stored from the Service 2 response"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated the Service 2 response parser to use the renamed 'Report Name' field and to capture the new 'Report ID' field.",
+  "data_model_changes": "Renamed the 'Reports' column to 'Report Name' and added a 'Report ID' column in the API response metrics database table.",
+  "api_changes": "",
+  "dependencies": ["MBT-504"],
+  "source_files": [],
+  "implementation_notes": "Initially the developer encountered empty responses from Service 2 while testing. The update was completed on development and staged for production deployment.",
+  "comment_summary": "Developer initially got empty responses from Service 2 during testing. Updated on development. Ryan confirmed the services had been updated months prior and this could be marked complete.",
+  "comment_count": 3
+}

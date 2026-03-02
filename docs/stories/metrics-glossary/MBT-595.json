@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-595",
+  "epic_key": "MBT-689",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix Merge Labels and Add Merge-to-Existing-Metric Option",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-21T17:59:55.689-0800",
+  "updated": "2024-05-24T02:25:37.167-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to merge wizard-suggested metrics into existing metrics already in the glossary, so that I can consolidate duplicates without losing data.",
+  "description": "Fixes incorrect merge labels displayed after the Metric Wizard analysis. Enhances the merge UI to show the complete list of existing metrics so users can select an existing metric to merge into, rather than only merging among wizard-suggested metrics.\n\nWhen merging into an existing metric, the selected metrics are added as aliases of the target metric, preserving both names while consolidating records.",
+  "acceptance_criteria": [
+    "Merge labels display correctly after wizard analysis",
+    "Complete list of existing metrics appears as merge targets",
+    "Merged metrics are added as aliases of the selected target metric"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Updated merge UI showing existing metrics as selectable merge targets alongside wizard suggestions.",
+  "middleware_changes": "Merge-to-existing logic adds selected metrics as aliases of the target metric.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-242"],
+  "source_files": [],
+  "implementation_notes": "Merging to an existing metric inserts the wizard-suggested names as aliases of the target metric in the aliases table.",
+  "comment_summary": "Developer fixed label issue and implemented merge-to-existing. Merged metrics become aliases. Approved on staging.",
+  "comment_count": 7
+}

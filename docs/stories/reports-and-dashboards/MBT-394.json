@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-394",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Lazy-Load Reports and Dashboards on Metric Tab with Refresh Button",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-27T22:11:46.068-0800",
+  "updated": "2024-05-24T02:25:05.751-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user viewing metrics, I want reports and dashboards to load automatically when I navigate to those tabs, with an option to manually refresh, so that I can access report data without visiting separate pages.",
+  "description": "Previously, reports and dashboards data was only populated when the user visited the dedicated /reports and /dashboard pages. Since those tabs were not yet officially rolled out, metrics that referenced reports or dashboards had no data available.\n\nThis change triggers the report and dashboard data fetch when the user navigates to the Reports or Dashboards tabs on individual metrics. To avoid running the query on every tab visit, a \"Refresh Dashboards\" icon and label was added so the user can manually trigger a data refresh when needed.",
+  "acceptance_criteria": [
+    "Reports and dashboards tables populate when the user navigates to those tabs on a metric",
+    "Data fetch does not execute on every tab visit — only on first load or manual refresh",
+    "A Refresh Dashboards button with icon and label is visible on both tabs",
+    "Clicking Refresh triggers a fresh data pull from Salesforce"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a Refresh Dashboards icon and label to the Reports and Dashboards tabs on individual metrics. Data now loads on tab navigation instead of requiring visits to dedicated pages.",
+  "middleware_changes": "Reports and dashboards query execution was moved to trigger on tab navigation within metric views, with caching to avoid redundant fetches.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The refresh functionality was added for both dashboards and reports tabs. Implementation was verified on staging in incognito mode.",
+  "comment_summary": "Waqar implemented the refresh button for both dashboards and reports and submitted for staging review. Ryan confirmed the approach.",
+  "comment_count": 1
+}

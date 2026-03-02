@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1173",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Remove GoJS Developer Message in Production",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-07-26T23:24:36.515-0700",
+  "updated": "2026-03-01T03:46:50.267-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Bug\nThe GoJS developer/evaluation message is displayed in the production environment despite having a full license.\n\n## Fix\nApply the production GoJS license key to remove the developer message from the production deployment.",
+  "acceptance_criteria": [
+    "GoJS developer message is not displayed in production",
+    "Production license key is properly applied"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Removed GoJS developer/evaluation message from the production application.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1233"],
+  "source_files": [],
+  "implementation_notes": "Recurring GoJS license key issue. Production key applied to remove the developer message.",
+  "comment_summary": "Developer fixed the issue on production and confirmed the message is removed.",
+  "comment_count": 1
+}

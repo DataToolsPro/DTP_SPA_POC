@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1048",
+  "epic_key": "MBT-443",
+  "feature_folder": "help-and-documentation",
+  "title": "Redirect Gated LearnDash Topic Pages to Course Landing Page",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-26T14:46:41.525-0800",
+  "updated": "2026-03-01T03:56:00.984-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a visitor accessing a gated training topic, I want to be redirected to the course landing page, so that I understand how to enroll rather than seeing a blocked page.",
+  "description": "When a user visits a gated topic page within LearnDash training content (e.g., SQL for Salesforce), they should be automatically redirected to the course landing page rather than seeing an access-denied or empty page.\n\nPreferred redirect targets:\n- LearnDash course page: `https://datatoolspro.com/courses/learn-sql-for-salesforce/`\n- Marketing landing page: `https://datatoolspro.com/sql-for-salesforce/`\n\nThe redirect should first check if LearnDash has a built-in redirect option. If not, custom code should handle the redirect to the course landing page.",
+  "acceptance_criteria": [
+    "Users visiting gated LearnDash topic pages are redirected to the course landing page",
+    "The redirect works for all gated topics, not just SQL for Salesforce",
+    "Non-enrolled users see the course landing page instead of a blocked topic page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Users visiting gated topic pages are seamlessly redirected to the course landing page instead of seeing a blocked or empty page.",
+  "middleware_changes": "LearnDash redirect logic implemented, either through built-in settings or custom PHP code to detect gated topics and redirect unenrolled users.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Check LearnDash built-in redirect settings first. If unavailable, implement custom redirect logic in the WordPress theme or a custom plugin.",
+  "comment_summary": "",
+  "comment_count": 0
+}

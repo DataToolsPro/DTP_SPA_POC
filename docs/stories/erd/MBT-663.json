@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-663",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Showing Only One Object After Adding Multiple from Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-24T04:47:50.868-0700",
+  "updated": "2024-05-24T02:25:40.397-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user navigating to the ERD after adding objects in the Dictionary, I want all added objects to appear in the diagram immediately, so that the ERD accurately reflects my current data model without requiring extra steps.",
+  "description": "On the AWS-hosted site, the ERD view only displayed the Account object even after multiple objects had been added from the Dictionary/Migration page. The root cause was that the ERD queries objects based on their fields (specifically fields with `data_type = 'reference'` or `field_api_name = 'Id'`), but object field metadata was only fetched when a user explicitly clicked on an object name in the Dictionary.\n\nThe fix adds a background AJAX call that automatically fetches object field metadata from Salesforce immediately after an object is added to the scorecard. This runs silently without a loading indicator, so the user experience is uninterrupted. When the user navigates to the ERD, the object fields are already available and the diagram renders all objects correctly.",
+  "acceptance_criteria": [
+    "All objects added from the Dictionary/Migration page appear in the ERD diagram",
+    "Object field metadata is fetched automatically in the background when an object is added",
+    "The background fetch does not display a loading indicator to the user",
+    "The ERD renders correctly on the AWS-hosted environment",
+    "Objects with reference fields and Id fields are included in the ERD"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "ERD now reliably displays all added objects immediately after they are added from the Dictionary page, without requiring the user to manually click into each object first.",
+  "middleware_changes": "Added a background AJAX call triggered when an object is added to the scorecard that fetches the object's field metadata from Salesforce. This ensures field data (references, IDs) is available before the user navigates to the ERD.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The ERD fetches objects that have fields with data_type='reference' or field_api_name='Id'. Previously, field metadata was only fetched on-demand when a user clicked an object name. The fix triggers a silent background fetch on object add, so field data is populated before the ERD page is visited.",
+  "comment_summary": "Developer identified that field metadata was only fetched on user click, not on object add. Proposed and implemented a silent background AJAX fetch triggered on object addition. After fix, ERD correctly shows all objects with their fields.",
+  "comment_count": 3
+}

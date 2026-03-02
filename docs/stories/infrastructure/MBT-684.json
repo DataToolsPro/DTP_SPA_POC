@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-684",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Fix PostgreSQL Image Storage for Branding Favicon and Logo",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-05T21:03:00.250-0700",
+  "updated": "2024-07-25T23:51:26.203-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Saving favicon and logo images to the database from the branding settings page was failing under PostgreSQL. The issue was caused by differences in how PostgreSQL handles binary/image data storage compared to MySQL.\n\nThe fix also resolved a secondary bug where the browser page tab title was not updating after being changed in branding settings.",
+  "acceptance_criteria": [
+    "Favicon uploads successfully save to the PostgreSQL database",
+    "Logo uploads successfully save to the PostgreSQL database",
+    "Branding page tab title updates correctly after saving",
+    "Fix is validated on both PostgreSQL (local) and MySQL (staging)"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated image save logic to be compatible with PostgreSQL binary data handling for favicon and logo uploads. Fixed page tab title update logic in branding settings.",
+  "data_model_changes": "Image storage column handling adjusted for PostgreSQL compatibility (binary data encoding differences from MySQL).",
+  "api_changes": "",
+  "dependencies": ["MBT-166"],
+  "source_files": [],
+  "implementation_notes": "Tested on both PostgreSQL (local development) and MySQL (staging). The fix ensures cross-database compatibility for image storage in the branding module.",
+  "comment_summary": "Waqar fixed the image storage issue on his local PostgreSQL instance and also resolved a page tab title bug. Tested and confirmed working on both PostgreSQL and MySQL environments.",
+  "comment_count": 2
+}

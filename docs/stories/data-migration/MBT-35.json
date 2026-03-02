@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-35",
+  "epic_key": "MBT-39",
+  "feature_folder": "data-migration",
+  "title": "Connect OpenAI POC to the Schema Generator Tool",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-05T13:04:05.181-0800",
+  "updated": "2024-05-24T02:24:36.421-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Integrate the OpenAI POC (MBT-34) with the existing Schema Generator Tool. The Schema Generator UI captures column names and data types which are then fed into an OpenAI prompt to generate DDL scripts.\n\nThe tool takes field metadata (field name and Salesforce data type) in a structured format and sends it to OpenAI to produce database-specific DDL. Once validated, the server-side code will be abstracted and plugged into the main blueprint application.\n\nA PHP/cURL implementation was provided as an alternative approach using the text-davinci-003 model with temperature 0.7 and max_tokens 256.",
+  "acceptance_criteria": [
+    "Schema Generator Tool sends field metadata to OpenAI and receives DDL output",
+    "Column names and data types from the UI are correctly formatted into the prompt",
+    "Generated DDL is displayed to the user for review",
+    "Server-side code is structured for future abstraction into the blueprint app"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Server-side integration that takes field metadata from the Schema Generator and constructs an OpenAI prompt. Parses and returns the DDL response.",
+  "data_model_changes": "",
+  "api_changes": "Outbound API call to OpenAI v1/completions endpoint with semi-colon delimited field data as prompt input.",
+  "dependencies": ["MBT-34"],
+  "source_files": [],
+  "implementation_notes": "Used the OpenAI completions API with text-davinci-003 model. The prompt format included database type (e.g., SAP HANA), table name, and field definitions. This was later migrated to newer OpenAI models.",
+  "comment_summary": "",
+  "comment_count": 0
+}

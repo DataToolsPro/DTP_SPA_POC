@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-86",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Data Model Review and Refactoring for Multi-Source Support",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-02T13:42:00.061-0700",
+  "updated": "2026-03-01T03:38:31.676-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "",
+  "description": "Review and refactor the data model to support multi-source data mapping (not just Salesforce as sink). Key changes include:\n\n### Completed Refactoring\n- Changed foreign key from `salesforce_user_id` to `user_id` across tables\n- Created `projects` and `accounts` tables for multi-tenant architecture\n- Captured `sfdcorgid` from Salesforce during registration and stored at account level\n- Added CASCADE delete constraints on user foreign keys\n- Abstracted data model to support source objects alongside Salesforce sink objects\n\n### Architecture\n- Scorecard holds Salesforce objects (sink) at the lowest grain\n- Objects table holds application instance + type (source or sink) + object table\n- Data model designed to support pulling from multiple databases for data mapping, not just Salesforce",
+  "acceptance_criteria": [
+    "Foreign keys use internal user_id instead of salesforce_user_id",
+    "Accounts table stores sfdcorgid from Salesforce authentication",
+    "CASCADE delete is configured on user foreign keys",
+    "Data model supports both source and sink objects"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": true, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Updated foreign key references from salesforce_user_id to user_id. Registration flow captures sfdcorgid.",
+  "data_model_changes": "New projects and accounts tables. CASCADE delete on user foreign keys. Scorecard and objects tables refactored for multi-source support.",
+  "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Referenced Confluence document (Data Model Cleanup) and Migration Blueprint Scorecard Data Model PDF. Several planned changes became irrelevant as the product evolved. Marked done after completing the most impactful refactoring items.",
+  "comment_summary": "Extensive back-and-forth about data model changes. Waqar implemented foreign key changes, accounts table, sfdcorgid capture, and CASCADE deletes. Discussion about scorecard vs objects table grain. Ryan provided architecture diagrams. Some planned changes were deferred as no longer relevant.",
+  "comment_count": 23
+}

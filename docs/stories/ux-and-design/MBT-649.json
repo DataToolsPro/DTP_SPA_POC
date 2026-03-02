@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-649",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Dark Mode Table Gridlines, Search Text Color, and Nav Hover Fixes",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-16T17:29:53.348-0700",
+  "updated": "2024-05-24T02:25:39.655-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user in dark mode, I want table gridlines, search input text, and navigation hover states to be properly visible and readable, so that the dark mode experience is fully usable.",
+  "description": "Three dark mode CSS issues affecting readability and visual consistency.\n\n## Issues and Fixes\n1. **Table gridlines**: Gridlines are too visually prominent in dark mode. Change border color to `#404b6f` for both cell borders and the top/bottom table border to create a subtler look.\n2. **Search input text**: Search box text turns dark in dark mode, making it unreadable. Fix: ensure search input text is light/white.\n3. **Navigation hover**: Top-level navigation text turns darker on hover in dark mode, making it hard to read. Fix: make hover text white instead.",
+  "acceptance_criteria": [
+    "DataTable gridlines use #404b6f border color in dark mode",
+    "Table top and bottom borders match the gridline color in dark mode",
+    "Search input text is light/white in dark mode for readability",
+    "Top navigation hover text is white in dark mode"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dark mode CSS fixes: table gridlines softened to #404b6f, search input text changed to white for readability, navigation hover text changed to white.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "CSS-only changes targeting dark mode selectors. Table border color #404b6f applied to both cell borders and table outer borders for consistency. Search input and nav hover colors overridden for dark mode readability.",
+  "comment_summary": "Developer implemented all three fixes and pushed to staging for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-185",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Fix PerfectScrollbar Initialization Error",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T21:00:24.512-0700",
+  "updated": "2024-05-24T02:24:31.297-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Fix a JavaScript error where PerfectScrollbar initialization fails because no element is specified. The error originates in `argon-dashboard.js` at the custom.js module.\n\n## Error\n```\nUncaught Error: no element is specified to initialize PerfectScrollbar\n    at new PerfectScrollbar (argon-dashboard.js:21411)\n    at ./resources/js/custom.js (argon-dashboard.js:2252)\n```\n\nThe PerfectScrollbar library is being initialized on a DOM element that doesn't exist on the current page.",
+  "acceptance_criteria": [
+    "PerfectScrollbar initialization error no longer appears in the browser console",
+    "Scrollbar functionality works correctly on pages that have the target element"
+  ],
+  "change_layers": { "ux": false, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Added a null check before initializing PerfectScrollbar to prevent the error on pages where the target element doesn't exist.",
+  "comment_summary": "Developer fixed and submitted for review.",
+  "comment_count": 1
+}

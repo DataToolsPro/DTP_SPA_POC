@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1071",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add System of Origin Taxonomy to Data Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-06T21:38:46.367-0800",
+  "updated": "2026-03-01T03:56:41.973-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to classify metrics by their System of Origin, so that I can filter and understand where each metric comes from.",
+  "description": "Add a new \"System of Origin\" taxonomy that allows customers to define and assign origin systems to metrics. Uses the existing `creation_method` field in the data model.\n\n### Implementation\n- New dropdown filter in the filter section for System of Origin\n- System of Origin displayed in the info window\n- Included in CSV/Excel export\n- If the metric originates from the app itself, the origin is \"DataTools Pro\"",
+  "acceptance_criteria": [
+    "System of Origin dropdown filter appears in filter section",
+    "System of Origin displays in the info window",
+    "System of Origin is included in export files",
+    "Default origin for app-created metrics is 'DataTools Pro'"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New System of Origin dropdown filter. Origin displayed in info window. Included in export.",
+  "middleware_changes": "Uses existing creation_method field. Added filter logic and export inclusion.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Leverages existing creation_method field rather than creating a new column. Surfaced in filters, info window, and export.",
+  "comment_summary": "Waqar identified the existing creation_method field could store origin. Implemented filter, info window display, and export integration. Shared screenshots of the new UI.",
+  "comment_count": 3
+}

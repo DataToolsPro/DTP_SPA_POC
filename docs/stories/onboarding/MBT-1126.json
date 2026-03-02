@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1126",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Role-Based Onboarding Content Review",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-05-25T22:00:01.795-0700",
+  "updated": "2026-01-24T22:56:12.292-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see onboarding content tailored to my role, so that the guidance I receive is relevant to how I will use the product.",
+  "description": "Review and potentially customize the onboarding experience based on user role. Initial analysis determined that 90%+ of users are Salesforce admins or developers who should have the same experience, making role-based customization unnecessary at this stage.\n\nThe decision was made to defer role-based onboarding until the application supports non-Salesforce users in a future version. No features were shipped for this ticket.",
+  "acceptance_criteria": [
+    "Onboarding experience is reviewed for role-based customization potential",
+    "Decision documented: 90%+ user base is admins/devs with same needs",
+    "Role-based onboarding deferred to future version supporting non-Salesforce users"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "No features shipped. After data analysis, 90%+ of users are Salesforce admins or devs who should have the same onboarding experience. Role-based onboarding will be revisited when the app forks to support non-Salesforce users.",
+  "comment_summary": "Developer asked about role-based navigation customization. Product owner reviewed user data and decided role-based onboarding is not justified given the homogeneous user base. Deferred to a future version.",
+  "comment_count": 2
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-939",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Delete Source Object and Mapping Metadata",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-27T05:24:08.441-0700",
+  "updated": "2025-01-02T18:38:45.946-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to delete a source object and all its associated mapping metadata from a Salesforce object's mapping screen, so that I can clean up incorrect or outdated migration configurations.",
+  "description": "Add the ability to delete a source object from the mapping screen. When a user wants to remove all mapping data and source object metadata from a specific Salesforce object, they should have an option to delete it. This removes the source object entry and all associated field mappings.\n\nThis is useful when a migration configuration needs to be reset or when a source object was added in error.",
+  "acceptance_criteria": [
+    "Delete option is available for source objects on the mapping screen",
+    "Deleting a source object removes all associated field mappings",
+    "Deleting a source object removes the source object metadata",
+    "Main data table labels and statuses update to reflect removed mappings",
+    "Confirmation prompt is shown before deletion"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New delete option on the mapping screen for source objects. Removes the source object and all associated mapping data with a confirmation prompt.",
+  "middleware_changes": "Cascade delete logic that removes the source object record and all associated field mapping entries from the database.",
+  "data_model_changes": "Cascade deletion of source object metadata and associated mapping records from the mapping tables.",
+  "api_changes": "",
+  "dependencies": ["MBT-77"],
+  "source_files": [],
+  "implementation_notes": "Cascade delete ensures all related mapping data is cleaned up when a source object is removed.",
+  "comment_summary": "Developer implemented and deployed to development for review.",
+  "comment_count": 1
+}

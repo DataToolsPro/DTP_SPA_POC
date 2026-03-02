@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-208",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Add Tooltips to Metric Creation Button and Category Gear Icon",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-27T18:20:59.736-0700",
+  "updated": "2026-03-01T01:28:31.961-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want helpful tooltips on the metric creation button and the category gear icon, so that I understand what each control does before clicking it.",
+  "description": "Two tooltips needed to be added to the Metrics Glossary interface to improve discoverability and guide users through the workflow.\n\n## Tooltip Specifications\n\n1. **Metric creation button** (disabled state) — tooltip text: \"Please enter a metric into the text box to enable this button to create your metric.\"\n2. **Category gear icon** — tooltip text: \"Add and edit Line of Business and Topics.\"\n\n## Technical Constraint\n\nAdding a tooltip to a disabled button presented a challenge with the current Bootstrap/jQuery version. Standard tooltip behavior does not attach to disabled elements. The workaround applies the tooltip to an active wrapper element rather than the disabled button directly.",
+  "acceptance_criteria": [
+    "Disabled metric creation button shows tooltip: 'Please enter a metric into the text box to enable this button to create your metric.'",
+    "Category gear icon shows tooltip: 'Add and edit Line of Business and Topics'",
+    "Tooltip on disabled button works correctly despite Bootstrap/jQuery version constraints"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added instructional tooltips to the metric creation button (in disabled state) and the category gear icon. The disabled-button tooltip required a wrapper element workaround due to Bootstrap/jQuery version limitations.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bootstrap tooltips do not natively attach to disabled elements. The solution wraps the disabled button in a container element that receives the tooltip. This pattern is specific to the Bootstrap/jQuery versions in use.",
+  "comment_summary": "Developer encountered a technical limitation where Bootstrap tooltips could not be applied to disabled buttons with the current library versions. Various solutions from older Bootstrap/jQuery versions were tried but did not work. The issue was flagged for guidance.",
+  "comment_count": 1
+}

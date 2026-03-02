@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-1112",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Support One-to-Many Logic Definitions per Metric",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-27T22:56:16.209-0700",
+  "updated": "2026-03-01T04:01:37.734-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to associate multiple logic implementations with a single metric, so that I can track how the same metric is expressed across different systems (Salesforce, Snowflake, Tableau, etc.).",
+  "description": "Refactor the metric logic relationship from a single text field to a one-to-many model. A single metric can be implemented across multiple systems with different expressions (SQL, Python, Tableau formulas, etc.).\n\n### Use Cases\n- Same metric implemented in two Snowflake orgs for different divisions\n- A metric implemented in both Salesforce and Snowflake with different logic\n- Logic expressed as SQL, Python, and Tableau expressions for the same metric\n\n### Goal\nMaintain both the logical definition and the mapping/lineage to where logic has been implemented across systems. This preserves semantic metadata from multiple sources.",
+  "acceptance_criteria": [
+    "Multiple logic implementations can be associated with a single metric",
+    "Each logic entry supports a system-of-origin identifier",
+    "UI allows viewing and managing multiple logic entries per metric",
+    "Existing single-logic metrics are migrated to the new model"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": true, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "UI updated to display and manage multiple logic entries per metric.",
+  "middleware_changes": "Refactored logic storage from single text field to one-to-many relationship.",
+  "data_model_changes": "New one-to-many relationship table for metric logic implementations with system-of-origin metadata.",
+  "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Supports cross-system metric lineage tracking. Logic can be expressed in different languages (SQL, Python, Tableau expressions).",
+  "comment_summary": "Waqar updated the logic to support one-to-many relationships and updated the UI on development. Shared a screenshot for review.",
+  "comment_count": 1
+}

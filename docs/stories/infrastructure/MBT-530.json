@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-530",
+  "epic_key": "MBT-531",
+  "feature_folder": "infrastructure",
+  "title": "Add Kinesis Data Firehose Stream and New Relic Integration for Lambda Error Logs",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T21:35:34.359-0800",
+  "updated": "2024-05-24T02:25:43.924-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Set up an AWS Kinesis Data Firehose stream to capture error logs from Lambda services and forward them to New Relic for centralized monitoring and alerting. This was configured in the us-west-2 region in collaboration with Raj.",
+  "acceptance_criteria": [
+    "Kinesis Data Firehose stream is provisioned in us-west-2",
+    "Lambda service error logs are streamed to the Firehose delivery stream",
+    "New Relic ingests log data from the Firehose stream",
+    "Error logs are visible and searchable in the New Relic dashboard"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Kinesis Data Firehose configured in us-west-2 with New Relic as the destination. Streams error logs from Lambda services for centralized observability.",
+  "comment_summary": "",
+  "comment_count": 0
+}

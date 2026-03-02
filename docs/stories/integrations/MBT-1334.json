@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1334",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Populate GitHub Actions Secrets and Variables for CI/CD Pipelines",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:22.078-0800",
+  "updated": "2026-03-01T04:20:42.101-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "GitHub"],
+  "story": "",
+  "description": "Populate all GitHub Actions secrets and variables referenced by CI/CD workflows, as documented in docs/SECRETS.md.\n\n### Repo-level Secrets\n- CLOUDFLARE_API_TOKEN\n- CLOUDFLARE_ACCOUNT_ID\n- CLOUDFLARE_ZONE_ID\n- OPENAI_API_KEY\n- ANTHROPIC_API_KEY\n\n### Variables\n- CLOUDFLARE_PAGES_PROJECT\n\n### Environment-specific Secrets\n- STAGING_SSH_* (from Cloudways tasks)\n- PRODUCTION_SSH_* (from Cloudways tasks)",
+  "acceptance_criteria": [
+    "All repo-level secrets are populated in GitHub",
+    "CLOUDFLARE_PAGES_PROJECT variable is set",
+    "Environment-specific staging and production SSH secrets are configured",
+    "ci-frontend.yml workflow runs green",
+    "ci-backend.yml workflow runs green",
+    "deploy-staging.yml workflow runs green"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of Phase 2 as documented in docs/JIRA_TICKET_BACKLOG.md. Secrets include Cloudflare, OpenAI, Anthropic API keys, and environment-specific SSH credentials for Cloudways deployments.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

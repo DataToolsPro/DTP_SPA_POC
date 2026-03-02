@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-79",
+  "epic_key": "MBT-923",
+  "feature_folder": "data-dictionary",
+  "title": "Change Log for New Fields via Salesforce Native Integration",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-31T23:05:42.052-0700",
+  "updated": "2026-03-01T01:27:24.085-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "",
+  "description": "This ticket captures the roadmap intent to build a change log feature that tracks new fields added to Salesforce objects. The approach involves connecting to and pulling down Salesforce object metadata natively, similar to how report and dashboard records are fetched (not the JSON metadata). This is a future-roadmap investigation item for the Salesforce hybrid application architecture.",
+  "acceptance_criteria": [
+    "Investigation completed into native Salesforce object metadata retrieval for change tracking",
+    "Approach documented for pulling new-field change log data from Salesforce"
+  ],
+
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Planned integration with Salesforce native objects to pull field-level change log data, similar to the existing report/dashboard record retrieval pattern.",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "This is a future roadmap item. The approach is to pull Salesforce object metadata natively rather than through the REST describe API, enabling detection of newly added fields for change log purposes.",
+  "comment_summary": "Developer requested elaboration. Product owner clarified this is future roadmap functionality involving native Salesforce object connections for change log tracking, similar to how report/dashboard records are already pulled.",
+  "comment_count": 2
+}

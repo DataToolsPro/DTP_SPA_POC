@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-410",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Spike: Clarify Account vs Team Entity Relationship in Data Model",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-08T21:12:49.237-0800",
+  "updated": "2024-05-24T02:25:05.340-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "Clarify the role of the Account entity in the data model and its relationship to Team. The key question was whether Account and Team have a 1:1 relationship, and which entity holds the Salesforce Org ID.\n\n## Resolved Data Model\nAfter Salesforce authentication, the following model was confirmed:\n\n1. **SalesforceOrganization** — holds the Salesforce Org ID. Created on first authentication if not already present.\n2. **User** — created/updated based on Salesforce callback data.\n3. **SalesforceAuthToken** — 1:1 relationship with User.\n4. **Team** — 1:1 relationship with SalesforceOrganization. Each User owns one Team (via `owner_id`). Users have a 1:many relationship with Teams.\n5. **Account** — effectively deprecated and no longer used.\n\nThe Account table was replaced by SalesforceOrganization and the Team entity now serves as the primary organizational unit.",
+  "acceptance_criteria": [
+    "SalesforceOrganization entity holds the Salesforce Org ID",
+    "Team has a 1:1 relationship with SalesforceOrganization",
+    "Each User is the owner of exactly one Team",
+    "User has a 1:many relationship with Teams for membership",
+    "Account table is deprecated and no longer referenced in new code"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Account table deprecated. Replaced by SalesforceOrganization (holds SF Org ID, 1:1 with Team) and restructured Team entity (owner_id for 1:1 User ownership, 1:many for User membership). SalesforceAuthToken added with 1:1 User relationship.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The old Account table is no longer in use. After Salesforce OAuth callback, the system creates/updates SalesforceOrganization, User, SalesforceAuthToken, and Team entities in sequence.",
+  "comment_summary": "Waqar explained the full post-authentication data model: SalesforceOrganization replaces Account, Team has 1:1 with SalesforceOrganization, User owns one Team but can belong to many. Ryan confirmed the Account table is deprecated, which simplifies the model.",
+  "comment_count": 3
+}

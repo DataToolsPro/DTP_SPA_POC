@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-554",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Append Existing Metrics Dictionary to Service 2 Request with Classification",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-01T23:00:41.597-0800",
+  "updated": "2026-03-01T01:29:41.638-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Extend the Service 2 JSON request to include two new attributes on every item and to append existing metrics from the DataTools dictionary.\n\n### New Attributes\n\n1. **Classification** — Differentiates the source of each item:\n   - `\"Analyze\"` for dashboard widgets being sent for AI analysis\n   - `\"Metric\"` for existing dictionary metrics already confirmed in the system\n2. **Description** — A text field for metric descriptions. Salesforce widgets do not have proper descriptions, so this field will be empty for them. Existing dictionary metrics will populate it with their stored definition. Reserved for future integrations where dashboard sources may supply descriptions.\n\n### Payload Structure\n\nThe request body is a union of widgets and existing metrics in a single JSON array using the same schema. The Classification attribute tells the AI service how to treat each item. Most fields on existing metrics will be empty or null since they originate from the dictionary rather than a Salesforce dashboard, but the common model ensures forward compatibility as the metric schema evolves.\n\nExample widget entry: `{...existing fields..., \"Classification\": \"Analyze\", \"Description\": \"\"}`\nExample metric entry: `{\"dboard_name\": \"<Metric Name>\", ..., \"Classification\": \"Metric\", \"Description\": \"<Metric Definition>\"}`",
+  "acceptance_criteria": [
+    "Every widget in the request payload includes a Classification field set to 'Analyze'",
+    "Every widget in the request payload includes a Description field (empty string for Salesforce widgets)",
+    "All existing dictionary metrics are appended to the same payload array",
+    "Dictionary metrics have Classification set to 'Metric' and Description set to their stored definition",
+    "Dictionary metrics map to the same JSON schema as widgets (unmapped fields are empty/null)",
+    "The unified payload is accepted by Service 2 without validation errors"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Modified the Service 2 request builder to add Classification and Description attributes to each widget item. Implemented logic to fetch existing dictionary metrics, map them to the widget JSON schema, and append them to the request array.",
+  "data_model_changes": "",
+  "api_changes": "Service 2 request body now includes Classification and Description fields on every item. Existing dictionary metrics are appended using the same schema as dashboard widgets, creating a unified payload.",
+  "dependencies": ["MBT-552"],
+  "source_files": [],
+  "implementation_notes": "The developer posted the combined JSON payload (metric + analyze arrays) on staging for review. The approach was confirmed and forwarded to the external AI service team (Raj and Anton). The unified schema allows both widget and dictionary data in a single request, with Classification as the discriminator.",
+  "comment_summary": "Developer posted the combined JSON payload for review. Ryan confirmed the format was correct and asked it to be forwarded to Raj and Anton for the service-side implementation. The ticket was briefly blocked pending the external web service patch.",
+  "comment_count": 6
+}

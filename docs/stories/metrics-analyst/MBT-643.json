@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-643",
+  "epic_key": "MBT-644",
+  "feature_folder": "metrics-analyst",
+  "title": "Integrate Updated Lambda Function for Service 2 with Metrics Comparison",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-15T20:00:57.405-0700",
+  "updated": "2024-05-24T02:25:39.252-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "A new Lambda function for Service 2 has been deployed that compares the Metrics Analyst recommendations against existing metrics in the customer's glossary. The payload now includes both the existing metrics JSON and the Service 1 response structure, enabling the AI to detect duplicates and known metrics.\n\nThe front end needs to be wired up to call this new Lambda endpoint and handle the enhanced response that includes Known Metric, Known Formula, and Known Metric by Formula fields.\n\nInitial testing revealed the new service was returning duplicate metric entries in the response.",
+  "acceptance_criteria": [
+    "Front end calls the new Lambda function URL for Service 2",
+    "Request payload includes existing metrics and Service 1 response",
+    "Response with Known Metric fields is properly parsed and displayed",
+    "Duplicate metric entries from the response are handled"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated the Service 2 integration to call the new Lambda endpoint. Payload now includes existing metrics JSON alongside the Service 1 response.",
+  "data_model_changes": "",
+  "api_changes": "New Lambda function URL for Service 2 that accepts existing metrics + Service 1 response and returns enhanced metric recommendations with Known Metric matching fields.",
+  "dependencies": ["MBT-506"],
+  "source_files": [],
+  "implementation_notes": "The new service was tested on both staging and AWS. Initial response contained duplicate metrics which was reported as a separate issue. The endpoint was built by the AI service team using example payload from the stage server.",
+  "comment_summary": "Developer wired up the new endpoint and tested on both staging and AWS. Found duplicate metrics in the response. Service team confirmed the payload format. Ryan wanted to complete production rollout before doing extensive stage testing.",
+  "comment_count": 7
+}

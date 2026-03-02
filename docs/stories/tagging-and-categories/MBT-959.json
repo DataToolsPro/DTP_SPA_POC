@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-959",
+  "epic_key": "MBT-1010",
+  "feature_folder": "tagging-and-categories",
+  "title": "Governance Attributes Tab and Filters for Data Model Fields",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-20T22:07:43.779-0700",
+  "updated": "2024-11-27T22:27:52.173-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a Salesforce administrator, I want to view governance attributes such as Data Sensitivity Level on a dedicated tab for data model fields and filter the fields DataTable by these attributes, so that I can manage governance metadata directly within DataTools Pro without switching to Salesforce Setup.",
+  "description": "Salesforce objects have governance attributes (e.g., Data Sensitivity Level, Compliance Category) that are valuable for data governance workflows. This feature adds a Governance tab to the data model field detail view and introduces filter dropdowns in the fields DataTable to filter by governance attributes.\n\nThe governance metadata is sourced from the Salesforce object metadata API (describe calls). One challenge encountered was that the Data Sensitivity Level field is not returned by the standard metadata describe endpoint or Workbench. The implementation pulls available governance attributes and displays them in a dedicated tab, with dropdown filters in the DataTable that dynamically populate options based on the values present in the current dataset.\n\nFilter behavior: dropdown options are populated from the data currently in the table. If no rows have a particular governance value, that option does not appear in the filter dropdown.",
+  "acceptance_criteria": [
+    "A Governance tab is displayed on the data model field detail view",
+    "Governance attributes from Salesforce (e.g., Compliance Category) are shown on the tab",
+    "The fields DataTable includes filter dropdowns for governance attributes",
+    "Filter dropdown options are dynamically populated from values present in the current DataTable rows",
+    "Empty governance attribute values result in the filter dropdown showing no options for that attribute",
+    "Governance data is sourced from the Salesforce object metadata API"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a new Governance tab on the field detail view showing governance attributes. Adds filter dropdowns to the fields DataTable for governance attributes, with dynamically populated options based on current data.",
+  "middleware_changes": "New logic to fetch and parse governance attribute metadata from the Salesforce describe API and map it to the field detail and DataTable filter structures.",
+  "data_model_changes": "",
+  "api_changes": "Integrates with the Salesforce object metadata describe endpoint to retrieve governance attributes for fields. Note: Data Sensitivity Level was not available via the standard describe API or Workbench.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Waqar discovered that the Data Sensitivity Level attribute is not returned by the Salesforce metadata describe endpoint or Workbench, which limited the governance attributes available. The filter dropdowns use a dynamic approach where options are derived from the DataTable's current rows rather than a static list. Implementation was done on local, then filters were added, and it was pushed for review.",
+  "comment_summary": "Waqar reported that Data Sensitivity Level could not be retrieved from Salesforce's metadata API or Workbench and requested help. The governance tab and filters were implemented locally, with filters dynamically populating dropdown options from DataTable row values. Changes were ready for review.",
+  "comment_count": 4
+}

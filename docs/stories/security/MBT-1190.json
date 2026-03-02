@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1190",
+  "skipped": true,
+  "skip_reason": "stub_description",
+  "title": "Vulnerability Scan",
+  "status": "In Progress",
+  "feature_folder": "security"
+}

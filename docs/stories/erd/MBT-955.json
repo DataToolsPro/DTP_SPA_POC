@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-955",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Add Descriptive CSS Classes to ERD Settings for Pendo Analytics Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-13T16:31:50.363-0700",
+  "updated": "2024-11-03T19:03:24.960-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "Adds descriptive CSS class names to the ERD settings toggle buttons so they can be tracked with Pendo analytics. This enables usage tracking of individual ERD features to understand which settings users engage with most.\n\nClasses added:\n- `erdshowuserrelationship` — Show User Relationships toggle\n- `erdusefieldapiname` — Use Field API Name toggle\n- `erdshowexternalid` — Show External IDs toggle",
+  "acceptance_criteria": [
+    "Each ERD settings toggle has a unique, descriptive CSS class",
+    "Classes are named descriptively: erdshowuserrelationship, erdusefieldapiname, erdshowexternalid",
+    "Pendo can target these elements by class for analytics tracking"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple CSS class additions to existing toggle elements. No functional changes — purely for Pendo analytics targeting.",
+  "comment_summary": "Developer added the three classes and pushed to development quickly.",
+  "comment_count": 1
+}

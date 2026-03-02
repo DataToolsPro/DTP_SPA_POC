@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1038",
+  "epic_key": "MBT-923",
+  "feature_folder": "data-dictionary",
+  "title": "Add Detected Change Date to Field Change Log",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-17T20:36:56.988-0800",
+  "updated": "2024-12-22T21:41:09.820-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to see the date DataTools detected each field change in the change log, so that I can sort and review changes chronologically by when they were actually discovered.",
+  "description": "The field change log currently shows a 'Last Modified Date' column which does not clearly indicate when DataTools Pro detected the change. This update:\n\n1. Adds a new 'Detected Change' column that records the date (date only, not datetime) when the change record was inserted by the DataTools scheduler.\n2. Removes the 'Last Modified Date' column which was less useful for tracking detection timing.\n\nThe detected change date is set to the insertion date of the change record, representing when DataTools Pro's scheduled refresh first identified the change.",
+  "acceptance_criteria": [
+    "A 'Detected Change' column appears in the field change log table",
+    "Detected Change shows the date (not datetime) when the change was recorded",
+    "The 'Last Modified Date' column is removed from the table",
+    "Change log entries can be sorted by the Detected Change date",
+    "New change records automatically populate the Detected Change field on insertion"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaces the 'Last Modified Date' column with a new 'Detected Change' column in the change log table. Shows date-only format.",
+  "middleware_changes": "Sets the detected change date to the current date when inserting new change log records during the scheduled refresh.",
+  "data_model_changes": "New 'detected_change' date column added to the change log table. 'Last Modified Date' column deprecated from the view.",
+  "api_changes": "",
+  "dependencies": ["MBT-906"],
+  "source_files": [],
+  "implementation_notes": "The detected change date is populated by the Laravel app at the time the change record is inserted, not from any Salesforce timestamp. This gives users a clear timeline of when DataTools Pro's monitoring detected each change.",
+  "comment_summary": "Developer updated the column and confirmed the detected change date is set when the Laravel app detects the change. Deployed to development with a screenshot.",
+  "comment_count": 1
+}

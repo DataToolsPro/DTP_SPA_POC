@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-782",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Status Dropdown Filter for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-30T19:53:51.057-0700",
+  "updated": "2024-07-26T00:00:13.682-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to filter reports and dashboards by their Status attribute, so that I can quickly view only items in a specific status.",
+  "description": "Adds a Status dropdown filter to the left sidebar filter pane on the Reports and Dashboards page. The dropdown populates with the available status values from the report/dashboard records and filters the data table when a status is selected.",
+  "acceptance_criteria": [
+    "Status dropdown filter is visible in the left sidebar filter pane",
+    "Dropdown populates with available status values from the data",
+    "Selecting a status filters the data table to show only matching records",
+    "Status filter works in combination with other sidebar filters"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a Status dropdown filter to the left sidebar on the Reports and Dashboards page.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Status dropdown was added alongside existing filters in the left sidebar pane. Confirmed working on staging.",
+  "comment_summary": "Balaji added the status dropdown and shared a screenshot. Confirmed working on staging.",
+  "comment_count": 3
+}

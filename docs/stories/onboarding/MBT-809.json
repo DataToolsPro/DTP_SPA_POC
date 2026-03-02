@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-809",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Sign-Up OTP Links Not Being Sent",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T15:39:47.010-0700",
+  "updated": "2026-03-01T03:47:36.693-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "The sign-up OTP (one-time password) email links stopped being sent. Users attempting to register via the web-to-lead form received no OTP emails. Multiple email addresses were tested without success. The issue was subsequently resolved and verified working.",
+  "acceptance_criteria": [
+    "OTP emails are reliably sent when a user submits the sign-up form",
+    "OTP links work for all valid email addresses",
+    "Email delivery is verified across multiple test addresses"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed the OTP email sending mechanism in the sign-up flow to restore reliable delivery.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was reported when multiple email addresses (ryan@goodmangroupllc.com, support@datatoolspro.cm, support@goodmangroupllc.com) all failed to receive OTP links. Issue was retested and confirmed resolved.",
+  "comment_summary": "Reporter retested and confirmed the OTP sign-up flow was working again, then closed the issue.",
+  "comment_count": 2
+}

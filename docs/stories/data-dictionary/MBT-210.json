@@ -1,0 +1,45 @@
+{
+  "issue_key": "MBT-210",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Add Tooltips and Salesforce Launch Button to Object Detail",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-27T18:58:11.558-0700",
+  "updated": "2026-03-01T01:28:35.447-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a Salesforce administrator using DataTools Pro, I want a cloud icon that opens the Salesforce Object Manager for the current object in a new window, and I want informative tooltips on action icons, so that I can quickly navigate to Salesforce admin screens without manually constructing URLs.",
+  "description": "Two enhancements were added to the object detail view:\n\n1. **Salesforce Launch Icon**: A new cloud icon opens the Salesforce Object Manager detail page for the currently viewed object in a new browser tab. The URL is constructed by concatenating the user's Salesforce instance URL (already stored in the database) with the object's `object_identifier` value: `{instance_url}/lightning/setup/ObjectManager/{object_identifier}/Details/view`.\n\n2. **Refresh Icon Tooltip**: The existing refresh button now displays a tooltip: 'Click to refresh and pull the latest fields from Salesforce.'",
+  "acceptance_criteria": [
+    "A cloud icon appears in the object detail header area",
+    "Clicking the cloud icon opens Salesforce Object Manager for that object in a new browser tab",
+    "The Salesforce URL is correctly constructed using the stored instance URL and object identifier",
+    "The cloud icon has a tooltip: 'Click to open Salesforce object manager'",
+    "The refresh icon has a tooltip: 'Click to refresh and pull the latest fields from Salesforce'"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a Salesforce cloud icon that launches the Object Manager in a new tab, plus tooltips on both the new cloud icon and the existing refresh icon.",
+  "middleware_changes": "Retrieves the Salesforce instance URL and object identifier from the database to construct the Object Manager deep link.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The Salesforce instance URL is already captured during authentication and stored in the database. The object_identifier field from the source_object table is used for the Object Manager URL path segment. The implementation uses the existing data without requiring additional API calls.",
+  "comment_summary": "Developer confirmed the instance URL was already in the database, added the icon and link. Product owner requested a specific tooltip text for the refresh button. Developer updated the tooltip text accordingly.",
+  "comment_count": 6
+}

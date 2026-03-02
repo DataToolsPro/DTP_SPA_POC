@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1090",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Not Rendering with GoJS Trial Watermark",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T00:30:44.262-0700",
+  "updated": "2026-03-01T04:06:19.019-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want the ERD diagram to render correctly without a trial watermark, so that I can view entity relationships for even a single object.",
+  "description": "## Bug\nWhen rendering a single object in the ERD, the diagram is empty and the GoJS trial watermark is displayed, indicating a license key issue.\n\n## Fix\nThe GoJS license key was updated/fixed. After the fix, single-object ERDs render correctly with the licensed version.",
+  "acceptance_criteria": [
+    "ERD renders correctly for a single selected object",
+    "GoJS trial watermark is not displayed",
+    "License key is valid and properly configured"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Fixed empty ERD diagram and removed GoJS trial watermark so diagrams render correctly.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-720"],
+  "source_files": [],
+  "implementation_notes": "Recurring GoJS license issue — the key needed to be updated again. Tested with a new Salesforce Trailhead playground account to verify single-object rendering.",
+  "comment_summary": "Developer fixed the license issue and verified single-object rendering with a new test account.",
+  "comment_count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1312",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Upgrade Laravel version to latest for DataTools v2",
+  "status": "In Review",
+  "feature_folder": "infrastructure"
+}

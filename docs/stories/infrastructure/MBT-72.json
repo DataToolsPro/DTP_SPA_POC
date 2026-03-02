@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-72",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Implement Global App Version Number with Event Logging",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-19T13:47:23.768-0700",
+  "updated": "2026-03-01T04:19:51.305-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Introduce a centralized version and release number for DataTools Pro. The version follows semantic versioning: `0.7.x` where 0 = beta, 7 = sub-version iteration, x = release number.\n\n### Requirements\n1. Centralize `$APP_VERSION` variable in `config.php` (included on every page)\n2. Include the version in Zapier webhook payloads for login, registration, and activation events\n3. Add a `version` column to the MySQL event log table to stamp every event with the app version\n4. Version should be available as a global variable for all pages and services",
+  "acceptance_criteria": [
+    "$APP_VERSION is defined in config.php and available globally",
+    "Zapier webhook payloads for login, registration, and activation include the version field",
+    "Event log table in MySQL includes a version column",
+    "All logged events are stamped with the current app version"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added $APP_VERSION global variable in config.php. Updated login, registration, and activation handlers to include version in Zapier webhook payloads.",
+  "data_model_changes": "Added version column to the MySQL event log table.",
+  "api_changes": "Zapier webhook JSON payloads now include a 'version' field.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Version variable stored in config.php as $APP_VERSION. On login and registration, the version is sent to Zapier as a JSON field and stored in the event log table.",
+  "comment_summary": "Developer asked about where to centralize the version and the purpose of storing it in the database. Decision was to use config.php for the version variable. Developer implemented the version in config.php, updated Zapier payloads, and added the version column to the event log table.",
+  "comment_count": 5
+}

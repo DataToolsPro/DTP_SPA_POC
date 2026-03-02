@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-550",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Suppress Search Icon on Dictionary, Object, and Migration Toolbar",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-29T22:10:48.576-0800",
+  "updated": "2026-03-01T01:29:28.747-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user, I want the redundant search icon removed from the Dictionary, Object, and Migration toolbars, so that the toolbar is cleaner since inline search is already always visible.",
+  "description": "The search icon on the toolbar was redundant because the search field is always visible inline on the Dictionary, Object, and Migration pages. The icon was suppressed from the toolbar across all three views to reduce visual clutter.",
+  "acceptance_criteria": [
+    "Search icon is no longer visible on the Dictionary toolbar",
+    "Search icon is no longer visible on the Object toolbar",
+    "Search icon is no longer visible on the Migration toolbar",
+    "Inline search functionality remains fully operational"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed the redundant search icon from the toolbar on Dictionary, Object, and Migration pages, since inline search is always visible.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Simple UI cleanup — the search icon was hidden via CSS or removed from the toolbar template for the three affected views.",
+  "comment_summary": "Developer completed the change on staging.",
+  "comment_count": 1
+}

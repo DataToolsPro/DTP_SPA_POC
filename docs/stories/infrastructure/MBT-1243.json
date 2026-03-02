@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1243",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Investigate Server Memory Leak Causing Steady Memory Consumption",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-11-26T21:58:08.072-0800",
+  "updated": "2026-03-01T04:10:33.567-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Server memory consumption was steadily increasing over time, indicating a memory leak from a long-running process. Memory was freed by rebooting services.\n\n### Investigation Checklist\n\n**Potential Causes:**\n1. PHP memory leak in long-running processes (Horizon, Octane, queue workers, cron jobs, custom daemons)\n2. Queue workers not being recycled (running without `--max-jobs` or `--max-time`)\n3. Server swapping due to memory pressure\n4. Runaway processes (large log files, supervisor respawning workers, malicious bots, Node/Vite processes)\n\n**Recommended Queue Worker Settings:**\n```\nphp artisan queue:work --max-jobs=100 --max-time=3600 --memory=256\n```\n\n**Diagnostic Commands:**\n- `ps aux --sort=-rss | head` — Top memory consumers\n- `free -m` — Memory status\n- `htop`, `vmstat 1` — Real-time monitoring\n- `du -sh storage/logs` — Log file sizes",
+  "acceptance_criteria": [
+    "Root cause of memory leak identified",
+    "Long-running processes configured with proper memory limits",
+    "Queue workers recycled with max-jobs and max-time settings",
+    "Memory consumption stabilizes after fix"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Queue worker configuration updated with memory limits and recycling settings.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Memory freed immediately after service reboot, confirming a long-running process was the cause. Cron jobs are a likely culprit. Workers should be configured with --max-jobs=100 --max-time=3600 --memory=256.",
+  "comment_summary": "Memory freed by rebooting services. Developer identified cron jobs as a potential cause. Further investigation needed to pinpoint the exact process.",
+  "comment_count": 2
+}

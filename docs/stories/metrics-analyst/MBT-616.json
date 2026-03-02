@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-616",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Allow Merging with a Single Metric Selection",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T21:15:55.596-0700",
+  "updated": "2024-05-24T02:25:37.890-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to merge a single new metric recommendation into an existing dictionary metric, so that I can consolidate related metrics without needing to select multiple new recommendations first.",
+  "description": "Previously, the merge function required selecting at least 2 new metric recommendations before the merge button became active. Since users can now merge a new metric into an existing dictionary entry, the validation should be reduced to require only 1 selection.\n\nThe merge popup adapts its display based on the selection count:\n- **1 metric selected**: Only shows the 'merge to existing dictionary' option (hides the create-and-merge section)\n- **2+ metrics selected**: Shows both create-and-merge and merge-to-existing options",
+  "acceptance_criteria": [
+    "Merge button activates when 1 metric is selected (previously required 2)",
+    "With 1 metric selected, only the merge-to-existing option is shown",
+    "With 2+ metrics selected, both create-and-merge and merge-to-existing options are shown",
+    "Merge button remains grayed out when nothing is selected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Merge button now activates with a single selection. The popup dynamically shows/hides sections based on selection count — single selection shows only merge-to-existing, multiple selection shows both options.",
+  "middleware_changes": "Updated validation logic to accept single-metric merge operations.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The popup window adapts its layout based on selection count. When only one metric is selected, the 'create and merge' section is hidden since it requires two records to designate a primary.",
+  "comment_summary": "Developer implemented the adaptive popup and conditional display. With one metric selected, only the merge-to-existing option appears. Ryan approved.",
+  "comment_count": 3
+}

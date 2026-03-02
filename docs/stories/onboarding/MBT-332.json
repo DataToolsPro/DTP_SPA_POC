@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-332",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Region-Based Access Control Using Salesforce Instance Location",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-30T22:37:58.085-0700",
+  "updated": "2024-05-24T02:25:07.068-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a product administrator, I want access restricted to users whose Salesforce instance is hosted in North America, so that only approved geographies can use the authenticated application while supporting manual overrides for exceptions.",
+  "description": "Implement region-based access control that restricts authenticated application access to users with North American Salesforce instances. The system determines the user's region by looking up their Salesforce instance key via the Salesforce Status API and checking whether the instance location is 'NA'.\n\nUsers outside approved regions see an Access Denied page with a 'Learn more' link explaining region availability. An override mechanism allows administrators to manually approve users from non-NA regions by updating their database record.\n\n### Implementation Details\n- Script imports all Salesforce instance data from the Status API into a local database table\n- During authentication, the app resolves the user's Salesforce org to an instance key via the instanceAliases endpoint\n- Middleware checks the instance location; only 'NA' locations are permitted\n- Access denied page includes a link to the region availability tutorial",
+  "acceptance_criteria": [
+    "Users with Salesforce instances in NA region can access the application",
+    "Users outside NA region see an Access Denied page",
+    "Access Denied page shows a 'Learn more' link to the region availability article",
+    "Salesforce instance data is imported and stored locally for lookup",
+    "Instance key is captured and saved per account during authentication",
+    "Manual override field exists to grant access to non-NA users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Access Denied page displayed for users outside approved regions with a 'Learn more' link to the region availability tutorial at datatoolspro.com.",
+  "middleware_changes": "Region check middleware validates the current account's instance key against imported Salesforce instance data. Redirects to Access Denied page if location is not 'NA'.",
+  "data_model_changes": "New table storing Salesforce instance data with columns: key, location, environment, releaseVersion, releaseNumber, status, isActive, city, stateName, stateCode, countryName, countryCode, instanceKey. Instance key field added to account/team records.",
+  "api_changes": "",
+  "dependencies": ["MBT-331", "MBT-468"],
+  "source_files": [],
+  "implementation_notes": "Uses Salesforce Status API (`/v1/Instances` and `/v1/instanceAliases/`) to resolve instance location. Protected admin route created to import instance data. The 'Get Help' link was renamed to 'Learn more' pointing to the region availability tutorial. Manual override field planned for admin to grant exceptions for non-NA tenants.",
+  "comment_summary": "Extensive discussion about region detection approach. Initial implementation used user's zoneinfo from Salesforce. Pivoted to using Salesforce instance location (NA = allowed) via Status API. Override mechanism discussed for manually approving non-NA users. Access Denied page link updated from 'Get Help' to 'Learn more' pointing to region availability article.",
+  "comment_count": 21
+}

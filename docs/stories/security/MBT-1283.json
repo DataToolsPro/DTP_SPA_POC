@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1283",
+  "epic_key": "MBT-1294",
+  "feature_folder": "security",
+  "title": "Session Revocation API Endpoint",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T22:10:13.450-0800",
+  "updated": "2025-12-17T22:20:01.086-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a product administrator, I want to terminate user sessions on demand, so that I can immediately revoke access for compromised accounts or departing employees.",
+  "description": "Expose an API endpoint for administrators to revoke user sessions for security or compliance reasons.\n\n## Endpoint\n\n`POST /api/auth/revoke`\n\n## Parameters\n\n- `user_id` — revoke all sessions for a user\n- `session_id` — revoke a specific session\n\n## Use Cases\n\n- Admin force-logout of a compromised account\n- User-initiated \"log out all devices\"\n- Account suspension or termination\n\n## Technical Approach\n\n- Wrap Stytch's `sessions.revoke()` method\n- For \"terminate all user sessions\": call with `user_id`\n- For single session: call with `session_id`\n- Log revocation events with reason",
+  "acceptance_criteria": [
+    "POST /api/auth/revoke endpoint is exposed and documented",
+    "Accepts user_id parameter to revoke all sessions for a user",
+    "Accepts session_id parameter to revoke a specific session",
+    "Calls Stytch sessions.revoke() API correctly",
+    "Returns success/failure response with appropriate status codes",
+    "Revocation events are logged with reason and admin context"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Session revocation service wrapping Stytch's sessions.revoke() with logging and error handling.",
+  "data_model_changes": "",
+  "api_changes": "POST /api/auth/revoke — accepts {user_id} or {session_id}, returns success/failure. Admin-only authorization required.",
+  "dependencies": ["MBT-1275"],
+  "source_files": [],
+  "implementation_notes": "Stytch handles the actual session invalidation — the endpoint is a thin wrapper with authorization checks, input validation, and audit logging.",
+  "comment_summary": "",
+  "comment_count": 0
+}

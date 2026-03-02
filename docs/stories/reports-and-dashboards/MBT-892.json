@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-892",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix Tooltip Mismatch on Reports and Dashboards Section Header",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-04T00:33:34.468-0700",
+  "updated": "2024-09-17T22:49:55.853-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the section title and info tooltip to correctly identify the Reports and Dashboards tab, so that I am not confused by mismatched labels.",
+  "description": "Fixes the section header title to read \"Reports and Dashboards\" and corrects the info icon tooltip which was displaying text from a different tab. The tooltip now reads: \"Searchable list of reports and dashboards in your Salesforce org.\"",
+  "acceptance_criteria": [
+    "Section title reads 'Reports and Dashboards'",
+    "Info icon tooltip reads 'Searchable list of reports and dashboards in your Salesforce org'",
+    "No tooltip text from other tabs appears on this page"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Corrected section title and info icon tooltip text to match the Reports and Dashboards tab.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Simple text correction in the template.",
+  "comment_summary": "Balaji fixed and submitted for review.",
+  "comment_count": 1
+}

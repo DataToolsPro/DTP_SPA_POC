@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1137",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Object Disappearing After Adding from ERD Popup",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-06-02T17:48:49.186-0700",
+  "updated": "2026-03-01T04:22:41.585-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want objects added via the ERD popup to persist in the dictionary and diagram without disappearing, so that my workflow is reliable.",
+  "description": "## Bug\nFrom the dictionary page, viewing an object's ERD and clicking the \"+\" button to add a new object would show the object being added, but closing the ERD popup caused:\n1. The newly added object to disappear from the data table.\n2. A \"Bulk refresh missing fields\" prompt appeared.\n3. After the refresh completed, a browser reload was required to see the object.\n\nAdditionally, objects added from the ERD diagram were not appearing in the select dropdown and remained grayed out with the \"+\" icon even after being added.\n\n## Fix\nFixed the add-object flow from the ERD popup so that:\n- Objects are automatically added to the object list upon adding.\n- The diagram refreshes to show newly added objects without grayed-out state.\n- No browser reload is required.",
+  "acceptance_criteria": [
+    "Objects added via the ERD popup persist in the dictionary data table",
+    "Objects appear in the select dropdown after being added",
+    "Diagram refreshes and shows newly added objects without grayed-out state",
+    "No browser reload is required to see added objects",
+    "Bulk refresh missing fields prompt does not cause objects to disappear"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Objects added from ERD popup now persist immediately in the dictionary view and diagram without requiring a browser reload.",
+  "middleware_changes": "Fixed the add-object flow to properly update both the dictionary data table and the ERD diagram state after adding objects from the ERD popup.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1091"],
+  "source_files": [],
+  "implementation_notes": "Two related issues were fixed: (1) objects disappearing from the data table after closing the ERD popup, and (2) objects remaining grayed out with the '+' icon in the diagram after being added. The diagram now properly refreshes after add operations.",
+  "comment_summary": "Developer reproduced a related issue where added objects didn't appear in the select box. Both the disappearing object bug and the grayed-out diagram state were fixed on dev. The diagram now refreshes correctly after adding objects.",
+  "comment_count": 4
+}

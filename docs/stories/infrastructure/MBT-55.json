@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-55",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix Close Button on Database DDL Export Modal",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-25T12:30:50.822-0800",
+  "updated": "2026-03-01T03:38:39.191-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the export button on the DDL export modal to work so that I can successfully export my database schema.",
+  "description": "The export button on the database DDL export modal was not functioning. Clicking the export button had no effect, preventing users from exporting their database DDL.",
+  "acceptance_criteria": [
+    "Export button on the DDL export modal triggers the export action",
+    "Close button on the DDL export modal closes the modal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the export button click handler on the DDL export modal.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed the issue and submitted for review.",
+  "comment_count": 1
+}

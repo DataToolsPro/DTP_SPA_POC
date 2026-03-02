@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-787",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Disable Zapier Activation and Onboarding Hooks on Dev and Stage",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-30T20:39:28.856-0700",
+  "updated": "2024-09-15T13:24:37.949-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Abstract Zapier request endpoint URLs from the codebase into environment variables to control which environments trigger production Zapier workflows. Dev and staging environments were calling production Zapier URLs, causing false positive activation events in Salesforce that disrupted CRM statistics.\n\nThe DTSignal payload structure sends event data including signal namespace, user ID, team ID, Salesforce org ID, email, event ID, event name, and timestamp to the Zapier webhook endpoints.\n\nStage and production should match for now, with the flexibility to have separate endpoints in the future for controlled rollouts.",
+  "acceptance_criteria": [
+    "Dev and staging environments do not trigger production Zapier webhooks",
+    "Zapier URLs are configurable as environment variables",
+    "Production Zapier hooks remain active and unchanged",
+    "Stage and production use matching webhook URLs initially"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Disabled Zapier webhook calls on dev and staging environments. Webhook URL resolution now checks environment configuration before dispatching events.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-775"],
+  "source_files": [],
+  "implementation_notes": "The DTSignal payload includes: signal_namespace (DTS.salesforceapp), userid, teamid, orgid, email, eventid, eventdate, eventname, message, and actions array. False activations in Salesforce were caused by dev/stage environments calling production webhook URLs.",
+  "comment_summary": "Developer quickly disabled the feature on dev and stage environments. Noted that other developers should pull the development branch before making new changes.",
+  "comment_count": 2
+}

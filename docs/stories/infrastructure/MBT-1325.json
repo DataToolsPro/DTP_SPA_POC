@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1325",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Decision: Select and Configure 1Password as Team Secret Manager",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:49.268-0800",
+  "updated": "2026-02-22T18:46:59.185-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Select and configure a team secret management solution. The docs/SECRETS.md document assumes a 1Password vault structure, but this had not been formally confirmed or set up for all team members.\n\n## Decision\nUse **1Password** with the following vault structure:\n- **DEV vault** — shared development secrets\n- **DTP App Prod Vault** — to be created for production secrets\n\n## Setup\n- Share the DEV vault with Ryan and Waqar\n- Update docs/SECRETS.md with the finalized vault structure\n- Ensure Waqar can access the vault for local development",
+  "acceptance_criteria": [
+    "1Password is confirmed as the team secret manager",
+    "DEV vault is shared with both Ryan and Waqar",
+    "DTP App Prod Vault is created for production secrets",
+    "docs/SECRETS.md is updated with the finalized vault structure",
+    "Waqar confirms access to the vault and can see required secrets"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1323"],
+  "source_files": ["docs/SECRETS.md"],
+  "implementation_notes": "Part of V3 Architecture Planning Phase 1. 1Password selected over alternatives. Production vault to be created separately from the DEV vault.",
+  "comment_summary": "Ryan asked Waqar to confirm vault access and mark the ticket complete once verified.",
+  "comment_count": 1
+}

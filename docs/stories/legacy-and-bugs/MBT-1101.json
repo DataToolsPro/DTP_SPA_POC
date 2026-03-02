@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1101",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Soft Crash When Adding Object from ERD View",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-04-01T20:59:34.880-0700",
+  "updated": "2026-03-01T04:09:56.656-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to add new objects from the ERD view without encountering errors, so that my workflow is not interrupted.",
+  "description": "## Bug\nWhen viewing the Dictionary and clicking into the ERD to explore relationships, adding a new object caused a soft crash/error screen.\n\n## Fix\nFixed the error handling in the add-object flow from the ERD context. Deployed to production.",
+  "acceptance_criteria": [
+    "Adding a new object from the ERD view does not cause an error",
+    "New object appears correctly after being added",
+    "No crash or error page displayed during the flow"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed soft crash when adding objects from the ERD view.",
+  "middleware_changes": "Fixed error handling in the add-object controller when invoked from the ERD context.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Error occurred when adding objects from the ERD popup on the dictionary page. Fixed on production.",
+  "comment_summary": "Developer fixed the issue on production.",
+  "comment_count": 1
+}

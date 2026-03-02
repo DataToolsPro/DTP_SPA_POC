@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-313",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "ERD Toolbar Layout Redesign",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-18T20:08:47.407-0700",
+  "updated": "2024-05-24T02:25:02.640-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user viewing an ERD, I want a clean and intuitive toolbar with clear icons and toggle controls, so that I can customize my diagram view efficiently.",
+  "description": "Redesign the ERD toolbar layout for better organization and usability.\n\n## Changes\n1. Move \"Add More Objects\" button to an icon (`bi-plus-square`) on the far left\n2. Float the view dropdown and settings to the right side of the toolbar\n3. Add info icon with tooltip: \"Customize and hide objects from your object dictionary to create different ERD views.\"\n4. Create a vertical line separator between action icons and toggle options\n5. Combine the separate expand/collapse icons into a single toggle for space efficiency",
+  "acceptance_criteria": [
+    "Add More Objects uses bi-plus-square icon on the far left",
+    "View dropdown and settings are right-aligned",
+    "Info icon displays tooltip explaining ERD customization",
+    "Vertical separator divides action icons from toggle options",
+    "Single expand/collapse toggle replaces two separate icons"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "ERD toolbar reorganized with icon-based add button, right-aligned controls, info tooltip, visual separator, and a combined expand/collapse toggle.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Vertical separator required switching from col-md to flex classes for proper positioning. Most changes were pushed to staging except the separator alignment.",
+  "comment_summary": "Developer implemented most changes except the vertical separator alignment, which required restructuring the HTML from col-md to flex layout.",
+  "comment_count": 1
+}

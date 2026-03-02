@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-628",
+  "epic_key": "MBT-646",
+  "feature_folder": "integrations",
+  "title": "Zoho Pulse (SalesIQ) Integration with Salesforce",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2024-03-18T20:08:05.756-0700",
+  "updated": "2024-08-06T07:07:40.449-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Integrate Zoho SalesIQ (Pulse) live chat with Salesforce CRM to automatically capture chat visitors as leads. The integration migrates Zoho Pulse from the standalone Zoho platform into a Salesforce-connected configuration.\n\nKey requirements:\n1. Auto-create lead records in Salesforce when a chat session occurs\n2. Configure a Zobot (automated chat bot) to collect required lead fields (name, email, company) before routing to live chat\n3. Ensure web-to-lead forms in Gravity Forms include necessary SalesIQ fields to relate Pulse data to Salesforce records\n\nThe integration was first tested in a Salesforce Trailhead org (sandbox not supported by SalesIQ) before connecting to the production Salesforce org.",
+  "acceptance_criteria": [
+    "Zoho SalesIQ is integrated with the Salesforce production org",
+    "Chat sessions automatically create lead records in Salesforce",
+    "Zobot collects name, email, and company before routing to live chat",
+    "Lead records contain all required Salesforce fields from chat data",
+    "Web-to-lead forms include SalesIQ-related fields"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Zobot configuration to collect required lead fields (name, email, company) before routing to live chat. Automatic lead creation pipeline from SalesIQ to Salesforce.",
+  "data_model_changes": "",
+  "api_changes": "Zoho SalesIQ API integration with Salesforce CRM API for automatic lead record creation from chat sessions.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "SalesIQ does not support Salesforce sandbox connections, so initial testing was done via a Trailhead org. The Zobot must collect company and email to auto-create leads; without these fields, automatic lead creation fails. Lead creation from chat was intermittent initially and required Zobot configuration refinement.",
+  "comment_summary": "Developer explored SalesIQ documentation and worked with Zoho support to resolve automatic lead creation issues. Zobot configuration was key - it must collect email and company before redirecting to live chat. SalesIQ cannot connect to Salesforce sandbox orgs, requiring a Trailhead org for testing.",
+  "comment_count": 9
+}

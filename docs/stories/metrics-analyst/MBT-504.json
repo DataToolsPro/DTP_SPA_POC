@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-504",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Auto-Relate Dashboard and Report to Metric on Add",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T01:59:32.944-0800",
+  "updated": "2024-08-19T20:13:06.572-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user adding metrics from the Metrics Analyst, I want the source dashboard and report to be automatically related to each new metric, so that I don't have to manually link them and can immediately see the metric's data sources on the detail tab.",
+  "description": "When a user adds or merges a metric from Metrics Analyst recommendations, the system should automatically relate the source dashboard and report to that metric. This applies to all four add/merge paths:\n\n1. Add a single metric\n2. Add multiple metrics via checkbox selection\n3. Merge metrics by selecting one as primary\n4. Merge metrics to an existing dictionary metric\n\nIf a report or dashboard is already related to the metric, it should not be added again (deduplication). The feature was initially blocked because Service 2 was returning incorrect dashboard IDs, but was unblocked once the correct reportId field was added to the API response.",
+  "acceptance_criteria": [
+    "Adding a single metric automatically relates the source dashboard and report",
+    "Bulk-adding multiple metrics relates the dashboard and report to each",
+    "Merging metrics to a new primary relates all source dashboards and reports",
+    "Merging to an existing metric relates the dashboard and report without duplicating existing relationships",
+    "Already-related dashboards and reports are not added again"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dashboard and report relationships are now automatically populated on the metric detail tab when adding or merging metrics from the Analyst.",
+  "middleware_changes": "All four add/merge code paths updated to automatically create dashboard and report relationships. Deduplication check prevents duplicate relationship records.",
+  "data_model_changes": "Leverages existing metric-dashboard and metric-report relationship tables.",
+  "api_changes": "Depends on Service 2 returning the correct reportId field in the API response.",
+  "dependencies": ["MBT-506"],
+  "source_files": [],
+  "implementation_notes": "Was blocked for months because Service 2 returned incorrect dashboard IDs and null reportId. Unblocked in August 2024 when the service was updated to return proper reportId. All four metric creation/merge paths (single add, multi-add, merge-new, merge-existing) were updated to auto-relate.",
+  "comment_summary": "Initially blocked by missing reportId in Service 2 response. After Service 2 was updated with correct IDs, the developer implemented auto-relate across all four add/merge paths with deduplication. Dashboard and report relationships are now created automatically.",
+  "comment_count": 11
+}

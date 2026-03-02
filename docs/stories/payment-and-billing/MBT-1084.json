@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1084",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Deprecate DataTools Passcodes from PBO Salesforce",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-03-04T21:39:20.416-0800",
+  "updated": "2026-03-01T04:04:19.098-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Remove the DataTools Passcodes object/fields from the PBO (Payment Business Object) in Salesforce. These passcodes are no longer used in production and should be cleaned up from the data model to maintain good data hygiene and reduce confusion.",
+  "acceptance_criteria": [
+    "DataTools Passcodes object/fields are removed from PBO Salesforce",
+    "No existing production functionality is broken by the removal",
+    "The Salesforce data model no longer references deprecated passcode fields"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Remove DataTools Passcodes object/fields from the PBO Salesforce data model.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Data model cleanup task. Verify no existing integrations or code reference the passcodes fields before removal.",
+  "comment_summary": "",
+  "comment_count": 0
+}

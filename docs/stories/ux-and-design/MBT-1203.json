@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1203",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Streamlit Session State Change Error for Dropdowns",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-05T04:40:20.008-0700",
+  "updated": "2026-03-01T03:54:39.943-0800",
+  "assignee": "Unassigned",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "",
+  "description": "Streamlit prevents changing `st.session_state[...]` keys after the widget for that key has been created. This causes a state management error when trying to programmatically update dropdown values in the DataTools Pro Explorer Streamlit app.\n\nThe fix requires restructuring how session state keys are managed relative to widget creation lifecycle.",
+  "acceptance_criteria": [
+    "Dropdown values can be programmatically updated without Streamlit session state errors",
+    "Session state key management is restructured to comply with Streamlit's widget lifecycle"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Restructure Streamlit session state management to update dropdown keys before widget creation, not after.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Streamlit enforces that session_state keys bound to widgets cannot be modified after widget creation in the same script run. The solution involves setting session state values before the widget is rendered.",
+  "comment_summary": "",
+  "comment_count": 0
+}

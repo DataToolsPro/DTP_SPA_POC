@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-983",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier Webhook 0007: Geographic Mismatch Alert",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-05T10:53:37.570-0800",
+  "updated": "2026-01-24T22:46:42.940-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Add a new Zapier webhook (event ID 0007) that fires when a user's geographic region does not match the supported regions (US/CA).\n\nWhen a user signs up via the web-to-lead form, their geo is captured. When they authenticate to Salesforce (non-sandbox), their geo is pulled again. If the geo check determines they are not in a supported region (US/CA), the system currently redirects them to an instruction page.\n\nThe enhancement adds a Zapier webhook call in the same geo-check function, sending the event with the user's geographic data from Salesforce. This allows downstream Salesforce automation to log and track geo mismatches.\n\nWebhook payload follows the standard DTSignal format with eventid '0007' and eventname 'Geo Mismatch', including the Salesforce-sourced geography data.",
+  "acceptance_criteria": [
+    "Zapier webhook fires when a user's region does not match US/CA",
+    "Webhook uses the standard DTSignal payload format with eventid 0007",
+    "Payload includes geography data from the Salesforce org",
+    "Existing redirect behavior to the instruction page is preserved",
+    "Webhook URL is configurable as an environment variable"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Extended the geo-check function to fire a Zapier webhook (eventid 0007) when the user's region does not match supported regions. Includes Salesforce-sourced geographic data in the DTSignal payload.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-775", "MBT-787"],
+  "source_files": [],
+  "implementation_notes": "Implemented on development first. The DTSignal payload includes: signal_namespace (DTS.salesforceapp), userid, teamid, orgid, email, eventid (0007), eventdate, eventname (Geo Mismatch), message (Geo Mismatch), and actions array. The Salesforce geography data is appended to track the user's actual region.",
+  "comment_summary": "Developer implemented the webhook on development and shared the payload structure. Product owner requested joint testing before production deployment. Developer confirmed readiness for testing.",
+  "comment_count": 3
+}

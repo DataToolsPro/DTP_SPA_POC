@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-226",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "Pass UTM into Squirrel App",
+  "status": "Done",
+  "feature_folder": "ux-and-design"
+}

@@ -1,0 +1,31 @@
+{
+  "folder": "initiatives",
+  "label": "Initiatives",
+  "type": "product-feature",
+  "doc_tag": "datatoolspro",
+  "epic_count": 1,
+  "epics": [
+    {
+      "epic_key": "MBT-1009",
+      "epic_id": "11285",
+      "summary": "Initiatives",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 13,
+  "stories": [
+    "MBT-940",
+    "MBT-956",
+    "MBT-964",
+    "MBT-965",
+    "MBT-967",
+    "MBT-968",
+    "MBT-969",
+    "MBT-970",
+    "MBT-971",
+    "MBT-972",
+    "MBT-974",
+    "MBT-975",
+    "MBT-978"
+  ]
+}

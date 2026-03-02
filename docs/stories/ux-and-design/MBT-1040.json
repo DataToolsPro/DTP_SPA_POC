@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1040",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Integration Setup Modals for External Data Sources",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2024-12-21T12:58:45.208-0800",
+  "updated": "2026-03-01T03:56:36.008-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a DataTools Pro user, I want to see a documentation modal when connecting to an external data source like Snowflake or HubSpot, so that I understand the integration before setting up a new connection.",
+  "description": "When a user attempts to get data from an external source (Snowflake, HubSpot), the application should display a controlled modal with:\n\n1. **Documentation content** pulled from WordPress tutorials explaining the integration\n2. **Call-to-action button** to navigate to the correct settings page for connection setup\n\nThis intercepts the external source action and provides contextual help before directing the user to settings.\n\n### WordPress Tutorial Pages\n- Salesforce: existing tutorial (post 10847)\n- Snowflake: cloned tutorial (post 11061)\n- HubSpot: cloned tutorial (post 11089)",
+  "acceptance_criteria": [
+    "Clicking an external source option (Snowflake, HubSpot) shows a modal with integration documentation",
+    "Modal content is sourced from WordPress tutorial pages",
+    "Modal includes a button to navigate to the settings page for connection setup",
+    "Each external source has its own dedicated tutorial content",
+    "Modal can be dismissed to return to the previous view"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New modals displayed when selecting external data sources (Snowflake, HubSpot). Modals show WordPress-sourced documentation with a CTA to the settings page.",
+  "middleware_changes": "Integration between the app and WordPress CMS to fetch and display tutorial content in modals. WordPress post IDs mapped to each external source.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Tutorial pages were cloned from the existing Salesforce tutorial in WordPress. WordPress post IDs are mapped to each source: Salesforce (10847), Snowflake (11061), HubSpot (11089). The modal content is fetched from these WordPress pages.",
+  "comment_summary": "Developer cloned the Salesforce tutorial for Snowflake and HubSpot. Reporter provided updated WordPress post IDs after accidentally deleting the original comments. Implementation deployed to development.",
+  "comment_count": 3
+}

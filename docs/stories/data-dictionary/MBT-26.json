@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-26",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Compact Data Table View",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T20:37:44.490-0800",
+  "updated": "2024-05-24T02:24:37.916-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to view the Data Dictionary table in a compact layout, so that I can see more field rows on screen at once without scrolling.",
+  "description": "The data table component used in the Migration and Dictionary views should render in compact mode to increase data density. This reduces row height and padding so users can see more fields per page.\n\nImplementation requires setting the compact argument on the DataTables component initialization.",
+  "acceptance_criteria": [
+    "Data table renders in compact mode with reduced row height",
+    "More rows are visible on screen compared to the default table density",
+    "Compact mode applies to both Migration and Dictionary views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Data table uses the compact display option, reducing cell padding and row height for higher data density.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Set the DataTables compact class/argument during component initialization. Verified and tested by product owner.",
+  "comment_summary": "Product owner confirmed the feature was done and tested.",
+  "comment_count": 1
+}

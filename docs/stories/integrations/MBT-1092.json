@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1092",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Remove Zoho Chat Bot Code from DataTools Pro",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T10:14:34.504-0700",
+  "updated": "2026-03-01T04:07:05.129-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Remove all Zoho chat bot code snippets from the DataTools Pro application. The Zoho integration will be replaced with a better solution at a later time.",
+  "acceptance_criteria": [
+    "All Zoho chat bot code snippets are removed from the codebase",
+    "No Zoho-related scripts or elements load in the application",
+    "No regressions in other chat or support features"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Zoho chat widget no longer appears in the application UI.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Straightforward removal of Zoho code snippets from templates/layouts.",
+  "comment_summary": "Developer confirmed removal of Zoho code.",
+  "comment_count": 1
+}

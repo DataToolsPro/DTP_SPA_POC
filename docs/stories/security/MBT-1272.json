@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1272",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Login Initiation for Pooled Path with Tenant Discovery",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:05.199-0800",
+  "updated": "2025-12-17T21:46:05.390-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user on a shared/pooled host, I want to log in by selecting my tenant or entering my email, so that the system routes me to the correct organization even without a dedicated subdomain.",
+  "description": "Users arriving at a shared/pooled host need a way to identify their tenant before authentication can proceed. The system must resolve the correct tenant and route the user through the appropriate auth flow.\n\n## Flow\n\n1. User visits pooled host (e.g., `app.us1.datatoolspro.com`)\n2. User selects tenant slug or enters email address\n3. System resolves the correct tenant/org from the input\n4. User is routed through authentication for their organization\n5. User returns to the pooled host with a session scoped to their org",
+  "acceptance_criteria": [
+    "Pooled host presents a tenant selection or email entry interface",
+    "System resolves tenant from slug or email domain",
+    "User is routed through the correct Stytch Organization auth flow",
+    "Post-login session is scoped to the resolved organization",
+    "Invalid tenant selections show a clear error message"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Tenant discovery interface on the pooled login page — user selects their organization from a list or enters their email address to resolve their tenant.",
+  "middleware_changes": "Tenant resolution logic that maps user input (slug or email domain) to the correct Stytch Organization and initiates the appropriate auth flow.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1270", "MBT-1268"],
+  "source_files": [],
+  "implementation_notes": "Email-based tenant resolution requires mapping email domains to tenant organizations. Slug-based resolution uses the tenant directory directly. Both paths converge on the same Stytch Organization auth flow.",
+  "comment_summary": "",
+  "comment_count": 0
+}

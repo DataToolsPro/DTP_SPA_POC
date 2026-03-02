@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-256",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "Quoting Identifier Options for SQL Code Generation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-23T23:37:17.605-0700",
+  "updated": "2024-05-24T02:24:57.139-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to choose a quoting identifier style for my SQL output, so that the generated code uses the correct syntax for my target database platform.",
+  "description": "Add a dropdown to select the quoting identifier used in generated SQL code. Different databases require different quoting conventions for identifiers:\n\n- **Double Quotes**: `\"SimpleLead\".\"Last Name\" AS \"LastName\"` (Snowflake, PostgreSQL)\n- **Brackets**: `[SimpleLead].[Last Name] AS [LastName]` (SQL Server)\n- **Backticks**: `` `SimpleLead`.`Last Name` AS `LastName` `` (MySQL)\n- **None**: No quoting applied\n\nThe selected quoting style applies to all object and field references in the generated SQL output.",
+  "acceptance_criteria": [
+    "Dropdown presents options: Double Quotes, Brackets, Backticks, None",
+    "Selected quoting style is applied to all object and field identifiers in SQL output",
+    "Double quotes used for Snowflake/PostgreSQL style",
+    "Square brackets used for SQL Server style",
+    "Backticks used for MySQL style",
+    "None option generates identifiers without any quoting"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New quoting identifier dropdown added to the SQL code generation modal with options for Double Quotes, Brackets, Backticks, and None.",
+  "middleware_changes": "SQL generation logic updated to apply the selected quoting style to all identifier references in the output.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-131", "MBT-250"],
+  "source_files": [],
+  "implementation_notes": "Initially defaulted to double quotes for all output. The dropdown was added as a UI control that dynamically re-renders the SQL with the selected quoting style.",
+  "comment_summary": "Developer initially hardcoded double quotes for all SQL and asked if a selection dropdown was needed. Confirmed that the dropdown would be valuable. Developer implemented and deployed to staging for review.",
+  "comment_count": 4
+}

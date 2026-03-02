@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-400",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Radio Button CSS Styling on Login Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-29T01:55:28.368-0800",
+  "updated": "2024-05-24T02:25:04.368-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the radio buttons on the login page to be properly styled and visually correct, so that the first impression of the app looks polished.",
+  "description": "The radio button control on the login page has a CSS styling issue that makes it appear slightly off. Since the login page is the first thing users see, visual polish is important.\n\n## Root Cause\nCSS centralization effort (moving per-page CSS/JS into a shared location) introduced minor styling regressions on some controls, including the login page radio buttons.",
+  "acceptance_criteria": [
+    "Radio buttons on the login page display with correct CSS styling",
+    "Radio button alignment and sizing match the design standard",
+    "No visual regression on other login page elements"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed CSS styling on login page radio buttons to restore correct visual appearance after CSS centralization changes.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS regression caused by earlier centralization of per-page styles into shared stylesheet. Fixed by adjusting the radio button styles in the centralized CSS.",
+  "comment_summary": "Developer fixed the radio button styling and noted the issue was a side effect of centralizing per-page CSS/JS into a shared location a few weeks prior. Minor regressions may still surface.",
+  "comment_count": 1
+}

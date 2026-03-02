@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-34",
+  "epic_key": "MBT-39",
+  "feature_folder": "data-migration",
+  "title": "OpenAI Proof of Concept Integration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-05T13:02:57.536-0800",
+  "updated": "2024-05-24T02:24:38.792-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Establish a working connection to the OpenAI API using the project API key. The goal is a minimal proof of concept that successfully sends a prompt and receives a response, even with hardcoded prompt text.\n\nA reference implementation using the Schema Generator Tool UI was provided as a starting point. The prompt structure mirrors what the migration blueprint will eventually supply — taking column names and data types as input and generating DDL output.\n\nThe POC validates the end-to-end API connectivity before integrating into the main application.",
+  "acceptance_criteria": [
+    "Application successfully connects to OpenAI API with the configured API key",
+    "A hardcoded prompt is sent and a valid response is received",
+    "Connection errors are handled gracefully with meaningful error messages"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "New server-side service to handle OpenAI API requests, including prompt construction and response parsing.",
+  "data_model_changes": "",
+  "api_changes": "Outbound API call to OpenAI completions endpoint with configurable API key authentication.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial POC used the text-davinci-003 model. The schema generator tool at phpstack-908850-3154876.cloudwaysapps.com was used as the reference implementation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

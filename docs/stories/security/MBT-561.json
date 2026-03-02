@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-561",
+  "skipped": true,
+  "skip_reason": "stub_description",
+  "title": "Log Invalid Invite - Rejected - Log in Firewall for Strict Throttling",
+  "status": "Done",
+  "feature_folder": "security"
+}

@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-929", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Move Total Record Count into Section Title to Save Space",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-17T23:27:15.514-0700", "updated": "2024-10-15T19:09:44.028-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to see the total record count next to the section title, so that I have a clear total without pagination info taking up extra space.",
+  "description": "Moves the total record count from a separate area into the same div as the section title, freeing up vertical space. The page number pagination remains at the bottom of the page. This simplifies the header area to show only the total count alongside the title.",
+  "acceptance_criteria": ["Total record count is displayed next to the section title", "Pagination info remains at the bottom of the page", "Header area uses less vertical space"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Moved total record count into the section title div, freeing up space previously used by a separate count display.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-893"], "source_files": [],
+  "implementation_notes": "Simple layout change moving the count element into the title container.",
+  "comment_summary": "", "comment_count": 0
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-505",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Log Ignored Metrics for AI Training Feedback",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T02:05:16.008-0800",
+  "updated": "2024-05-24T02:25:42.805-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Ignored metrics from the Metrics Analyst should be logged for future AI training to help the service learn which suggestions are not valid metrics. Two new models were created:\n\n- `MetricApiResponse` (1:1 with user/team) stores the full first and second API response strings.\n- `ApiResponseMetric` (1:many with MetricApiResponse) stores individual metrics from the response with fields for topic, metric name, description, dashboard ID, reports, classification, and an `ignore` flag.\n\nWhen a user ignores a metric, the `ignore` column is updated. The original metric record is preserved. Both models use the `usedByTeam` trait for multi-tenant security.",
+  "acceptance_criteria": [
+    "Ignored metrics are persisted with an ignore flag rather than being deleted",
+    "Full API response strings are stored for both Service 1 and Service 2",
+    "Individual metric records are stored with all relevant fields from the API response",
+    "Multi-tenant isolation is enforced via usedByTeam trait on both models",
+    "Ignored metrics can be queried for future AI training purposes"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New logic to persist API responses and update the ignore flag when a user ignores a metric recommendation.",
+  "data_model_changes": "Two new models: MetricApiResponse (stores full API response strings, 1:1 with team) and ApiResponseMetric (stores individual metrics from response with ignore flag, 1:many with MetricApiResponse).",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Both new models use the usedByTeam trait ensuring multi-tenant data isolation. The ApiResponseMetric model has fields: team_id, Topic, metric_name, metric_description_llm, dashboard_id, reports, classification, api_responses_id, ignore.",
+  "comment_summary": "Developer confirmed ignored metrics are already being logged. Two new models were created with multi-tenant security traits. Metrics are kept in the database with an ignore flag rather than being deleted.",
+  "comment_count": 1
+}

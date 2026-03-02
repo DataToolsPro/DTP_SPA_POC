@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1323",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Onboard Waqar: Full Project Context and Environment Setup",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:38.855-0800",
+  "updated": "2026-02-22T18:46:52.770-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Onboarding task for Waqar as a code owner (per CODEOWNERS) to get fully caught up on project context, documentation, tools, and access for the V3 architecture planning phase.\n\n## Setup Steps\n1. Clone the repository to local machine via Cursor IDE\n2. Get Jira MCP up and running to access Jira tickets inside AI chat\n3. Review docs/JIRA_TICKET_BACKLOG.md Phase 0 for full description and acceptance criteria\n4. Get familiar with current project documentation and tooling",
+  "acceptance_criteria": [
+    "Repository is cloned and accessible via Cursor IDE",
+    "Jira MCP is configured and can access Jira tickets in AI chat",
+    "Waqar has reviewed Phase 0 documentation and project context",
+    "Development environment is functional for local development"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of V3 Architecture Planning onboarding. Waqar is listed as a code owner in CODEOWNERS file.",
+  "comment_summary": "",
+  "comment_count": 0
+}

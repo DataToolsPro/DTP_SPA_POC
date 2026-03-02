@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-508",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Auto-Fetch Dashboards on First Load of Metrics Analyst",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T14:33:28.126-0800",
+  "updated": "2024-05-24T02:25:42.724-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user opening the Metrics Analyst for the first time, I want dashboards to automatically start loading with a visual indicator, so that I don't have to manually trigger a refresh and can see the feature is working.",
+  "description": "When the Metrics Analyst modal opens and no dashboards are available (because they've never been loaded), the system should automatically trigger a dashboard fetch from Salesforce. A loading indicator (three-dot animation) should signal that dashboards are being loaded.",
+  "acceptance_criteria": [
+    "Opening Metrics Analyst with no cached dashboards automatically triggers a fetch",
+    "A three-dot loading animation displays while dashboards are being fetched",
+    "Once fetch completes, the dashboard list populates automatically",
+    "Subsequent opens use cached data without auto-fetching"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added automatic loading animation when Metrics Analyst opens with no dashboards. Shows a three-dot loading indicator during the Salesforce fetch.",
+  "middleware_changes": "Added logic to detect empty dashboard state on modal open and auto-trigger the Salesforce dashboard sync.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-507"],
+  "source_files": [],
+  "implementation_notes": "The refresh button was added first (MBT-507), then auto-loading on first open was added as a follow-up enhancement.",
+  "comment_summary": "Developer added the refresh button first, then implemented auto-loading when no dashboards exist. Completed on staging.",
+  "comment_count": 2
+}

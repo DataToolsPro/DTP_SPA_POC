@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1319",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "PostHog Events for Activation, Signup, and Badge Triggers",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-15T10:46:20.970-0800",
+  "updated": "2026-03-01T04:16:14.776-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Create three new PostHog events to replace existing Zapier-based triggers and add badge tracking:\n\n1. **Activation Event**: Replace the current Zap-triggered activation event with a native PostHog event. This event will be used for Salesforce posting (via PostHog→Salesforce integration) and the existing Zap for this event can be removed.\n\n2. **Signup Event**: Capture a signup event in PostHog (currently may be handled by a separate Zap). Needs refinement to determine current implementation.\n\n3. **Badge Event**: A new event that fires when a badge is earned, including properties for which specific badge was awarded.\n\nThe primary motivation is re-wiring activation stats to have line of sight into whether people are signing up and actively using the DataTools app. Currently there is no data flowing into Salesforce for activation tracking, preventing re-import of activated users.",
+  "acceptance_criteria": [
+    "An Activation PostHog event fires when a user activates their DataTools Pro account",
+    "A Signup PostHog event fires when a new user signs up",
+    "A Badge PostHog event fires when a badge is awarded, with badge identifier as a property",
+    "The Activation event can be used to trigger Salesforce updates via PostHog integration",
+    "The corresponding Zapier zaps can be removed after PostHog events are verified",
+    "Activation data is visible in Salesforce for reporting"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Three new PostHog event captures added: activation event on account activation, signup event on user registration, and badge event on badge award with badge properties.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1236"],
+  "source_files": [],
+  "implementation_notes": "These events replace Zapier-based triggers with native PostHog events. The activation event is the highest priority to restore visibility into user activation metrics in Salesforce. Badge event properties should include badge name/ID to enable per-badge analytics.",
+  "comment_summary": "Reporter emphasized the urgency of the activation event to restore visibility into user activation data in Salesforce, noting there is currently no line of sight into whether people are signing up and using the app.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1240",
+  "epic_key": "MBT-1008",
+  "feature_folder": "scheduling-and-alerting",
+  "title": "Scheduled Refresh Not Triggering or Showing Results",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-10-28T17:00:03.437-0700",
+  "updated": "2026-03-01T04:03:56.511-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "The scheduled refresh feature is not triggering and not showing results. The scheduled jobs that should automatically refresh data are failing silently, leaving users without updated data.",
+  "acceptance_criteria": [
+    "Scheduled refresh jobs trigger at their configured times",
+    "Refresh results are displayed to the user after completion",
+    "Failed refresh jobs produce visible error messages or logs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Debug and fix the scheduled refresh job trigger mechanism to ensure jobs execute on schedule and results are properly stored and displayed.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Needs investigation into the scheduled job runner (likely Laravel scheduler/cron) to determine why jobs are not triggering. Check cron configuration, job queue, and result storage.",
+  "comment_summary": "",
+  "comment_count": 0
+}

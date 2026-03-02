@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1328",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Decision: Choose Release Versioning Strategy (Date-Based vs Semver)",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:56.772-0800",
+  "updated": "2026-02-22T18:49:00.998-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Choose and document the release versioning strategy for the V3 codebase. docs/RELEASE.md documents both options but a decision must be made before proceeding.\n\n## Options\n- **A) Date-based**: e.g., v2026.02.23 — version tied to release date\n- **B) Semver**: e.g., v1.0.0 — semantic versioning with major/minor/patch\n\nThe decision should align with whatever approach the team has been using historically. The key requirement is consistency going forward, especially since the next release marks the V3 codebase.",
+  "acceptance_criteria": [
+    "Versioning strategy is chosen and documented",
+    "docs/RELEASE.md is updated with the chosen strategy",
+    "Deploy workflow is aligned with the versioning convention",
+    "Both developers are aligned on the strategy"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["docs/RELEASE.md"],
+  "implementation_notes": "Part of V3 Architecture Planning Phase 1. The next code deployed will be the V3 codebase, so the versioning strategy must be locked before that release.",
+  "comment_summary": "",
+  "comment_count": 0
+}

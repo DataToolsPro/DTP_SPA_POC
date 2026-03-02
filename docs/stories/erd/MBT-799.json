@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-799",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Spike — Lock ERD Node Positions for Saved Views",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-09T21:15:21.486-0700",
+  "updated": "2024-07-28T10:36:35.912-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "Spike to investigate whether it is possible to fully lock ERD node positions so that saved views reproduce an exact layout without GoJS attempting to re-draw or re-position nodes.\n\nThis extends the earlier work in MBT-710 (persist object placement). The previous implementation saved positions, but GoJS still slightly adjusted node placement on reload. This spike explored whether the layout engine could be completely disabled for locked views to achieve pixel-perfect position recall.\n\nThe investigation led to a working solution deployed to development.",
+  "acceptance_criteria": [
+    "Locked ERD views restore exact node positions without GoJS re-drawing",
+    "Node positions are pixel-perfect on reload when locked",
+    "Unlocked views continue to use the dynamic layout engine"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Investigated and implemented disabling GoJS layout engine for locked views so saved node positions are reproduced exactly without re-adjustment.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-710"],
+  "source_files": [],
+  "implementation_notes": "Extends MBT-710. The earlier implementation saved position data but GoJS layout engine would slightly adjust nodes on first render. This spike found a way to disable the layout engine entirely for locked views.",
+  "comment_summary": "Developer worked on the fix and deployed to development for review. Quick turnaround from investigation to implementation.",
+  "comment_count": 2
+}

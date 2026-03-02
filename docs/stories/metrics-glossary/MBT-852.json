@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-852",
+  "epic_key": "MBT-869",
+  "feature_folder": "metrics-glossary",
+  "title": "Centralize Reusable Metric Detail Card Component",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-08T23:15:03.325-0700",
+  "updated": "2024-09-15T13:24:29.675-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Refactors the metric detail card into a standalone, reusable Blade component that can be included across multiple pages: Metrics, Reports & Dashboards, and Object Dictionary.\n\nThe component accepts configurable arguments:\n- metric_id (int, required)\n- add_alias_trigger (yes/null) — auto-opens the alias form\n- get_metric_report_trigger (yes/null) — auto-opens the report tab\n- showvisualize (true/false) — shows/hides the Visualize Metrics Map option\n- editoption (true/false) — shows/hides pencil edit icons\n\nUsage: include 'components.metric-offcanvas-component' and call load_general_info_offcanvas(metric_id, ...) from JavaScript.",
+  "acceptance_criteria": [
+    "Metric detail card is abstracted into a reusable Blade component",
+    "Component works on Metrics, Reports & Dashboards, and Dictionary pages",
+    "metric_id, showvisualize, editoption, add_alias_trigger, get_metric_report_trigger arguments are supported",
+    "One consistent card component used across the app"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Metric detail card extracted into a Blade component (metric-offcanvas-component) with configurable arguments and a JavaScript API.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Component is included via @include('components.metric-offcanvas-component'). JS function load_general_info_offcanvas() accepts metric_id plus optional arguments for alias trigger, report trigger, visualize toggle, and edit toggle.",
+  "comment_summary": "Developer centralized the card and documented the usage API with argument descriptions. Integrated on the Reports & Dashboards page — clicking a linked metric name opens the full metric detail sidebar.",
+  "comment_count": 2
+}

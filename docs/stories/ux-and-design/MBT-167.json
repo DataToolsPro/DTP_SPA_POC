@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-167",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Footer Update with Copyright and Navigation Links",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T22:42:54.499-0700",
+  "updated": "2024-05-24T02:24:34.906-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the app footer to display copyright information and links to Privacy Policy and Contact Us, so that I have easy access to support resources and the branding matches datatoolspro.com.",
+  "description": "Update the application footer to match the datatoolspro.com website branding.\n\n## Footer Layout\n- Left side: `© 2023 Data Tools Pro. All rights reserved.`\n- Right side: Privacy Policy link → datatoolspro.com/support, Contact Us link → datatoolspro.com/contact/",
+  "acceptance_criteria": [
+    "Footer displays '© 2023 Data Tools Pro. All rights reserved.' on the left",
+    "Privacy Policy link points to datatoolspro.com/support",
+    "Contact Us link points to datatoolspro.com/contact/",
+    "Footer styling matches datatoolspro.com"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "App footer updated with copyright text on the left and Privacy Policy / Contact Us links on the right, matching datatoolspro.com branding.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented and submitted for review.",
+  "comment_count": 1
+}

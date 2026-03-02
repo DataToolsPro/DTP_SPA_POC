@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-57",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Verify Required Field Status Sourced from Salesforce",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-26T23:31:01.182-0800",
+  "updated": "2026-03-01T03:38:42.835-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a data migration specialist, I want field required-status indicators to accurately reflect what Salesforce reports, so that I can trust the field mapping interface when planning migrations.",
+  "description": "The field mapping UI was displaying all fields as required for a given Salesforce object, which did not match the actual required status in Salesforce (typically only a small number of fields are required).\n\nThe root cause was that the required status was being pulled from the local database rather than from the Salesforce metadata API. The fix involved checking the `nillable` attribute from the Salesforce describe call — if `nillable` is true, the field is not required; otherwise it is required.\n\n### Salesforce Metadata Approach\nThe Salesforce object describe API returns a `nillable` property for each field. Fields where `nillable = false` are required. This replaced the previous hardcoded/database-driven approach.",
+  "acceptance_criteria": [
+    "Required field indicators in the mapping UI reflect the actual Salesforce `nillable` attribute",
+    "Fields with `nillable = true` are marked as not required",
+    "Fields with `nillable = false` are marked as required",
+    "Only a small subset of fields per object appear as required, matching Salesforce configuration"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Required field indicators in the field mapping slide-out now accurately show which fields are required based on Salesforce metadata rather than displaying all fields as required.",
+  "middleware_changes": "Updated the field metadata retrieval logic to use the Salesforce describe API `nillable` property instead of a hardcoded database value to determine required status.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The fix checks `$field['nillable'] == '1'` from the Salesforce describe response. If nillable is true, the field is set as not required; otherwise it is required.",
+  "comment_summary": "Developer initially attempted a hardcoded fix, then identified the Salesforce `nillable` attribute as the correct source for required status. The solution was confirmed working after implementation.",
+  "comment_count": 4
+}

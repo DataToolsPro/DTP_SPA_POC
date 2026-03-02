@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-422",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Fix Unique Constraint Violation on User Invite Registration",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-19T19:35:17.090-0800",
+  "updated": "2026-03-01T04:17:37.940-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "A `UniqueConstraintViolationException` was thrown when a user who was previously invited tried to register. The error was a duplicate entry for the `dtp_users_email_unique` constraint.\n\n### Root Cause\nWhen a user invites another user by email, a temporary account is created without a Salesforce User ID (SFUID). The existing-user check was matching on SFUID rather than email. When the invited user later registered via Salesforce OAuth, the system tried to create a new record with the same email, violating the unique constraint.\n\n### Fix\nUpdated the existing-user check to match on email address instead of SFUID, so invited users' temp accounts are properly found and updated rather than duplicated.\n\nDetected via New Relic error monitoring.",
+  "acceptance_criteria": [
+    "Invited users can complete registration without a unique constraint error",
+    "Existing temp accounts are found by email and updated with Salesforce data",
+    "No duplicate user records are created for the same email"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated user registration logic to check for existing users by email address instead of SFUID, preventing duplicate entries for invited users.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The issue occurred because invited users get a temp account with no SFUID. The SFUID-based lookup missed these records. Fixed by checking email first. Detected via New Relic error group monitoring.",
+  "comment_summary": "Developer explained the root cause: invited users have no SFUID in their temp account, so the SFUID-based lookup failed. Fix was already deployed to staging and queued for production merge.",
+  "comment_count": 1
+}

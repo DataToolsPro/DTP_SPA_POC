@@ -1,0 +1,40 @@
+{
+  "folder": "tagging-and-categories",
+  "label": "Tagging and Categories",
+  "type": "product-feature",
+  "doc_tag": "datatoolspro",
+  "epic_count": 3,
+  "epics": [
+    {
+      "epic_key": "MBT-492",
+      "epic_id": "10550",
+      "summary": "Tagging and Categories",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-1007",
+      "epic_id": "11283",
+      "summary": "Badges",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-1010",
+      "epic_id": "11286",
+      "summary": "Governance Metadata",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 10,
+  "stories": [
+    "MBT-310",
+    "MBT-386",
+    "MBT-387",
+    "MBT-388",
+    "MBT-477",
+    "MBT-959",
+    "MBT-990",
+    "MBT-992",
+    "MBT-1330",
+    "MBT-1332"
+  ]
+}

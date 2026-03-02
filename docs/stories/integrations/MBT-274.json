@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-274",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Slack Integration Proof of Concept",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-12T22:01:43.732-0700",
+  "updated": "2024-05-24T02:25:02.344-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Initial proof of concept for Slack integration. The goal is to post new objects to a Slack channel so that each object starts its own discussion thread.\n\nThe implementation requires a Slack Bot token (not a user token) with an incoming webhook URL to push notifications to a designated Slack channel. The Slack app must be configured with bot permissions, and the bot OAuth token is used for API authentication.",
+  "acceptance_criteria": [
+    "Application can post messages to a designated Slack channel using a bot token",
+    "Each new object creates a new thread in the Slack channel",
+    "Bot token is securely stored and not hardcoded",
+    "Webhook URL is configurable per environment"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Service-layer integration to post messages to Slack via the Slack Bot API using a bot OAuth token and incoming webhook URL.",
+  "data_model_changes": "",
+  "api_changes": "Outbound POST to Slack webhook endpoint for channel notifications when new objects are created.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Slack requires a Bot User OAuth Token (xoxb-...) rather than a user token. The bot must be added as a collaborator to the Slack workspace. Incoming webhooks have rate limits that needed investigation during the POC.",
+  "comment_summary": "Developer needed webhook URL and bot token access. After initial confusion between user tokens and bot tokens, the correct bot token was provided and the collaborator was added to the Slack app.",
+  "comment_count": 9
+}

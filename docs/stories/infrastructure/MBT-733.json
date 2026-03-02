@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-733",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Add AWS Access Key Secrets to GitHub Repository for CI/CD",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-27T22:12:15.728-0700",
+  "updated": "2024-07-25T23:52:04.293-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Add AWS access key secrets to the GitHub repository settings to support GitHub Actions CI/CD deployments. The secrets are needed so that AWS credentials are not exposed in the `deploy.yml` workflow file.\n\n## Required Secrets\n- `AWS_ACCESS_KEY_ID_DEV_QA` — access key for dev/QA Lambda deployments\n- `AWS_SECRET_ACCESS_KEY_DEV_QA` — secret key for dev/QA\n- `AWS_ACCESS_KEY_ID_PROD` — access key for production Lambda deployments\n- `AWS_SECRET_ACCESS_KEY_PROD` — secret key for production\n\nThe dev/QA keys are created for a user with full access to Lambda and other AWS services. The same credentials are used for dev/QA until a separate AWS account is created for production.",
+  "acceptance_criteria": [
+    "Four AWS secrets are created in the GitHub repository settings",
+    "GitHub Actions deploy.yml references secrets instead of hardcoded credentials",
+    "Dev/QA deployments authenticate using the DEV_QA secret pair",
+    "Production deployments authenticate using the PROD secret pair",
+    "No AWS credentials are exposed in the repository code or workflow files"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [".github/workflows/deploy.yml"],
+  "implementation_notes": "Secrets configured per GitHub docs: https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions. Raj requested this setup for secure CI/CD pipeline deployment to Lambda. Temporary approach shares dev/QA credentials until separate prod AWS account is established.",
+  "comment_summary": "",
+  "comment_count": 0
+}

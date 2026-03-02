@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-439",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Cross-Tenant Admin Name Update via IDOR",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:50:13.534-0800",
+  "updated": "2024-05-24T02:25:08.877-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — Medium Severity**\n\nAn admin of Tenant A could update the name of Tenant B's admin account due to missing access control on the team name update endpoint. By intercepting the request and changing the `team_id` parameter to another tenant's ID, an attacker could modify another tenant's admin name.\n\n## Affected Endpoint\n\n`/teams/update-team-name/`\n\n## Risk\n\nMedium — limited to name manipulation but could disrupt business operations and naming conventions across tenants.\n\n## Fix\n\nAccess control enforced on the endpoint to verify the requesting user belongs to the target team before allowing updates.",
+  "acceptance_criteria": [
+    "Team name update endpoint validates that the requesting user belongs to the target team",
+    "Requests with mismatched team_id are rejected with 403 Forbidden",
+    "Admin can still update their own team name successfully",
+    "Cross-tenant team_id manipulation is blocked"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Access control check added to team name update controller to verify the authenticated user's team membership matches the target team_id.",
+  "data_model_changes": "",
+  "api_changes": "POST /teams/update-team-name/ now enforces tenant-scoped authorization; returns 403 for cross-tenant requests.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This IDOR vulnerability was part of a broader pattern where tenant isolation was missing on several endpoints. The fix was applied site-wide but this endpoint was initially missed.",
+  "comment_summary": "Developer acknowledged the oversight and applied the tenant access control fix to staging.",
+  "comment_count": 2
+}

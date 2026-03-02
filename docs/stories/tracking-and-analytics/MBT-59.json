@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-59",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Remove Duplicate Heap Analytics Script",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-05T22:17:03.734-0800",
+  "updated": "2026-03-01T04:19:22.186-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "A duplicate Heap Analytics JavaScript snippet was rendering at the bottom of the page. Since the Heap tracking code was already loaded elsewhere on the page, the second instance was redundant and needed to be removed to avoid double-tracking and unnecessary script loading.",
+  "acceptance_criteria": [
+    "Only one instance of the Heap Analytics JavaScript is loaded per page",
+    "The duplicate script at the bottom of the page is removed",
+    "Heap Analytics continues to function correctly with the remaining single instance"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Removed the duplicate Heap Analytics JavaScript snippet from the page footer template.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple removal of a redundant script tag. The primary Heap Analytics script remained in place.",
+  "comment_summary": "Developer completed the removal and submitted for review.",
+  "comment_count": 1
+}

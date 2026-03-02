@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-372",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Assess and Document SQL Injection Scan Findings",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-18T09:34:13.172-0800",
+  "updated": "2024-05-24T02:25:04.601-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "A security scanner flagged potential SQL injection on the `/get-scorecard` endpoint based on response time variations when manipulating a URL parameter with `randomblob()` SQL commands.\n\n## Analysis\n\nThe scanner observed different response times (380ms, 643ms, 765ms) when injecting SQL commands into the `_` cache-busting parameter. However, this was determined to be a **false positive** because:\n\n1. The application uses **Laravel Eloquent ORM** which automatically uses parameterized queries.\n2. The scorecard endpoint does not accept or process the `_` URL parameter in its query.\n3. Response time variations are attributable to server load, not SQL execution.\n\n## Code Evidence\n\n```php\n$scorecards = Scorecard::where('isdeleted', '=', 0)->get();\n$responseData = ['data' => $scorecards];\nreturn response()->json($responseData);\n```\n\nThe Eloquent query does not use any URL parameters, confirming the injection is not possible.",
+  "acceptance_criteria": [
+    "SQL injection findings from the security scan are reviewed and documented",
+    "False positives are identified with code evidence",
+    "Laravel Eloquent ORM usage is confirmed as providing SQL injection protection",
+    "Response documenting the analysis is prepared for the security review"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Determined to be a false positive. The /get-scorecard endpoint uses Eloquent ORM with no user-supplied parameters in the query. Response time variations were due to server load, not SQL execution. OWASP tags: A03 (2021), A01 (2017).",
+  "comment_summary": "Developer analyzed the flagged endpoint and confirmed it uses Eloquent ORM with no user input in the query. Provided code evidence showing the scorecard query is a simple Eloquent call with no URL parameter processing. Product owner accepted the false positive assessment.",
+  "comment_count": 2
+}

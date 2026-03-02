@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-651",
+  "epic_key": "MBT-708",
+  "feature_folder": "infrastructure",
+  "title": "Optimize Object Selection Speed on Migration/Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-16T20:22:16.308-0700",
+  "updated": "2024-05-24T02:25:40.324-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user adding Salesforce objects to my Data Dictionary, I want the object selection process to be fast and responsive so that I do not experience frustrating load times when checking objects to add.",
+  "description": "The checkbox selection process for adding new Salesforce objects on the migration/dictionary page was slow and frustrating. The optimization defers field fetching until the user navigates to the object detail page, making the add-object step nearly instant.\n\nOn first-time detail view, fields are fetched from Salesforce with a loading message: \"DataTools Pro is working, Your patience is greatly appreciated.\"",
+  "acceptance_criteria": [
+    "Selecting an object checkbox to add it completes without noticeable delay",
+    "Salesforce field fetching is deferred until the user views the object detail page",
+    "First-time detail page view displays a loading message while fields are fetched",
+    "Subsequent detail page views load instantly from cached data"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Object selection via checkbox is now instant. Detail page shows a loading message on first-time field fetch: \"DataTools Pro is working, Your patience is greatly appreciated.\"",
+  "middleware_changes": "Decoupled object selection from field fetching. Fields are now lazy-loaded only when the object detail page is accessed for the first time.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-650"],
+  "source_files": [],
+  "implementation_notes": "The fix separates the object-add action from the field-fetch action. Adding an object no longer triggers a Salesforce API call for fields. Fields are fetched lazily on first detail page view.",
+  "comment_summary": "Waqar implemented the lazy-loading approach and deployed to staging. The migration page object addition was confirmed to be much faster with fields deferred to the detail view.",
+  "comment_count": 2
+}

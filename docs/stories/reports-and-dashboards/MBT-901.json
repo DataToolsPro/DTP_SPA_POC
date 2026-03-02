@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-901", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Add Clickable Status Column as Rightmost Table Column",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:14:14.498-0700", "updated": "2024-10-15T19:08:17.494-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Status field visible as a clickable column on the right side of the reports table that opens the detail sidebar, so that I can quickly assess and manage report status.",
+  "description": "Adds the Status field as the rightmost column in the Reports and Dashboards data table. The status text is clickable and opens the side pane detail view, similar to how the report name column works.",
+  "acceptance_criteria": ["Status column appears as the rightmost column in the data table", "Clicking the status text opens the sidebar detail pane", "Status values display correctly for all report/dashboard records"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added Status as a clickable rightmost column that opens the sidebar detail pane.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-782"], "source_files": [],
+  "implementation_notes": "Testing was initially blocked by sidebar and multi-edit errors. Once those were resolved, the feature was verified.",
+  "comment_summary": "Ryan's testing was blocked by sidebar and multi-edit errors. After those were resolved, Balaji resubmitted for review.", "comment_count": 3
+}

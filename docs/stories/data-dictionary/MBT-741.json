@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-741",
+  "epic_key": "MBT-740",
+  "feature_folder": "data-dictionary",
+  "title": "Apply Clone View and Enhanced Editing UX to Dictionary Tab",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-03T00:09:52.239-0700",
+  "updated": "2024-06-15T21:43:42.394-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "ERD"],
+  "story": "As a DataTools Pro user, I want the clone view and enhanced editing UX from the ERD page available on the Dictionary and Migration tabs, so that I can duplicate and edit views consistently across all areas of the application.",
+  "description": "The clone view feature and enhanced editing UX that were built for the ERD page need to be applied to the Dictionary and Migration tabs. This ensures a consistent experience when managing Object Views regardless of which tab the user is on.\n\nThe clone functionality allows users to duplicate an existing view as a starting point for a new one. The enhanced editing UX includes the non-destructive exploration mode and explicit save workflow.",
+  "acceptance_criteria": [
+    "Clone view button is available on the Dictionary tab's views panel",
+    "Clone view button is available on the Migration tab's views panel",
+    "Cloning creates a copy of the selected view with a new name",
+    "Enhanced editing UX (non-destructive exploration, explicit save) works on Dictionary and Migration tabs",
+    "Behavior matches the ERD page implementation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds clone view button and enhanced editing UX (non-destructive exploration, explicit save workflow) to the Dictionary and Migration tabs, matching the ERD page behavior.",
+  "middleware_changes": "Reuses the existing clone view server-side logic. The clone endpoint is called from the Dictionary/Migration context the same way it is from ERD.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-740", "MBT-359"],
+  "source_files": [],
+  "implementation_notes": "Developer noted the Migration tab also needed the same update and applied it to both. Used a feature branch workflow: created branch from development, implemented, tested locally, merged to development, then to staging.",
+  "comment_summary": "Developer confirmed Migration tab also needed the update and applied clone view to both Dictionary and Migration. Used a standard branching workflow with testing on development and staging environments.",
+  "comment_count": 2
+}

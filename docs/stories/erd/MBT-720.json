@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-720",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix GoJS Evaluation Watermark After Library Upgrade",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-24T20:24:14.747-0700",
+  "updated": "2026-03-01T03:49:49.103-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "## Bug\nThe ERD diagram displayed the GoJS evaluation watermark despite having a paid license. The watermark appeared after upgrading to GoJS 3.0.\n\n## Root Cause\nThe GoJS license key is version-specific. After upgrading to GoJS 3.0, the existing license key was no longer valid for the new version. A new key needed to be requested from GoJS.\n\n## Fix\nRequested a new GoJS license key compatible with version 3.0 and applied it to the application. The evaluation watermark was removed.",
+  "acceptance_criteria": [
+    "GoJS evaluation watermark is not displayed in the ERD",
+    "GoJS 3.0 license key is properly configured",
+    "ERD diagram renders without watermark in production"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Removed GoJS evaluation watermark from the ERD diagram.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "GoJS license keys are version-specific. After upgrading to GoJS 3.0, the old key stopped working. A new key was requested and applied. Ensure license key is updated whenever GoJS is upgraded.",
+  "comment_summary": "Developer identified the license was being applied but was for a different GoJS version. A new key was requested for GoJS 3.0 and the watermark was resolved.",
+  "comment_count": 5
+}

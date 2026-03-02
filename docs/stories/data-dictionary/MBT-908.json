@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-908",
+  "epic_key": "MBT-923",
+  "feature_folder": "data-dictionary",
+  "title": "Change Type Filter for Field Change History Log",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-08T15:55:50.600-0700",
+  "updated": "2024-09-17T23:12:40.421-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user reviewing the field change history log, I want to filter by change type, so that I can focus on specific categories of changes (additions, deletions, modifications) without scrolling through the entire log.",
+  "description": "The field change history log displays all detected changes to Salesforce object fields. This feature adds a dropdown filter that allows users to select a specific change type and filter the table to only show matching entries.\n\nThe dropdown is populated with the available change types present in the current log data.",
+  "acceptance_criteria": [
+    "A change type dropdown filter appears above the change history table",
+    "Dropdown lists all available change types from the current log data",
+    "Selecting a change type filters the table to show only matching entries",
+    "Selecting 'All' or clearing the filter shows all entries",
+    "Filter works without requiring a page reload"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a dropdown filter above the change history table. Populated with available change types. Filters the table client-side on selection.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Client-side filtering using the DataTables API or equivalent. The dropdown values are derived from the change type column in the loaded data.",
+  "comment_summary": "Developer added the filter dropdown and submitted a screenshot for review on the development environment.",
+  "comment_count": 1
+}

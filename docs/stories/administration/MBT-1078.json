@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1078",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Enterprise License Tier with Auto-Join and Feature Gating",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-02-11T20:11:04.959-0800",
+  "updated": "2026-03-01T04:03:21.913-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\nDesign and implement an Enterprise license tier for DataTools Pro with enhanced team management and feature access.\n\n## Enterprise License Features\n1. **Pre-determined user count** — enterprise teams still have a user limit, but higher than standard.\n2. **Auto-join by org** — users from the same Salesforce org can join the enterprise team without a manual invite. An admin-distributed URL (`/ent_invite?teamid=teamid`) triggers the auto-join workflow. The system validates that the authenticating user's orgID matches the team's orgID.\n3. **Unrestricted feature access** — all features are enabled for enterprise accounts.\n4. **Enterprise-only features** — certain features are locked to enterprise tier:\n   - All APIs and API key creation\n   - Initiatives feature\n   - Other features TBD\n5. **API endpoint to set license** — admin API to programmatically set a team's license as enterprise.\n\n## Auto-Join Flow\n1. Admin distributes the enterprise invite URL internally.\n2. User clicks URL and authenticates with Salesforce.\n3. System checks if the user's Salesforce orgID matches the team's orgID on file.\n4. If match, the user is auto-added to the team with the same activation workflow.\n5. If no match, user is redirected with an error.",
+  "acceptance_criteria": [
+    "API endpoint exists to set a team's license as enterprise",
+    "Auto-join URL validates orgID match before adding users",
+    "Enterprise accounts have unrestricted feature access",
+    "APIs and API key creation are enterprise-only",
+    "Initiatives feature is enabled for enterprise accounts",
+    "Standard/team accounts cannot access enterprise-only features"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Enterprise users see all features unlocked. Auto-join URL provides a streamlined onboarding flow. Feature flags gate enterprise-only features for non-enterprise accounts.",
+  "middleware_changes": "New auto-join flow with orgID validation. Feature gating middleware to check license tier. Admin API endpoint to set enterprise license.",
+  "data_model_changes": "New license tier field on team/account model. Feature flags for enterprise-only features.",
+  "api_changes": "Admin API endpoint: POST /api/teams/{teamId}/license to set enterprise license. Enterprise-only API key management endpoints.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The auto-join URL would be pre-configured with the team ID. On authentication, the system validates the Salesforce orgID matches the team's org on file. Enterprise license gates API access, Initiatives, and other TBD features.",
+  "comment_summary": "",
+  "comment_count": 0
+}

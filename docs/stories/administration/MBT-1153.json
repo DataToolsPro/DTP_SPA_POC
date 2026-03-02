@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1153",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Fix Contact Administrator Error on View Selection",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-06-27T11:55:53.409-0700",
+  "updated": "2026-03-01T03:40:09.441-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user, I want to select views like 'Lender Decision' without getting a 'Contact Administrator' error, so that I can access my data without interruption.",
+  "description": "## Bug\nSelecting 'Lender Decision' view in the Cardiff account triggers a 'Contact Administrator' error page.\n\n## Root Cause\nA database seeder had not fully updated the public-facing ERD view IDs in the production table, leaving some views without valid IDs.\n\n## Fix\nRe-ran the seeder to populate all public-facing ERD view IDs correctly.",
+  "acceptance_criteria": [
+    "Selecting any view does not produce a Contact Administrator error",
+    "All ERD views have valid public-facing IDs in the database"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed error page when selecting certain views.",
+  "middleware_changes": "",
+  "data_model_changes": "Re-ran seeder to populate missing public-facing ERD view IDs in production.",
+  "api_changes": "",
+  "dependencies": ["MBT-1122"],
+  "source_files": [],
+  "implementation_notes": "The GUID migration seeder did not complete for all records in production. Re-running the seeder fixed the missing IDs.",
+  "comment_summary": "Developer identified that the seeder had not updated all public-facing ERD view IDs in production and re-ran it.",
+  "comment_count": 1
+}

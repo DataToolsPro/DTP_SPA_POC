@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1244",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Outbound Proxy Worker via Cloudflare for Stable Egress",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-11-26T23:03:27.765-0800",
+  "updated": "2026-03-01T04:11:35.325-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Route all outbound API calls from the Cloudways Laravel application through a secure Cloudflare Worker proxy. This provides stable egress IP addresses for API integrations that require IP whitelisting (e.g., Snowflake, Salesforce).",
+  "acceptance_criteria": [
+    "Outbound API calls are routed through the Cloudflare Worker proxy",
+    "Stable egress IP addresses are maintained for API whitelisting",
+    "No regressions in API call latency or reliability"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel HTTP client configured to route outbound requests through the Cloudflare Worker proxy.",
+  "data_model_changes": "",
+  "api_changes": "All outbound API calls proxied through Cloudflare Worker for stable egress.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Cloudflare Worker acts as an outbound proxy providing consistent egress IPs. Important for services that require IP whitelisting like Snowflake network policies.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

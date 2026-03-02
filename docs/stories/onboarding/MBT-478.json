@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-478",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Fix Activation Event 0003 Firing Multiple Times",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-11T23:21:10.579-0800",
+  "updated": "2024-05-24T02:25:31.370-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Fix a bug where the activation event (0003) was triggering every time a user added an object, instead of only firing once on the first object addition. Activation is a one-time event that signals a user has successfully logged in and used the service for the first time — a key metric for measuring user engagement.\n\nWhile no harmful emails or actions were triggered by the redundant events, the duplicate Zapier calls were creating noise in the activation tracking data.",
+  "acceptance_criteria": [
+    "Activation event 0003 fires only once — on the first object addition",
+    "Subsequent object additions do not trigger the activation event",
+    "Activation is logged in the local database only for the first object",
+    "Existing Zapier integrations continue to receive the single activation event"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added a conditional check to ensure the activation event only fires when the user adds their first object. Both the Zapier webhook call and the local database log are now gated by this first-object check.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-462"],
+  "source_files": [],
+  "implementation_notes": "Activation event was also being logged in the local database for every object addition. Fix ensures both the Zapier call and the local log entry only occur for the first object. Product owner plans to document all internal webhook events.",
+  "comment_summary": "Developer confirmed the event was firing on every object addition and added a first-object condition. Deployed to staging and production. Product owner acknowledged and plans to update webhook documentation.",
+  "comment_count": 4
+}

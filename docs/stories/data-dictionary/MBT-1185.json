@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-1185",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Optimize Object Refresh to Avoid Cloudflare 524 Timeout",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-08-18T20:55:04.510-0700",
+  "updated": "2026-03-01T03:52:26.195-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "",
+  "description": "Long-running object refresh queries were exceeding Cloudflare's ~100s timeout, returning HTTP 524 errors. The fix involved optimizing the backend refresh logic rather than increasing timeouts.\n\n### Performance Optimization Results\n| Step | Before | After |\n|------|--------|-------|\n| Salesforce /describe | 1-2s | 1-2s |\n| FieldDefinition pagination | 2-4s | 2-4s |\n| DB field writes | 800 row-by-row updates → 8-20s | ≤200 updateOrCreate (only changed/new) → 1-4s |\n| DB picklists | Per-value inserts (thousands) → 10-30s | Only diffs; create new/delete removed → 2-6s |\n| DB audit logs | Per-row inserts → 3-8s | Only changed/new → 1-3s |\n| DB deletions | Per-row updates → 1-3s | Single whereIn update → <0.5s |\n| **Total** | **25-70s** (often >100s with big picklists) | **7-17s** |\n\n### Architectural Recommendation\nChatGPT analysis suggested an async pattern (202 Accepted + polling/WebSockets) as the long-term best practice for heavy endpoints behind Cloudflare.",
+  "acceptance_criteria": [
+    "Object refresh completes within Cloudflare's timeout window",
+    "No HTTP 524 errors during normal refresh operations",
+    "Performance improvement from 25-70s to 7-17s"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": true, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Optimized DB writes to use updateOrCreate only for changed/new fields. Diff-based picklist updates. Batch deletion via whereIn. Reduced total refresh time from 25-70s to 7-17s.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-843"], "source_files": [],
+  "implementation_notes": "Implemented and deployed to production. Future consideration: async processing pattern with 202 Accepted + polling for very large objects.",
+  "comment_summary": "Waqar optimized the code and provided a detailed before/after performance comparison table. Confirmed the solution was implemented on production.",
+  "comment_count": 4
+}

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1132",
+  "skipped": true,
+  "skip_reason": "stub — description is a placeholder requesting more detail ('Please add a bit description for the task')",
+  "title": "Missing Object in Salesforce",
+  "status": "Done",
+  "feature_folder": "data-dictionary"
+}

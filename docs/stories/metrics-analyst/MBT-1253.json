@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1253",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Rebuild Metrics Analyst Assessment UX for Snowflake and Salesforce",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-04T18:52:22.140-0800",
+  "updated": "2026-03-01T04:06:58.318-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Snowflake"],
+  "story": "As a DataTools Pro user, I want a rebuilt metrics analyst assessment experience that works consistently for both Snowflake semantic views and Salesforce dashboards, so that I have a unified workflow regardless of data source.",
+  "description": "Export the Lovable prototype design and translate it into the production DataTools Pro application to fully replace the existing metrics glossary experience.\n\n### Phased Approach\n1. **Phase 1 — Snowflake Semantic Views:** Rebuild the metrics analyst assessment and reconciliation UX using the Lovable prototype as the design source. This becomes the new standard for Snowflake-sourced metrics.\n2. **Phase 2 — Salesforce:** Apply the same rebuilt UX and functions to Salesforce dashboards/reports once new web services are ready.\n\n### Design Reference\nLovable prototype: serves as the target UX for the rebuilt experience.",
+  "acceptance_criteria": [
+    "Lovable prototype design is translated into production Bootstrap HTML",
+    "Rebuilt UX fully replaces the existing metrics glossary experience for Snowflake",
+    "Assessment and reconciliation workflow is consistent between Snowflake and Salesforce sources",
+    "New web services integration is in place before Salesforce phase begins"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Complete rebuild of the metrics analyst assessment interface based on Lovable prototype. New unified experience for both Snowflake semantic views and Salesforce dashboards.",
+  "middleware_changes": "Reconciliation functions updated to work consistently across Snowflake and Salesforce data sources.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1252", "MBT-1176"],
+  "source_files": [],
+  "implementation_notes": "Lovable prototype uses Vue/inline styles, not Bootstrap HTML — translation to Bootstrap is required. Salesforce phase depends on new web services being completed.",
+  "comment_summary": "",
+  "comment_count": 0
+}

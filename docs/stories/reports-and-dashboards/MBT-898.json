@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-898", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Standardize Created Date Format to Match Modified Date Column",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:08:32.360-0700", "updated": "2024-09-17T23:12:51.899-0700",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Created Date column to use the same compact format as the Modified Date column, so that dates are consistent and don't waste column space.",
+  "description": "Standardizes the Created Date column format to match the Modified Date format. The original Created Date was using a verbose format that took up excessive column width with redundant information. Both date columns now use the same compact format.",
+  "acceptance_criteria": ["Created Date column format matches Modified Date format", "Date format is compact and saves column space", "Both date columns are consistent across reports and dashboards"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Standardized Created Date column to use the same compact format as Modified Date.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Date formatting change only — no data model changes needed.",
+  "comment_summary": "Balaji completed and submitted for review.", "comment_count": 1
+}

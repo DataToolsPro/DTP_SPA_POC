@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-735",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "Order and License Management Trailheads",
+  "status": "Done",
+  "feature_folder": "payment-and-billing"
+}

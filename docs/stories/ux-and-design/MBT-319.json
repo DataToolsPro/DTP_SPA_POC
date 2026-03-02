@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-319",
+  "skipped": true,
+  "skip_reason": "stub - description contains only an image reference with no textual substance",
+  "title": "Issue with Metrics Toggling Between Used and Unused",
+  "status": "Done",
+  "feature_folder": "ux-and-design"
+}

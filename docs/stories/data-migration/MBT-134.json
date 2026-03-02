@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-134",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "Move Scrollbar from Side Panel to Data Table Container",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-08T20:53:23.369-0700",
+  "updated": "2024-05-24T02:24:35.067-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want the scrollbar to be on the data table within the side panel rather than the entire panel, so that the panel header and controls remain fixed while I scroll through field data.",
+  "description": "Adjust the scrollbar placement in the right slide-out mapping panel. Currently the entire side panel has scrollbars, which causes the header and controls to scroll out of view. The scrollbar should instead be contained within the DIV holding the data table, keeping panel controls fixed and accessible.",
+  "acceptance_criteria": [
+    "Side panel header and controls remain fixed when scrolling",
+    "Scrollbar appears only on the data table container within the panel",
+    "Panel does not show its own scrollbar"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "CSS adjustment to move the overflow scroll from the side panel container to the inner data table DIV, keeping panel header and controls visible at all times.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-77"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented the change and marked it ready for review promptly.",
+  "comment_count": 1
+}

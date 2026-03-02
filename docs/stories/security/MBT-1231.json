@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1231",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Expand CSP Policy to Resolve Console Errors",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-10-13T18:11:55.104-0700",
+  "updated": "2026-03-01T04:08:34.782-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The current Content Security Policy is too restrictive and is throwing multiple console errors. The CSP allowlist needs to be expanded to include all legitimate resources the application loads while maintaining security against unauthorized sources.",
+  "acceptance_criteria": [
+    "CSP policy is expanded to allow all legitimate application resources",
+    "Browser console shows no CSP violation errors during normal app usage",
+    "Security protection against XSS and unauthorized resource loading is maintained"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Expand CSP directives (script-src, style-src, frame-src, etc.) to include all legitimate application resource domains.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1227"],
+  "source_files": [],
+  "implementation_notes": "CSP errors visible in browser console indicate blocked resources. Need to audit all third-party domains and inline scripts used by the application and add them to the appropriate CSP directives.",
+  "comment_summary": "",
+  "comment_count": 0
+}

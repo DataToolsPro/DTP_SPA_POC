@@ -1,0 +1,51 @@
+{
+  "issue_key": "MBT-932",
+  "epic_key": "MBT-1014",
+  "feature_folder": "multi-org",
+  "title": "Multi-Instance Salesforce Object and Metadata Fetching",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-22T23:08:18.463-0700",
+  "updated": "2024-11-28T09:48:09.715-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+
+  "story": "As a Salesforce administrator, I want to authenticate and connect additional Salesforce instances so that I can browse their objects and metadata and map them directly to Salesforce objects instead of creating custom source objects.",
+
+  "description": "## Context\n\nOrganizations using multiple Salesforce instances need a way to connect each instance to DataTools Pro, browse its objects, and inspect metadata — all without manually creating custom source objects.\n\n## Behavior\n\n### Authentication\n- Users initiate an OAuth flow to authenticate a second (or additional) Salesforce instance.\n- Each instance is uniquely identified by its `instance_url`. Attempting to add a duplicate instance returns an error prompting the user to connect a different one.\n- On successful OAuth callback, access tokens are saved and associated with the current team.\n\n### Object and Metadata Fetching\n- When a new instance is first connected, background jobs fetch all Salesforce objects for that instance.\n- Metadata for each object is also fetched via batched background jobs using Laravel queues. Objects are chunked to avoid API overload.\n- This bulk fetch runs only once — on initial instance connection.\n- Users can later view object lists and drill into individual object metadata.\n\n### Data Model\n- **SalesforceSecondInstanceUserInformation** — represents a connected Salesforce instance, scoped to a team. Stores OAuth credentials and instance URL.\n- **SalesforceInstanceObject** — individual Salesforce objects belonging to a connected instance.\n- **SalesforceInstanceObjectMetaData** — metadata fields for each object, fetched from the Salesforce API.\n\n### Controller Endpoints\n- `redirectToSalesforce()` / `callback()` — OAuth initiation and callback handling.\n- `listInstance()` / `tableListInstance()` — list all connected instances for the current team.\n- `instnaceObjects($instance_id)` / `instnaceObjectsTable($instance_id)` — view objects for a specific instance.\n- `instnaceObjectsMetaData($instance_id, $object_id)` / `listtableMetaData($instance_id, $object_id)` — view metadata for a specific object.\n- `fetchObjectsFromSalesforceInBackGround()` — dispatches background jobs to fetch objects.\n- `fetchObjectsMetaDataFromSalesforceInBackGround()` — dispatches background jobs to fetch object metadata.\n\n### Queue Configuration\nRequires `QUEUE_CONNECTION=database` in `.env`, the `queue:table` migration, and a running queue worker (`php artisan queue:listen`).",
+
+  "acceptance_criteria": [
+    "User can initiate OAuth to connect a new Salesforce instance",
+    "System prevents adding a duplicate instance (same instance_url) and shows an error message",
+    "On first connection, all objects for the new instance are fetched via background jobs",
+    "Metadata for each object is fetched in batches via queued jobs to avoid API overload",
+    "User can view a list of all connected Salesforce instances for their team",
+    "User can browse objects belonging to a selected instance",
+    "User can drill into an object to view its metadata fields",
+    "Background fetch of objects and metadata runs only on initial instance connection",
+    "Access tokens from OAuth callback are persisted and scoped to the team"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "New screens for adding a Salesforce instance via OAuth, listing connected instances, browsing objects per instance, and viewing object metadata in table format.",
+  "middleware_changes": "SalesforceSecondInstanceController handles OAuth flow, instance listing, object/metadata browsing, and dispatching Laravel queue jobs for background fetching. Batch processing chunks objects to prevent API overload.",
+  "data_model_changes": "Three new Eloquent models: SalesforceSecondInstanceUserInformation (instance credentials scoped to team), SalesforceInstanceObject (objects per instance), and SalesforceInstanceObjectMetaData (metadata per object). One-to-many relationships chain instance → objects → metadata.",
+  "api_changes": "New controller routes: OAuth redirect/callback, instance listing (JSON and table), object listing per instance, metadata listing per object, and background fetch triggers for objects and metadata.",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Uses Laravel Jobs and Queues for background processing. Requires QUEUE_CONNECTION=database and a running queue worker. Objects are chunked into batches before dispatching jobs to avoid Salesforce API rate limits. The bulk metadata fetch runs only once on initial instance connection.",
+  "comment_summary": "Developer provided a detailed technical walkthrough of the implementation including database models, controller methods, batch processing strategy, and queue configuration. Feature was developed on a local branch and not merged to development at the time of comment to avoid conflicts.",
+  "comment_count": 1
+}

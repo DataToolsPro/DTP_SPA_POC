@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-356",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Flash of Unstyled Content on Multi-Select Filter Controls",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-10T00:35:06.655-0800",
+  "updated": "2024-05-24T02:25:06.145-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want multi-select filter controls to load without showing raw unstyled HTML, so that the interface feels polished and professional.",
+  "description": "Multi-select filter controls exhibit a Flash of Unstyled Content (FOUC) where the raw HTML `<select>` element is visible for 2-3 seconds before JavaScript transforms it into styled checkboxes.\n\n## Root Cause\nThe `filterMultiSelect` JavaScript function waits to load all options before manipulating the DOM to render checkboxes. During this wait, the browser displays the raw unstyled control.\n\n## Solution\nA branded loading spinner is displayed while the DOM is not ready. Once the DOM is fully loaded and the multi-select JavaScript has finished transforming the controls, the spinner is hidden and the styled controls are revealed.\n\n## Approaches Tried\n1. **Moving CSS to `<head>`** — Moved all CSS link tags to head. This caused other issues and did not resolve the FOUC since it was JS-driven, not CSS-driven.\n2. **Loading spinner (adopted)** — Show a brand-colored spinner until DOM ready, then swap to the actual controls.",
+  "acceptance_criteria": [
+    "Multi-select filter controls display a loading spinner while JavaScript transforms the DOM",
+    "Spinner uses the DataTools Pro brand green color",
+    "Once DOM is ready and controls are styled, spinner is hidden and controls are displayed",
+    "No raw unstyled HTML controls are visible to the user during page load",
+    "Spinner behavior does not interfere with other page elements or CSS"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a brand-colored loading spinner that displays while multi-select filter controls are being initialized by JavaScript. Once the DOM is ready and controls are fully styled, the spinner is hidden and the actual controls are revealed. Eliminates the 2-3 second flash of unstyled raw HTML selects.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial attempt to move CSS into the head tag caused side effects and did not solve the problem since the FOUC was caused by JavaScript DOM manipulation delay, not CSS loading order. The adopted solution uses a CSS spinner (customized with brand green from loading.io) that is shown by default and hidden via JavaScript once the filterMultiSelect function completes its DOM transformation.",
+  "comment_summary": "Developer first tried moving CSS to head, which caused other issues. Root cause was identified as the filterMultiSelect JS waiting to load all options before applying checkbox styling. Solution: show a spinner until DOM ready. Product owner requested the spinner match the brand green color. Developer found a customizable spinner from loading.io and applied it. Final result approved.",
+  "comment_count": 10
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1062",
+  "epic_key": "MBT-342",
+  "feature_folder": "api",
+  "title": "App API Endpoint Inventory for Cloudflare Security Monitoring",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-01T22:45:58.815-0800",
+  "updated": "2026-03-01T03:56:20.597-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API", "security"],
+  "story": "",
+  "description": "Perform a full inventory of all API endpoints used by the DataTools Pro application. The inventory will be provided to Cloudflare to enable endpoint monitoring for malicious activity detection and automatic blocking.\n\n### Identified Endpoints\n\n| Method | Endpoint |\n|--------|----------|\n| GET | /api/metrics |\n| GET | /api/metrics/{id} |\n| POST | /api/metrics/upsert |\n| POST | /api/dtpsignup |\n| POST | /api/metrics/addUsers |\n| POST | /api/metrics/removeUsers |\n\nThe schema and endpoint list need to be added to Cloudflare for automated security monitoring. Salesforce API endpoints may also need to be included.",
+  "acceptance_criteria": [
+    "All DataTools Pro API endpoints are documented with HTTP method and path",
+    "Endpoint list is formatted and submitted to Cloudflare for monitoring",
+    "Cloudflare API schema discovery is configured for the listed endpoints",
+    "Salesforce API endpoints are evaluated for inclusion"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Documents existing endpoints: GET /api/metrics, GET /api/metrics/{id}, POST /api/metrics/upsert, POST /api/dtpsignup, POST /api/metrics/addUsers, POST /api/metrics/removeUsers.",
+  "dependencies": ["MBT-533"],
+  "source_files": [],
+  "implementation_notes": "Endpoint inventory compiled by development team. Links need to be added to Cloudflare for API schema discovery and malicious activity monitoring.",
+  "comment_summary": "Waqar compiled the list of six API endpoints and asked whether Salesforce endpoints should also be included. The endpoint list was shared for addition to Cloudflare.",
+  "comment_count": 4
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-500",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Display External ID Fields in ERD with Orange Color Coding",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-16T09:59:51.077-0800",
+  "updated": "2026-01-24T22:48:26.272-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD", "Dictionary"],
+  "story": "As a DataTools Pro user viewing the ERD, I want to see External ID fields displayed on object nodes with distinct orange color coding, so that I can quickly identify which fields serve as external identifiers across my data model.",
+  "description": "Adds a new category of fields to the ERD diagram: External IDs. These are fields tagged as \"External Ids\" in the Salesforce object metadata. They should appear as additional colored squares on each ERD node, using orange to distinguish them from the existing blue/green reference fields.\n\nThe External ID metadata needs to be imported into the data model as a hidden dictionary field. On the ERD, external IDs are disabled by default but can be toggled on via a new checkbox. When enabled, the orange squares appear on the relevant object nodes.",
+  "acceptance_criteria": [
+    "External ID fields from Salesforce metadata are imported into the data model",
+    "A new checkbox on the ERD toggles visibility of External ID fields",
+    "External ID fields render as orange-colored squares on ERD object nodes",
+    "External IDs are hidden by default on the ERD",
+    "Existing blue/green reference field rendering is unaffected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New toggle checkbox on the ERD page to show/hide External ID fields. When enabled, External IDs appear as orange-colored squares on object nodes, visually distinct from reference fields.",
+  "middleware_changes": "Logic to identify and extract External ID metadata from Salesforce object field descriptions and surface it in the ERD query.",
+  "data_model_changes": "External ID attribute stored as a hidden dictionary field so the ERD can query and display it.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Was moved to backlog as a lower-priority item. Developer asked for clarification and later indicated it may have been implemented as part of another task (MBT-881 or MBT-948).",
+  "comment_summary": "Developer requested more details. Item was moved to backlog as lower priority. Later, developer noted it may have been partially or fully implemented as part of another ticket.",
+  "comment_count": 4
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-262",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "User Invite Webhook Integration with Zapier",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-31T21:36:31.817-0700",
+  "updated": "2026-03-01T04:10:21.417-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Send a DTSignal event to a Zapier webhook when a user invite is triggered. This extends the existing webhook integration pattern used for login and object-selection events.\n\n### Event Payload\n\nThe invite event uses the `DTS.salesforceapp` namespace and includes an additional `accountid` field not present in the other webhook payloads:\n\n- `signal_namespace`: `DTS.salesforceapp`\n- `userid`: authenticated user ID\n- `orgid`: organization ID\n- `email`: inviter's email\n- `eventid`: assigned event ID\n- `eventdate`: ISO 8601 timestamp\n- `eventname`: \"DataTool User Invite\"\n- `message`: \"DataTool User invite\"\n- `accountid`: the account ID for the invited user\n\nEndpoint: Zapier webhook catch URL.",
+  "acceptance_criteria": [
+    "User invite action fires a DTSignal event to the Zapier webhook",
+    "Payload includes the accountid field in addition to standard DTSignal fields",
+    "Webhook returns a success response with a request ID",
+    "Existing webhook integrations (login, object selection) are not broken by the accountid addition"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Invite handler now constructs a DTSignal payload with the additional accountid field and sends it to the configured Zapier endpoint.",
+  "data_model_changes": "",
+  "api_changes": "Outbound POST to Zapier webhook (hooks.zapier.com) with DTSignal payload containing accountid on user invite.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The accountid field is unique to the invite webhook and is not present in login or object-selection events. If a shared class handles all webhooks, adding accountid to other payloads is safe and won't break anything.",
+  "comment_summary": "Developer implemented the webhook and confirmed it was working. Testing confirmed a successful response with a request ID. Integration was verified end-to-end.",
+  "comment_count": 5
+}

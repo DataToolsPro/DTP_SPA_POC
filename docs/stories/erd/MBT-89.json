@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-89",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Diagram Proof of Concept",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-08T10:41:40.275-0700",
+  "updated": "2026-03-01T03:43:15.517-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want to see a quick ERD visualizing the entity relationships of the objects I have selected, so that I have a clear visual reference of how objects are related.",
+  "description": "## Context\nUsers need a visual Entity Relationship Diagram (ERD) to understand how selected Salesforce objects relate to each other.\n\n## Behavior\nThe ERD is rendered using the GoJS library. Two PHP-generated arrays drive the diagram:\n\n- **nodeDataArray** — one node per unique object\n- **linkDataArray** — one link per foreign-key relationship between objects, built by iterating rows from `object_fields` where `data_type = 'reference'` or `field_api_name = 'Id'`\n\nThe source query:\n```sql\nSELECT id, object, reference_to, field_label\nFROM object_fields\nWHERE user_id = ? AND (data_type = 'reference' OR field_api_name = 'Id')\n```\n\nLinks are created only when `reference_to` differs from `object` and the target object exists in the selected set. Each link carries cardinality markers (`0..N` / `1`).\n\n## Implementation\n- `entityRelationship.php` — static proof-of-concept with hardcoded data\n- `entityRelationship_v2.php` — dynamic version pulling from the SQL query above",
+  "acceptance_criteria": [
+    "ERD diagram renders using GoJS with nodes for each selected object",
+    "Links between objects represent foreign-key relationships from the object_fields table",
+    "Only relationships where both objects are in the selected set are displayed",
+    "Cardinality markers (0..N, 1) are shown on relationship lines",
+    "Diagram data is dynamically generated from the object_fields SQL query"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New ERD visualization page rendering an interactive GoJS diagram showing entity nodes and relationship links with cardinality markers.",
+  "middleware_changes": "PHP functions parse object_fields query results into GoJS-compatible nodeDataArray and linkDataArray structures.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["entityRelationship.php", "entityRelationship_v2.php"],
+  "implementation_notes": "POC uses GoJS for rendering. Data is sourced from the object_fields table filtering on reference data types and Id fields. The linkDataArray builder checks that both source and target objects exist in the selected set before creating a link.",
+  "comment_summary": "Developer requested a clarification meeting to understand how to make the static ERD dynamic, as the initial PHP file used hardcoded values.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-263",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Register GoJS License Key for DataToolsPro.com Domain",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-01T19:51:38.461-0700",
+  "updated": "2026-03-01T04:10:38.815-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nGoJS was purchased for the ERD diagram feature. The license key must be activated and inserted into the code before creating any Diagram instance to remove the evaluation watermark.\n\n## Action\nActivate the GoJS license key for the datatoolspro.com domain and insert the `go.Diagram.licenseKey` assignment into the codebase so it executes after GoJS loads but before any diagram is created.\n\n## Key Details\n- License key is domain-specific (*.datatoolspro.com)\n- Key is version-specific: works for all patch versions within the same minor version (e.g., 2.3.*), but requires a new key when upgrading minor/major versions (e.g., 2.3 to 2.4 or 3.0).",
+  "acceptance_criteria": [
+    "GoJS evaluation watermark is removed from all diagrams",
+    "License key executes before any Diagram instance is created",
+    "Key is registered for the datatoolspro.com domain"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Removed GoJS evaluation watermark from diagram pages.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "GoJS license key is version-locked to minor versions. Must be renewed when upgrading GoJS minor or major versions. Key assignment must execute after GoJS library load but before first Diagram creation.",
+  "comment_summary": "Developer asked how to obtain the license. Reporter provided the key. Developer inserted it and confirmed the watermark was removed.",
+  "comment_count": 4
+}

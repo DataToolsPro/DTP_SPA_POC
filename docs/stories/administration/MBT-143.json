@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-143",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Authentication and Authorization Flow Documentation for Multi-Tenant Architecture",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-17T11:12:31.352-0700",
+  "updated": "2024-05-24T02:24:35.468-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "",
+  "description": "Prepare comprehensive documentation for the Salesforce authentication and Laravel authorization flow, including CRUD operations and multi-tenant user management.\n\nThe documentation covers:\n\n1. **Salesforce Authentication**: Users authenticate via Salesforce using Laravel Socialite. The response provides username, email, organization ID, Salesforce user ID, tokens, and instance URL.\n\n2. **User and Team Creation**: On successful authentication, the system creates or updates a user record and an associated team (Account). Each user is assigned to a unique Salesforce organization and team. The `sfuid` (Salesforce user ID) serves as the unique identifier.\n\n3. **Multi-Tenancy via Teamwork**: The Teamwork package establishes multi-tenancy where each team is a unique tenant. Objects and metrics are scoped by `team_id` using the `UsedByTeams` trait, which automatically adds `team_id` to query WHERE clauses.\n\n4. **Permission Management via Laratrust**: Team owners can invite users and set granular permissions for what data invited users can access within the team.\n\n5. **Data Sharing**: Users can share data across teams. Shared data access is controlled by team membership and Laratrust permissions.",
+  "acceptance_criteria": [
+    "Documentation covers the Salesforce authentication flow including token and session handling",
+    "Documentation describes user and team creation logic with code examples",
+    "Multi-tenancy architecture using Teamwork package is documented",
+    "Permission management via Laratrust is documented with owner/invited user roles",
+    "Data sharing model scoped by team_id is explained",
+    "Documentation is integrated into the Confluence knowledge base"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This was a documentation-only task. The developer provided detailed technical documentation of the existing auth flow including code snippets for Salesforce Socialite integration, User/Team creation, UsedByTeams trait usage, and Laratrust permission management.",
+  "comment_summary": "Developer submitted comprehensive documentation covering Salesforce authentication, Laravel authorization, Teamwork multi-tenancy, and Laratrust permissions with code examples. Documentation was reviewed and integrated into the Confluence knowledge base.",
+  "comment_count": 3
+}

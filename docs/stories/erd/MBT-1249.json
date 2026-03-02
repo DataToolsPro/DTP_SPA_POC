@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1249",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix GoJS Evaluation Watermark on Metrics Lineage Viewer",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-02T01:09:18.395-0800",
+  "updated": "2026-03-01T04:12:35.510-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "## Context\nThe metrics lineage viewer in production is showing the GoJS evaluation software watermark, indicating the license key needs to be applied to this specific viewer component.\n\n## Fix\nApply the GoJS license key to the metrics lineage viewer in production to remove the watermark.",
+  "acceptance_criteria": [
+    "GoJS evaluation watermark is removed from the metrics lineage viewer",
+    "License key is properly applied in the production environment for the lineage viewer"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Removed GoJS evaluation watermark from the metrics lineage viewer in production.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1233"],
+  "source_files": [],
+  "implementation_notes": "GoJS license key needed to be applied to the metrics lineage viewer component separately from the ERD. Fixed on production.",
+  "comment_summary": "Developer fixed the issue on production and shared a screenshot confirming the watermark is removed.",
+  "comment_count": 1
+}

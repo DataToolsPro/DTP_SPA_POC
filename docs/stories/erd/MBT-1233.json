@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1233",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Activate GoJS Production License Key",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-13T18:20:25.712-0700",
+  "updated": "2026-03-01T04:09:10.400-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "## Context\nThe production environment is showing a GoJS evaluation watermark, indicating the license key needs to be activated or renewed.\n\n## Action\nActivate the GoJS license key in the production environment to remove the evaluation software watermark from the ERD diagram.",
+  "acceptance_criteria": [
+    "GoJS evaluation watermark is removed from production ERD",
+    "License key is properly configured in the production environment"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Removed GoJS evaluation watermark from the production ERD.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-720", "MBT-1090"],
+  "source_files": [],
+  "implementation_notes": "Recurring GoJS license issue. Key was activated on production.",
+  "comment_summary": "Developer confirmed the key was activated on production.",
+  "comment_count": 1
+}

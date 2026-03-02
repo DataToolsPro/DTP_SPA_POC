@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1229",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Remediate Exposed Secrets in Blade Templates",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-13T06:09:30.162-0700",
+  "updated": "2026-03-01T04:00:14.251-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Snyk code scan detected secrets exposed in Blade template files. The following files were flagged:\n\n- `resources/views/pages/metrics.blade.php`\n- `resources/views/pages/metric_single.blade.php`\n- `.vapor/build/app/resources/views/pages/metrics.blade.php`\n- `.vapor/build/app/resources/views/pages/metric_single.blade.php`\n\nSecrets need to be moved to environment variables or a secure configuration store, and the Vapor build artifacts should be excluded from the repository.",
+  "acceptance_criteria": [
+    "No secrets are hardcoded in Blade template files",
+    "Secrets are loaded from environment variables or secure configuration",
+    "Vapor build artifacts with secrets are excluded from version control"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Secrets moved from hardcoded Blade template values to environment variables or secure configuration.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1191"],
+  "source_files": ["resources/views/pages/metrics.blade.php", "resources/views/pages/metric_single.blade.php"],
+  "implementation_notes": "Vapor build directory (.vapor/build/) contains copies of the source files with the same exposed secrets. Both source and build artifacts need remediation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

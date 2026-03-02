@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-717",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Upgrade and Centralize Salesforce REST API Version Number",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-24T03:39:39.248-0700",
+  "updated": "2024-07-25T23:52:35.532-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Upgrade the Salesforce REST API version to v60.0 to enable access to non-profile cloud objects (e.g., Industry Cloud objects). Additionally, centralize the version number into a single configuration point so future upgrades only require changing one value.\n\nA Laravel singleton service container was registered in `AppServiceProvider.php` to provide the Salesforce API version number across all pages that use the REST API.",
+  "acceptance_criteria": [
+    "Salesforce REST API version is upgraded to v60.0",
+    "Non-profile cloud objects are accessible through the API",
+    "Version number is centralized in a Laravel singleton service container",
+    "All Salesforce API calls reference the centralized version number",
+    "Future version upgrades require only a single code change"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Registered a singleton 'sales_version_number' in AppServiceProvider.php that returns the Salesforce API version string. All Salesforce REST API calls now reference this singleton instead of hardcoded version strings.",
+  "data_model_changes": "",
+  "api_changes": "Salesforce REST API version upgraded from previous version to v60.0. All API calls now use the centralized version configuration.",
+  "dependencies": [],
+  "source_files": ["app/Providers/AppServiceProvider.php"],
+  "implementation_notes": "The singleton is registered in AppServiceProvider.php with an auth check. The version string is available application-wide via app('sales_version_number'). This pattern allows single-point upgrades for future Salesforce API version changes.",
+  "comment_summary": "Waqar implemented the version upgrade and centralization using a Laravel singleton in AppServiceProvider.php, making future version updates a single-line change.",
+  "comment_count": 1
+}

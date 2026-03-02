@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-926", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Auto-Applied Filters on Reports and Dashboards Page Load",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-09-17T03:41:55.969-0700", "updated": "2024-11-28T09:40:11.816-0800",
+  "assignee": "Balaji Naiknavare", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user navigating to the Reports and Dashboards page, I want the data table to show all records by default without any pre-applied filters, so that I start with a complete view.",
+  "description": "Bug fix: the Reports and Dashboards data table was auto-filtering on page load even when no filter was explicitly set by the user. The table should display all records by default when first navigating to the page.",
+  "acceptance_criteria": ["Data table shows all records on initial page load", "No filters are pre-applied unless explicitly set by the user or a view", "Filter dropdowns show 'All' as the default selection"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed data table to display all records without auto-applied filters on page load.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Filter state was persisting across page navigations. Reset logic was added for initial page load.",
+  "comment_summary": "Waqar reported the issue. Balaji worked on the fix.", "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-714",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fixed Header on Scroll for Data Tables",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2024-05-21T22:06:55.308-0700",
+  "updated": "2026-03-01T03:43:59.701-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user scrolling through large data tables, I want the table header to remain fixed at the top of the viewport, so that I always know which column I am reading.",
+  "description": "## Context\nWhen scrolling through long data tables, the column headers scroll off-screen, making it difficult to identify column values.\n\n## Proposed Solution\nUse the DataTables FixedHeader extension to lock the table header to the top of the viewport during scrolling.\n\n## Blocker\nThe DataTables FixedHeader extension conflicts with the current Bootstrap integration. The latest DataTables library resolves this, but upgrading requires updating all pages that use DataTables buttons and features. This is too large a change for the current priority level.",
+  "acceptance_criteria": [
+    "Table header remains fixed at the top when scrolling through rows",
+    "FixedHeader works on all data table views",
+    "No conflicts with existing DataTables buttons or features"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Table headers would lock to viewport top during scroll (blocked pending DataTables upgrade).",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Blocked by DataTables library version conflict with Bootstrap. The FixedHeader extension works in isolation but conflicts with the current app integration. Requires a full DataTables upgrade across all pages. Moved to backlog.",
+  "comment_summary": "Developer attempted implementation but found a conflict between FixedHeader and the existing Bootstrap DataTables integration. Reporter moved the ticket to blocked/backlog and planned a separate ticket for the DataTables upgrade.",
+  "comment_count": 2
+}

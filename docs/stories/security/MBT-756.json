@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-756",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Fix User Invite Accept Route Error on Login",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T15:07:10.271-0700",
+  "updated": "2026-03-01T03:45:45.789-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to accept a team invitation and log in successfully without encountering a 'Route not defined' error, so that I can access the application after being invited.",
+  "description": "Invited users (e.g., via `/teams/accept/{token}`) encountered a 'Route not defined' error when attempting to accept their invitation and log in. The error occurred in `AuthController::acceptInvite` at line 81 when calling `Redirector::route()`.\n\n### Root Cause\nA named route referenced in the `acceptInvite` controller method was not defined in the application's route configuration. The error surfaced specifically for re-invited users.\n\n### Stack Trace\nError logged in New Relic: `Route not defined` in `Illuminate\\Routing\\UrlGenerator::route`, called from `AuthController::acceptInvite`. Middleware chain included ForceSecureConnection, FrameOptionsMiddleware, CSP headers, and standard Laravel middleware.",
+  "acceptance_criteria": [
+    "Invited users can accept invitations without encountering errors",
+    "Re-invited users can log in successfully after accepting",
+    "The acceptInvite route is properly defined and accessible"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Invitation acceptance flow completes without error pages. Users see the expected post-invite login experience.",
+  "middleware_changes": "Fixed undefined route reference in AuthController::acceptInvite. Ensured proper route definition for the invitation acceptance flow.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug reproduced on staging, fixed, and merged to production. Error was in AuthController::acceptInvite at line 81 referencing an undefined named route. Middleware chain: ForceSecureConnection → FrameOptionsMiddleware → CSP → SubstituteBindings → VerifyCsrfToken → StartSession.",
+  "comment_summary": "Waqar reproduced the issue locally, fixed it on staging, and merged to production. Ryan confirmed it was working and notified the affected user.",
+  "comment_count": 4
+}

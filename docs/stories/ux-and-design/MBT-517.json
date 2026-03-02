@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-517",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Contextual Message to Loading Screen",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-19T03:54:56.928-0800",
+  "updated": "2026-03-01T03:45:25.316-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see a descriptive message on the loading screen while the application processes my request, so that I know the system is working and what it is doing.",
+  "description": "The loading screen was updated to display contextual messages instead of a blank spinner:\n\n1. **Default message**: \"DataToolsPro is working. Please wait...\"\n2. **API request message**: When a request is sent to the API, the message dynamically updates to reflect the current operation\n\nFuture enhancement: Replace the generic loading GIF with the DataTools Pro logo.",
+  "acceptance_criteria": [
+    "Loading screen displays a default message: 'DataToolsPro is working. Please wait...'",
+    "Message updates dynamically when an API request is in progress to describe the operation",
+    "Loading spinner/GIF is displayed alongside the message"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Loading screen now shows a contextual message that starts with a default 'DataToolsPro is working. Please wait...' and updates dynamically based on the current API operation.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The loading screen message is set to a default value on page load and is updated via JavaScript when API requests are initiated. A future iteration will replace the loading GIF with the DataTools Pro logo.",
+  "comment_summary": "Developer added the default and dynamic loading messages, shared a screenshot of the implementation, and suggested replacing the GIF with the DataTools logo in a future iteration.",
+  "comment_count": 1
+}

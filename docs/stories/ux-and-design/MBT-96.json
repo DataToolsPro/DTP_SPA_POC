@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-96",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Mapped Field Selection Not Persisted in Slide-Out Panel",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-12T17:56:08.782-0700",
+  "updated": "2026-03-01T03:45:04.187-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a data migration specialist, I want previously mapped fields to remain visible when I reopen the field mapping slide-out, so that I can review and modify my mappings without losing context.",
+  "description": "When a user selects a field and maps it, then navigates away and returns to the same field, the previously mapped value was no longer visible in the slide-out panel. Additionally, attempting to map the same field from a different source field threw an error indicating it was already mapped, but without showing where.\n\n### Steps to Reproduce\n1. Open a field mapping slide-out and select a target field to map\n2. Navigate to the next field using the arrow controls\n3. Return to the previously mapped field\n4. The mapped value is no longer displayed\n\n### Expected Behavior\nWhen returning to a previously mapped field, the slide-out panel should display the existing mapping. The checkbox div showing the mapped data type should persist or be restored based on the selected source object.\n\n### Root Cause\nThe checkbox div state was being cached incorrectly. When navigating between fields, the mapping state was not being properly restored from the underlying data.",
+  "acceptance_criteria": [
+    "Previously mapped field values are visible when reopening the slide-out panel",
+    "Navigating between fields via next/previous arrows preserves mapping state",
+    "Duplicate mapping errors include information about the existing mapping location",
+    "Checkbox div is properly reset when the source object changes",
+    "Checkbox div is properly restored when returning to a previously mapped field with the same source object"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Field mapping slide-out panel now correctly displays previously mapped values when a user navigates back to a mapped field. Checkbox div state is properly managed when navigating between fields.",
+  "middleware_changes": "Updated the state management logic for field mapping to properly cache and restore checkbox div content per source object when navigating between fields.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Two approaches were discussed: (1) clear checkbox div on navigation and require re-selection, or (2) persist checkbox div per source object across navigation. The final implementation persists the mapping state, restoring the checkbox div when returning to a previously mapped field with the same source object, and clearing it when the source object changes.",
+  "comment_summary": "Extended back-and-forth between developer and reporter to clarify the exact bug behavior. Two solution approaches were discussed — clearing state on navigation vs. persisting per source object. Video walkthroughs were shared to demonstrate the issue. The persist approach was implemented.",
+  "comment_count": 10
+}

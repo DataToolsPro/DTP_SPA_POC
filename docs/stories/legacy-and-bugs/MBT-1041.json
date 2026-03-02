@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1041",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Invalid Client Error When Adding Second Salesforce Instance",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-22T18:53:45.237-0800",
+  "updated": "2026-03-01T03:57:12.051-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user with multiple Salesforce orgs, I want to add a second Salesforce instance without encountering an invalid client error, so that I can manage multiple orgs.",
+  "description": "## Bug\nOn production, attempting to add a second Salesforce instance resulted in an \"Invalid Client\" error during the OAuth flow.\n\n## Fix\nResolved the OAuth client configuration issue that prevented adding a second Salesforce instance.",
+  "acceptance_criteria": [
+    "Users can add a second Salesforce instance without errors",
+    "OAuth flow completes successfully for additional instances",
+    "Existing first instance is unaffected"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed OAuth client configuration for adding additional Salesforce instances.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The OAuth client ID/secret configuration was not properly scoped for multi-instance support. Fixed to handle the second instance OAuth flow correctly.",
+  "comment_summary": "Developer confirmed the fix.",
+  "comment_count": 1
+}

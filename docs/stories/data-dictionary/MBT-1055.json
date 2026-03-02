@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1055",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Highlight Managed Package Objects in Dictionary",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2024-12-28T13:08:22.721-0800",
+  "updated": "2026-01-24T22:57:03.235-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "Administration"],
+  "story": "As a Salesforce administrator, I want the Data Dictionary to identify and highlight objects that belong to a managed package, so that I can distinguish between native org objects and objects installed from AppExchange packages.",
+  "description": "Extends the Data Dictionary to detect and display managed package information for Salesforce objects. The key indicator is the `NamespacePrefix` attribute from the Salesforce metadata — if an object has a namespace prefix, it belongs to a managed package.\n\nDetection approach:\n- Query `EntityDefinition` via SOQL: `SELECT QualifiedApiName, NamespacePrefix FROM EntityDefinition`\n- Objects with a non-null `NamespacePrefix` are managed package objects\n- Managed package objects have API names in the format `Namespace__ObjectName__c`\n\nImplementation stores namespace prefixes in a database table linked to teams. When viewing an object in edit mode, the managed package name is displayed if the object is associated with a package.\n\nFor existing users, a refresh/update icon triggers a metadata re-fetch to populate the managed package information.\n\nA follow-up enhancement (MBT-1073) will add a filter to the 'Add Object' panel to filter objects by managed package.",
+  "acceptance_criteria": [
+    "Objects belonging to managed packages display the package name in the info window",
+    "The managed package name is visible when editing an object",
+    "Standard and native custom objects do not show a managed package name",
+    "Namespace prefixes are stored per team in the database",
+    "A refresh action is available for existing users to fetch managed package data",
+    "Objects with a NamespacePrefix in their API name are correctly identified"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Managed package name displayed on object edit view in the info window. Refresh icon available for existing users to trigger metadata re-fetch.",
+  "middleware_changes": "Queries Salesforce EntityDefinition to retrieve NamespacePrefix values. Compares object API names against stored namespace prefixes to identify managed package membership.",
+  "data_model_changes": "New database table for namespace prefixes linked to teams via a one-to-many relationship. Package name stored per object.",
+  "api_changes": "Consumes Salesforce SOQL API to query EntityDefinition for NamespacePrefix data.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The NamespacePrefix is the primary indicator for managed package membership. Objects with a non-null prefix belong to a managed package. The Tooling API or InstalledPackage object can provide additional version information. Developer suggested a follow-up filter enhancement (MBT-1073) to filter objects by managed package in the 'Add Object' panel.",
+  "comment_summary": "Developer asked how to identify managed package objects in Salesforce. Product owner provided detailed guidance on using NamespacePrefix, Object Manager, and SOQL queries. Developer implemented detection using namespace prefix comparison and stored prefixes per team. Suggested a follow-up filter enhancement which was approved as MBT-1073.",
+  "comment_count": 5
+}

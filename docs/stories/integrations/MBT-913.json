@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-913",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Zapier Integration Testing and Token Debugging",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-12T22:18:25.750-0700",
+  "updated": "2024-11-28T09:30:53.601-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Debug and resolve issues encountered during Zapier integration testing. When running a test action in Zapier, metrics were not appearing in the expected DataTools Pro account.\n\nRoot cause: During Zapier testing, the test mode retains the previous connection. Users must select their own account/connection from the dropdown before running a test, otherwise the test data flows to the previously connected account.\n\nThe issue appeared because the tester used their own API token but Zapier was still pointed at the developer's account connection.",
+  "acceptance_criteria": [
+    "Zapier test actions correctly create metrics in the authenticated user's account",
+    "Users can select which DataTools Pro connection to use in Zapier test mode",
+    "API token authentication correctly scopes data to the token owner's team"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-888"],
+  "source_files": [],
+  "implementation_notes": "The issue was a Zapier test-mode UX problem rather than an application bug. In Zapier's test mode, users must explicitly select their connection before running tests. The previous connection persists between test runs.",
+  "comment_summary": "Developer clarified that the issue was caused by Zapier test mode using the developer's previous connection. The tester needed to select their own connection before running the test. Suggested testing together to verify the flow.",
+  "comment_count": 3
+}

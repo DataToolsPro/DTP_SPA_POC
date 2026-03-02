@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-545",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Reposition and Polish Dictionary Page Action Icons",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-26T20:43:15.004-0800",
+  "updated": "2024-05-24T02:25:42.316-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "As a DataTools Pro user, I want the dictionary page action icons to be grouped together, consistently sized, and have tooltips, so that I can quickly understand what each icon does.",
+  "description": "Moves the refresh icon next to the cloud and history icons on the right side of the dictionary page header. Icons are resized and evenly spaced to align with the existing export icons. Tooltips are added to each icon:\n- Refresh: \"Refresh latest field meta data\"\n- Clock: \"Field change history\"\n- Cloud: \"View Object fields in Salesforce object explorer\"",
+  "acceptance_criteria": [
+    "Refresh icon is repositioned next to cloud and history icons on the right",
+    "Icon spacing is consistent and aligned with export icons",
+    "Tooltips display on hover for refresh, clock, and cloud icons"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Refresh icon moved right, aligned with cloud and history. Consistent spacing. Tooltips added: 'Refresh latest field meta data', 'Field change history', 'View Object fields in Salesforce object explorer'.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed and pushed to staging.",
+  "comment_count": 1
+}

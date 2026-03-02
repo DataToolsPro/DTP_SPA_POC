@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-21",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Editable Columns in Data Dictionary Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T20:15:16.756-0800",
+  "updated": "2024-05-24T02:24:37.622-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a data migration specialist, I want to edit and add data to columns in the Data Dictionary table, so that I can map fields from my old system and write notes as part of the data mapping exercise.",
+  "description": "The Data Dictionary and Migration table views need inline-editable columns so users can annotate Salesforce field metadata directly. Editable fields are defined per the Migration and Dictionary view documentation — each view exposes a different subset of columns for editing.\n\nThis enables users to enrich Salesforce object field data with custom mapping notes, legacy system references, and documentation without leaving the table view.",
+  "acceptance_criteria": [
+    "Columns designated as editable in the Migration view documentation are inline-editable",
+    "Columns designated as editable in the Dictionary view documentation are inline-editable",
+    "Non-editable columns remain read-only",
+    "Edits persist after page reload",
+    "User can add data to empty editable cells"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Designated columns in the data table become inline-editable. Users can click into cells to add or modify values directly in the Migration and Dictionary views.",
+  "middleware_changes": "Server-side handler saves user-edited column values back to the database when cells are modified.",
+  "data_model_changes": "User-editable columns are stored alongside Salesforce metadata fields, requiring storage for custom annotations per object field per user.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Editable fields are configured based on the Sprint 5 documentation for Migration and Dictionary table views. Implementation uses inline editing on the data table component.",
+  "comment_summary": "Developer confirmed editable fields were implemented per the documentation spec.",
+  "comment_count": 1
+}

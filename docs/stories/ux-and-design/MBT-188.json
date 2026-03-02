@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-188",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Hide Confusing Filter Icon on Metrics Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T22:03:19.041-0700",
+  "updated": "2024-05-24T02:24:31.792-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the filter icon hidden on the metrics page until proper filter dropdowns are implemented, so that I am not confused by a filter icon that opens the wrong modal.",
+  "description": "The filter icon on the metrics page currently opens the taxonomy (category) modal when clicked, which is confusing since the gear icon already handles category management. Hide the filter icon until proper filter dropdowns (for Category and Topic) are built.\n\n## Future Plan\nFilter dropdowns similar to Dictionary and Migration views will be added later for filtering by Category and Topic.",
+  "acceptance_criteria": [
+    "Filter icon is hidden on the metrics page",
+    "Category gear icon continues to function normally",
+    "Filter functionality code is preserved for future implementation"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Filter icon hidden from the metrics page toolbar to prevent user confusion. Will be re-enabled when proper filter dropdowns are built.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Icon hidden, code preserved. Future filter dropdowns planned for Category and Topic fields, matching the Dictionary and Migration filter patterns.",
+  "comment_summary": "Developer removed the icon and confirmed it will be re-added when filter dropdowns are implemented.",
+  "comment_count": 2
+}

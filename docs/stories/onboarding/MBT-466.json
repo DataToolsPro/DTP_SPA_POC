@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-466",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Connect Zapier Event 0001 to Salesforce for Lead Attribution",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-08T00:04:04.425-0800",
+  "updated": "2024-05-24T02:25:31.168-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Connect the Zapier automation for event 0001 (new user creation) back to Salesforce to relate the new DataTools Pro user to their original Gravity Form trial submission. This completes the attribution chain from marketing lead capture through to product activation in the CRM.",
+  "acceptance_criteria": [
+    "Zapier event 0001 creates or updates a Salesforce record linking the new user to the originating Gravity Form trial entry",
+    "Lead attribution chain is complete from form submission to user activation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-452", "MBT-449"],
+  "source_files": [],
+  "implementation_notes": "Zapier automation published at zapier.com/editor/185863044. Connects the 0001 webhook (new user) back to the Salesforce Lead record using the Gravity Form entry ID.",
+  "comment_summary": "",
+  "comment_count": 0
+}

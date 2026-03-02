@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-502",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Redesign Summary Cards on Metric Analyst Results Screen",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-16T15:55:30.133-0800",
+  "updated": "2024-05-24T02:25:42.314-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user running the Metrics Analyst, I want the summary cards to display clean iconography with clear labels for each metric category, so that I can quickly understand the analysis results at a glance.",
+  "description": "The summary cards displayed after Metrics Analyst completes need visual improvements. The cards should use Bootstrap icons for visual meaning, display the metric label (e.g., 'Reports Processed'), a count value, and a 'More info' action link. A reusable CSS class should be created for these cards so they can be used in other parts of the app where data is pre-processed or summarized.\n\nThe design reads left to right: icon for visual context, the report label tells you what, the count tells how much, and the action button in the lower right lets you drill in.",
+  "acceptance_criteria": [
+    "Each summary card displays a Bootstrap icon, a label, a count, and a 'More info' link",
+    "Cards use a consistent, reusable CSS class for metric analysis cards",
+    "Cards are styled with a clean blue color scheme instead of red for error states",
+    "Layout reads left-to-right: icon, label, count, action"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Redesigned Metrics Analyst summary cards with Bootstrap iconography, consistent styling, and a left-to-right layout (icon, label, count, action). Created a reusable card CSS class.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Cards leverage the existing Bootstrap icon library already loaded in the app. A new reusable CSS class was created so these card styles can be applied in other data summary contexts.",
+  "comment_summary": "Developer updated the cards on staging for review.",
+  "comment_count": 1
+}

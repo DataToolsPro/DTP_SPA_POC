@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-235",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Move Alias Management into the Sidebar Editor",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T21:47:29.407-0700",
+  "updated": "2024-05-24T02:24:58.326-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to manage metric aliases directly in the sidebar panel alongside other metric details, so that I can view and edit all metric information from a single location without switching contexts.",
+  "description": "Relocates the alias management interface into the sidebar detail panel, consolidating all metric editing into one place. The sidebar displays aliases in the same read/edit mode pattern used for taxonomies.\n\nIn read-only mode, aliases are listed as static text with the primary alias highlighted. In edit mode (triggered by clicking the + icon or the edit button), the alias management form appears with options to add, edit, delete, and mark aliases as primary. Switching back to output mode reflects any alias changes.",
+  "acceptance_criteria": [
+    "Aliases section appears in the sidebar detail panel in read-only mode",
+    "Primary alias is visually distinguished in the read-only alias list",
+    "Clicking the + icon or edit button opens the alias editor in edit mode",
+    "User can add, edit, delete, and mark aliases as primary from the sidebar",
+    "Returning to output mode reflects alias changes",
+    "Main data table updates when the primary alias is changed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Alias management moves from a separate interface into the sidebar detail panel. Read mode shows a static alias list; edit mode shows the full alias management form with add/edit/delete/primary actions.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-142", "MBT-233"],
+  "source_files": [],
+  "implementation_notes": "Reuses existing alias CRUD logic from MBT-142, relocated into the sidebar panel component. Implemented in approximately 1.75 hours.",
+  "comment_summary": "Developer implemented the alias section in the sidebar with read/output mode toggle and submitted screenshots showing both modes. Approved for staging.",
+  "comment_count": 6
+}

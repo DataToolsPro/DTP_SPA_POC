@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-190",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Table Heading and Sidebar Label Font Weight Styling",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T10:21:18.489-0700",
+  "updated": "2024-05-24T02:24:31.871-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want table headings and sidebar labels to have balanced typography, so that the interface doesn't feel visually heavy.",
+  "description": "Add a custom CSS `sorting` class for table headings that uses a moderate font weight, and apply the same styling to sidebar labels instead of bold (`<b>`) tags.\n\n## CSS\n```css\n.sorting { color: #333; font-weight: 600 !important; font-size: 1em; }\n.sorting_asc { color: #333; font-weight: 600 !important; font-size: 1em; }\n.sorting_desc { color: #333; font-weight: 600 !important; font-size: 1em; }\n```\n\nReplace `<b>` tags in slide-out labels with the sorting class for visual consistency.",
+  "acceptance_criteria": [
+    "Table headings use the sorting class with font-weight 600",
+    "Sorted column headings (asc/desc) maintain consistent styling",
+    "Sidebar labels use the sorting class instead of bold tags",
+    "Typography feels balanced without being too heavy"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Custom sorting CSS class applied to table headings and sidebar labels for balanced, consistent typography. Bold tags replaced with the sorting class for lighter visual weight.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation missed the sorting_asc and sorting_desc classes, which were added in a follow-up.",
+  "comment_summary": "Developer implemented the base sorting class. Ryan later requested adding sorting_asc and sorting_desc classes as well, which were quickly added.",
+  "comment_count": 5
+}

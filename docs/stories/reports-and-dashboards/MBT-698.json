@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-698",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Clear Custom Link Form Fields When Re-Opening Add Custom Link",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-10T21:58:14.042-0700",
+  "updated": "2024-05-24T02:26:02.194-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user adding custom links to metrics, I want the Add Custom Link form to reset when I reopen it, so that previous entries do not persist and confuse new link entries.",
+  "description": "Bug fix: when adding a custom link on the metrics sidebar, the text and URL fields retain values from the previous entry when clicking Add Custom Link again. The form should reset to empty fields each time the user initiates a new custom link entry.",
+  "acceptance_criteria": [
+    "Text and URL fields are cleared when the Add Custom Link action is triggered",
+    "Previous link entries do not persist in the form on re-open",
+    "Saved links are not affected by the form reset"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Custom link form fields are now cleared each time the Add Custom Link button is clicked, preventing stale data from previous entries.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Form state was not being reset on re-open. Added reset logic to the click handler for the Add Custom Link button.",
+  "comment_summary": "Waqar fixed the issue on staging.",
+  "comment_count": 1
+}

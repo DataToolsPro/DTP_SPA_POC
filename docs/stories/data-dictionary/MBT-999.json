@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-999",
+  "skipped": true,
+  "skip_reason": "stub — description contains only an image reference with no substantive text",
+  "title": "Tooltip Sticking",
+  "status": "Done",
+  "feature_folder": "data-dictionary"
+}

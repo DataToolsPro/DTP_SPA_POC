@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-681",
+  "skipped": true,
+  "skip_reason": "no_description",
+  "title": "Dropdown and Text Fields Style Adjustment for Dark Mode",
+  "status": "Done",
+  "feature_folder": "ux-and-design"
+}

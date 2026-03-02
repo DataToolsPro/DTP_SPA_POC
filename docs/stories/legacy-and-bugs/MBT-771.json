@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-771",
+  "epic_key": "MBT-624",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Related Templates Shortcode for DataTools WordPress Site",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-22T21:37:11.727-0700",
+  "updated": "2024-07-26T00:03:02.453-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user browsing the website, I want to see related templates in the sidebar based on shared tags, so that I can discover relevant templates without manually searching.",
+  "description": "The DataTools WordPress site uses a custom post type for Templates. Currently there may be existing code that displays related content, but it needs to be replaced with a more controllable approach.\n\n### Requirements\n- Create a custom WordPress shortcode that displays all template posts sharing the same tag as the current template.\n- The shortcode should be placeable in the sidebar widget manager, giving control over where related templates appear.\n- Review any existing related-content code in the template and replace it with the new shortcode-based approach.",
+  "acceptance_criteria": [
+    "A custom WordPress shortcode exists that renders related template posts based on shared tags",
+    "The shortcode can be placed in the sidebar widget manager",
+    "Related templates are filtered by matching tags from the current template post",
+    "The shortcode renders a clean list of related template links",
+    "Existing related-content code is reviewed and replaced by the new shortcode"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a related templates widget in the sidebar that dynamically shows other template posts with matching tags. Displayed as a list of clickable links.",
+  "middleware_changes": "Custom WordPress shortcode registered in PHP that queries template posts by tag taxonomy, excludes the current post, and renders a formatted list.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The shortcode leverages WordPress's existing tag taxonomy on the custom Templates post type. Placed via the widget manager for admin-level control over sidebar layout.",
+  "comment_summary": "",
+  "comment_count": 0
+}

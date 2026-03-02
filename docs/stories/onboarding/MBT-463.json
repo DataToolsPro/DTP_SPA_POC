@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-463",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Add Gravity Form Entry ID to Zapier Event 0001",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-07T23:54:39.355-0800",
+  "updated": "2024-05-24T02:25:31.195-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Add the Gravity Form Entry ID (GFEntryId) to the Zapier event 0001 (First Time Login) webhook payload. This ID is the final piece needed to trace a user's complete journey from initial web form signup through to their first login, closing the loop on the lead-to-activation tracking pipeline.\n\nThe entry ID (not the form ID) is the unique identifier for each form submission that ties back to the original signup record.",
+  "acceptance_criteria": [
+    "Zapier event 0001 payload includes the GFEntryId field",
+    "GFEntryId contains the Gravity Form entry ID (not the form ID)",
+    "GFEntryId links back to the OTP verification record"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Zapier event 0001 webhook payload updated to include GFEntryId from the DTPSignup record associated with the authenticated user's OTP verification.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-469"],
+  "source_files": [],
+  "implementation_notes": "Implementation was combined with MBT-469, which also added the TeamAdminUserId to the webhook. The GFEntryId is retrieved from the DTPSignup table using the OTP verification record linked to the user's signup.",
+  "comment_summary": "Developer clarified the distinction between form ID (static, always 9) vs entry ID (unique per submission). Implementation completed in MBT-469.",
+  "comment_count": 3
+}

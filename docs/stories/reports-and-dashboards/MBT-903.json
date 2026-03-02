@@ -1,0 +1,27 @@
+{
+  "issue_key": "MBT-903", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Pre-Defined Report and Dashboard Views with Saved Filter Presets",
+  "type": "story", "original_jira_type": "Story", "status": "Done", "priority": "Medium",
+  "created": "2024-09-04T01:28:33.163-0700", "updated": "2024-09-15T13:08:52.059-0700",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want pre-defined views that apply common filter combinations, so that I can quickly switch between useful perspectives on my reports and dashboards without manually setting filters each time.",
+  "description": "Introduces a Views dropdown that provides pre-configured filter presets for common use cases:\n\n- **My Reports** — Created by current user, Analytics type = Reports\n- **My Dashboards** — Created by current user, Analytics type = Dashboards\n- **My Work in Progress** — Created by current user, Status = In-Progress\n- **My Recently Modified** — Modified by current user, Last modified within last 7 days\n- **Production Monthly Active Analytics** — Status = Production, Last Viewed within last 30 days\n- **Recommended for Deprecation** — Last Viewed > 90 days, excluding Status = Deprecated (invisible filter)\n\nEach view applies the specified filter combination automatically. The \"Recommended for Deprecation\" view includes an invisible filter that excludes already-deprecated items, and requires a \"> 90 days\" option in the custom date filter controls.",
+  "acceptance_criteria": [
+    "Views dropdown is available on the Reports and Dashboards page",
+    "Each pre-defined view applies the correct filter combination",
+    "My Reports and My Dashboards filter by current user's created by",
+    "My Work in Progress filters by current user and In-Progress status",
+    "My Recently Modified filters by current user and last 7 days modified date",
+    "Production Monthly Active filters by Production status and 30-day last viewed",
+    "Recommended for Deprecation shows items not viewed in 90+ days, excluding deprecated",
+    "Views can be combined with manual filter adjustments"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a Views dropdown with pre-defined filter presets. Each view auto-applies a specific filter combination. Added '>90 days' option to custom date filter controls.",
+  "middleware_changes": "New views model specific to reports/dashboards that maps view names to filter combinations. Logic to apply invisible filters (exclude deprecated) for specific views.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-782", "MBT-604"], "source_files": [],
+  "implementation_notes": "Waqar handled this task because it involved a new views model specific to reports/dashboards. The duplicate 'My Reports' and 'My Dashboards' entries in the original spec were a typo — each is listed once.",
+  "comment_summary": "Ryan assigned to Waqar due to the new views model requirement. Waqar implemented and noted the duplicate filter names in the spec. Requested feedback on development.", "comment_count": 4
+}

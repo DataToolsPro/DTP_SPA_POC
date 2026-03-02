@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-387",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Graceful Error Handling for Expired Sessions in DataTables",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-22T14:46:22.034-0800",
+  "updated": "2024-05-24T02:25:05.807-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want expired sessions to be handled gracefully instead of showing raw JavaScript errors, so that I am automatically redirected to the login screen or shown a clear message rather than seeing confusing error popups.",
+  "description": "When a user leaves DataTools Pro open in a browser tab and the session expires, subsequent interactions with DataTables components trigger unhandled JavaScript errors that appear as browser alert dialogs. These errors may fire multiple times before the user is eventually redirected to the login screen, creating confusion and concern.\n\nThe fix implements two mechanisms:\n1. A global session heartbeat that checks session status every 5 seconds and automatically redirects to the login page when the session is expired.\n2. A global DataTables error handler that catches any DataTable fetch errors, displays a controlled alert, and redirects the user to the login page.\n\nThis ensures that if a session expires in one tab, all open tabs detect the expiration and redirect gracefully.",
+  "acceptance_criteria": [
+    "No raw JavaScript error dialogs are shown to the user when a session expires",
+    "The application checks session validity every 5 seconds via a heartbeat",
+    "When the session is detected as expired, the user is automatically redirected to the login page without a page refresh",
+    "DataTables errors caused by expired sessions are caught and handled with a user-friendly message",
+    "If the user is logged out in one tab, other open tabs detect the expired session and redirect automatically"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Replaces raw JavaScript error popups with a controlled alert message explaining the session has expired, then redirects the user to the login page. Multiple-tab scenarios are handled seamlessly.",
+  "middleware_changes": "Adds a global session heartbeat polling mechanism (5-second interval) and a global DataTables error handler that intercepts fetch failures and triggers the session redirect flow.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The session heartbeat checks status via an existing session endpoint. The global DataTables error handler uses jQuery DataTables' error event to intercept failures before they bubble to the browser. Both mechanisms coordinate to redirect to the login page without requiring a full page refresh.",
+  "comment_summary": "Waqar implemented a global session heartbeat (5-second polling) and a global DataTables error handler. Testing approach: open the app in two tabs, log out from one, and verify the other tab auto-redirects. Changes were pushed to staging and production.",
+  "comment_count": 1
+}

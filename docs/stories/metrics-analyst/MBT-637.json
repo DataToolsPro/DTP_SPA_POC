@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-637",
+  "skipped": true,
+  "skip_reason": "no_description — Jira description is null/empty",
+  "title": "Withdrawn - Re-testing Use Case for Metrics Glossary - Multiple Entries",
+  "status": "Done",
+  "feature_folder": "metrics-analyst"
+}

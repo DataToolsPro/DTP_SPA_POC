@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1303",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Integrate Google SSO via Stytch alongside Existing Salesforce Authentication",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-12-30T02:33:55.165-0800",
+  "updated": "2026-01-13T09:36:46.552-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to sign in with my Google account, so that I can access the platform without requiring a Salesforce license or Salesforce OAuth credentials.",
+  "description": "Introduce Google SSO authentication using Stytch as a second authentication method alongside the existing Salesforce-based OAuth. This enables the platform to support multiple identity providers, improves onboarding flexibility, and prepares the system for enterprise and non-Salesforce users.\n\n## Supported Authentication Methods\n\n1. **Salesforce OAuth** (existing) — current production auth flow\n2. **Google SSO via Stytch** (new) — new auth provider\n\n## Requirements\n\n- Both authentication methods securely map users to the correct tenant\n- Cross-tenant access is prevented regardless of auth method\n- Users authenticating via Google get a Stytch Organization and Member created automatically\n\n## Open Questions\n\n- **Account linking**: What happens when a user with an existing Salesforce account tries Google SSO with the same email? Options discussed:\n  1. Auto-link accounts (recommended — user can use either method)\n  2. Create separate accounts (duplicate user problem)\n  3. Block Google login for existing Salesforce users\n\n## Implementation\n\nGoogle-authenticated customers get a Stytch Organization and Member created. The user is then authorized to use the app. Both `stytch_user_id` and `sfuid` can coexist on a user record when accounts are linked.",
+  "acceptance_criteria": [
+    "Users can authenticate via Google SSO through Stytch",
+    "Google-authenticated users are mapped to the correct tenant",
+    "Stytch Organization and Member are created automatically for Google users",
+    "Cross-tenant access is prevented for Google-authenticated users",
+    "Existing Salesforce authentication continues to work",
+    "Account linking strategy for same-email users across providers is implemented"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New 'Sign in with Google' option on the login page alongside the existing Salesforce OAuth button.",
+  "middleware_changes": "Google SSO authentication flow via Stytch: handles OAuth callback, creates Stytch Organization and Member, maps user to tenant, and establishes session.",
+  "data_model_changes": "User records support dual auth provider fields (stytch_user_id alongside existing sfuid) for account linking.",
+  "api_changes": "Google OAuth callback endpoint for Stytch authentication flow.",
+  "dependencies": ["MBT-1261"],
+  "source_files": [],
+  "implementation_notes": "The account linking question is the key design decision. Auto-linking (option 1) provides the best UX — users with existing Salesforce accounts can seamlessly start using Google SSO by matching on email. Both stytch_user_id and sfuid coexist on the user record. The implementation creates a Stytch Organization and Member on first Google auth, then authorizes the user for app access.",
+  "comment_summary": "Developer asked for clarification on account linking strategy when same-email users exist across Salesforce and Google SSO. Implementation complete: Google-authenticated users get a Stytch Organization and Member created automatically, then are authorized for app access.",
+  "comment_count": 2
+}

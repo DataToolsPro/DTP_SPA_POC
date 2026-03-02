@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-915",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Enhancement Ideas from Customer Feedback — Actions, History, and Field Filtering",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-13T00:00:49.877-0700",
+  "updated": "2024-11-28T00:19:58.243-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user interacting with ERD nodes, I want contextual action buttons (view fields, view history) and improved view editing so that I can take meaningful actions directly from the diagram and manage views more efficiently.",
+  "description": "Captures and implements multiple ERD enhancements based on direct customer feedback:\n\n### Action 1 — View Fields Button\nCustomers reported that the blue launch icon for viewing fields was not intuitive. A more prominent button or alternative icon (eye icon) is added to make it clearer that clicking opens the field list side panel.\n\n### Action 2 — View History\nA history icon is added to the ERD node actions that allows users to see change history for an object directly from the diagram. The biggest customer question is \"what changed?\" and having history accessible from the ERD supports this.\n\n### View Editing Improvement\nCustomers found the edit flow confusing because saving required two clicks after opening a view. The edit/update view option now appears automatically when editing a selected ERD view, and the popup was enhanced with a two-section layout.\n\n### Tooltip Enhancement\nTooltips were added to ERD node action icons for discoverability.\n\n### Color-Coded Field Filtering (Conceptual)\nCustomer feedback suggested being able to filter which field types appear in views:\n1. All object fields (current default)\n2. DataTools Dictionary fields only (green box fields)\n3. ERD-specific relationship fields only\n\nThis was discussed but deferred for further design.",
+  "acceptance_criteria": [
+    "A 'View Fields' action is accessible from ERD node selection with an intuitive icon",
+    "A 'View History' icon appears on ERD nodes for quick access to change history",
+    "Editing a view shows the update option automatically without extra clicks",
+    "Tooltips appear on ERD node action icons describing their function",
+    "The edit popup uses a two-section layout for clearer organization",
+    "Adding multiple objects to a view does not require saving after each one"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added view fields and view history action icons to ERD nodes with tooltips. Improved the view edit flow so update option appears automatically. Two-section layout for the edit popup. Batch object addition without per-object save.",
+  "middleware_changes": "Updated the edit view flow to automatically present the save/update option when editing. Changed object addition to batch mode so users can add multiple objects before triggering a view update.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-709"],
+  "source_files": [],
+  "implementation_notes": "Originated from customer demo feedback asking 'why can't I get users to return to the product?' Key insight: users want change tracking and notifications for their data model. The 'Alert me' concept (subscribe to data model changes) was noted as a premium feature opportunity — add the button and measure interest before building. Color-coded field filtering was discussed but deferred.",
+  "comment_summary": "Customer feedback captured during demos. Developer implemented view fields icon, view history icon, tooltips, and improved edit flow with two-section layout. Batch object addition was added to improve UX. Color-coded field filtering deferred for future design. All items confirmed implemented and rolled out.",
+  "comment_count": 12
+}

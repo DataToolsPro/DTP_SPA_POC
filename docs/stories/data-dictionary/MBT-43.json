@@ -1,0 +1,45 @@
+{
+  "issue_key": "MBT-43",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Add Reporting Filter to Dictionary Screen",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-23T22:35:48.001-0800",
+  "updated": "2026-03-01T01:27:11.121-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user on the Dictionary screen, I want to filter fields by their Reporting status instead of Migration status, so that I can quickly identify which fields are relevant to reporting.",
+  "description": "On the Dictionary screen, the existing 'filter by migrate' option was replaced with a 'filter by Reporting' option. The filter is context-aware: when the user is on the Dictionary view, the Reporting filter is displayed. When toggling to the Migration view, migration-specific filters load and the dictionary filter state resets. This prevents cross-view filter contamination — filtering by Reporting on Dictionary and then switching to Migration reloads all migration data without carrying over the dictionary filter.",
+  "acceptance_criteria": [
+    "Dictionary screen displays a 'Filter by Reporting' dropdown instead of 'Filter by Migrate'",
+    "Selecting 'Yes' on the Reporting filter shows only fields flagged for reporting",
+    "Switching from Dictionary to Migration resets data and shows migration-specific filters",
+    "Switching from Migration to Dictionary resets data and shows the Reporting filter",
+    "Filter state does not persist across view toggles"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the migration filter with a Reporting filter on the Dictionary view. Each view (Dictionary, Migration) now loads its own context-specific filter set.",
+  "middleware_changes": "Filter logic was updated to detect the active view (Dictionary vs Migration) and serve the appropriate filter options. View toggling triggers a data reset.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The implementation detects which tab is active and dynamically shows/hides the appropriate filter. Switching views triggers a full data reload rather than attempting to reconcile filter state across views.",
+  "comment_summary": "Developer implemented view-specific filters that reset on toggle. Product owner confirmed the behavior matches expectations and closed the ticket.",
+  "comment_count": 3
+}

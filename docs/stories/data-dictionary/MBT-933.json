@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-933",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Object Scorecard Limit with Upgrade Prompt",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-23T21:55:52.474-0700",
+  "updated": "2024-11-28T09:59:01.635-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "Administration"],
+  "story": "As a product administrator, I want a limit on the number of Salesforce objects in my scorecard with a clear upgrade prompt when I reach the cap, so that free-tier usage is bounded and users are guided toward paid plans for expanded capacity.",
+  "description": "Enforces a limit on the number of Salesforce objects a user can add to their Data Dictionary scorecard. When a user attempts to add an object beyond the limit, a popup notifies them they have reached the cap and offers an upgrade path.\n\nThe limit is set to 15 objects (title mentions 15, description mentions 10 — implemented as 15). Clicking 'OK' on the limit popup opens a slide-out panel with subscription/upgrade options.",
+  "acceptance_criteria": [
+    "Users can add up to 15 objects to their scorecard",
+    "Attempting to add a 16th object triggers a popup notification about the limit",
+    "Clicking 'OK' on the popup opens an upgrade/subscription slide-out panel",
+    "Clicking 'Cancel' dismisses the popup without action",
+    "Existing users with more than 15 objects are not affected (grandfathered)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Popup modal appears when the user exceeds the scorecard object limit. 'OK' opens an upgrade slide-out panel. 'Cancel' dismisses the prompt.",
+  "middleware_changes": "Server-side validation checks the object count against the plan limit before adding a new object. Returns a limit-exceeded response if the cap is reached.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The limit discrepancy between summary (15) and description (10) was resolved to 15 in implementation. The upgrade flow uses a slide-out panel consistent with other subscription prompts in the application.",
+  "comment_summary": "Developer implemented the 15-object limit with popup and slide-out upgrade panel. Deployed to development for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,57 @@
+{
+  "folder": "payment-and-billing",
+  "label": "Payment and Billing",
+  "type": "platform",
+  "doc_tag": "datatoolspro",
+  "epic_count": 3,
+  "epics": [
+    {
+      "epic_key": "MBT-461",
+      "epic_id": "10519",
+      "summary": "Payment Processing",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-623",
+      "epic_id": "10681",
+      "summary": "PBO Salesforce",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-1024",
+      "epic_id": "11130",
+      "summary": "PBO Salesforce Opportunity Process V1",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 27,
+  "stories": [
+    "MBT-420",
+    "MBT-451",
+    "MBT-453",
+    "MBT-454",
+    "MBT-465",
+    "MBT-579",
+    "MBT-626",
+    "MBT-627",
+    "MBT-630",
+    "MBT-659",
+    "MBT-668",
+    "MBT-688",
+    "MBT-735",
+    "MBT-772",
+    "MBT-773",
+    "MBT-774",
+    "MBT-904",
+    "MBT-954",
+    "MBT-1025",
+    "MBT-1026",
+    "MBT-1027",
+    "MBT-1028",
+    "MBT-1029",
+    "MBT-1031",
+    "MBT-1032",
+    "MBT-1061",
+    "MBT-1084"
+  ]
+}

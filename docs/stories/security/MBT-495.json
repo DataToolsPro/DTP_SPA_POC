@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-495",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Migrate Salesforce Connected App to Partner Dev Account",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-15T11:09:04.240-0800",
+  "updated": "2026-03-01T03:44:28.995-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Migrate the Salesforce Connected App from the PBO org to the Partner Developer Account. This involves updating consumer key/secret credentials and configuring OAuth callback URLs for all environments.\n\n### Callback URLs\n- **Local:** `https://dtp.test/salesforce/callback`\n- **Stage:** `https://phplaravel-1018118-3600625.cloudwaysapps.com/salesforce/callback`\n- **Production:** `https://app.datatoolspro.com/salesforce/callback`\n\n### Notes\n- Local domain callback could not be registered with Salesforce — local dev continues using the old keys\n- New keys applied to staging and production environments only\n- Required for Salesforce security review process",
+  "acceptance_criteria": [
+    "Connected app credentials are updated to Partner Dev Account keys on staging and production",
+    "OAuth callback URLs are configured for all environments",
+    "Salesforce authentication works correctly on stage and production with new keys",
+    "Local development continues using previous keys"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated Salesforce OAuth consumer key and secret in environment configuration for staging and production.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Salesforce Connected App migrated from PBO org to Partner Developer Account. Callback URLs configured in Salesforce. Local dev retains old keys since Salesforce cannot register local domains. API keys updated on both stage and production by Waqar.",
+  "comment_summary": "Waqar identified the callback URLs needed for each environment and guided Ryan through the Salesforce Connected App configuration. Local domain couldn't be registered, so old keys are retained for local dev. New keys were deployed to staging and production successfully.",
+  "comment_count": 10
+}

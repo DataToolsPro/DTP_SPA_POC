@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-963", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Redesign Clear Filter Button UX with Contextual Label Toggle",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-20T22:33:02.892-0700", "updated": "2024-11-27T22:26:14.699-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the 'Clear' button to be contextual — showing 'Filters' when no filters are active and 'Clear Filters' as a link when filters are applied — so I can clearly distinguish the action from the Close button.",
+  "description": "UX improvement to the Reports/Dashboards filter panel:\n\n1. By default 'Clear' button is disabled and the label reads 'Filters'\n2. When user selects a View or sets any filter (including search), the 'Filters' label is hidden and replaced with 'Clear Filters' as a clickable link\n3. When filters are cleared, it reverts back to 'Filters' label\n4. This saves space and prevents confusion between Clear and Close buttons\n5. Minor cleanup: capitalize 'views' to 'Views'",
+  "acceptance_criteria": ["Default state shows 'Filters' label with no clear action", "When any filter is active, label changes to 'Clear Filters' clickable link", "Clearing filters reverts to 'Filters' label", "Close button remains separate and unambiguous", "'views' is capitalized to 'Views'"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Replaced the separate Clear button with a contextual label that toggles between 'Filters' (static label) and 'Clear Filters' (active link) based on filter state. Capitalized 'Views'.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-937"], "source_files": [],
+  "implementation_notes": "JavaScript listens for filter changes (dropdown, search, view selection) and toggles the label/link. Deployed to dev, stage, and prod.",
+  "comment_summary": "Waqar implemented the toggle behavior and deployed to all 3 environments. Screenshots show before (static label) and after (clear link) states.", "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-777",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Block Verification Email for Non-US/CA Sign-Ups",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-29T18:45:54.884-0700",
+  "updated": "2024-07-16T11:53:44.618-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a product administrator, I want the OTP verification email to only be sent to users in the US or Canada, so that international users are not invited to a service they cannot access, reducing confusion and support tickets.",
+  "description": "Prevent the OTP verification email from being sent to users who sign up from countries outside the US or Canada. International users were receiving the verification email after submitting the beta sign-up form, which led them to click through and attempt to log in — only to be blocked by the region check. This created a confusing loop and generated repeated support inquiries.\n\n### Geography Detection\nThe Gravity Form captures a country code, but it is not always populated. As a fallback, the system resolves the user's country from their IP address using a code snippet.\n\n### Scope\nThis change applies to the public-facing website sign-up flow (`/beta`). Users who already have production access via manual grants are unaffected. A future consideration is creating a generic API endpoint to add users who are exceptions to the geographic restriction.",
+  "acceptance_criteria": [
+    "OTP verification email is only sent to users in the US or Canada",
+    "Geography is determined from country code when available, falling back to IP-based lookup",
+    "International users who submit the form do not receive a verification email",
+    "Existing production users with manual access grants are not affected",
+    "The change applies to sign-ups from /beta on the public website"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "International users no longer receive a misleading verification email after signing up. They are directed to the regional availability page instead.",
+  "middleware_changes": "Country check added before sending the OTP email. If the country code is empty, the system falls back to IP-based geolocation. Only US and CA users receive the verification link.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-408", "MBT-769"],
+  "source_files": [],
+  "implementation_notes": "Country code from the Gravity Form is unreliable (not always captured). IP-based geolocation is used as a fallback. Future work may include a generic API endpoint for adding exception users from non-US/CA geographies.",
+  "comment_summary": "Developer confirmed the change: verification links are now only sent to US and CA users signing up from the /beta page. IP-based geolocation is used as a fallback when the country code is not captured.",
+  "comment_count": 3
+}

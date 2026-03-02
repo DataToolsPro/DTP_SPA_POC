@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1063",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Add Snowflake IP Whitelist Instructions to Connection UI",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-01-01T23:31:04.479-0800",
+  "updated": "2025-01-07T23:40:09.735-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration", "Snowflake"],
+  "story": "As a Salesforce administrator connecting DataTools Pro to Snowflake, I want step-by-step instructions for whitelisting the DataTools Pro IP address in my Snowflake network policy, so that I can configure secure access without searching for documentation externally.",
+  "description": "Add a new accordion section to the Snowflake connection UI with instructions for whitelisting the DataTools Pro IP address in the user's Snowflake network policy.\n\n**Instructions include:**\n1. Show current network policies: `SHOW NETWORK POLICIES;`\n2. Add the DataTools Pro IP (US & CA: 147.182.234.144): `ALTER NETWORK POLICY ADD ALLOWED_IP_LIST = ('147.182.234.144');`\n3. Link to Snowflake documentation on managing network policies\n\nThe accordion section is placed alongside the existing OAuth credential setup accordion.",
+  "acceptance_criteria": [
+    "New accordion section titled 'How to whitelist DataTools Pro IP address' is present",
+    "Instructions include SHOW NETWORK POLICIES and ALTER NETWORK POLICY commands",
+    "DataTools Pro IP address (147.182.234.144) is clearly displayed",
+    "Accordion expands and collapses independently of other sections"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New accordion section in the Snowflake connection dialog with network policy whitelist instructions and DataTools Pro IP address.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Info icon tooltip content and tutorial video still pending at time of implementation.",
+  "comment_summary": "Developer added the accordion content and noted that info icon tooltips and the tutorial video URL were still pending.",
+  "comment_count": 1
+}

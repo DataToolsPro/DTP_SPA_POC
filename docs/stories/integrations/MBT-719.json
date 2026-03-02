@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-719",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Enhance Pendo User Metadata with Role, Email, Payment, and Creation Date",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-05-24T20:22:06.086-0700",
+  "updated": "2026-03-01T03:44:33.996-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "Clean up and enhance the Pendo analytics snippet loaded on each page. The current implementation has unused fields and boilerplate template text that should be removed. New user metadata fields should be added to improve analytics segmentation.\n\n### Fields to Add\n1. **Role** — pass the user's assigned role (set during signup) into Pendo to enable role-based UX analysis\n2. **Email** — required for upcoming NPS survey integration\n3. **Is Paying** — boolean (0/1) indicating whether the logged-in user is on a paid plan (currently all users are 0)\n4. **Creation Date** — user account creation date to enable cohort analysis and user age tracking\n\n### Cleanup\n- Remove unused fields from the Pendo initialization object\n- Remove unnecessary template text\n- Abstract the Pendo code if not already done",
+  "acceptance_criteria": [
+    "Pendo initialization includes the user's role",
+    "Pendo initialization includes the user's email",
+    "Pendo initialization includes is_paying flag (0 or 1)",
+    "Pendo initialization includes the user's account creation date",
+    "Unused fields and template boilerplate are removed from the Pendo snippet",
+    "Pendo code is abstracted into a reusable component or include"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Pendo initialization snippet updated to pass role, email, is_paying, and creation_date from the authenticated user's session data. Unused fields and boilerplate removed.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Pendo code is loaded on every page. The role field was introduced during the signup flow in a prior ticket. The is_paying field defaults to 0 for all users currently.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

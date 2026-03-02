@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-345",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Move Multi-Select Action Dropdown to Static Toolbar Position",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-08T19:39:36.811-0800",
+  "updated": "2026-03-01T03:42:19.080-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the multi-select action dropdown to appear in a fixed toolbar position when multiple rows are selected, so that I have a consistent and predictable location for bulk actions.",
+  "description": "The multi-select action dropdown was dynamically positioned near the selected rows, which was inconsistent and confusing. The change moves it to a static position in the toolbar that only appears when more than one row is selected.\n\n### Behavior\n- Single row: Use the inline pencil icon for editing\n- Multiple rows: A dropdown appears in the toolbar for bulk actions\n- The dropdown is context-aware: on the Dictionary tab it shows reporting options, on the Migration tab it shows migration-specific options\n- When all rows are deselected, the dropdown hides and resets to its default label (e.g., \"Reporting Option\")",
+  "acceptance_criteria": [
+    "Multi-select dropdown appears in the toolbar when more than one row is selected",
+    "Dropdown is hidden when fewer than two rows are selected",
+    "Dropdown resets to default label when all rows are deselected",
+    "Dictionary view shows reporting-specific dropdown options",
+    "Migration view shows migration-specific dropdown options",
+    "Single-row edit continues to use the inline pencil icon"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Multi-select action dropdown moved from a dynamically positioned element to a fixed toolbar location. Dropdown only appears when >1 rows are selected and resets on deselection. Context-aware options differ between Dictionary and Migration views.",
+  "middleware_changes": "Added logic to toggle dropdown visibility based on selection count and reset dropdown state on deselection. View-specific dropdown options are conditionally rendered based on the active tab context.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "An exception was implemented so that the reporting dropdown is visible on Dictionary view and hidden on Migration view (and vice versa). The dropdown resets to its default text when selections are cleared.",
+  "comment_summary": "Developer implemented the context-aware dropdown with view-specific options. Reporter requested that the dropdown reset to the default label text when deselecting all rows. Fix was applied promptly.",
+  "comment_count": 4
+}

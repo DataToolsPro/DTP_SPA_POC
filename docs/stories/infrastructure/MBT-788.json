@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-788",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Document Laravel Debug Tools and Branching Process",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-01T09:49:40.345-0700",
+  "updated": "2024-07-26T00:01:58.568-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Document the standard process for using Laravel debug tools during front-end development. The documentation covers the debug branching approach to prevent debugging code and configuration from accidentally being deployed to production.\n\nThe documentation was written in Confluence to serve as a reference for all Laravel developers on the team.",
+  "acceptance_criteria": [
+    "Confluence page documents the Laravel debug tool setup and usage process",
+    "Branching strategy for debug mode is clearly described",
+    "Process prevents debug code from reaching production deployments",
+    "Documentation is accessible and editable by the development team"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation created in Confluence at: https://goodmangroup.atlassian.net/wiki/spaces/MB/pages/152764417/LaravelDebug. Standardizes the debug process to prevent debug configurations from leaking into production.",
+  "comment_summary": "Ryan asked Balaji to document the debug process in Confluence to standardize it across the team after issues with debug code reaching production. Balaji completed the documentation.",
+  "comment_count": 3
+}

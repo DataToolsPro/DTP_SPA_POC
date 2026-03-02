@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1091",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Objects Added from ERD Tab Do Not Appear in Diagram",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T00:35:28.132-0700",
+  "updated": "2026-03-01T04:06:37.620-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want objects added from the ERD tab to immediately appear in the diagram after refresh, so that I don't need to switch to the Dictionary tab to add objects.",
+  "description": "## Bug\nWhen adding new objects while on the ERD tab, the objects do not appear in the diagram even after page refresh. The workaround required going to the Dictionary tab, deleting the objects from the data table and dropdown, re-adding them, and only then would they appear in the ERD.\n\n## Root Cause\nThe add-objects flow from the ERD tab did not properly register the objects in the data model used by the ERD query, requiring the Dictionary tab's add flow to work correctly.\n\n## Fix\nFixed the object registration flow so objects added from the ERD tab are properly persisted and appear in the ERD on refresh.",
+  "acceptance_criteria": [
+    "Objects added from the ERD tab appear in the diagram after page refresh",
+    "No need to switch to the Dictionary tab to make objects visible in ERD",
+    "Objects added from either tab work identically in the ERD"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Objects added from the ERD tab now appear in the diagram after refresh without requiring a roundtrip through the Dictionary tab.",
+  "middleware_changes": "Fixed the object registration logic so the add-objects flow from the ERD tab properly persists objects to the same data model used by the ERD query.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-223"],
+  "source_files": [],
+  "implementation_notes": "The ERD tab's add-objects flow was not properly writing to the scorecards/object_fields tables. Fixed to ensure consistent behavior regardless of which tab initiates the add.",
+  "comment_summary": "Developer fixed the issue and deployed to production.",
+  "comment_count": 1
+}

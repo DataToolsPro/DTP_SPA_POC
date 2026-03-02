@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-161",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Update object_detail query to trigger when object is added on select.php",
+  "status": "Done",
+  "feature_folder": "metrics-glossary"
+}

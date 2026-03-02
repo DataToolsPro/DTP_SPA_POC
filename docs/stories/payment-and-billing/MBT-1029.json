@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1029",
+  "epic_key": "MBT-1024",
+  "feature_folder": "payment-and-billing",
+  "title": "Auto-Create and Close Won Opportunity on New Stripe Subscription",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-09T10:50:13.208-0800",
+  "updated": "2024-12-22T22:12:59.554-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nWhen a customer completes a Stripe purchase, a new subscription event is generated. The system should automatically create a corresponding Salesforce Opportunity and close it as Won, eliminating manual data entry for online purchases.\n\n## Behavior\n\nCreate a Salesforce flow or trigger that reacts to `customer.subscription.created` Stripe events:\n\n1. Look up the DTP User using the `client_reference_id` from the Stripe event\n2. Check if the DTP User is associated with a Salesforce Account\n3. If yes, create a new Opportunity with Record Type = \"Online\" (from MBT-1025)\n4. Immediately set the Opportunity stage to \"Closed Won\"\n5. Link the Opportunity to the Account\n\nFor the initial implementation, Opportunities that cannot be matched to an account are connected to a generic DataTools Pro account. The lead conversion automation will be handled in a separate story.\n\n## Business Context\n\nThis automation is needed to ensure all purchases are tracked in Salesforce even if manual association is required initially. Enables launching the SQL course product with proper sales tracking.",
+  "acceptance_criteria": [
+    "Opportunity is auto-created when a customer.subscription.created Stripe event is received",
+    "Opportunity Record Type is set to 'Online'",
+    "Opportunity is immediately closed as Won",
+    "Opportunity is linked to the correct Account if the DTP User has one",
+    "Unmatched opportunities default to a generic DataTools Pro account",
+    "No manual intervention is required for the opportunity creation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce automation that reacts to customer.subscription.created Stripe events. Looks up the DTP User via client_reference_id, finds the associated Account, creates an Online-type Opportunity, and closes it as Won. Falls back to a generic account if no match is found.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-774", "MBT-1025"],
+  "source_files": [],
+  "implementation_notes": "On checkout session complete, the system uses the client_reference_id to find the DTP User and their associated Account. If an Account exists, the Opportunity is created with the Online record type and closed as Won. Lead conversion automation is deferred to a future story.",
+  "comment_summary": "Developer outlined the implementation plan: on session complete, look up DTP user via client_reference_id, check for associated Account, create Online-type Opportunity and close as Won. Confirmed working on sandbox with screenshot.",
+  "comment_count": 2
+}

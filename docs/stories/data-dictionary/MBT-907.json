@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-907",
+  "epic_key": "MBT-923",
+  "feature_folder": "data-dictionary",
+  "title": "Scheduled Report and Dashboard Refresh History Log",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-07T01:07:43.279-0700",
+  "updated": "2024-11-28T09:29:54.878-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Creates a scheduled log of Salesforce report and dashboard refresh activity. A daily cron job queries Salesforce via SOQL to capture which reports and dashboards were accessed or refreshed in the last 24 hours.\n\nSOQL queries:\n- Reports: `SELECT Id, LastRunDate, Name FROM Report WHERE LastRunDate = LAST_N_DAYS:1`\n- Dashboards: `SELECT Id, LastViewedDate, Title FROM Dashboard WHERE LastViewedDate = LAST_N_DAYS:1`\n\nThe log data is stored in a separate database to avoid cluttering the application DB with historical snapshots. Only opted-in users/teams have this scheduler active.\n\nA key bug was discovered and fixed: reports/dashboards with null `LastViewedDate` were incorrectly included in the 'last 24 hours' filter results, inflating the count.",
+  "acceptance_criteria": [
+    "Daily cron job captures report IDs, names, and last run timestamps from Salesforce",
+    "Daily cron job captures dashboard IDs, titles, and last viewed timestamps from Salesforce",
+    "Only reports/dashboards with non-null last viewed/run dates within 24 hours are included",
+    "Log data is stored in a separate database from the application DB",
+    "Scheduler only runs for opted-in teams",
+    "Cron runs once daily at midnight"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel cron job that runs daily SOQL queries against Salesforce to fetch report and dashboard refresh activity. Filters out null LastViewedDate/LastRunDate records.",
+  "data_model_changes": "Separate database for storing daily snapshots of report and dashboard refresh history. Keeps historical log data isolated from the application database.",
+  "api_changes": "Consumes Salesforce SOQL API to query Report and Dashboard objects. Scheduler endpoints for opting teams in/out.",
+  "dependencies": ["MBT-906"],
+  "source_files": [],
+  "implementation_notes": "Critical bug fixed: null LastViewedDate values were being treated as matching the LAST_N_DAYS filter, inflating results from 3 actual records to 16. The fix ensures null dates are excluded. Cron command: `app:fetch-salesforce-reports-dashboards`, scheduled at midnight via server crontab. A separate database is used for log storage to avoid bloating the main application DB.",
+  "comment_summary": "Developer encountered an issue where null LastViewedDate records were incorrectly included in results. Fixed the filter logic. Cron deployed to both development and production, running once daily at midnight. Developer asked about notification emails and more frequent cron intervals — left at daily for now.",
+  "comment_count": 8
+}

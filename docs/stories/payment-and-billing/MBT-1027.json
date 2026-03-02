@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1027",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "WITHDRAW Relationship Between Opportunity and DTP Invoice",
+  "status": "Done",
+  "feature_folder": "payment-and-billing"
+}

@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-327",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Add Home and Learning Resources Links to Left Navigation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:48:51.106-0700",
+  "updated": "2024-05-24T02:25:06.637-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user on the settings or share page, I want Home and Learning Resources links in the left navigation, so that I can easily return home or access tutorials.",
+  "description": "Add two new links to the left navigation sidebar on the settings and share pages.\n\n## New Links\n1. **Home** — navigates back to the main application page\n2. **Learning Resources** — opens `https://datatoolspro.com/tutorials/` in a new browser window",
+  "acceptance_criteria": [
+    "Home link appears in the left navigation on settings page",
+    "Home link appears in the left navigation on share page",
+    "Home link navigates to the main application page",
+    "Learning Resources link appears in the left navigation",
+    "Learning Resources opens datatoolspro.com/tutorials/ in a new window"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Home and Learning Resources navigation links added to the settings/share page sidebar for quick access to the main app and tutorials.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "",
+  "comment_count": 0
+}

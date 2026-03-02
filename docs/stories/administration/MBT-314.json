@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-314",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Delete Pending User Invitations",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-20T11:55:55.883-0700",
+  "updated": "2024-05-24T02:25:02.276-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want to delete a pending invitation, so that I can revoke access before the invited user accepts and optionally notify them that the invitation has been cancelled.",
+  "description": "Add the ability to delete pending invitations from the account management page. When an invitation is deleted, the accept token is invalidated so the link can no longer be used. A future enhancement would send a cancellation email to the invited user via a SendGrid template.",
+  "acceptance_criteria": [
+    "Account owner can delete a pending invitation from the account management page",
+    "Deleted invitation links are invalidated and cannot be used",
+    "The pending invitation is removed from the account management UI"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Delete button/action on pending invitations in the account management page.",
+  "middleware_changes": "Delete invitation endpoint that invalidates the accept token and removes the pending invitation record.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-280"],
+  "source_files": [],
+  "implementation_notes": "A cancellation notification email was discussed but deferred pending SendGrid template creation and content.",
+  "comment_summary": "Developer implemented delete functionality for pending invitations and pushed to staging. Noted that a cancellation email template is needed for future enhancement.",
+  "comment_count": 2
+}

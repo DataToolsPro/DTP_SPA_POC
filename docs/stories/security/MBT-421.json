@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-421",
+  "epic_key": "MBT-413",
+  "feature_folder": "security",
+  "title": "OAuth State Parameter Validation for CSRF Protection",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-17T21:50:53.090-0800",
+  "updated": "2024-05-24T02:25:08.107-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Add an additional security layer to the Salesforce OAuth authentication flow by implementing state parameter validation to prevent CSRF attacks.\n\n## Implementation\n\n**Before sending request to Salesforce:**\n1. Generate a unique encrypted state value.\n2. Store the state in the server session.\n3. Include the state in the OAuth authentication request parameter.\n\n**During Salesforce callback:**\n1. Retrieve the stored state from the session.\n2. Compare the incoming state parameter from Salesforce with the stored value.\n3. If they don't match, log the failure and redirect to an error page.\n\n```php\n$incomingState = request('state');\n$storedState = session('state');\nif ($incomingState !== $storedState) {\n    // Log failure and redirect to error page\n}\n```",
+  "acceptance_criteria": [
+    "An encrypted state parameter is generated and included in every OAuth request",
+    "The state is stored in the server session before redirecting to Salesforce",
+    "The callback validates the incoming state against the stored session state",
+    "State mismatches log the failure with IP address and redirect to an error page",
+    "Legitimate OAuth flows continue to work without interruption"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "OAuth redirect controller generates and stores an encrypted state parameter. Callback controller validates the incoming state against the session. Mismatches trigger failure logging and error page redirect.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-418"],
+  "source_files": [],
+  "implementation_notes": "State parameter generated using Laravel's encryption. Stored in session before redirecting to Salesforce. On callback, the incoming state is compared to the session value. Mismatches are logged as authentication failures with IP address and redirect to the invalidRedirectURL error page. This prevents CSRF attacks on the OAuth flow.",
+  "comment_summary": "Developer implemented state validation and provided the code. Product owner reviewed the code logic and confirmed it makes sense. The implementation was on the staging branch and ready for production.",
+  "comment_count": 4
+}

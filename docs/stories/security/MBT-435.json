@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-435",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Multiple Metrics Fields (LOB, Topic, Owner, Definition)",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:47:20.109-0800",
+  "updated": "2024-05-24T02:25:08.761-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity**\n\nMultiple fields in the Metrics section were vulnerable to Stored XSS: Line of Business, Topic, Owner, and Definition. Users with metric editing permissions could inject JavaScript payloads through the manual data entry flow (Start Import > Enter Data Manually) that would execute for all users visiting the Metrics page.\n\n## Fix\n\nInput sanitization applied to all affected fields (Line of Business, Topic, Owner, Definition) before storage, stripping HTML/script tags to prevent stored XSS.",
+  "acceptance_criteria": [
+    "HTML and script tags are sanitized from Line of Business, Topic, Owner, and Definition fields",
+    "XSS payloads in manual data entry are neutralized",
+    "Legitimate text content in all fields is preserved",
+    "Fix deployed to staging"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization applied to Line of Business, Topic, Owner, and Definition fields in the metrics manual entry and update controllers.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Same sanitization approach applied broadly across all user-editable Metrics fields: LOB, Topic, Owner, and Definition. Covers both creation and update flows.",
+  "comment_summary": "Developer fixed and pushed to staging.",
+  "comment_count": 1
+}

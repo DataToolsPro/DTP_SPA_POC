@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-324",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Reduce Group By Label Margin",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T22:44:25.982-0700",
+  "updated": "2024-05-24T02:25:06.578-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the Group By label to have tight spacing, so that the toolbar layout is compact and clean.",
+  "description": "Change the margin class on the Group By label from `mr-5` to `mr-1` to reduce excessive spacing.",
+  "acceptance_criteria": [
+    "Group By label uses mr-1 instead of mr-5",
+    "Spacing between Group By label and adjacent elements is compact"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Reduced excessive margin on the Group By label for a more compact toolbar layout.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-320"],
+  "source_files": [],
+  "implementation_notes": "Already fixed as part of the MBT-320 batch of fixes.",
+  "comment_summary": "Developer confirmed this was already fixed in the MBT-320 work.",
+  "comment_count": 1
+}

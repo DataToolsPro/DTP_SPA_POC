@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-53",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Add Heap Analytics to Application",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-25T11:49:02.597-0800",
+  "updated": "2024-05-24T02:24:33.866-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Integrate Heap Analytics into the DataTools Pro application to track user conversions and behavior from lead to sign-up. This provides detailed analytics on how the product is being used, enabling funnel analysis across the user lifecycle.\n\nThe Heap script was added to the application codebase to capture client-side user events automatically.",
+  "acceptance_criteria": [
+    "Heap Analytics script is embedded in the application",
+    "User events from lead to sign-up are tracked automatically",
+    "Conversion funnel data is available in the Heap dashboard"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Heap script was already added to the codebase prior to ticket creation. Confirmed working and moved to Done.",
+  "comment_summary": "Developer confirmed the Heap script had already been added. Product owner verified and moved to Done.",
+  "comment_count": 2
+}

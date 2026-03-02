@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-573",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Implement User Addition from Purchase via Salesforce Zap",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-02-14T23:00:34.539-0800",
+  "updated": "2026-01-12T22:05:09.683-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Implement a Salesforce/Zapier integration that automatically creates a user in DataTools Pro when a new customer completes a purchase. This leverages the existing add-user function to provision accounts from the payment/purchase flow.\n\nThis depends on MBT-454 (payment integration) being in place first.",
+  "acceptance_criteria": [
+    "New users are automatically provisioned when a purchase is completed",
+    "The existing add-user function is invoked by the Zapier automation",
+    "User creation follows the same flow as other onboarding paths"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-454"],
+  "source_files": [],
+  "implementation_notes": "Depends on MBT-454 payment integration. Will use the existing add-user API endpoint triggered by a Zapier automation from the Salesforce purchase event.",
+  "comment_summary": "",
+  "comment_count": 0
+}

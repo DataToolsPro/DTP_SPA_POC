@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-532",
+  "epic_key": "MBT-243",
+  "feature_folder": "metrics-glossary",
+  "title": "Log API Payloads for Metric Dictionary and Dashboard Widget Generation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T22:58:18.745-0800",
+  "updated": "2024-05-24T02:25:41.665-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "Adds logging of the JSON POST bodies sent to the first and second API endpoints during the Metric Wizard flow. Payloads are stored in the DTP_METRIC_API_RESPONSES table for debugging and auditing.",
+  "acceptance_criteria": [
+    "First API payload is logged in the payload_first_api column",
+    "Second API payload is logged in the payload_second_api column",
+    "Payloads are stored in the MetricApiResponse model"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": true, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Logging interceptor stores request payloads before sending to external APIs.",
+  "data_model_changes": "Two new columns on MetricApiResponse: payload_first_api and payload_second_api for storing JSON request bodies.",
+  "api_changes": "",
+  "dependencies": ["MBT-488"],
+  "source_files": [],
+  "implementation_notes": "Migration adds payload_first_api and payload_second_api fields to the dtp_metric_api_responses table.",
+  "comment_summary": "Developer added the fields and logging. Pushed to staging for review.",
+  "comment_count": 1
+}

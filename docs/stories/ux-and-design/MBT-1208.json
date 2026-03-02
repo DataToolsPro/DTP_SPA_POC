@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1208",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Filter Measure Function Dropdown by Selected Data Type",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-09T04:40:22.978-0700",
+  "updated": "2026-03-01T03:55:48.613-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a data analyst, I want the function dropdown to update based on the selected measure's data type, so that I only see aggregate functions that are valid for the chosen column type.",
+  "description": "When selecting a Measure in the DataTools Pro Explorer, the function dropdown should dynamically update to show only functions compatible with the selected field's data type. For example, numeric fields would show SUM, AVG, MIN, MAX, COUNT while text fields would show only COUNT, MIN, MAX.",
+  "acceptance_criteria": [
+    "Function dropdown updates when a measure is selected",
+    "Only data-type-compatible aggregate functions are shown",
+    "Numeric fields show SUM, AVG, MIN, MAX, COUNT",
+    "Text fields show COUNT, MIN, MAX",
+    "Date fields show COUNT, MIN, MAX"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Function dropdown dynamically filters to show only data-type-compatible aggregate functions when a measure is selected.",
+  "middleware_changes": "Added data type detection logic that maps column types to valid aggregate functions and updates the dropdown options accordingly.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "",
+  "comment_count": 0
+}

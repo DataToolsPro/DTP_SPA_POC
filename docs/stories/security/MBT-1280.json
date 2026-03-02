@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1280",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Implement Cloudflare Worker for Auth Routing and Tenant Identification",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:49:24.286-0800",
+  "updated": "2026-03-01T04:10:02.160-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Phase 2 of the Cloudflare Worker auth migration (Epic MBT-1260). Implement the Cloudflare Worker for authentication routing and tenant identification.\n\n### Tasks\n- Set up Cloudflare Worker for auth routing\n- Implement tenant identification logic\n- Create routing rules for pooled vs dedicated tenants\n- Set up redirect logic to central auth domain\n- Implement handoff code generation and validation\n\n### Deliverables\n- Working Cloudflare Worker deployed\n- Routing logic for tenant identification\n- Handoff code mechanism for secure auth redirects",
+  "acceptance_criteria": [
+    "Cloudflare Worker is deployed and routing auth requests",
+    "Tenant identification logic correctly routes pooled and dedicated tenants",
+    "Redirect to central auth domain works with handoff codes",
+    "Handoff code generation and validation is secure"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Cloudflare Worker implementation for auth routing, tenant identification, and handoff code generation/validation.",
+  "data_model_changes": "",
+  "api_changes": "New routing rules for tenant-specific auth endpoints. Central auth domain with handoff code exchange.",
+  "dependencies": ["MBT-1279"],
+  "source_files": [],
+  "implementation_notes": "Depends on Phase 1 architecture documentation being finalized. Part of Epic MBT-1260 for Cloudflare Worker-based auth migration.",
+  "comment_summary": "",
+  "comment_count": 0
+}

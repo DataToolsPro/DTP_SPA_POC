@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-214",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Update HTML Page Titles for Analytics and Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-29T22:38:46.908-0700",
+  "updated": "2026-03-01T04:00:47.679-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Update HTML page titles across the application to standardize naming for analytics and tracking purposes.\n\n### Page Titles\n- `/login` -> \"DataTools Login\"\n- `/dashboard` -> \"DataTools Objects\"\n- `/object/{name}?view=dictionary` -> \"DataTools Object\"\n- `/entity-relationships` -> \"DataTools ERD\"\n- `/metrics` -> \"DataTools Metrics\"",
+  "acceptance_criteria": [
+    "All page titles match the specified naming convention",
+    "Analytics tools correctly capture the new page titles"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Browser tab titles updated to standardized DataTools naming convention.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Needed for Pendo and other analytics tracking tools to properly identify pages.",
+  "comment_summary": "Task was prioritized for analytics tracking setup. Developer completed and submitted for review quickly.",
+  "comment_count": 2
+}

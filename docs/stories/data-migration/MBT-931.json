@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-931",
+  "epic_key": null,
+  "feature_folder": "data-migration",
+  "title": "Fix Schema DDL Generation Error with PostgreSQL",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-20T04:38:39.991-0700",
+  "updated": "2024-11-28T09:40:50.072-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want DDL schema generation to work correctly when PostgreSQL is selected as the target database, so that I can generate valid CREATE TABLE scripts for my PostgreSQL environment.",
+  "description": "The DDL schema generation feature was producing errors when PostgreSQL was selected as the target database type. The same operation worked correctly with MySQL. The fix addresses the PostgreSQL-specific DDL generation logic to produce valid output.",
+  "acceptance_criteria": [
+    "DDL schema generation produces valid output when PostgreSQL is selected",
+    "DDL generation continues to work correctly with MySQL",
+    "No errors are thrown during PostgreSQL DDL generation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "DDL generation now produces valid output for PostgreSQL without error messages.",
+  "middleware_changes": "Fixed PostgreSQL-specific DDL generation logic that was causing errors in the schema output.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was specific to PostgreSQL DDL generation while MySQL worked correctly, suggesting a database-type-specific code path issue.",
+  "comment_summary": "Developer fixed the issue on the development environment.",
+  "comment_count": 1
+}

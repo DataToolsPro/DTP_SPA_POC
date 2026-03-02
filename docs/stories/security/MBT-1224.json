@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1224",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Migrate Token Storage to AWS Secrets Manager",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-10-10T23:47:51.575-0700",
+  "updated": "2026-03-01T03:58:10.547-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Review and migrate security token management to AWS Secrets Manager for improved credential security.\n\n### Recommended Architecture\n\n1. **Refresh tokens and client secrets** → AWS Secrets Manager (per tenant), with KMS encryption and rotation\n2. **Short-lived access tokens** → Issue on demand, cache in memory/Redis with TTL only (not in DB)\n3. **If DB persistence is required** → Encrypt client-side with a per-tenant DEK (Data Encryption Key from KMS), store as VARBINARY, maintain audit log of decrypt calls\n\n### Why Not Store Tokens in the DB?\n- Backups, replicas, migrations, and query tooling increase exposure surface\n- IAM-scoped access to Secrets Manager is easier to reason about and revoke than SQL grants\n\n### Implementation Pattern\n- KMS CMK (Customer Master Key) for wrapping per-tenant DEKs\n- Secrets Manager with rotation policies\n- IAM policies scoped per tenant\n- Application-level envelope encryption (AES-GCM DEKs per tenant, wrapped by KMS CMK)\n- Never rely solely on RDS encryption at rest\n- Never log plaintext tokens",
+  "acceptance_criteria": [
+    "Refresh tokens and client secrets are stored in AWS Secrets Manager",
+    "Per-tenant KMS encryption is configured with rotation",
+    "Short-lived access tokens are cached in memory/Redis with TTL, not in the database",
+    "Any DB-persisted tokens use per-tenant DEK envelope encryption",
+    "Audit logging tracks all decrypt operations",
+    "No plaintext tokens appear in logs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Token retrieval migrated from DB queries to AWS Secrets Manager API calls. Access token caching in Redis/memory. Envelope encryption wrapper for any remaining DB-stored tokens.",
+  "data_model_changes": "Token columns migrated from encrypted text to VARBINARY with per-tenant DEKs. Refresh tokens removed from DB, stored in Secrets Manager.",
+  "api_changes": "",
+  "dependencies": ["MBT-1189"],
+  "source_files": [],
+  "implementation_notes": "Current architecture stores encrypted tokens in MariaDB. Migration to Secrets Manager requires: KMS CMK creation, per-tenant secret paths, IAM role for app server, rotation Lambda functions. Consider phased migration starting with highest-privilege tokens (Salesforce refresh tokens, Snowflake credentials).",
+  "comment_summary": "",
+  "comment_count": 0
+}

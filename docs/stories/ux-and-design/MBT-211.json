@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-211",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Move Edit and Delete Actions from Toolbar to Inline Table Rows",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-28T20:45:34.737-0700",
+  "updated": "2026-03-01T04:00:21.716-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want edit and delete actions to appear inline on table rows instead of in a separate toolbar, so that I can quickly act on individual items without extra navigation steps.",
+  "description": "The edit and delete buttons were located in a toolbar above the table, which was inconsistent with other screens in the application. Moving these actions inline on each table row provides a more intuitive and consistent interaction pattern.\n\nAn inline editing toggle checkbox was also added, which is enabled by default. This allows users to enter an inline editing mode directly from the table view.",
+  "acceptance_criteria": [
+    "Edit and delete buttons appear inline on each table row",
+    "Toolbar edit and delete buttons are removed",
+    "Inline editing mode is enabled by default via a toggle checkbox",
+    "Layout is consistent with other table-based screens in the application"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed edit/delete buttons from the toolbar and placed them inline on each table row. Added an inline editing toggle checkbox that is enabled by default for direct row-level editing.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The inline editing toggle checkbox controls whether edit actions are available on table rows. It was initially off by default but was changed to on by default per feedback.",
+  "comment_summary": "Developer implemented the change on the dashboard page and asked about applying to the object detail page. Reporter initially had trouble seeing the change due to a toggle checkbox not being checked. Once discovered, the inline editing feature was well-received and set to default on.",
+  "comment_count": 7
+}

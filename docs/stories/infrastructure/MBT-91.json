@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-91",
+  "skipped": true,
+  "skip_reason": "stub - description is only an image reference",
+  "title": "Spike WP Menu",
+  "status": "Done",
+  "feature_folder": "infrastructure"
+}

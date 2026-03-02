@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-621",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Streamline Complete Screen to Focus on Feedback Collection",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T22:29:53.286-0700",
+  "updated": "2024-05-24T02:25:37.835-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user completing the Metrics Analyst workflow, I want the complete screen to focus solely on the feedback form with minimal distractions, so that I clearly know where to click and can provide feedback easily.",
+  "description": "User sessions revealed that users were confused about where to click on the complete screen. When 'Complete' is clicked, the interface should:\n\n1. Show only the feedback form (thumbs up/down and recommendations text area)\n2. Suppress the minimize and start-over buttons\n3. Suppress the 'more info' detail area\n4. Add a 'Cancel' button next to 'Submit Feedback' that returns the user to the full recommendations view\n\nThis focuses the user's attention on the feedback interaction. Clicking cancel restores all widgets, tiles, and navigation buttons.",
+  "acceptance_criteria": [
+    "Clicking Complete shows only the feedback form",
+    "Minimize and Start Over buttons are hidden during feedback",
+    "'More info' detail area is suppressed during feedback",
+    "A Cancel button allows returning to the full recommendations view",
+    "Canceling restores all six tiles and navigation buttons"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Redesigned the complete screen to show only the feedback form with a cancel option. Hides navigation, minimize, and start-over controls during feedback collection. Cancel restores the full view.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Prompted by user session recordings showing confusion on the complete screen. The cancel button restores all six summary tiles and control buttons.",
+  "comment_summary": "Developer implemented the focused feedback view. Cancel button shows back all available widgets, dashboards, metrics, and navigation buttons.",
+  "comment_count": 1
+}

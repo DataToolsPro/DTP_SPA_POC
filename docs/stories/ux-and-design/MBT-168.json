@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-168",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "In-App Tutorials Dropdown Widget via WordPress API",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T22:55:03.419-0700",
+  "updated": "2024-05-24T02:24:34.795-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see a list of relevant tutorials inside the app, so that I can quickly access learning resources without leaving the application.",
+  "description": "Add a tutorials dropdown widget that fetches tutorial posts from the datatoolspro.com WordPress API and displays them as clickable links.\n\n## Implementation\n- Fetch tutorials from `https://datatoolspro.com/wp-json/wp/v2/tutorial?tags=214`\n- Display each tutorial as a clickable link with its title and publication date\n- Links open in a new browser window\n- Tutorial URLs follow the pattern: `https://datatoolspro.com/tutorial/{slug}`",
+  "acceptance_criteria": [
+    "Tutorials widget displays posts fetched from the WordPress API",
+    "Each tutorial shows its title as a clickable link",
+    "Each tutorial shows its publication date",
+    "Tutorial links open in a new browser window",
+    "Widget handles API errors gracefully"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "New tutorials dropdown widget that dynamically loads and displays tutorial content from the datatoolspro.com WordPress site via its REST API.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Client-side JavaScript fetches from the WordPress REST API with tag filtering. No server-side proxy needed since the WordPress API is public.",
+  "comment_summary": "Developer implemented the widget with styled layout and Ryan approved the design.",
+  "comment_count": 2
+}

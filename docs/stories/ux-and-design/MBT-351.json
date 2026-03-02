@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-351",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Auto-Save on Checkbox Selection and Soft Delete on Deselection",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:51:36.404-0800",
+  "updated": "2026-03-01T04:16:20.211-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want dropdown checkbox selections to save automatically and deselections to trigger a soft delete, so that I can manage my selections without an extra save button step.",
+  "description": "User feedback indicated that the extra \"Save Objects\" button step after selecting items in the dropdown was unclear. The improvement removes the manual save step by:\n\n1. **Checkbox check**: Automatically saves the selection immediately\n2. **Checkbox uncheck**: Triggers a soft delete (using the same delete confirmation modal as the delete icon)\n\nThis eliminates the intermediate save button, making the dropdown selection workflow more intuitive and reducing the number of steps.",
+  "acceptance_criteria": [
+    "Checking a checkbox in the dropdown immediately saves the selection",
+    "Unchecking a checkbox triggers a soft delete with a confirmation modal",
+    "The 'Save Objects' button is removed from the dropdown",
+    "Soft delete uses the same confirmation modal as the delete icon action",
+    "Previously saved selections are reflected when reopening the dropdown"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed the manual 'Save Objects' button from the dropdown. Checkbox selections now auto-save on check and trigger a soft delete confirmation modal on uncheck.",
+  "middleware_changes": "Updated event handlers to trigger save on checkbox check and soft delete on uncheck, replacing the batch save button workflow.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The save-on-check behavior had existed in an earlier version but was reverted. It was re-enabled along with the existing soft-delete-on-uncheck behavior. Initial testing missed the change because it hadn't been pushed to staging.",
+  "comment_summary": "Developer noted that save-on-check had been implemented previously and was re-enabled. Initial review found the change wasn't pushed to staging, which was quickly corrected. Feature was approved after deployment.",
+  "comment_count": 6
+}

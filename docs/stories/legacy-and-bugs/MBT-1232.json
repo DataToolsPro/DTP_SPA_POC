@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1232",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Remove New Relic Scripts from App Frontend",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-13T18:13:30.358-0700",
+  "updated": "2026-03-01T04:01:57.193-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nNew Relic scripts/pixel were referenced in the frontend application but no longer in active use. The only remaining reference was in the Content Security Policy (CSP) configuration.\n\n## Action\nRemove all New Relic references from the frontend, including the CSP entry.",
+  "acceptance_criteria": [
+    "No New Relic scripts or pixel references remain in the frontend",
+    "New Relic domain is removed from the CSP configuration",
+    "No CSP errors related to New Relic in browser console"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "New Relic was not actually loaded on the site — only its CSP entry remained. Removed from CSP.",
+  "comment_summary": "Developer confirmed New Relic was only present in the CSP and removed it from there.",
+  "comment_count": 1
+}

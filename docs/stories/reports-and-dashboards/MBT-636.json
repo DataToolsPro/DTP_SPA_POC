@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-636",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Two-Column Tableau Configuration Modal with Embedded Tutorial Video",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-21T16:12:09.226-0700",
+  "updated": "2024-05-24T02:25:38.744-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "As a product administrator setting up the Tableau integration, I want to see a tutorial video and link alongside the configuration fields, so that I can follow along and complete the setup correctly on my first attempt.",
+  "description": "Redesigns the Tableau configuration modal to a two-column layout. The left column contains the four credential input fields (server, content URL, PAT name, PAT secret). The right column embeds a tutorial video and provides a link to the full written tutorial on datatoolspro.com.\n\nThis pattern establishes a consistent onboarding experience for service connections. The same layout will be reused for Notion and other future integrations that require external service authentication.",
+  "acceptance_criteria": [
+    "Modal displays in a two-column layout",
+    "Left column contains all four Tableau credential fields",
+    "Right column embeds the tutorial video from YouTube",
+    "A View Tutorial link below the video opens the datatoolspro.com tutorial in a new window",
+    "Layout is responsive and usable at various screen sizes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Redesigned the Tableau configuration modal to a two-column layout with credential fields on the left and an embedded YouTube tutorial video with a link to the full tutorial on the right.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "This establishes a reusable pattern for service connection modals. The same layout will be applied to Notion integration and any future third-party service connections.",
+  "comment_summary": "Waqar implemented the two-column modal on staging and requested the tutorial video for the Notion integration as well.",
+  "comment_count": 2
+}

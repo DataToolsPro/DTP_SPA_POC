@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-965",
+  "epic_key": "MBT-1009",
+  "feature_folder": "initiatives",
+  "title": "Initiative Grid Bubble Chart with Table Filtering",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-10-24T14:30:42.280-0700",
+  "updated": "2026-03-01T03:54:29.999-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "As a DataTools Pro user, I want to visualize my initiatives in a bubble chart based on their importance and impact, so that I can quickly identify high-priority items and filter the data table by selecting chart bubbles.",
+  "description": "Add an initiative grid visualization (bubble chart) that plots initiatives by importance and impact. The chart appears above the initiatives data table and can be toggled on/off from the toolbar.\n\nWhen a user clicks on bubbles in the chart, the data table below filters to show only the selected initiatives. The toolbar (export, filter buttons) appears above the chart. The chart slides down to reveal the table when toggled.\n\nA CodePen prototype was provided: https://codepen.io/datatoolspro/pen/vYQzMjG",
+  "acceptance_criteria": [
+    "A bubble chart visualizes initiatives by importance and impact",
+    "The chart can be toggled on/off from the toolbar",
+    "Clicking bubbles in the chart filters the data table to show only selected initiatives",
+    "The toolbar (export, filter) appears above the chart visual",
+    "The chart slides down above the table when toggled on",
+    "Chart height and centering provide a good visual balance"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New bubble chart visualization above the initiatives data table. Toggle in toolbar to show/hide. Interactive bubble selection filters the table below. Chart is centered with appropriate height and width.",
+  "middleware_changes": "Chart-to-table interaction logic: clicking chart bubbles triggers data table filtering to show only selected initiative records.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Based on CodePen prototype (vYQzMjG). Initial implementation had chart placement and styling issues that were refined. Table filtering on chart click was functional from the start. Balaji was separately working on the landing page design.",
+  "comment_summary": "Developer implemented the chart on local with table filtering working. After feedback to adjust height/centering, styling was refined and pushed to dev for review. Reporter approved the direction and interaction pattern.",
+  "comment_count": 4
+}

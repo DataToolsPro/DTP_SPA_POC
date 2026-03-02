@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1039",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Filter Fields Showing Blank Results in Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-18T16:18:11.055-0800",
+  "updated": "2026-01-24T22:53:57.251-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want the filter fields feature to correctly display matching fields when I apply a filter, so that I can narrow down the field list as expected.",
+  "description": "When selecting the filter to show only filter-applicable fields in the Data Dictionary, the table appears blank even though the underlying data confirms filter fields exist. This is a bug where the filter function became disconnected from the data source.\n\nThe fix restores the correct filtering behavior so that the table properly displays fields matching the selected filter criteria.",
+  "acceptance_criteria": [
+    "Selecting a filter correctly displays matching fields in the table",
+    "Fields that match the filter criteria are visible (not blank)",
+    "Filter works consistently across all object detail pages",
+    "Clearing the filter restores the full field list"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixes the filter fields display — filtered results now correctly show matching fields instead of a blank table.",
+  "middleware_changes": "Fixes the data query or filtering logic that was returning empty results despite matching data existing.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-29"],
+  "source_files": [],
+  "implementation_notes": "Developer needed a meeting to understand the exact filter behavior before fixing. The fix was deployed to the development environment.",
+  "comment_summary": "Developer requested a meeting to discuss the issue. After discussion, the fix was implemented and deployed to development.",
+  "comment_count": 2
+}

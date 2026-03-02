@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1072",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Investigate and Fix Slow Page Loading Causes",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-12T20:25:38.511-0800",
+  "updated": "2026-03-01T03:57:18.345-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Investigate causes of slow page loading times across the application. Two issues were identified and resolved:\n\n### Issue 1: New Relic Script Auto-Injection\nNew Relic monitoring code was being auto-injected into every page from a Cloudways server-level configuration (not from the application source code). Removing it from source code had no effect until the Cloudways-level injection was also disabled.\n\n### Issue 2: Gravity Form AJAX Request\nThe \"All Tutorials\" tab fetches content from the datatoolspro.com/support page, which includes a Gravity Form. The form's AJAX request took ~3 seconds to complete, adding significant latency. The form was stripped from the fetched content since it's not needed for the tutorial links display.\n\n### Result\nPage load time reduced by approximately 3 seconds after both fixes.",
+  "acceptance_criteria": [
+    "New Relic auto-injection is disabled at the Cloudways level",
+    "Gravity Form AJAX request no longer delays page loading",
+    "Overall page load time is measurably reduced"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Pages load approximately 3 seconds faster.",
+  "middleware_changes": "Stripped Gravity Form HTML when fetching tutorial content from the support page to avoid unnecessary AJAX requests.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "New Relic was being injected at the Cloudways server level, not from application code. Removing it from the codebase alone was insufficient. The Gravity Form on the support page caused a ~3 second AJAX delay when its HTML was fetched into the app.",
+  "comment_summary": "Developer identified two causes: New Relic code being auto-injected from Cloudways (not source code), and a Gravity Form AJAX request adding ~3 seconds. Both were fixed and deployed to production.",
+  "comment_count": 4
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-94",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Remove .PHP Extension from URLs",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-16T11:32:59.413-0700",
+  "updated": "2026-03-01T03:44:44.086-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want URLs to not show the .PHP extension so that the application feels more polished and professional.",
+  "description": "Remove the .PHP file extension from application URLs. This provides cleaner URLs and hides implementation details from end users.",
+  "acceptance_criteria": [
+    "URLs do not display the .PHP extension",
+    "All internal links use extension-less URLs",
+    "Server correctly routes extension-less URLs to the correct PHP files",
+    "No broken links or navigation issues"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "URLs no longer show .PHP extension, providing cleaner navigation.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-61"],
+  "source_files": [],
+  "implementation_notes": "Implemented via server URL rewriting rules to strip .php extensions.",
+  "comment_summary": "Developer implemented and submitted for review. Product owner reviewed and confirmed it looks good.",
+  "comment_count": 2
+}

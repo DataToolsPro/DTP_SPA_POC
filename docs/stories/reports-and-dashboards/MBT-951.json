@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-951", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Suppress Internal Auto-Incrementing IDs from Data Export",
+  "type": "task", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-12T17:30:59.420-0700", "updated": "2024-11-03T19:01:52.734-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "security"],
+  "story": "",
+  "description": "When users export report/dashboard data, the internal DataTools auto-incrementing IDs and public-facing IDs should not be included in the export. These are internal identifiers that have no meaning to end users and could expose internal system details.",
+  "acceptance_criteria": ["Export excludes internal auto-incrementing IDs", "Export excludes public_facing_id column", "Only user-meaningful fields are included in the export"],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": true},
+  "ux_changes": "",
+  "middleware_changes": "Modified the export function to exclude internal ID columns (id, public_facing_id) from the exported data.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Configured the DataTables export buttons to exclude the id and public_facing_id columns from CSV/Excel export.",
+  "comment_summary": "Waqar removed id and public-facing id from exports. Only user-meaningful fields are now exported.", "comment_count": 2
+}

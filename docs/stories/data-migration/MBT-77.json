@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-77",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "MVP Data Mapping Properties Side Panel",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-26T19:24:32.196-0700",
+  "updated": "2024-05-24T02:24:28.368-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want a slide-out panel where I can input my source data schema and map fields to Salesforce objects, so that I can perform data mapping without manually entering each field individually.",
+  "description": "Implement the MVP version of the Data Mapping properties panel as an off-canvas (slide-out) side panel. This is the foundational UX for the data mapping workflow.\n\n**MVP scope** is limited to:\n- The slide-out panel UX (off-canvas from the right side)\n- Ability to add a new data source using the Handsontable-based spreadsheet UX\n- Saving the data source schema to the application's data model\n- Only UX Object 1 from the full specification — additional mapping objects are deferred\n\nThe panel allows users to define their source system's field structure, which becomes the basis for field-level mapping between source and Salesforce fields.\n\nAfter customer feedback, the panel was moved from left-side to right-side so users can still see all field names in the main table while the panel is open.",
+  "acceptance_criteria": [
+    "Off-canvas slide-out panel opens from the right side of the screen",
+    "User can add a new data source with field definitions using the spreadsheet UX",
+    "Source data schema is saved to the application data model",
+    "Panel does not obscure the field name column in the main data table",
+    "Panel can be opened and closed without losing data"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New right-side off-canvas slide-out panel with Handsontable-based spreadsheet for entering source data field definitions. Panel slides in from the right to keep field names visible.",
+  "middleware_changes": "Backend logic to process and validate source data schema submissions from the panel.",
+  "data_model_changes": "New data model entities to store source data schemas, including source object definitions and field mappings.",
+  "api_changes": "Endpoints to create, save, and retrieve source data schemas for the mapping panel.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initially scoped as a backlog item but elevated to a sprint priority as the last major feature for beta launch. The panel was changed from left-to-right orientation based on customer feedback so users could still see all field names. Uses the Handsontable library for the spreadsheet-like data entry experience.",
+  "comment_summary": "Developer initially asked for clarification on which page needed the off-canvas panel. It was clarified as a backlog item. Later, it was updated with detailed requirements and elevated to sprint priority for beta launch. Customer feedback prompted moving the panel from left to right side, which was a quick change.",
+  "comment_count": 9
+}

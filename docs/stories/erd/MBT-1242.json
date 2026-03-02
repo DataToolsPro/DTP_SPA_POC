@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1242",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Foreign Keys Not Showing in Public ERD View",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-11-25T21:32:27.134-0800",
+  "updated": "2026-03-01T04:04:33.394-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user opening a public ERD view, I want to see foreign keys in the default view, so that available relationships are immediately visible without toggling settings.",
+  "description": "## Bug\nWhen opening a public ERD view via a direct URL, the foreign keys do not appear in the default view. The expected behavior is for FK fields to be visible so that available relationships are shown to viewers.\n\n## Context\nThe issue only reproduces in production; it works correctly on localhost. This suggests a deployment or caching difference between environments.",
+  "acceptance_criteria": [
+    "Foreign keys are visible in the default public ERD view",
+    "Public ERD view URL renders correctly in production",
+    "Behavior matches localhost behavior"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Foreign keys should appear by default in public ERD views.",
+  "middleware_changes": "Investigation into production-specific rendering issue for public ERD view FK visibility.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Works on localhost but not production — likely a deployment, caching, or environment configuration difference. Developer investigating.",
+  "comment_summary": "Developer acknowledged the task but noted it would take extra time since the issue only reproduces in production, not localhost.",
+  "comment_count": 1
+}

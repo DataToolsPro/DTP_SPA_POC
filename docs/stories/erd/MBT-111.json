@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-111",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Color-Coded Inbound and Outbound Relationships in ERD",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:28:03.744-0700",
+  "updated": "2026-03-01T03:48:58.301-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to see color-coded inbound and outbound relationships when I click an entity, so that I can quickly distinguish primary keys from foreign keys and trace data flow.",
+  "description": "## Context\nThe ERD diagram shows relationships between entities but does not visually differentiate between inbound (primary key) and outbound (foreign key) relationships.\n\n## Behavior\n- **Foreign keys** are displayed with a green icon and green relationship lines indicating outbound references.\n- **Primary keys** are displayed with a blue icon and blue relationship lines indicating inbound references.\n- Clicking an object node highlights both its inbound and outbound relationships simultaneously, making it easy to trace the full relationship graph for a selected entity.",
+  "acceptance_criteria": [
+    "Foreign key fields are flagged with a green icon in the object table",
+    "Foreign key relationship lines render in green",
+    "Primary key fields are flagged with a blue icon in the object table",
+    "Primary key (inbound) relationship lines render in blue",
+    "Clicking an object node highlights both inbound and outbound relationships",
+    "Color coding is visually distinct and accessible"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "ERD diagram uses color-coded relationship lines: green for foreign key (outbound) links and blue for primary key (inbound) links. Clicking an entity node highlights all connected relationships in both directions.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "GoJS link templates updated to support conditional coloring based on relationship direction. Node click handler triggers highlight of all connected links.",
+  "comment_summary": "",
+  "comment_count": 0
+}

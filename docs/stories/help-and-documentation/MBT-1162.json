@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1162",
+  "skipped": true,
+  "skip_reason": "Description is null/empty",
+  "title": "documentation of app.datatoolspro data model",
+  "status": "In Review",
+  "feature_folder": "help-and-documentation"
+}

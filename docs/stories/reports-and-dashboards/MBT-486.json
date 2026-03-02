@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-486",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Prompt to Associate Dashboard Reports When Creating Metric Relationship",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-12T20:24:58.564-0800",
+  "updated": "2026-03-01T04:18:41.945-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "metrics"],
+  "story": "As a data analyst, I want to be prompted to also associate the individual reports from a dashboard when I relate that dashboard to a metric, so that I don't have to manually research which reports belong to each dashboard.",
+  "description": "When a user creates a relationship between a dashboard and a metric, the system should automatically fetch the dashboard's component reports from Salesforce metadata and prompt the user to select which reports to also associate.\n\n### Workflow\n1. User manually adds a dashboard from the analytics tab\n2. System runs dashboard analysis and fetches the component reports from Salesforce\n3. A modal prompts the user with a multi-select list of reports from the dashboard\n4. User selects desired reports via checkboxes\n5. Selected reports are added to the reports tab for that metric\n\n### Validation\n- Deduplication: if a report is already associated with the metric, it is excluded from the selection list\n- Empty state: if no reports are found for the dashboard, either show a message or skip the prompt",
+  "acceptance_criteria": [
+    "Adding a dashboard relationship triggers a follow-up modal with the dashboard's component reports",
+    "Reports are fetched from Salesforce dashboard metadata",
+    "User can multi-select reports via checkboxes",
+    "Selected reports are added to the metric's reports tab",
+    "Already-associated reports are excluded from the selection list (deduplication)",
+    "Empty dashboard (no reports found) shows a message or suppresses the modal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New follow-up modal after dashboard assignment showing component reports with multi-select checkboxes. Empty state handling with message when no reports found.",
+  "middleware_changes": "Fetches Salesforce dashboard metadata to extract component report IDs. Deduplication logic to exclude already-associated reports.",
+  "data_model_changes": "",
+  "api_changes": "Calls Salesforce Analytics API to fetch dashboard component report IDs for the follow-up modal.",
+  "dependencies": ["MBT-485"],
+  "source_files": [],
+  "implementation_notes": "Required report IDs from service #2 to be available before this feature could work. Deduplication initially showed duplicate entries that needed fixing — the system was supposed to ignore already-added reports and remove them from the selection list.",
+  "comment_summary": "Reporter noted report IDs from service #2 were needed first. Developer implemented the follow-up modal but initial testing showed an empty modal. The empty state was caused by dashboards with no reports. A message was added for that case. Deduplication issue was identified and resolved.",
+  "comment_count": 8
+}

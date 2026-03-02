@@ -1,0 +1,46 @@
+{
+  "issue_key": "MBT-555",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Add Description and Logic Fields to Metrics Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-01T23:35:44.577-0800",
+  "updated": "2026-03-01T01:29:50.889-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "metrics"],
+
+  "story": "As a DataTools Pro user managing the Metrics Dictionary, I want Description and Logic fields available in the metric detail side pane with informative tooltip icons, so that I can document how each metric is described in business terms and what its technical formula is.",
+  "description": "Two new fields were added to the Metrics Dictionary data model and exposed in the metric detail side pane:\n\n1. **Description** — contextual business explanation of what a metric measures. Tooltip: 'A description of a metric is contextual information to explain purely in business terms what a metric and may have a greater amount of detail.'\n\n2. **Logic** — technical formula or expression of the metric. Tooltip: 'Logic explains the technical formula or expression of the metric in a formulaic or code format. It would include logic and field names.'\n\nBoth fields include info icons with tooltips in the side pane to help users understand what content belongs in each field. The existing Definition field already explains how a metric is calculated in universal terms; Description and Logic complement it with business context and technical specifics respectively.",
+  "acceptance_criteria": [
+    "Description and Logic fields appear in the metric detail side pane",
+    "Users can enter and save text for both fields",
+    "Info icons with tooltips appear next to each field label in the side pane",
+    "Description tooltip explains the business-context purpose of the field",
+    "Logic tooltip explains the technical-formula purpose of the field",
+    "New fields are persisted to the database"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added Description and Logic fields to the metric detail side pane with info icons and tooltips. Fields are editable text inputs where users can document business descriptions and technical formulas for each metric.",
+  "middleware_changes": "Updated the metric save/retrieve logic to handle the two new fields.",
+  "data_model_changes": "Added 'description' and 'logic' columns to the metrics table.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Database columns were added first. There was initial confusion about tooltip placement (table header vs inline). Product owner clarified they belong in the side pane next to the field labels, not in the table columns. The Definition field was already established; Description and Logic are complementary fields for different audiences (business vs technical).",
+  "comment_summary": "Developer added the database columns but was unsure about tooltip placement. Product owner clarified the tooltips belong in the metric detail side pane alongside the field labels, not in table headers. Developer implemented and submitted for review on staging.",
+  "comment_count": 7
+}

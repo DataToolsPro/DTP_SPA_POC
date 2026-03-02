@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-548",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix Picklist Mappings Hidden from SQL Output",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-29T12:19:59.107-0800",
+  "updated": "2024-05-24T02:25:42.731-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want picklist field mappings (CASE statements) to appear in the SQL output after I map and complete them, so that my generated SQL includes the complete transformation logic.",
+  "description": "After mapping and marking picklist fields as completed on the sandbox environment, the picklist mappings (CASE WHEN statements) were being suppressed from the SQL output view. The SQL was rendering field references but not including the CASE statement blocks for picklist-mapped fields.\n\nThe issue was reported on the sandbox environment with a specific user account. The developer was unable to reproduce the issue with their own account.",
+  "acceptance_criteria": [
+    "Picklist mappings render as CASE WHEN statements in the SQL output",
+    "Completed picklist fields include their full mapping in the SQL view",
+    "SQL output is consistent across user accounts"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "SQL output view correctly displays CASE WHEN statements for picklist-mapped fields.",
+  "middleware_changes": "SQL generation logic fixed to include picklist CASE statements regardless of the user's account or environment.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-131", "MBT-482"],
+  "source_files": [],
+  "implementation_notes": "The issue was environment/account-specific. The developer could not reproduce it but investigated the SQL generation path for picklist mappings. May have been a data-specific issue with the reporter's Salesforce instance.",
+  "comment_summary": "Developer tried to reproduce on their own account but could not see the issue. Reporter offered to share their login credentials for debugging on the specific Salesforce instance.",
+  "comment_count": 2
+}

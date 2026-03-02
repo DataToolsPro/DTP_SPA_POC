@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-694",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "Reduction of Licenses Below Available Limit",
+  "status": "Done",
+  "feature_folder": "administration"
+}

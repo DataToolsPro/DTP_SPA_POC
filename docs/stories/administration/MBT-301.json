@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-301",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Document Permission Controls for Shared Accounts",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-10T22:19:26.141-0700",
+  "updated": "2026-03-01T04:13:32.638-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\nPermission labels on the shared account settings page were unclear. This ticket documents what each permission controls and proposes improvements.\n\n## Permission Reference\n\n| Permission | Controls |\n|---|---|\n| **List Scorecard** | Shared user can see the list of scorecards/objects on the dashboard. If unchecked, the list is hidden when viewing that account. |\n| **Create Scorecard** | Shared user can add/remove scorecards. Section is hidden if unchecked. |\n| **Edit Scorecard** | Shared user can edit scorecard details. |\n| **Delete Scorecard** | Shared user can delete scorecards from the shared account. |\n| **Allow Scorecard Mapping** | \"Click to Map\" appears as a link if checked; plain text if unchecked. |\n| **Create Source Object** | Shared user can see the \"Add Source Object\" link. |\n| **Edit Scorecard Source Object** | Shared user can edit source objects. |\n| **Unlink Scorecard Source Object Meta** | Shared user can remove/unlink source objects. |\n| **List Metric** | Shared user can see the metric list. |\n| **Create Metric** | Shared user can add new metrics. Section hidden if unchecked. |\n| **Edit Metric** | Shared user sees the pencil icon and can update metrics. |\n| **Delete Metric** | Shared user sees the delete icon and can delete metrics. |\n\n## Future Work\n- Rename labels to be more end-user-friendly.\n- Add info icons with descriptions.\n- Determine which permissions should be admin/licensing-only vs. user-configurable.",
+  "acceptance_criteria": [
+    "All permission behaviors are documented",
+    "Each permission correctly controls the described UI element",
+    "Labels are candidates for future renaming"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation task. Permissions were already implemented — this ticket maps each permission to its UI behavior for future label improvements.",
+  "comment_summary": "Developer provided detailed descriptions of each permission with screenshots showing the controlled UI elements. Reporter confirmed the documentation.",
+  "comment_count": 2
+}

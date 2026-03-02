@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1023",
+  "skipped": true,
+  "skip_reason": "stub — description contains only image references with no substantive text",
+  "title": "Dictionary Not Updating List Values",
+  "status": "Done",
+  "feature_folder": "data-dictionary"
+}

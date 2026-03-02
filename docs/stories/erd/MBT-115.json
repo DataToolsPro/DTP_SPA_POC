@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-115",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Toggle Off Standard User Relationships in ERD",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:38:53.530-0700",
+  "updated": "2026-03-01T03:50:41.067-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to hide the standard User object relationships (Record Owner, Created By, Last Modified By), so that I can view a clean and uncluttered diagram focused on business relationships.",
+  "description": "## Context\nEvery Salesforce object has three standard user lookup fields: Record Owner, Created By, and Last Modified By. When the User object is present in the ERD, these create three foreign key links per entity, making the diagram extremely busy and hard to read.\n\n## Behavior\nA toggle button hides or shows the standard user relationship lines for:\n- **OwnerId** (Record Owner)\n- **CreatedById** (Created By)\n- **LastModifiedById** (Last Modified By)\n\nCustom user lookup fields are not affected by this toggle and remain visible regardless of the setting.\n\n## Edge Cases\n- If the User object is not in the selected set, the toggle has no effect.\n- Only the three standard fields are filtered; any custom lookup to User remains visible.",
+  "acceptance_criteria": [
+    "A toggle button controls visibility of standard user relationship lines",
+    "OwnerId, CreatedById, and LastModifiedById links are hidden when toggled off",
+    "Custom user lookup fields remain visible regardless of toggle state",
+    "Toggle only has visible effect when the User object is present in the ERD",
+    "Toggling does not trigger a full page refresh"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New toggle button hides standard user relationship lines (OwnerId, CreatedById, LastModifiedById) from the ERD to reduce visual clutter. Custom user lookups remain visible.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "Link filter checks the field_api_name against a hardcoded list of standard user fields (OwnerId, CreatedById, LastModifiedById). When toggle is off, links matching these fields are hidden from the GoJS diagram.",
+  "comment_summary": "",
+  "comment_count": 0
+}

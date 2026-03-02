@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-738",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Implement Git Branching Strategy with Dev, Stage, and Prod Environments",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-28T22:31:00.498-0700",
+  "updated": "2024-07-26T00:03:21.183-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Set up a three-tier Git branching strategy to support the development, staging, and production deployment pipeline. The goal is to create a dedicated developer branch where contributors can test on a dev instance, manage merges into stage for QA, and promote from stage to production.",
+  "acceptance_criteria": [
+    "A dev branch is created for development contributions and testing",
+    "Merges from dev to stage are controlled and reviewable",
+    "Stage to production promotion follows a defined approval process",
+    "Each branch maps to its corresponding deployment environment (dev, stage, prod)"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-733"],
+  "source_files": [],
+  "implementation_notes": "Three-tier branching strategy: dev → stage → prod. Each branch maps to a deployment environment. Enables parallel development with controlled promotion.",
+  "comment_summary": "",
+  "comment_count": 0
+}

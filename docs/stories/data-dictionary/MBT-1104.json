@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-1104",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Bulk Refresh Missing Object Meta Fields on Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-15T22:37:38.580-0700",
+  "updated": "2026-03-01T04:11:53.815-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to bulk refresh all objects missing metadata fields in one click, so that I don't have to refresh each object individually.",
+  "description": "Add a \"Bulk Refresh Missing Meta Fields\" button to the dictionary page that refreshes all objects with missing associated metadata fields in a single action.\n\n### Behavior\n- Button is only visible when at least two objects are missing meta fields\n- On click, button disables and shows progress (e.g., \"1/25 refreshed\", \"2/25 refreshed\")\n- Also available via select-rows action for targeted bulk refresh",
+  "acceptance_criteria": [
+    "Bulk Refresh button appears when 2+ objects have missing meta fields",
+    "Progress indicator shows count of refreshed objects",
+    "Button disables during refresh to prevent duplicate requests",
+    "Select-rows version allows targeted bulk refresh"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Bulk Refresh Missing Meta Fields button with progress indicator. Also available via row selection.",
+  "middleware_changes": "Batch refresh logic that iterates through objects missing meta fields and refreshes each sequentially.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Deployed to dev and production. Progress counter updates after each object refresh completes.",
+  "comment_summary": "Waqar implemented the bulk refresh button with progress indicator. Also added a select-rows version. Deployed to dev and production.",
+  "comment_count": 4
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-579",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Salesforce Flow: Auto-Update Lead Status on DTP User Activation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-15T22:07:43.161-0800",
+  "updated": "2024-05-24T02:25:35.957-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nSales needs visibility into which DataTools Pro users have activated. When a user activates for the first time, the associated Salesforce lead should automatically transition to reflect this.\n\n## Behavior\n\nBuild a Salesforce record-triggered flow on the DataTools User object that evaluates on update. When the Activated Date field is populated for the first time:\n\n1. Evaluate the parent Lead record\n2. If the Lead status is \"DTP Sign Up\" OR \"Open\", change the status to \"Activated\"\n\nThis is a one-time action triggered on first activation only. The additional \"Open\" status condition addresses an edge case where orphaned DTP User records are reconnected to leads that happen to be in Open status.",
+  "acceptance_criteria": [
+    "Flow triggers on DataTools User record update when Activated Date is first populated",
+    "Lead status changes from 'DTP Sign Up' to 'Activated'",
+    "Lead status changes from 'Open' to 'Activated' (edge case for reconnected users)",
+    "Flow does not trigger on subsequent updates after initial activation",
+    "Flow does not change lead status if it is anything other than 'DTP Sign Up' or 'Open'"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce record-triggered flow on the DataTools User object. Evaluates on update when Activated Date is populated, then conditionally updates the parent Lead status to 'Activated' if current status is 'DTP Sign Up' or 'Open'.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Flow was initially built to check only 'DTP Sign Up' status, then enhanced to also check 'Open' status to handle an edge case where orphaned DTP Users are reconnected to existing leads. The flow was built and tested on a Trailhead org before deploying to production.",
+  "comment_summary": "Developer built and tested the flow on a Trailhead org, confirming automatic status changes work. A follow-up enhancement added the 'Open' status condition to handle reconnected orphan DTP User records. Developer confirmed the updated flow on the sandbox.",
+  "comment_count": 5
+}

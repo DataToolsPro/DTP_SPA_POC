@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1346",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Clarify Stytch Configuration with React and Laravel",
+  "status": "To Do",
+  "feature_folder": "infrastructure"
+}

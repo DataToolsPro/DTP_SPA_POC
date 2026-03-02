@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1119",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Soft Delete HubSpot Objects Removed During Model Refresh",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-05-06T22:57:27.215-0700",
+  "updated": "2026-03-01T04:17:26.472-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "When refreshing the HubSpot data model, if an object that was previously imported is no longer present in HubSpot, the system should soft delete the object rather than hard delete. This preserves historical data and any user-created mappings or annotations associated with that object.",
+  "acceptance_criteria": [
+    "Objects removed from HubSpot are soft deleted during model refresh",
+    "Soft-deleted objects are not displayed in active views",
+    "Historical data and mappings for soft-deleted objects are preserved",
+    "Soft-deleted objects can be restored if re-added in HubSpot"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Model refresh logic updated to compare current HubSpot objects against stored objects and soft delete any that are no longer present.",
+  "data_model_changes": "Soft delete flag on HubSpot object records (e.g., deleted_at timestamp or is_deleted boolean).",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

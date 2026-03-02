@@ -1,0 +1,25 @@
+{
+  "total": 3,
+  "description": "Jira issues with no parent epic. Review and assign to a feature folder, or leave as _unassigned.",
+  "by_status": {
+    "Withdrawn": 2,
+    "Done": 1
+  },
+  "issues": [
+    {
+      "issue_key": "MBT-9",
+      "summary": "DUPE Dropdown Selection Behavior",
+      "status": "Withdrawn"
+    },
+    {
+      "issue_key": "MBT-41",
+      "summary": "Dupe Record",
+      "status": "Done"
+    },
+    {
+      "issue_key": "MBT-744",
+      "summary": "Withdrawn - IDE Configuration - Formatting Code showing up as changes",
+      "status": "Withdrawn"
+    }
+  ]
+}

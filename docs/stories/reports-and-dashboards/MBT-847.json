@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-847",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Improved Tableau Connection Error Modal with Troubleshooting Link",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-08T18:44:56.702-0700",
+  "updated": "2024-09-15T13:23:38.542-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "As a product administrator experiencing a Tableau connection error, I want to see a clear error message with troubleshooting steps, so that I can resolve the issue without contacting support.",
+  "description": "Replaces the generic Tableau connection error with a user-friendly modal that provides specific guidance. The error modal reads:\n\n\"There was an error connecting to Tableau server. Please check to ensure your token matches. More details and troubleshooting steps are available on our Tableau Pulse integration tutorial.\"\n\nThe modal includes a link to the Tableau Pulse integration tutorial on datatoolspro.com for detailed troubleshooting steps.",
+  "acceptance_criteria": [
+    "Tableau connection errors display in a modal instead of a generic alert",
+    "Error message clearly states the issue and suggests checking the token",
+    "Link to the Tableau Pulse integration tutorial is included and opens in a new tab",
+    "Modal is dismissible and allows the user to retry"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced generic Tableau error alert with a styled modal containing a clear error message and a link to the troubleshooting tutorial.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "Error handling improved to catch Tableau API connection failures and display a helpful modal instead of a raw error.",
+  "comment_summary": "Waqar updated the error handling on development.",
+  "comment_count": 1
+}

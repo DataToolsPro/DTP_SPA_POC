@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1111",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Spike: HubSpot ERD Support Investigation",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Blocked",
+  "priority": "Medium",
+  "created": "2025-04-27T22:45:49.391-0700",
+  "updated": "2026-03-01T04:14:34.859-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "## Context\nDataTools Pro currently supports Salesforce-only authentication and ERDs. This spike investigates the feasibility of extending ERD support to HubSpot, starting with standard objects only (excluding custom objects).\n\n## Investigation Areas\n1. **HubSpot Schema**: Standard HubSpot object schemas are documented via Fivetran and the HubSpot REST API. Each object has 25+ associations but uses a junction/association layer rather than traditional foreign keys.\n2. **ERD Modeling Challenge**: HubSpot relationships are managed through an associations API, not embedded foreign key fields. This means the ERD cannot use the same FK-based rendering logic as Salesforce.\n3. **Authentication**: A separate DataTools Pro instance or domain would be needed for HubSpot users since the current app requires Salesforce OAuth. HubSpot developer accounts are required for authentication testing.\n4. **Monetization**: The goal is to offer Dictionary and ERD features for HubSpot as a paid add-on, limited to those two features.\n\n## Findings\n- HubSpot objects use an associations array in the schema API rather than FK columns.\n- Views and object selection can follow the same pattern as Salesforce.\n- The ERD rendering needs adaptation to map associations to visual relationships.\n- A HubSpot expert may be needed to validate the approach.",
+  "acceptance_criteria": [
+    "Level of effort for HubSpot ERD support is documented",
+    "HubSpot association-to-ERD mapping approach is defined",
+    "Authentication flow for HubSpot users is outlined",
+    "Decision on whether to proceed is made based on effort vs. revenue potential"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "Proposed new ERD tab for HubSpot objects within the HubSpot Dictionary context. Views and object selection would follow the same UX pattern as Salesforce.",
+  "middleware_changes": "New data layer to fetch HubSpot object schemas and associations via HubSpot REST API. Adaptation of the ERD data transformation to work with association-based relationships instead of FK-based ones.",
+  "data_model_changes": "New tables or structures to store HubSpot object schemas and their association mappings. Default list of standard HubSpot objects with their associated objects.",
+  "api_changes": "Integration with HubSpot REST API for schema retrieval and association mapping.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "HubSpot uses associations (similar to junction tables) rather than embedded FK fields. The developer merged initial HubSpot functionality to dev but hit challenges modeling ERD relationships without FK equivalents. Each HubSpot object has 25+ associations. A HubSpot expert review was requested. Authentication requires HubSpot developer accounts. Currently blocked pending expert feedback and connection testing.",
+  "comment_summary": "Developer investigated HubSpot schema APIs and found that relationships use an associations layer rather than FK fields, making ERD modeling challenging. Initial functionality was merged to dev. A HubSpot expert review was requested. Authentication requires developer accounts. Reporter encountered connection issues during testing.",
+  "comment_count": 8
+}

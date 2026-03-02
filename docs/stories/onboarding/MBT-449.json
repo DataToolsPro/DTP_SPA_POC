@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-449",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Gravity Form Sign-Up to Salesforce Lead Record via Zapier",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-01T15:33:41.344-0800",
+  "updated": "2024-05-24T02:25:31.814-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Create a Zapier automation that creates a new Salesforce Lead record (or handles resubmission) when a user completes the Gravity Form signup at datatoolspro.com/splash. The Zap logs the web source detail and campaign record to track the lead's origin.\n\nThis connects the marketing funnel (WordPress Gravity Forms) to the CRM (Salesforce) for lead tracking and nurturing.",
+  "acceptance_criteria": [
+    "Gravity Form submission creates a new Lead in Salesforce",
+    "Resubmissions are handled without creating duplicate Leads",
+    "Web source detail and campaign record are logged on the Lead",
+    "Zapier automation is published and active"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Zapier Zap published at zapier.com/editor/217170405. Manages the Gravity Forms to Salesforce Lead pipeline.",
+  "comment_summary": "",
+  "comment_count": 0
+}

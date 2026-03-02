@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1211",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "IP Whitelist Policy and Documentation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-09T12:42:14.586-0700",
+  "updated": "2026-03-01T04:07:17.643-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Document the IP whitelist policy for customers connecting DataTools Pro to Salesforce.\n\n### Public-Facing Documentation (for customers)\nWhitelist the following IPs for Salesforce connectivity:\n- AWS West: 13.52.124.40\n- AWS East: 3.224.67.34\n\n### Internal Documentation\n- AWS West: 13.52.124.40\n- AWS East: 3.224.67.34\n- Cloudways Prod: 13.52.124.40\n- Cloudways Stage: 147.182.234.144 (internal only, not for customer documentation)",
+  "acceptance_criteria": [
+    "Public documentation lists AWS West and AWS East IPs for customer whitelisting",
+    "Internal documentation includes all environment IPs including staging",
+    "Staging IP is clearly marked as internal-only"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "AWS Elastic IPs allocated in us-west-1 and us-east-1 regions. Cloudways production shares the AWS West IP. Staging IP must not appear in customer-facing documentation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

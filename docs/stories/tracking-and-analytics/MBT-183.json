@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-183",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Re-install Pendo Tracking Script with User Identity",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T20:26:39.920-0700",
+  "updated": "2024-05-24T02:24:31.651-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Install the Pendo tracking script at the end of the HTML page in the Laravel application. The script injects the DataTools Pro unique user ID, email, and name to identify visitors in Pendo analytics.\n\nThe visitor unique ID field was empty for existing users at the time of implementation but works correctly for new user registrations. Account ID was deemed unnecessary for the initial rollout.",
+  "acceptance_criteria": [
+    "Pendo script is installed before the closing body tag in the Laravel app",
+    "Script passes the visitor unique ID, email, and name to Pendo",
+    "New users are correctly identified with their unique ID",
+    "Account ID field can remain null initially"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Pendo initialization script integrated into the Laravel application's HTML output, passing authenticated user attributes (unique ID, email, name) to the Pendo agent.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Pendo script was migrated into the Laravel app rather than injected externally. Visitor unique ID is null for users who existed before the feature was deployed. Account ID was intentionally omitted from the initial implementation.",
+  "comment_summary": "Waqar migrated the Pendo code into the Laravel app and confirmed visitor unique IDs work for new users (old users have null IDs). Ryan confirmed account ID is not needed and approved the implementation.",
+  "comment_count": 4
+}

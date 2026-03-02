@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1332",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Provision AWS RDS Staging Database",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:11.351-0800",
+  "updated": "2026-03-01T04:20:12.296-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Create an AWS RDS staging database instance with the appropriate engine, configure a security group that restricts access to the Cloudways staging IP only, and create the staging database and user.\n\nThis is an owner-driven task due to insurance and security compliance requirements (CSO responsibility). Credentials must be stored in the team vault.",
+  "acceptance_criteria": [
+    "Laravel staging application connects to the RDS instance successfully",
+    "migrate:status shows all migrations as Ran",
+    "Security group blocks public access and allows only the Cloudways staging IP",
+    "Database credentials are stored in the team vault"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "New RDS staging database instance with staging-specific database and user provisioned.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of Phase 2 infrastructure setup. RDS engine choice depends on MBT-RDS decision. Security group must restrict access to Cloudways staging IP only. This step must be performed by the CSO (Ryan) due to insurance and compliance requirements. See docs/JIRA_TICKET_BACKLOG.md Phase 2.",
+  "comment_summary": "",
+  "comment_count": 0
+}

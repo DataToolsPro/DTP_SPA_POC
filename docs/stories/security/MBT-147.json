@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-147",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Fix SQL Injection Vulnerability in Passcode Validation",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-18T21:45:50.412-0700",
+  "updated": "2024-05-24T02:24:35.526-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The passcode verification script (`passcode.php`) was vulnerable to SQL injection because it directly concatenated user-supplied input from the `passcode` URL parameter into the SQL query string without sanitization or prepared statements.\n\n## Fix\n\nReplace the raw SQL query with a prepared statement using parameterized queries. The passcode value is passed as a bound parameter, ensuring user input is treated as data rather than executable SQL.\n\nThis fix was prioritized because the passcode page is public-facing, making it a high-risk attack surface.",
+  "acceptance_criteria": [
+    "Passcode query uses prepared statements with parameterized values",
+    "User input from the passcode URL parameter is never directly concatenated into SQL",
+    "Passcode validation functionality remains intact",
+    "No SQL injection is possible through the passcode parameter"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Passcode query rewritten to use PDO prepared statements with bound parameters instead of string concatenation.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-150"],
+  "source_files": [],
+  "implementation_notes": "Converted raw SQL concatenation to prepared statements. Developer noted that Laravel migration would provide automatic SQL injection protection via Eloquent ORM, but this fix was applied immediately because the page was public-facing.",
+  "comment_summary": "Developer implemented prepared statements for the passcode query. Noted that the Laravel migration would automatically handle SQL injection protection, but the fix was applied immediately due to the public-facing nature of the page.",
+  "comment_count": 2
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-429",
+  "epic_key": "MBT-447",
+  "feature_folder": "infrastructure",
+  "title": "Update New Relic Browser Monitoring Script",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-22T23:44:25.611-0800",
+  "updated": "2024-05-24T02:25:08.634-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Update the New Relic browser monitoring JavaScript snippet in the application. The updated script must be placed as close to the top of the HTML `<head>` as possible, but after any position-sensitive META tags (X-UA-Compatible and charset).",
+  "acceptance_criteria": [
+    "Updated New Relic browser agent script is placed in the HTML head section",
+    "Script is positioned after X-UA-Compatible and charset META tags",
+    "New Relic dashboard receives browser monitoring data from the application"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The New Relic configuration was tweaked with minor changes to the JavaScript agent. The snippet was embedded in the HTML head. Testing method for verifying data flow to New Relic was unclear at time of implementation.",
+  "comment_summary": "Waqar confirmed the script was added but noted uncertainty about how to test the integration with New Relic.",
+  "comment_count": 1
+}

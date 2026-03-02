@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-288",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Persistent Loading Spinner on Quick Object Toggle",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-21T22:11:57.219-0700",
+  "updated": "2024-05-24T02:25:01.581-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the loading spinner to dismiss correctly when I quickly toggle objects, so that I don't get stuck on a loading screen requiring a browser refresh.",
+  "description": "Fix a bug where the loading spinner persists indefinitely if a user selects an object from the dropdown and then immediately unchecks it. The loading overlay stays on and requires a browser refresh to dismiss.\n\n## Reproduction Steps\n1. Open the object dropdown\n2. Check an object\n3. Immediately uncheck the same object\n4. Loading screen stays on — browser refresh required",
+  "acceptance_criteria": [
+    "Loading spinner dismisses when an object is quickly checked and unchecked",
+    "No browser refresh required to recover from rapid toggling",
+    "Loading spinner correctly tracks the async operation state"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Fixed loading spinner state management to correctly dismiss when object selection is rapidly toggled.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Race condition in the loading state management. The uncheck event fired before the check event's async operation completed, leaving the spinner in a stuck state.",
+  "comment_summary": "Developer fixed the race condition and submitted for review.",
+  "comment_count": 1
+}

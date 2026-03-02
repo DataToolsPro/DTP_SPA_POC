@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-812",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Restyle ERD Add View Button for Consistency with Edit and Cancel",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T17:10:43.963-0700",
+  "updated": "2024-07-25T23:44:55.552-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user managing ERD views, I want the Add View button to be styled consistently with the Edit and Cancel buttons, so that all action buttons in the ERD toolbar have a uniform appearance.",
+  "description": "The Add View button on the ERD page has inconsistent styling compared to the Edit and Cancel buttons. Restyle it to use the same green button treatment with inline placement using the `input-group` CSS class.\n\n## Changes\n- Replace the current Add View icon/button with a styled green button matching Edit and Cancel\n- Use the `input-group` class to place the dropdown and button inline on the same row\n- Ensure the new button still triggers the existing Add View functionality (jQuery event bindings)\n\n## Caution\nChanging button DOM structure could impact jQuery selectors. Careful testing required to ensure existing event handlers continue to work.",
+  "acceptance_criteria": [
+    "Add View button uses the same green button styling as Edit and Cancel",
+    "Button and dropdown are inline on the same row using input-group",
+    "Add View functionality still works correctly after restyle",
+    "No jQuery event binding regressions"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "ERD Add View button restyled to match Edit and Cancel buttons — green button with inline input-group layout.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Product owner cautioned that changing the button DOM structure could break jQuery event bindings. Developer tested and confirmed functionality preserved.",
+  "comment_summary": "Product owner provided code example for the input-group approach and cautioned about jQuery impacts. Developer implemented and confirmed working.",
+  "comment_count": 4
+}

@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-148",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Passcode Page Style Update to Match Login Template",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-18T21:47:16.025-0700",
+  "updated": "2024-05-24T02:24:35.594-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the passcode page to match the updated login page design, so that the authentication flow has a consistent visual experience.",
+  "description": "Apply the same design template from the newly updated index.php login page to the passcode verification page. The login page was recently redesigned, and the passcode page needs to use the same layout and styling for visual consistency.",
+  "acceptance_criteria": [
+    "Passcode page uses the same template as the updated login page",
+    "Visual styling is consistent between login and passcode pages",
+    "Passcode input and submit functionality remain intact"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Passcode page redesigned to match the updated login page template for visual consistency across the authentication flow.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Template code moved from index.php to the passcode page with passcode-specific input fields preserved.",
+  "comment_summary": "Developer updated the passcode page styling and shared a screenshot for approval. Ryan confirmed it looked correct.",
+  "comment_count": 2
+}

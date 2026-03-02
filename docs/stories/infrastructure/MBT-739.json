@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-739",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Add GitHub Secrets for Raj and Anton CI/CD Deployment Access",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-30T23:47:35.152-0700",
+  "updated": "2024-07-25T23:51:48.298-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Add AWS access key secrets to the GitHub repository for Raj and Anton to use in streamlined promotion management. This follows the same pattern as MBT-733 and enables the team to deploy Lambda services via GitHub Actions without exposing credentials.\n\n## Required Secrets\n- `AWS_ACCESS_KEY_ID_DEV_QA` and `AWS_SECRET_ACCESS_KEY_DEV_QA` for dev/QA deployments\n- `AWS_ACCESS_KEY_ID_PROD` and `AWS_SECRET_ACCESS_KEY_PROD` for production deployments",
+  "acceptance_criteria": [
+    "AWS secrets are configured in GitHub repository settings for Raj and Anton's use",
+    "GitHub Actions workflows can deploy to Lambda using the stored secrets",
+    "No credentials are hardcoded in workflow files or repository code"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-733"],
+  "source_files": [],
+  "implementation_notes": "Same GitHub secrets pattern as MBT-733 but specifically to enable Raj and Anton to manage promotions through the CI/CD pipeline.",
+  "comment_summary": "",
+  "comment_count": 0
+}

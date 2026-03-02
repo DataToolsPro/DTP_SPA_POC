@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1330",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Provision Cloudways Staging Server and Wire Deploy Pipeline",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:07.061-0800",
+  "updated": "2026-03-01T04:20:02.032-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Create a staging Cloudways application, configure SSH deploy keys, and populate GitHub environment secrets for the deploy pipeline.\n\nThis task establishes the staging deployment infrastructure so that merges to main trigger an automated deployment to the staging environment. The staging server must be provisioned and the `deploy-staging.yml` GitHub Actions workflow must run green.\n\nThis is a collaborative task to be driven by the developer with oversight.",
+  "acceptance_criteria": [
+    "staging.datatoolspro.com/api/health returns HTTP 200",
+    "deploy-staging.yml GitHub Actions workflow runs green on merge to main",
+    "No PHP errors appear in Cloudways logs after deployment",
+    "SSH deploy keys are configured and stored securely"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of Phase 2 infrastructure setup. Requires Cloudways app creation, SSH key configuration, and GitHub environment secrets for the staging deploy pipeline. See docs/JIRA_TICKET_BACKLOG.md Phase 2.",
+  "comment_summary": "",
+  "comment_count": 0
+}

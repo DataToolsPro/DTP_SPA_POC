@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-622",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Mask Personal Access Token Field as Password Input",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T22:56:40.532-0700",
+  "updated": "2024-05-24T02:25:38.144-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "security"],
+  "story": "As a product administrator configuring the Tableau integration, I want the Personal Access Token field to be masked like a password input, so that sensitive credentials are not displayed in clear text on screen.",
+  "description": "Changes the Personal Access Token input field on the Tableau configuration modal from a standard text field to a password-type field. This prevents the token from being displayed in clear text, improving security when users are configuring their Tableau connection in shared or observable environments.",
+  "acceptance_criteria": [
+    "Personal Access Token field displays masked characters instead of clear text",
+    "Field type is set to password input",
+    "Token value is still correctly submitted when saving configuration"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Changed the Personal Access Token input field from text type to password type, masking the token value with dots/bullets.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "Simple field type change from text to password on the Tableau setup modal.",
+  "comment_summary": "Waqar completed the change on staging and requested review.",
+  "comment_count": 1
+}

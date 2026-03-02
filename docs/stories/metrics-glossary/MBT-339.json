@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-339",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Formula Description Hardcoded Field Name in OpenAI Prompt",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-07T17:49:09.636-0800",
+  "updated": "2024-05-24T02:25:07.479-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user viewing formula field details, I want the formula description modal to display the correct field name and generate an accurate AI explanation, so that I can understand how each specific formula works.",
+  "description": "Bug fix for the formula description modal where the field name was hardcoded to '2 Digit NAICS Code' instead of dynamically using the selected field's label. This caused all formula descriptions to reference the wrong field name in both the modal title and the OpenAI prompt.\n\nThe fix:\n1. Replaces the hardcoded field name in the OpenAI prompt with the dynamic `$FieldLabel` variable\n2. Uses the field label (not API name) in the modal title for readability\n3. Uses the field API name in the OpenAI prompt for technical accuracy\n4. Adds formula refresh on Salesforce data sync — previously, updating a formula in Salesforce did not update the cached formula in DTP until this fix\n5. Adds a scrollable, code-block-styled container for long formulas to prevent truncation",
+  "acceptance_criteria": [
+    "Formula description modal displays the correct field label as the title",
+    "OpenAI prompt uses the actual field name instead of a hardcoded value",
+    "Refreshing Salesforce metadata updates formula definitions in the local database",
+    "Long formulas display in a scrollable, read-only code block without truncation",
+    "Formula descriptions are accurate for the selected field"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Formula description modal title now shows the correct field label. Long formulas render in a scrollable code-block-styled container.",
+  "middleware_changes": "OpenAI prompt dynamically includes the field label/name. Salesforce metadata refresh now updates the calculatedFormula field in the local database.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "During Salesforce metadata refresh, the following fields are now updated: field_api_name, reference_to, field_label, calculatedFormula, data_type, required_status, salesforce_description. The formula previously was not refreshed on sync, causing stale data.",
+  "comment_summary": "Identified hardcoded field name in OpenAI prompt. Developer fixed the dynamic label/name injection and also discovered that formula refresh on Salesforce sync was not updating — fixed that as well. Added scrollable code block styling for long formulas. Multiple rounds of clarification about formula truncation and scrollbar behavior.",
+  "comment_count": 30
+}

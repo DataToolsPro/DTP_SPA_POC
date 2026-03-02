@@ -166,4 +166,4 @@ Tags: `["datatoolspro", "Reports and Dashboards DataTools"]`
 }
 ```
 
-Saved to: `docs/public/dictionary/bulk-export-salesforce-metadata-with-datatools-pro.json`
+Saved to: `docs/wp-published/dictionary/bulk-export-salesforce-metadata-with-datatools-pro.json`

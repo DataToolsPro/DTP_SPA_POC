@@ -1,0 +1,45 @@
+{
+  "issue_key": "MBT-155",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Support Enter Key for Rapid Metric Name Entry",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-20T23:09:50.866-0700",
+  "updated": "2026-03-01T01:27:59.973-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "metrics"],
+
+  "story": "As a DataTools Pro user entering metrics, I want to press Enter to submit a metric name instead of clicking the save button, so that I can rapidly input multiple metrics without switching between keyboard and mouse.",
+  "description": "When the metrics name text box is focused and contains at least one character, pressing Enter now triggers the same save action as clicking the save button. After a successful save, the cursor automatically returns to the text box so the user can immediately type the next metric name. This keyboard-driven workflow eliminates the need to click the mouse between entries, enabling rapid sequential metric input. The same auto-focus behavior was also applied when the save button is clicked.",
+  "acceptance_criteria": [
+    "Pressing Enter in the metrics name text box triggers the save action when at least one character is entered",
+    "Pressing Enter with an empty text box does not trigger the save action",
+    "After successful save via Enter key, the text box is cleared and re-focused for the next entry",
+    "After successful save via button click, the text box is cleared and re-focused",
+    "Default form submission behavior is prevented when Enter is pressed"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added keypress listener on the metrics name input for Enter key. After save (via Enter or button click), cursor auto-returns to the text box for rapid sequential entry.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "Implementation uses jQuery keypress event listener on #metrics_name checking for keyCode 13 (Enter). Prevents default form submission, validates non-empty input, triggers the save button click, and re-focuses the input. Toast notification (MBT-156) was planned as a follow-up.",
+  "comment_summary": "Product owner provided the jQuery implementation code. Developer implemented it and extended the auto-focus behavior to also work on button clicks. Toast feedback was deferred to a separate ticket.",
+  "comment_count": 2
+}

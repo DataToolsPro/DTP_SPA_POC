@@ -16,7 +16,7 @@ After **any user story is completed** (code done, PR ready), evaluate whether do
 | Type | Location | Format | Audience |
 |------|----------|--------|----------|
 | **Internal feature doc** | `docs/features/<MBT-XX>-<slug>.md` | Markdown | Developers / team |
-| **Public tutorial** | `docs/public/<folder>/<slug>.json` | JSON (per skill) | End users / customers |
+| **Public tutorial** | `docs/wp-published/<folder>/<slug>.json` | JSON (per skill) | End users / customers |
 
 ---
 
@@ -32,11 +32,11 @@ After completing a user story, answer these questions:
 | **Task** | ❌ No | PR description is sufficient |
 | **Bug** | ⚠️ Only if user-visible behavior changed | Update existing feature doc if applicable |
 
-### 2. Public tutorial (`docs/public/`)
+### 2. Public tutorial (`docs/wp-published/`)
 
 | Question | If yes |
 |----------|--------|
-| Does this feature introduce a **new capability** the customer would learn about? | Create a new `docs/public/<folder>/<slug>.json` using the datatools-pro-docs skill |
+| Does this feature introduce a **new capability** the customer would learn about? | Create a new `docs/wp-published/<folder>/<slug>.json` using the datatools-pro-docs skill |
 | Does this feature **change how an existing capability works**? | Update the existing JSON doc — change `content_markdown` and `modified` timestamp |
 | Is this a **behind-the-scenes** change invisible to the customer? | No public doc needed |
 
@@ -48,15 +48,15 @@ After completing a user story, answer these questions:
 
 | Folder | Content area |
 |--------|-------------|
-| `docs/public/_general/` | Getting started guides |
-| `docs/public/administration/` | Account, users, security |
-| `docs/public/api/` | REST API |
-| `docs/public/data-migration/` | Scorecard, mapping, SQL |
-| `docs/public/dictionary/` | Objects, fields, tracking |
-| `docs/public/erd/` | Entity relationship diagrams |
-| `docs/public/integrations/<partner>/` | Partner-specific |
-| `docs/public/metrics/` | Glossary, alias, AI analyst |
-| `docs/public/reports-and-dashboards-datatools/` | Reports, dashboards |
+| `docs/wp-published/_general/` | Getting started guides |
+| `docs/wp-published/administration/` | Account, users, security |
+| `docs/wp-published/api/` | REST API |
+| `docs/wp-published/data-migration/` | Scorecard, mapping, SQL |
+| `docs/wp-published/dictionary/` | Objects, fields, tracking |
+| `docs/wp-published/erd/` | Entity relationship diagrams |
+| `docs/wp-published/integrations/<partner>/` | Partner-specific |
+| `docs/wp-published/metrics/` | Glossary, alias, AI analyst |
+| `docs/wp-published/reports-and-dashboards-datatools/` | Reports, dashboards |
 
 ---
 

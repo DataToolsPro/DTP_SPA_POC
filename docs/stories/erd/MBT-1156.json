@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1156",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Node Positioning Not Persisting After Navigation",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-06-27T12:06:29.319-0700",
+  "updated": "2026-03-01T03:41:39.085-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want my saved ERD node positions to persist when I navigate away and return, so that I don't lose my custom layout.",
+  "description": "## Bug\nAfter repositioning ERD nodes in a saved view and navigating away, returning to the view showed nodes in different positions than where they were saved.\n\n## Root Cause\nThe public-facing ERD view ID was causing the position save/load logic to malfunction.\n\n## Fix\nFixed the position persistence logic to properly handle the public-facing ERD view ID. Deployed to both dev and production.",
+  "acceptance_criteria": [
+    "Saved node positions persist when navigating away and returning",
+    "Position save works correctly with public-facing ERD view IDs",
+    "Positions load correctly on page reload"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "ERD node positions now correctly persist across navigation and page reloads.",
+  "middleware_changes": "Fixed position save/load logic to properly handle public-facing ERD view IDs.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The bug was introduced when the public-facing ERD view ID feature was added. The position save logic was using an inconsistent ID reference.",
+  "comment_summary": "Developer identified the bug was caused by the public-facing ERD view ID and fixed it on both dev and production.",
+  "comment_count": 1
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-473",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Hidden Metric Attribute: Creation Method Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-11T09:07:43.133-0800",
+  "updated": "2024-05-24T02:25:31.368-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Adds a hidden `creation_method` attribute to metric records that tracks how each metric was created. This field is not exposed in the UI and is intended for internal analytics and potential future webhook functionality.\n\n## Creation Method Values\n\n| Value | Trigger |\n|---|---|\n| `input` | User manually creates a metric via the form |\n| `import` | Metric is created through the import wizard |\n| `AIGeneration` | Metric is created via the AI generation feature |\n\n## Constraints\n\n- Historical metrics may have a blank `creation_method` — this is acceptable and does not require backfilling.\n- The attribute is hidden from the user interface; it exists solely for backend analysis.",
+  "acceptance_criteria": [
+    "A `creation_method` column exists in the metrics database table",
+    "Metrics created via the input form have creation_method set to 'input'",
+    "Metrics created via the import wizard have creation_method set to 'import'",
+    "Metrics created via AI generation have creation_method set to 'AIGeneration'",
+    "Historical metrics with a blank creation_method do not cause errors",
+    "The creation_method field is not visible in the UI"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Service-layer logic sets the creation_method value based on the metric creation pathway: 'input' for form submissions, 'import' for the import wizard, and 'AIGeneration' for AI-generated metrics.",
+  "data_model_changes": "New `creation_method` column added to the metrics table. Nullable to accommodate historical records without a value.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer added a `creation_method` column to the database. The value is set automatically based on the creation pathway — 'input' for manual form entry, 'import' for the import wizard. AI generation pathway to be tagged as 'AIGeneration'. Historical records are left blank.",
+  "comment_summary": "Developer confirmed implementation of the creation_method column with values set for input and import pathways, pushed to staging for testing. A brief tangential discussion about a webhook (unrelated to this ticket) was clarified and dismissed.",
+  "comment_count": 5
+}

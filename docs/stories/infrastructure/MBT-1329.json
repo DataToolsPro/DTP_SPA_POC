@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1329",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Set Up Cloudflare Pages for React SPA with Staging and Production Channels",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:04.790-0800",
+  "updated": "2026-02-22T18:58:40.164-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Set up Cloudflare Pages to host the React SPA frontend with staging and production deployment channels. This enables edge-served UX elements for ultra-fast frontend loading, with latency only for data fetches.\n\n## Domain Configuration\n- `us1dev.datatoolspro.com` — Development (IP-restricted access)\n- `us1stage.datatoolspro.com` — Staging (IP-restricted access)\n- `us1.datatoolspro.com` — Production\n- `app.datatoolspro.com` — Existing entry point, will be updated to redirect users to us1.datatoolspro.com with Google/Microsoft login buttons\n\n## Setup Steps\n1. Create Cloudflare Pages project\n2. Connect to the GitHub repository\n3. Configure build command and output directory\n4. Set up production and staging deployment channels\n5. Add custom domains for each environment\n6. Update GitHub `CLOUDFLARE_PAGES_PROJECT` variable\n7. Lock dev and stage domains to team IPs (Cloudflare Zero Trust planned for future)\n\n## Architecture Note\nThis ticket covers the dev and stage Pages setup with deployment tokens. The approach puts static assets on Cloudflare's edge network globally, meaning only API data requests incur latency.",
+  "acceptance_criteria": [
+    "Cloudflare Pages project is created and connected to the GitHub repo",
+    "Dev and stage deployment channels are configured with custom domains",
+    "us1dev.datatoolspro.com and us1stage.datatoolspro.com are accessible but IP-restricted",
+    "Build command and output directory are correctly configured",
+    "CLOUDFLARE_PAGES_PROJECT variable is set in GitHub repository",
+    "Deployment tokens are configured for CI/CD pipeline access"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1327"],
+  "source_files": [],
+  "implementation_notes": "Part of V3 Architecture Planning. Cloudflare Pages serves React SPA from edge locations globally. Dev/stage locked by IP initially, with Cloudflare Zero Trust planned for future access control. app.datatoolspro.com will become the login gateway redirecting to us1.datatoolspro.com.",
+  "comment_summary": "",
+  "comment_count": 0
+}

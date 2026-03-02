@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-180",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Reposition Create Metric Button",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-18T18:44:05.324-0700",
+  "updated": "2024-05-24T02:24:31.648-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the Create Metric button properly positioned, so that the metrics page layout is clean and intuitive.",
+  "description": "Fix the positioning of the \"Create Metric\" button on the metrics page. The button needs to be slid over to its correct position in the layout.",
+  "acceptance_criteria": [
+    "Create Metric button is properly positioned in the metrics page layout",
+    "Button alignment is consistent with other UI elements on the page"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Repositioned the Create Metric button to correct its layout alignment on the metrics page.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS positioning fix applied to the Create Metric button.",
+  "comment_summary": "Developer fixed the position and pushed to staging for incognito review.",
+  "comment_count": 3
+}

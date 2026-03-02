@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-872",
+  "epic_key": "MBT-873",
+  "feature_folder": "integrations",
+  "title": "Coda Token Management and One-Time Display Message",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-19T20:23:21.323-0700",
+  "updated": "2024-09-04T01:21:30.037-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "coda", "security"],
+  "story": "As a DataTools Pro user setting up the Coda integration, I want to generate and manage API tokens on the Coda settings page with a clear one-time display warning so that I understand the importance of securely storing the token immediately.",
+  "description": "Add API token management to the Coda settings page, following the same UX pattern as the existing DataTools Pro API token management.\n\nWhen a user generates a new token, a notification message must appear: \"This token is displayed one time. We recommend storing this token in a key vault or key management solution.\"\n\nThis message reinforces secure token handling practices and appears as a popup when the user saves the token.",
+  "acceptance_criteria": [
+    "Coda settings page includes token management functionality matching the API token UX pattern",
+    "User can generate a new API token for Coda",
+    "One-time display warning appears when a token is generated: 'This token is displayed one time. We recommend storing this token in a key vault or key management solution.'",
+    "User can revoke an existing token",
+    "User can copy the token value",
+    "Token is only displayed once and cannot be retrieved after dismissal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Token management section on the /coda settings page with generate, revoke, copy, and view actions. One-time display popup message warns users to securely store their token immediately upon generation.",
+  "middleware_changes": "Token generation and management service for Coda API tokens, following the same pattern as existing API token management.",
+  "data_model_changes": "",
+  "api_changes": "Token CRUD endpoints for Coda integration tokens: generate, revoke, and validate.",
+  "dependencies": ["MBT-848"],
+  "source_files": [],
+  "implementation_notes": "Follows the same token management UX pattern established for the DataTools Pro API tokens. The one-time display pattern ensures tokens are shown only once and cannot be retrieved afterward, encouraging secure storage practices.",
+  "comment_summary": "Developer implemented the token management and deployed to dev, stage, and production.",
+  "comment_count": 1
+}

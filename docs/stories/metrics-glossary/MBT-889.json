@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-889",
+  "epic_key": "MBT-869",
+  "feature_folder": "metrics-glossary",
+  "title": "Metrics Visualization Modal — Fit to Left Side of Screen",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-03T23:14:03.754-0700",
+  "updated": "2024-09-17T22:56:47.315-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Metrics Map visualization modal to fit the remaining screen space next to the sidebar, so that both the map and the metric detail panel are visible simultaneously.",
+  "description": "Redesigns the Metrics Visualization modal to fill the left side of the screen when the sidebar is open, rather than floating over the full viewport. This eliminates the confusing overlap when the sidebar and modal are both visible.\n\nAdditional UX refinements:\n- Modal header styled to match the sidebar header for visual cohesion\n- Modal footer removed\n- Close button relocated to the upper-right corner replacing the 'X' icon",
+  "acceptance_criteria": [
+    "Visualization modal fills the left portion of the screen alongside the sidebar",
+    "Modal header matches the sidebar header styling",
+    "Modal footer is removed",
+    "Close button is in the upper-right corner"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Visualization modal resized to fill left screen space alongside sidebar. Header style matched to sidebar. Footer removed. Close button moved to upper-right.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-665"],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer implemented the layout change and shared a screenshot. Product owner approved with 'AWESOME!'.",
+  "comment_count": 2
+}

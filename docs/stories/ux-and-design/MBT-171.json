@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-171",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Hide Alerts Column Across All Views",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T23:23:16.637-0700",
+  "updated": "2024-05-24T02:24:35.086-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the Alerts column hidden from all views, so that I am not confused by placeholder functionality that is not yet implemented.",
+  "description": "Suppress the Alerts column from being visible on Dictionary, Migration, and Metrics views. Alerts is planned future functionality for tracking unreviewed changes, but should not be shown to users until it is wired up.",
+  "acceptance_criteria": [
+    "Alerts column is hidden on Dictionary view",
+    "Alerts column is hidden on Migration view",
+    "Alerts column data is preserved in the backend for future use"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Alerts column hidden from Dictionary and Migration views to avoid confusing users with unimplemented placeholder functionality.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Column hidden via CSS/JS. Developer confirmed there was no Alerts column on the metrics page, only on dictionary and migration views.",
+  "comment_summary": "Developer hid alerts from dictionary and migration views but noted there was no alerts column on the metrics page.",
+  "comment_count": 1
+}

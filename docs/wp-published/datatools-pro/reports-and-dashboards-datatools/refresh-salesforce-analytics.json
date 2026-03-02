@@ -1,0 +1,19 @@
+{
+  "post_id": 10399,
+  "title": "DataTools Pro refresh Salesforce analytics list",
+  "slug": "refresh-salesforce-analytics",
+  "url": "https://datatoolspro.com/tutorials/refresh-salesforce-analytics/",
+  "date": "2024-11-17T19:12:29",
+  "modified": "2024-11-17T19:12:33",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "datatoolspro",
+    "Reports and Dashboards DataTools"
+  ],
+  "subfolder": "reports-and-dashboards-datatools",
+  "excerpt": "<p>DataTools Pro will load and refresh Salesforce analytics list (reports and dashboards) so you can apply analyze the latest analytics in your organization. As you make updates to reports and dashboards inside of Salesforce, changes are not automatically reflected in DataTools Pro until you click &#8220;Refresh.&#8221; This design places the control into the hands of [&hellip;]</p>",
+  "content_html": "\n<p>DataTools Pro will load and refresh Salesforce analytics list (reports and dashboards) so you can apply analyze the latest analytics in your organization. As you make updates to reports and dashboards inside of Salesforce, changes are not automatically reflected in DataTools Pro until you click &#8220;Refresh.&#8221; This design places the control into the hands of users who may be actively working in Salesforce, while minimizing API credits against your Salesforce organization.</p>\n\n\n\n<p><strong>Last Refreshed &#8211; </strong>Reflects the last day that DataTools Pro connected to your Salesforce organization and represents your org &#8220;as of&#8221; the last refreshed date.</p>\n\n\n\n<figure class=\"wp-block-image size-full\"><img data-dominant-color=\"f4f6f6\" data-has-transparency=\"false\" style=\"--dominant-color: #f4f6f6;\" loading=\"lazy\" decoding=\"async\" width=\"546\" height=\"274\" src=\"https://datatoolspro.com/wp-content/uploads/2024/11/image-48-png.webp\" alt=\"DataTools Pro refresh Salesforce analytics\" class=\"wp-image-10400 not-transparent\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/11/image-48-png.webp 546w, https://datatoolspro.com/wp-content/uploads/2024/11/image-48-300x151.webp 300w\" sizes=\"auto, (max-width: 546px) 100vw, 546px\" /></figure>\n\n\n\n<h2 class=\"wp-block-heading\">Enable Scheduler to refresh Salesforce analytics</h2>\n\n\n\n<p>By enabling scheduler, DataTools Pro will automatically refresh the report and dashboard metadata once per day to ensure you always have at minimum a daily log of changes that occur. To use the feature, simply click &#8220;Enabled Scheduler.&#8221; This feature will be utilized for editions of DataTools Pro that will proactively monitor changes to your reports and dashboards for change management. For more information about our analytics change management features feel free to <a href=\"/contact\" title=\"\">contact us</a>.</p>\n"
+}

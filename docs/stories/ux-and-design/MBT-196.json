@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-196",
+  "skipped": true,
+  "skip_reason": "stub - description contains only an image reference with no textual substance",
+  "title": "Hiding More Metrics Functionality Temporarily",
+  "status": "Done",
+  "feature_folder": "ux-and-design"
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1074",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Replace Third-Party CSV Import with DataTables Built-In Import",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-01-14T20:20:06.029-0800",
+  "updated": "2026-03-01T03:58:15.602-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a user importing metrics from CSV, I want a built-in import experience that supports all metric fields, so that I don't depend on a paid third-party library.",
+  "description": "Replace the paid third-party CSV import library with DataTables' native import extension. The new import should support column mapping and all recently added metric fields.\n\n### New Import Fields\n- Description\n- Logic\n- Date Name Field\n- Business Owner\n- Metric Target\n\n### Import Flow\n1. Click \"Import from Excel / CSV\"\n2. Upload file screen appears\n3. Map CSV columns to metric fields\n4. Click Import to save\n\n### Reference\n[DataTables Import Extension](https://editor.datatables.net/examples/extensions/import.html)",
+  "acceptance_criteria": [
+    "CSV import uses DataTables built-in import instead of third-party library",
+    "Import supports column mapping between CSV and metric fields",
+    "All new fields are importable: Description, Logic, Date Name Field, Business Owner, Metric Target",
+    "Import UX provides file upload, column mapping, and import confirmation",
+    "Third-party import library is removed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "CSV import flow redesigned with file upload screen, column mapping interface, and import button. Replaces the previous third-party import UI.",
+  "middleware_changes": "Backend import handler updated to accept data from the DataTables import extension and map columns to metric fields including the five new fields.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation on local showed the DataTables import had a less polished UX than the third-party library. Developer first added the new fields to the existing third-party import, then later replaced it entirely with the DataTables import which was refined to match the existing UX quality.",
+  "comment_summary": "Developer first implemented the DataTables import locally but noted the UX was less attractive than the existing library. After discussion, new fields were added to the third-party import as an interim step. Later, the DataTables import was fully completed with file upload, column mapping, and import — submitted for review on development.",
+  "comment_count": 5
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-516",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix Close Button Overlap in Metrics Analyst Modal",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-18T11:50:07.414-0800",
+  "updated": "2024-05-24T02:25:43.203-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the close button in the Metrics Analyst modal to not overlap with other elements, so that I can easily close the modal without visual confusion.",
+  "description": "The close button in the Metrics Analyst modal overlaps with adjacent UI elements, causing a visual UX issue. The button positioning needs to be adjusted to prevent overlap.",
+  "acceptance_criteria": [
+    "Close button does not overlap with any other UI elements",
+    "Close button is properly positioned in the upper right of the modal",
+    "Close button remains accessible and clickable"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the close button positioning in the Metrics Analyst modal to eliminate overlap with adjacent elements.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer fixed the overlap issue on staging.",
+  "comment_count": 1
+}

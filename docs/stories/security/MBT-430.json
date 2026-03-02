@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-430",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Dictionary Notes and Metrics Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T11:23:23.101-0800",
+  "updated": "2024-05-24T02:25:08.521-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity (CVSS 7.1)**\n\nThe Notes and Metrics fields in the Dictionary section were vulnerable to Stored XSS due to lack of input validation. Users with edit access could inject JavaScript payloads (e.g., `<img src=x onerror=alert(1)>`) that would execute for all users viewing the Dictionary page.\n\nWhile session cookie exfiltration was prevented by the HttpOnly attribute, attackers could still execute arbitrary JavaScript, exfiltrate CSRF tokens, and perform actions on behalf of other users.\n\n## Fix\n\nInput sanitization applied using PHP's `strip_tags()` function before storing values in the database. This removes any HTML/script tags from user input, converting malicious payloads to null/empty values.",
+  "acceptance_criteria": [
+    "HTML and script tags are stripped from Notes and Metrics fields before database storage",
+    "XSS payloads in Notes and Metrics fields are neutralized",
+    "Legitimate text content in Notes and Metrics is preserved",
+    "Existing data with malicious content does not execute scripts"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization using strip_tags() applied to Notes and Metrics fields in the Dictionary update controller before database insertion.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initially used a null approach for malicious content, then refined to use strip_tags() for proper HTML tag stripping. This PHP function removes all HTML and PHP tags from the input, preventing stored XSS while preserving plain text content.",
+  "comment_summary": "Developer first set malicious payloads to null, then switched to strip_tags() for a more robust approach that strips HTML/PHP tags while preserving legitimate text content.",
+  "comment_count": 3
+}

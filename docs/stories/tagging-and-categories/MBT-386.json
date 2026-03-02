@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-386",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Category Toggle Does Not Reload Content When Switching",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-22T14:43:26.432-0800",
+  "updated": "2024-05-24T02:25:05.834-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user editing metric categories, I want the content area to reload properly when I toggle between Line of Business and Topics in the category dropdown, so that I see the correct list for the selected category type without needing to manually switch tabs as a workaround.",
+  "description": "When editing a metric's categories in the Metrics Dictionary, toggling the dropdown between Line of Business and Topics does not reload the content panel below. The user selects 'Not Related' under one category type, then switches the dropdown to a different category type, but the displayed list remains stale.\n\nExpected behavior: switching the category dropdown should refresh the tab content to show items relevant to the newly selected category type.\n\nWorkaround before fix: select 'Related', then switch back to 'Not Related' to force a reload.",
+  "acceptance_criteria": [
+    "Toggling the category dropdown between Line of Business and Topics immediately refreshes the content panel",
+    "The currently active tab (Related / Not Related) is preserved after toggling the dropdown",
+    "No stale data from the previous category type is displayed after switching"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "The category type dropdown on the metric edit screen now triggers a content refresh when the user switches between Line of Business and Topics, ensuring the list below reflects the selected category type.",
+  "middleware_changes": "Updated the event handler for the category type dropdown to re-fetch and re-render the associated items list when the selection changes.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The root cause was that the dropdown change event did not trigger a data reload for the tab content. The fix ensures the content panel re-queries items matching the newly selected category type.",
+  "comment_summary": "Ryan reported the issue with reproduction steps. Waqar confirmed the fix and requested review.",
+  "comment_count": 2
+}

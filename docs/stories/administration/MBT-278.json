@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-278",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "SendGrid Dynamic Email Templates for Invitations",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-17T12:45:52.892-0700",
+  "updated": "2024-05-24T02:25:01.142-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Integrate SendGrid dynamic email templates with the invitation system so that email content can be managed through the SendGrid dashboard while dynamic data (account name, inviter, invitation URL) is injected from the application.\n\nThe integration uses the `swiftmade/laravel-sendgrid-notification-channel` package to send Laravel notifications via SendGrid with a template ID. Dynamic placeholders in the template (`{{ DTPAccountName }}`, `{{ IniteUser }}`, `{{ InviteURL }}`) are populated from the notification payload.\n\nThe SendGrid template ID used is `d-97d32d0aa3d74af2ab0330622958ef7d`. This approach allows the business to control email design and copy through the SendGrid UI while developers only need to pass dynamic data tags.",
+  "acceptance_criteria": [
+    "Invitation emails use a SendGrid dynamic template instead of inline HTML",
+    "Template placeholders are correctly replaced with dynamic data (account name, inviter name, invite URL)",
+    "Template changes in SendGrid dashboard are reflected without code deployments",
+    "Resend invitation also uses the SendGrid template",
+    "All future transactional emails from the app use SendGrid templates"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel notification class implements toSendGrid() method with template ID and payload. The swiftmade/laravel-sendgrid-notification-channel package handles delivery and template rendering.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-270"],
+  "source_files": [],
+  "implementation_notes": "SendGrid link tracking can cause href rewriting issues with anchor tags in templates. Plain URL display is recommended. The template uses double-curly-brace placeholders ({{ name }}) for dynamic substitution. A persistent issue with SendGrid adding 'url2.' prefix to hrefs was noted but worked around.",
+  "comment_summary": "Extensive collaboration between developer and product to get SendGrid dynamic templates working. Developer integrated the laravel-sendgrid-notification-channel package, set up template placeholders, and resolved issues with link rewriting. Product praised the final result and directed all future app emails to use SendGrid.",
+  "comment_count": 13
+}

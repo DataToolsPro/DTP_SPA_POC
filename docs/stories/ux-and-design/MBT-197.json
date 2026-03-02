@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-197",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Display Metric Details in Slide-Out Panel",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T16:21:11.861-0700",
+  "updated": "2024-05-24T02:24:30.375-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see metric details in the slide-out panel, so that I can review metric information without leaving the current context.",
+  "description": "Re-display metric information (aliases, categories, related fields) in the slide-out panel. The data should be rendered as read-only for now, with edit capability planned for the future.\n\n## Fields to Display\n- Metric aliases\n- Category assignment\n- Related field information",
+  "acceptance_criteria": [
+    "Metric details are displayed in the slide-out panel",
+    "Displayed data is read-only",
+    "Category dropdown remains functional for assignment"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Metric details (aliases, categories, related fields) rendered in the slide-out panel for in-context viewing without navigation.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer added the first three display options. Category dropdown was already present and functional.",
+  "comment_summary": "Developer added the display fields and confirmed the category dropdown was already available.",
+  "comment_count": 1
+}

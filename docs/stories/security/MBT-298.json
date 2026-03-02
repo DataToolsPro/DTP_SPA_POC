@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-298",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Rename Login Page Title from Cookie Verification to DataTools App Login",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-10T20:32:20.662-0700",
+  "updated": "2026-03-01T04:12:01.709-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want the login page title to display 'DataTools App Login' instead of 'cookie verification', so that the page looks professional and trustworthy.",
+  "description": "The login page and passcode page had the browser tab title set to \"cookie verification\", which was flagged by a user as confusing. Changed to \"DataTools App Login\" for both pages.",
+  "acceptance_criteria": [
+    "Login page browser tab title displays 'DataTools App Login'",
+    "Passcode page browser tab title displays 'DataTools App Login'"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Browser tab title on login and passcode pages changed from 'cookie verification' to 'DataTools App Login'.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-62"],
+  "source_files": [],
+  "implementation_notes": "Title updated on both login.php and the cookie/passcode page.",
+  "comment_summary": "Waqar changed the title on both login and cookie pages as requested.",
+  "comment_count": 1
+}

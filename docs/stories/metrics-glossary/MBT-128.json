@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-128",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Scorecard Edit Modal Field Refinements",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T19:02:31.216-0700",
+  "updated": "2026-03-01T01:27:47.557-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user editing a Scorecard record, I want the edit modal fields to be accurate and consistent, so that I see the correct input types, labels, and only relevant fields.",
+  "description": "Several fields in the Scorecard edit modal needed cleanup for consistency and accuracy. This ticket addresses multiple small UX refinements to the modal form.\n\n## Changes\n\n1. **Source Data Extract** converted from a text input to a dropdown selector, with a corresponding URL field following the same pattern as other URL fields.\n2. **SFDC Sink URL** field removed entirely — it was not needed.\n3. **SFDC Sink Label** fixed to remove the erroneous \"new\" prefix.\n4. **Data Mapping** field label updated to include \"URL\" for consistency with other URL-type fields.\n\n## Prerequisite\n\nMBT-118 (Remove Metric functionality from select.php) should be completed first, as some of these field changes overlap with the metric attribute cleanup.",
+  "acceptance_criteria": [
+    "Source Data Extract is rendered as a dropdown instead of a text input",
+    "A Source Data Extract URL field follows the same pattern as other URL fields",
+    "SFDC Sink URL field is removed from the edit modal",
+    "SFDC Sink Label no longer displays 'new' prefix",
+    "Data Mapping field label includes 'URL' for consistency"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Source Data Extract changed from text input to dropdown. SFDC Sink URL field removed. SFDC Sink label corrected. Data Mapping label updated to include 'URL' for consistency.",
+  "middleware_changes": "Server-side form rendering updated to output a dropdown for Source Data Extract and remove the SFDC Sink URL field. Label strings corrected.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-118"],
+  "source_files": [],
+  "implementation_notes": "This ticket was recommended to be completed after MBT-118 since some of the field changes overlap with the metric attribute cleanup performed in that ticket.",
+  "comment_summary": "Developer completed the changes and submitted for review without issues.",
+  "comment_count": 1
+}

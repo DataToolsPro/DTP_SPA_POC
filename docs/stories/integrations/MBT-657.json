@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-657",
+  "epic_key": "MBT-655",
+  "feature_folder": "integrations",
+  "title": "Notion Export Icon Repositioning and SVG Update",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-17T22:03:06.419-0700",
+  "updated": "2024-05-24T02:25:39.991-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "notion"],
+  "story": "As a DataTools Pro user, I want the Notion export option to appear alongside other export icons (like PDF) so that I can easily find and use it as part of my standard export workflow.",
+  "description": "Reposition the Notion export icon to sit alongside the other export options (after the PDF icon) in the metrics toolbar. Replace the existing icon with a line-style SVG that matches the visual style of the other export icons and supports dynamic color theming from branding settings.\n\nThe implementation also included wiring up the branding color selection so the Notion icon respects the team's configured brand color, and ensuring the export button respects team sharing permissions.",
+  "acceptance_criteria": [
+    "Notion icon appears next to the PDF export icon in the toolbar",
+    "Icon uses a line-style SVG consistent with other export icons",
+    "Icon color is driven by the team's branding color configuration",
+    "Export button respects team sharing permissions"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Moved the Notion export icon to the export toolbar area next to the PDF icon. Updated to a line-style SVG that supports dynamic branding color. Added permission checks for the export button when shared in a team context.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-585"],
+  "source_files": [],
+  "implementation_notes": "Implementation included integrating the branding color selection for the icon and figuring out permission handling for the export button in team-shared scenarios, which took longer than initially expected.",
+  "comment_summary": "Developer completed the icon reposition, branding color integration, and permission implementation. Noted it took extra time due to the color selection and permission wiring.",
+  "comment_count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1320",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Create a private listing for Snowflake app",
+  "status": "In Review",
+  "feature_folder": "integrations"
+}

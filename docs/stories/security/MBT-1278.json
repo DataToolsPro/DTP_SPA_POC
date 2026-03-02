@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1278",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Reserved Subdomains and Namespace Governance",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:56.638-0800",
+  "updated": "2025-12-17T21:46:56.737-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Certain subdomains must be reserved for infrastructure use and cannot be claimed as tenant slugs to prevent collisions and security issues.\n\n## Requirements\n\n- Reserved list includes `auth`, `api`, `www`, and pooled hosts (e.g., `app`)\n- Tenant creation rejects reserved slugs\n- Edge routing treats reserved hosts as infrastructure, never as tenants",
+  "acceptance_criteria": [
+    "Reserved subdomain list includes auth, api, www, and pooled host names",
+    "Tenant creation validates slugs against the reserved list and rejects conflicts",
+    "Edge routing correctly identifies reserved subdomains as infrastructure",
+    "Reserved subdomains are never resolved as tenant slugs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Slug validation during tenant creation checks against reserved subdomain list. Edge routing logic treats reserved hosts as infrastructure endpoints.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The reserved list should be maintained as a configuration constant, not hardcoded in multiple places. New reserved names should be easy to add as the platform evolves.",
+  "comment_summary": "",
+  "comment_count": 0
+}

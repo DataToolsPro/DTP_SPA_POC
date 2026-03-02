@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-775",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Centralize Zapier Webhook URLs as Environment Variables",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-23T20:41:53.575-0700",
+  "updated": "2024-09-15T13:28:53.029-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Refactor hardcoded Zapier webhook URLs into environment variables to prevent dev and staging environments from triggering production Zapier workflows.\n\nSix Zapier webhook endpoints were identified that need to be parameterized:\n- Activation hook\n- User creation hook\n- Login event hook\n- User invite hook\n- Onboard hook\n- Delete account hook\n\nBy making these configurable per environment, the team can create separate test Zap endpoints for staging while keeping production hooks isolated. Dev and stage environments had their Zap URLs disabled.",
+  "acceptance_criteria": [
+    "All six Zapier webhook URLs are stored as environment variables in .env",
+    "Dev and staging environments have Zapier hooks disabled",
+    "Production environment continues to use the correct Zapier webhook URLs",
+    "New Zapier endpoints can be configured per environment without code changes"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Replaced hardcoded Zapier webhook URLs with environment variable lookups. All six hooks now read from .env configuration.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Six Zapier URLs moved to .env variables: activation, user creation, login, user invite, onboard, and delete account. Dev and stage environments have these disabled to prevent false positive events in Salesforce.",
+  "comment_summary": "Developer disabled all Zapier hooks on dev and stage environments and moved all URLs to .env variables.",
+  "comment_count": 1
+}

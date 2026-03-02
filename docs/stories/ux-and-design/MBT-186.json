@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-186",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Hide Metrics and Module Columns from Scorecard Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T21:57:06.634-0700",
+  "updated": "2024-05-24T02:24:31.341-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the scorecard table to show only essential columns, so that the screen is not overcrowded with information.",
+  "description": "Hide the Metrics and Module columns from the scorecard table view to reduce visual clutter. These columns remain visible on the edit screen for data entry but are suppressed from the main table display.",
+  "acceptance_criteria": [
+    "Metrics column is hidden from the scorecard table view",
+    "Module column is hidden from the scorecard table view",
+    "Both columns remain visible and editable on the edit screen"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Metrics and Module columns hidden from the scorecard table to reduce information overload while preserving edit access.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed and submitted for review.",
+  "comment_count": 1
+}

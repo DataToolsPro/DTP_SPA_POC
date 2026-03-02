@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1187",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Production Database Migration with Maintenance Mode",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-08-22T19:06:46.468-0700",
+  "updated": "2026-03-01T03:53:14.394-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Put the website in maintenance mode via Cloudflare page rules before executing the production database migration, ensuring no users can log in during the migration window.\n\n### Steps\n1. Enable maintenance mode via Cloudflare page rules for datatoolspro.com\n2. Execute database migration\n3. Verify data integrity\n4. Disable maintenance mode",
+  "acceptance_criteria": [
+    "Website is in maintenance mode during migration",
+    "No user logins are possible during the migration window",
+    "Database migration completes successfully",
+    "Maintenance mode is disabled after migration"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Production database migrated during maintenance window.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Maintenance mode is managed via Cloudflare page rules at https://dash.cloudflare.com/793f7335750a59df1875417444438bd1/datatoolspro.com/rules/page-rules.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

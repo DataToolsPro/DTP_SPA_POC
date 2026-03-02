@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1348",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Migrate DTP_APP_V3 to Root Laravel + Inertia + React Structure",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2026-02-26T01:01:26.895-0800",
+  "updated": "2026-03-01T04:24:49.000-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Restructure the repository so the root is the main Laravel project (eliminating separate `dtp/` and `spa/` folders) with the frontend built using Laravel Inertia + React in the official starter-kit-style structure.\n\n### Target Structure\n- **Repo root** = single Laravel application\n- **Frontend** under `resources/js/`:\n  - `components/` — Reusable React components\n  - `hooks/` — React hooks\n  - `layouts/` — App and auth layouts\n  - `lib/` — Utilities and config\n  - `pages/` — Inertia page components\n  - `types/` — TypeScript definitions\n- Single `composer.json`, `package.json`, and Vite config at root\n- Single deployable codebase\n\n### Scope\n1. Move Laravel app from `dtp/` to repo root\n2. Add Inertia + React (Inertia Laravel adapter + @inertiajs/react)\n3. Migrate existing React UI from `spa/` into `resources/js/`\n4. Auth: keep session-based auth; OAuth callbacks redirect to Inertia routes\n5. Remove or consolidate Cloudways-specific workflows/docs\n6. Update documentation for new structure and deployment",
+  "acceptance_criteria": [
+    "Root is the only Laravel app — no dtp/ or spa/ as separate app roots",
+    "Inertia + React runs from resources/js/ with the defined structure",
+    "Login and main flows work via Inertia pages and Laravel routes",
+    "Single php artisan serve and npm run dev from root",
+    "Docs updated for new structure and deployment changes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "Entire frontend migrated from standalone SPA to Inertia + React pages rendered via Laravel routes.",
+  "middleware_changes": "Laravel configured with Inertia adapter. SPA routing replaced with server-side Inertia page rendering. Session-based auth preserved with OAuth callback redirects to Inertia routes.",
+  "data_model_changes": "",
+  "api_changes": "API routing consolidated — SPA API calls replaced with Inertia page props and Laravel controller responses.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Major architectural restructuring. The goal is a single deployable codebase with no separate app roots. Follows the official Laravel React starter kit layout patterns.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

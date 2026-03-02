@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-773",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Fix client_reference_id for Stripe Purchase Button",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-23T14:48:44.562-0700",
+  "updated": "2024-07-16T11:53:27.955-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user purchasing additional licenses, I want the Stripe checkout to correctly identify both my team and user account, so that my purchase is properly attributed and my team's license count is automatically updated.",
+  "description": "## Context\n\nThe production purchase button was generating an incorrect `client_reference_id` in the Stripe checkout URL. Testing revealed the ID did not match the logged-in user's actual team and user identifiers, breaking the end-to-end purchase flow.\n\n## Problem\n\nThe rendered Stripe URL contained an invalid `client_reference_id` value (e.g., `8516F5AD29` instead of the expected `teamId_userId` format). The user and account IDs did not match the logged-in user's actual identifiers.\n\n## Fix\n\nUpdate the client_reference_id construction to concatenate `teamId_userId` using an underscore delimiter. Both the frontend URL construction and the backend Add Users API endpoint (MBT-454) need to be updated to use this format consistently.\n\nExample corrected URL:\n`https://buy.stripe.com/aEU2bI6ST6s7bEQeUV?client_reference_id=8516F5AD2934_8516F5AD2949`",
+  "acceptance_criteria": [
+    "client_reference_id in the Stripe URL follows the format teamId_userId",
+    "Team ID and User ID are the correct public-facing unique IDs for the logged-in user",
+    "The Add Users API endpoint correctly parses the updated client_reference_id format",
+    "End-to-end purchase flow works: click button -> Stripe checkout -> payment -> user count updated"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed the Stripe purchase button URL to include the correctly formatted client_reference_id (teamId_userId) for the logged-in user.",
+  "middleware_changes": "Updated the client_reference_id construction logic to properly concatenate the team's unique ID and user's unique ID with an underscore delimiter.",
+  "api_changes": "Updated the /api/v1_0/addusers endpoint to parse the new client_reference_id format (teamId_userId) and correctly extract the team identifier.",
+  "dependencies": ["MBT-453", "MBT-454"],
+  "source_files": [],
+  "implementation_notes": "The Pendio script (implemented May 2024) had already established the pattern of using visitor ID and account ID. The fix aligned the purchase button's client_reference_id with this same pattern. The underscore delimiter was chosen for concatenation. Both the frontend URL generation and backend API endpoint were updated simultaneously.",
+  "comment_summary": "Developer confirmed the existing Pendio script pattern and proposed concatenating the team ID. After agreement on using underscore as delimiter, both the client_reference_id and API endpoint were updated. Changes were pushed to staging, reviewed, and deployed to production.",
+  "comment_count": 5
+}

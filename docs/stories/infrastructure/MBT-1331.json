@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1331",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Provision Cloudways Production Server and Wire Deploy Pipeline",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:09.365-0800",
+  "updated": "2026-02-22T19:00:01.605-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Provision a Cloudways production server to mirror the staging setup, using a separate SSH key for security isolation. Wire up the GitHub Actions deploy pipeline with an approval gate for production deployments.\n\nThis is a confirmation and validation task to ensure the production Cloudways application is properly configured.",
+  "acceptance_criteria": [
+    "app.datatoolspro.com/api/health returns HTTP 200",
+    "Deploy Production GitHub Actions workflow runs successfully with an approval gate",
+    "Staging and production use separate SSH keys",
+    "Production server is provisioned on Cloudways with the same configuration as staging"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1327"],
+  "source_files": [],
+  "implementation_notes": "Part of V3 Architecture Planning Phase 2. Mirrors the staging task but with production-specific SSH keys and an approval gate in the deploy workflow.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,19 @@
+{
+  "post_id": 11966,
+  "title": "DataTools Pro Explorer for Snowflake Release Notes",
+  "slug": "datatools-pro-explorer-for-snowflake-release-notes",
+  "url": "https://datatoolspro.com/tutorials/datatools-pro-explorer-for-snowflake-release-notes/",
+  "date": "2025-10-10T18:52:27",
+  "modified": "2025-11-27T00:54:42",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro Explorer",
+    "Snowflake"
+  ],
+  "tags": [
+    "Snowflake"
+  ],
+  "subfolder": "snowflake",
+  "excerpt": "<p>Request enhancements directly to our support team. Our team replies to 100% of the requests. View Product details | DataTools Pro Explorer Documentation | Snowflake Marketplace Listing Have an enhancement or bug fix? Send us an email to support@datatoolspro.com. Existing users are top priority for enhancements. Dec 2025 Release Automated persistence &#8220;last query&#8221; across sessions [&hellip;]</p>",
+  "content_html": "\n<p>Request enhancements directly to our support team. Our team replies to 100% of the requests.</p>\n\n\n\n<p><a href=\"https://datatoolspro.com/tutorials/datatools-pro-explorer/\" title=\"\"><strong>View Product details</strong></a> | <a href=\"https://datatoolspro.com/tutorials/datatools-pro-explorer/\" title=\"DataTools Pro Explorer for Snowflake Documentation\">DataTools Pro Explorer Documentation</a> | <a href=\"https://app.snowflake.com/marketplace/listing/GZ1M6ZUJBYW/datatools-pro-datatools-pro-explorer\" title=\"DataTools Pro Explorer Marketplace Listing\">Snowflake Marketplace Listing</a></p>\n\n\n\n<h2 class=\"wp-block-heading\">Have an enhancement or bug fix?</h2>\n\n\n\n<p>Send us an email to support@datatoolspro.com. Existing users are top priority for enhancements.</p>\n\n\n\n<h2 class=\"wp-block-heading\">Dec 2025 Release</h2>\n\n\n\n<p>Automated persistence &#8220;last query&#8221; across sessions &#8211; Triggered on query run</p>\n\n\n\n<p>New query button</p>\n\n\n\n<p id=\"block-e824a83c-f210-45ea-94a0-16c6f79927a9\">Rename saved queries</p>\n\n\n\n<p>UX Minor labeling and icon updates for consistency</p>\n\n\n\n<p>Rename saved queries</p>\n\n\n\n<p>UX &#8211; Hide query during tag editing</p>\n\n\n\n<p>Numerous bug fixes related to incompatible operators and data types</p>\n\n\n\n<p>Edit saved explorations (excludes customized queries)</p>\n\n\n\n<p>Recall and edit saved explorations</p>\n\n\n\n<h2 class=\"wp-block-heading\">November 2025 Release</h2>\n\n\n\n<p>Save exploration categories (tags)- Line of Business and Topic</p>\n\n\n\n<p>Category management tab</p>\n\n\n\n<p>Filter by Categories for saved queries</p>\n\n\n\n<p>Tag saved queries </p>\n\n\n\n<h2 class=\"wp-block-heading\">October 2025 Release</h2>\n\n\n\n<p>Save explorations</p>\n\n\n\n<p>Expand dropdown width for readability (UX)</p>\n\n\n\n<p>Add measure COUNT DISTINCT</p>\n\n\n\n<p>Add measure &lt;&lt;row count&gt;&gt; for quick addition of row counts</p>\n\n\n\n<p>Minimize the select column accordion by default </p>\n\n\n\n<p>Documentation for granting access to the database schema is displayed in-app by default</p>\n\n\n\n<h2 class=\"wp-block-heading\">Initial Release: 9-30-2025 </h2>\n\n\n\n<p></p>\n"
+}

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1152",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Add more salesforce orgs testing - Labeling for Data Mapping and Migration",
+  "status": "To Do",
+  "feature_folder": "data-migration"
+}

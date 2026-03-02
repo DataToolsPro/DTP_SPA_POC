@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-358",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix Tooltip Text for Metric LOB/Topic Confirm and Cancel Buttons",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-10T00:55:18.972-0800",
+  "updated": "2026-03-01T01:29:01.409-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user editing Line of Business or Topic categories, I want the confirm and cancel button tooltips to display the correct text, so that I can clearly distinguish between the two actions.",
+  "description": "Both the confirm and cancel buttons for the Metric LOB/Topic editing controls displayed the same tooltip text (\"Click to Cancel\"). This fix updates the tooltips so the confirm button shows \"Confirm\" and the cancel button shows \"Cancel\".\n\n## Before\n\n- Confirm button tooltip: \"Click to Cancel\" (incorrect)\n- Cancel button tooltip: \"Click to Cancel\"\n\n## After\n\n- Confirm button tooltip: \"Confirm\"\n- Cancel button tooltip: \"Cancel\"",
+  "acceptance_criteria": [
+    "Confirm button tooltip displays 'Confirm'",
+    "Cancel button tooltip displays 'Cancel'",
+    "Tooltips are correctly differentiated between the two buttons"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Corrected tooltip text on the LOB/Topic editing confirm and cancel buttons. Confirm button now shows 'Confirm' instead of 'Click to Cancel'.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple tooltip text correction on the confirm/cancel action buttons for LOB/Topic category editing.",
+  "comment_summary": "Developer completed the fix promptly.",
+  "comment_count": 1
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-5",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Dropdown Selections for Scorecard Status",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:30:57.072-0800",
+  "updated": "2024-05-24T02:24:38.809-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Scorecard"],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to select scorecard status values from a dropdown instead of typing free-form text, so that I can ensure consistent and valid status entries across the scorecard.",
+  "description": "Replace free-form text input for scorecard status fields with a controlled dropdown menu to improve data quality and user experience.\n\n### Dropdown Options\n- Not Started (default selection)\n- In Progress\n- Blocked\n- QA\n- Business Review\n- Complete\n\n### Implementation Notes\nDataTables editor supports several field type plugins for dropdowns. A simple select dropdown is sufficient for this use case.",
+  "acceptance_criteria": [
+    "Status field displays as a dropdown when editing a scorecard row",
+    "Dropdown contains exactly six options: Not Started, In Progress, Blocked, QA, Business Review, Complete",
+    "Default selection for new rows is 'Not Started'",
+    "User cannot enter free-form text in the status field",
+    "Selected value persists correctly on save"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaces the free-form text input for the status column with a dropdown select element. Default selection is 'Not Started'. Six predefined status options are available.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Leverages DataTables editor field type plugins for the dropdown implementation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

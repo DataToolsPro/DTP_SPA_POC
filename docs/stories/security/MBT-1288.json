@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1288",
+  "epic_key": "MBT-1294",
+  "feature_folder": "security",
+  "title": "Tenant Isolation Enforcement and Authorization Middleware",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T22:16:17.240-0800",
+  "updated": "2025-12-17T22:20:28.592-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**CRITICAL SECURITY REQUIREMENT — #1 MULTI-TENANT RISK**\n\nEnforce tenant isolation at every data access point to prevent cross-tenant data leaks. Authentication alone is insufficient — authorization must verify that the authenticated user's organization matches the data being accessed.\n\n## The Problem\n\nA session containing `organization_id=toyota` has no mechanism to prevent code from querying Ford's data without explicit authorization checks.\n\n## Implementation Layers\n\n1. **Worker middleware** (first line of defense): Extract `organization_id` from session, validate against request parameters, reject mismatches\n2. **Database RLS** (defense in depth): Row-level security policies ensuring every query is filtered by `organization_id`\n3. **API parameter validation**: Never trust `tenant_id` from URL/body alone — always cross-check with session\n\n## Attack Scenarios to Prevent\n\n- User modifies URL from `toyota.datatoolspro.app` to `ford.datatoolspro.app`\n- API call with a different tenant_id in the request body\n- SQL injection bypassing app-level checks\n- Shared service queries without tenant filter",
+  "acceptance_criteria": [
+    "Worker middleware extracts and validates organization_id from session on every request",
+    "All database queries are filtered by tenant_id/organization_id",
+    "API endpoints validate that path/body tenant_id matches session",
+    "Row-level security policies exist in the database",
+    "Cross-tenant access attempts are denied and logged as security incidents",
+    "Authorization checks occur BEFORE any data access"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Multi-layer tenant isolation: Worker middleware validates organization_id against request context, authorization checks before data access, and session/request tenant_id cross-validation.",
+  "data_model_changes": "Row-level security (RLS) policies on database tables ensuring every query is scoped by organization_id.",
+  "api_changes": "All API endpoints enforce tenant_id validation against the session's organization_id. Mismatches return 403.",
+  "dependencies": ["MBT-1266", "MBT-1275"],
+  "source_files": [],
+  "implementation_notes": "Defense in depth: three layers of tenant isolation (Worker middleware, application-level authorization, database RLS). Even if one layer fails, the others prevent cross-tenant data access. This is the #1 multi-tenant security risk. Penetration testing and security audit sign-off required.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-221",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Expand Source Data Platform Options in Migration Setup",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T20:10:34.243-0700",
+  "updated": "2026-03-01T04:04:07.002-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want to select from a broader set of source data platforms when setting up a migration, so that the tool supports more real-world migration scenarios.",
+  "description": "Expand the source data platform dropdown from the current two options (Zoho and Salesforce) to a comprehensive list covering common migration sources.\n\n### Updated Options\n- Salesforce\n- HubSpot\n- Zoho\n- Custom Cloud App\n- Custom On Premise App\n- Excel / CSV\n- Other",
+  "acceptance_criteria": [
+    "Source data dropdown contains all seven options: Salesforce, HubSpot, Zoho, Custom Cloud App, Custom On Premise App, Excel / CSV, Other",
+    "Existing records with Zoho or Salesforce selections remain valid",
+    "New options are selectable and persist on save"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Source data platform dropdown expanded from 2 to 7 options.",
+  "middleware_changes": "Backend updated to accept and validate the new source data platform values.",
+  "data_model_changes": "Source data platform field updated to support the expanded set of values.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-998", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Modified By User Showing Up Twice Due to Name Mismatch",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-17T14:03:25.857-0800", "updated": "2024-11-27T22:03:10.378-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Modified By dropdown to show each person only once, even when Salesforce stores name variants (e.g., 'Ryan' and 'Ryan Goodman').",
+  "description": "Bug: the Modified By dropdown showed two entries for the same person — 'Ryan' and 'Ryan Goodman'. This occurred because Salesforce stored two different name variants for the same user (one from the API returning first name only in certain contexts). The dropdown populates from distinct values in the data table column, so both variants appeared as separate options.",
+  "acceptance_criteria": ["Modified By dropdown shows each person only once", "Name variants for the same Salesforce user are consolidated"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Modified By dropdown now shows consolidated user names without duplicates.",
+  "middleware_changes": "Added name normalization logic to consolidate user name variants from Salesforce data.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-981"], "source_files": [],
+  "implementation_notes": "The root cause was Salesforce returning different name fields in different API contexts. Fixed by normalizing user names before populating the dropdown.",
+  "comment_summary": "Waqar explained the dropdown is generated from distinct DataTable column values and that the two names reflect different Salesforce records. After discussion, fixed on development.", "comment_count": 2
+}

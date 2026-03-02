@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1228",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Add Anti-Clickjacking Headers (X-Frame-Options / frame-ancestors)",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-10-13T04:51:38.789-0700",
+  "updated": "2026-03-01T03:59:23.274-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Security scan flagged missing anti-clickjacking headers. The response needs either a CSP `frame-ancestors` directive or `X-Frame-Options` header to prevent clickjacking attacks.\n\n### Current State\nA `FrameOptionsMiddleware` exists in the Laravel middleware stack, but the security scanner still flagged the issue. Waqar confirmed the header is being set in the middleware. May be a false positive or a Cloudflare-related header stripping issue.",
+  "acceptance_criteria": [
+    "X-Frame-Options header is set to DENY or SAMEORIGIN on all responses",
+    "CSP frame-ancestors directive is configured as an additional safeguard",
+    "Security scanner no longer flags missing anti-clickjacking headers"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Verify and ensure FrameOptionsMiddleware is correctly setting X-Frame-Options header. Add CSP frame-ancestors directive.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1227"],
+  "source_files": [],
+  "implementation_notes": "FrameOptionsMiddleware already exists in the middleware stack. Issue may be caused by Cloudflare stripping headers. Need to verify if Cloudflare is in use and whether it affects security headers.",
+  "comment_summary": "Waqar confirmed the X-Frame-Options header is being set via Laravel middleware. Asked whether Cloudflare is in use, as it may be affecting header delivery to the scanner.",
+  "comment_count": 2
+}

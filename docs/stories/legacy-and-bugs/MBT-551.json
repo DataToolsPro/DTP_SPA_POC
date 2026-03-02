@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-551",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Replace Geolocation Plugin with IP Registry Country Code Lookup",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-31T19:17:36.142-0800",
+  "updated": "2026-03-01T04:21:40.164-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Context\nThe existing WordPress geolocation plugin was expensive, clunky, and a potential GDPR violation because it provided granular (non-country-level) data. The goal was to replace it with a lightweight country-code-only lookup.\n\n## Implementation\n1. Remove the existing geolocation plugin entirely.\n2. Use the IP Registry API or client-side JavaScript IP-based geolocation to resolve the user's country code (ISO 2-letter code).\n3. If country code is unavailable, default to \"ZZ\" (unknown).\n4. Auto-populate Gravity Form field ID 39 with the resolved country code.\n5. Gravity Forms' built-in conditional redirect logic then routes the user to the correct success page based on country.\n\n## Future Consideration\nA Salesforce lookup REST function could be added to check if the user already exists in the system, potentially packaged as a consulting service plugin.",
+  "acceptance_criteria": [
+    "Old geolocation plugin is fully removed",
+    "Country code is resolved via IP Registry or client-side JS geolocation",
+    "Gravity Form field 39 is auto-populated with the country code",
+    "Unknown country defaults to 'ZZ'",
+    "Form redirect logic works based on the populated country code"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "WordPress footer script added to resolve user IP and populate Gravity Forms field 39 with the country code.",
+  "data_model_changes": "",
+  "api_changes": "Integration with IP Registry API (or equivalent client-side IP geolocation) for country code resolution.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer used client-side JavaScript IP geolocation (navigator or IP API) to resolve the country code and auto-populate the Gravity Forms hidden field. Implemented via wp_footer action hook. GDPR-compliant since only country-level data is captured.",
+  "comment_summary": "Developer implemented a JS-based solution that auto-populates form field 39 with the country code resolved from client IP.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1210",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Password-Protect Cloudways Alias URL on Production",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-09T12:23:40.085-0700",
+  "updated": "2026-03-01T04:24:53.927-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The Cloudways production server has a default alias URL that cannot be deleted. To prevent bots and unauthorized access through this URL, add HTTP Basic Authentication via .htaccess when the request comes through the Cloudways domain.\n\n### Implementation\nUse .htaccess with `RewriteCond` to detect requests via the Cloudways hostname and enforce `AuthType Basic` with an `.htpasswd` file. The password restriction only applies to the Cloudways domain; the production domain (app.datatoolspro.com) is unaffected.",
+  "acceptance_criteria": [
+    "Requests via the Cloudways alias URL require HTTP Basic Authentication",
+    "Requests via the production domain are not affected",
+    "Bots cannot proceed past the auth prompt on the Cloudways URL"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1186"],
+  "source_files": [],
+  "implementation_notes": "Uses .htaccess with RewriteCond to detect the Cloudways hostname and enforce BasicAuth. The .htpasswd file is stored outside the web root.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

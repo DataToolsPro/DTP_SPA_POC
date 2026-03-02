@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-985", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Filtered Report Count Not Updating and Add Bootstrap Badge Style",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-09T14:46:29.606-0800", "updated": "2024-11-27T22:17:46.348-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the report count to update dynamically as I filter, and I want it styled with a Bootstrap badge for visual prominence.",
+  "description": "Two changes:\n\n1. **Bug fix**: The report count was not updating when filters were applied. Fixed to recalculate on each filter action.\n2. **Enhancement**: Apply a Bootstrap-style badge to the count number for better visual prominence. Reference implementation provided via CodePen.",
+  "acceptance_criteria": ["Report count updates dynamically when filters are applied or cleared", "Count is displayed with a Bootstrap badge style", "Badge visually matches the CodePen reference design"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed dynamic count update on filter changes; added Bootstrap badge styling to the record count display.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-929"], "source_files": [],
+  "implementation_notes": "Hooked into DataTables draw event to recalculate filtered row count. Applied Bootstrap badge CSS class to the count element.",
+  "comment_summary": "Waqar implemented the badge style and dynamic count, asked about red styling for the number.", "comment_count": 2
+}

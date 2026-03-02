@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-841",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Default Invited User to Last Accessed Team on Login",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-01T13:36:04.956-0700",
+  "updated": "2026-03-01T03:53:19.590-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user invited into another team, I want to default to the invited team on login rather than my personal team, so that I immediately see the context I most recently worked in.",
+  "description": "## Behavior\nOn login, the system checks the user's last accessed team and defaults to it. Fallback logic:\n1. Load the last team the user accessed.\n2. If that team no longer exists, OR the user no longer belongs to it, OR they are not authorized — fall back to the user's personal instance.\n\nThis persists the user's team context across login sessions.",
+  "acceptance_criteria": [
+    "User defaults to their last accessed team on login",
+    "If last team is invalid/inaccessible, user falls back to personal instance",
+    "Team context is persisted across login sessions",
+    "Switching teams updates the persisted last-accessed team"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Users default to their last accessed team on login instead of always landing on their personal instance.",
+  "middleware_changes": "Login flow checks last accessed team and validates membership/authorization before defaulting.",
+  "data_model_changes": "New field to track the user's last accessed team ID.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Last accessed team ID is stored on the user record and updated on team switch. Login flow queries this field and validates team access before redirecting.",
+  "comment_summary": "Developer implemented on development and deployed for review.",
+  "comment_count": 2
+}

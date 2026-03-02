@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-333",
+  "epic_key": "MBT-342",
+  "feature_folder": "api",
+  "title": "Spike: Enable REST API Access for Metrics via Token Authentication",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-31T21:18:07.527-0700",
+  "updated": "2024-05-24T02:25:06.967-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API", "security"],
+  "story": "As a DataTools Pro user, I want to generate API access tokens from my account settings and use them to retrieve metrics data via a REST endpoint, so that I can integrate my metrics into external tools like Snowflake without relying on Salesforce authentication.",
+  "description": "## Context\n\nDataTools Pro needs to expose tenant-scoped metrics data through a REST API so external tools (e.g., Snowflake Python connector, AWS Python API library) can pull metrics and object metadata directly from the application. This API must be independent of Salesforce authentication.\n\n## Behavior\n\nAn account owner navigates to Settings and generates an API token (public/private key pair) using Laravel Sanctum. The owner copies the token into an external client (e.g., Snowflake app), which creates an authenticated session and requests the metrics table scoped to the authenticated team (tenant).\n\n### Authentication Flow\n1. Owner generates a Sanctum API token from `/user/tokens/`\n2. External client sends the token in the Authorization header\n3. Laravel validates the token, resolves the `team_id` from the token owner\n4. API returns only metrics belonging to that team\n\n### API Endpoint\n- `GET /api/metrics` — returns all metrics for the authenticated team as JSON\n\n## Technical Notes\n\nLaravel Passport was initially considered but Sanctum was chosen for its simplicity with token-based API authentication. Sanctum was implemented and tested via Postman. The token generation UI and metrics endpoint were deployed to staging for validation.",
+  "acceptance_criteria": [
+    "Account owner can generate an API token from the Settings page at /user/tokens/",
+    "Generated token is displayed to the owner for copying",
+    "API requests with a valid Sanctum token return metrics scoped to the authenticated team",
+    "API requests without a valid token are rejected with an appropriate error",
+    "GET /api/metrics returns all non-deleted metrics for the team as JSON",
+    "API authentication is independent of Salesforce — no Salesforce credentials required"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "New token generation page at /user/tokens/ where account owners can create and view API access tokens for external integrations.",
+  "middleware_changes": "Laravel Sanctum integrated for token-based API authentication. Token validation middleware resolves the team_id from the token owner to scope data access.",
+  "data_model_changes": "",
+  "api_changes": "GET /api/metrics — new REST endpoint returning all metrics for the authenticated team as JSON. Authenticated via Sanctum bearer token.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Laravel Sanctum was selected over Passport for lightweight token authentication. Tokens are scoped to users, and the team_id is derived from the token owner to enforce tenant isolation. Initial implementation deployed to staging and validated with Postman.",
+  "comment_summary": "Waqar confirmed the approach (Sanctum over Passport), implemented token generation UI and metrics endpoint on staging, and demonstrated successful Postman testing. Ryan confirmed the implementation looked good.",
+  "comment_count": 8
+}

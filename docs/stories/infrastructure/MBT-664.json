@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-664",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Enable Developer Database Access via MySQL Workbench",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-24T05:31:31.594-0700",
+  "updated": "2024-11-28T10:00:10.825-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Enable developer access to the AWS-hosted database via MySQL Workbench for inspecting tables and data during development. Initially planned as IP whitelisting for direct database access, but the approach was later changed to SSH access into PostgreSQL.\n\n## Approach Change\nThe original plan was to whitelist the developer's IP address for direct MySQL Workbench access. Due to dynamic IP addresses and the transition to PostgreSQL, the approach shifted to SSH tunneling into the PostgreSQL database. A VPN solution was also noted as a future improvement.",
+  "acceptance_criteria": [
+    "Developer can connect to the AWS database from a local database client",
+    "Access is secured via SSH tunnel rather than direct IP whitelisting",
+    "Connection works with PostgreSQL after the database migration"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Originally planned as direct MySQL Workbench access with IP whitelisting. Changed to SSH tunnel into PostgreSQL. A VPN is planned for future secure access without per-IP whitelisting.",
+  "comment_summary": "Ryan offered to whitelist Waqar's IP for direct access. After exchanging IPs and discovering dynamic IP issues, Ryan changed the approach to SSH access into PostgreSQL, creating a new ticket for the setup process.",
+  "comment_count": 7
+}

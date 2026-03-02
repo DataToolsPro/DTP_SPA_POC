@@ -1,0 +1,29 @@
+{
+  "issue_key": "MBT-673",
+  "epic_key": "MBT-598",
+  "feature_folder": "metrics-glossary",
+  "title": "Rename Metrics Audit Logs Modal to Change History",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-28T13:37:07.181-0700",
+  "updated": "2024-05-24T02:25:40.867-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the audit logs modal titled 'Change History' instead of 'Metrics Audit Logs', so that the terminology is clearer and more user-friendly.",
+  "description": "Renames the modal title from 'Metrics Audit Logs' to 'Change History' for improved clarity.",
+  "acceptance_criteria": [
+    "Modal title reads 'Change History' instead of 'Metrics Audit Logs'"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Modal title changed from 'Metrics Audit Logs' to 'Change History'.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Quick label change confirmed and approved on staging.",
+  "comment_count": 3
+}

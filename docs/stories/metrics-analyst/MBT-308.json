@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-308",
+  "epic_key": "MBT-374",
+  "feature_folder": "metrics-analyst",
+  "title": "Configure POST Request for Metrics Analyst AI Service",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-16T01:28:32.453-0700",
+  "updated": "2024-05-24T02:25:02.588-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "The front end needs to send a POST request containing dashboard and report JSON data to the AWS API Gateway endpoint for the Metrics Analyst AI service. The payload is a JSON array containing dashboard and report objects. If the existing JSON structure is incompatible with the API Gateway, the Lambda code should be modified to accept the available format.\n\nThe endpoint initially returned 502 Bad Gateway errors when called directly from the app (though it worked via Zapier). Authorization headers were required and were added to resolve the issue.",
+  "acceptance_criteria": [
+    "Front end sends a POST request to the AWS API Gateway endpoint with dashboard/report JSON",
+    "Authorization header is included in the request",
+    "Successful response is received and displayed to the user",
+    "Error responses from the service are handled gracefully"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added HTTP POST call from the Laravel backend to the AWS API Gateway endpoint with JSON payload containing dashboard and report data.",
+  "data_model_changes": "",
+  "api_changes": "POST to external AWS API Gateway endpoint with JSON array of dashboard/report objects. Authorization bearer token added to request headers.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initially encountered 502 Bad Gateway when calling the AWS endpoint directly. The issue was resolved by adding authorization headers. The request works via Zapier with bearer token auth but required the same auth setup in the Laravel HTTP client.",
+  "comment_summary": "Development hit a 502 Bad Gateway calling the AWS endpoint. The fix required adding authorization headers to the request. Testing was delayed waiting for a team member's availability. The endpoint was successfully connected with auth headers added.",
+  "comment_count": 11
+}

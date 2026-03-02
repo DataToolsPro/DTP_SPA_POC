@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-547",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Update SQL Export Modal Title and Default Quote Character",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-27T12:39:34.632-0800",
+  "updated": "2026-03-01T04:21:18.709-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a data migration specialist, I want the SQL export modal to have a clear title and default to single quotes for static values, so that the generated SQL follows the most common convention.",
+  "description": "Two updates to the SQL export modal:\n\n1. **Modal title**: Changed to \"Generate SQL Mapping\"\n2. **Static value quoting**: Default quote character changed to single quote (`'`), which is the most common convention in SQL",
+  "acceptance_criteria": [
+    "SQL export modal title reads 'Generate SQL Mapping'",
+    "Static value default quote character is single quote",
+    "Generated SQL uses single quotes for static values by default"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "SQL export modal title updated to 'Generate SQL Mapping'. Static value default quote character changed to single quote.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed the changes and deployed to staging. No issues reported.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-529",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Fix SQL Foreign Key Constraint Violation on Source Object Creation",
+  "type": "task",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-23T21:30:33.025-0800",
+  "updated": "2024-05-24T02:25:43.857-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "An integrity constraint violation (`SQLSTATE[23000]`) occurred when creating a source object in the `dtp_source_object` table. The foreign key constraint on `salesforce_object_id` referencing `dtp_scorecards(id)` failed because the `salesforce_object_id` was not set properly before the insert.\n\n## Root Cause\n\nThe `salesforce_object_id` field was expected to be set when navigating to an object detail page, but under certain race conditions (e.g., object deleted in another tab), the value could be missing.\n\n## Fix\n\n1. Added a pre-request check: if `salesforce_object_id` is not set, display a user message \"Please select an object first\" instead of attempting the insert\n2. Fixed a related issue where soft-deleted objects still showed their fields on the detail page — now shows \"No data available\" message",
+  "acceptance_criteria": [
+    "Source object creation validates salesforce_object_id is set before insert",
+    "User sees 'Please select an object first' when salesforce_object_id is missing",
+    "Soft-deleted objects show 'No data available' on their detail page",
+    "Foreign key constraint violation no longer appears in error logs"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added user-facing messages: 'Please select an object first' when salesforce_object_id is missing, and 'No data available' when viewing a soft-deleted object's fields.",
+  "middleware_changes": "Added pre-insert validation to check salesforce_object_id existence before creating source objects. Added soft-delete awareness to object detail page queries.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The race condition occurred when a user opened an object detail page, then deleted the object from the dashboard in another tab, then attempted to create a source object from the stale detail page. The fix adds defensive checks at both the controller and view levels.",
+  "comment_summary": "Developer could not reproduce the exact conditions but added defensive validation: a pre-request check for salesforce_object_id and soft-delete awareness on the object detail page.",
+  "comment_count": 1
+}

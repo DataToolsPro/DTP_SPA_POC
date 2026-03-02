@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-839",
+  "epic_key": "MBT-818",
+  "feature_folder": "metrics-glossary",
+  "title": "Metric Lookup UX — Display Associated Metrics on Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-29T19:56:05.698-0700",
+  "updated": "2024-08-19T16:15:31.312-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to see which metrics are related to a report or dashboard in a new 'Metrics' tab, so that I can navigate from reports to their associated metrics.",
+  "description": "Adds a 'Metrics' tab to the Reports and Dashboards detail view that displays metrics associated with the selected report or dashboard. Uses the middleware from MBT-838 to fetch related metrics.\n\nClicking a metric in the list opens the metric detail sidebar. A bug where the previous metric selection persisted when switching reports/dashboards was identified and fixed — the selection is now cleared when the panel is closed.",
+  "acceptance_criteria": [
+    "'Metrics' tab appears after the Reports tab on the detail panel",
+    "Tab displays a list of associated metrics fetched from MBT-838 middleware",
+    "Clicking a metric opens the metric detail sidebar",
+    "Selection is cleared when the panel is closed to prevent stale data"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "New 'Metrics' tab on the report/dashboard detail panel. List of associated metrics with clickable names that open the metric sidebar.",
+  "middleware_changes": "Integrates with the MBT-838 metric lookup endpoint to fetch associated metrics for a given report or dashboard ID.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-838"],
+  "source_files": [],
+  "implementation_notes": "Required coordination between two developers — backend (MBT-838) and frontend (this ticket). Selection state must be cleared on panel close to avoid showing stale metric data.",
+  "comment_summary": "Developer started work but needed clarification on the display approach. Three-way discussion held between both developers and product owner. Bug found where previous metric persisted after panel close — fixed by clearing selection on close.",
+  "comment_count": 6
+}

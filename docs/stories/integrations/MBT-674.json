@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-674",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Disable Notion Integration Icon in Production",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-28T21:17:29.186-0700",
+  "updated": "2026-03-01T03:43:21.625-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "notion"],
+  "story": "",
+  "description": "Hide the Notion integration icon in the production environment. The Notion integration feature is not yet ready for general availability and should remain visible only in staging/development environments until further validation is complete.",
+  "acceptance_criteria": [
+    "Notion integration icon is not visible in the production environment",
+    "Notion integration icon remains visible in staging/development environments",
+    "No other integration icons are affected"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Notion integration icon is hidden in production via environment-based conditional rendering.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Icon disabled on the main branch and tested.",
+  "comment_summary": "Developer confirmed the Notion icon was disabled and tested on main.",
+  "comment_count": 1
+}

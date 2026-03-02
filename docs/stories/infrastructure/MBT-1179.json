@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1179",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Review ORM Code for Database Composability vs Migration Approach",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-08-01T18:52:09.582-0700",
+  "updated": "2026-03-01T03:50:01.177-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Review the existing ORM implementation to determine if the database can be made composable (able to spin up the full schema without running migrations). This would allow recreating the database at any time purely from ORM definitions.\n\n### Review Scope\n- Current ORM implementation for MySQL and PostgreSQL\n- Whether the database can be rebuilt from ORM definitions alone\n- Composability vs migration-based approach trade-offs\n- Whether migration dependencies can be eliminated\n\n### Conclusion\nThe recommendation is to **stick with the migration approach** because:\n- All migrations are already in place and tested\n- Migrations work across both MySQL (production) and PostgreSQL (local)\n- `php artisan migrate` can recreate the schema on either database\n- Switching to composability would require rewriting schema management, losing migration history, and adding risk with no practical gain since the current approach already works for both databases.",
+  "acceptance_criteria": [
+    "Current ORM implementation reviewed for MySQL and PostgreSQL",
+    "Composability vs migration approach evaluated",
+    "Findings and recommendations documented",
+    "Decision made on whether to pursue composability"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Review of migration-based schema management. Decision to retain migrations rather than switch to composable ORM definitions.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Local development uses PostgreSQL, production uses MySQL. Laravel migrations work for both. Composability is not natively supported by Laravel and would require significant rewrite with no practical benefit.",
+  "comment_summary": "Developer reviewed and recommended sticking with migrations. Switching to composability would lose migration history, require schema rebuild logic rewrite, and Laravel doesn't natively support building the DB entirely from model definitions.",
+  "comment_count": 1
+}

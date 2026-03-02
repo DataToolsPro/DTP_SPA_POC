@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-509",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Display Source Dashboard per Report in Metrics Analyst Results",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T14:45:54.544-0800",
+  "updated": "2024-05-24T02:25:43.032-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst reviewing Metrics Analyst results, I want to see which dashboard each report belongs to in the results table, so that I can understand the source context of each recommended metric.",
+  "description": "In the Metrics Analyst results table, add a column showing the parent dashboard for each report. If two dashboards contain the same report, both dashboards should be listed for that report entry.",
+  "acceptance_criteria": [
+    "A dashboard column appears in the results table showing the source dashboard for each report",
+    "If a report appears on multiple dashboards, all related dashboards are listed",
+    "Dashboard names are displayed (not IDs)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a dashboard column to the Metrics Analyst results table showing which dashboard each report belongs to, with support for multiple dashboards per report.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The feature was marked as already complete during review.",
+  "comment_summary": "Developer asked for clarification. Ryan confirmed it was already complete based on the current implementation.",
+  "comment_count": 2
+}

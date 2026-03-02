@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-24",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Load Salesforce Object Field Details on Drill-In",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T20:24:56.544-0800",
+  "updated": "2024-05-24T02:24:37.641-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "API"],
+  "story": "As a DataTools Pro user, I want to click on a Salesforce object in the scorecard view and drill into a detail page showing field-level information, so that I can review and annotate individual fields for that object.",
+  "description": "When a user clicks on a Salesforce object from the scorecard view, the application opens a new page that displays field-level details for that object. The data is loaded by integrating with the Salesforce REST API describe method.\n\nThe detail page presents a data table combining Salesforce field metadata (API name, type, length, etc.) with user-editable input fields for documentation and mapping purposes.",
+  "acceptance_criteria": [
+    "Clicking a Salesforce object in the scorecard navigates to a detail page",
+    "Detail page loads field-level metadata from Salesforce via the REST API describe endpoint",
+    "Data table displays both Salesforce metadata columns and user input columns",
+    "Page loads the correct object based on the URL parameter"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New detail page opens when a user clicks an object in the scorecard. Displays a data table with Salesforce field metadata alongside editable user fields.",
+  "middleware_changes": "Server-side integration with the Salesforce REST API describe endpoint to retrieve field-level metadata for the selected object.",
+  "data_model_changes": "",
+  "api_changes": "Consumes the Salesforce REST API describe method to load object field details. Endpoint returns field names, types, lengths, and other metadata.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Integration uses the SFDC REST API describe method documented in the Sprint 5 Epic. The data table mixes API-sourced metadata with locally stored user annotations.",
+  "comment_summary": "",
+  "comment_count": 0
+}

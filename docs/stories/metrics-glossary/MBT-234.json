@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-234",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Refresh Taxonomy Lists When Toggling Between Metrics",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T21:11:07.684-0700",
+  "updated": "2024-05-24T02:24:58.194-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Not Related taxonomy list to refresh automatically when I navigate to the next or previous metric using the arrow buttons, so that I see the correct unassigned topics for each metric without manually refreshing.",
+  "description": "Fixes the sidebar to reload the Not Related taxonomy values (Topics, Line of Business) when the user navigates between metrics using the Previous/Next arrow buttons. Previously, toggling between metrics did not trigger a refresh of the taxonomy assignment lists, causing stale data to display.",
+  "acceptance_criteria": [
+    "Navigating to the next metric via the right arrow refreshes the Not Related taxonomy list",
+    "Navigating to the previous metric via the left arrow refreshes the Not Related taxonomy list",
+    "Related taxonomy values update correctly for the newly selected metric",
+    "No stale taxonomy data remains visible after navigation"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Previous/Next navigation now triggers a refresh of both Related and Not Related taxonomy lists in the sidebar, ensuring accurate data for the current metric.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-139", "MBT-233"],
+  "source_files": [],
+  "implementation_notes": "Navigation event handlers now trigger the taxonomy data fetch for the newly selected metric, refreshing both Related and Not Related lists in the sidebar.",
+  "comment_summary": "Quick implementation — developer completed and submitted for review promptly.",
+  "comment_count": 1
+}

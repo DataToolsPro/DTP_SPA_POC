@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1279",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Document Current Auth Flow and Design Cloudflare Worker-Based Auth",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-12-17T21:49:21.411-0800",
+  "updated": "2026-03-01T04:09:45.548-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Phase 1 of the Cloudflare Worker auth migration (Epic MBT-1260). Document the current authentication flow and design the new Cloudflare Worker-based architecture.\n\n### Deliverables\n- Architecture documentation of current auth flow\n- Sequence diagrams for new Cloudflare Worker auth flows\n- API endpoint documentation and routing rules\n- Tenant directory structure and schema\n- Proposed Cloudflare Worker-based design",
+  "acceptance_criteria": [
+    "Current authentication flow is fully documented with sequence diagrams",
+    "New Cloudflare Worker-based auth flow is designed with routing rules",
+    "API endpoints are documented for the new flow",
+    "Tenant directory schema is defined for pooled vs dedicated tenants"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Waqar used Claude Code to generate the current authentication flow documentation and proposed Cloudflare Worker design. Documentation committed to a feature branch in GitHub: jira-1279-documentation-current-authentication-flow.",
+  "comment_summary": "Waqar generated the current authentication flow documentation and proposed Cloudflare Worker design using Claude Code, committed to a GitHub feature branch.",
+  "comment_count": 1
+}

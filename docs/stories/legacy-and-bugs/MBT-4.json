@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-4",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Add Segment User Behavior Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:29:56.081-0800",
+  "updated": "2024-05-24T02:24:38.771-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Analytics"],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Integrate Segment analytics JavaScript library into the application to capture user behavior data and track conversion events. Segment provides a unified analytics pipeline that can forward events to multiple downstream tools.",
+  "acceptance_criteria": [
+    "Segment analytics JavaScript snippet is loaded on all application pages",
+    "Page view events are tracked automatically on navigation",
+    "Key user interactions generate trackable events",
+    "Segment dashboard receives and displays incoming event data"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Segment JS snippet added to the application for client-side event tracking. No server-side changes required.",
+  "comment_summary": "",
+  "comment_count": 0
+}

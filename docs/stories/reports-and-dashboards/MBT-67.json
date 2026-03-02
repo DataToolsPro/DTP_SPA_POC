@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-67",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Report Meta Data Request for Salesforce POC",
+  "status": "Withdrawn",
+  "feature_folder": "reports-and-dashboards"
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1245",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Dark Mode White Anchored Section on Scroll",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-11-30T19:27:49.592-0800",
+  "updated": "2026-03-01T04:04:59.433-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user in dark mode, I want all anchored/sticky sections to use the correct dark background color when scrolling, so that there are no jarring white sections breaking the dark theme.",
+  "description": "In dark mode, scrolling revealed a white anchored section that did not inherit the dark theme background. The sticky/anchored section header retained its default white background instead of adopting the dark mode color scheme.",
+  "acceptance_criteria": [
+    "Anchored/sticky sections use the dark mode background color when dark mode is active",
+    "No white sections appear when scrolling in dark mode",
+    "Fix does not affect light mode styling"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed dark mode CSS for anchored/sticky sections to use the correct dark background color instead of default white.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS dark mode override added for the sticky section background color.",
+  "comment_summary": "Developer fixed the issue directly on production and shared a screenshot confirming the dark background on the anchored section.",
+  "comment_count": 1
+}

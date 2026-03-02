@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-726",
+  "epic_key": "MBT-723",
+  "feature_folder": "infrastructure",
+  "title": "Set Up Local Lambda Testing with Container App",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-25T13:47:27.290-0700",
+  "updated": "2024-08-08T23:04:49.556-0700",
+  "assignee": "Anton Kudryavtsev",
+  "reporter": "Jamal Uddin",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Set up a local containerized environment for testing Lambda functions without deploying to AWS. This enables faster iteration cycles for development and experimentation by running Lambda functions in a local container app instead of requiring continuous deployment to the AWS Lambda service.",
+  "acceptance_criteria": [
+    "Lambda function runs locally in a container environment",
+    "Developer can iterate on code changes without deploying to AWS",
+    "Local container accurately simulates the Lambda execution environment",
+    "Test results from local execution are consistent with AWS Lambda behavior"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-724", "MBT-725"],
+  "source_files": [],
+  "implementation_notes": "Local container testing setup for Lambda functions to reduce deployment overhead during development.",
+  "comment_summary": "",
+  "comment_count": 0
+}

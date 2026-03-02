@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-891",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Display Last Refreshed Timestamp Next to Refresh Button",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-04T00:30:12.287-0700",
+  "updated": "2024-10-15T19:07:59.148-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to see when the report data was last refreshed next to the refresh button, so that I know how current the displayed data is.",
+  "description": "Adds a \"Last Refreshed: mm/dd/yyyy hh:mm\" timestamp in small text to the left of the refresh button on the Reports and Dashboards page. This provides clarity about data freshness, especially when filters are applied and date-based columns like \"Last Used\" may not be relevant.\n\nThe timestamp displays the max modified date from the data set as discussed with the development team.",
+  "acceptance_criteria": [
+    "Last Refreshed timestamp is displayed next to the refresh button",
+    "Timestamp format is mm/dd/yyyy hh:mm",
+    "Timestamp updates after clicking the refresh button",
+    "Text is small and does not disrupt the existing layout"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added 'Last Refreshed: mm/dd/yyyy hh:mm' text to the left of the refresh button. Uses the max modified date from the dataset.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Displays the max modified date from the loaded data. No new database field was required.",
+  "comment_summary": "Balaji confirmed with Waqar to use the max modified date for the timestamp display.",
+  "comment_count": 4
+}

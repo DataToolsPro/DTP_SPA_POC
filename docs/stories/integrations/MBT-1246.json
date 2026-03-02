@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1246",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Consume and Enrich Snowflake Semantic Views in DataTools Pro",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-02T00:49:34.423-0800",
+  "updated": "2026-03-01T04:05:16.888-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake", "metrics"],
+  "story": "As a DataTools Pro user with Snowflake semantic views, I want to import and enrich semantic layer definitions so that I can merge or create metrics from Snowflake's YAML-based semantic models.",
+  "description": "Enable DataTools Pro to consume semantic views from Snowflake's semantic layer. Snowflake semantic views are defined as YAML files. The system should be able to:\n\n1. Ingest the YAML semantic view definitions from Snowflake\n2. Parse metrics, dimensions, and measures from the YAML structure\n3. Check imported metrics against existing DataTools Pro metrics\n4. Merge with existing records or create new metric entries\n\nThis creates bidirectional interoperability with Snowflake's semantic layer: export (MBT-1144) and now import/consumption.",
+  "acceptance_criteria": [
+    "System can read semantic view YAML definitions from Snowflake",
+    "Imported metrics are compared against existing DataTools Pro metrics",
+    "Matching metrics are merged with existing records",
+    "New metrics are created for unmatched entries",
+    "Imported semantic model structure is preserved for reference"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New import flow for consuming Snowflake semantic view YAML files and reviewing merge/create actions.",
+  "middleware_changes": "YAML parser for Snowflake semantic model format. Metric matching and merge logic against existing DataTools Pro metrics.",
+  "data_model_changes": "Imported semantic view metadata stored alongside existing metric records. Source tracking for Snowflake-originated metrics.",
+  "api_changes": "Endpoint to receive and process Snowflake semantic YAML content.",
+  "dependencies": ["MBT-1144"],
+  "source_files": [],
+  "implementation_notes": "This is the counterpart to MBT-1144 (YAML export). Together they create full bidirectional interoperability with Snowflake's semantic layer.",
+  "comment_summary": "Developer requested a meeting to discuss implementation details.",
+  "comment_count": 1
+}

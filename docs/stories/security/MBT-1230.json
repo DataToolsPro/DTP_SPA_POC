@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1230",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Remediate SQL Injection via String Concatenation in Controllers",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-10-13T06:31:35.681-0700",
+  "updated": "2026-03-01T04:01:51.085-0800",
+  "assignee": "Unassigned",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Snyk code scan identified potential SQL injection vulnerabilities in multiple controllers where raw SQL queries use string concatenation instead of parameterized queries.\n\n### Critical Findings\n- **InitiativeController.php** (line 163): Taxonomy value query with concatenated `initiative_id` and `primaryTaxID`\n- **MetricsController.php** (line 275): Metric taxonomy query with concatenated `metric_id` and `primaryTaxID`\n- **ObjectFieldsController.php** (line 462): Salesforce entity query with concatenated `objectName`\n- **ReportController.php** (lines 198, 268, 360): Report/dashboard/Tableau taxonomy queries\n- **MapFieldsController.php** (line 552): Object fields query with concatenated `objectName` from user input\n\n### High/Medium Findings\n- **ReportController.php** (lines 466-470, 537-541, 594-598): Additional taxonomy queries\n- **DataMappingController.php** (lines 2212, 2218, 2221, 2280): Field and table name concatenation\n- **MapFieldsController.php** (lines 411, 417, 420, 469, 482): Additional field concatenation\n\n### Remediation\nReplace string concatenation with Eloquent/Query Builder parameterized queries or use PDO prepared statements with bound parameters.",
+  "acceptance_criteria": [
+    "All critical SQL injection findings are remediated with parameterized queries",
+    "High and medium findings are reviewed and remediated where user input is involved",
+    "No raw SQL string concatenation with user-controlled input remains in any controller",
+    "Snyk rescan shows no SQL injection findings"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Refactor raw SQL queries in InitiativeController, MetricsController, ObjectFieldsController, ReportController, MapFieldsController, and DataMappingController to use parameterized queries or Eloquent/Query Builder.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1191"],
+  "source_files": ["app/Http/Controllers/InitiativeController.php", "app/Http/Controllers/MetricsController.php", "app/Http/Controllers/ObjectFieldsController.php", "app/Http/Controllers/ReportController.php", "app/Http/Controllers/MapFieldsController.php", "app/Http/Controllers/DataMappingController.php"],
+  "implementation_notes": "Some findings may be false positives where values come from the database (not user input) or from authenticated user context. However, the string concatenation pattern should still be replaced with parameterized queries for defense-in-depth. Some of the DataMappingController and MapFieldsController findings involve building SQL export strings (not executing queries) so they are lower risk.",
+  "comment_summary": "",
+  "comment_count": 0
+}

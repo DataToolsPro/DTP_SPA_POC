@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-996", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Tooltip Capitalization — 'Salesforce' Not Capitalized in Report/Dashboard Icon",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-17T13:55:32.593-0800", "updated": "2024-11-27T22:03:48.155-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the tooltip for the report/dashboard icon to correctly capitalize 'Salesforce', so the branding is consistent.",
+  "description": "Bug fix: the tooltip on the report/dashboard Salesforce icon had 'salesforce' in lowercase. Fixed to use proper capitalization 'Salesforce'.",
+  "acceptance_criteria": ["Tooltip shows 'Salesforce' with capital S", "Branding is consistent across all tooltips"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed tooltip text to capitalize 'Salesforce' correctly.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-902"], "source_files": [],
+  "implementation_notes": "Simple text fix in the tooltip attribute.",
+  "comment_summary": "Waqar fixed the capitalization.", "comment_count": 1
+}

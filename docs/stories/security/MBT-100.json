@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-100",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Persist Data Mappings Across Logout/Login Sessions",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-17T21:57:38.603-0700",
+  "updated": "2026-03-01T03:46:11.221-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want my data mappings to persist after logging out and logging back in, so that I don't lose my mapping configuration between sessions.",
+  "description": "Data mappings were lost when a user logged out and logged back in. Closing and reopening the browser window preserved mappings (stored in DOM), but a full logout/login cycle did not.\n\n### Root Cause\nMappings were managed entirely in the DOM (client-side) rather than persisted to the database.\n\n### Fix\nMigrated mapping state from DOM-only storage to database persistence, ensuring mappings survive logout/login cycles.",
+  "acceptance_criteria": [
+    "Data mappings persist after logout and login",
+    "Closing and reopening the browser window still preserves mappings",
+    "Previously saved mappings are recalled correctly after re-authentication"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Mappings now load from database on page load instead of relying on DOM state, ensuring they appear after logout/login.",
+  "middleware_changes": "Added database read/write operations for mapping state that previously lived only in the DOM.",
+  "data_model_changes": "Mapping state stored in database instead of DOM-only. New or updated table/columns to persist user mapping configurations.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Migrated from DOM-based mapping state to database persistence. QA confirmed all existing functionality works correctly after the change.",
+  "comment_summary": "Waqar identified the issue as DOM-only storage and implemented database persistence. Ryan tested and confirmed it worked. Waqar verified full QA and asked to close the ticket.",
+  "comment_count": 4
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1327",
+  "epic_key": "MBT-1344",
+  "feature_folder": "infrastructure",
+  "title": "Decision: Cloudways Server Sizing and Deployment Topology",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:30:54.482-0800",
+  "updated": "2026-02-22T18:47:06.157-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Define the server topology for Cloudways deployments before provisioning. Two deployments are planned: staging and production.\n\n## Decisions\n- **Production**: AWS via Cloudways\n- **Dev/Stage**: Reuse existing Digital Ocean server with a new application foundation\n- Clone and update environment configuration documentation to be committed to the repository",
+  "acceptance_criteria": [
+    "Production topology is defined using AWS on Cloudways",
+    "Dev/Stage topology reuses the existing Digital Ocean server",
+    "New application foundation is created on the Digital Ocean server",
+    "Environment configuration documentation is committed to the repository"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1326"],
+  "source_files": [],
+  "implementation_notes": "Part of V3 Architecture Planning. Separates production (AWS/Cloudways) from dev/stage (Digital Ocean/Cloudways) to optimize cost while maintaining environment isolation.",
+  "comment_summary": "",
+  "comment_count": 0
+}

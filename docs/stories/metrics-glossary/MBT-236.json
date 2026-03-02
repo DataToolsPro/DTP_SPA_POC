@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-236",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Report Count Badge with Link to Sidebar Reports Tab",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-13T21:57:01.557-0700",
+  "updated": "2024-05-24T02:24:58.247-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to see a count of linked reports next to each metric in the glossary table and click it to jump directly to the Reports tab, so that I can quickly gauge report coverage and drill into related analytics assets.",
+  "description": "Adds a report count rollup column to the Metrics Glossary data table. Each metric row displays the number of linked Salesforce reports as a clickable number. Clicking the count opens the sidebar detail panel and navigates directly to the Reports tab.\n\nThe count only displays when there are related reports (no zero counts shown). The count updates automatically when a user adds or removes a report association from the sidebar.",
+  "acceptance_criteria": [
+    "A report count column appears in the Metrics Glossary table",
+    "The count shows the number of reports linked to each metric",
+    "Zero counts are not displayed (empty cell instead)",
+    "Clicking the count opens the sidebar and navigates to the Reports tab",
+    "Adding or removing a report association automatically updates the count in the main table"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New clickable report count column in the Metrics Glossary table. Clicking the count opens the sidebar to the Reports tab. Count auto-updates when report associations change.",
+  "middleware_changes": "Query to compute report count rollup per metric for the glossary table data.",
+  "data_model_changes": "",
+  "api_changes": "Metrics list endpoint now includes a report_count field computed from the metric-report junction table.",
+  "dependencies": ["MBT-164"],
+  "source_files": [],
+  "implementation_notes": "Report count is computed via a subquery/join against the metric-report junction table. The sidebar's report association callbacks trigger a refresh of the count cell in the main table.",
+  "comment_summary": "Developer implemented in about an hour. The sidebar report tab auto-opens when the count is clicked, and counts update in real-time when associations change. Approved enthusiastically.",
+  "comment_count": 4
+}

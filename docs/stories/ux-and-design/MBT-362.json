@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-362",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Default Reporting Column to Blank and Expand Dropdown Options in Dictionary",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-13T20:14:35.946-0800",
+  "updated": "2024-05-24T02:25:06.355-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user working with the Data Dictionary, I want newly generated records to have a blank Reporting column by default and additional classification options in the dropdown, so that I can accurately categorize fields without misleading defaults.",
+  "description": "When new Dictionary records are generated, the Reporting column should default to blank instead of a pre-filled value. The Reporting dropdown options are also expanded.\n\n## Changes\n1. **Default value**: Newly generated Dictionary records have a blank Reporting column\n2. **Dropdown options expanded** to: (blank), Yes, No, Metric, KPI\n3. **Label fix**: Dropdown label displays \"Yes\" with proper capitalization instead of lowercase \"yes\"",
+  "acceptance_criteria": [
+    "Newly generated Dictionary records have a blank Reporting column by default",
+    "Reporting dropdown includes options: blank, Yes, No, Metric, KPI",
+    "Dropdown label for 'Yes' uses proper capitalization",
+    "Existing records with previously set Reporting values are not affected",
+    "Dropdown change saves correctly and updates the table"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Reporting dropdown expanded with new options (Metric, KPI) and defaults to blank for new records. Label capitalization fixed from 'yes' to 'Yes'.",
+  "middleware_changes": "Record generation logic updated to set Reporting column as blank by default instead of a pre-filled value.",
+  "data_model_changes": "Reporting field default value changed to blank/null. New enum values added: Metric, KPI.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Updated the record generation logic to default Reporting to blank. Added Metric and KPI as new dropdown options alongside existing Yes/No values. Fixed capitalization on the Yes label in the dropdown.",
+  "comment_summary": "Developer implemented the blank default and new dropdown options, pushed to staging. Newly added objects default to blank Reporting. All enhancements delivered together.",
+  "comment_count": 3
+}

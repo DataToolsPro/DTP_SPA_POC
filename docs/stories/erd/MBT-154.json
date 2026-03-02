@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-154",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Minor UX Tweaks: Navigation Order and Default Toggle State",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-20T00:07:09.538-0700",
+  "updated": "2026-03-01T03:57:05.450-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want the Entity Diagram navigation to be consistent with other tabs and the user relationships toggle defaulted to off on page load, so that my experience is consistent and the ERD is clean by default.",
+  "description": "## Changes\n1. **Add metrics link** to the entity diagram navigation bar.\n2. **Reorder navigation tabs** to match the order used on other pages for consistency.\n3. **Remove unused CSS overrides** on `.navbar-expand .navbar-nav .nav-link` (font-size, padding-left, padding-right rules that were leftover).\n4. **Default the \"Show User Relationships\" toggle to false** on page load so the ERD starts with a clean, uncluttered view.",
+  "acceptance_criteria": [
+    "Metrics link is present in the entity diagram navigation bar",
+    "Navigation tab order matches other pages in the application",
+    "Unused CSS overrides on .nav-link are removed",
+    "Show User Relationships toggle defaults to false on page load",
+    "ERD loads without standard user relationship lines visible"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Navigation reordered with metrics link added. User relationships toggle defaults to off. Leftover CSS overrides cleaned up.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-115"],
+  "source_files": [],
+  "implementation_notes": "Navigation updated, CSS cleanup of unused .navbar-expand .navbar-nav .nav-link overrides. Toggle initial state set to false in the JavaScript initialization.",
+  "comment_summary": "Developer confirmed navigation was updated and user relationship toggle defaults to false.",
+  "comment_count": 1
+}

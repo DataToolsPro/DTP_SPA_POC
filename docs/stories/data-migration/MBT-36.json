@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-36",
+  "epic_key": "MBT-39",
+  "feature_folder": "data-migration",
+  "title": "DDL Code Generation on the Migration Page",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-22T01:23:18.496-0800",
+  "updated": "2024-05-24T02:24:36.939-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to generate a DDL script from the fields in my migration table, so that I can copy the DDL and paste it directly into my Snowflake instance without manually writing the schema.",
+  "description": "Add DDL code generation capability to the Migration page. Users can generate a DDL script based on the fields present in their migration data table. The generated DDL can be copied and executed in the target database (e.g., Snowflake).\n\nThe DDL export renders fields from the currently visible data table — if the user is on the Migration tab, it lists migration fields; if on Dictionary, it lists dictionary fields.",
+  "acceptance_criteria": [
+    "User can trigger DDL generation from the Migration page",
+    "Generated DDL includes all fields visible in the current data table",
+    "DDL output can be copied to clipboard",
+    "Fields from the Migration tab are included when user is on the Migration screen"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New DDL generation button on the Migration page that opens a modal displaying the generated DDL script with copy-to-clipboard functionality.",
+  "middleware_changes": "Server-side logic to collect field metadata from the migration table and construct the DDL generation prompt.",
+  "data_model_changes": "",
+  "api_changes": "Endpoint to generate DDL from the current object's field metadata, leveraging the OpenAI integration.",
+  "dependencies": ["MBT-34", "MBT-35"],
+  "source_files": [],
+  "implementation_notes": "This was considered the foundational story for DDL export. Subsequent enhancements (MBT-50, MBT-82) built upon this initial capability.",
+  "comment_summary": "Developer asked for clarification on which fields to include. The requirement was confirmed as already complete — this story covered the initial DDL export implementation.",
+  "comment_count": 2
+}

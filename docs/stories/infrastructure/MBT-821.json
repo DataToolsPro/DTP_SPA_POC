@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-821",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Get Developer Access to FC Sandbox for Grouping Issue Replication",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-15T09:02:44.541-0700",
+  "updated": "2024-09-15T13:21:33.637-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Provision developer access to a Financial Cloud (FC) Salesforce sandbox environment so the development team can replicate and debug a grouping issue reported by a customer. This access enables testing against a representative Salesforce org configuration.",
+  "acceptance_criteria": [
+    "Developers have login access to the FC Salesforce sandbox",
+    "Sandbox environment contains the data needed to replicate the grouping issue",
+    "Access is provisioned for both Waqar and Balaji"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "FC sandbox access needed to replicate a customer-reported grouping issue in an environment that mirrors their Salesforce configuration.",
+  "comment_summary": "",
+  "comment_count": 0
+}

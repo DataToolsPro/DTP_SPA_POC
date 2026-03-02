@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-121",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Replace Expand/Collapse Buttons with Single Toggle",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T13:30:15.542-0700",
+  "updated": "2026-03-01T03:52:40.638-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want a single toggle button instead of separate expand and collapse buttons, so that the toolbar is cleaner and the interaction is more intuitive.",
+  "description": "## Context\nThe ERD toolbar had two separate buttons for expand and collapse (MBT-112). This uses extra space and is less intuitive than a single toggle.\n\n## Behavior\nThe two buttons are replaced with a single toggle that switches between expanded (showing fields) and contracted (object names only) states.",
+  "acceptance_criteria": [
+    "A single toggle button replaces the two expand/collapse buttons",
+    "Toggle switches between expanded and contracted ERD views",
+    "Toggle button visually indicates the current state",
+    "Toolbar is visually cleaner with the single control"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced separate expand and collapse toolbar buttons with a single toggle button that switches between detailed and conceptual views.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-112"],
+  "source_files": [],
+  "implementation_notes": "Simple UX refinement: consolidate two buttons into one toggle that tracks and swaps the current expand/collapse state.",
+  "comment_summary": "",
+  "comment_count": 0
+}

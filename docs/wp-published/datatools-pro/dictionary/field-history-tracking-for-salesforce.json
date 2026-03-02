@@ -1,0 +1,18 @@
+{
+  "post_id": 9245,
+  "title": "Field History Tracking for Salesforce",
+  "slug": "field-history-tracking-for-salesforce",
+  "url": "https://datatoolspro.com/tutorials/field-history-tracking-for-salesforce/",
+  "date": "2024-02-04T15:46:59",
+  "modified": "2024-02-04T15:47:11",
+  "status": "publish",
+  "categories": [
+    "DataTools Pro"
+  ],
+  "tags": [
+    "Dictionary"
+  ],
+  "subfolder": "dictionary",
+  "excerpt": "<p>Our latest release of DataTools Pro introduces our new Field History Tracking for Salesforce. Currently, this new feature is focused only on updates made to fields. This is our first step to help DataTools users understand Salesforce field history tracking and changes that could impact downstream reporting and analytics. Using Salesforce Field History Tracking Tracking [&hellip;]</p>",
+  "content_html": "\n<p>Our latest release of DataTools Pro introduces our new Field History Tracking for Salesforce. Currently, this new feature is focused only on updates made to fields. This is our first step to help DataTools users understand Salesforce field history tracking and changes that could impact downstream reporting and analytics.</p>\n\n\n\n<h2 class=\"wp-block-heading\">Using Salesforce Field History Tracking Tracking</h2>\n\n\n\n<p>No steps are required to enable history tracking.</p>\n\n\n\n<ol class=\"wp-block-list\">\n<li>Within a <a href=\"https://datatoolspro.com/tutorials/salesforce-field-dictionary-with-datatools-pro/\" title=\"Salesforce field dictionary\">Salesforce object dictionary</a>, click on the refresh icon to pull the latest object.</li>\n\n\n\n<li>Click on the history icon (clock) to open a window containing the recorded history change log for all fields in the object.</li>\n</ol>\n\n\n\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"372\" height=\"154\" src=\"https://datatoolspro.com/wp-content/uploads/2024/02/image-5.png\" alt=\"View Field History Tracking for Salesforce\" class=\"wp-image-9251\" srcset=\"https://datatoolspro.com/wp-content/uploads/2024/02/image-5.png 372w, https://datatoolspro.com/wp-content/uploads/2024/02/image-5-300x124.png 300w\" sizes=\"auto, (max-width: 372px) 100vw, 372px\" /></figure>\n\n\n\n<h2 class=\"wp-block-heading\">Notes for DataTools Field History Tracking for Salesforce</h2>\n\n\n\n<p>Currently, history tracing does not list &#8220;new&#8221; fields added to your Salesforce instance. We are currently working on an enhancement.</p>\n\n\n\n<p>History changes is currently tracked by DataTools Pro will pull changes based on the Salesforce &#8220;Last Modified Date&#8221;, so it will not be retro-active to your objects. This is why all history logs are empty. Multiple changes that occur in between object refresh are not tacked individually.</p>\n"
+}

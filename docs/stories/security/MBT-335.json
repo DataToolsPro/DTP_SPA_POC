@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-335",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "SQL Code Injection into DB - Possible Bug",
+  "status": "Withdrawn",
+  "feature_folder": "security"
+}

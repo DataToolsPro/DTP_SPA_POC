@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-312",
+  "skipped": true,
+  "skip_reason": "stub",
+  "title": "CSP Policy Inclusion for Pendo",
+  "status": "Done",
+  "feature_folder": "security"
+}

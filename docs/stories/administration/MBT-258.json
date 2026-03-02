@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-258",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "In-App Notification for Account Sharing Invitations",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-25T01:51:38.042-0700",
+  "updated": "2024-05-24T02:24:57.418-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user, I want to see an in-app notification when another user invites me to share their account, so that I am aware of pending invitations and can accept them upon login.",
+  "description": "Add an in-app notification system that alerts users when they have been invited to share another user's account. When a user logs in, they should see a notification indicating that an invitation is pending, prompting them to accept or decline the data sharing invitation.",
+  "acceptance_criteria": [
+    "User receives an in-app notification when invited to share another user's account",
+    "Notification is visible upon login if an invitation is pending",
+    "Notification indicates which user sent the invitation",
+    "User can act on the invitation from the notification"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New notification indicator visible after login showing pending account sharing invitations.",
+  "middleware_changes": "Logic to check for pending invitations on login and generate notification records for the invited user.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-257"],
+  "source_files": [],
+  "implementation_notes": "Notifications are triggered when an account sharing invitation is sent. The notification appears on the invited user's next login.",
+  "comment_summary": "Developer confirmed notifications are working when invitations are sent.",
+  "comment_count": 1
+}

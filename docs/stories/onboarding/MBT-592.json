@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-592",
+  "epic_key": "MBT-56",
+  "feature_folder": "onboarding",
+  "title": "Stamp User ID on DTP_SIGNUP Table During Registration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-20T20:59:33.037-0800",
+  "updated": "2026-03-01T03:39:48.914-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "When a user signs up and authenticates into DataTools Pro, the system should stamp the `user_id` on the `DTP_SIGNUP` table. This creates a complete audit trail from initial sign-up through OTP verification to user creation.\n\nA `used_by` field was added to the signup model. Changes were deployed to production and tested by creating a new user through the dtpwaqar Salesforce instance.",
+  "acceptance_criteria": [
+    "The user_id is written to the DTP_SIGNUP table when a user completes authentication",
+    "The audit trail links sign-up record to OTP verification to user creation",
+    "Existing sign-up records without user_id remain unaffected"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated the sign-up authentication flow to write the user_id back to the DTP_SIGNUP table upon successful user creation.",
+  "data_model_changes": "Added `used_by` (user_id) field to the `DTP_SIGNUP` table to track which user account was created from a given sign-up record.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implemented and deployed to production. Tested by creating a new user on the dtpwaqar Salesforce instance and verifying the used_by field was populated.",
+  "comment_summary": "Developer confirmed the used_by field was added, deployed to production, and tested successfully by creating a new user through the dtpwaqar instance.",
+  "comment_count": 1
+}

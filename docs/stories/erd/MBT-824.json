@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-824",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Persist View-Specific Settings (User Relationships, Field API Names) per ERD View",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-20T22:04:18.319-0700",
+  "updated": "2024-07-25T23:50:08.990-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user managing multiple ERD views, I want the 'Show User Relationships' and 'Field API Name' toggle settings to be saved per view, so that each view remembers its own display preferences when I switch between them.",
+  "description": "The 'Show User Relationships' and 'Field API Name' options on the ERD are display preferences that logically belong to a specific view rather than being global settings. This feature moves these toggles into the ERD settings sidebar and persists them per view.\n\nWhen a user checks or unchecks a setting, it is immediately saved to the database and the diagram node data is updated to reflect the change. Each ERD view maintains its own independent set of option settings, so switching between views restores the correct toggles for that view.\n\nThis replaces the previous global URL parameter approach with a per-view persistence model.",
+  "acceptance_criteria": [
+    "Show User Relationships toggle is persisted per ERD view",
+    "Field API Name toggle is persisted per ERD view",
+    "Changing a toggle immediately saves the preference to the database",
+    "Switching between ERD views restores the correct toggle states for each view",
+    "The diagram node data updates in real-time when a toggle is changed",
+    "Settings are stored in the ERD view data model, not as global preferences"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Settings toggles for Show User Relationships and Field API Name moved into the ERD settings sidebar and now persist per view. Switching views restores the correct toggle states.",
+  "middleware_changes": "Toggle state changes trigger immediate database saves. View load logic retrieves and applies the saved toggle states for the selected view.",
+  "data_model_changes": "ERD view table extended with columns for view-specific option settings (user relationships, field API names).",
+  "api_changes": "Endpoints to save and retrieve view-specific toggle settings. Toggle changes trigger an AJAX save and diagram re-render.",
+  "dependencies": ["MBT-765", "MBT-294"],
+  "source_files": [],
+  "implementation_notes": "Data model adjustments were required to store per-view settings. The previous approach used URL parameters for these preferences, which were global. Now each view record stores its own settings. When a toggle is changed, the node data JSON is also updated to reflect the new display state.",
+  "comment_summary": "Developer understood the requirement quickly and noted data model adjustments would be needed. Asked whether previous global toggle controls should be removed after implementation. Completed and deployed with per-view persistence where check/uncheck immediately saves to the database.",
+  "comment_count": 4
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-78",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Spike: Salesforce Reporting REST API Research",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-31T22:56:55.253-0700",
+  "updated": "2024-05-24T02:24:28.387-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Reporting"],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "API"],
+  "story": "",
+  "description": "Research spike to evaluate the Salesforce REST API capabilities for reports. The goal was to understand the extent of available functions so the team could assess feasibility for migration and operational reporting use cases.\n\nFindings were documented in the Confluence page \"Spike Reporting API Research\" and notes from Slack discussions were consolidated there. The spike was completed and the original user story was pulled into the backlog for future implementation.",
+  "acceptance_criteria": [
+    "Salesforce REST API report endpoints are documented with capabilities and limitations",
+    "Findings are consolidated in the Confluence knowledge base",
+    "Backlog item created for future reporting feature implementation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Research spike only — no code changes. Results documented in Confluence under Spike Reporting API Research page.",
+  "comment_summary": "Ryan marked the spike complete and consolidated Slack discussion notes into the Confluence page. The original user story was moved to the backlog for future work.",
+  "comment_count": 1
+}

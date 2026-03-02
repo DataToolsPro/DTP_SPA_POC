@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-743",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Group Row Styling in Dark Mode to Differentiate from Metric Rows",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-05T09:19:52.843-0700",
+  "updated": "2024-07-25T23:44:53.217-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user in dark mode, I want group header rows to be visually differentiated from metric rows when using Group By, so that I can easily distinguish groups from individual records.",
+  "description": "In dark mode, group header rows in the Metrics Glossary table (when using Group By) are styled identically to regular metric rows, making it impossible to tell where one group ends and another begins.\n\n## Fix\nApply dark mode CSS to group rows that mirrors the light mode differentiation — group headers should have a distinct background color to visually separate them from metric data rows.\n\n## Issue Found During Development\nOnly the first record within a group had a background color applied in the code. All records within a group should have the same background color for consistency.",
+  "acceptance_criteria": [
+    "Group header rows have a distinct background color in dark mode",
+    "Group styling in dark mode is visually similar to light mode differentiation",
+    "All records within a group have consistent background styling",
+    "Individual metric rows remain visually distinct from group rows"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Group header rows now display with a distinct background color in dark mode, matching the visual differentiation pattern from light mode. Fixed a bug where only the first record in a group had a background color.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "Found that the code only applied background color to index 1 records within groups. Fixed to apply consistent background color to all records within each group. CSS dark mode overrides added for group row styling.",
+  "comment_summary": "Developer identified that only the first record in a group had a background color applied. Fixed to apply to all records within the group. Confirmed working on staging.",
+  "comment_count": 3
+}

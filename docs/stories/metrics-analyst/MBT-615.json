@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-615",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Disable CSV Export When Row Grouping Is Active",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-12T18:17:42.552-0700",
+  "updated": "2024-05-24T02:25:37.863-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst exporting metrics from the glossary, I want to be clearly informed when export is unavailable due to row grouping, so that I understand why my export contains unexpected data and can disable grouping to export correctly.",
+  "description": "Exporting metrics to CSV while row grouping is enabled produces incorrect results (e.g., only 1 record exported when many are visible). The DataTables library does not support export with row grouping enabled, as confirmed by their compatibility matrix.\n\nThe solution is to disable the export/copy buttons when grouping is active and show a popup alert explaining: 'Currently, export is disabled when grouping metrics.' This sets clear expectations rather than hiding the buttons entirely.",
+  "acceptance_criteria": [
+    "Export and copy buttons are disabled when row grouping is active",
+    "A popup alert appears when a user attempts to export with grouping enabled",
+    "Alert message explains that export is disabled while grouping is active",
+    "Export works correctly when grouping is turned off",
+    "Export buttons re-enable when grouping is removed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a popup alert when users attempt to export, copy, or print while row grouping is enabled. Buttons remain visible but trigger the alert instead of the export action.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "DataTables RowGroup extension is incompatible with the Buttons export extension per the official compatibility matrix. A custom multi-sheet export approach was explored but deferred in favor of the simpler alert solution.",
+  "comment_summary": "Developer found DataTables RowGroup is incompatible with export. Explored a multi-sheet Excel approach but it was deferred. Final solution: popup alert when export is attempted with grouping active. Ryan approved the alert approach.",
+  "comment_count": 8
+}

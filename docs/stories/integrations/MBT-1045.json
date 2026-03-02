@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1045",
+  "epic_key": "MBT-1046",
+  "feature_folder": "integrations",
+  "title": "GitHub Connection Validation Before Save",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-22T19:15:35.526-0800",
+  "updated": "2025-01-07T23:34:10.055-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "As a DataTools Pro user setting up the GitHub integration, I want the system to validate my connection credentials before saving so that I have confidence my token, repository owner, and repository name are correct.",
+  "description": "Before allowing a user to save their GitHub connection details, validate that the credentials are correct by testing the connection. This provides immediate feedback and prevents users from saving invalid configurations.\n\nValidation checks:\n1. Token validity: verify the personal access token is valid\n2. Repository access: verify the repository owner and repository name exist and are accessible\n3. Permissions: confirm the token has the required permissions for file operations\n\nError messages:\n- Invalid token: clear error message indicating the token is not valid\n- Invalid repo/owner: error indicating the repository or owner name is incorrect\n\nAlso update the documentation link on the settings page to point to the tutorial for creating a personal access token: https://datatoolspro.com/tutorials/github-personal-access-token/",
+  "acceptance_criteria": [
+    "Connection is validated on save before credentials are stored",
+    "Invalid token shows a clear error message",
+    "Invalid repository or owner shows a specific error message",
+    "Valid connection with correct permissions saves successfully",
+    "Documentation link points to the GitHub personal access token tutorial",
+    "Previous generic documentation is removed"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Pre-save validation with specific error messages for invalid tokens and incorrect repository/owner. Updated documentation link to the GitHub personal access token tutorial. Removed previous generic documentation.",
+  "middleware_changes": "Connection validation service that checks token validity, repository existence, and permission levels via the GitHub API before allowing credential storage.",
+  "data_model_changes": "",
+  "api_changes": "Outbound validation calls to GitHub API to verify token, repository access, and permissions before saving connection details.",
+  "dependencies": ["MBT-1035"],
+  "source_files": [],
+  "implementation_notes": "Validation uses the GitHub API to check token validity first, then verifies repository access. Two distinct error states are handled: invalid token (401) and invalid repo/owner (404). The tutorial link for creating a personal access token was updated to the datatoolspro.com documentation.",
+  "comment_summary": "Developer added validation checks that run before saving and show specific error messages for invalid tokens and incorrect repository/owner names. Deployed to development for review.",
+  "comment_count": 1
+}

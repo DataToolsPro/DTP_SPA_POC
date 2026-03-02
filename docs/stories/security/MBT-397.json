@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-397",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Graceful Session Timeout Handling with Token Refresh",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-28T09:39:45.588-0800",
+  "updated": "2024-05-24T02:25:04.232-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to see a friendly prompt when my session times out, so that I can continue working without seeing a raw error message or being unexpectedly logged out.",
+  "description": "When the Salesforce access token expires, the application was displaying a raw error message. The session timeout experience needed to be improved to handle token expiration gracefully.\n\n## Implemented Behavior\n\nWhen the access token expires and the user tries to fetch data from Salesforce:\n\n1. A **popup modal** appears asking the user to continue or exit.\n2. **Continue**: Sends a request for a new access token using the refresh token, updates the auth model, and redirects back to the dashboard.\n3. **Exit**: Logs the user out and redirects to the login page.\n\nThis replaces the raw error display with a controlled, user-friendly flow.",
+  "acceptance_criteria": [
+    "Expired access tokens trigger a popup modal instead of a raw error",
+    "Clicking 'Continue' refreshes the access token using the refresh token",
+    "User is redirected to the dashboard after successful token refresh",
+    "Clicking 'Exit' logs the user out and redirects to login",
+    "No raw error messages are displayed to the user during token expiration"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Popup modal appears when access token expires, offering Continue (refresh) or Exit (logout) options. Replaces raw error display.",
+  "middleware_changes": "Token refresh logic implemented: when access token expires, the refresh token is used to obtain a new access token. The auth model is updated with the new token.",
+  "data_model_changes": "",
+  "api_changes": "New endpoint or logic to exchange refresh token for a new access token from Salesforce OAuth.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The access token from Salesforce expires after a set period. Previously, attempting to use an expired token resulted in a raw error. Now the middleware detects the expired token, presents a modal, and on 'Continue' uses the refresh token to get a new access token. The auth token model is updated and the user is redirected to the dashboard.",
+  "comment_summary": "Developer explained the root cause: access tokens expire and refresh token exchange was not previously implemented. Built a popup modal with Continue/Exit options and token refresh logic. Product owner confirmed the fix resolved the issue.",
+  "comment_count": 3
+}

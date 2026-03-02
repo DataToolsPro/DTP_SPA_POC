@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-751",
+  "epic_key": "MBT-731",
+  "feature_folder": "ux-and-design",
+  "title": "Default Filter Dropdowns to 'All' Instead of 'Select'",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:18:10.255-0700",
+  "updated": "2024-07-25T23:44:53.780-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user viewing reports, I want filter dropdowns to show 'All' by default instead of 'Select', so that I know I am looking at all data and can narrow down from there.",
+  "description": "Filter select boxes on the Reports and Dashboards page display 'Select' or 'Select an option' as their default placeholder text. This is misleading because the user sees all records but the dropdown implies nothing is selected.\n\n## Change\nReplace default placeholder text from 'Select' / 'Select an option' to 'All' on all filter dropdowns on the Reports and Dashboards page.",
+  "acceptance_criteria": [
+    "All filter dropdowns on Reports and Dashboards default to displaying 'All'",
+    "When 'All' is displayed, all records are shown (no filtering applied)",
+    "Selecting a specific value filters the data and displays the selected value",
+    "Clearing the filter returns to 'All'"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Filter dropdown default text changed from 'Select' / 'Select an option' to 'All' on the Reports and Dashboards page.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Updated placeholder text for all filter select elements on the Reports and Dashboards page. Date-related filter was the last to be updated.",
+  "comment_summary": "Developer completed all non-date filters first, then addressed the date-related filter. Confirmed working on staging.",
+  "comment_count": 3
+}

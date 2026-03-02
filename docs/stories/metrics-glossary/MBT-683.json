@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-683",
+  "epic_key": "MBT-689",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Allow Duplicate Object Labels in Dictionary",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-02T21:26:50.201-0700",
+  "updated": "2024-05-24T02:25:41.646-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "",
+  "description": "Fixes an issue where Salesforce objects with the same label (but different API names) were being deduplicated incorrectly in the object selector. This occurs when managed packages create objects with the same label as custom objects.\n\nThe fix removes the label-based uniqueness check from the frontend selector, since the API name (which is already unique) should be the deduplication key. Both objects with the same label now appear in the selector.\n\nAlso addresses a mismatch where certain objects appeared in the data table but not in the selector control.",
+  "acceptance_criteria": [
+    "Objects with the same label but different API names both appear in the selector",
+    "Deduplication is based on API name, not label",
+    "Object selector matches the objects shown in the data table"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Object selector now shows all objects including those with duplicate labels. Selector list matches the data table.",
+  "middleware_changes": "Removed label-based uniqueness check from object selector population. Deduplication now relies on API name.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Salesforce managed packages can create objects with the same label as custom objects (e.g., 'Syndication'). The API name suffix (__c vs namespace prefix) differentiates them. ChangeEvent and Share suffixed objects are also fetched but are separate Salesforce system objects.",
+  "comment_summary": "Developer reproduced the issue by creating custom objects in the PBO Salesforce org. Discovered the existing uniqueness check was on label, not API name. Fix applied to use API name. Also discussed that new Salesforce objects only appear after a manual refresh.",
+  "comment_count": 17
+}

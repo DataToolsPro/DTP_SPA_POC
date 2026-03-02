@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-560",
+  "epic_key": "MBT-443",
+  "feature_folder": "help-and-documentation",
+  "title": "Consolidate Documentation Page to Render Support Hub Content",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-04T15:11:55.640-0800",
+  "updated": "2026-03-01T04:23:50.123-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Consolidate the documentation page (`/documentation/`) to render the content from the support page (`/support/`) instead of maintaining separate pages. This reduces content maintenance overhead by keeping a single source of truth for help content.\n\nCSS adjustments were applied to hide the scheduling section (`.schedulesession {display:none;}`) and style the recent blog posts section (`.recentblogs`) to match the overall design.",
+  "acceptance_criteria": [
+    "The /documentation/ page renders the same content as the /support/ page",
+    "Only one page needs to be maintained for support/documentation content",
+    "The scheduling section is hidden via CSS",
+    "Recent blog posts section follows consistent styling"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Documentation page now renders support hub content. Scheduling section hidden and blog posts section restyled for consistency.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Custom CSS classes added: .schedulesession to hide the scheduling block and .recentblogs for styling the blog posts section. Deployed on staging for review before production.",
+  "comment_summary": "Developer staged the changes and asked for design confirmation. CSS tweaks were applied per feedback to hide scheduling and style blog posts. Final version deployed on staging.",
+  "comment_count": 7
+}

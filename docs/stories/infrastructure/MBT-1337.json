@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1337",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Decision: Backend Technical Stack - Queue, Storage, API Versioning",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:31.721-0800",
+  "updated": "2026-03-01T04:18:34.848-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Resolve open architecture decisions documented in `docs/architecture/backend.md`. This is specifically for the private Laravel API that only connects to the frontend app, not for third-party customer access.\n\n### Decisions Needed\n1. **API versioning** — Confirm `/api/v1/` prefix convention\n2. **Queue driver** — Redis? Where is Redis hosted?\n3. **Asset storage** — Part of the build process\n4. **Customer file storage** — Is there persistent file storage on the Laravel server?\n5. **Route separation** — Private API routes (frontend) vs public API routes (Zapier, external clients) need different handling",
+  "acceptance_criteria": [
+    "API versioning convention decided and documented",
+    "Queue driver selected and hosting location determined",
+    "Asset storage strategy defined",
+    "Customer file storage approach decided",
+    "Private vs public API route separation strategy documented"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Route middleware to separate private (frontend) and public (Zapier, external) API access.",
+  "data_model_changes": "",
+  "api_changes": "API versioning with /api/v1/ prefix. Separate route groups for private and public APIs.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The private API serves only the React frontend. The public API serves Zapier and other external integrations. These need different authentication, rate limiting, and routing strategies.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

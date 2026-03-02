@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-827",
+  "skipped": true,
+  "skip_reason": "stub — description contains only an image reference with no text substance",
+  "title": "Dictionary Not Loading Object",
+  "status": "Done",
+  "feature_folder": "data-dictionary"
+}

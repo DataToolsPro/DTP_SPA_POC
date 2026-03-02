@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-311",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "ERD Empty State Guidance Modal with Video Tutorial",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-17T10:47:41.382-0700",
+  "updated": "2024-05-24T02:25:02.556-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see a helpful guidance modal when I navigate to the ERD page without any objects, so that I know I need to add Salesforce objects to my dictionary first.",
+  "description": "When a user clicks on the Entity Relationship Diagram menu and has 0 objects in their dictionary, display a modal instead of an empty ERD page.\n\n## Modal Content\n- Message: \"To view an entity relationship diagram, you need to first add Salesforce objects to your dictionary.\"\n- Embedded YouTube tutorial video (URL to be provided)\n- Button to navigate directly to the dictionary page to add objects",
+  "acceptance_criteria": [
+    "Modal appears when ERD is accessed with 0 objects in the dictionary",
+    "Modal displays instructional text explaining the prerequisite",
+    "Modal includes a video tutorial placeholder",
+    "Modal includes a button to navigate to the dictionary page",
+    "ERD loads normally when objects exist"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "New empty-state guidance modal on the ERD page that educates users about the prerequisite of adding Salesforce objects. Includes instructional text, video tutorial, and a navigation button.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Modal checks the object count on page load. Video URL to be updated once the tutorial is recorded. Navigation button added to the modal at Ryan's request.",
+  "comment_summary": "Developer implemented the modal with text and video placeholder. Ryan requested adding a navigation button to the modal, which was added.",
+  "comment_count": 3
+}

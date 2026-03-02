@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-337",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Log All Authentication Events with IP Address",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-06T23:35:09.942-0800",
+  "updated": "2024-05-24T02:25:07.355-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Track all login authentication events (not just first login) including the user's IP address. This provides a governance log of who logged in, when, and from where.\n\n## Requirements\n\n- Log every authentication event (not just first-time registration).\n- Include user ID, IP address, event date, and event type in the log.\n- Continue using Zapier for event notifications but include IP address in the payload.\n- Centralize the Zapier call function instead of duplicating across multiple files.\n\n## Zapier Payload Structure\n\nThe DTSignal payload includes: signal_namespace, userid, userip, orgid, email, eventid, eventdate, eventname, message, and actions.",
+  "acceptance_criteria": [
+    "Every login authentication attempt is logged with user ID and IP address",
+    "Both first-time and subsequent login events are tracked",
+    "Zapier notification payload includes the user IP address",
+    "Zapier call function is centralized in one location",
+    "Login events are logged in the event_log database table"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Authentication flow updated to log every login event with IP address. Zapier notification function centralized into a single reusable service. IP address added to the DTSignal Zapier payload.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-336"],
+  "source_files": [],
+  "implementation_notes": "Added IP address to the Zapier payload for all event types. Centralized the Zapier call function instead of having it duplicated across multiple files. The DTSignal payload now includes userip field.",
+  "comment_summary": "Developer asked whether to use database logging or Zapier notifications. Product owner confirmed Zapier is fine for notifications but IP address must be included. Developer centralized the Zapier call function and added IP address to the payload.",
+  "comment_count": 6
+}

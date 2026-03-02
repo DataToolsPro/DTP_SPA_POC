@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-169",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Header Cleanup: Logo, Breadcrumb, and Search Removal",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T23:10:44.001-0700",
+  "updated": "2024-05-24T02:24:35.134-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want to see the DataTools Pro logo in the header instead of breadcrumb text, so that the app branding is consistent with datatoolspro.com.",
+  "description": "Clean up the application header by removing breadcrumbs and the search bar, and replacing them with the DataTools Pro logo.\n\n## Changes\n- Hide breadcrumbs\n- Remove search functionality from header\n- Replace breadcrumb text with the white DataTools Pro logo\n- Match logo size to datatoolspro.com for visual consistency\n- Upload all three logo variations (white, color, dark) to the server for future flexibility",
+  "acceptance_criteria": [
+    "Breadcrumbs are hidden from the header",
+    "Search bar is removed from the header",
+    "White DataTools Pro logo appears in place of breadcrumb text",
+    "Logo size matches datatoolspro.com proportions",
+    "All three logo variations are uploaded to the server"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Header simplified by removing breadcrumbs and search, replacing with the white DataTools Pro logo for consistent branding.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Three logo variations (white, color, dark) uploaded to the server. White logo used for the header on the dark background.",
+  "comment_summary": "Developer completed breadcrumb removal and logo upload. All three logo variations were stored on the server.",
+  "comment_count": 3
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-810",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Field API Name Toggle on ERD Diagram",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-13T15:52:55.793-0700",
+  "updated": "2026-03-01T03:48:25.120-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want the Field API Name toggle to correctly switch between label and API name views on the ERD diagram, so that I can view field names in my preferred format.",
+  "description": "The Field API Name toggle on the ERD diagram stopped working after the lock/unlock and node positioning feature was implemented.\n\n### Root Cause\nThe ERD diagram JSON was previously generated dynamically by querying the database. After implementing the lock/unlock feature, the positioned node JSON was saved to the database. The toggle was trying to update the dynamic JSON, but the diagram was now rendering from the saved/static JSON, so changes to field display names had no effect.\n\n### Fix\nThe solution needed to replace the diagram node data (field names) while preserving the saved node positions. This required separating the position data from the content data in the saved JSON.",
+  "acceptance_criteria": [
+    "Field API Name toggle correctly switches between label and API name views",
+    "Toggling field names does not affect saved node positions",
+    "ERD diagram continues to render from saved position data",
+    "Fix works on both staging and production environments"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Field API Name toggle on the ERD diagram is restored to working state, correctly switching between label and API name views.",
+  "middleware_changes": "Updated the ERD rendering logic to separate node content data (field names) from position data, allowing the toggle to update field display names while preserving saved positions.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The fix required separating position data from content data in the saved ERD JSON. The fix was applied directly to staging due to other in-progress changes on the development branch that weren't ready for production. After staging validation, the fix was merged to production.",
+  "comment_summary": "Developer identified the root cause as the lock/unlock feature saving the full diagram JSON (including field names) to the database. The fix separates position data from content data. Developer requested permission to fix on staging to avoid deploying unrelated development changes to production.",
+  "comment_count": 4
+}

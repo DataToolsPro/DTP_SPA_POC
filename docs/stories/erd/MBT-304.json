@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-304",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Create functionality to save views where objects are hidden",
+  "status": "Done",
+  "feature_folder": "erd"
+}

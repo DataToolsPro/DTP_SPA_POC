@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-38",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Ensure All Data Dictionary Columns Are Displayed",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-02-22T01:33:03.287-0800",
+  "updated": "2026-03-01T01:27:06.684-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user viewing the Object Dictionary, I want all available data dictionary columns to be displayed in the table, so that I have complete visibility into every field attribute without missing information.",
+  "description": "The Dictionary table was not displaying all available columns that existed in the underlying data model. While the Migration view showed every column, the Dictionary view was missing several. A review was conducted against the Confluence specification to identify the gaps, and the missing columns were added to bring the Dictionary table into full parity with the data model.",
+  "acceptance_criteria": [
+    "All columns defined in the data model appear in the Dictionary table view",
+    "Column set in Dictionary matches what is available in the Migration view",
+    "No columns are inadvertently hidden or truncated after the update"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Additional columns that were missing from the Dictionary table are now rendered, bringing the view into parity with the underlying data model.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The migration view already had the complete column set. The Dictionary view was selectively hiding columns that should have been visible. Fix was to update the column visibility configuration for the Dictionary context.",
+  "comment_summary": "Developer identified that migration had all columns but the dictionary did not. Missing columns were added and submitted for review.",
+  "comment_count": 3
+}

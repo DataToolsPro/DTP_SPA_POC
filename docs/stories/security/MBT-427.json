@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-427",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Guest User Unauthorized Access to Dictionary and Migration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-21T23:06:48.578-0800",
+  "updated": "2024-05-24T02:25:08.420-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity (CVSS 7.1)**\n\nGuest users with only 'List Metrics' permission could access Dictionary and Migration endpoints and edit Salesforce object data by navigating directly to the affected URLs. No access control was enforced on these endpoints.\n\n## Attack Vector\n\n1. Login as Guest User with only List Metrics permission.\n2. Navigate to `/object/AccountBrand?view=migration` or `/object/AccountBrand?view=dictionary`.\n3. View all Salesforce objects and click Edit to modify definitions.\n\n## Fix\n\nAlready resolved as part of MBT-425, which added permission checks to the Dictionary and Migration view endpoints. Guest users without the appropriate permissions now receive a 403 Forbidden response.",
+  "acceptance_criteria": [
+    "Guest users without Dictionary permission cannot access dictionary view endpoints",
+    "Guest users without Migration permission cannot access migration view endpoints",
+    "Unauthorized access returns 403 Forbidden",
+    "Edit functionality is restricted to users with appropriate permissions"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Permission middleware applied to Dictionary and Migration view endpoints to enforce access control based on user permissions.",
+  "data_model_changes": "",
+  "api_changes": "GET /object/{object}?view=dictionary and GET /object/{object}?view=migration now require appropriate permissions. Returns 403 Forbidden for unauthorized users.",
+  "dependencies": ["MBT-425"],
+  "source_files": [],
+  "implementation_notes": "Fix was implemented as part of MBT-425 which added two new permission controls for Dictionary and Migration view endpoints.",
+  "comment_summary": "Developer confirmed this was already fixed as part of MBT-425.",
+  "comment_count": 1
+}

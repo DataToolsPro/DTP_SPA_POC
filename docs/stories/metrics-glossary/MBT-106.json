@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-106",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Add URL View Parameter for Dictionary vs Migration Navigation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-28T11:31:56.120-0700",
+  "updated": "2026-03-01T01:27:33.455-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the application to use a URL view parameter to control whether I see the Dictionary or Migration view, so that navigating between views and using breadcrumbs returns me to the correct context.",
+  "description": "The application needed better flow control between the Dictionary and Migration views. Previously, navigation between these two contexts was ambiguous, leading to incorrect page loads and broken breadcrumb behavior.\n\n## Changes\n\n1. **URL view parameter** added to `select.php` — `?view=dictionary` or `?view=migration` routes the user to the correct page.\n2. **Default landing page** changed from Migration Scorecard to Dictionary on login.\n3. **Dynamic breadcrumb context** on `object.php` — clicking the \"Scorecard\" breadcrumb navigates back to the select page with the correct `?view=` parameter based on whether the user was viewing a dictionary or migration object.\n\n## Edge Case\n\nA bug was introduced during initial implementation where debug meta fields were printed on the page. This was caused by leftover testing code and was resolved.",
+  "acceptance_criteria": [
+    "Navigating to select.php?view=dictionary loads the Dictionary view",
+    "Navigating to select.php?view=migration loads the Migration view",
+    "Default landing page after login is the Dictionary view",
+    "Clicking 'Scorecard' breadcrumb on object.php navigates back to select.php with the correct view parameter matching the current context",
+    "No debug or meta field output appears on any page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Default landing page changed from Migration Scorecard to Dictionary. Breadcrumb on object.php dynamically passes the correct view parameter so clicking 'Scorecard' returns the user to the contextually correct view.",
+  "middleware_changes": "Server-side logic in select.php reads the `view` URL parameter to determine which page content to render. object.php dynamically sets the view parameter on breadcrumb links based on the current tab context.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implementation involved adding a `view` query parameter to select.php and dynamically setting breadcrumb hrefs on object.php. A bug was introduced when debug output of meta fields was left in the code during testing, which was subsequently cleaned up.",
+  "comment_summary": "Developer implemented the first two URL parameter points quickly, then worked on the dynamic breadcrumb context. A follow-up review caught a bug where debug meta field output was accidentally left on the page; this was traced to leftover testing code and resolved.",
+  "comment_count": 9
+}

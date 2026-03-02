@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-418",
+  "epic_key": "MBT-413",
+  "feature_folder": "security",
+  "title": "Comprehensive Application Event Logging System",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-14T18:12:25.590-0800",
+  "updated": "2024-05-24T02:25:10.019-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement a comprehensive event logging system that records all significant user actions and authentication events in a database table. This replaces the previous Zapier-only approach with persistent database logging for audit and governance purposes.\n\n## Events to Log\n\n- Every authentication attempt (success or failure)\n- First-time login\n- Returning customer login\n- Invite sent (and to whom)\n- Invite deleted (pending)\n- Invite accepted\n- Invite deleted (accepted)\n- Invite resent\n- Request for more users\n- Permission added\n- Permission revoked\n- Scorecard added/deleted\n- View add/update/delete\n- Failed authentication: no user returned from Salesforce\n- Failed authentication: request from a different state\n\n## Log Schema\n\n`logs` table with fields: user_id, event_type, message, user_ip, result (success/fail), timestamps.\n\nNo admin UI is needed — data will be extracted via ETL jobs daily with a 6-month archive cycle.",
+  "acceptance_criteria": [
+    "All listed event types are logged to the logs database table",
+    "Each log entry includes user_id, event_type, message, user_ip, and result",
+    "Authentication failures are logged with IP address even when no user_id is available",
+    "State mismatch authentication failures are logged separately",
+    "The old event_log table functionality is preserved or migrated",
+    "No admin UI is required for viewing logs"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Logging calls added to all authentication, invitation, permission, scorecard, and view management flows. Centralized Log model used across all controllers.",
+  "data_model_changes": "New `logs` table created with columns: user_id, event_type, message, user_ip, result, created_at, updated_at. Replaces the older event_log table for comprehensive logging.",
+  "api_changes": "",
+  "dependencies": ["MBT-336", "MBT-337", "MBT-421"],
+  "source_files": [],
+  "implementation_notes": "Created a new logs table replacing the older event_log table. Event logging covers 15+ event types across authentication, invitation, permission, scorecard, and view operations. Failed auth attempts log the IP address even without a user_id. State validation failures are logged separately. Data will be consumed via ETL with 6-month archival. The old Zapier-based event logging (events 0001, 0002) was kept for backward compatibility.",
+  "comment_summary": "Developer asked whether to log all actions or just authentication. Product owner provided a comprehensive list of events including auth, invitations, permissions, scorecards, and views. Clarified that no UI is needed as ETL will extract the data daily. Developer implemented logging for all listed events including auth failure scenarios (no user returned, state mismatch). Old event_log table kept for backward compatibility with Zapier notifications.",
+  "comment_count": 17
+}

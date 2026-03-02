@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-789",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add LastRunDate and Report Format Attributes from Salesforce SOQL",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-03T11:35:28.078-0700",
+  "updated": "2024-08-10T14:35:20.280-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Adds two new Salesforce attributes to the report and dashboard data model:\n\n1. **LastRunDate** (reports) / **LastViewedDate** (dashboards) — indicates the last time the report was actually executed or the dashboard was viewed in Salesforce. This is distinct from LastModifiedDate and serves as a more accurate indicator of active usage. The field replaces Last Modified visually as a table column.\n\n2. **Report.Format** — the report format type (e.g., Matrix Report, Tabular Report). For dashboards, \"Dashboard\" is hardcoded as the format value.\n\nBoth fields are fetched via SOQL and stored in the local database for display and filtering.",
+  "acceptance_criteria": [
+    "LastRunDate is fetched via SOQL for reports and stored in the data model",
+    "LastViewedDate is fetched via SOQL for dashboards as the equivalent field",
+    "Report.Format is fetched and stored for reports",
+    "Dashboards display 'Dashboard' as the hardcoded format value",
+    "LastRunDate/LastViewedDate replaces Last Modified as the visible date column",
+    "Fields are available for filtering and sidebar display"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "LastRunDate/LastViewedDate replaces Last Modified as the primary date column in the data table. Format field is displayed in the sidebar details.",
+  "middleware_changes": "Updated SOQL queries to include LastRunDate (reports) and LastViewedDate (dashboards) plus Report.Format. Updated import/refresh logic to persist these values.",
+  "data_model_changes": "Added last_run_date and format columns to the reports and dashboards database tables.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "LastRunDate exists only on the Salesforce Report object, not Dashboard. For dashboards, LastViewedDate serves as the semantic equivalent. Report.Format is a native Salesforce field. Balaji handled the filter and sidebar UI while Waqar handled the SOQL and data model changes.",
+  "comment_summary": "Waqar initially questioned whether LastRunDate was different from existing date fields. Ryan clarified it indicates when the report was actually run (vs. modified). Waqar discovered LastRunDate doesn't exist for dashboards — Ryan confirmed LastViewedDate is the equivalent. Both fields were added and verified.",
+  "comment_count": 17
+}

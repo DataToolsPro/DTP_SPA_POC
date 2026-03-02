@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-366",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Write Bulk Metric Import Tutorial Documentation",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-17T11:19:15.467-0800",
+  "updated": "2024-05-24T02:25:06.957-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Create a WordPress tutorial covering the bulk metric import feature from Excel and CSV files. Published at the tutorials section of the DataTools Pro website.\n\nTutorial URL: https://datatoolspro.com/tutorials/bulk-metric-import-from-excel-and-csv/",
+  "acceptance_criteria": [
+    "Tutorial published on WordPress at the specified URL",
+    "Tutorial covers bulk metric import from Excel and CSV",
+    "Tutorial is accessible from the tutorials navigation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Documentation task — tutorial written and published on WordPress.",
+  "comment_summary": "",
+  "comment_count": 0
+}

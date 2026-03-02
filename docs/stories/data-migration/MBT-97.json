@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-97",
+  "epic_key": "MBT-84",
+  "feature_folder": "data-migration",
+  "title": "Visual Mapping Indicators in the Data Table",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-12T18:17:32.050-0700",
+  "updated": "2024-05-24T02:24:29.227-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want to see which fields have been mapped directly in the main data table, so that I can quickly identify mapping progress without opening each field's detail panel.",
+  "description": "When a user maps a field in the side panel, two updates should be reflected in the main data table:\n\n1. **Hyperlink text update**: The \"Click to Mapping\" label is replaced with `[SourceObject].[FieldName]` (e.g., \"Deal.Other\") showing the mapped source.\n2. **Status update**: The field's migration status is set to \"In Progress\".\n\nFor fields mapped to multiple source objects, all mapped field names are displayed in the data table. When a mapping is deleted, the label reverts to \"Click to Mapping\" and the status updates accordingly.\n\nThe label is now dynamically derived from a MySQL query rather than updating a label column on each mapping change, ensuring consistency.",
+  "acceptance_criteria": [
+    "Mapped fields display the source object and field name (e.g., 'Deal.Other') in the data table",
+    "Unmapped fields show 'Click to Mapping' as the default label",
+    "Migration status is set to 'In Progress' when a field is mapped",
+    "Multiple mapped sources are all displayed in the data table",
+    "Deleting a mapping reverts the label and status",
+    "Labels are dynamically derived from the mapping data, not stored as static text"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Data table column shows dynamic mapping labels (SourceObject.FieldName) instead of static 'Click to Mapping' text. Status column auto-updates to 'In Progress' on mapping.",
+  "middleware_changes": "Label generation moved to a MySQL query that dynamically constructs the display text from mapping relationships rather than updating a label column on each change.",
+  "data_model_changes": "",
+  "api_changes": "Updated data table API to include dynamically generated mapping labels derived from the mapping relationships.",
+  "dependencies": ["MBT-77"],
+  "source_files": [],
+  "implementation_notes": "Initially the labels were updated by directly modifying a label column on each mapping change. This was refactored to use a MySQL query that dynamically constructs the label from the mapping data, which is more reliable and handles multi-source scenarios correctly. The 1:n mapping support was already in the data model.",
+  "comment_summary": "Discussion centered on handling multi-source mappings — whether to show all mapped fields or limit to 1:1. Decided to display all mapped sources. Developer implemented dynamic label generation from MySQL query instead of static column updates. Label reversion on delete was added as a follow-up.",
+  "comment_count": 13
+}

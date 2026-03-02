@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-804",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix False Positive Access Restriction on Tableau Settings Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-12T16:51:12.139-0700",
+  "updated": "2024-07-31T00:06:54.785-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau", "security"],
+  "story": "As a DataTools Pro user with a valid license, I want to access the Tableau settings page without seeing a false access restriction error, and when access is genuinely restricted, I want a clear and helpful message.",
+  "description": "Fixes a false positive where valid licensed users received a \"Rejected\" error when clicking on Tableau in the settings page. The error was also poorly worded.\n\nThe fix corrects the license validation logic to prevent false positives. Additionally, the error page was improved: \"Rejected\" was changed to \"Restricted Access\" with a clear, grammatically correct message: \"This is a premium feature. Click here to learn more.\" For genuine access restrictions (e.g., exceeded user limits), the user is directed to manage their account.",
+  "acceptance_criteria": [
+    "Valid licensed users can access the Tableau settings page without errors",
+    "Access restriction page shows 'Restricted Access' instead of 'Rejected'",
+    "Error message is grammatically correct and includes a link to learn more",
+    "Users who exceed their license limit see a clear message directing them to manage their account"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Replaced 'Rejected' label with 'Restricted Access'. Added grammatically correct messaging with learn more link. Fixed the premium feature upsell popup.",
+  "middleware_changes": "Fixed license validation logic that was producing false positives for valid users accessing the Tableau settings page.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-596"],
+  "source_files": [],
+  "implementation_notes": "The false positive was caused by incorrect license checking logic. A customer (David at Fundcanna) with a valid license was blocked during a live screenshare, which surfaced the issue. Waqar reproduced and fixed the validation logic.",
+  "comment_summary": "Ryan reported a false positive seen during a customer screenshare. Waqar initially updated the error messaging, then reproduced the false positive and fixed the underlying license validation logic.",
+  "comment_count": 5
+}

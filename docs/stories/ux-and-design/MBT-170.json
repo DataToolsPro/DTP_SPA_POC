@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-170",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Replace card-body with card-navigation CSS Class",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-16T23:14:53.773-0700",
+  "updated": "2024-05-24T02:24:35.044-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the navigation area to have minimal padding and clean styling, so that screen real estate is used efficiently.",
+  "description": "Replace the `card-body` CSS class with a new `card-navigation` class on navigation elements. The `card-navigation` class removes default padding and other styles inherited from `card-body`, providing a cleaner layout for navigation areas that can be independently styled later.",
+  "acceptance_criteria": [
+    "card-body class is replaced with card-navigation on navigation elements",
+    "Padding and unnecessary styles from card-body are removed",
+    "Navigation areas render with a cleaner, more compact layout",
+    "No visual regressions in other card-body elements"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Navigation elements use a new card-navigation CSS class with reduced padding, creating a more compact and clean navigation layout.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer noted that removing card-body styling initially disturbed the layout. Adjustments were made to maintain visual integrity with the new class.",
+  "comment_summary": "Developer flagged that the style change would disturb existing layout, then resolved the issues and submitted for review.",
+  "comment_count": 3
+}

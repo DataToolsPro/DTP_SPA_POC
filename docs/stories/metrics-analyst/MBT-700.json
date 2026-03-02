@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-700",
+  "epic_key": "MBT-599",
+  "feature_folder": "metrics-analyst",
+  "title": "Metric Matching Enhancement with Known Metric and Formula Comparison",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-10T23:30:39.937-0700",
+  "updated": "2024-05-24T02:26:02.387-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst using the Metrics Analyst, I want the system to automatically detect and categorize duplicate or conflicting metrics using AI-powered matching, so that I can quickly identify true new metrics, review conflicts, and avoid adding duplicates to my glossary.",
+  "description": "The Service 2 response now includes Known Metric, Known Formula, and Known Metric by Formula fields that enable intelligent metric matching. Three scenarios need to be handled with alert icons and tooltips:\n\n**Scenario 1 — Name Match, Different Formula:**\n`Known Metric` is NOT NULL AND `Known Metric by Formula` is NULL.\nTooltip: 'This metric has the same name as an existing metric but is calculated differently.'\n\n**Scenario 2 — Formula Match, Different Name:**\n`Known Metric` is NULL AND `Known Metric by Formula` is NOT NULL.\nTooltip: 'This metric matches another formula. It could be a candidate to merge or you could have 2 different metrics with the same calculation needing further review.'\n\n**Scenario 3 — Validated Duplicate (Auto-Ignore):**\n`Known Metric` = `Known Metric by Formula`.\nAutomatically move to the Ignored section. The AI has confirmed this is a duplicate.\n\nAlso rename 'Ignored Facts' to 'Ignored' (remove the word 'Fact').",
+  "acceptance_criteria": [
+    "Scenario 1: Alert icon with name-match tooltip appears when Known Metric is set but Known Metric by Formula is null",
+    "Scenario 2: Alert icon with formula-match tooltip appears when Known Metric is null but Known Metric by Formula is set",
+    "Scenario 3: Metrics where Known Metric equals Known Metric by Formula are auto-placed in the Ignored section",
+    "Alert tooltips clearly explain the matching scenario to the user",
+    "Section label changed from 'Ignored Facts' to 'Ignored'",
+    "Auto-ignored metrics increment the Ignored count card automatically"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added alert icons with descriptive tooltips for metric matching scenarios. Auto-ignore moves validated duplicates to the Ignored section. Renamed 'Ignored Facts' to 'Ignored'.",
+  "middleware_changes": "Added comparison logic for Known Metric, Known Formula, and Known Metric by Formula fields. Auto-sets the ignore flag when Known Formula equals Known Metric by Formula (case-insensitive).",
+  "data_model_changes": "The ApiResponseMetric model was updated to store the new Known Metric, Known Formula, and Known Metric by Formula fields from the Service 2 response.",
+  "api_changes": "",
+  "dependencies": ["MBT-643", "MBT-506"],
+  "source_files": [],
+  "implementation_notes": "The auto-ignore logic uses case-insensitive string comparison: `strtolower($metricData['Known Formula']) == strtolower($metricData['Known Metric by Formula'])`. The system also compares against metric aliases, not just names, which enables broader duplicate detection. Testing revealed an edge case where the AI service was flagging a metric name match that didn't actually exist in the glossary — this was traced to alias matching behavior.",
+  "comment_summary": "Developer implemented the three matching scenarios and auto-ignore logic. Testing showed the comparison also works against metric aliases. Ryan tested 4 different scenarios without finding logic breaks. Minor edge case found with alias matching was noted for AI service enhancement.",
+  "comment_count": 10
+}

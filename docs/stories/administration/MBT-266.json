@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-266",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Select All Checkbox for Account Permission Preferences",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-05T12:06:30.119-0700",
+  "updated": "2024-05-24T02:24:57.854-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a product administrator, I want a 'Select All' checkbox on the account permissions page, so that I can quickly grant or revoke all permissions for a shared user without toggling each one individually.",
+  "description": "Add a 'Select All Permission' checkbox to the account preferences/permissions page. When checked, all individual permission checkboxes are selected. When unchecked, all are deselected. The checkbox also responds to individual changes — if all permissions are manually checked, the Select All checkbox becomes checked; if any single permission is unchecked, Select All becomes unchecked.",
+  "acceptance_criteria": [
+    "A 'Select All Permission' checkbox appears above the individual permission checkboxes",
+    "Checking 'Select All' selects all individual permission checkboxes",
+    "Unchecking 'Select All' deselects all individual permission checkboxes",
+    "Manually checking all individual permissions auto-checks the 'Select All' checkbox",
+    "Unchecking any individual permission auto-unchecks the 'Select All' checkbox"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Select All Permission' checkbox on the account sharing permissions page with bidirectional sync to individual permission checkboxes. Layout was also updated for improved presentation.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-259"],
+  "source_files": [],
+  "implementation_notes": "Implemented with JavaScript toggle logic that synchronizes the Select All checkbox state with individual permission checkboxes in both directions.",
+  "comment_summary": "Developer added the Select All checkbox with bidirectional sync and updated the layout. Ready for review.",
+  "comment_count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-145",
+  "skipped": true,
+  "skip_reason": "stub - description contains only an image reference with no textual substance",
+  "title": "Update Login Screen for DTP to Match DatatoolsPro.com",
+  "status": "Done",
+  "feature_folder": "ux-and-design"
+}

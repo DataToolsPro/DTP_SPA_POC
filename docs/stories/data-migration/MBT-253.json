@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-253",
+  "epic_key": "MBT-255",
+  "feature_folder": "data-migration",
+  "title": "Fix Code Rendering to Show Full Mapping with Source Objects",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-23T23:25:24.993-0700",
+  "updated": "2024-05-24T02:24:57.094-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a data migration specialist, I want the SQL code output to show the full source-to-target mapping including source object names, so that the generated code accurately reflects my field mapping work.",
+  "description": "Fix two issues with the SQL code rendering:\n\n1. **Limited record count**: The code output was only showing a limited number of fields instead of all mapped records.\n2. **Missing source object name**: The rendered SQL was only including the Salesforce field name without the mapped source object. The correct format should be `\"SourceObject\".\"SourceField\" AS \"TargetField\"` (e.g., `\"SimpleLead\".\"Last Name\" AS \"LastName\"`).\n\nThe mapping data table shows the relationship between target fields and source fields (including the source object), and this full relationship needs to be reflected in the code output.",
+  "acceptance_criteria": [
+    "All mapped fields are included in the SQL output, not just a limited subset",
+    "Source object name is included in the field reference (e.g., '\"SimpleLead\".\"Last Name\"')",
+    "Output follows the format '\"SourceObject\".\"SourceField\" AS \"TargetField\"'",
+    "Unmapped fields are still included with just the Salesforce field name"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "SQL code output now displays all fields and includes the full source object path in field references.",
+  "middleware_changes": "SQL generation query updated to include source object names and remove the record limit that was truncating output.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-250", "MBT-255"],
+  "source_files": [],
+  "implementation_notes": "Developer noted this may have been partially addressed in MBT-255. The record truncation was a query limit issue. The source object name was already available in the mapping data but was not being included in the SQL generation logic.",
+  "comment_summary": "Developer needed clarification on the format for appending mapped field names. Screenshots were provided showing the expected format. Developer noted the source object inclusion was already covered in MBT-255 work. Clarification requested on the 'limited records' issue.",
+  "comment_count": 6
+}

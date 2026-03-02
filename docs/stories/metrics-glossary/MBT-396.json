@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-396",
+  "epic_key": "MBT-243",
+  "feature_folder": "metrics-glossary",
+  "title": "Fix: Magic Wand Wizard Displays Wrong Report Name Field",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-27T22:36:34.920-0800",
+  "updated": "2024-05-24T02:25:04.224-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user using the Metric Wizard, I want to see the descriptive report name instead of the object API name, so that I can verify I selected the correct reports.",
+  "description": "Bug fix for the Metric Wizard (magic wand) where the report list was displaying the Salesforce report object API name instead of the human-readable report name. Updated to pull the correct descriptive name field from the report metadata.",
+  "acceptance_criteria": [
+    "Metric Wizard displays the descriptive report name, not the object API name",
+    "All reports in the wizard show their user-friendly names"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Report names in the Metric Wizard now display the descriptive report name instead of the API object name.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-242"],
+  "source_files": [],
+  "implementation_notes": "Changed the field reference from the object name to the descriptive report name in the wizard's report list rendering.",
+  "comment_summary": "Quick fix — developer updated on staging and submitted for review.",
+  "comment_count": 1
+}

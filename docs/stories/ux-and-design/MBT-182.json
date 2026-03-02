@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-182",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "DataTable Selected Row Background Color Update",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-19T08:11:41.234-0700",
+  "updated": "2024-05-24T02:24:31.725-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want selected rows in data tables to have a subtle green highlight, so that selections are visible without being distracting.",
+  "description": "Override the DataTables library's default selected row background color with a custom light green that matches the brand palette.\n\n## CSS\n```css\ntable.dataTable tbody > tr.selected,\ntable.dataTable tbody > tr > .selected {\n  background-color: #f2fbf9 !important;\n}\n```",
+  "acceptance_criteria": [
+    "Selected rows in all data tables display #f2fbf9 background",
+    "Color override applies globally via custom CSS",
+    "Override uses !important to ensure it takes precedence over the DataTables library styles"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Selected row background color in DataTables updated to a subtle light green (#f2fbf9) matching the brand palette.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS override added to the custom stylesheet using !important to override the DataTables library defaults.",
+  "comment_summary": "Developer added the CSS override to the custom stylesheet and confirmed it works correctly.",
+  "comment_count": 1
+}

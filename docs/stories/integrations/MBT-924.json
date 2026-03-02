@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-924",
+  "epic_key": "MBT-490",
+  "feature_folder": "integrations",
+  "title": "Fix Hardcoded Org ID and Email in Zapier Hooks",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-15T23:16:41.822-0700",
+  "updated": "2024-09-17T23:12:17.832-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "During testing, several Zapier webhook hooks were found to have hardcoded Salesforce Org ID and email values instead of dynamically resolved values.\n\nHooks 001 (login) and 002 (first time) were correct and used dynamic values. Hooks 003, 004, 005, and 006 had hardcoded values that needed to be replaced with dynamic lookups from the authenticated user's session and Salesforce organization data.",
+  "acceptance_criteria": [
+    "Hooks 003, 004, 005, and 006 use dynamic Salesforce Org ID values",
+    "Hooks 003, 004, 005, and 006 use dynamic email from the authenticated user",
+    "All six hooks consistently use dynamic user and organization data",
+    "No hardcoded values remain in any Zapier webhook payload"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Replaced hardcoded Salesforce Org ID and email values in Zapier hooks 003-006 with dynamic lookups from the authenticated user session.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-775"],
+  "source_files": [],
+  "implementation_notes": "Bug found during testing: hooks 003 (activation confirmation), 004 (user invite), 005 (onboard), and 006 (delete account) had hardcoded values while hooks 001 (login) and 002 (first time registration) correctly used dynamic values.",
+  "comment_summary": "Developer confirmed the fix was completed.",
+  "comment_count": 1
+}

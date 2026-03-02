@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-371",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Path Traversal",
+  "status": "Withdrawn",
+  "feature_folder": "security"
+}

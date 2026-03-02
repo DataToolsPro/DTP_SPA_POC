@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1161",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Explore and Build Model Context Protocol (MCP) Server",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-07-08T03:08:55.867-0700",
+  "updated": "2026-03-01T04:03:33.122-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API"],
+  "story": "",
+  "description": "Exploration and implementation of an MCP (Model Context Protocol) server to allow AI assistants like Claude to query DataTools Pro data (starting with the Metrics Glossary).\n\n### Approach\n- Built a standalone Laravel application as the MCP server using the [laravel-mcp-server](https://github.com/opgginc/laravel-mcp-server) package\n- REST API endpoints return data from the DataTools Pro database\n- MCP server implements `inputSchema` and `execute` functions to expose metrics data\n- Goal: Connect Claude Desktop to the MCP server to query the Metrics Glossary\n\n### Architecture Decision\nThe MCP server is a separate Laravel application rather than being embedded in the main app. The original consideration was a Node.js/TypeScript server, but the team chose Laravel for consistency with the existing stack.",
+  "acceptance_criteria": [
+    "MCP server is built as a standalone Laravel application",
+    "Server exposes DataTools Pro metrics data via MCP protocol",
+    "Claude Desktop can connect to the MCP server",
+    "Users can query the Metrics Glossary through Claude Desktop"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Standalone Laravel MCP server application with inputSchema and execute functions for metrics data retrieval.",
+  "data_model_changes": "",
+  "api_changes": "New MCP server endpoints that expose DataTools Pro metrics data in the MCP protocol format for AI assistant consumption.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Built using the laravel-mcp-server package from GitHub. Initial implementation returns all metrics from the database. Next step is wiring up Claude Desktop in developer mode to connect to the MCP server. Node.js was considered but Laravel was chosen for team familiarity.",
+  "comment_summary": "Developer explored MCP architecture, noting that a Node.js/TypeScript server would be needed for Claude but chose Laravel instead. Built a standalone Laravel MCP server with inputSchema and execute functions. Implemented metrics data retrieval. Next step is connecting Claude Desktop to the server.",
+  "comment_count": 4
+}

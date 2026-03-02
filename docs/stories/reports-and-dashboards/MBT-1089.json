@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-1089",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Fix Dashboard Analysis Returning Zero Reports in Metric Analyst",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T00:27:21.591-0700",
+  "updated": "2026-03-01T04:05:51.505-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a data analyst, I want the dashboard analysis step to correctly retrieve reports, so that the Metric Analyst can process them for metric suggestions.",
+  "description": "The first step of dashboard analysis in the Metric Analyst was returning 0 reports, making it impossible to proceed with the analysis. There was nothing to send to the analysis service.\n\n### Root Cause\nThe Salesforce REST API version used for the dashboard analysis call was outdated (v31). Updating to v60 resolved the issue, as the older version did not return report data correctly for newer dashboard structures.",
+  "acceptance_criteria": [
+    "Dashboard analysis returns the correct number of component reports",
+    "Metric Analyst can process the retrieved reports for metric suggestions",
+    "Salesforce REST API version is set to v60 for dashboard analysis calls"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Updated Salesforce REST API version from v31 to v60 for dashboard analysis calls.",
+  "data_model_changes": "",
+  "api_changes": "Salesforce REST API version updated from v31 to v60 for the dashboard metadata endpoint.",
+  "dependencies": ["MBT-1069"],
+  "source_files": [],
+  "implementation_notes": "The issue only manifested in production. Local development with direct Salesforce connection worked with v31 but the production environment required v60. Fix was applied directly to production.",
+  "comment_summary": "Developer identified the root cause as an outdated Salesforce REST API version (v31 → v60). Fixed on production and confirmed working.",
+  "comment_count": 2
+}

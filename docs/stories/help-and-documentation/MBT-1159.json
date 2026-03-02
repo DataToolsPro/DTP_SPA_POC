@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-1159",
+  "skipped": true,
+  "skip_reason": "Description is null/empty",
+  "title": "Documentation of models",
+  "status": "Done",
+  "feature_folder": "help-and-documentation"
+}

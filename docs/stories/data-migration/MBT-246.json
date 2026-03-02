@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-246",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix Migration Status Popup Not Saving to Database",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-16T16:16:11.031-0700",
+  "updated": "2026-03-01T04:07:29.057-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "The migration status popup dropdown was updating the UI table value on selection but not persisting the change to the database. When selecting multiple rows and changing the status via the popup, the value appeared to change visually but was lost on page reload.\n\n### Bug Details\n- Clicking the edit pencil icon worked correctly (saved to DB)\n- Multi-row selection popup updated the table display only\n- The popup status change did not trigger a database save operation",
+  "acceptance_criteria": [
+    "Migration status changes via the multi-row popup are persisted to the database",
+    "Status values survive page reload after being set via popup",
+    "Edit pencil icon continues to work correctly"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Migration status popup dropdown now correctly saves changes, matching the behavior of the inline edit pencil icon.",
+  "middleware_changes": "Popup status change handler now triggers the same database save operation as the inline edit.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Fix took approximately 15 minutes. Changes deployed to staging first, then production.",
+  "comment_summary": "Developer asked for more detail on the bug. After clarification that the popup was updating the UI but not the database, the fix was implemented and deployed to staging within 15 minutes.",
+  "comment_count": 6
+}

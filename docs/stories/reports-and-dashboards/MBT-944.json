@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-944", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Clear Filter and Multiple Date Filter Combination Not Working",
+  "type": "task", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-08T21:30:09.807-0700", "updated": "2024-11-03T18:59:32.459-0800",
+  "assignee": "waqar khan", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Fixes two date filter issues:\n\n1. **Clear filter not working after date selection**: After selecting a date range filter and then clicking Clear Filter, the date filters reset to defaults but filtered records continued to show. Re-selecting \"All\" also did not reset.\n\n2. **Multiple date filters not combining**: When filtering by all three date fields (Created On, Last Modified, Last Viewed), only the most recently changed filter was applied — the other two were ignored.\n\nThe fix consolidated three separate date filter functions into a single combined `filter_on_dates` function that evaluates all three date range conditions simultaneously using DataTables `ext.search`. When \"All\" is selected for a date filter, that condition is bypassed. Clear filter now properly clears all date filter state and redraws the table.",
+  "acceptance_criteria": ["Clear Filter resets all date filters and shows all records", "Re-selecting 'All' on a date filter resets that filter", "All three date filters can be applied simultaneously", "Combined date filters return only records matching all active conditions"],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Replaced three separate date filter functions with a single combined filter_on_dates function that evaluates all three date conditions using DataTables ext.search push pattern.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-603"], "source_files": [],
+  "implementation_notes": "The root cause was each date filter pushing its own separate ext.search function, causing them to overwrite each other. The consolidated function checks all three date ranges in a single evaluation and handles the 'All' selection as a bypass condition.",
+  "comment_summary": "Waqar consolidated three date filter functions into one general function and shared the implementation code in the comments.", "comment_count": 1
+}

@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-484",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "AI-Powered Auto-Mapping of Source to Salesforce Fields via GPT",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2024-01-12T16:24:57.940-0800",
+  "updated": "2026-03-01T03:44:05.654-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As a user mapping migration fields, I want the system to use GPT to auto-suggest field mappings between source and Salesforce, so that I can save time on obvious matches and focus on ambiguous ones.",
+  "description": "Build a GPT-powered auto-mapping function that posts source fields and unmapped Salesforce sink fields to GPT-4 and receives back suggested mappings with confidence-based statuses.\n\n### GPT Prompt Structure\nProvide two arrays:\n- Source field names with mapped/unmapped indicator\n- Salesforce sink fields (only those in \"Not Reviewed\" status) with data types\n\n### Expected Response (JSON)\n- **Sink Field** — only if there is a match\n- **Source Field** — as provided\n- **Status**:\n  - `QA` — exact match with no conflicting alternatives\n  - `In Progress` — logical match but multiple possible mappings exist\n- **Note** — findings helpful for reviewer when status is \"In Progress\"\n\n### Goal\nAutomate obvious field matches to eliminate hundreds/thousands of manual clicks, leaving only ambiguous mappings for human review.",
+  "acceptance_criteria": [
+    "GPT auto-mapping function posts source and sink fields to GPT-4",
+    "Response is structured JSON with sink field, source field, status, and note",
+    "Exact matches are set to QA status",
+    "Ambiguous matches are set to In Progress with reviewer notes",
+    "Only unmapped/Not Reviewed Salesforce fields are sent to GPT",
+    "Mapped results are applied to the migration mapping UI"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New auto-mapping trigger in the migration UI that initiates GPT-powered field matching.",
+  "middleware_changes": "Backend function to construct the GPT prompt, post to OpenAI API, and parse the JSON response into mapping records.",
+  "data_model_changes": "",
+  "api_changes": "Outbound API call to OpenAI GPT-4 with structured prompt and JSON response parsing.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Low priority — marked as a future enhancement. The GPT prompt should include the expected JSON structure to ensure consistent responses.",
+  "comment_summary": "Developer expressed interest in discussing the feature when possible.",
+  "comment_count": 1
+}

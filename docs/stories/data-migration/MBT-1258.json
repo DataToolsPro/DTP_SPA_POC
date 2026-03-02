@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1258",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Replace Third-Party Data Import with Open Source Library",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-16T20:41:12.430-0800",
+  "updated": "2026-03-01T04:13:26.083-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "End support for the paid third-party data import JavaScript library used for metrics import. Replace it with an open source import function that can be integrated in place of the existing library.",
+  "acceptance_criteria": [
+    "Third-party data import library is removed",
+    "Open source import function is integrated for metrics import",
+    "Import functionality works the same or better than the previous library",
+    "No licensing costs for the import feature"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Import UI updated to use the new open source import function.",
+  "middleware_changes": "Backend import handling updated to work with the new library's data format.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1074"],
+  "source_files": [],
+  "implementation_notes": "This is a continuation of MBT-1074 which initially evaluated replacing the third-party import.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

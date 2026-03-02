@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1094",
+  "epic_key": "MBT-644",
+  "feature_folder": "metrics-analyst",
+  "title": "Fix Duplicate Widgets in Metrics Analyst Dashboard Analysis",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-03-20T20:55:34.459-0700",
+  "updated": "2026-03-01T01:31:56.466-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user analyzing dashboards with the Metrics Analyst, I want each widget to appear only once, so that I can accurately review recommendations without confusion from duplicated entries.",
+  "description": "Duplicate widgets were appearing in the Metrics Analyst when pushing dashboard analysis requests. The initial hypothesis was that the application was duplicating widget metadata during database caching. Investigation revealed that the duplicates originated from the upstream service endpoint used to fetch widgets, not from the DataTools caching layer.\n\nThe root cause was confirmed as duplicate data returned by the external widget-fetch service, and the issue was resolved at the service level.",
+  "acceptance_criteria": [
+    "Each widget appears only once in the Metrics Analyst widget list",
+    "Re-analyzing the same dashboard does not produce duplicate widget entries",
+    "Widget data from the fetch service is deduplicated before display"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Duplicate widgets no longer appear in the Metrics Analyst widget list, providing an accurate view of dashboard components.",
+  "middleware_changes": "Confirmed that the duplication originated from the upstream widget-fetch service endpoint rather than the DataTools caching layer. Fix was applied at the service level.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial investigation by the developer found no duplication in the DataTools codebase. The duplicates were traced to the external service endpoint returning duplicate widget records. The fix was applied at the service layer.",
+  "comment_summary": "Developer investigated and found no duplication in the local codebase — widgets are fetched from Salesforce. After further investigation, confirmed that duplicate widgets were coming from the service endpoint. Issue resolved at the service level.",
+  "comment_count": 2
+}

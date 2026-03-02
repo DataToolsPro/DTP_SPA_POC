@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1194",
+  "epic_key": "MBT-1193",
+  "feature_folder": "integrations",
+  "title": "Streamlit Explorer: Database/Schema/Table Picker and Data Preview",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-27T19:41:15.668-0700",
+  "updated": "2025-09-01T17:42:30.913-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "As a data analyst, I want to select a Snowflake database, schema, and table or view in the Streamlit Explorer and preview the data so that I can quickly inspect my data without writing SQL queries.",
+  "description": "Build the core UX for the Streamlit Explorer that allows users to navigate their Snowflake data hierarchy and preview table contents.\n\nThe user flow:\n1. Select a database from a dropdown\n2. Select a schema from the filtered list\n3. Select a table or view from the filtered list\n4. Click 'Preview' to execute a SELECT * and display results in a data table\n\nA demo video of the target solution is available for reference.",
+  "acceptance_criteria": [
+    "User can select a database from a dropdown of available databases",
+    "User can select a schema from the selected database",
+    "User can select a table or view from the selected schema",
+    "Clicking preview executes SELECT * and displays results in a table",
+    "Data preview shows all columns and rows from the selected table/view",
+    "Dropdowns filter based on the parent selection"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Cascading dropdown selectors for database, schema, and table/view. Data preview table showing SELECT * results with all columns.",
+  "middleware_changes": "Snowflake query execution for metadata retrieval (databases, schemas, tables) and data preview (SELECT * from selected table/view).",
+  "data_model_changes": "",
+  "api_changes": "Snowflake SQL API calls for SHOW DATABASES, SHOW SCHEMAS, SHOW TABLES, and SELECT * queries.",
+  "dependencies": ["MBT-1192"],
+  "source_files": [],
+  "implementation_notes": "This is the core navigation and preview feature that subsequent features (ORDER BY, filters, GROUP BY) will build upon.",
+  "comment_summary": "No comments. Ticket in To Do status.",
+  "comment_count": 0
+}

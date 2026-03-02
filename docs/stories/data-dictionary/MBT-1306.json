@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-1306",
+  "epic_key": "MBT-1013",
+  "feature_folder": "data-dictionary",
+  "title": "Package Salesforce External Client App as 2GP Managed Package",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-01-15T03:49:29.589-0800",
+  "updated": "2026-03-01T04:14:29.583-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "",
+  "description": "Create a Salesforce External Client Application (ECA) for OAuth authentication and package it as a 2nd Generation Managed Package (2GP) for distribution via AppExchange or private installs.\n\n### Org Architecture\n- **Partner Business Org (PBO)**: `goodmangroupllc.my.salesforce.com`\n- Serves as PBO, OAuth authority, Dev Hub, and Package owner\n- Namespace: `dtppro` (globally unique, immutable)\n\n### External Client App\n- Supports OAuth Authorization Code / PKCE flow\n- Cannot be created in scratch orgs or ephemeral orgs (Salesforce restriction)\n- Metadata retrieved via `manifest/package.xml` using `ExternalClientApplication` type\n\n### CLI Limitation\nThe `sf` CLI does not support retrieving ECAs directly due to a missing registry entry. Workaround: use Metadata API via manifest file.\n\n### Package Version Creation Limitation\n`sf package version create` uses ephemeral orgs internally, and ECAs are blocked in ephemeral orgs. This required a workaround to create the package version.\n\n### Package Versions Created\n- V1: Subscriber Package Version ID `04tPU0000026SEzYAM`\n- V2: Package ID `0HoPU00000003vZ0AQ`, Subscriber Package Version ID `04tPU0000026uBFYAY`",
+  "acceptance_criteria": [
+    "ECA is created in the PBO",
+    "2GP Managed Package is created with dtppro namespace",
+    "Package version is successfully created and installable",
+    "Installation URL is available for customer orgs"
+  ],
+  "change_layers": {"ux": false, "middleware": false, "data_model": false, "api": true, "infrastructure": true, "security": true},
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "Salesforce External Client Application for OAuth authentication packaged as 2GP.",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Key CLI commands documented. ECA cannot be used in scratch orgs. Metadata must be retrieved via package.xml manifest. Two package versions created successfully.",
+  "comment_summary": "Waqar created the package and versions. V1 and V2 package versions created with installation URLs. CLI commands documented for reproducibility.",
+  "comment_count": 4
+}

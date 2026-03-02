@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1237",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "User Security Advice — Install Guide and Login Page Updates",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-10-17T22:54:03.247-0700",
+  "updated": "2026-03-01T04:03:16.867-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want security guidance and install help on the login page, so that I can resolve authentication issues and understand how my data is protected.",
+  "description": "Multi-part update to improve user-facing security guidance across the onboarding flow.\n\n### Completed Items\n1. **Salesforce Admin Install Guide** — New tutorial published at `/tutorials/salesforce-admin-install-guide/`\n2. **Confirmation Page Security Details** — Updated to provide security information during signup\n3. **Email Message Update** — Important security update for October 2025 forward\n\n### Remaining Item\n4. **Login Page Help Link** — Update both login pages (new and existing users) to include: \"Having issues logging in with Salesforce? [Review Our Install Guide](/tutorials/salesforce-admin-install-guide/)\"",
+  "acceptance_criteria": [
+    "Salesforce Admin Install Guide is published and accessible",
+    "Confirmation page displays security details",
+    "Email messages include updated security information",
+    "Both login pages display a link to the install guide for troubleshooting"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Help link added to login pages linking to install guide. Confirmation page updated with security details. Email templates updated with security information.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Install guide published. Login page help link implemented on production.",
+  "comment_summary": "Ryan updated security guides and links. Waqar implemented the login page changes on production.",
+  "comment_count": 2
+}

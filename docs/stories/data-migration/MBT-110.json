@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-110",
+  "skipped": true,
+  "skip_reason": "status is Withdrawn",
+  "title": "DDL Output Refactor to use GPT 4",
+  "status": "Withdrawn",
+  "feature_folder": "data-migration"
+}

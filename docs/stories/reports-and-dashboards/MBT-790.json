@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-790",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Add Format and Last Viewed Date to Sidebar Detail Pane",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-03T11:38:58.348-0700",
+  "updated": "2024-07-26T00:02:09.962-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user viewing report details, I want to see the report format and last viewed date in the sidebar, so that I understand the report type and recent usage at a glance.",
+  "description": "Adds Format and Last Viewed Date fields to the sidebar detail pane for reports and dashboards.\n\nFor reports, Format displays the Salesforce Report.Format value (e.g., \"Matrix Report\", \"Tabular Report\"). For dashboards, Format is hardcoded as \"Dashboard\". The Last Viewed Date shows the most recent time the item was accessed.",
+  "acceptance_criteria": [
+    "Format field displays in the sidebar when a report is selected",
+    "Report format shows the actual Salesforce format type (e.g., Matrix Report)",
+    "Dashboard format displays 'Dashboard'",
+    "Last Viewed Date is shown in the sidebar detail pane"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added Format and Last Viewed Date fields to the sidebar detail pane for both reports and dashboards.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-789"],
+  "source_files": [],
+  "implementation_notes": "Data was already being stored in the database from MBT-789. This ticket added the display in the sidebar UI.",
+  "comment_summary": "Balaji completed the sidebar additions. Waqar initially couldn't find them in the sidebar — Balaji shared a screenshot showing the placement.",
+  "comment_count": 4
+}

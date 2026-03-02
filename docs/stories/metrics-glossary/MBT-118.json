@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-118",
+  "epic_key": "MBT-83",
+  "feature_folder": "metrics-glossary",
+  "title": "Remove Metric Functionality from Scorecard and Rebuild as Standalone Table",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-30T12:05:28.800-0700",
+  "updated": "2026-03-01T01:27:37.279-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the Metric feature to be its own standalone table separate from the Scorecard, so that the Dictionary and Migration views remain clean and the Metric data can be managed at a deeper grain with its own dedicated interface.",
+  "description": "The Metric feature was originally embedded within the Scorecard alongside Dictionary and Migration views. This ticket removes Metric functionality from the Scorecard to prepare for rebuilding it as a standalone table with its own page (similar to the Entity Relationship page).\n\n## Changes\n\n1. **Remove metric fields** from the Scorecard data model — metric attributes are purged since the metric data will live in its own table at a deeper grain that rolls up.\n2. **Remove JS tab switching** code that toggled between Dictionary, Migration, and Metric views. The Scorecard now only shows Dictionary and Migration.\n3. **Future navigation** — when the Metric button is re-added, it will navigate to a new dedicated PHP page rather than a tab within the Scorecard.\n4. **Make alerts field non-editable** in the Scorecard edit view.\n\n## Data Model Impact\n\nMetric-specific attributes are purged from the scorecard data model since they will be reconstituted in a dedicated metrics table.",
+  "acceptance_criteria": [
+    "Scorecard view only shows Dictionary and Migration tabs — Metric tab is removed",
+    "JavaScript code for switching between Dictionary, Migration, and Metric views is removed",
+    "Metric-specific attributes are purged from the scorecard data model",
+    "Alerts field is non-editable in the Scorecard edit modal",
+    "No broken references remain to removed metric fields or tab switching code"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Scorecard view simplified to two tabs (Dictionary and Migration) by removing the Metric tab. Alerts field made non-editable. When the Metric button returns, it will navigate to a dedicated page.",
+  "middleware_changes": "Removed server-side rendering logic and JS code for the Metric tab within the Scorecard. Updated select.php to only handle Dictionary and Migration views.",
+  "data_model_changes": "Metric-specific attributes purged from the scorecard data model. These fields will be reconstituted in a dedicated metrics table at a deeper grain of data.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This is a preparatory refactoring step — metric data is being separated from the scorecard into its own table and page. The scorecard data model is cleaned of metric attributes, and the JS tab-switching code is removed. The metric feature will be re-introduced as a standalone PHP page.",
+  "comment_summary": "Developer completed the removal and submitted for review with no issues noted.",
+  "comment_count": 1
+}

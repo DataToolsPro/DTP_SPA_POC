@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-433",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Stored XSS in Metric Name Field",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:45:41.173-0800",
+  "updated": "2024-05-24T02:25:08.671-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — High Severity (CVSS 7.1)**\n\nThe Metric Name field in the Metrics Glossary was vulnerable to Stored XSS. Users with metric creation permissions could inject JavaScript payloads in the Name field that would execute for all users visiting the Metrics page.\n\n## Fix\n\nInput sanitization applied to the Metric Name field before storage, stripping HTML/script tags to prevent stored XSS.",
+  "acceptance_criteria": [
+    "HTML and script tags are sanitized from the Metric Name field before storage",
+    "XSS payloads in Metric Name are neutralized",
+    "Legitimate metric names are preserved",
+    "Fix deployed to staging"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Input sanitization applied to the Metric Name field in the metric creation controller.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-430"],
+  "source_files": [],
+  "implementation_notes": "Same sanitization approach as MBT-430/432 applied to the metric creation flow for the Name field.",
+  "comment_summary": "Developer fixed and pushed to staging.",
+  "comment_count": 1
+}

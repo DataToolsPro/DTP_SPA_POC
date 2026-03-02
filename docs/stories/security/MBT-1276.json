@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1276",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Cross-Region Data Residency Enforcement for Application Data",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:40.982-0800",
+  "updated": "2025-12-17T22:10:02.996-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Tenant application data must be pinned to a specific geographic region so customer data never leaves their allowed geography. This applies to application data only, NOT authentication flows.\n\n## Requirements\n\n- Tenant directory includes `home_region` and residency policy\n- Application data requests are routed only to allowed region(s)\n- Violations are blocked and trigger alerts\n\n## Scope Exclusions\n\n- **Authentication flows**: Stytch Sessions touch US-based infrastructure (industry standard — Auth0, Okta are similarly US-based)\n- **SSO flows**: Unavoidably touch the identity provider's region\n- **Session validation**: JWT validation is local, but session refresh calls Stytch US\n\n## Compliance\n\nDPA documents should state: \"Authentication processed via US-based Stytch infrastructure under Standard Contractual Clauses.\" Focus residency enforcement on customer business data.",
+  "acceptance_criteria": [
+    "Tenant directory stores home_region and residency policy per tenant",
+    "Application data requests are routed only to the tenant's allowed region",
+    "Cross-region data access violations are blocked",
+    "Violations generate alerts for the operations team",
+    "DPA language covers authentication data processing via US-based Stytch"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Region enforcement middleware that validates application data requests against the tenant's residency policy. Cross-region violations are blocked before data access.",
+  "data_model_changes": "Tenant directory extended with home_region and residency_policy fields.",
+  "api_changes": "",
+  "dependencies": ["MBT-1268", "MBT-1269"],
+  "source_files": [],
+  "implementation_notes": "Authentication flows are explicitly out of scope for residency enforcement — Stytch US infrastructure is accepted under Standard Contractual Clauses, consistent with industry practice (Auth0, Okta). Only customer business data must be region-pinned.",
+  "comment_summary": "",
+  "comment_count": 0
+}

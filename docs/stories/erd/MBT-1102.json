@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1102",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Include PK and FK Fields in ERD Node Detail Pop-out Panel",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-04-02T19:27:39.050-0700",
+  "updated": "2026-03-01T04:10:27.668-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want to see primary key and foreign key fields in the right-side pop-out panel when I expand an ERD node's details, so that I can review key relationships without leaving the diagram.",
+  "description": "## Context\nWhen a user clicks the expand arrow on an ERD node, a right-side pop-out panel shows field details. Previously, PK and FK fields were not included in this panel.\n\n## Behavior\nThe pop-out detail panel now includes primary key and foreign key fields alongside other fields, giving a complete view of the entity's structure.",
+  "acceptance_criteria": [
+    "Primary key fields appear in the right-side pop-out panel",
+    "Foreign key fields appear in the right-side pop-out panel",
+    "PK and FK fields are visually distinguished (e.g., icons or labels)",
+    "All other fields continue to display as before"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "PK and FK fields are now included in the ERD node detail right pop-out panel when a user expands a node.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Updated the pop-out panel data fetch to include PK and FK fields in the field list.",
+  "comment_summary": "Developer implemented the feature and shared a screenshot for review.",
+  "comment_count": 1
+}

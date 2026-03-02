@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-460",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Metrics Side Panel Visual De-Clutter and UX Polish",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-06T22:31:55.731-0800",
+  "updated": "2024-05-24T02:25:30.423-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want a visually cleaner metrics side panel with better-positioned controls, so that the interface feels less crowded and actions are easy to find.",
+  "description": "UX polish pass on the metrics side panel based on designer feedback:\n\n1. Fix card padding to reduce visual crowding\n2. Move the refresh success popup from upper-right to lower-right to stay out of the way; rename title to 'Refreshed Object'\n3. Move the dashboards refresh button into the Not Related section with 14px font size\n4. Right-align the 'Add Custom Link' button in the Related section for better action flow",
+  "acceptance_criteria": [
+    "Card padding adjusted to reduce visual crowding",
+    "Refresh popup appears in lower-right with title 'Refreshed Object'",
+    "Dashboard refresh button moved into the Not Related section at 14px font",
+    "Add Custom Link button right-aligned in the Related section"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Padding adjustments, repositioned refresh popup, relocated refresh button, and right-aligned custom link button.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-395"],
+  "source_files": [],
+  "implementation_notes": "Pure CSS and layout changes. Applied to reports section as well for consistency.",
+  "comment_summary": "Developer implemented all four layout adjustments and applied to both reports and dashboards sections. Pushed to staging.",
+  "comment_count": 1
+}

@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-159",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Diagram Page Not Receiving Data for Specific User",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-06-29T18:19:51.275-0700",
+  "updated": "2026-03-01T03:58:03.375-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the diagram page to display data after selecting objects, so that I can view my entity relationships without troubleshooting.",
+  "description": "## Bug\nThe diagram page was not receiving any data when logged in as a specific user. The page appeared blank with no ERD content.\n\n## Root Cause\nUser error — the user had not drilled into each object.php to ensure field data was loaded into the database. Without field data, the ERD had nothing to render.\n\n## Resolution\nClosed as user error. Enhancement tickets MBT-161 and MBT-162 were created to improve the user flow so this confusion is avoided in the future.",
+  "acceptance_criteria": [
+    "Diagram page displays data when objects have been properly loaded",
+    "Clear indication is provided if objects have not yet been synced"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-161", "MBT-162"],
+  "source_files": [],
+  "implementation_notes": "Root cause was user error — objects were selected but field data was not synced. Led to enhancement tickets for better UX guidance.",
+  "comment_summary": "Developer requested login details to reproduce. Reporter identified it as user error and created enhancement tickets MBT-161 and MBT-162 to improve the workflow.",
+  "comment_count": 2
+}

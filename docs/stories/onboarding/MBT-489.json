@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-489",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Fix Webhook 0001 Sending Wrong User Record on Signup",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-14T14:39:37.946-0800",
+  "updated": "2024-05-24T02:25:31.719-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Fix a bug in the 0001 webhook (First Time Login) where the event payload was sending incorrect user data. During an end-to-end test, a new user signed up via the Gravity Form (entry ID 417) and successfully logged in, but the webhook payload contained the wrong email address and missing GFEntryId.\n\n### Observed Behavior\n- New user created: rgoodman@reliantfunding.com (user ID 71, team ID 55)\n- Webhook sent: ryan@goodmangroupllc.com with empty GFEntryId and teamAdminUserId\n- The webhook appeared to be picking up a different user record from the database\n\n### Expected Behavior\n- Webhook should send the newly created user's details with the correct GFEntryId (417) from their Gravity Form submission",
+  "acceptance_criteria": [
+    "Webhook 0001 sends the correct user email matching the newly authenticated user",
+    "GFEntryId is populated with the Gravity Form entry ID for web-to-lead signups",
+    "TeamAdminUserID is correctly null for non-invited users",
+    "User lookup in webhook correctly identifies the newly created user"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed the user lookup logic in the 0001 webhook handler to correctly identify the newly created/authenticated user instead of picking up a stale or incorrect record.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-469", "MBT-452"],
+  "source_files": [],
+  "implementation_notes": "The bug caused the webhook to reference the wrong user record. The Salesforce username stored was `rgoodman@reliantfunding.com` (without the `.prod` suffix used as the email key). Fix ensured the webhook pulls data from the currently authenticated user session rather than a database lookup that could return the wrong record.",
+  "comment_summary": "Product owner provided detailed end-to-end test results showing the mismatch. Developer fixed and product owner validated the correct payload was being sent.",
+  "comment_count": 2
+}

@@ -1,0 +1,60 @@
+{
+  "folder": "onboarding",
+  "label": "Onboarding and Activation",
+  "type": "platform",
+  "doc_tag": "datatoolspro",
+  "epic_count": 2,
+  "epics": [
+    {
+      "epic_key": "MBT-56",
+      "epic_id": "10082",
+      "summary": "Onboarding and Activation",
+      "status": "To Do"
+    },
+    {
+      "epic_key": "MBT-450",
+      "epic_id": "10508",
+      "summary": "V1 Signup and Activation Path",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 36,
+  "stories": [
+    "MBT-53",
+    "MBT-66",
+    "MBT-331",
+    "MBT-332",
+    "MBT-404",
+    "MBT-406",
+    "MBT-408",
+    "MBT-409",
+    "MBT-414",
+    "MBT-419",
+    "MBT-424",
+    "MBT-449",
+    "MBT-452",
+    "MBT-458",
+    "MBT-459",
+    "MBT-462",
+    "MBT-463",
+    "MBT-466",
+    "MBT-467",
+    "MBT-468",
+    "MBT-469",
+    "MBT-478",
+    "MBT-489",
+    "MBT-573",
+    "MBT-592",
+    "MBT-601",
+    "MBT-658",
+    "MBT-769",
+    "MBT-777",
+    "MBT-809",
+    "MBT-867",
+    "MBT-879",
+    "MBT-880",
+    "MBT-1117",
+    "MBT-1126",
+    "MBT-1136"
+  ]
+}

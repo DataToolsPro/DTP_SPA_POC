@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1333",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Provision AWS RDS Production Database with Automated Backups",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:13.257-0800",
+  "updated": "2026-03-01T04:20:26.364-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Provision an AWS RDS instance for the production database with automated backups (7-day retention). Multi-AZ deployment if budget allows.\n\n### Requirements\n- Laravel production connects to RDS\n- Automated backups with 7-day retention\n- Security group restricts access to Cloudways production IP only\n- Database credentials stored in team vault\n- Multi-AZ if budget allows",
+  "acceptance_criteria": [
+    "Laravel production app connects to RDS successfully",
+    "Automated backups are configured with 7-day retention",
+    "Security group restricts access to Cloudways production IP",
+    "Credentials stored in team vault"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Part of Phase 2 as documented in docs/JIRA_TICKET_BACKLOG.md.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

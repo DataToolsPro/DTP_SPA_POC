@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1248",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Fix Coda Icon Styling to Match Other In-App Icons",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-02T01:05:35.556-0800",
+  "updated": "2026-03-01T04:06:07.460-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "coda"],
+  "story": "As a DataTools Pro user, I want the Coda integration icon to match the styling of other in-app icons so that the UI feels visually consistent.",
+  "description": "The Coda icon coloring does not match the styling of other integration icons in the app. Coda and Notion use custom SVG icons since no Bootstrap icon equivalents exist. The SVG icon color needs to be updated to match the Bootstrap icon color scheme used by other integrations.\n\nNote: The SVG icon width may be slightly narrower than Bootstrap icons due to format differences.",
+  "acceptance_criteria": [
+    "Coda icon color matches the color scheme used by other integration icons",
+    "Icon is visually consistent with other integration icons in the app",
+    "No regressions to Notion or other custom SVG icons"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Coda SVG icon color updated to match Bootstrap icon color scheme used by other integrations.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Coda and Notion both use custom SVGs since Bootstrap doesn't have icons for them. The SVG width is slightly less than Bootstrap icons but acceptable.",
+  "comment_summary": "Developer updated the Coda SVG color to match other icons but noted the SVG width is slightly narrower than Bootstrap icons. Deployed to prod for review.",
+  "comment_count": 1
+}

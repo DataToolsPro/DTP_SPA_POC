@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-225",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Deep Linking — Open Metric Directly via URL Parameter",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-07T13:47:34.929-0700",
+  "updated": "2024-05-24T02:24:57.791-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want to share a direct URL to a specific metric so that a colleague can open the link and immediately see that metric's detail panel without manually searching.",
+  "description": "Adds URL parameter-based deep linking to individual metrics. When a user clicks on a metric in the sidebar, the browser URL bar updates with a metric ID parameter. Loading the metrics page with that parameter opens the metric detail panel directly.\n\nThe feature includes access control validation:\n- If the metric ID does not exist, the user sees an \"Access Denied\" message\n- If the metric belongs to another tenant and has not been shared, the user sees an \"Access Denied\" message\n- If the metric belongs to the current tenant, or has been shared with them, the detail panel opens normally\n- Previous/Next navigation continues to function correctly when a metric is loaded via URL parameter",
+  "acceptance_criteria": [
+    "Clicking a metric updates the browser URL with a metric ID parameter",
+    "Loading the metrics page with a valid metric ID parameter opens that metric's detail panel",
+    "Invalid or nonexistent metric IDs display an 'Access Denied' message page",
+    "Metrics owned by other tenants that are not shared display 'Access Denied'",
+    "Shared metrics from other tenants open normally",
+    "Previous/Next navigation works correctly when opened via URL parameter"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "URL bar updates with metric ID parameter as user navigates metrics. Direct URL loading opens the metric detail panel. Invalid access shows a styled 'Access Denied' error page.",
+  "middleware_changes": "Metric loading endpoint validates ownership and sharing permissions before returning metric data for URL-parameter-based access.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Access validation checks: metric existence, tenant ownership, and sharing status. Previous/Next navigation was particularly tricky to support with URL-parameter entry since the metric index within the table must be resolved.",
+  "comment_summary": "Developer tested multiple scenarios: invalid IDs, cross-tenant access without sharing, shared metrics, and owned metrics. All scenarios validated with appropriate access control. Pushed to staging after comprehensive testing.",
+  "comment_count": 8
+}

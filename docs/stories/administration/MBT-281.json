@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-281",
+  "skipped": true,
+  "skip_reason": "withdrawn",
+  "title": "Invalidate Invite URL",
+  "status": "Withdrawn",
+  "feature_folder": "administration"
+}

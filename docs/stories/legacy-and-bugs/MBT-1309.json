@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1309",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix MySQL Lock Wait Timeout on Object Field Updates",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2026-01-22T22:39:34.053-0800",
+  "updated": "2026-03-01T04:15:56.909-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "## Bug\nA MySQL lock wait timeout error occurs when updating records in the `dtp_object_fields` table:\n\n```\nSQLSTATE: General error: 1205 Lock wait timeout exceeded; try restarting transaction\n```\n\nThe error occurs in `ScorecardsController.php` on line 278 during an UPDATE operation on `dtp_object_fields` setting metadata fields like `ExtraTypeInfo`, `IsCalculated`, `IsPolymorphicForeignKey`, `LastModifiedById`, `LastModifiedDate`, and `field_definition_data_type`.\n\n## Root Cause\nConcurrent transactions are holding locks on the `dtp_object_fields` table, causing subsequent updates to time out waiting for the lock.\n\n## Investigation\nNeed to identify what other processes are locking these rows and implement proper transaction management or retry logic.",
+  "acceptance_criteria": [
+    "Object field updates complete without lock wait timeout errors",
+    "Concurrent update scenarios are handled gracefully",
+    "No data loss or corruption from retry logic"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fix transaction management or add retry logic in ScorecardsController.php for dtp_object_fields updates to handle lock contention.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["app/Http/Controllers/ScorecardsController.php"],
+  "implementation_notes": "MySQL InnoDB lock wait timeout (default 50s) is being exceeded. The UPDATE on dtp_object_fields at line 278 of ScorecardsController.php is blocked by concurrent transactions. Need to investigate lock contention and add transaction retry logic or optimize locking strategy.",
+  "comment_summary": "",
+  "comment_count": 0
+}

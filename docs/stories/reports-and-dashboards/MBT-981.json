@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-981", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Deduplicate Created By and Modified By Filter Dropdown Options",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-03T18:55:50.072-0800", "updated": "2024-11-27T22:24:12.683-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Modified By and Created By filter dropdowns to show each user only once, not duplicated entries.",
+  "description": "Bug fix: the Modified By filter dropdown was showing duplicate entries for the same user. The fix changed the algorithm to populate dropdown options from distinct values in the data table. Also applied the same fix to Created By and Folder filter dropdowns.",
+  "acceptance_criteria": ["Modified By dropdown shows each user only once", "Created By dropdown shows each user only once", "Folder dropdown shows each folder only once", "Options are populated dynamically from distinct data table values"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Filter dropdowns for Modified By, Created By, and Folder now show deduplicated options.",
+  "middleware_changes": "Changed the dropdown population algorithm to extract distinct values from the data table columns instead of using the raw data array.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-753"], "source_files": [],
+  "implementation_notes": "The algorithm now iterates through the data table column data and builds a Set of unique values for each dropdown.",
+  "comment_summary": "Waqar updated the algorithm to populate from distinct data table values for Modified By, Created By, and Folder dropdowns.", "comment_count": 1
+}

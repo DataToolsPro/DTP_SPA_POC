@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-768",
+  "epic_key": "MBT-871",
+  "feature_folder": "data-dictionary",
+  "title": "Launch to Salesforce Icon for Individual Field in Dictionary",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-16T14:27:20.176-0700",
+  "updated": "2024-11-28T09:28:57.517-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary", "Administration"],
+  "story": "As a Salesforce administrator, I want a Salesforce icon on individual field records in the Data Dictionary that launches directly to that field's setup page in Salesforce, so that I can quickly investigate or edit field configuration without manually navigating Salesforce Setup.",
+  "description": "Adds a Salesforce launch icon to individual field records in the Data Dictionary. Clicking the icon opens the Salesforce Setup page for that specific field in a new browser tab.\n\nThe deep link URL format uses the field API name since the Salesforce describe API does not return a unique field ID:\n`https://{instance}.lightning.force.com/lightning/setup/ObjectManager/{ObjectApiName}/FieldsAndRelationships/{FieldApiName}/view`\n\nThis feature has been requested by multiple users who want quick admin access from DataTools Pro into Salesforce field configuration.",
+  "acceptance_criteria": [
+    "A Salesforce icon appears on each individual field record in the Data Dictionary",
+    "Clicking the icon opens the Salesforce field setup page in a new browser tab",
+    "Deep link URL uses the correct object and field API names",
+    "Icon styling matches MBT-766 for consistency",
+    "Link works for both standard and custom fields"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a Salesforce cloud icon to individual field records in the Data Dictionary. Positioned in the upper right area of the field detail. Clicking opens the Salesforce Setup field page in a new tab.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-766"],
+  "source_files": [],
+  "implementation_notes": "The Salesforce describe API does not return a unique field ID — only the field API name is available. The deep link uses the field API name in the URL path (`FieldsAndRelationships/{FieldApiName}/view`), which works for Salesforce Lightning Setup. The Salesforce instance URL is derived from the user's connected org.",
+  "comment_summary": "Developer noted the describe API response contains no unique field ID, only the API name. Implemented using the API name in the deep link URL and requested review on the development environment.",
+  "comment_count": 1
+}

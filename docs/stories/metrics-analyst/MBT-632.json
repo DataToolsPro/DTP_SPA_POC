@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-632",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Add Processing Time Notice to Step 3 of Metrics Analyst",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-20T22:01:20.881-0700",
+  "updated": "2024-05-24T02:25:38.516-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user waiting for Step 3 to complete, I want to see a notice about expected processing time, so that I know the system is working and don't think it's hung.",
+  "description": "Users reported thinking the system was hanging during Step 3 processing. Add a static notice message below the existing processing spinner:\n\n'NOTICE: This batch process takes about 1 minute per dashboard.'\n\nThis notice remains visible for the duration of Step 3. The existing rotating notice messages continue cycling every 6 seconds above it.",
+  "acceptance_criteria": [
+    "A static notice appears during Step 3: 'NOTICE: This batch process takes about 1 minute per dashboard.'",
+    "The notice is shown in addition to the existing rotating messages",
+    "The static notice only appears during Step 3 processing",
+    "Notice disappears when Step 3 completes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a persistent time-estimate notice during Step 3 processing alongside the existing rotating notice messages.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Two notice messages are now shown during Step 3: the first rotates every 6 seconds, the second is static with the time estimate.",
+  "comment_summary": "Developer added the static notice for Step 3 only. The first notice rotates every 6 seconds while the second remains fixed.",
+  "comment_count": 1
+}

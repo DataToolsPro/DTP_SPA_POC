@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-103",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Link Object Fields to Scorecard via Foreign Key",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-23T22:00:36.069-0700",
+  "updated": "2026-03-01T04:21:29.375-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "",
+  "description": "## Context\nThe `OBJECT_FIELDS` table was linked to the `SCORECARD` table by object name (e.g., \"Account\") rather than a proper foreign key. This made it difficult for data architects to trace relationships and degraded query integrity.\n\n## Change\nAdd a `scorecard_id` foreign key column to the `OBJECT_FIELDS` table, replacing the name-based linkage. The relationship uses CASCADE delete so that removing a scorecard automatically deletes its associated object fields.\n\nThe URL routing continues to use the Scorecard API name (not the numeric ID) because external apps will eventually deep-link into DataTools Pro using that name.\n\n## Data Model\n- New column: `object_fields.scorecard_id` (FK → `scorecard.id`)\n- ON DELETE CASCADE enforced\n- Table may be truncated and re-seeded since this is a core schema change.",
+  "acceptance_criteria": [
+    "object_fields table contains a scorecard_id foreign key column referencing scorecard.id",
+    "CASCADE delete is configured so removing a scorecard deletes its object_fields rows",
+    "URL routing still uses the Scorecard API name rather than numeric ID",
+    "Foreign key naming convention is consistent with existing schema conventions"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "Added scorecard_id foreign key column to object_fields table with CASCADE delete referencing scorecard.id. Replaced name-based linkage with proper relational key. Table truncated and re-seeded for the schema migration.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The scorecard_id column was added with CASCADE relationship. Deleting a scorecard now cascades to remove all its object_fields. The object name is kept in URLs for external app deep-linking support. Table truncation was acceptable since this was a fundamental schema change.",
+  "comment_summary": "Developer confirmed the scorecard_id column was added with CASCADE delete and requested review. Discussion covered keeping the object name in URLs for future external-app linking, and agreed on consistent foreign key naming.",
+  "comment_count": 1
+}

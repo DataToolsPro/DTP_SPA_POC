@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1219",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Standardize DataTools Pro Explorer Naming and App Copy",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-09-24T23:16:08.309-0700",
+  "updated": "2026-03-01T04:08:01.137-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Snowflake"],
+  "story": "",
+  "description": "Standardize all naming and copy for the DataTools Pro Explorer Snowflake app:\n\n### Naming Hierarchy\n- Product name: \"DataTools Pro Explorer\"\n- Company name: \"DataTools Pro\" (not GoodmanGroup LLC)\n- No references to Streamlit in user-facing copy\n\n### App Copy Updates\n- **Short description**: \"DataTools Pro Explorer for Snowflake is a simple data exploration tool to aggregate, filter, and sort data quickly while generating SQL code for you.\"\n- **Home page**: Full overview with sections for Target Users, Key Features (Visual Explorer, Schema & Table Exploration, Instant Query Execution, No-Code Analysis, Secure & Native), Installation, Setup & Permissions, and Support\n- **Documentation links**: All tutorial URLs should use UTM parameters (`utm_source=snowflake&utm_medium=app&utm_id=dtp_explorer`) and be presented as text links rather than raw URLs\n\n### Installation Instructions\nIncludes both Snowflake Marketplace and Internal Marketplace installation paths, plus SQL GRANT statements for setting up permissions.",
+  "acceptance_criteria": [
+    "All user-facing copy uses 'DataTools Pro Explorer' as the product name",
+    "Company is referenced as 'DataTools Pro', not 'GoodmanGroup LLC'",
+    "No references to Streamlit in user-facing copy",
+    "Documentation links include UTM parameters and are displayed as text links",
+    "App home page includes Overview, Target Users, Key Features, Installation, Setup, and Support sections",
+    "Short description matches the specified copy"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Complete copy overhaul for the DataTools Pro Explorer app: standardized naming, updated descriptions, structured home page content, and UTM-tagged documentation links.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "All URLs pointing to the tutorial page should use the format: https://datatoolspro.com/tutorials/datatools-pro-explorer/?utm_source=snowflake&utm_medium=app&utm_id=dtp_explorer and should be rendered as hyperlinked text rather than raw URLs.",
+  "comment_summary": "Reporter clarified that tutorial URLs should always be rendered as hyperlinked text (e.g., 'View our documentation') rather than displaying the raw URL.",
+  "comment_count": 1
+}

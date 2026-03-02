@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-82",
+  "epic_key": "MBT-39",
+  "feature_folder": "data-migration",
+  "title": "DDL Prompt Enhancement for Improved Code Generation",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-01T22:26:27.765-0700",
+  "updated": "2024-05-24T02:24:28.791-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Revise the prompt sent to the OpenAI API for DDL generation to produce more accurate and database-specific scripts. The new prompt structure uses a parameterized format:\n\n- Database type (e.g., PostgreSQL, Snowflake)\n- Table name\n- Case sensitivity flag for field names\n- Special character preservation flag\n- Fields and data types in semicolon-delimited format\n\nAPI parameters updated: Temperature set to 0 (deterministic output), Top P set to 1, and max token length increased to 2048 to handle larger objects. These parameters are hardcoded in the API request and not exposed in the UI.",
+  "acceptance_criteria": [
+    "Prompt uses the new parameterized format with database type, table name, and field definitions",
+    "Fields are sent in semicolon-delimited format",
+    "API temperature is set to 0 for deterministic output",
+    "Max tokens increased to 2048",
+    "Generated DDL is compatible with the specified database type"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Prompt construction logic rewritten to use the new parameterized format. OpenAI API call parameters updated (temperature=0, top_p=1, max_tokens=2048).",
+  "data_model_changes": "",
+  "api_changes": "Outbound OpenAI API call updated with new prompt format and parameters. Later migrated from text-davinci-003 to GPT-3.5 Turbo chat completions endpoint.",
+  "dependencies": ["MBT-36"],
+  "source_files": [],
+  "implementation_notes": "The prompt was initially returning empty responses after the update, which was traced to compatibility issues with the model. The OpenAI documentation for GPT-3.5 Turbo was referenced to resolve the issue. The migration to the chat completions API format was required.",
+  "comment_summary": "Developer confirmed the change was limited to prompt text concatenation. During implementation, the updated prompt returned empty responses. The OpenAI GPT-3.5 Turbo documentation was consulted to resolve the issue. After a few iterations the prompt worked correctly.",
+  "comment_count": 8
+}

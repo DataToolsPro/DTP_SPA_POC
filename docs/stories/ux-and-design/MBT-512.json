@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-512",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Convert Influence Selection to Dropdown with Context Label",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-17T22:04:23.161-0800",
+  "updated": "2026-03-01T04:20:31.623-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want the influence selection for linked services to be a dropdown with a clear 'Has Influence On' label, so that I can intuitively set metric influence relationships.",
+  "description": "The Linked Service UX for setting metric influence was updated:\n\n1. **Influence select box** converted from a checkbox/text input to a dropdown control\n2. **Default state**: deselected (no influence assigned)\n3. **Dropdown title**: \"Has Influence On\" for clarity\n4. **Context**: The selected metric name is restated in the influence UI for reference (e.g., showing \"Activations\" as the metric being influenced)",
+  "acceptance_criteria": [
+    "Influence selection uses a dropdown control instead of a text/checkbox input",
+    "Dropdown is deselected by default",
+    "Dropdown has the title 'Has Influence On'",
+    "The currently selected metric name is displayed in the influence UI for context"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Replaced the influence select box with a dropdown titled 'Has Influence On', deselected by default. The selected metric name is restated for context in the influence linking interface.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "Developer completed the change and deployed to staging for review. No issues reported.",
+  "comment_count": 1
+}

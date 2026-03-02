@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-904",
+  "skipped": true,
+  "skip_reason": "Description is a stub (<20 chars): 'Moving to backlog'",
+  "title": "PBO Salesforce - Enhanced Related List",
+  "status": "To Do",
+  "feature_folder": "payment-and-billing"
+}

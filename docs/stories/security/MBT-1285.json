@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1285",
+  "epic_key": "MBT-1294",
+  "feature_folder": "security",
+  "title": "Comprehensive Audit Logging for Authentication Events",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T22:10:34.329-0800",
+  "updated": "2025-12-17T22:20:12.281-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement comprehensive audit logging for all authentication events to support security monitoring and compliance requirements (SOC 2, GDPR).\n\n## Events to Log\n\n- Login, logout, SSO authentication, session refresh, session revocation\n\n## Required Fields\n\n- timestamp, user_id, organization_id, IP address, user_agent, success/failure, correlation_id\n\n## Technical Approach\n\n1. **Stytch Webhooks**: Subscribe to auth events (user.created, session.created, session.revoked, sso.authenticate)\n2. **Worker-side logging**: Failed auth attempts, rate limit violations, suspicious activity patterns\n3. **Storage**: Centralized logging via Cloudflare Logpush or external SIEM\n\n## Compliance\n\n- Retention: 1+ year (SOC 2, GDPR audit trail requirement)\n- Enable correlation across events via correlation_id\n\n**Security impact: HIGH** (from security audit)",
+  "acceptance_criteria": [
+    "All authentication events are logged with required fields",
+    "Stytch webhook handler captures user.created, session.created, session.revoked, and sso.authenticate events",
+    "Worker-side logging captures failed attempts, rate limit violations, and suspicious patterns",
+    "Logs are stored in centralized logging system with correlation_id",
+    "Log retention meets 1+ year compliance requirement",
+    "Logs are queryable for security investigations"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Stytch webhook handler for auth event ingestion. Worker-side structured logging for auth failures and suspicious patterns.",
+  "data_model_changes": "",
+  "api_changes": "Webhook receiver endpoint for Stytch auth event notifications.",
+  "dependencies": ["MBT-1275", "MBT-1284"],
+  "source_files": [],
+  "implementation_notes": "SOC 2 and GDPR both require comprehensive auth audit trails. Stytch webhooks provide the primary event source; Worker-side logging fills gaps (failed attempts that never reach Stytch, rate limit events). Cloudflare Logpush can forward to Snowflake, Datadog, or other SIEM.",
+  "comment_summary": "",
+  "comment_count": 0
+}

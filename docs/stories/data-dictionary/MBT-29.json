@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-29",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Table Filter and Search Function",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-26T21:19:57.354-0800",
+  "updated": "2024-05-24T02:24:37.922-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to filter and search the Data Dictionary table by field attributes, so that I can quickly find and focus on specific fields without scrolling through the entire list.",
+  "description": "The data table in the Migration and Dictionary views needs filtering and search capabilities to help users locate specific fields.\n\nRequirements:\n1. Implement column-level filtering using DataTables FixedHeader column filtering extension.\n2. Provide a toggle icon to show/hide the column filters (hidden by default, slide-in via jQuery animation).\n3. For dropdown-style columns (e.g., boolean fields), use dropdown filters with 'All / Yes / No' options instead of free-text input.\n\nAfter initial implementation, the approach was refined: a custom search box was added to the toolbar row alongside filters, and the built-in DataTables search was hidden. The 'Filter by field name' input was temporarily hidden in favor of the unified search box.",
+  "acceptance_criteria": [
+    "Data table supports column-level filtering",
+    "A custom search box is positioned in the toolbar row",
+    "Search box filters the entire table across all visible columns",
+    "Built-in DataTables search input is hidden in favor of the custom search box",
+    "Column filters use dropdown selectors for boolean/enumerated columns",
+    "Filtering and search work in both Migration and Dictionary views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a custom search input in the toolbar row that filters the data table using the DataTables API. Column-level filters were initially implemented but the field name filter was temporarily hidden in favor of the unified search. Boolean columns use dropdown filter controls.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Uses the DataTables API `search()` method triggered by a custom input field's keyup event. The built-in search input is hidden via CSS. Column filtering uses the FixedHeader extension. V1 shipped with the unified search approach — per-column filtering may be revisited based on user feedback.",
+  "comment_summary": "Developer asked whether per-column filters were needed in addition to existing top-level filters. Product owner decided current implementation was sufficient for V1. A follow-up enhancement moved the search box inline with the toolbar and temporarily hid the field name filter for a cleaner UX.",
+  "comment_count": 8
+}

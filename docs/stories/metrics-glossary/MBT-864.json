@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-864",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Formula Icon Repositioning and View Formula Explorer Link",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-14T18:24:20.043-0700",
+  "updated": "2024-09-15T13:25:12.008-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "As a DataTools Pro user, I want the formula icon positioned next to the edit and history icons and a 'View Formula Explorer' link under the Definition section, so that I can quickly access formula details.",
+  "description": "Repositions the formula icon from its current location to sit alongside the edit and history action icons in the dictionary field table.\n\nAdds a 'View Formula Explorer' link under the 'Definition' section in the field detail sidebar, visible only when a formula exists for the field. The link is prefixed with the selected formula icon (chemistry/flask/test SVG — developer's choice).",
+  "acceptance_criteria": [
+    "Formula icon repositioned next to edit and history icons",
+    "View Formula Explorer link appears under Definition when a formula exists",
+    "Link includes the formula icon in front of the text"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Formula icon moved to action icons row. 'View Formula Explorer' link with icon added under Definition section, conditional on formula existence.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Three SVG icon options provided (chemistry, flask, test); developer chose the best-fitting option.",
+  "comment_summary": "Developer asked which icon to use; product owner said whichever looks best. Developer implemented and pushed to staging for review.",
+  "comment_count": 4
+}

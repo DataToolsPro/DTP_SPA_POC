@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-7",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Split Salesforce Object Name and Label into Separate Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:33:49.953-0800",
+  "updated": "2024-05-24T02:24:38.835-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["SFDC_Object_Model"],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Currently the Salesforce Object Label and API Name are concatenated as 'Label (API_Name)' for display. While this format works well for the end user, the underlying data model needs to store these as two separate fields.\n\n### Rationale\n- **API integrations** — Downstream automations and API integrations require the Salesforce Object API Name as a standalone value.\n- **Display flexibility** — The Label is used for user-facing display while the API Name is used for programmatic lookups.\n- **Data integrity** — The Object API Name never changes in Salesforce, but administrators can update the Label. Using the API Name for lookups and joins prevents breakage.\n\n### Requirements\n- Store Object Name (API name) and Object Label as separate columns in the SQL database.\n- Concatenate them for display purposes only.\n- Both fields should be loaded into PHP code as distinct variables.\n- Neither field should be editable by the end user (they come directly from Salesforce).",
+  "acceptance_criteria": [
+    "Salesforce Object API Name and Label are stored as separate columns in the SQL database",
+    "Display to end users still shows the concatenated 'Label (API_Name)' format",
+    "PHP code exposes both fields as distinct variables",
+    "Object API Name and Label fields are not editable by end users",
+    "Lookup and join operations use the API Name, not the Label"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "PHP logic updated to handle separate Object Name and Label fields, with concatenation applied at the display layer only.",
+  "data_model_changes": "Split the single concatenated field into two separate columns: one for the Salesforce Object API Name and one for the Object Label. API Name is used for all programmatic lookups and joins.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Critical design constraint: never use the Object Label for lookup or join operations since Salesforce admins can change labels. The API Name is immutable and should be the primary key for integrations.",
+  "comment_summary": "",
+  "comment_count": 0
+}

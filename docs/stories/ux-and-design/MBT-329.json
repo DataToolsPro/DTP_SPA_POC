@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-329",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Header Icon Redesign: Profile, Share, Help, and Alerts",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-22T23:51:59.633-0700",
+  "updated": "2024-05-24T02:25:06.879-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the header to have distinct icons for profile, sharing, help, and alerts, so that each function is clearly identifiable at a glance.",
+  "description": "Redesign the header icon set for clearer function identification.\n\n## Changes\n- Replace the share icon with a green user profile icon (links to settings page)\n- Add a new share icon next to the profile icon (links to settings page with #share anchor for future section)\n- Help icon links to `https://datatoolspro.com/tutorials/#dtphelp`\n- Alerts and Logout icons remain unchanged",
+  "acceptance_criteria": [
+    "Green user profile icon appears in the header linking to settings",
+    "Share icon appears next to profile icon linking to settings#share",
+    "Help icon links to datatoolspro.com/tutorials/#dtphelp",
+    "Alerts icon functions as before",
+    "Logout text functions as before"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Header redesigned with distinct icons: green profile icon, share icon, help icon linking to tutorials, and unchanged alerts/logout.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Share link uses #share anchor for a future settings section. Help link uses #dtphelp anchor on the tutorials page.",
+  "comment_summary": "Developer implemented the changes and pushed to staging for review.",
+  "comment_count": 1
+}

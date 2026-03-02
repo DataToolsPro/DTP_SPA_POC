@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-594",
+  "epic_key": "MBT-597",
+  "feature_folder": "data-dictionary",
+  "title": "Field History Tracking Not Capturing Updates",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-20T21:31:41.528-0800",
+  "updated": "2024-05-24T02:25:37.066-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+  "story": "As a DataTools Pro user, I want field edits in the Data Dictionary to be reliably captured in the change history, so that I can track who changed what and when.",
+  "description": "Field history tracking appeared to stop capturing changes when a user updated a field in the Data Dictionary. Investigation and re-testing were needed to confirm the issue and apply a fix.\n\nA minor code adjustment was made, though the developer noted it may have been working before the change as well. The fix was verified by re-testing the history capture flow.",
+  "acceptance_criteria": [
+    "Editing a field in the Data Dictionary creates a history record",
+    "History record captures the previous value, new value, user, and timestamp",
+    "History records are visible in the field history view"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Minor code adjustment to ensure field update events are properly captured in the history tracking system.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The root cause was uncertain — a small code adjustment was applied and the issue was verified resolved through manual testing. The developer noted it may have been a timing or race condition rather than a logic bug.",
+  "comment_summary": "Developer tested and confirmed history tracking was working after a minor code adjustment. Provided a screenshot showing successful history capture.",
+  "comment_count": 1
+}

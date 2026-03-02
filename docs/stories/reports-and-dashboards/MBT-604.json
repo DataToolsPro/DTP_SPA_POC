@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-604",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Created By and Last Modified By Filters for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-29T23:50:43.878-0800",
+  "updated": "2024-05-24T02:25:39.396-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to filter reports and dashboards by Created By and Last Modified By, so that I can quickly find reports I own or recently edited.",
+  "description": "Adds Created By and Last Modified By filter dropdowns to the Reports and Dashboards views. The filters allow the current logged-in user to view only their own reports or reports they recently modified.\n\nThe CreatedById and LastModifiedById fields come from the Salesforce Report/Dashboard SOQL response data. On refresh, these fields are updated so changes are reflected. The system matches the Salesforce User ID to the current DTP user's Salesforce User ID to determine ownership.\n\nFor reports created or modified by users who are not DTP members, the system displays a fallback label since the user name cannot be resolved from the local user table.",
+  "acceptance_criteria": [
+    "Created By dropdown filter is available on Reports and Dashboards views",
+    "Last Modified By dropdown filter is available on Reports and Dashboards views",
+    "Filters show names of DTP users matched by Salesforce User ID",
+    "Non-DTP users display a fallback label in the filter options",
+    "Refresh updates the CreatedById and LastModifiedById fields from Salesforce",
+    "Existing records in the database are updated on refresh rather than skipped"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added Created By and Last Modified By dropdown filters to the Reports and Dashboards table views. Non-DTP users are displayed with a fallback label.",
+  "middleware_changes": "Modified the refresh logic to update existing records in the database with latest CreatedById and LastModifiedById from Salesforce SOQL responses, rather than skipping existing records.",
+  "data_model_changes": "Reports and dashboards records now store CreatedById and LastModifiedById fields from the Salesforce SOQL response.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The implementation required updating the existing record update logic — previously, records found in the database were not updated on refresh. Now they are updated to capture latest CreatedById and LastModifiedById. Users not in DTP are shown with a static fallback text.",
+  "comment_summary": "Waqar clarified how Created By and Modified By relate to Salesforce data. Ryan explained that the IDs come from the SOQL response and should be matched to the current user's Salesforce User ID. Waqar raised an edge case for non-DTP users and used a fallback label.",
+  "comment_count": 4
+}

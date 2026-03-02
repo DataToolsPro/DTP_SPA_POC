@@ -1,0 +1,29 @@
+{
+  "issue_key": "MBT-407",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Move Migration Navigation Above Import iFrame",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-07T00:03:30.069-0800",
+  "updated": "2024-05-24T02:25:04.553-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the migration navigation to appear above other navigation elements for a cleaner layout, so that the import iFrame anchors to the bottom of the page without overlapping controls.",
+  "description": "UX layout adjustment to move the migration window above the other navigation elements on the metrics page. The import iFrame needs dynamic height calculation via JavaScript to anchor to the bottom of the page.",
+  "acceptance_criteria": [
+    "Migration navigation appears above other nav elements",
+    "Import iFrame dynamically adjusts height to fill remaining page space"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Migration navigation moved above the iFrame. iFrame height set to 100% with dynamic JS anchoring.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "iFrame height currently set to 100% which shows all content; fixed height may require scrolling within the iFrame.",
+  "comment_summary": "Developer moved navigation above iFrame and noted the height consideration. Quick implementation.",
+  "comment_count": 1
+}

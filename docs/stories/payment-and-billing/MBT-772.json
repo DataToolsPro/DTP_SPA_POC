@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-772",
+  "epic_key": "MBT-623",
+  "feature_folder": "payment-and-billing",
+  "title": "Configure Salesforce Standard Matching Rules for Leads, Contacts, and Accounts",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-23T11:13:00.404-0700",
+  "updated": "2024-07-25T23:53:56.287-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nSalesforce matching rules need to be configured to prevent duplicate records and support data quality across leads, contacts, and accounts.\n\n## Matching Rules\n\n### Lead Matching\nMatch on: Email OR (First Name + Last Name). Uses fuzzy name matching.\n\n### Contact Matching\nMatch on: Email OR (First Name + Last Name).\n\n### Account Matching\nMatch on: Company/Account Name.\n\n## Configuration\n\nRules should be simple. Geography-based matching conditions were removed for simplicity. Fuzzy name matching is enabled for lead rules.\n\n| Action | Rule Name | Object | Status | Description | Date | Owner |\n|--------|-----------|--------|--------|-------------|------|-------|\n| Deactivate | Account Name Match | Account | Active | Checks account name match regardless of other attributes | 6/23/2024 | RGood |\n| Deactivate | Lead Name Match | Lead | Active | Checks lead name or company name match | 6/23/2024 | RGood |",
+  "acceptance_criteria": [
+    "Lead matching rule matches on email OR first + last name with fuzzy matching",
+    "Contact matching rule matches on email OR first + last name",
+    "Account matching rule matches on company/account name",
+    "Rules are active and functioning in the PBO instance",
+    "Geography-based conditions are not included"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Configured Salesforce standard matching rules for Lead (name fuzzy match + email), Contact (name + email), and Account (company name). Removed geography-based secondary conditions for simplicity.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Matching rules use fuzzy name matching for leads. Geography condition was initially considered but removed to keep rules simple. Rules were configured by Ryan directly.",
+  "comment_summary": "Ryan added new lead and account matching rules using name fuzzy match and removed the geography condition.",
+  "comment_count": 1
+}

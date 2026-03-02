@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1282",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Integrate Pooled App with Cloudflare Worker Auth Flow",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:49:32.643-0800",
+  "updated": "2026-03-01T04:14:06.274-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Phase 4 of the Cloudflare Worker auth migration (Epic MBT-1260). Integrate the pooled Laravel application with the new Cloudflare Worker-based authentication flow.\n\n### Tasks\n- Implement `/auth/consume` endpoint in the Laravel app\n- Create server-to-server code exchange with the auth service\n- Set up host-only session cookies\n- Implement tenant scoping in the pooled app\n- Add organization_id/tenant_id extraction from session\n\n### Deliverables\n- Laravel auth consume endpoint\n- Session management with host-only cookies\n- Tenant scoping implementation for pooled multi-tenant architecture",
+  "acceptance_criteria": [
+    "Laravel /auth/consume endpoint accepts and validates handoff codes from Cloudflare Worker",
+    "Server-to-server code exchange securely retrieves user/tenant context",
+    "Host-only session cookies are properly scoped",
+    "Tenant scoping correctly isolates data per organization_id/tenant_id"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "New /auth/consume endpoint for Cloudflare Worker handoff code exchange. Session management with host-only cookies. Tenant scoping via organization_id/tenant_id extraction.",
+  "data_model_changes": "",
+  "api_changes": "POST /auth/consume — accepts handoff code, exchanges server-to-server for user/tenant context, establishes session.",
+  "dependencies": ["MBT-1280"],
+  "source_files": [],
+  "implementation_notes": "Part of Epic MBT-1260. Requires Cloudflare Worker (Phase 2) to be deployed first.",
+  "comment_summary": "",
+  "comment_count": 0
+}

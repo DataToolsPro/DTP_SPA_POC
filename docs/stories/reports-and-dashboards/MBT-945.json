@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-945", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Standardize Date Format on Reports and Dashboards Page to Match Salesforce",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-09T02:59:33.703-0700", "updated": "2024-11-03T18:59:18.726-0800",
+  "assignee": "waqar khan", "reporter": "waqar khan", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want date columns on the Reports and Dashboards page to use the same format as Salesforce, so the display is clear and consistent.",
+  "description": "Enhancement to standardize the date format across all date columns (Created Date, Last Modified, Last Viewed) to match Salesforce's display format for consistency and readability.",
+  "acceptance_criteria": ["All date columns use the same format as Salesforce", "Format is clear and human-readable"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Updated date format in all date columns to match Salesforce standard format.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-789"], "source_files": [],
+  "implementation_notes": "Updated moment.js format strings to match Salesforce date display conventions.",
+  "comment_summary": "Waqar updated the format and requested review. Screenshot shows the updated format.", "comment_count": 1
+}

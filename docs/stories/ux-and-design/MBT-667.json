@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-667",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Apply Dark/Light Theme to GoJS ERD Diagrams",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-26T05:49:37.005-0700",
+  "updated": "2024-05-24T02:25:40.557-0700",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing ERD diagrams, I want the diagram to respect my chosen dark or light theme, so that the diagram is readable and visually consistent with the rest of the application.",
+  "description": "The GoJS-powered ERD (Entity Relationship Diagram) does not adapt to the user's selected dark/light theme from the Branding settings. The diagram needs to switch its color scheme based on the branding theme selection.\n\n## Changes\n- Detect the current theme (dark or light) from branding settings\n- Apply corresponding color scheme to the GoJS diagram (background, node colors, text colors, lines)",
+  "acceptance_criteria": [
+    "GoJS ERD diagram respects the dark/light theme selected in Branding settings",
+    "Diagram background adapts to the selected theme",
+    "Node colors, text, and lines are readable in both dark and light modes",
+    "Theme changes apply without requiring a page reload"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "GoJS ERD diagram now adapts its color scheme (background, nodes, text, lines) based on the dark/light theme selected in Branding settings.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "GoJS diagram theme configuration updated to read the current branding theme (dark/light) and apply the corresponding color palette to the diagram model.",
+  "comment_summary": "",
+  "comment_count": 0
+}

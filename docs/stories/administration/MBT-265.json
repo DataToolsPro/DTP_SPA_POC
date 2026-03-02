@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-265",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Replace Auto-Incrementing Account ID with GUID",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-05T12:03:42.010-0700",
+  "updated": "2024-05-24T02:24:57.474-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "",
+  "description": "Replace the auto-incrementing numeric account ID with a GUID to prevent sequential ID enumeration. The original concern was that auto-incrementing IDs exposed in URLs could be guessed or enumerated.\n\nThe resolution was to remove the account ID from URLs entirely, routing to `/myaccounts/` instead of `/myaccounts/{id}`. This eliminated the security concern without needing to change the underlying ID generation strategy.",
+  "acceptance_criteria": [
+    "Account ID is not exposed in any user-facing URL",
+    "Account page routes to /myaccounts/ without an ID parameter",
+    "Account lookup uses session-based context instead of URL parameters"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Account routing changed from /myaccounts/{id} to /myaccounts/, using session-based account context instead of URL-based ID lookup.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Rather than implementing a GUID column, the developer resolved the security concern by removing the account ID from URLs entirely. The account context is now derived from the authenticated session.",
+  "comment_summary": "Developer noted that the account ID was removed from URLs entirely (routing to /myaccounts/ only), questioning whether a GUID was still needed. This effectively resolved the security concern.",
+  "comment_count": 1
+}

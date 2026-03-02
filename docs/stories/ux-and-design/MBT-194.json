@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-194",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Add Footer to Login and Passcode Pages",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-22T16:05:32.231-0700",
+  "updated": "2024-05-24T02:24:32.073-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the login and passcode pages to have a footer with copyright and support links, so that branding is consistent and help is accessible from every page.",
+  "description": "Add the standard application footer to the login and passcode pages. The footer should be anchored to the bottom of the page.\n\n## Footer Content\n- Left: `© 2023 Data Tools Pro. All rights reserved.`\n- Right: Privacy Policy link → datatoolspro.com/support, Contact Us link → datatoolspro.com/contact/",
+  "acceptance_criteria": [
+    "Footer appears on the login page anchored to the bottom",
+    "Footer appears on the passcode page anchored to the bottom",
+    "Footer content matches the main application footer",
+    "Privacy Policy and Contact Us links work correctly"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Standard application footer with copyright and support links added to login and passcode pages, anchored to the bottom.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-167"],
+  "source_files": [],
+  "implementation_notes": "Footer HTML placed below the closing content tag, position anchored to page bottom via CSS.",
+  "comment_summary": "Developer added the footer to both login and beta passcode pages.",
+  "comment_count": 1
+}

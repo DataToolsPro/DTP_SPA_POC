@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-583",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Update Content Security Policy for Pendo Integration",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-17T22:55:42.791-0800",
+  "updated": "2026-03-01T03:38:58.421-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations"],
+  "story": "",
+  "description": "The application's Content Security Policy (CSP) needs additional directives to fully support Pendo analytics and in-app guides. Pendo's documentation outlines the required CSP sources.\n\nThe key addition is the `pendo-static-{SUB_ID}.storage.googleapis.com` directive, which requires the Pendo subscription ID to construct the correct domain.\n\n### Reference\n- Pendo CSP guide: https://support.pendo.io/hc/en-us/articles/360032209131-Content-Security-Policy-CSP",
+  "acceptance_criteria": [
+    "All CSP directives listed in the Pendo CSP guide are added to the application's custom CSP",
+    "The pendo-static storage directive uses the correct subscription ID",
+    "Pendo analytics and in-app guides load without CSP violations",
+    "No regressions in other CSP-protected resources"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "All Pendo-required CSP directives were added to the custom CSP header. The subscription ID (6474377860546560) was needed for the pendo-static Google Cloud Storage directive. Changes deployed and verified on staging.",
+  "comment_summary": "Developer added all Pendo CSP directives except the subscription-specific one, which required the Pendo sub ID. After receiving the ID, all directives were added and pushed to staging for review.",
+  "comment_count": 9
+}

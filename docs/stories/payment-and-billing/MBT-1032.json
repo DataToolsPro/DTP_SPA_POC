@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1032",
+  "epic_key": "MBT-1024",
+  "feature_folder": "payment-and-billing",
+  "title": "Add Required Closed Lost Reason Field on Opportunities",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-13T21:32:03.409-0800",
+  "updated": "2024-12-22T21:41:45.304-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a Salesforce administrator, I want a required 'Closed Lost Reason' picklist that conditionally appears when an opportunity stage is set to Closed Lost, so that the sales team consistently captures why deals were lost for pipeline analysis.",
+  "description": "## Context\n\nWhen opportunities are marked as Closed Lost, there is no structured way to capture the reason. A required field with predefined options ensures consistent data capture for pipeline analysis.\n\n## Behavior\n\n### Data Model\nAdd a picklist field \"Closed Lost Reason\" to the Opportunity object with the following options:\n- Client went dark\n- Pricing\n- Competitor\n- Project Cancelled\n\n### Validation\nCreate a validation rule that requires the Closed Lost Reason field to be populated when the Opportunity stage equals \"Closed Lost\":\n```\nAND(\n  ISPICKVAL(StageName, \"Closed Lost\"),\n  ISBLANK(TEXT(Closed_Lost_Reason__c))\n)\n```\n\n### Conditional Visibility\nUsing Lightning Dynamic Forms, configure the Closed Lost Reason field to only appear on the Opportunity record page when Stage = Closed Lost. The field is hidden by default and appears conditionally.",
+  "acceptance_criteria": [
+    "Closed Lost Reason picklist field exists on the Opportunity object",
+    "Picklist options include: Client went dark, Pricing, Competitor, Project Cancelled",
+    "Validation rule prevents saving Closed Lost opportunities without a reason",
+    "Field is hidden when opportunity stage is not Closed Lost",
+    "Field appears automatically when stage is set to Closed Lost",
+    "Field is required only when visible (stage = Closed Lost)"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Closed Lost Reason field conditionally appears on the Opportunity Lightning Record Page when Stage = Closed Lost, using Dynamic Forms visibility rules. Hidden by default.",
+  "middleware_changes": "Validation rule enforces that Closed Lost Reason is required when Stage = Closed Lost, regardless of the UI (catches API and bulk updates too).",
+  "data_model_changes": "New picklist field Closed_Lost_Reason__c on the Opportunity object with values: Client went dark, Pricing, Competitor, Project Cancelled.",
+  "api_changes": "",
+  "dependencies": ["MBT-1025"],
+  "source_files": [],
+  "implementation_notes": "Two-part implementation: (1) validation rule ensures data integrity even via API/bulk operations, (2) Dynamic Forms conditional visibility provides a clean UX. A Lightning Record Page with Dynamic Forms was enabled for Opportunities to support the conditional field visibility. Implemented on sandbox first.",
+  "comment_summary": "Developer implemented both the validation rule and conditional visibility using Dynamic Forms on the sandbox. Confirmed the field is hidden by default and only appears/is required when stage is Closed Lost.",
+  "comment_count": 1
+}

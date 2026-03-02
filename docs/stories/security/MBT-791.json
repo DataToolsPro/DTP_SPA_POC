@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-791",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Fix False Positive Max User Limit Blocking Invited Users",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-03T16:13:22.637-0700",
+  "updated": "2026-03-01T03:51:31.341-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security", "Administration"],
+  "story": "As a Salesforce administrator, I want invited users to be able to accept invitations and access the application when seats are available, so that the max-user enforcement does not incorrectly block legitimate invitations.",
+  "description": "Invited users were being blocked from accepting team invitations with a 'max number of users reached' error despite available seats. The admin showed 0 active users and 9 available seats, yet the invited user could not log in.\n\n### Root Cause\nThe seat availability calculation had an off-by-one error that triggered when exactly 1 seat was remaining. The logic incorrectly blocked access when available seats equaled 1.\n\n### Additional Issue\nPendo visitor/account IDs did not match between the inviting admin and the invited user, suggesting a possible account association problem during the invite flow.",
+  "acceptance_criteria": [
+    "Invited users can accept invitations when seats are available",
+    "Seat availability calculation is correct for all remaining seat counts including 1",
+    "Max user enforcement only blocks when truly at capacity"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Invited users no longer see false 'max users reached' error when seats are available.",
+  "middleware_changes": "Fixed off-by-one error in seat availability calculation that blocked access when exactly 1 seat remained.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was reproducible only when 1 seat was available out of 3. Fixed the boundary condition. Tested thoroughly with multiple new users on dtpwaqar instance. Worked with client (David at FundCanna) to validate fix on production.",
+  "comment_summary": "Waqar reproduced the issue only with 1 remaining seat and fixed the off-by-one error. Ryan noticed Pendo account ID mismatches between admin and invited user. After the fix, they worked directly with client David to test on production and confirmed it was working. Ryan recorded a demo session with the client.",
+  "comment_count": 7
+}

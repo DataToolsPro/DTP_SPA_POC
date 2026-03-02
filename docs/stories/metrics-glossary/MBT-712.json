@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-712",
+  "epic_key": "MBT-149",
+  "feature_folder": "metrics-glossary",
+  "title": "Dictionary Field Sidebar — Display Table Details as Read-Only",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-21T17:28:34.930-0700",
+  "updated": "2024-07-26T00:01:14.107-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "Dictionary"],
+  "story": "As a DataTools Pro user, I want to see the same field details shown in the dictionary table inside the field sidebar, so that I can review all metadata without leaving the sidebar context.",
+  "description": "Adds read-only field detail attributes from the dictionary table into the field sidebar panel. These fields are managed in Salesforce and are therefore non-editable in DataTools Pro.\n\nThe 'Metrics Relation' column is hidden from the table for now but planned as a future feature.\n\nThe sidebar component is built to be reusable across pages, specifically to support the ERD page (MBT-709) in addition to the dictionary page.",
+  "acceptance_criteria": [
+    "Field sidebar shows the same detail columns as the dictionary table",
+    "Sidebar fields are read-only since they are managed in Salesforce",
+    "Metrics Relation column is hidden from the table",
+    "Sidebar component is reusable across dictionary and ERD pages"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Field sidebar displays read-only metadata fields matching the dictionary table. Reusable sidebar component designed for cross-page use.",
+  "middleware_changes": "Sidebar data endpoint returns the same field attributes shown in the dictionary table.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Built as a shared component so MBT-709 (ERD page) can reuse the same sidebar. Pre-code review recommended when picked up by a new developer.",
+  "comment_summary": "Product owner noted a pre-code review should be done with the senior developer before the new developer starts implementation.",
+  "comment_count": 1
+}

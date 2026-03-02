@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-962", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Add Clickable Open Report/Dashboard Link in Details Pane",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-10-20T22:29:30.799-0700", "updated": "2024-11-27T22:26:27.281-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user viewing the details pane, I want a clickable link with the Salesforce icon to open the report or dashboard directly in Salesforce in a new tab.",
+  "description": "Feature: Add a clickable link in the details pane (in front of Notes) that shows the report/dashboard name with the Salesforce icon. Both the icon and the report name are clickable and open the actual report/dashboard in Salesforce in a new tab. This provides quick access to the source record without leaving the details pane.",
+  "acceptance_criteria": ["Report/dashboard name appears as a clickable link in the details pane", "Salesforce icon is displayed next to the link", "Both icon and text are clickable", "Link opens the Salesforce report/dashboard in a new browser tab"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Added a clickable Salesforce link with icon in the details pane that opens the report/dashboard in a new tab.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "The link is constructed using the Salesforce instance URL and the report/dashboard ID. Both icon and text elements have click handlers opening the URL in a new tab.",
+  "comment_summary": "Waqar added the link and asked for review. Screenshot shows the link placement in the details pane.", "comment_count": 1
+}

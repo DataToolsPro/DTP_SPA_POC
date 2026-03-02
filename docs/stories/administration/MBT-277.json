@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-277",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "My Accounts Page Label and Layout Refinements",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-17T12:36:46.778-0700",
+  "updated": "2024-05-24T02:25:01.155-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user, I want the account management page to use clear, consistent terminology and formatting, so that I can navigate settings and manage my account without confusion.",
+  "description": "UX refinements to the My Accounts page for consistent naming conventions and typography:\n\n**Left Navigation Changes:**\n- \"Asset Type\" renamed to \"Settings\"\n- \"Settings\" link renamed to \"My Settings\"\n- \"My Account\" renamed to \"Manage Account\"\n- Left navigation links made consistent using the same heading level\n\n**Header Changes:**\n- Title changed from \"My Accounts\" to \"Manage My Accounts\"\n\n**Typography:**\n- Subtitles changed from H4 to H5 for consistency\n- H2 section heading changed to H5\n\n**Terminology:**\n- \"My Tenant(s)\" renamed to \"Guest Users\" since \"tenant\" is an internal term not suitable for customer-facing UI\n\nA typo (\"My Accoun\" missing the 't') was also identified and fixed.",
+  "acceptance_criteria": [
+    "Left navigation shows 'Settings', 'My Settings', and 'Manage Account'",
+    "Page title reads 'Manage My Accounts'",
+    "All subtitles use H5 for consistency",
+    "Tenant-related sections are labeled 'Guest Users'",
+    "Left navigation link formatting is consistent",
+    "No typos in account-related labels"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Renamed navigation labels and page titles for clarity. Standardized heading levels to H5. Replaced internal terminology ('Tenant') with user-friendly label ('Guest Users'). Fixed typo in 'My Account' label.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Multiple iterative changes based on review feedback. The layout was also restructured to show account information, invite option, and accepted members in a cleaner format.",
+  "comment_summary": "Developer implemented all label changes and layout updates. Product identified a typo and inconsistent heading levels during review, both of which were quickly fixed. Overall page layout was praised.",
+  "comment_count": 10
+}

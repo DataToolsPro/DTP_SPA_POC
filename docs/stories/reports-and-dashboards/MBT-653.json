@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-653",
+  "epic_key": "MBT-602",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Tableau Settings Page Two-Column Layout with Tutorial Links and Active Nav Highlight",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-17T09:01:26.148-0700",
+  "updated": "2024-05-24T02:25:39.923-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools", "Tableau"],
+  "story": "As a product administrator configuring Tableau settings, I want to see tutorial videos and links alongside the configuration fields and know which settings page I am on, so that I can easily complete setup and navigate settings.",
+  "description": "Enhances the Tableau settings page to match the two-column modal layout used during initial configuration. The left column displays the four Tableau credential fields. The right column embeds a YouTube tutorial video and links to two written tutorials:\n\n- Link Tableau Personal Access Token to DataTools Pro\n- Tableau Pulse Import to DataTools Pro Metrics Glossary\n\nAlso updates the left navigation sidebar to highlight the currently active settings page, providing clear wayfinding across all settings pages.",
+  "acceptance_criteria": [
+    "Settings page displays a two-column layout matching the configuration modal",
+    "Left column shows all four Tableau credential fields",
+    "Right column embeds the YouTube tutorial video",
+    "Two tutorial links are displayed below the video and open in new windows",
+    "Left navigation highlights the currently active settings page",
+    "Active navigation highlighting is applied consistently across all settings pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Redesigned Tableau settings page to two-column layout with embedded tutorial video and links. Added active state highlighting to the left navigation sidebar across all settings pages.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-636"],
+  "source_files": [],
+  "implementation_notes": "Tutorial links were also updated on the popup modal. The active nav highlighting was applied globally to all settings pages for consistency.",
+  "comment_summary": "Waqar completed the layout on staging and also updated the tutorial links on the popup modal. Asked whether tutorial links should remain on both the settings page and the popup.",
+  "comment_count": 1
+}

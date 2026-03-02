@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1160",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Fetch Snowflake Views and View Metadata",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2025-07-08T02:27:34.554-0700",
+  "updated": "2026-03-01T03:43:03.580-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "",
+  "description": "Extend the Snowflake integration to fetch views and their metadata in addition to tables. Currently the REST API only returns a subset of tables and does not return views at all.\n\n### Known Issues\n- The REST API endpoint returns fewer tables than visible in the Snowflake UI (e.g., 3 of 8 expected tables)\n- Views (e.g., ZOHO_LOADS) return an empty array when fetched via the API\n- The discrepancy may be related to permissions on the service account used for API access",
+  "acceptance_criteria": [
+    "Snowflake views are fetched and displayed alongside tables",
+    "View metadata (columns, data types) is retrieved correctly",
+    "All tables visible in Snowflake UI are also returned by the API",
+    "Permission issues preventing full table/view listing are resolved"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Extended Snowflake API integration to query views in addition to tables, including metadata retrieval.",
+  "data_model_changes": "Storage for Snowflake view metadata alongside table metadata.",
+  "api_changes": "Updated Snowflake schema fetch to include views in the API response.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The REST API returns fewer tables than expected, possibly due to service account permissions. Views require a separate query or different endpoint. Needs investigation into whether the Snowflake REST API has different permissions for views vs tables.",
+  "comment_summary": "Developer identified a discrepancy between Snowflake UI and REST API table counts. Views return empty arrays. Likely a permissions issue with the service account. Investigation ongoing.",
+  "comment_count": 1
+}

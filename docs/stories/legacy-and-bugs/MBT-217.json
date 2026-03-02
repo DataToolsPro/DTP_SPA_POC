@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-217",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Fix Broken Footer Links on Login and Passcode Pages",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-08-04T19:32:02.822-0700",
+  "updated": "2026-03-01T04:02:50.490-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro visitor, I want the footer links on the login and passcode pages to work correctly, so that I can access the beta signup, privacy policy, and contact pages.",
+  "description": "## Bug\nSeveral footer links on the passcode/login pages were broken or pointing to incorrect URLs:\n- \"Sign up for Beta\" link was broken — should point to https://datatoolspro.com/beta\n- \"Privacy Policy\" link was incorrect — should point to https://datatoolspro.com/privacy\n- \"Contact Us\" link was incorrect — should point to https://datatoolspro.com/contact\n- \"License Agreement\" link was working correctly (opens a modal with JSON license content).",
+  "acceptance_criteria": [
+    "Beta signup link navigates to https://datatoolspro.com/beta",
+    "Privacy Policy link navigates to https://datatoolspro.com/privacy",
+    "Contact Us link navigates to https://datatoolspro.com/contact",
+    "License Agreement link continues to work as a modal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed footer links on login/passcode pages to point to correct URLs for beta signup, privacy policy, and contact pages.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple URL correction in footer template. License Agreement modal was already working correctly.",
+  "comment_summary": "Developer confirmed the links were fixed. License Agreement link was verified to be working correctly as a modal.",
+  "comment_count": 3
+}

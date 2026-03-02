@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-984", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix DataTable Date Column Sorting to Support ASC/DESC Order",
+  "type": "story", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-07T10:03:57.816-0800", "updated": "2024-11-27T22:18:26.545-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to sort date columns in ascending and descending order correctly, so I can find the most recent or oldest records easily.",
+  "description": "Date columns were not sorting correctly because the display format did not sort lexicographically. Two solution options were proposed:\n\n1. Apply a date-type attribute in DataTables for proper date sorting\n2. Use yyyy-mm-dd format which sorts naturally as text\n\nThe fix was applied across Reports and Dashboards, Initiatives, and Metrics pages.",
+  "acceptance_criteria": ["Date columns sort correctly in ascending order", "Date columns sort correctly in descending order", "Fix applied across Reports/Dashboards, Initiatives, and Metrics pages"],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Date columns now sort correctly in both ASC and DESC order.",
+  "middleware_changes": "Applied DataTables date type attribute or sortable date format to date columns for correct chronological sorting.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-945"], "source_files": [],
+  "implementation_notes": "Used DataTables column type configuration to enable proper date sorting. Applied the fix across all three feature pages (reports-and-dashboards, initiatives, metrics).",
+  "comment_summary": "Waqar fixed date sorting across Reports/Dashboards, Initiatives, and Metrics pages.", "comment_count": 1
+}

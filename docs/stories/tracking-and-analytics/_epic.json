@@ -1,0 +1,47 @@
+{
+  "folder": "tracking-and-analytics",
+  "label": "Product Analytics and Tracking",
+  "type": "platform",
+  "doc_tag": "datatoolspro",
+  "epic_count": 3,
+  "epics": [
+    {
+      "epic_key": "MBT-202",
+      "epic_id": "10235",
+      "summary": "Tracking and Analytics",
+      "status": "In Review"
+    },
+    {
+      "epic_key": "MBT-878",
+      "epic_id": "11147",
+      "summary": "Daily Active User Cron",
+      "status": "In Review"
+    },
+    {
+      "epic_key": "MBT-922",
+      "epic_id": "11193",
+      "summary": "Google Analytics",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 17,
+  "stories": [
+    "MBT-59",
+    "MBT-183",
+    "MBT-184",
+    "MBT-212",
+    "MBT-213",
+    "MBT-423",
+    "MBT-562",
+    "MBT-794",
+    "MBT-795",
+    "MBT-815",
+    "MBT-849",
+    "MBT-1131",
+    "MBT-1226",
+    "MBT-1236",
+    "MBT-1239",
+    "MBT-1311",
+    "MBT-1319"
+  ]
+}

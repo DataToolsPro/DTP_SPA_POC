@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-754",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Searchable Folder Dropdown Filter for Reports and Dashboards",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-06T00:29:01.555-0700",
+  "updated": "2024-07-18T04:24:20.051-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to search and select a Salesforce folder from a dropdown filter, so that I can quickly narrow reports to a specific folder even when the folder list is long.",
+  "description": "Adds a searchable Folder dropdown filter to the Reports and Dashboards sidebar. The folder list comes from Salesforce where folders are hierarchical, but for filtering purposes, folder names are treated as flat text with deduplication to avoid showing the same folder name twice.\n\nThe dropdown supports type-ahead search so users can quickly find a specific folder without scrolling through a potentially very long list.",
+  "acceptance_criteria": [
+    "Folder dropdown filter is available in the Reports and Dashboards sidebar",
+    "Dropdown supports type-ahead search filtering",
+    "Folder names are deduplicated in the dropdown list",
+    "Selecting a folder filters the report/dashboard table",
+    "Folder filter works in combination with other existing filters"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added a searchable Folder dropdown filter to the left sidebar with type-ahead search and deduplicated folder names.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Folder names are treated as flat text for filtering despite being hierarchical in Salesforce. Deduplication ensures unique folder names in the dropdown.",
+  "comment_summary": "Balaji completed the folder dropdown and filtering feature. Confirmed working on staging.",
+  "comment_count": 6
+}

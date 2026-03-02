@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-758",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Accept Invite Redirects to Error Page",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-10T23:14:56.856-0700",
+  "updated": "2026-03-01T03:46:06.692-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user accepting a team invite, I want to be taken to the dashboard successfully, so that I can start using the shared account without encountering errors.",
+  "description": "## Bug\nA user (Jared) encountered an error when accepting a team invite — the accept invite link redirected to an error page instead of completing the invite acceptance flow.",
+  "acceptance_criteria": [
+    "Accepting a team invite redirects to the dashboard successfully",
+    "No error page is displayed during the invite acceptance flow"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Fixed invite acceptance flow to properly redirect users after accepting a team invite.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-300"],
+  "source_files": [],
+  "implementation_notes": "Bug was in the invite acceptance controller. Likely related to the same base_url validation logic fixed in MBT-300.",
+  "comment_summary": "",
+  "comment_count": 0
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-347",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Pointer Cursor to Clickable Table Rows and Cells",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:19:56.476-0800",
+  "updated": "2026-03-01T04:15:25.324-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the cursor to change to a pointer when hovering over clickable table areas, so that I can clearly identify interactive elements.",
+  "description": "Clickable areas in the application (especially table rows in the object detail Dictionary and Migration views) did not visually indicate that they were interactive. Adding a `.clickable` CSS class with `cursor: pointer` provides clear affordance.\n\n### CSS Added\n```css\n.clickable {\n  cursor: pointer;\n}\n```\n\nThe entire row was made clickable — hovering over any cell in the row shows the pointer cursor, and clicking selects the row.",
+  "acceptance_criteria": [
+    "Hovering over clickable table rows shows a pointer cursor",
+    "The `.clickable` CSS class is applied to interactive rows in Dictionary and Migration tables",
+    "Clicking a row selects it",
+    "Cursor behavior is consistent across all table-based views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added pointer cursor on hover for clickable table rows in Dictionary and Migration views. Entire rows are now clickable for selection, providing clear visual affordance for interactivity.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The `.clickable` CSS class was applied to table rows. Row click events were wired up to trigger row selection.",
+  "comment_summary": "Developer confirmed the approach of making entire rows clickable with cursor pointer. Implementation was completed and approved.",
+  "comment_count": 4
+}

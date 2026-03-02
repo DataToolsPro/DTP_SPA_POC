@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-866",
+  "epic_key": "MBT-342",
+  "feature_folder": "api",
+  "title": "Secure Token Display with Masking, Reveal, and Copy to Clipboard",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-18T12:27:03.038-0700",
+  "updated": "2024-08-19T20:15:55.421-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "API", "security"],
+  "story": "As a DataTools Pro user managing API or Coda integrations, I want my tokens to be masked by default with options to reveal or copy them, so that my credentials are protected from shoulder-surfing while remaining easy to use.",
+  "description": "## Context\n\nThe token management UI needed a security improvement to prevent accidental exposure of API and Coda tokens. Previously, tokens were displayed in plain text, creating a risk of credential exposure.\n\n## Behavior\n\nWhen a user views their token management page, generated tokens are displayed in a text input that is masked by default (showing `************`). Two action controls are provided:\n\n1. **Show/Hide toggle** — an eye icon that toggles the token between masked and plain text display\n2. **Copy to clipboard** — a copy icon that copies the full token value to the user's clipboard regardless of the current display state\n\nThis UX pattern applies to both API token management and Coda token management screens.",
+  "acceptance_criteria": [
+    "Tokens are displayed in a masked text input showing asterisks by default",
+    "A show/hide eye icon toggles between masked and plain text display",
+    "A copy icon copies the full token to the user's clipboard",
+    "Copy works regardless of whether the token is currently masked or visible",
+    "Masking behavior applies to both API token and Coda token management pages",
+    "Token value is not exposed in the page source or DOM when masked"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Token inputs on API and Coda management pages now default to masked display (asterisks). Added eye icon for show/hide toggle and clipboard icon for one-click copy. Consistent pattern applied across both token types.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-333"],
+  "source_files": [],
+  "implementation_notes": "The masked input pattern was implemented on the development environment first, then promoted to staging. The same UX pattern was reused for both API tokens (/user/tokens/) and Coda tokens to keep the experience consistent.",
+  "comment_summary": "Waqar implemented the masked token display with show/hide and copy icons on the development environment and shared a screenshot for review.",
+  "comment_count": 1
+}

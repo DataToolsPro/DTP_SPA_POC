@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1141",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Fix ERD Not Rendering Relationships for Opportunity Object",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-06-03T18:33:59.319-0700",
+  "updated": "2026-03-01T04:23:44.855-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user, I want to see entity relationships when visualizing an Opportunity object in the ERD, so that I can understand how Opportunity connects to other objects.",
+  "description": "## Bug\nWhen visualizing an Opportunity object in the ERD, the entity relationships do not render. The diagram shows the object node but no relationship lines.\n\n## Fix\nFixed the ERD query or rendering logic that was failing to display relationships for the Opportunity object. Deployed to dev.",
+  "acceptance_criteria": [
+    "Opportunity object renders with its entity relationships in the ERD",
+    "Relationship lines are visible for all lookup fields on Opportunity",
+    "Other objects continue to render correctly"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Opportunity object now correctly displays entity relationships in the ERD diagram.",
+  "middleware_changes": "Fixed the ERD data query/rendering logic that was failing for the Opportunity object.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Bug was specific to the Opportunity object — likely a missing primary object reference in the ERD query. Fixed on dev.",
+  "comment_summary": "Developer fixed the issue on dev and asked whether it should be pushed to production.",
+  "comment_count": 1
+}

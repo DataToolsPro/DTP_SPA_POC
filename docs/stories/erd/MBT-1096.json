@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1096",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Inactive Disposition Status to Hide Unused Lookup Fields in ERD",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-29T19:04:19.458-0700",
+  "updated": "2026-03-01T04:08:06.965-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user managing an ERD, I want to flag lookup fields as 'Inactive' so that unused relationships are hidden from the diagram, resulting in a cleaner and less confusing visualization.",
+  "description": "## Context\nIn a Salesforce org, many lookup relationships exist technically but are not actively used. These create noise in the ERD, showing connections between objects that are not meaningful for reporting or analysis.\n\n## Behavior\n1. A new \"Inactive\" option is added to the existing Reporting dropdown on the Dictionary field detail view.\n2. The same Reporting dropdown is also exposed directly in the ERD node view for each field.\n3. When a field's reporting status is set to \"Inactive\", it is hidden from the ERD node and its relationship lines are removed.\n4. Object nodes still appear even if all their fields are set to Inactive (the node header remains visible).\n\n## Integration\nThe Reporting dropdown in the ERD mirrors the existing Dictionary Reporting dropdown, ensuring consistency between the two views.",
+  "acceptance_criteria": [
+    "A new 'Inactive' status option is available in the Reporting dropdown",
+    "Fields marked as Inactive are hidden from ERD nodes",
+    "Relationship lines for Inactive fields are removed from the ERD",
+    "Object nodes remain visible even when all fields are Inactive",
+    "Reporting dropdown is accessible both in Dictionary detail and ERD node views",
+    "Changes to Reporting status are persisted and reflected on ERD refresh"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New 'Inactive' status in the Reporting dropdown. ERD nodes hide fields and relationship lines for Inactive fields. Reporting dropdown added directly to ERD node view.",
+  "middleware_changes": "ERD query filters out fields with Inactive reporting status. Reporting status update endpoint supports the new Inactive value.",
+  "data_model_changes": "New 'Inactive' value added to the reporting status enum/options for object fields.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer added the dropdown to the ERD node view in addition to primary/foreign key indicators. Fields with Inactive status are filtered from node rendering. Object nodes display even with zero visible fields. Feature branch awaiting merge to dev.",
+  "comment_summary": "Developer implemented the Inactive filter with a dropdown in the ERD node view. Confirmed that nodes still display even when all fields are hidden. Branch is ready but awaiting approval before merging to dev.",
+  "comment_count": 4
+}

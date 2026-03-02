@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-306",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Production Deployment of User Management Features",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-10-16T01:14:58.311-0700",
+  "updated": "2024-05-24T02:25:02.459-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "Deploy all new user management features from staging to production, including account sharing, tenant management, permissions, SendGrid email integration, and Salesforce org validation. Review go-live plan and assess impact to existing users to ensure backward compatibility.\n\nDeployment included pushing code changes, running required database migration commands, and updating the production .env configuration file.",
+  "acceptance_criteria": [
+    "All new user management features are deployed to production",
+    "Existing user data and content remains accessible after upgrade",
+    "Database migrations complete without errors",
+    "Environment variables are correctly configured for production",
+    "Post-deployment testing confirms all features work in production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-280", "MBT-278", "MBT-275"],
+  "source_files": [],
+  "implementation_notes": "Deployment involved pushing code, running Laravel migration commands, and updating the .env file for production database and service credentials.",
+  "comment_summary": "Developer pushed all changes to production, ran required commands, and updated .env. Confirmed deployment was complete and live.",
+  "comment_count": 3
+}

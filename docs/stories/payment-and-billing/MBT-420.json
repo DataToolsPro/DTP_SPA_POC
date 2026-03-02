@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-420",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Add Billing Contact and Email Notification",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-17T15:13:05.905-0800",
+  "updated": "2024-05-24T02:25:08.152-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user, I want to add a billing contact with their name and email on the subscriptions page and send them an email with billing details and payment links, so that my billing administrator can handle software purchases without needing a Salesforce user account.",
+  "description": "## Context\n\nSome DataTools Pro users do not have the ability to use a credit card directly. Their organization may have a dedicated billing administrator who handles software purchases but does not have a Salesforce user account.\n\n## Behavior\n\n### Feature 1: Billing Contact Fields\nAdd a section on the Subscriptions page where users can enter billing contact details (name and email address).\n\n### Feature 2: Email Generation\nAdd a button that allows the DataTools Pro user to send an email to the billing contact. Clicking the button opens a modal with pre-populated email content containing billing details and a Stripe payment link with the tenant ID as the `client_reference_id`.\n\nThe email template includes a greeting, billing context, and a direct Stripe checkout link tied to the tenant's account.",
+  "acceptance_criteria": [
+    "User can enter a billing contact name and email on the Subscriptions page",
+    "Billing contact details are persisted and displayed on subsequent visits",
+    "User can click a button to generate and send an email to the billing contact",
+    "Email modal displays pre-populated content with billing details and Stripe payment link",
+    "Stripe payment link includes the correct tenant ID as client_reference_id",
+    "Email is sent to the billing contact's email address"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds billing contact name and email fields on the Subscriptions page. Adds a button to generate and send a billing email, which opens a modal with pre-populated email content including a Stripe payment link.",
+  "middleware_changes": "Email generation service that composes billing notification emails with dynamic Stripe checkout URLs containing the tenant's client_reference_id.",
+  "data_model_changes": "New fields for billing contact name and email stored against the tenant/subscription record.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Stripe payment link format is: https://buy.stripe.com/aEU2bI6ST6s7bEQeUV?client_reference_id=[tenantid]. This is a low-priority backlog item.",
+  "comment_summary": "",
+  "comment_count": 0
+}

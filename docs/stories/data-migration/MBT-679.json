@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-679",
+  "skipped": true,
+  "skip_reason": "no description",
+  "title": "Migrate app from mysql over to POSTGRESQL on local and test the app thoroughly",
+  "status": "Blocked",
+  "feature_folder": "data-migration"
+}

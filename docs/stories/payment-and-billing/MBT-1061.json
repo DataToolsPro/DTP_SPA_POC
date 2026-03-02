@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1061",
+  "epic_key": "MBT-461",
+  "feature_folder": "payment-and-billing",
+  "title": "Enterprise License Plan for Premium Feature Gating",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-30T13:56:16.972-0800",
+  "updated": "2026-03-01T03:57:57.664-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Introduce an enterprise license type to DataTools Pro to gate early-stage features (like the initiative tracker) from free and paid team users. Enterprise features would only be available to specific enterprise customers (e.g., Fundcanna and pipeline customers).\n\nThis provides a mechanism to ship early versions of premium features to production while restricting access to enterprise-tier customers only.",
+  "acceptance_criteria": [
+    "An enterprise license type exists in the DataTools Pro plan structure",
+    "Enterprise-only features are not visible to free or paid team users",
+    "Enterprise customers can access gated features like the initiative tracker",
+    "The license type can be assigned to specific customer accounts"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "License type check added to gate enterprise-only features based on the customer's plan tier.",
+  "data_model_changes": "Enterprise license type added to the plan/license model to distinguish between free, paid, and enterprise tiers.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This establishes the foundation for the enterprise feature gating system. Related to MBT-1181 (Enterprise Feature Gating) which implements the full feature gate middleware and Blade directives.",
+  "comment_summary": "",
+  "comment_count": 0
+}

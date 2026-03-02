@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-18",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Add Standard Footer with Privacy Policy Link",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:58:52.886-0800",
+  "updated": "2024-05-24T02:24:39.222-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": ["Security"],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to see a standard footer on all pages with a privacy policy link and copyright notice, so that I can access legal information and the application looks professional and compliant.",
+  "description": "Add a standard footer to all application pages containing:\n\n- A **Privacy Policy** link in the lower left pointing to `https://datatoolspro.com/privacy/`\n- A **copyright notice**: Copyright 2023, GoodmanGroup LLC DBA Data Tools Pro\n\nThis footer ensures legal compliance and provides a consistent branded experience across all pages.",
+  "acceptance_criteria": [
+    "A footer appears on all application pages",
+    "Footer contains a Privacy Policy link pointing to https://datatoolspro.com/privacy/",
+    "Footer displays the copyright notice: Copyright 2023, GoodmanGroup LLC DBA Data Tools Pro",
+    "Footer is consistently styled across all pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Standard footer added to all pages with Privacy Policy link and copyright notice.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Simple footer component added globally to all page templates.",
+  "comment_summary": "",
+  "comment_count": 0
+}

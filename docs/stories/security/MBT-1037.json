@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1037",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Track User First Login and Last Login Dates",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-17T11:47:27.260-0800",
+  "updated": "2026-03-01T03:56:15.452-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Add first login and last login date tracking to the user model to support a re-engagement drip campaign for users who haven't returned to the product.\n\n### Query\n```sql\nSELECT id, email, first_login_at, last_login_at\nFROM dtp_users\nWHERE first_login_at IS NOT NULL OR last_login_at IS NOT NULL;\n```\n\nThe existing `created_at` field represents the first authentication/authorization event. The new fields specifically track login activity.",
+  "acceptance_criteria": [
+    "dtp_users table includes first_login_at and last_login_at columns",
+    "first_login_at is set on the user's first login and never updated",
+    "last_login_at is updated on every subsequent login",
+    "Login dates can be queried for the drip campaign"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Authentication flow updated to set first_login_at on initial login and update last_login_at on every login.",
+  "data_model_changes": "Added first_login_at and last_login_at datetime columns to dtp_users table.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Two new fields added to the user model: first_login_at and last_login_at. The existing created_at field tracks initial account creation during first authentication. New fields specifically track login events for the drip campaign use case.",
+  "comment_summary": "Waqar added first_login_at and last_login_at fields to the user model and provided the SQL query. Noted that created_at already tracks initial authentication but the new fields specifically track login activity.",
+  "comment_count": 1
+}

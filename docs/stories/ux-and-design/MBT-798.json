@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-798",
+  "epic_key": "MBT-833",
+  "feature_folder": "ux-and-design",
+  "title": "Remove Thumbs Up/Down Feedback Popups from ERD and Sign-Up",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-09T21:12:44.686-0700",
+  "updated": "2024-07-28T10:37:19.565-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the thumbs up/down feedback popups removed from the ERD footer and the sign-up flow, so that the interface is cleaner now that Pendo handles in-app feedback.",
+  "description": "With the adoption of Pendo for in-app analytics and feedback collection, the custom thumbs up/thumbs down feedback popups are no longer needed.\n\n## Scope\n- **Remove**: Footer feedback popup on the ERD page\n- **Remove**: Feedback popup shown during first sign-up\n- **Keep**: Feedback widget on the Metrics Analyst page (to be removed later)",
+  "acceptance_criteria": [
+    "Thumbs up/down feedback popup is removed from the ERD page footer",
+    "Thumbs up/down feedback popup is removed from the first sign-up flow",
+    "Feedback widget on Metrics Analyst page remains unchanged",
+    "No broken references or orphaned code from the removal"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removed thumbs up/down feedback popups from the ERD footer and sign-up flow. Feedback now handled by Pendo.",
+  "middleware_changes": "Removed server-side feedback collection logic and any associated routes for the removed popups.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Pendo now handles user feedback collection. Custom feedback widgets removed from ERD and sign-up. Metrics Analyst feedback widget kept for now.",
+  "comment_summary": "Developer implemented on the development branch.",
+  "comment_count": 1
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1307",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Auto-Deploy Development Branch to Cloudways Server",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2026-01-19T02:39:07.563-0800",
+  "updated": "2026-03-01T04:14:45.697-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "GitHub"],
+  "story": "",
+  "description": "Streamline deployment by configuring the Cloudways development server to automatically pull changes when code is pushed to the development branch. This eliminates intermediate deployment steps.",
+  "acceptance_criteria": [
+    "Pushing to the development branch triggers automatic deployment to the Cloudways dev server",
+    "No manual deployment steps required for development",
+    "Production deployment is not affected"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Configured Cloudways Git deployment to auto-pull from the development branch on push.",
+  "comment_summary": "Developer confirmed auto-deployment is configured. Pushing to development branch is now automatically pulled by the Cloudways server.",
+  "comment_count": 1
+}

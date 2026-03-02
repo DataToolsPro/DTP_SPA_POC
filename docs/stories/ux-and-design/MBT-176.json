@@ -1,0 +1,32 @@
+{
+  "issue_key": "MBT-176",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Passcode Page UX: Placeholder Text and Beta Sign-Up Link",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-18T10:54:08.951-0700",
+  "updated": "2024-05-24T02:24:30.793-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user on the passcode page, I want clear instructions and a link to request beta access, so that I know what to enter and where to get help if I don't have a passcode.",
+  "description": "Improve the passcode page UX by adding placeholder text and a help link for users without a passcode.\n\n## Changes\n- Add placeholder text in the input field: \"Please enter your beta passcode\"\n- Add help text below the input: `Don't have a passcode? Sign up for beta access.` with \"Sign up for beta access\" linking to `https://datatoolspro.com/beta/`",
+  "acceptance_criteria": [
+    "Passcode input shows 'Please enter your beta passcode' placeholder text",
+    "Help text appears below the input with a link to the beta sign-up page",
+    "Beta sign-up link points to datatoolspro.com/beta/",
+    "Changes apply to both login and passcode pages"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Added placeholder text and beta sign-up help link to the passcode page for better user guidance.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Placeholder and link added to both login and passcode verification screens.",
+  "comment_summary": "Developer added placeholder and link, with a minor layout expansion to fix the next day. Both screens were updated.",
+  "comment_count": 3
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-440",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Cross-Tenant Taxonomy Value Read via IDOR",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-25T15:51:28.059-0800",
+  "updated": "2024-05-24T02:25:09.004-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — Medium Severity**\n\nAn admin of Tenant A could read taxonomy values of all tenants due to missing access control on the taxonomy values endpoint. Taxonomy IDs were only 2 digits and could be brute-forced using Burp Suite Intruder or Hydra to enumerate all tenants' taxonomy values.\n\n## Affected Endpoint\n\n`/metrics/get-selected-taxonomy-values/`\n\n## Risk\n\nMedium — confidentiality of tenant-specific taxonomy data was compromised. Simple brute-force of 2-digit IDs made enumeration trivial.\n\n## Fix\n\nAdded the `UsedByTeam` trait to the taxonomy values model to scope queries to the authenticated user's team. Additionally recommended migrating from sequential 2-digit IDs to UUIDs application-wide.",
+  "acceptance_criteria": [
+    "Taxonomy values endpoint returns only values belonging to the authenticated user's team",
+    "Cross-tenant taxonomy ID requests are rejected with 403 Forbidden",
+    "Legitimate same-tenant taxonomy value lookups continue to work",
+    "Brute-force enumeration of taxonomy IDs no longer returns cross-tenant data"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Added `UsedByTeam` trait to the taxonomy values model, automatically scoping all queries to the authenticated user's team.",
+  "data_model_changes": "",
+  "api_changes": "POST /metrics/get-selected-taxonomy-values/ now enforces tenant-scoped access control; returns 403 for cross-tenant requests.",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The root cause was a missing `UsedByTeam` trait on the taxonomy values model. This Laravel trait auto-scopes queries by the authenticated user's team_id. The pen test also recommended migrating from 2-digit sequential IDs to UUIDs across the application.",
+  "comment_summary": "Developer identified the missing UsedByTeam trait as the root cause and applied it to the taxonomy values model. Deployed to staging.",
+  "comment_count": 1
+}

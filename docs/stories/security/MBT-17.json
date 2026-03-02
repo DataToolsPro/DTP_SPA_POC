@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-17",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Implement Content Security Policy (CSP) Headers",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:57:21.237-0800",
+  "updated": "2024-05-24T02:24:39.222-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Security"],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement a Content Security Policy (CSP) to define allowed sources for each type of content (scripts, images, styles, etc.), defending against XSS attacks and controlling browser security behavior.\n\n## CSP Directives Required\n\n- **default-src**: Restrict to `self` by default\n- **script-src**: Whitelist approved script sources (jQuery CDN, Heap Analytics, Pendo, etc.)\n- **img-src**: Allow images from `self`, data URIs, and trusted domains\n- **style-src**: Allow styles from `self`, Google Fonts, CDN sources\n- **form-action**: Restrict to `self` and Salesforce domains (with wildcard for customer subdomains)\n- **frame-src**: Allow YouTube embeds\n- **object-src**: Set to `none`\n\n## Challenges\n\n- Inline styles had to be converted to CSS classes to comply with CSP directives.\n- Form submissions were initially blocked by CSP, requiring Salesforce domain whitelisting.\n- Each Salesforce customer has a unique subdomain, requiring a wildcard `*.salesforce.com` in the CSP.\n- Login flow between Production and Sandbox Salesforce environments required specific domain entries.",
+  "acceptance_criteria": [
+    "CSP header is set on all HTTP responses",
+    "External scripts load only from whitelisted CDN sources",
+    "Inline styles are replaced with CSS classes where CSP requires it",
+    "Salesforce OAuth login works for both Production and Sandbox environments",
+    "Wildcard *.salesforce.com is included to support all customer subdomains",
+    "No CSP violation errors appear in browser console during normal usage"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "CSP header added via Laravel middleware applied to all HTTP responses. Inline styles across multiple pages converted to CSS class references. Nonce-based script allowlisting implemented for inline scripts.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Implementation required removing inline styles across dashboard pages and converting them to CSS classes. The Salesforce login form was initially blocked by CSP because the form-action directive didn't include the Salesforce domain. A wildcard *.salesforce.com was added to support multi-tenant customer subdomains. CSP was implemented via Laravel middleware for centralized control.",
+  "comment_summary": "Developer implemented CSP but encountered issues with inline styles and Salesforce OAuth form submissions being blocked. Inline styles were converted to CSS classes. A login issue where Production login was blocked but Sandbox worked was resolved by adding the specific Salesforce dev-ed domain. Later, a wildcard *.salesforce.com was added to handle all customer subdomains. Product owner confirmed everything worked after testing in incognito mode.",
+  "comment_count": 16
+}

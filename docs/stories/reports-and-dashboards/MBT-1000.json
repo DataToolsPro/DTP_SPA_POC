@@ -1,0 +1,18 @@
+{
+  "issue_key": "MBT-1000", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Include 18-Digit Salesforce Record ID in Report/Dashboard Export",
+  "type": "task", "original_jira_type": "Task", "status": "Done", "priority": "Medium",
+  "created": "2024-11-17T15:27:48.187-0800", "updated": "2024-11-27T22:10:05.106-0800",
+  "assignee": "waqar khan", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "",
+  "description": "Include the 18-digit Salesforce record ID in the report/dashboard data export. This is useful for admin tasks like bulk editing and report removal via Salesforce Data Loader. Only the Salesforce record ID should be included in export (not internal DataTools IDs).",
+  "acceptance_criteria": ["Export includes the 18-digit Salesforce record ID column", "Internal DataTools IDs remain suppressed from export", "ID is useful for admin bulk operations"],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Added the Salesforce 18-digit record ID to the export column configuration.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-951"], "source_files": [],
+  "implementation_notes": "Added the Salesforce record ID column to the DataTables export buttons configuration while keeping internal IDs suppressed.",
+  "comment_summary": "Waqar completed on development.", "comment_count": 1
+}

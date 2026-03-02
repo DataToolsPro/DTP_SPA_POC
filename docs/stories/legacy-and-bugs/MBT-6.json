@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-6",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Created Date Field for Salesforce Objects",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:32:29.458-0800",
+  "updated": "2024-05-24T02:24:38.872-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["SFDC_Object_Model"],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Add a created-date field to the SQL database to log when a Salesforce object is first added to the scorecard. This date is not immediately user-facing but supports future requirements:\n\n1. **Scope creep tracking** — When working with clients, the created date highlights when new objects were added to the project scope over time.\n2. **Event logging** — Supports a future event logging feature on the product roadmap.",
+  "acceptance_criteria": [
+    "A created_date column exists in the SQL database for Salesforce objects",
+    "The created_date is automatically populated when a new Salesforce object is added to the scorecard",
+    "Existing rows are backfilled with a reasonable default date or null",
+    "The field is available in PHP code for downstream use"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "PHP code updated to populate the created_date field when inserting new Salesforce objects into the database.",
+  "data_model_changes": "New created_date column added to the Salesforce objects table in the SQL database. Stores the timestamp when an object is first added to the scorecard.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The created date field is foundational infrastructure for future features: scope creep tracking for client engagements and the event logging roadmap item.",
+  "comment_summary": "",
+  "comment_count": 0
+}

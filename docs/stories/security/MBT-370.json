@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-370",
+  "epic_key": "MBT-373",
+  "feature_folder": "security",
+  "title": "Implement Redirect URL Validation for Salesforce OAuth",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-18T09:27:55.374-0800",
+  "updated": "2024-05-24T02:25:06.711-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "A security scan identified an open redirect vulnerability in the Salesforce OAuth callback flow. The `retURL` parameter in the authentication redirect could potentially be manipulated to redirect users to malicious sites.\n\n## OWASP Classification\n\nOpen redirects are an OWASP Top Ten vulnerability. They occur when an application allows user-supplied input to control offsite redirects, enabling phishing or spam attacks.\n\n## Fix\n\nImplement a domain validation function that checks whether the `instance_url` returned from Salesforce belongs to the `salesforce.com` domain before proceeding with authorization. If the domain doesn't match, redirect the user to an error page with an 'Invalid Salesforce domain' message.\n\n```php\nprivate function isValidSalesforceDomain($instanceUrl) {\n    $expectedDomain = 'salesforce.com';\n    return strpos($instanceUrl, $expectedDomain) !== false;\n}\n```",
+  "acceptance_criteria": [
+    "OAuth callback validates that the instance_url belongs to salesforce.com domain",
+    "Invalid domains redirect to an error page with 'Invalid Salesforce domain' message",
+    "Legitimate Salesforce OAuth flows continue to work for all customer subdomains",
+    "Validation occurs before any database operations or user creation"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Salesforce OAuth callback controller now validates the instance_url domain before processing. Invalid domains redirect to an error page. Domain validation function checks for salesforce.com in the URL.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Added isValidSalesforceDomain() method to the OAuth callback controller. The check runs before database operations, validating the response is from salesforce.com. Invalid domains redirect to an invalidRedirectURL route with an error message. Deployed to staging for pen test re-validation.",
+  "comment_summary": "Product owner initially questioned whether this was a Salesforce-side issue. Developer confirmed it was the application's responsibility and implemented domain validation in the OAuth callback. Changes deployed to staging for penetration test re-validation.",
+  "comment_count": 3
+}

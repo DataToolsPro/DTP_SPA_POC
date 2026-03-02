@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-112",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "ERD Expand and Contract View Toggle",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-29T13:30:08.655-0700",
+  "updated": "2026-03-01T03:49:40.789-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user viewing an ERD, I want to expand or contract entity nodes to toggle between a high-level conceptual view and a detailed field-level view, so that I can control the level of detail displayed.",
+  "description": "## Context\nWhen many objects are displayed, showing all primary and foreign key fields makes the ERD cluttered. Users need to toggle between a conceptual view (object names only) and a detailed view (with key fields).\n\n## Behavior\nA toolbar button toggles all entity nodes between:\n- **Contracted** — shows only the object name for a high-level conceptual overview\n- **Expanded** — shows primary and foreign key fields within each node\n\nThe toggle applies globally to all nodes in the current diagram.",
+  "acceptance_criteria": [
+    "A toggle button is present in the top toolbar",
+    "Contracted view shows only object names without field details",
+    "Expanded view shows primary and foreign key fields within each node",
+    "Toggle switches all nodes simultaneously without page reload",
+    "Relationship lines remain visible in both views"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New expand/contract toolbar button toggles ERD nodes between conceptual (name-only) and detailed (with key fields) views.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-89"],
+  "source_files": [],
+  "implementation_notes": "GoJS node templates support collapsible sections for field lists. Toggle state is managed client-side.",
+  "comment_summary": "",
+  "comment_count": 0
+}

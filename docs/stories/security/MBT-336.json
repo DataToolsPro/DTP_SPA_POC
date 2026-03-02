@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-336",
+  "epic_key": "MBT-13",
+  "feature_folder": "security",
+  "title": "Log IP Address in Event Log for Audit Traceability",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-06T23:33:05.761-0800",
+  "updated": "2024-05-24T02:25:07.344-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Add the end user's IP address to all event log entries. This enables tracing request origins for security investigations, identifying network-related traffic patterns, and detecting potential credential sharing across geographies.\n\n## Requirements\n\n- Add an IP address column to the event log database table.\n- Capture and store the client IP address with every event log entry.\n- Use this data to correlate suspicious database events with network traffic.\n- Support detection of credential sharing across different geographic locations.",
+  "acceptance_criteria": [
+    "IP address column exists in the event log database table",
+    "Every event log entry includes the client's IP address",
+    "IP addresses are correctly captured for requests behind Cloudflare",
+    "Changes deployed to both staging and production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Event logging service updated to capture and store the client IP address with every log entry.",
+  "data_model_changes": "New IP address column added to the event_log database table.",
+  "api_changes": "",
+  "dependencies": ["MBT-337"],
+  "source_files": [],
+  "implementation_notes": "Added IP address field to the event log database table and updated all event log insertion points to capture request()->ip(). Changes deployed to both staging and production.",
+  "comment_summary": "Developer added IP address to the database table and event logging code. Changes were pushed to both production and staging.",
+  "comment_count": 2
+}

@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1226",
+  "epic_key": "MBT-202",
+  "feature_folder": "tracking-and-analytics",
+  "title": "Link DataTools Pro Users to PostHog Person Records",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-10-12T22:13:50.746-0700",
+  "updated": "2026-03-01T04:08:12.907-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "datatoolspro"],
+  "story": "",
+  "description": "Implement PostHog person identification to link DataTools Pro users to PostHog person records. When a DTP user signs up or logs in, the PostHog JavaScript SDK should be called to declare the DTP User ID (the full GUID identifier sent to Salesforce, not the auto-increment ID).\n\nThis creates a connection between PostHog analytics data and DTP user records, allowing:\n- Viewing that a PostHog person is a DataTools Pro user\n- Seeing their DTP app identifier within the PostHog person profile\n- Correlating product analytics events with specific user accounts across PostHog and Salesforce",
+  "acceptance_criteria": [
+    "PostHog person records include the DTP User GUID identifier",
+    "The identifier matches what is sent to Salesforce (not the auto-increment ID)",
+    "PostHog JS identify call is triggered on user sign-up or login",
+    "Person records in PostHog show the DTP user association",
+    "Existing PostHog events can be correlated to identified DTP users"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Add PostHog JS identify call on user authentication to send the DTP User GUID as the person identifier. Ensure the GUID (not auto-increment ID) is used for cross-system consistency with Salesforce.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Use the PostHog JS SDK posthog.identify() method with the DTP User GUID. The GUID must be the same identifier stored in Salesforce for cross-platform analytics consistency.",
+  "comment_summary": "",
+  "comment_count": 0
+}

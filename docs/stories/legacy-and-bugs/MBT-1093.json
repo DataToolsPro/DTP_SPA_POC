@@ -1,0 +1,39 @@
+{
+  "issue_key": "MBT-1093",
+  "epic_key": "MBT-48",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Page Not Loading Due to GoJS Error",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-03-14T20:31:31.363-0700",
+  "updated": "2026-03-01T04:07:23.330-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want pages to load without GoJS errors blocking rendering, so that I can access my data without interruption.",
+  "description": "## Bug\nA GoJS error prevented the page from loading when accessing the Cardiff view in production. The page displayed a loading spinner indefinitely. A possible cache issue from production was suspected.\n\n## Resolution\nThe issue could not be reproduced by the developer and was likely resolved by a prior fix or cache invalidation. Marked as done.",
+  "acceptance_criteria": [
+    "Pages load without GoJS errors blocking rendering",
+    "Cardiff view renders correctly in production"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed page loading issue caused by GoJS error.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Could not be reproduced — likely a transient cache issue or resolved by a prior GoJS license fix.",
+  "comment_summary": "Developer could not reproduce the issue in incognito mode. After months, confirmed it was no longer occurring, likely fixed by a prior change.",
+  "comment_count": 2
+}

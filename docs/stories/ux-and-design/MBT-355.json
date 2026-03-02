@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-355",
+  "epic_key": "MBT-343",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Regular Text Rendering on Help Documentation Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-10T00:23:24.713-0800",
+  "updated": "2024-05-24T02:25:06.090-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the help documentation page to render regular body text correctly, so that I can read the documentation without missing content.",
+  "description": "Regular body text on the documentation page at `/documentation` was not rendering. The page appeared to skip or hide standard paragraph text, making the help content unreadable.\n\n## Fix\n- Corrected the CSS/rendering issue causing body text to be invisible\n- All documentation links now open in a new tab for better navigation",
+  "acceptance_criteria": [
+    "Regular body text renders correctly on the documentation page",
+    "All documentation links open in a new browser tab",
+    "Page layout and formatting are consistent across documentation sections"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed CSS rendering issue that prevented regular body text from displaying on the help documentation page. Documentation links updated to open in new tabs.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Root cause was a CSS issue affecting paragraph text rendering on the documentation page. Fix involved correcting the CSS rules. As part of the fix, all outbound links were updated to use target=\"_blank\" to open in new tabs.",
+  "comment_summary": "Developer fixed the rendering issue and pushed to staging. Links now open in new tabs. Product owner confirmed the fix looked correct.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-669",
+  "epic_key": "MBT-645",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Row Selection Visibility in Dark Mode and Relocate Bulk Edit Button",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-27T21:05:02.152-0700",
+  "updated": "2024-05-24T02:25:41.034-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user in dark mode, I want to clearly see which table rows are selected, and I want the bulk edit button positioned on the same line as export and search for easier access.",
+  "description": "Two issues related to dark mode and bulk edit UX.\n\n## Issues\n1. **Row selection not visible in dark mode**: When selecting one or multiple records in a DataTable, the selected row highlight is not visible against the dark background\n2. **Bulk edit button placement**: The multiple metrics editing button needs to be repositioned to the same line as the export and search controls for better discoverability\n\n## Fixes\n1. Updated selected row CSS to use a visible highlight color in dark mode\n2. Moved the bulk edit button to align with the export and search toolbar row",
+  "acceptance_criteria": [
+    "Selected rows are clearly highlighted in dark mode",
+    "Multi-selected rows are clearly highlighted in dark mode",
+    "Bulk edit button for multiple metrics is on the same line as export and search",
+    "Selection visibility works in both single and multi-select modes"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed dark mode row selection highlighting so selected rows are clearly visible. Repositioned the bulk edit button to the same toolbar line as export and search for better discoverability.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-572"],
+  "source_files": [],
+  "implementation_notes": "CSS fix for DataTable selected row background color in dark mode. Bulk edit button DOM placement changed to align with the export/search toolbar.",
+  "comment_summary": "Developer implemented both fixes and shared a screenshot of the updated dark mode appearance with visible row selection and relocated bulk edit button.",
+  "comment_count": 3
+}

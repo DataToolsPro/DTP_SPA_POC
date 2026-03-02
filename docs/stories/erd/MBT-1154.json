@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1154",
+  "epic_key": "MBT-297",
+  "feature_folder": "erd",
+  "title": "Use ERD View Name as Exported File Name",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-06-27T11:57:59.116-0700",
+  "updated": "2026-03-01T03:40:37.514-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "ERD"],
+  "story": "As a DataTools Pro user exporting an ERD, I want the exported file to be named after the selected view, so that I can easily identify which ERD view each exported file represents.",
+  "description": "## Context\nWhen exporting an ERD to SVG or PNG, the filename was generic and did not indicate which view was exported.\n\n## Behavior\n- If a specific ERD view is selected, the exported file is named after the view name.\n- If no view is selected (\"All\"), the file is named \"Dictionary Entity Diagram\".",
+  "acceptance_criteria": [
+    "Exported file uses the ERD view name when a specific view is selected",
+    "Exported file uses 'Dictionary Entity Diagram' when no view (All) is selected",
+    "File naming works for both SVG and PNG export formats"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Exported ERD files are named after the selected view name, or 'Dictionary Entity Diagram' when viewing all objects.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-116"],
+  "source_files": [],
+  "implementation_notes": "The export function reads the currently selected view name from the dropdown and uses it as the download filename. Falls back to 'Dictionary Entity Diagram' when no specific view is selected.",
+  "comment_summary": "Developer implemented the naming logic on production: view name for specific views, 'Dictionary Entity Diagram' for the All selection.",
+  "comment_count": 1
+}

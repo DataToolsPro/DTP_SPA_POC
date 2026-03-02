@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-276",
+  "epic_key": "MBT-279",
+  "feature_folder": "administration",
+  "title": "Fix Duplicate Email Constraint Error on User Invitation",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-09-17T10:29:06.208-0700",
+  "updated": "2024-05-24T02:25:02.370-0700",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "As a DataTools Pro user accepting an invitation, I want the system to handle my existing account gracefully, so that I can join a shared account without encountering a database error.",
+  "description": "Bug fix for a duplicate entry constraint violation when an invited user who already exists in the system tries to accept an invitation. The invite flow attempted to INSERT a new user record instead of recognizing the existing user, causing a MySQL integrity constraint error on the unique email column.\n\nA secondary error was also discovered: a missing route definition (`teams.create`) caused a 500 error when the invite URL was used after the initial fix. Both issues were resolved.",
+  "acceptance_criteria": [
+    "Invited user who already has an account can accept an invitation without a duplicate entry error",
+    "System checks for existing user by email before attempting to create a new record",
+    "Invitation acceptance flow completes successfully for both new and existing users",
+    "No missing route errors during the invitation acceptance process"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated the invitation acceptance flow to check for existing user records before attempting an INSERT, preventing duplicate entry constraint violations. Fixed a missing route definition.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The root cause was the user creation logic not checking for existing users by email before INSERT. A secondary issue was a missing teams.create route definition in the Teamwork views.",
+  "comment_summary": "Initial fix resolved the duplicate entry error, but a secondary missing route error appeared. Developer re-tested thoroughly and fixed both issues.",
+  "comment_count": 4
+}

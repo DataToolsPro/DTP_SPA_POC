@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-425",
+  "epic_key": "MBT-377",
+  "feature_folder": "security",
+  "title": "Fix Cross-Tenant Permission Escalation Vulnerability",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-21T23:04:43.769-0800",
+  "updated": "2024-05-24T02:25:08.206-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "**Penetration Test Finding — Critical Severity**\n\nAn admin of Tenant A could change permissions of any user in Tenant B by intercepting the permission update request and modifying the TeamID and UserID parameters. The team_id and user_id are short numeric values (2 digits) making brute-force attacks trivial.\n\n## Attack Vector\n\n1. Login as Tenant A admin.\n2. Navigate to Manage Account > select guest user > assign a role.\n3. Intercept the request with Burp Suite.\n4. Change TeamID and UserID to Tenant B values.\n5. Tenant B user's permissions are changed.\n\n## Fix\n\nAll permission and data operations now derive the team_id from the currently authenticated user's selected team (server-side session), not from client-supplied request parameters. Even if an attacker intercepts and modifies the team_id in the request, the server ignores it and uses the authenticated session context.\n\nAdditionally, two new permission controls were added for Dictionary and Migration view endpoints to enforce access control.",
+  "acceptance_criteria": [
+    "Permission updates use the server-side session team_id, not client-supplied parameters",
+    "Modifying team_id in intercepted requests has no effect",
+    "Guest users cannot access Dictionary or Migration endpoints without appropriate permissions",
+    "Access control returns 403 Forbidden for unauthorized access attempts",
+    "Cross-tenant permission escalation is no longer possible"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": true,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Permission update endpoint refactored to derive team_id from the authenticated session instead of request parameters. New permission checks added for Dictionary and Migration view endpoints.",
+  "data_model_changes": "",
+  "api_changes": "POST /teams-permission/update-role-permission no longer accepts team_id from request body. Server derives it from the authenticated user's current team. Dictionary and Migration endpoints now enforce permission checks.",
+  "dependencies": ["MBT-427"],
+  "source_files": [],
+  "implementation_notes": "Critical penetration test finding. The root cause was accepting team_id from client request parameters instead of deriving from server session. Fix ensures all team-scoped operations use the authenticated user's current team context. Two new permission controls added for /object/{object}?view=migration and /object/{object}?view=dictionary endpoints.",
+  "comment_summary": "Developer fixed the vulnerability by using the current authenticated team context for all permission operations. Also added permission controls for Dictionary and Migration detail page endpoints as part of the guest access fix (Vulnerability 3). Changes deployed to staging for review.",
+  "comment_count": 4
+}

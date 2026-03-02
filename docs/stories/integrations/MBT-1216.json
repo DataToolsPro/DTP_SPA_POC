@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-1216",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Address Snowflake Marketplace Listing Feedback for Resubmission",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-09-23T18:45:15.432-0700",
+  "updated": "2026-03-01T03:56:30.676-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "",
+  "description": "Snowflake Marketplace review returned feedback that must be addressed before the native app listing can be approved.\n\n### Issues to Resolve\n\n1. **Naming violation** — \"Snow\" and \"Snowflake\" are not permitted in Marketplace product titles. The app is currently called \"SnowPrep\" and must be renamed. All references in documentation and the listing description must also be updated.\n\n2. **Listing description** — The current description lacks detail about key features and value proposition. Need to add 1-2 sentences or a \"Key Features\" section. Also must remove \"Snow\" from the description.\n\n3. **App permissions** — All account-level privileges and object references must be declared in the manifest file and requested via the Python Permissions SDK. Currently, the app requires consumers to manually grant warehouse USAGE via SQL. Must update manifest to include object-level references and use the Permissions SDK for MODIFY, MONITOR, USAGE, and OPERATE privileges on consumer warehouses.",
+  "acceptance_criteria": [
+    "App name changed from SnowPrep to a name not containing Snow or Snowflake",
+    "All documentation and listing references updated to use the new name",
+    "Listing description includes key features and value proposition",
+    "Manifest file declares all required privileges and object references",
+    "Python Permissions SDK is used to request warehouse privileges from consumers",
+    "App resubmitted and passes Snowflake Marketplace review"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Updated manifest.yml to declare warehouse object references. Integrated Python Permissions SDK for requesting consumer privileges.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1213"],
+  "source_files": [],
+  "implementation_notes": "Snowflake prohibits any use of 'Snow' or 'Snowflake' in Marketplace titles and descriptions to avoid brand confusion. The Python Permissions SDK must be used instead of manual SQL grants for consumer warehouse access. The manifest needs MODIFY, MONITOR, USAGE, OPERATE privilege declarations for warehouses.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

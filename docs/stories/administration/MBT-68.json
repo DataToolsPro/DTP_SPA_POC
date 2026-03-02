@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-68",
+  "epic_key": "MBT-74",
+  "feature_folder": "administration",
+  "title": "Passcode Field Security and URL Pre-Validation",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-03-17T13:00:59.852-0700",
+  "updated": "2024-05-24T02:24:37.279-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "As a DataTools Pro user, I want the passcode entry field to mask my input and support URL-based pre-validation, so that my passcode is not visible on screen and I can be seamlessly authenticated when clicking a link from an invitation email.",
+  "description": "Two improvements to the passcode entry flow:\n\n1. **Masked input**: Change the passcode field from `type=\"input\"` to `type=\"password\"` so the entered value is hidden.\n\n2. **URL pre-validation**: Support passing the passcode as a URL parameter (e.g., `/passcode.php?passcode=123456`). When a valid passcode is provided in the URL, the system validates it against the database and automatically redirects the user to the login page without requiring manual entry. If the passcode is invalid, the user remains on the passcode page.\n\nThis enables a streamlined onboarding experience where invitation emails contain a direct link with the passcode embedded.",
+  "acceptance_criteria": [
+    "Passcode input field uses type=\"password\" to mask user input",
+    "Passcode can be passed as a URL query parameter (?passcode=XXXXX)",
+    "Valid passcode in URL triggers automatic validation and redirect to the login page",
+    "Invalid passcode in URL keeps the user on the passcode entry page",
+    "Manual passcode entry continues to work as before",
+    "Passcode validation checks against the database passcode table"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Passcode input field is now a password type (masked characters). Users arriving via a URL with a valid passcode parameter are automatically redirected to login without seeing the passcode page.",
+  "middleware_changes": "Added server-side logic to read the passcode URL parameter, validate it against the database, and redirect to the login page on success.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial confusion arose because database changes had not been deployed from stage to production, causing the URL validation to fail in prod. Once the DB was synced, the feature worked correctly.",
+  "comment_summary": "Developer implemented the feature and confirmed it worked. A follow-up found the URL pre-validation was not working in production, which turned out to be caused by un-deployed database changes rather than a code issue.",
+  "comment_count": 4
+}

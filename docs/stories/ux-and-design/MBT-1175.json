@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1175",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Z-Index Conflict Between Tooltips and Metrics Analyst Sidebar",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-07-26T23:33:50.046-0700",
+  "updated": "2026-03-01T03:47:31.618-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want tooltips to display above all other UI elements including the Metrics Analyst sidebar, so that tooltip content is always readable.",
+  "description": "Tooltips were rendering behind the Metrics Analyst sidebar due to a z-index stacking conflict. The sidebar's z-index was higher than the tooltip's, causing the tooltip content to be obscured.",
+  "acceptance_criteria": [
+    "Tooltips render above the Metrics Analyst sidebar",
+    "Z-index stacking order is correct for tooltips across all views",
+    "No other UI elements are negatively affected by the z-index fix"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed z-index stacking order so tooltips render above the Metrics Analyst sidebar.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "CSS z-index adjustment for tooltips to ensure they stack above the sidebar component.",
+  "comment_summary": "Developer fixed the z-index issue directly on production.",
+  "comment_count": 1
+}

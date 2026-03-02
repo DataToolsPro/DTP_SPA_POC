@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1273",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Auth Callback Handling on the Central Auth Domain",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:46:14.404-0800",
+  "updated": "2025-12-17T21:46:14.597-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "The auth domain must complete the Stytch authentication flow and securely hand off the authenticated session to the target tenant subdomain.\n\n## Requirements\n\n- Auth domain validates the Stytch response and creates an internal \"handoff\" artifact\n- Return URL is validated against an allowlist to prevent open redirect vulnerabilities\n- Tenant context is carried via a signed state parameter to prevent tampering",
+  "acceptance_criteria": [
+    "Auth domain validates Stytch callback response before creating handoff artifact",
+    "Return URLs are validated against an allowlist of known tenant subdomains",
+    "Open redirect attacks via manipulated return URLs are blocked",
+    "Tenant context in the state parameter is signed and tamper-proof",
+    "Invalid or expired state parameters are rejected with a safe error page"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "Auth callback handler on the auth domain: validates Stytch response, checks return URL against allowlist, verifies signed state parameter, and generates handoff artifact for the target subdomain.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1270"],
+  "source_files": [],
+  "implementation_notes": "The handoff artifact (likely a short-lived OIDC authorization code) allows the target subdomain to establish a session without the auth domain sharing cookies. The signed state parameter prevents CSRF and ensures the callback matches the original login request.",
+  "comment_summary": "",
+  "comment_count": 0
+}

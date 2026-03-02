@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-414",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "Default Permission Controls for Invited Users",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-12T10:07:29.009-0800",
+  "updated": "2024-05-24T02:25:09.364-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "security"],
+  "story": "As a product administrator, I want invited users to have minimal permissions by default (no ability to invite or delete users), so that elevated capabilities must be explicitly granted and our security posture is maintained.",
+  "description": "Fix a user experience flaw where newly invited users had the ability to invite additional users by default. The correct behavior is that invited users should have all elevated permissions revoked by default — particularly user management capabilities.\n\n### Problem\nUser 1 creates a tenant and invites User 2 with no permissions checked. User 2 logs in and can still invite other users. The invite box should be hidden unless the permission is explicitly granted.\n\n### Solution\n- Hide the invite UI for users without the invite permission\n- Implement server-side permission enforcement (not just UI hiding)\n- Add five new granular permissions: Invite User, List Guest Users, Update Invite Permissions, Delete Guest User, Edit Account Detail\n- Permissions are assigned at time of invitation acceptance (not invitation send), since the user's Salesforce identity isn't known until authentication\n- Permission checks applied to both frontend visibility and backend route access\n\n### Multi-Tenant Testing\nTested with 4 users across multiple tenants to verify:\n- Tenant admin retains full permissions\n- Invited users only see/access features matching their granted permissions\n- Invited user with 'Invite User' permission can invite on behalf of the shared account\n- Direct API route access returns unauthorized for users without permission",
+  "acceptance_criteria": [
+    "Invited users cannot see the invite box unless explicitly granted the 'Invite User' permission",
+    "Server-side middleware blocks unauthorized access to protected routes even via direct URL",
+    "Five new permissions are available: Invite User, List Guest Users, Update Invite Permissions, Delete Guest User, Edit Account Detail",
+    "Permissions are applied at invitation acceptance time, not invitation creation",
+    "Tenant admin/creator automatically has all permissions",
+    "Users who skip the invite link and create their own tenant become admin of their own instance"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Invite box and user management controls are conditionally rendered based on granted permissions. Unauthorized route access redirects to an unauthorized page.",
+  "middleware_changes": "Server-side permission middleware enforces access control on protected routes (e.g., /get-scorecard). Permissions checked per-user per-team context. Permissions attached to invite link and applied at acceptance.",
+  "data_model_changes": "Five new permission types added to the permissions system: Invite User, List Guest Users, Update Invite Permissions, Delete Guest User, Edit Account Detail.",
+  "api_changes": "",
+  "dependencies": ["MBT-415"],
+  "source_files": [],
+  "implementation_notes": "Permission assignment was moved from invitation creation to acceptance, because the user's Salesforce identity isn't resolved until they authenticate. Edge case discovered with shared email addresses across multiple Salesforce orgs — permissions were binding to the email rather than the specific user identity. Fix attaches permissions to the invite link payload instead. Role-based access (viewer/editor/admin) discussed as future enhancement.",
+  "comment_summary": "Significant discussion about permission architecture. Current system uses fine-grained per-user permissions (not role-based). Key decision: permissions attach at acceptance time, not invite time, since Salesforce identity is unknown until auth. Tested with 4 users across tenants. Future enhancement discussed for role-based access (viewer/editor/admin) similar to WordPress roles.",
+  "comment_count": 22
+}

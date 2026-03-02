@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-93",
+  "epic_key": "MBT-146",
+  "feature_folder": "security",
+  "title": "Branded 404 Error Page with Redirect",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-04-16T11:32:48.860-0700",
+  "updated": "2024-05-24T02:24:29.174-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "As a DataTools Pro user, I want to see a branded, user-friendly page when I navigate to an invalid URL, so that I can easily find my way back to the application instead of seeing a raw server error.",
+  "description": "When users or bots navigate to URLs that do not exist (e.g., old URLs like `/apps/login.php`), the application should capture the request and display a branded 404 page instead of the default server error.\n\n## Requirements\n\n- Create a `404.php` (or equivalent) error page with the DataTools Pro branding.\n- Include the application header and footer for consistent look.\n- Display a friendly message explaining the URL does not exist.\n- Provide links to the DataTools App and DataTools Support.\n- Configure `.htaccess` (or Laravel error handling) to route all 404 errors to this page.\n\n## Design\n\nThe page should include branded header/footer elements, a clear message that the page was not found, and navigation links back to the main application.",
+  "acceptance_criteria": [
+    "Navigating to a non-existent URL displays a branded 404 page",
+    "The 404 page includes the DataTools Pro header and footer",
+    "The page displays a user-friendly message instead of raw error codes",
+    "Links to the main app and support are provided",
+    "The .htaccess or Laravel route configuration correctly catches all 404 errors"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "New branded 404 error page with DataTools Pro header, footer, friendly messaging, and navigation links to the main app and support.",
+  "middleware_changes": "Laravel/Apache error handling configured to route all 404 responses to the custom error page.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Initial implementation via .htaccess required the hosting provider to set AllowOverride to All. The 404 page was designed with branded elements and went through design review to add header/footer. Product owner requested a branded look rather than a generic error page.",
+  "comment_summary": "Developer created a 404.php file and added .htaccess rules but it wasn't working due to server AllowOverride settings. A hosting provider ticket was opened to resolve. The initial design was updated to include branded header and footer per product owner request.",
+  "comment_count": 5
+}

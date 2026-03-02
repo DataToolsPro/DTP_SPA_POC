@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1021",
+  "epic_key": "MBT-446",
+  "feature_folder": "infrastructure",
+  "title": "Optimize CloudWatch Metric Streams to Reduce Monitoring Costs",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-11-30T18:12:32.234-0800",
+  "updated": "2024-12-22T21:43:09.242-0800",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "CloudWatch Metric Streams costs had ballooned to $80/month due to redundant metrics, including leftover Vapor-related streams that were no longer needed after the Vapor prototype was abandoned.\n\n## Required Actions\n1. Remove redundant CloudWatch metric streams, especially Vapor-related streams\n2. Narrow the scope of remaining CloudWatch monitoring to focus on errors and latency specifically for Lambda services\n3. Review and clean up the metric streams list in the us-west-2 region",
+  "acceptance_criteria": [
+    "Redundant CloudWatch metric streams are removed, including Vapor-related streams",
+    "Remaining metric streams are scoped to Lambda service errors and latency",
+    "Monthly CloudWatch Metric Streams cost is reduced significantly from $80/month",
+    "No critical monitoring gaps are introduced by the cleanup"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-497"],
+  "source_files": [],
+  "implementation_notes": "CloudWatch Metric Streams configured at: https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#metric-streams:streamsList. Vapor streams should be removed since the Vapor approach was abandoned (MBT-497).",
+  "comment_summary": "",
+  "comment_count": 0
+}

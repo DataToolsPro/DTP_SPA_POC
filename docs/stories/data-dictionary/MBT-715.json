@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-715",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Highlight Dictionary Navigation When on Field Dictionary Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-05-21T22:12:15.681-0700",
+  "updated": "2026-03-01T01:30:59.260-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "As a DataTools Pro user viewing the field dictionary, I want the Dictionary navigation item to remain highlighted, so that I have a clear visual indication of where I am in the application.",
+  "description": "When navigating to the field dictionary (a sub-view within Dictionary), the 'Dictionary' navigation item was losing its active/highlighted state. The fix ensures the Dictionary nav item remains visually highlighted when the user is on the field dictionary page, maintaining consistent wayfinding. The same fix was also applied to the Migration navigation item for its sub-views.",
+  "acceptance_criteria": [
+    "The Dictionary navigation item is highlighted when on the field dictionary page",
+    "The Migration navigation item is highlighted when on its respective sub-views",
+    "Navigation highlighting correctly reflects the active section at all times"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Dictionary and Migration navigation items now remain highlighted (active state) when viewing their respective sub-pages, providing consistent visual wayfinding.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The navigation active state logic was updated to match on the parent section (Dictionary/Migration) rather than requiring an exact URL match, so sub-views inherit the parent's active highlight.",
+  "comment_summary": "Developer implemented the fix for both Dictionary and Migration navigation highlighting.",
+  "comment_count": 1
+}

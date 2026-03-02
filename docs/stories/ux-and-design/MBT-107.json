@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-107",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Object Selection Dropdown Pointing to Legacy PHP Route",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-28T11:41:32.292-0700",
+  "updated": "2026-03-01T03:47:00.427-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the object selection dropdown to navigate to the correct URL route, so that I land on the proper page instead of a legacy PHP file.",
+  "description": "The object selection dropdown was routing users to an older PHP file (`migrate.php?object=Opportunity`) instead of the updated route (`select/?object=Opportunity&view=`). This caused navigation errors and potentially broken page renders.\n\nThe fix updated the dropdown link targets to point to the new URL structure.",
+  "acceptance_criteria": [
+    "Object selection dropdown navigates to `select/?object={ObjectName}&view=` instead of `migrate.php?object={ObjectName}`",
+    "Navigation renders correctly after selecting an object from the dropdown",
+    "No debug output or meta fields are printed on the page"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Object selection dropdown links updated from legacy `migrate.php` route to the new `select/` route with proper URL parameters.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Developer initially left debug output (meta fields) on the page during testing, which caused a secondary rendering issue. This was cleaned up in a follow-up fix.",
+  "comment_summary": "Developer fixed the route and marked as done. Reporter found a rendering issue caused by leftover debug output on the page. Developer cleaned up the debug output promptly.",
+  "comment_count": 3
+}

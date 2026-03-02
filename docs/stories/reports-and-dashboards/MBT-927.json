@@ -1,0 +1,17 @@
+{
+  "issue_key": "MBT-927", "epic_key": "MBT-75", "feature_folder": "reports-and-dashboards",
+  "title": "Fix Report Detail Sidebar Not Opening on Row Click",
+  "type": "story", "original_jira_type": "Bug", "status": "Done", "priority": "Medium",
+  "created": "2024-09-17T22:53:34.310-0700", "updated": "2024-11-03T19:03:14.526-0800",
+  "assignee": "Balaji Naiknavare", "reporter": "Ryan Goodman", "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want clicking a report row to open the detail sidebar, so that I can view report details without the sidebar failing to appear.",
+  "description": "Bug fix: clicking on a report or dashboard row no longer opened the sidebar detail pane. The click handler was broken, preventing users from viewing report details.",
+  "acceptance_criteria": ["Clicking a report/dashboard row opens the sidebar detail pane", "Sidebar displays correct details for the selected item"],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Fixed the click handler to properly open the sidebar detail pane when a row is clicked.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "The click handler was likely broken by a recent change to the table rendering or row selection logic.",
+  "comment_summary": "Ryan reported the sidebar not opening. Balaji fixed and submitted for review.", "comment_count": 1
+}

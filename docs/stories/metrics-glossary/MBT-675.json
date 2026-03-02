@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-675",
+  "epic_key": "MBT-689",
+  "feature_folder": "metrics-glossary",
+  "title": "Fine-Tune Metric Wizard Merge Workflow",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-04-28T21:29:11.073-0700",
+  "updated": "2024-07-25T23:30:03.785-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a DataTools Pro user, I want the metric merge workflow to be refined based on real-world feedback, so that merging is intuitive and produces correct results.",
+  "description": "Follow-on enhancements to the Metric Wizard merge workflow (MBT-670) based on learnings from initial usage. Fine-tuning includes UX adjustments and logic improvements discovered during testing and customer feedback. Implemented as part of MBT-670.",
+  "acceptance_criteria": [
+    "Merge workflow incorporates feedback-driven refinements",
+    "User experience improvements based on real-world usage"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Merge workflow UI refinements based on real-world feedback and testing.",
+  "middleware_changes": "Merge logic adjustments based on observed edge cases.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": ["MBT-595"],
+  "source_files": [],
+  "implementation_notes": "Implemented together with MBT-670.",
+  "comment_summary": "Developer noted changes were implemented in the MBT-670 ticket.",
+  "comment_count": 1
+}

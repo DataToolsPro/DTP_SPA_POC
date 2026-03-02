@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-625",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Add Distinct CSS Classes to Metrics Analyst Feature Buttons for Analytics Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-17T18:24:54.424-0700",
+  "updated": "2024-05-24T02:25:38.167-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "",
+  "description": "Each 'More Info' button on the Metrics Analyst summary cards needs a unique CSS class or ID so they can be individually tracked via Pendo analytics. This allows product management to measure which cards users interact with most.\n\nThe six buttons already had unique classes:\n1. `show_processed_dashboards`\n2. `show_processed_reports`\n3. `show_dashboard_widgets`\n4. `show_suggested_metrics`\n5. `show_ignored_facts`\n6. `show_suggested_categories`\n\nAny feature button or clickable element we want to track should have a unique class, even if no CSS is applied.",
+  "acceptance_criteria": [
+    "Each 'More Info' button has a unique, descriptive CSS class",
+    "Classes follow a consistent naming convention",
+    "Pendo can target each button individually for analytics tracking"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The six unique classes were already present. Ryan confirmed he would configure Pendo targeting based on the existing class names.",
+  "comment_summary": "Developer confirmed the unique classes were already in place. Ryan noted he would update Pendo accordingly and marked it complete.",
+  "comment_count": 2
+}

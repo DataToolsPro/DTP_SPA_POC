@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-564",
+  "epic_key": "MBT-544",
+  "feature_folder": "security",
+  "title": "Investigate and Fix Low-Priority Security Scan Errors",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-02-06T23:05:59.325-0800",
+  "updated": "2024-05-24T02:25:37.786-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Review low-priority security scan errors for app.datatoolspro.com. The proposed approach is to self-host problematic JavaScript and icon libraries that are currently loaded from external CDNs, eliminating cross-site scripting warnings from the security scanner.\n\n## Approach\n\nDownload external JS and icon library dependencies and serve them from the application's own server to eliminate cross-origin loading warnings flagged by security scanning tools.",
+  "acceptance_criteria": [
+    "Low-priority security scan errors for app.datatoolspro.com are reviewed",
+    "External JS and icon libraries identified as cross-origin risks are self-hosted",
+    "Security scan no longer flags cross-site scripting warnings for self-hosted assets",
+    "No functional regressions from switching to self-hosted libraries"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Self-hosting third-party JS and icon libraries eliminates Content Security Policy (CSP) violations and cross-origin warnings from security scanners without changing functionality.",
+  "comment_summary": "",
+  "comment_count": 0
+}

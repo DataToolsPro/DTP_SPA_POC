@@ -1,0 +1,31 @@
+{
+  "issue_key": "MBT-1087",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Auto-Refresh Reports on First Load When Database is Empty",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T00:20:09.262-0700",
+  "updated": "2026-03-01T04:05:11.340-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the Reports & Dashboards page to automatically fetch data from Salesforce on first visit when no reports exist locally, so that I don't have to manually click Refresh.",
+  "description": "When navigating to the Reports & Dashboards page for the first time (no reports in the local database), the page shows empty content and requires the user to manually click 'Refresh'. The fix automatically triggers the Salesforce refresh when the database has no report data.",
+  "acceptance_criteria": [
+    "Reports & Dashboards page automatically refreshes from Salesforce when no local report data exists",
+    "Subsequent visits with existing data do not trigger an automatic refresh",
+    "Loading indicator is shown during the auto-refresh"
+  ],
+  "change_layers": {"ux": true, "middleware": true, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Automatic data fetch on first load eliminates the manual Refresh click for new users.",
+  "middleware_changes": "Added empty-database check on page load that triggers the Salesforce refresh automatically.",
+  "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Fix was applied directly to production.",
+  "comment_summary": "Developer implemented and deployed to both development and production.",
+  "comment_count": 2
+}

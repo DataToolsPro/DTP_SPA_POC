@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1165",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Migrate Production Database from Cloudways to AWS RDS",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2025-07-13T12:12:45.760-0700",
+  "updated": "2026-03-01T03:44:39.097-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Migrate the production database from Cloudways to AWS RDS. The migration was completed in October 2025.\n\n### Migration Steps\n1. Export the database from Cloudways\n2. Import into AWS RDS\n3. Update the `.env` file in the Laravel application with the new AWS database connection settings\n\nMore details are documented on Confluence.",
+  "acceptance_criteria": [
+    "Production database is running on AWS RDS",
+    "Laravel .env file points to the new AWS RDS connection",
+    "Application functions correctly with the new database",
+    "Cloudways database is no longer used for production"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel .env updated with new AWS RDS connection string.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Migration completed in October 2025. Standard export/import approach with .env update.",
+  "comment_summary": "Developer outlined the migration steps: export from Cloudways, import to AWS, update .env.",
+  "comment_count": 1
+}

@@ -1,0 +1,22 @@
+{
+  "folder": "scheduling-and-alerting",
+  "label": "Scheduling and Alerting",
+  "type": "product-feature",
+  "doc_tag": "datatoolspro",
+  "epic_count": 1,
+  "epics": [
+    {
+      "epic_key": "MBT-1008",
+      "epic_id": "11284",
+      "summary": "Scheduling and Alerting",
+      "status": "To Do"
+    }
+  ],
+  "story_count": 4,
+  "stories": [
+    "MBT-987",
+    "MBT-988",
+    "MBT-1240",
+    "MBT-1339"
+  ]
+}

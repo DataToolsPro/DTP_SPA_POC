@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-350",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Fix Inverted Cursor Behavior in Multi-Select Dropdown Checkboxes",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-11-09T09:39:12.165-0800",
+  "updated": "2026-03-01T04:16:02.192-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the cursor to correctly show a pointer over checkbox labels in dropdowns and a default cursor over the dropdown item background, so that clickable affordances are intuitive.",
+  "description": "The multi-select filter dropdown had inverted cursor behavior: hovering over the checkbox showed a pointer cursor (hand), while hovering over the checkbox label showed a default cursor. This was backwards from the expected behavior.\n\n### CSS Fix\nIn `filter_multi_select.css`:\n- `.filter-multi-select .dropdown-item`: set `cursor: default`\n- `.filter-multi-select .dropdown-item .custom-control-label`: set `cursor: pointer`\n\nThe fix was applied in the custom CSS file rather than modifying the third-party library's core CSS.",
+  "acceptance_criteria": [
+    "Hovering over a dropdown item background shows a default cursor",
+    "Hovering over a checkbox label in the dropdown shows a pointer cursor",
+    "CSS overrides are in custom.css, not in the third-party library files"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Fixed inverted cursor behavior in multi-select filter dropdowns. Checkbox labels now correctly show a pointer cursor, while the dropdown item background shows a default cursor.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": ["filter_multi_select.css", "custom.css"],
+  "implementation_notes": "CSS overrides were placed in custom.css instead of modifying the third-party library's core filter_multi_select.css to avoid issues with future library updates.",
+  "comment_summary": "Developer applied the CSS fix in custom.css rather than modifying the library core file. Change was verified on staging in incognito mode.",
+  "comment_count": 1
+}

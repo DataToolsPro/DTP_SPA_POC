@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1088",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Display Report Folder Column in Metrics Analyst Dashboard Selector",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-03-14T00:21:53.638-0700",
+  "updated": "2026-03-01T04:05:33.272-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics"],
+  "story": "As a data analyst, I want to see the report folder name as a column when selecting dashboards in Metrics Analyst, so that I can distinguish between dashboards with the same name stored in different folders.",
+  "description": "When loading Metrics Analyst, users may encounter multiple dashboards with identical names. Adding a report folder column to the dashboard selector table helps users identify which dashboard to choose.\n\n### Problem\nDashboard names in Salesforce are not unique. Users selecting a dashboard for analysis have no way to tell duplicates apart.\n\n### Solution\nAdd a \"Report Folder\" column to the dashboard selection table that displays the folder path where each dashboard is stored.",
+  "acceptance_criteria": [
+    "Dashboard selector table displays a Report Folder column",
+    "Report folder value is populated from Salesforce report folder metadata",
+    "Users can distinguish between identically named dashboards by folder"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Adds a Report Folder column to the Metrics Analyst dashboard selection table, allowing users to differentiate dashboards with identical names.",
+  "middleware_changes": "Fetches and includes the report folder path in the dashboard list query results.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Deployed to production. Report folder data sourced from Salesforce dashboard metadata.",
+  "comment_summary": "Waqar confirmed the feature was deployed to production.",
+  "comment_count": 1
+}

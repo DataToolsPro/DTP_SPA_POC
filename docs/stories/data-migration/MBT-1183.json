@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1183",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Migrate Development Database to PostgreSQL on AWS",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-08T22:55:04.829-0700",
+  "updated": "2026-03-01T03:51:42.365-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Migrate data and tables from the existing development database to the newly created PostgreSQL database on AWS RDS.",
+  "acceptance_criteria": [
+    "All tables and data are migrated to the PostgreSQL instance on AWS",
+    "Development application connects to the new PostgreSQL database",
+    "Application functions correctly with PostgreSQL"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Laravel database driver and .env updated from MySQL/MariaDB to PostgreSQL.",
+  "data_model_changes": "Schema adapted for PostgreSQL compatibility (data types, auto-increment, etc.).",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

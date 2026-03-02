@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-178",
+  "epic_key": "MBT-200",
+  "feature_folder": "ux-and-design",
+  "title": "Dictionary Object View Style Updates and ChatGPT Icon Removal",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-07-18T18:09:06.983-0700",
+  "updated": "2024-05-24T02:24:31.674-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the dictionary view to have clean icons and clear labels, so that I can navigate without confusion about hidden or experimental features.",
+  "description": "Style updates to the dictionary object detail view.\n\n## Changes\n1. **Remove ChatGPT SQL generator icon** — Customers expressed concerns about sending schema to GPT. Legal disclaimer needed before re-enabling. Hide the icon but leave the functionality code intact.\n2. **Update refresh icon** — Replace with Bootstrap Icons `bi bi-arrow-repeat` class and apply `dtp-green` class for consistent color and hover styling.\n3. **Dynamic label** — When on Dictionary view, label the home page as \"Objects\". When on Migration view, label it as \"Scorecard\".",
+  "acceptance_criteria": [
+    "ChatGPT SQL generator icon is hidden from the dictionary view",
+    "ChatGPT functionality code remains intact for future use",
+    "Refresh icon uses Bootstrap Icons bi-arrow-repeat class",
+    "Refresh icon has dtp-green color and hover effect",
+    "Home page label shows 'Objects' in Dictionary view and 'Scorecard' in Migration view"
+  ],
+  "change_layers": { "ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false },
+  "ux_changes": "Removed ChatGPT icon (customer privacy concerns), updated refresh icon to Bootstrap Icons with brand colors, and made the home page label dynamic based on active view.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "ChatGPT SQL generator hidden due to customer feedback during demos about sending entire schema to GPT. Legal disclaimer needed before re-enabling. Functionality code preserved.",
+  "comment_summary": "Developer implemented all changes and submitted for review.",
+  "comment_count": 1
+}

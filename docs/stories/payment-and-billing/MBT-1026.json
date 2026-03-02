@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1026",
+  "epic_key": "MBT-1024",
+  "feature_folder": "payment-and-billing",
+  "title": "Create Custom DTP Invoice Object in Salesforce",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-09T10:47:53.843-0800",
+  "updated": "2024-12-22T21:59:42.954-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+  "story": "",
+  "description": "## Context\n\nA custom Salesforce object is needed to store and report on invoices related to DataTools Pro subscriptions, separate from the generic Invoice object (MBT-668). This object captures Stripe-originated invoice data.\n\n## Object Definition\n\n**Object Name**: DTP Invoice\n**Fields**: Invoice date, amount, status, invoice type, Stripe invoice ID\n**Relationship**: Many-to-one to Datatools Subscription\n\n## Stripe Integration\n\nThe object is populated automatically by capturing the `invoice.created` Stripe event and parsing the invoice data into the DTP Invoice record fields.",
+  "acceptance_criteria": [
+    "DTP Invoice custom object exists in Salesforce with all specified fields",
+    "Object has a relationship to the Datatools Subscription object",
+    "Stripe invoice.created events are captured and parsed into DTP Invoice records",
+    "Stripe Invoice ID field is populated for traceability",
+    "Invoice records are reportable in Salesforce"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Logic to capture the Stripe invoice.created event, parse the invoice payload, and create a DTP Invoice record with the extracted fields.",
+  "data_model_changes": "New DTP Invoice custom object in Salesforce with fields for invoice date, amount, status, invoice type, and Stripe Invoice ID. Relates to the Datatools Subscription object.",
+  "api_changes": "",
+  "dependencies": ["MBT-774"],
+  "source_files": [],
+  "implementation_notes": "Developer created the object and confirmed ability to capture invoice.created events from Stripe and parse them into DTP Invoice records. This is distinct from the generic Invoice object (MBT-668) which is linked to QuickBooks.",
+  "comment_summary": "Developer created the DTP Invoice object with fields and demonstrated capturing and parsing the invoice.created Stripe event into the object.",
+  "comment_count": 1
+}

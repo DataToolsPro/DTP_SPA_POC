@@ -1,0 +1,8 @@
+{
+  "issue_key": "MBT-369",
+  "skipped": true,
+  "skip_reason": "stub — description contains only image references and an attachment with no substantive text",
+  "title": "Low Priority GPT Builder - Beta Document",
+  "status": "To Do",
+  "feature_folder": "metrics-analyst"
+}

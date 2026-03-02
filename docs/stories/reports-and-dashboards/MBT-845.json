@@ -1,0 +1,30 @@
+{
+  "issue_key": "MBT-845",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Replace Filter Icon with Custom Group By SVG on Reports Page",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-06T20:02:18.940-0700",
+  "updated": "2026-03-01T03:52:14.766-0800",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want the group-by icon on the Reports & Dashboards page to use a custom SVG that clearly represents grouping, so that the action is visually distinct from filtering.",
+  "description": "Replace the generic filter icon with custom SVG icons for the group-by action on the Reports/Dashboards page. Custom SVGs were provided for both selected and unselected states.\n\nNote: The filter icon was not visible in dark mode and needed a color adjustment.",
+  "acceptance_criteria": [
+    "Group by icon uses the custom SVG for both selected and unselected states",
+    "Icon is visible in both light and dark mode",
+    "Icon is applied to the Reports/Dashboards page group-by action"
+  ],
+  "change_layers": {"ux": true, "middleware": false, "data_model": false, "api": false, "infrastructure": false, "security": false},
+  "ux_changes": "Replaced the filter icon with custom group-by SVGs on the Reports & Dashboards page. Dark mode visibility issue flagged.",
+  "middleware_changes": "", "data_model_changes": "", "api_changes": "",
+  "dependencies": [], "source_files": [],
+  "implementation_notes": "Dark mode required a color code adjustment for the SVG icon visibility.",
+  "comment_summary": "Developer implemented the SVG icon replacement and flagged a dark mode visibility issue requiring a color code update.",
+  "comment_count": 4
+}

@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1186",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Redirect Cloudways Direct Access to Production Domain",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-08-22T18:38:06.406-0700",
+  "updated": "2026-03-01T04:05:22.813-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Redirect all direct access to the Cloudways server domain (phplaravel-1018118-3598086.cloudwaysapps.com) back to the production domain (https://app.datatoolspro.com/). This prevents users and bots from accessing the application through the raw Cloudways hostname.",
+  "acceptance_criteria": [
+    "Requests to the Cloudways domain are redirected to app.datatoolspro.com",
+    "Redirect applies to all paths on the Cloudways domain",
+    "Production domain continues to function normally"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Can be implemented via .htaccess redirect rule or Laravel middleware checking the HTTP_HOST header.",
+  "comment_summary": "No comments on this ticket.",
+  "comment_count": 0
+}

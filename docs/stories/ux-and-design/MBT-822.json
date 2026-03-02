@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-822",
+  "epic_key": "MBT-1012",
+  "feature_folder": "ux-and-design",
+  "title": "Add Pendo Tracking Class and Margin to Add Object Button",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-07-20T18:40:41.369-0700",
+  "updated": "2026-03-01T03:48:42.742-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a product administrator, I want the Add Object button to have a tracking class for usage analytics and proper spacing from the search bar, so that we can measure feature adoption and improve visual layout.",
+  "description": "Two updates to the Add Object button:\n\n1. **CSS class**: Added a tracking class for Pendo.io usage analytics\n2. **Right margin**: Added 5px right margin to create spacing between the button and the search bar\n\nThe button appears in three locations across the application, and all three instances were updated.",
+  "acceptance_criteria": [
+    "Add Object button has a Pendo tracking CSS class applied",
+    "Button has 5px right margin separating it from the search bar",
+    "All three instances of the button across the application are updated"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Added tracking class and 5px right margin to the Add Object button in all three locations.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The Add Object button exists in three places in the app; all were updated with the new class and margin.",
+  "comment_summary": "Developer updated all three button instances and deployed to development for review.",
+  "comment_count": 1
+}

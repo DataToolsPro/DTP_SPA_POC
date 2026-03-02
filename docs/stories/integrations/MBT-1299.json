@@ -1,0 +1,42 @@
+{
+  "issue_key": "MBT-1299",
+  "epic_key": "MBT-296",
+  "feature_folder": "integrations",
+  "title": "Handle Inactive or Misconfigured Snowflake Instance Gracefully",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "In Review",
+  "priority": "Medium",
+  "created": "2025-12-29T20:42:41.206-0800",
+  "updated": "2026-03-01T04:12:23.262-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "integrations", "Snowflake"],
+  "story": "As a DataTools Pro user with a Snowflake integration, I want the system to gracefully handle connection errors and redirect me to settings so that I can reconfigure my Snowflake connection without encountering unhandled errors.",
+  "description": "When a user opens the Snowflake tab in DataTools Pro, the system should handle two scenarios:\n\n1. **No Snowflake setup** — Redirect to Snowflake settings page\n2. **Previously configured but unable to connect** — Catch any Snowflake connection errors, log them, redirect the user to the settings page, and display a generic error message asking them to reconfigure Snowflake or contact their Snowflake admin\n\nThis prevents users from seeing raw error pages when their Snowflake instance is inactive, credentials have expired, or network policies have changed.",
+  "acceptance_criteria": [
+    "Users without Snowflake setup are redirected to settings",
+    "Snowflake connection errors are caught and logged",
+    "Users with connection errors are redirected to settings with a generic error message",
+    "Error message advises reconfiguring Snowflake or contacting Snowflake admin",
+    "No raw error pages or stack traces are shown to users"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Graceful error handling redirects to settings with a user-friendly error message instead of showing raw errors.",
+  "middleware_changes": "Added try-catch around Snowflake connection attempts. Errors are logged and the user is redirected to settings.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Catches all Snowflake connection errors (expired tokens, inactive instances, network policy blocks) and provides a uniform redirect to settings.",
+  "comment_summary": "Developer fixed the issue on dev and submitted for review.",
+  "comment_count": 1
+}

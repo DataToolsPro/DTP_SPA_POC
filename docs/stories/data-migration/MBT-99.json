@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-99",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Allow Multiple-to-One Field Mapping in Migration",
+  "type": "story",
+  "original_jira_type": "Story",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-05-17T21:50:39.350-0700",
+  "updated": "2026-03-01T03:39:43.896-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "As an end user, I want to map one import field to multiple Salesforce fields, so that I can handle scenarios where the same source data feeds into different target fields.",
+  "description": "Remove the restriction that prevented mapping one import field to multiple Salesforce fields. A previous version displayed a JavaScript error when a user attempted this, but multiple-to-one mapping is a valid use case.\n\n### Context\nThere are numerous scenarios where a single source field needs to map to multiple Salesforce destination fields. The old JavaScript validation error was overly restrictive and should be removed to support these workflows.",
+  "acceptance_criteria": [
+    "A single import field can be mapped to multiple Salesforce fields without error",
+    "No JavaScript validation error is thrown on duplicate source field selection",
+    "Existing single-field mappings continue to work as before"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "JavaScript validation that blocked duplicate source field selection is removed, allowing users to assign the same import field to multiple target fields.",
+  "middleware_changes": "Backend mapping logic updated to accept and process multiple target fields for a single source field.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "This feature was likely already implemented before the ticket was formally created. Developer confirmed the capability existed.",
+  "comment_summary": "Developer noted the feature appeared to already be implemented and asked for confirmation.",
+  "comment_count": 1
+}

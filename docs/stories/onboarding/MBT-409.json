@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-409",
+  "epic_key": "MBT-450",
+  "feature_folder": "onboarding",
+  "title": "WordPress Sign-Up Handoff to DataTools Pro (Removing Passcode)",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-12-07T22:39:18.304-0800",
+  "updated": "2024-05-24T02:25:05.380-0700",
+  "assignee": "Ryan Goodman",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want a seamless sign-up handoff from the marketing website to the application without needing a manual passcode, so that my activation experience is frictionless.",
+  "description": "Design and document the end-to-end signup flow that transitions users from the WordPress marketing site into the DataTools Pro application. This ticket captures the architectural flow diagram for removing the manual passcode step and replacing it with an automated verification handoff.\n\nThe flow covers the complete journey from WordPress form submission through email verification to Salesforce authentication and first login.",
+  "acceptance_criteria": [
+    "Sign-up flow from WordPress to DataTools Pro does not require a manual passcode",
+    "User verification is handled automatically via email OTP",
+    "Flow diagram documents the complete handoff process"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Removes the manual passcode step from the sign-up flow, replacing it with automatic OTP-based verification handoff from WordPress to the DataTools Pro application.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-408"],
+  "source_files": [],
+  "implementation_notes": "This is the design/architecture ticket that defines the flow implemented in MBT-408. Flow diagram was created showing WordPress form → OTP email → verification → Salesforce auth → app access.",
+  "comment_summary": "",
+  "comment_count": 0
+}

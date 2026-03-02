@@ -1,0 +1,44 @@
+{
+  "issue_key": "MBT-549",
+  "epic_key": "MBT-23",
+  "feature_folder": "data-dictionary",
+  "title": "Add URL Query Parameter for Dictionary vs Migration View Tracking",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-29T21:11:17.431-0800",
+  "updated": "2026-03-01T01:29:24.978-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Dictionary"],
+
+  "story": "",
+  "description": "When toggling between Dictionary and Migration views, the URL now includes a `view` query parameter (`?view=dictionary` or `?view=migration`) to enable analytics tracking via Pendo. This allows product analytics to distinguish object-level page views by the active view context. The URL updates dynamically when the user clicks the view toggle buttons.",
+  "acceptance_criteria": [
+    "Clicking the Dictionary toggle sets the URL to /object/{ObjectName}?view=dictionary",
+    "Clicking the Migration toggle sets the URL to /object/{ObjectName}?view=migration",
+    "URL updates without triggering a full page reload",
+    "Pendo can capture the view parameter for analytics segmentation"
+  ],
+
+  "change_layers": {
+    "ux": false,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "Toggle button click handlers now update the browser URL with the appropriate view query parameter using history.pushState or equivalent, enabling Pendo analytics tracking.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+
+  "implementation_notes": "The URL parameter is used exclusively for Pendo analytics tracking to segment object-level page views by Dictionary vs Migration context. No functional behavior changes from the user's perspective.",
+  "comment_summary": "Developer implemented the URL parameter update on staging.",
+  "comment_count": 1
+}

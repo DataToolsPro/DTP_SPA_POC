@@ -1,0 +1,46 @@
+{
+  "issue_key": "MBT-1044",
+  "epic_key": "MBT-1014",
+  "feature_folder": "multi-org",
+  "title": "Confirm Lazy-Loading Behavior for Multi-Org Object Fields",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-12-22T19:07:32.902-0800",
+  "updated": "2025-01-02T18:46:59.494-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration"],
+
+  "story": "",
+
+  "description": "## Context\n\nVerification that the multi-org feature does not automatically download all object fields when a second Salesforce instance is connected. This ensures efficient API usage and avoids unnecessary data transfer.\n\n## Confirmed Behavior\n\n- On authentication of a second instance, only the list of objects is fetched — not fields for every object.\n- Object fields are fetched on demand when a user clicks on a specific object to view its details.\n- A refresh/sync option is available for users to re-fetch fields from Salesforce if changes have been made on the Salesforce side.\n\nThis lazy-loading approach keeps initial connection fast and avoids hitting Salesforce API limits by deferring field metadata retrieval until the user actually needs it.",
+
+  "acceptance_criteria": [
+    "On initial instance connection, only the object list is fetched — individual object fields are not downloaded automatically",
+    "Object fields are fetched on demand when the user clicks into an object's detail view",
+    "A refresh/sync button is available to re-fetch fields from Salesforce for a given object",
+    "No unnecessary Salesforce API calls are made during the initial connection process"
+  ],
+
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-932"],
+  "source_files": [],
+
+  "implementation_notes": "No code changes — this ticket documents confirmed behavior from the MBT-932 implementation. Fields are lazy-loaded per object on user click, not bulk-fetched on instance connection. A sync/refresh option exists for re-fetching fields after Salesforce-side changes.",
+  "comment_summary": "Developer confirmed that fields are not fetched automatically on authentication. Only the object list is retrieved initially. Fields are fetched on demand when the user views an object, and a refresh option is provided to sync with Salesforce changes.",
+  "comment_count": 1
+}

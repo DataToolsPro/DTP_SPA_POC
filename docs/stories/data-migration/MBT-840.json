@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-840",
+  "epic_key": "MBT-536",
+  "feature_folder": "data-migration",
+  "title": "Fix Invited User Missing Import Metrics Options",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-08-01T13:35:13.355-0700",
+  "updated": "2026-03-01T03:52:51.771-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Data Migration"],
+  "story": "",
+  "description": "Invited (shared) users could only add metrics manually and were missing the Tableau and bulk import options. The issue was caused by missing module-access permissions that were not being assigned during the invitation flow.\n\n### Root Cause\nNew permissions for module access had been added but were not included in the invitation workflow. These permissions were not listed in the invite screen, so invited users did not receive them.\n\n### Fix\n- Ran a command to add the new permissions to production and staging\n- Updated the invite screen to display the new module-access permissions\n\n### Additional Finding\nA false positive was identified: shared customers could update their own permissions and invite others to their parent account, which should be restricted.",
+  "acceptance_criteria": [
+    "Invited users see Tableau and bulk import options on the metrics page",
+    "New module-access permissions are listed in the invite screen",
+    "Import from Salesforce button respects permission settings"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Invite screen now displays module-access permissions. Import options appear correctly for invited users with appropriate permissions.",
+  "middleware_changes": "Permission check updated to include new module-access permissions for invited users.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "A secondary issue was identified: shared customers can currently modify their own permissions and invite others to the parent account. This needs separate follow-up.",
+  "comment_summary": "Developer identified the root cause as missing module-access permissions in the invitation flow. Fixed by adding the permissions via a command on prod/staging. Also flagged a security concern where shared customers could edit their own permissions.",
+  "comment_count": 1
+}

@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-477",
+  "epic_key": "MBT-492",
+  "feature_folder": "tagging-and-categories",
+  "title": "Lines of Business Disappeared in Production",
+  "type": "story",
+  "original_jira_type": "Bug",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-11T21:52:27.194-0800",
+  "updated": "2024-05-24T02:25:31.604-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user managing metric categories, I want Lines of Business to load reliably in production, so that I can view and manage my categorized metrics without encountering missing data.",
+  "description": "In production, all Lines of Business entries disappeared from the management view. The main Lines of Business listing showed no entries, despite related Lines of Business on individual metrics remaining intact. This indicated a loading or query issue specific to the management/administration view rather than a data deletion.\n\nThe bug was reported with screenshots showing empty Lines of Business lists in the admin area while related assignments on metrics were still visible. Waqar was unable to reproduce the issue on his end, suggesting it may have been environment-specific or intermittent.",
+  "acceptance_criteria": [
+    "All Lines of Business entries are displayed in the management view in production",
+    "Lines of Business data loads reliably across page refreshes and sessions",
+    "Related Lines of Business assignments on individual metrics remain unaffected",
+    "The management view query returns all active Lines of Business entries"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "The Lines of Business management view now reliably displays all entries in production. Users no longer encounter an empty listing.",
+  "middleware_changes": "Investigated and resolved the query or data-loading issue causing Lines of Business to not appear in the management view. The related-items view was unaffected, pointing to a problem in the admin listing logic.",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The issue was difficult to reproduce — Waqar could not replicate it on his environment. Ryan planned to record a video for further debugging. The root cause was likely an intermittent query or caching issue in the production environment.",
+  "comment_summary": "Waqar could not reproduce the issue and requested a meeting. Ryan planned to record a video to demonstrate the problem. Resolution details were not documented in comments.",
+  "comment_count": 2
+}

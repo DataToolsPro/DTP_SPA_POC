@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-8",
+  "epic_key": "MBT-3",
+  "feature_folder": "legacy-and-bugs",
+  "title": "Disable Editing and Reposition SFDC Object Name Column",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2023-01-17T19:34:46.522-0800",
+  "updated": "2024-05-24T02:24:38.905-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": ["Scorecard"],
+  "doc_tags": ["datatoolspro"],
+  "story": "As a DataTools Pro user, I want the SFDC Object Name column to be non-editable and positioned as the first column in the scorecard, so that the Salesforce-sourced data remains accurate and the most identifying column is immediately visible.",
+  "description": "Two changes to the SFDC Object Name column in the scorecard table:\n\n1. **Disable editing** — The Salesforce Sink Object Name field should be read-only for end users. This data comes directly from the Salesforce API and must not be manually altered.\n2. **Reposition as first column** — Move the SFDC Object Name column to the left-most position in the table for better visibility and context.",
+  "acceptance_criteria": [
+    "SFDC Object Name column is not editable by end users",
+    "Attempting to edit the SFDC Object Name cell does not open an editor",
+    "SFDC Object Name is displayed as the first (left-most) column in the scorecard table",
+    "Column reordering does not affect the locked position of the SFDC Object Name column"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "SFDC Object Name column is made read-only and repositioned as the first column in the scorecard table. Visual styling indicates the column is non-editable.",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-7"],
+  "source_files": [],
+  "implementation_notes": "Relates to MBT-7 (Split Object Name / Label) — the non-editable field should display the concatenated Label (API_Name) format while the underlying data uses the split fields.",
+  "comment_summary": "",
+  "comment_count": 0
+}

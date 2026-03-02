@@ -1,0 +1,41 @@
+{
+  "issue_key": "MBT-1269",
+  "epic_key": "MBT-1260",
+  "feature_folder": "security",
+  "title": "Route Requests to Correct Origin Pool by Region and Deployment Type",
+  "type": "task",
+  "original_jira_type": "Story",
+  "status": "To Do",
+  "priority": "Medium",
+  "created": "2025-12-17T21:45:36.865-0800",
+  "updated": "2025-12-17T21:45:36.987-0800",
+  "assignee": "Unassigned",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "security"],
+  "story": "",
+  "description": "Implement request routing logic so that tenant traffic reaches the correct regional origin pool based on deployment type (pooled vs. dedicated).\n\n## Requirements\n\n- Dedicated tenant requests route to the dedicated origin pool for the tenant's region\n- Pooled host requests route to the pooled origin pool for the request's region\n- Health checks and failover policy exist (load balancer or app-level) and are observable",
+  "acceptance_criteria": [
+    "Dedicated tenant requests are routed to the correct dedicated origin pool",
+    "Pooled tenant requests are routed to the correct pooled origin pool",
+    "Routing respects the tenant's home region from the directory",
+    "Health check and failover mechanisms are in place and monitored"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": true
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": ["MBT-1268"],
+  "source_files": [],
+  "implementation_notes": "Cloudflare Worker routing based on tenant directory lookup results. The Worker selects the origin pool based on the tenant's mode (pooled/dedicated) and home_region.",
+  "comment_summary": "",
+  "comment_count": 0
+}

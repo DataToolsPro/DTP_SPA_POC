@@ -1,0 +1,33 @@
+{
+  "issue_key": "MBT-488",
+  "epic_key": "MBT-243",
+  "feature_folder": "metrics-glossary",
+  "title": "Integrate Second Lambda Web Service for Metric Wizard",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-01-13T22:54:47.493-0800",
+  "updated": "2024-05-24T02:25:32.151-0700",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "API"],
+  "story": "",
+  "description": "Integrates a second AWS Lambda web service into the Metric Wizard flow. The Lambda function receives the nested JSON payload (dashboard and report metadata) and returns AI-analyzed metric suggestions. The endpoint is a public Lambda URL that will later be secured with authentication.\n\nThe developer validated the endpoint via Postman, confirmed the response structure, and integrated it into the wizard's code to parse suggested metrics, dashboard widgets, and categories from the response.",
+  "acceptance_criteria": [
+    "Lambda endpoint returns a valid response for the nested dashboard/report JSON payload",
+    "Response is parsed to extract suggested metrics, widgets, and categories",
+    "Integration works within the Metric Wizard flow"
+  ],
+  "change_layers": {"ux": false, "middleware": true, "data_model": false, "api": true, "infrastructure": false, "security": false},
+  "ux_changes": "",
+  "middleware_changes": "Lambda integration: POSTs dashboard/report metadata JSON to the Lambda URL, parses the response into suggested metrics, widgets, and categories.",
+  "data_model_changes": "",
+  "api_changes": "External API integration with AWS Lambda URL for metric analysis.",
+  "dependencies": ["MBT-242"],
+  "source_files": [],
+  "implementation_notes": "Lambda URL is currently public — authentication to be added later. Response parsing maps suggested metrics and dashboard widgets to the wizard UI.",
+  "comment_summary": "Developer confirmed Lambda response via Postman and integrated into the codebase. Discussion about mapping response fields to the wizard's suggested metrics display.",
+  "comment_count": 2
+}

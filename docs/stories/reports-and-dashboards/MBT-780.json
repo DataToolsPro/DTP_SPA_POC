@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-780",
+  "epic_key": "MBT-75",
+  "feature_folder": "reports-and-dashboards",
+  "title": "Multi-Select Report Edit with Reusable Bulk Update Pattern",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-06-30T19:46:11.639-0700",
+  "updated": "2024-07-26T00:00:13.957-0700",
+  "assignee": "Balaji Naiknavare",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Reports and Dashboards DataTools"],
+  "story": "As a DataTools Pro user, I want to select multiple reports and bulk-update their categories and status, so that I can quickly organize and categorize reports for future reference.",
+  "description": "Implements multi-select and bulk edit for reports, replicating the Metrics Glossary pattern. The implementation should maximize code reuse by abstracting shared behavior into reusable classes or functions rather than reimplementing per page.\n\nUsers select rows via Ctrl+click (individual) or Shift+click (range), then use the existing bulk edit modal to assign Line of Business, Topic, and Status. Changes write back to the data model.\n\nThe emphasis is on establishing a reusable pattern since the same functionality will be needed on a future Data Governance tab.",
+  "acceptance_criteria": [
+    "Ctrl+click selects individual report rows",
+    "Shift+click selects a range of report rows",
+    "Bulk edit modal shows count and category assignment options",
+    "Line of Business, Topic, and Status can be updated in bulk",
+    "Changes persist to the database",
+    "Code is structured for reuse on future pages"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "Multi-select via Ctrl+click and Shift+click on report rows. Bulk edit modal for assigning Line of Business, Topic, and Status to selected reports.",
+  "middleware_changes": "Bulk update controller handles writing category and status assignments to multiple report records. Existing Metrics Glossary modal and logic were reused.",
+  "data_model_changes": "Report records store Line of Business, Topic, and Status assignments written from the bulk edit operation.",
+  "api_changes": "Bulk assignment endpoint for reports accepting selected IDs and target category/status values.",
+  "dependencies": ["MBT-770"],
+  "source_files": [],
+  "implementation_notes": "Balaji researched the Metrics Glossary multi-select implementation and replicated the pattern. Waqar confirmed the existing modal could be reused directly. Impact analysis estimated 10 hours covering: understanding existing functionality, implementing selection, reusing the modal, and implementing writeback.",
+  "comment_summary": "Balaji started working and provided an impact analysis. Waqar confirmed the existing modal did not need to be recreated. Ryan approved the implementation after review.",
+  "comment_count": 8
+}

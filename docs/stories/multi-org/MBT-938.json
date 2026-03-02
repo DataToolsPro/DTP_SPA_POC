@@ -1,0 +1,47 @@
+{
+  "issue_key": "MBT-938",
+  "epic_key": "MBT-1014",
+  "feature_folder": "multi-org",
+  "title": "Salesforce-to-Salesforce Instance Object and Field Mapping",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-09-27T03:13:09.828-0700",
+  "updated": "2025-01-07T23:25:51.985-0800",
+  "assignee": "waqar khan",
+  "reporter": "waqar khan",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "Administration", "Data Migration"],
+
+  "story": "As a data migration specialist, I want to map data fields and objects between two Salesforce instances, so that I can track how data migrates between organizations.",
+
+  "description": "## Context\n\nWhen managing data across multiple Salesforce instances, users need to define explicit mappings between objects and fields in a source instance and their counterparts in a target instance. This mapping provides visibility into how data flows during migrations.\n\n## Behavior\n\n- Users select a source Salesforce instance and a target Salesforce instance from the connected instances list.\n- For each object in the source instance, users can map it to a corresponding object in the target instance.\n- Within a mapped object pair, users can map individual fields from the source object to fields in the target object.\n- Mappings are persisted and can be reviewed to understand the data migration path between organizations.",
+
+  "acceptance_criteria": [
+    "User can select a source and target Salesforce instance for mapping",
+    "User can map a source object to a corresponding target object",
+    "User can map individual fields between mapped source and target objects",
+    "Mappings are saved and persist across sessions",
+    "User can view existing mappings to understand data migration paths between instances"
+  ],
+
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": true,
+    "infrastructure": false,
+    "security": false
+  },
+  "ux_changes": "New mapping interface allowing users to select source and target instances, map objects between them, and map fields within matched object pairs.",
+  "middleware_changes": "Logic to validate and persist object-to-object and field-to-field mappings between Salesforce instances.",
+  "data_model_changes": "New tables or models to store object mappings (source instance object → target instance object) and field mappings within each object pair.",
+  "api_changes": "Endpoints for creating, reading, and managing object and field mappings between two Salesforce instances.",
+  "dependencies": ["MBT-932"],
+  "source_files": [],
+
+  "implementation_notes": "Depends on MBT-932 for multi-instance authentication and object/metadata fetching. Mapping relies on objects and metadata already being available for both instances.",
+  "comment_summary": "Developer marked the feature as ready for review on the development environment.",
+  "comment_count": 1
+}

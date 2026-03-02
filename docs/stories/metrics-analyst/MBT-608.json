@@ -1,0 +1,43 @@
+{
+  "issue_key": "MBT-608",
+  "epic_key": "MBT-543",
+  "feature_folder": "metrics-analyst",
+  "title": "Admin Permission Controls for Tableau Pulse and Metric Analyst",
+  "type": "story",
+  "original_jira_type": "Task",
+  "status": "Done",
+  "priority": "Medium",
+  "created": "2024-03-07T07:11:21.495-0800",
+  "updated": "2026-03-01T01:30:32.718-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro", "metrics", "security"],
+  "story": "As a Salesforce administrator, I want to grant or revoke permissions for Tableau Pulse and Metric Analyst features per user, so that I can control which invited users have access to these capabilities.",
+  "description": "Add four new permission toggles to the account administration panel that allow account owners to control access to Tableau Pulse and Metric Analyst features for their shared/invited users.\n\nWhen the Admin role preset is selected, these four new permissions are automatically enabled. Individual permissions can still be toggled independently. The permissions are enforced on the front end so that users without the permission do not see or interact with the gated features.",
+  "acceptance_criteria": [
+    "Four new permission toggles appear in the admin permissions panel",
+    "Account owner can independently enable or disable each permission for invited users",
+    "Selecting the Admin role preset automatically enables all four new permissions",
+    "Users without the permission cannot see or access the gated features",
+    "Permission state persists after save and page reload",
+    "Front-end enforces the permission by hiding the feature UI elements"
+  ],
+  "change_layers": {
+    "ux": true,
+    "middleware": true,
+    "data_model": true,
+    "api": false,
+    "infrastructure": false,
+    "security": true
+  },
+  "ux_changes": "Added four new permission checkboxes to the account admin permissions panel. Checkboxes auto-select when the Admin role preset is chosen. Tableau Pulse and Metric Analyst UI elements are conditionally hidden based on the user's permission state.",
+  "middleware_changes": "Permission check logic extended to validate the four new permission flags before rendering Tableau Pulse and Metric Analyst features.",
+  "data_model_changes": "Four new boolean permission fields added to the user/account permission model for Tableau Pulse and Metric Analyst access.",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "The permissions apply at the account-owner level for shared/invited users. The Admin role preset auto-selects the new permissions for convenience. Frontend enforcement hides UI elements; no separate server-side authorization gate was described.",
+  "comment_summary": "Developer clarified that the permissions are for account owners managing invited users, not super admin. Ryan confirmed. Four new permissions were added with auto-select on Admin role. Front-end enforcement was implemented.",
+  "comment_count": 7
+}

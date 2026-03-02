@@ -1,0 +1,40 @@
+{
+  "issue_key": "MBT-1335",
+  "epic_key": "MBT-445",
+  "feature_folder": "infrastructure",
+  "title": "Configure Jira MCP Integration in Cursor for Both Developers",
+  "type": "task",
+  "original_jira_type": "Task",
+  "status": "In Progress",
+  "priority": "Medium",
+  "created": "2026-02-22T18:31:25.456-0800",
+  "updated": "2026-03-01T04:17:19.997-0800",
+  "assignee": "waqar khan",
+  "reporter": "Ryan Goodman",
+  "labels": [],
+  "doc_tags": ["datatoolspro"],
+  "story": "",
+  "description": "Configure the Atlassian MCP integration in Cursor IDE for both developers (Ryan and Waqar) so that Cursor AI can read Jira tickets directly.\n\n### Setup Steps\n1. Generate Atlassian API token\n2. Configure `.cursor/mcp.json` with Jira URL, username, API token, and project filter (MBT)\n3. Server identifier is `user-atlassian` when calling from AI\n\n### Configuration\n- JIRA_URL: https://goodmangroup.atlassian.net\n- JIRA_PROJECTS_FILTER: MBT\n- Command: `uvx mcp-atlassian`",
+  "acceptance_criteria": [
+    "Ryan has Jira MCP working in Cursor",
+    "Waqar has Jira MCP working in Cursor",
+    ".cursor/mcp.json.example has correct JIRA_URL"
+  ],
+  "change_layers": {
+    "ux": false,
+    "middleware": false,
+    "data_model": false,
+    "api": false,
+    "infrastructure": true,
+    "security": false
+  },
+  "ux_changes": "",
+  "middleware_changes": "",
+  "data_model_changes": "",
+  "api_changes": "",
+  "dependencies": [],
+  "source_files": [],
+  "implementation_notes": "Waqar connected using his own API token after the 1Password shared link expired. Part of Phase 2 in docs/JIRA_TICKET_BACKLOG.md.",
+  "comment_summary": "Developer initially couldn't access the shared 1Password link (expired), then connected Jira to Cursor using his own API token.",
+  "comment_count": 2
+}
